@@ -18,7 +18,7 @@ change.)
 | 4 — Accounts & monetization | User accounts & roles, synced favourites, school claims, subscriptions, Razorpay (after verifying current integration requirements), labelled sponsored listings, consent-based enquiries | Started: member accounts (sign-up, email verification, sign-in/out, optional Google sign-in, password reset/change, profile, deletion). Synced favourites and the rest planned |
 | 5 — Production readiness | Deployment guide, production compose, CI, data import to a server, backups (**done**, see DEPLOYMENT.md); prerendering/SSR, sitemaps, E2E & load tests (planned) | Partly done |
 
-- **Backend:** Java 17, Spring Boot 3.4.5 (Web MVC, Data JPA/Hibernate, Validation, Security + JWT, Actuator),
+- **Backend:** Java 25, Spring Boot 3.5.16 (Web MVC, Data JPA/Hibernate, Validation, Security + JWT, Actuator),
   PostgreSQL, Flyway, springdoc-openapi (Swagger UI), Maven
 - **Frontend:** React 18 + TypeScript, Vite, Tailwind CSS, React Router, Axios, React Hook Form, Recharts, Leaflet/OpenStreetMap
 - **Infra:** Docker + Docker Compose, Cloudinary (optional) for image uploads
@@ -203,7 +203,7 @@ Web: http://localhost:3000 · API: http://localhost:8080 · Swagger UI: http://l
 
 ### Option B — without Docker (embedded PostgreSQL)
 
-Requires only Java 17 and Node 18+.
+Requires only Java 25 and Node 18+.
 
 ```bash
 cd backend
