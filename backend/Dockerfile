@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # ---- Build stage -------------------------------------------------------------------------------
-FROM eclipse-temurin:17-jdk-jammy AS build
+FROM eclipse-temurin:25-jdk-noble AS build
 WORKDIR /workspace
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
@@ -11,7 +11,7 @@ RUN ./mvnw -B -q -DskipTests package && cp target/india-school-finder-backend-*.
     && java -Djarmode=tools -jar app.jar extract --layers --launcher --destination extracted
 
 # ---- Runtime stage -----------------------------------------------------------------------------
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:25-jre-noble
 # curl is used only by the container health check (docker-compose.prod.yml).
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/* \
     && groupadd --system app && useradd --system --gid app --home /app app
