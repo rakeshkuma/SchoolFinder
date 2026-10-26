@@ -1,0 +1,182 @@
+{
+  "_comment": "Researched boarding-school data (read 25 Oct 2026 unless noted). Every boarding fact is from the page in its boarding_source_url; school identity, address, PIN and foundation year of CBSE schools come from their CBSE SARAS affiliation record. boarding_type is left blank when the source says 'boarding' or 'residential' without saying whether every student boards. Not a ranking. 'cbse' entries are applied by build-saras-csv.js to the SARAS record with that affiliation number; 'systems' rules apply to every school of that network; 'schools' are complete rows for the admin JSON import (schools not affiliated to CBSE).",
+  "systems": {
+    "JAWAHAR_NAVODAYA_VIDYALAYA": {
+      "residential_system": "NAVODAYA",
+      "boarding_type": "FULL_BOARDING",
+      "entrance_exam": "JNVST",
+      "entry_classes": "VI (JNVST); lateral entry to IX and XI as notified",
+      "gender_type": "CO_ED",
+      "boarding_summary": "Co-educational Jawahar Navodaya Vidyalaya run by the Navodaya Vidyalaya Samiti. Education, board and lodging, uniform and textbooks are free; boys and girls live in separate hostels. Admission to Class VI is through the district-level JNVST.",
+      "boarding_source_url": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+    }
+  },
+  "cbse": {
+    "530035": {
+      "name": "Sainik School Kunjpura", "network": "SAINIK_SCHOOL",
+      "residential_system": "SAINIK", "entrance_exam": "AISSEE", "entry_classes": "VI and IX (AISSEE)",
+      "boarding_summary": "Sainik School of the Sainik Schools Society, Ministry of Defence. Cadets live in 20 dormitories grouped into 10 houses; admission to Classes VI and IX is through AISSEE.",
+      "accommodation": "20 dormitories in 10 houses (school website).",
+      "boarding_source_url": "https://sskunjpura.org/"
+    },
+    "3530014": {
+      "name": "Sainik School Ghorakhal", "network": "SAINIK_SCHOOL",
+      "residential_system": "SAINIK", "entrance_exam": "AISSEE", "entry_classes": "VI and IX (AISSEE)",
+      "boarding_summary": "Sainik School near Nainital, founded in 1966. The school provides hostel and mess facilities for cadets; admission to Classes VI and IX is through AISSEE.",
+      "accommodation": "Hostel and mess facilities for cadets (school website).",
+      "boarding_source_url": "https://www.ssghorakhal.org/"
+    },
+    "3480001": {
+      "name": "Sainik School Tilaiya", "network": "SAINIK_SCHOOL",
+      "residential_system": "SAINIK", "boarding_type": "FULL_BOARDING", "entrance_exam": "AISSEE",
+      "entry_classes": "VI and IX (AISSEE)",
+      "boarding_summary": "Describes itself as a CBSE-affiliated residential school; boys and girl cadets. Admission to Classes VI and IX is through AISSEE.",
+      "boarding_source_url": "https://www.sainikschooltilaiya.org/"
+    },
+    "1780002": {
+      "name": "Rashtriya Military School Ajmer", "network": "RASHTRIYA_MILITARY_SCHOOL", "gender_type": "BOYS",
+      "residential_system": "MILITARY_SCHOOL", "boarding_type": "FULL_BOARDING", "entrance_exam": "RMS_CET",
+      "entry_classes": "VI (age 10–12) and IX (age 13–15) as on 31 March",
+      "boarding_summary": "Ministry of Defence military school. All admissions are as boarders (no day scholars) and exclusively for boys, through the Common Entrance Test held in December and an interview.",
+      "boarding_source_url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+    },
+    "1780003": {
+      "name": "Rashtriya Military School Dholpur", "network": "RASHTRIYA_MILITARY_SCHOOL", "gender_type": "BOYS",
+      "residential_system": "MILITARY_SCHOOL", "boarding_type": "FULL_BOARDING", "entrance_exam": "RMS_CET",
+      "entry_classes": "VI (age 10–12) and IX (age 13–15) as on 31 March",
+      "boarding_summary": "Ministry of Defence military school. All RMS admissions are as boarders (no day scholars) and exclusively for boys, through the Common Entrance Test held in December and an interview.",
+      "boarding_source_url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+    },
+    "880002": {
+      "name": "Rashtriya Military School Bengaluru", "network": "RASHTRIYA_MILITARY_SCHOOL", "gender_type": "BOYS",
+      "residential_system": "MILITARY_SCHOOL", "boarding_type": "FULL_BOARDING", "entrance_exam": "RMS_CET",
+      "entry_classes": "VI (age 10–12) and IX (age 13–15) as on 31 March",
+      "boarding_summary": "Ministry of Defence military school. All admissions are as boarders (no day scholars) and exclusively for boys, through the Common Entrance Test held in December and an interview.",
+      "boarding_source_url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+    },
+    "880003": {
+      "name": "Rashtriya Military School Belagavi", "network": "RASHTRIYA_MILITARY_SCHOOL", "gender_type": "BOYS",
+      "residential_system": "MILITARY_SCHOOL", "boarding_type": "FULL_BOARDING", "entrance_exam": "RMS_CET",
+      "entry_classes": "VI (age 10–12) and IX (age 13–15) as on 31 March",
+      "boarding_summary": "Ministry of Defence military school (RMS Belgaum). All admissions are as boarders (no day scholars) and exclusively for boys, through the Common Entrance Test held in December and an interview.",
+      "boarding_source_url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+    },
+    "680005": {
+      "name": "Rashtriya Military School Chail", "network": "RASHTRIYA_MILITARY_SCHOOL", "gender_type": "BOYS",
+      "residential_system": "MILITARY_SCHOOL", "boarding_type": "FULL_BOARDING", "entrance_exam": "RMS_CET",
+      "entry_classes": "VI (age 10–12) and IX (age 13–15) as on 31 March",
+      "boarding_summary": "Ministry of Defence military school in the Shimla hills. All RMS admissions are as boarders (no day scholars) and exclusively for boys, through the Common Entrance Test held in December and an interview.",
+      "boarding_source_url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+    },
+    "1730001": {
+      "name": "Mayo College", "gender_type": "BOYS",
+      "residential_system": "PRIVATE_BOARDING", "boarding_type": "FULL_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "IV–IX and XI (XI after Class X results, limited seats)",
+      "boarding_summary": "All-boys residential school in Ajmer, established in 1875; CBSE and Cambridge curricula. Admission is by an offline Aptitude Analysis in English and Mathematics, held each October.",
+      "boarding_source_url": "https://www.mayocollege.com/admission-information"
+    },
+    "1030003": {
+      "name": "The Scindia School", "gender_type": "BOYS",
+      "residential_system": "PRIVATE_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "boarding_summary": "Boys' boarding school on Gwalior Fort with houses, housemasters and resident tutors. Admission is through the Common Aptitude Assessment (November) or the School Aptitude Assessment (late January/early February) in English, Mathematics and Hindi.",
+      "boarding_source_url": "https://www.scindia.edu/admissions"
+    },
+    "1730008": {
+      "name": "Birla Public School, Pilani", "gender_type": "BOYS",
+      "residential_system": "PRIVATE_BOARDING", "boarding_type": "FULL_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "III–IX and XI (session 2027-28)",
+      "boarding_summary": "Fully residential boys-only school (Vidya Niketan Birla Public School), started by G. D. Birla in 1944. Admission usually involves an entrance test, a review of academic performance and an interaction.",
+      "boarding_source_url": "https://www.bpspilani.edu.in/"
+    },
+    "1730010": {
+      "name": "Birla Balika Vidyapeeth", "gender_type": "GIRLS",
+      "residential_system": "PRIVATE_BOARDING", "boarding_type": "FULL_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "V–IX (aptitude assessment)",
+      "boarding_summary": "English-medium residential public school for girls in Pilani. Applicants for Classes V–IX take a 30-minute aptitude assessment in Hindi, English, Mathematics and Mental Ability, followed by an interaction with parents.",
+      "boarding_source_url": "https://www.bbvpilani.edu.in/"
+    },
+    "630013": {
+      "name": "The Lawrence School, Sanawar", "gender_type": "CO_ED",
+      "residential_system": "PRIVATE_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "V, VI and VII (session 2027-28); largest intake in V and VI",
+      "boarding_summary": "Co-educational boarding school established in 1847; boys and girls are housed in separate departments. Admission is through an offline Common Entrance Test in English, Mathematics, Science and Hindi.",
+      "accommodation": "Boys and girls are housed in separate departments (school website).",
+      "boarding_source_url": "https://www.sanawar.edu.in/"
+    },
+    "1930001": {
+      "name": "The Lawrence School, Lovedale", "gender_type": "CO_ED",
+      "residential_system": "PRIVATE_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "V–IX and XI (recommended age for Class V: 10+)",
+      "boarding_summary": "CBSE school near Ooty, established in 1858, with Prep (Classes IV–VI), Junior (VII–VIII) and Senior (IX–XII) schools, each with its own classrooms and dormitories; girls are housed in the girls' school.",
+      "accommodation": "Classrooms and dormitories of the Prep, Junior and Senior schools are in their own buildings; girls are housed in the girls' school (school website).",
+      "boarding_source_url": "https://www.thelawrenceschool.org/copy-of-about"
+    },
+    "3530238": {
+      "name": "Welham Boys' School", "gender_type": "BOYS",
+      "residential_system": "PRIVATE_BOARDING", "entrance_exam": "SCHOOL_TEST", "entry_classes": "IV–IX",
+      "boarding_summary": "Boys' boarding school in Dehradun founded in 1937, affiliated to CBSE. Entry to Grades IV–IX is through the Proficiency & Aptitude Assessment (next: 15 November 2026).",
+      "boarding_source_url": "https://www.welhamboys.org/"
+    },
+    "3420006": {
+      "gender_type": "BOYS",
+      "residential_system": "STATE_RESIDENTIAL", "boarding_type": "FULL_BOARDING", "entrance_exam": "NETARHAT",
+      "entry_classes": "Class 6 (100 seats each year)",
+      "boarding_summary": "Government of Jharkhand residential school for meritorious boys, founded in 1954, in the gurukul tradition. Entry to Class 6 is through a two-level written test followed by physical and psychological tests; fees are subsidised by income group.",
+      "boarding_source_url": "https://www.netarhatvidyalaya.com/"
+    }
+  },
+  "schools": [
+    {
+      "name": "Rashtriya Indian Military College", "school_type": "GOVERNMENT", "management": "CENTRAL_GOVERNMENT",
+      "gender_type": "CO_ED",
+      "address_line": "Garhi Cantt", "city": "Dehradun", "district": "Dehradun", "state_code": "UK", "pin_code": "248003",
+      "phone": "0135-2753983", "website_url": "https://rimc.edu.in/", "established_year": 1922,
+      "description": "Inter-service military college preparing cadets for the Defence Forces. Admission is only at Class VIII, for boys and girls; separate merit lists are published for each.",
+      "source_url": "https://rimc.edu.in/", "source_retrieved_date": "2026-10-25",
+      "residential_system": "MILITARY_COLLEGE", "boarding_type": "FULL_BOARDING", "entrance_exam": "RIMC",
+      "entry_classes": "VIII only (candidates in or past Class VII)",
+      "boarding_summary": "Military college admitting cadets to Class VIII only. The published fee structure is for boarder cadets, including hostel maintenance and washerman, barber and clothing charges.",
+      "boarding_source_url": "https://rimc.edu.in/fees.aspx"
+    },
+    {
+      "name": "Welham Girls' School", "school_type": "PRIVATE", "management": "PRIVATE_UNAIDED", "board_code": "CISCE",
+      "gender_type": "GIRLS", "class_codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"],
+      "address_line": "19 Municipal Road, Dalanwala", "city": "Dehradun", "district": "Dehradun", "state_code": "UK", "pin_code": "248001",
+      "phone": "0135-2654754", "email": "mainschool@welhamgirls.com", "website_url": "https://www.welhamgirls.com/",
+      "description": "Girls' school in Dehradun with Classes VI to XII, affiliated to the Council for the Indian School Certificate Examinations.",
+      "source_url": "https://www.welhamgirls.com/", "source_retrieved_date": "2026-10-25",
+      "residential_system": "PRIVATE_BOARDING", "entrance_exam": "SCHOOL_TEST", "entry_classes": "VI, VII and XI",
+      "boarding_summary": "Girls' school in Dehradun, Classes VI–XII, showing Boarding Schools' Association of India accreditation and describing its houses, meals, outings and holidays. Admission is by an aptitude/proficiency assessment.",
+      "boarding_source_url": "https://www.welhamgirls.com/"
+    },
+    {
+      "name": "Woodstock School", "school_type": "INTERNATIONAL", "management": "PRIVATE_UNAIDED", "board_code": "IB",
+      "class_codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"],
+      "city": "Mussoorie", "district": "Dehradun", "state_code": "UK", "pin_code": "248179",
+      "phone": "+91 135 617 0500, +91 135 263 9000", "website_url": "https://www.woodstockschool.in/", "established_year": 1854,
+      "description": "International Baccalaureate World School in Mussoorie offering a US Diploma and IB Diploma pathway.",
+      "source_url": "https://www.woodstockschool.in/", "source_retrieved_date": "2026-10-25",
+      "residential_system": "PRIVATE_BOARDING",
+      "boarding_summary": "Describes itself as Asia's oldest international boarding school (since 1854), for students in Grades 6 to 12; IB World School with a US Diploma and IB Diploma pathway. Applications for 2027/28 are made online.",
+      "boarding_source_url": "https://www.woodstockschool.in/"
+    },
+    {
+      "name": "Sherwood College", "school_type": "PRIVATE", "management": "PRIVATE_UNAIDED", "board_code": "CISCE",
+      "gender_type": "CO_ED", "class_codes": ["III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"],
+      "address_line": "Ayarpatta, Tallital", "city": "Nainital", "district": "Nainital", "state_code": "UK", "pin_code": "263002",
+      "phone": "9458307729", "email": "contact@sherwood.edu.in", "website_url": "https://sherwood.edu.in/", "established_year": 1869,
+      "description": "Co-educational residential school in Nainital (Classes III–XII), established in 1869 and affiliated to CISCE.",
+      "source_url": "https://sherwood.edu.in/", "source_retrieved_date": "2026-10-25",
+      "residential_system": "PRIVATE_BOARDING", "boarding_type": "FULL_BOARDING", "entrance_exam": "SCHOOL_TEST",
+      "entry_classes": "III–XII",
+      "boarding_summary": "Co-educational residential institution for Classes III–XII in Nainital, established in 1869 and affiliated to CISCE.",
+      "boarding_source_url": "https://sherwood.edu.in/"
+    }
+  ],
+  "needsResearch": [
+    { "name": "The Doon School, Dehradun", "reason": "The official website refuses automated access, including its published PDFs. Facts must be entered by an editor reading doonschool.com in a browser; not added from third-party listings." },
+    { "name": "Sainik School Rewari", "reason": "In the directory from its CBSE record, but its website does not state boarding arrangements. Needs the school's hostel page or prospectus." },
+    { "name": "Jawahar Navodaya Vidyalayas (all)", "reason": "Boarding profile applied from the NVS 2027 prospectus as a system rule; individual JNVs are unverified until checked." },
+    { "name": "Eklavya Model Residential Schools", "reason": "Not yet profiled: needs an official NESTS source for residential arrangements." }
+  ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page-specific title, description, canonical URL and structured data: nginx includes them from the backend
+         (/api/v1/seo/head/<path>, see nginx.conf). The block below is the fallback if that request fails; in
+         `npm run dev` a Vite plugin puts the fallback in place of the include. -->
+    <!--# block name="seo_default" -->
+    <title>India School Finder — Discover Schools. Compare Fees. Prepare for Success.</title>
+    <meta name="description" content="Discover schools across India, compare official fees and track admission deadlines — every fact linked to its official source." />
+    <meta property="og:site_name" content="India School Finder" />
+    <meta property="og:title" content="India School Finder — Discover Schools. Compare Fees. Prepare for Success." />
+    <meta property="og:description" content="Source-linked school fees, admissions, facilities and locations across Indian states and union territories." />
+    <meta property="og:type" content="website" />
+    <!--# endblock -->
+    <!--# include virtual="/__seo$request_uri" stub="seo_default" -->
+    <meta name="theme-color" content="#141c4f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

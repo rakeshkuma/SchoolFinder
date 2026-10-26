@@ -1,0 +1,179 @@
+{
+  "_comment": "Classes, map locations and cities for school profiles, each citing the page it was read from (2026-10-25). Classes come from the school's own website, quoted in the note; where a site gives only the entry class, the highest class comes from a second official statement (Class XII results on the site, or the CBSE SARAS affiliation level) and the note says so. Locations are OpenStreetMap objects whose name and address matched the profile; a match was rejected when the name or address disagreed (Mayo College, Boys' High School and College, CMS Kanpur Road). Schools whose sites state no class range (The Scindia School, Bishop Westcott Boys' School, Netarhat Awasiya Vidyalaya, Pathways World School) have no classes here. Entries are SchoolFactsRequest bodies for PATCH /api/v1/admin/schools/{id}/facts, keyed by slug. Load with LocalFactsImport (development) or tools/seed/import-to-server.js.",
+  "schools": [
+    {
+      "slug": "rashtriya-indian-military-college",
+      "facts": {
+        "classes": { "codes": ["VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://rimc.edu.in/academics.aspx", "retrievedDate": "2026-10-25",
+          "note": "Home page: admission is made only to Class VIII ('कक्षा VIII में केवल प्रवेश लिया जाता है'); Academics page: 'exams for Class X and XII', 'only Science Stream at the +2 level'." } },
+        "location": { "latitude": 30.3475195, "longitude": 78.0242946, "source": { "url": "https://www.openstreetmap.org/way/330689763", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap area named Rashtriya Indian Military College, Dehradun 248003." } }
+      }
+    },
+    {
+      "slug": "loyola-school-jamshedpur",
+      "facts": {
+        "classes": { "codes": ["KG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://loyolajsr.com/about", "retrievedDate": "2026-10-25",
+          "note": "'The present course of studies extends from Kindergarten to Std. XII'." } },
+        "location": { "latitude": 22.8082117, "longitude": 86.1828464, "source": { "url": "https://www.openstreetmap.org/way/111878890", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Loyola School, Jamshedpur 831001." } }
+      }
+    },
+    {
+      "slug": "st-xavier-s-high-school-patna",
+      "facts": {
+        "classes": { "codes": ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.stxavierspatna.in/Curriculum.aspx", "retrievedDate": "2026-10-25",
+          "note": "Curriculum page: 'junior classes (from classes I to V)', 'middle classes VI to VIII', 'senior classes IX and X', 'senior secondary classes XI and XII'." } },
+        "location": { "latitude": 25.619369, "longitude": 85.1407007, "source": { "url": "https://www.openstreetmap.org/way/875652123", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named St Xavier's School, Patna, West Gandhi Maidan Marg, 800001 (matches the school's address)." } }
+      }
+    },
+    {
+      "slug": "st-francis-college",
+      "facts": {
+        "classes": { "codes": ["NURSERY", "KG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://stfrancislucknow.com/course-of-studies/", "retrievedDate": "2026-10-25",
+          "note": "'From Nursery to Class X General education in all the subjects is provided'; 'For Classes XI and XII the College provides courses of studies'. L.K.G and U.K.G are recorded as KG." } },
+        "location": { "latitude": 26.8522838, "longitude": 80.9430696, "source": { "url": "https://www.openstreetmap.org/way/213237853", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named St. Francis' College, Shahnajaf Road, Hazratganj (matches the school's address)." } }
+      }
+    },
+    {
+      "slug": "sainik-school-kunjpura",
+      "facts": {
+        "classes": { "codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://sskunjpura.org/detail.php?mid=MQ==&sid=MQ==", "retrievedDate": "2026-10-25",
+          "note": "About Us: 'At present the school has 622 cadets studying in classes VI to XII.'" } },
+        "location": { "latitude": 29.7279414, "longitude": 77.0577302, "source": { "url": "https://www.openstreetmap.org/way/228972304", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Sainik School Kunjpura, Karnal 132023." } },
+        "city": { "name": "Kunjpura", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530035", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Kunjpura, Distt Karnal, Haryana'." } }
+      }
+    },
+    {
+      "slug": "the-lawrence-school-lovedale",
+      "facts": {
+        "classes": { "codes": ["V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.thelawrenceschool.org/admissions", "retrievedDate": "2026-10-25",
+          "note": "Admissions: 'we admit students from Classes V to IX and Class XI'; the home page publishes 'CBSE Board Results 2026 (X & XII)'." } },
+        "location": { "latitude": 11.3799817, "longitude": 76.7004898, "source": { "url": "https://www.openstreetmap.org/way/1529335958", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Lawrence School Ooty, Lovedale, Nilgiris 643003." } },
+        "city": { "name": "Ooty", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1930001", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Lovedale Ootacamund The Nilgiris'. Ootacamund (Udhagamandalam) is commonly called Ooty." } }
+      }
+    },
+    {
+      "slug": "mayo-college",
+      "facts": {
+        "classes": { "codes": ["IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.mayocollege.com/age-criteria-class-wise", "retrievedDate": "2026-10-25",
+          "note": "Age criteria table lists admission to Class IV to Class IX; CBSE SARAS lists the school's affiliation level as Senior Secondary (up to Class XII)." } },
+        "city": { "name": "Ajmer", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1730001", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Ajmer Rajasthan'." } }
+      }
+    },
+    {
+      "slug": "sainik-school-ghorakhal",
+      "facts": {
+        "classes": { "codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.ssghorakhal.org/page/about-school", "retrievedDate": "2026-10-25",
+          "note": "The site publishes 'AISSEE 2026 : CLASS VI & IX RESULT' (the Sainik School entrance examination) and Class X and Class XII results." } },
+        "location": { "latitude": 29.3806148, "longitude": 79.5426696, "source": { "url": "https://www.openstreetmap.org/way/1115921619", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Sainik School, Ghorakhal, Nainital." } },
+        "city": { "name": "Ghorakhal", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3530014", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Ghorakhal Nainital Distt'." } }
+      }
+    },
+    {
+      "slug": "rashtriya-military-school-dholpur",
+      "facts": {
+        "classes": { "codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.rashtriyamilitaryschools.edu.in/", "retrievedDate": "2026-10-25",
+          "note": "Rashtriya Military Schools: 'APPLICATIONS FOR ADMISSION TO CLASS VI AND IX'; CBSE SARAS lists RMS Dholpur's affiliation level as Senior Secondary (up to Class XII)." } },
+        "city": { "name": "Dholpur", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1780003", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Dholpur Rajasthan'." } }
+      }
+    },
+    {
+      "slug": "city-montessori-school-kanpur-road-campus",
+      "facts": {
+        "classes": { "codes": ["NURSERY", "KG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://cmseducation.org/kanpur-road-campus/", "retrievedDate": "2026-10-25",
+          "note": "Campus page: 'Mont., Nur, KG', 'Class I-V', 'Class VI-VIII', 'Class IX-XII'. The Montessori class has no equivalent class code and is not recorded." } }
+      }
+    },
+    {
+      "slug": "birla-balika-vidyapeeth",
+      "facts": {
+        "classes": { "codes": ["V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.bbvpilani.edu.in", "retrievedDate": "2026-10-25",
+          "note": "Admission: 'the students of classes V to IX will have to appear for an Aptitude Assessment'; CBSE SARAS lists the affiliation level as Senior Secondary (up to Class XII)." } },
+        "location": { "latitude": 28.3596559, "longitude": 75.5867499, "source": { "url": "https://www.openstreetmap.org/way/360838110", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Birla Balika Vidyapeeth, Pilani 333031." } },
+        "city": { "name": "Pilani", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1730010", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'P O Pilani Jhunjhunu Distt'." } }
+      }
+    },
+    {
+      "slug": "birla-public-school-pilani",
+      "facts": {
+        "classes": { "codes": ["III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.bpspilani.edu.in", "retrievedDate": "2026-10-25",
+          "note": "'Admissions Open for Classes III to IX & XI (Session 2027-28)'; the site publishes a 'College Placement Record Grade XII'." } },
+        "city": { "name": "Pilani", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1730008", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Pilani Rajasthan'." } }
+      }
+    },
+    {
+      "slug": "sainik-school-8",
+      "facts": {
+        "classes": { "codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.sainikschooltilaiya.org/overview/", "retrievedDate": "2026-10-25",
+          "note": "'Application for Entrance Examination for admission to class VI/IX in are released every year'; 'outgoing Class XII being taken off rolls'." } },
+        "city": { "name": "Tilaiya Dam", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3480001", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'P.o. Tilaiya Dam Koderma Hazaribagh Distt'." } }
+      }
+    },
+    {
+      "slug": "the-scindia-school",
+      "facts": {
+        "city": { "name": "Gwalior", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1030003", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Fort Gwalior Madhya Pradesh'." } }
+      }
+    },
+    {
+      "slug": "netarhat-awasiya-vidyalaya",
+      "facts": {
+        "location": { "latitude": 23.4723103, "longitude": 84.2623866, "source": { "url": "https://www.openstreetmap.org/way/660695893", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Netarhat Residential School (Awasiya Vidyalaya), Netarhat, Latehar." } },
+        "city": { "name": "Netarhat", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420006", "retrievedDate": "2026-10-25",
+          "note": "CBSE postal address: 'Netarhat, Dist: Latehar Jharkhand-835218'." } }
+      }
+    },
+    {
+      "slug": "sherwood-college",
+      "facts": {
+        "location": { "latitude": 29.3826549, "longitude": 79.4538661, "source": { "url": "https://www.openstreetmap.org/node/1805659946", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Sherwood College, Mallital, Nainital." } }
+      }
+    },
+    {
+      "slug": "woodstock-school",
+      "facts": {
+        "location": { "latitude": 30.4540018, "longitude": 78.1010015, "source": { "url": "https://www.openstreetmap.org/node/583871504", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Woodstock School, Tehri Road, Mussoorie." } }
+      }
+    },
+    {
+      "slug": "bishop-westcott-boys-school-namkum",
+      "facts": {
+        "location": { "latitude": 23.3510101, "longitude": 85.38103, "source": { "url": "https://www.openstreetmap.org/way/517009245", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Bishop Westcott Boys' School, Namkum, Ranchi 834010." } }
+      }
+    },
+    {
+      "slug": "st-joseph-s-college",
+      "facts": {
+        "location": { "latitude": 25.4553288, "longitude": 81.8451066, "source": { "url": "https://www.openstreetmap.org/way/165081830", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school at 2, Tashkent Marg, Civil Lines, Prayagraj (the school's address); named there St. Joseph's Inter College." } }
+      }
+    },
+    {
+      "slug": "pathways-world-school-gurugram",
+      "facts": {
+        "location": { "latitude": 28.3112972, "longitude": 77.0117298, "source": { "url": "https://www.openstreetmap.org/way/81509345", "retrievedDate": "2026-10-25",
+          "note": "OpenStreetMap school named Pathways World School, Aravali Retreat, Gurugram (matches the school's address)." } }
+      }
+    }
+  ]
+}

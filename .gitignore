@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Backend (target/ also holds the local embedded Postgres data dir)
+target/
+backend/target/
+*.class
+*.log
+
+# Generated import files (rebuild with tools/seed/build-saras-csv.js)
+data/saras/import/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# IDE / OS
+.idea/
+.vscode/
+.claude/settings.local.json
+*.iml
+.DS_Store
+Thumbs.db

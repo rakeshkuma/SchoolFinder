@@ -1,0 +1,6 @@
+﻿{
+  "_comment": "Corrections to facts loaded earlier. 2026-10-25: the location first matched for this JNV was an OpenStreetMap feature named after the school but not the school itself (a ground or office building); match-osm.js now excludes such features and finds no other match, so the location is retracted.",
+  "schools": [
+    { "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-banavasi-via-yemmiganur", "facts": { "clear": ["LOCATION"] } }
+  ]
+}

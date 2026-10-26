@@ -1,0 +1,12 @@
+/* Leaflet popups in the site's style. Loaded with the map (after leaflet.css) so these rules win. */
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 12px 32px -12px rgba(16, 24, 40, 0.3);
+}
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: Inter, system-ui, sans-serif;
+}
+.leaflet-container {
+  font-family: Inter, system-ui, sans-serif;
+}

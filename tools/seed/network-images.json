@@ -1,0 +1,239 @@
+{
+  "_comment": "Openly licensed campus photos from Wikimedia Commons, reviewed by eye on 2026-10-25: each shows the named school's buildings, gate or campus and was matched to one profile by the place in its description or the signboard in the photo. Licence, author and description were read from the Commons API. Load with LocalImageImport or import-to-server.js.",
+  "schools": [
+    {
+      "slug": "jawahar-navodaya-vidyalaya-sonikpur-trivediganj",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Academic_building%2C_Jawahar_Navodaya_Vidyalaya%2C_Barabanki.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Academic_building%2C_Jawahar_Navodaya_Vidyalaya%2C_Barabanki.jpg/960px-Academic_building%2C_Jawahar_Navodaya_Vidyalaya%2C_Barabanki.jpg",
+          "caption": "Academic building, Jawahar Navodaya Vidyalaya, Barabanki",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Barabanki",
+          "credit": "Spverma007 at Wikipedia / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Spverma007 at Wikipedia, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Academic_building,_Jawahar_Navodaya_Vidyalaya,_Barabanki.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "jawahar-navodaya-vidyalaya-navodaya-nagar-periye",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Jawahar_navodaya_vidyalaya_maingate123.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Jawahar_navodaya_vidyalaya_maingate123.jpg/960px-Jawahar_navodaya_vidyalaya_maingate123.jpg",
+          "caption": "Main entrance to campus (2010)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Kasaragod",
+          "credit": "Roshmith / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Roshmith, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_navodaya_vidyalaya_maingate123.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-chhinsa-mothuka-chandpur-ballabgarh",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Jawahar_Navodaya_Vidyalaya%2C_Mothuka%2C_Faridabad.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Jawahar_Navodaya_Vidyalaya%2C_Mothuka%2C_Faridabad.jpg/960px-Jawahar_Navodaya_Vidyalaya%2C_Mothuka%2C_Faridabad.jpg",
+          "caption": "Jawahar Navodaya Vidyalaya, Mothuka, Tehsil - Ballabgarh, District - Faridabad is geographically situated around 24 Kms. away from Faridabad at a small village known as Mothuka in a vast campus with o (2012)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Faridabad",
+          "credit": "Ravimahdan1995 / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Ravimahdan1995, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_Navodaya_Vidyalaya,_Mothuka,_Faridabad.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-mundali-orissa",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Jawahar_Navodaya_Vidyalaya%2C_Mundali.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Jawahar_Navodaya_Vidyalaya%2C_Mundali.jpg/960px-Jawahar_Navodaya_Vidyalaya%2C_Mundali.jpg",
+          "caption": "Jawahar Navodaya Vidyalaya, Mundali (2012)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Cuttack",
+          "credit": "Nitin 10856 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Nitin 10856, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_Navodaya_Vidyalaya,_Mundali.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-barsoor-bodh-ghat-colony-south-bastar",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/J_N_V_Barsoor_Front_-_panoramio.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/J_N_V_Barsoor_Front_-_panoramio.jpg/960px-J_N_V_Barsoor_Front_-_panoramio.jpg",
+          "caption": "J N V Barsoor Front (2012)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Dantewada",
+          "credit": "Rajesh12 / Wikimedia Commons",
+          "license": "CC BY 3.0",
+          "attributionText": "Rajesh12, CC BY 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:J_N_V_Barsoor_Front_-_panoramio.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "jawahar-navodaya-vidyalaya-dihibagna",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/J.N.V.Hooghly_-_panoramio.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/J.N.V.Hooghly_-_panoramio.jpg/960px-J.N.V.Hooghly_-_panoramio.jpg",
+          "caption": "J.N.V.Hooghly (2012)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Hooghly",
+          "credit": "Barakat Munshi / Wikimedia Commons",
+          "license": "CC BY 3.0",
+          "attributionText": "Barakat Munshi, CC BY 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:J.N.V.Hooghly_-_panoramio.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-ghot-tq-chamorshi",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Jawahar_Navodaya_Vidyalaya%2C_Ghot%2C_Gadchiroli.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Jawahar_Navodaya_Vidyalaya%2C_Ghot%2C_Gadchiroli.jpg/960px-Jawahar_Navodaya_Vidyalaya%2C_Ghot%2C_Gadchiroli.jpg",
+          "caption": "Jawahar Navodaya Vidyalaya, Ghot, Gadchiroli, Maharashtra. (2018)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Gadchiroli",
+          "credit": "Ganesh Dhamodkar / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Ganesh Dhamodkar, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_Navodaya_Vidyalaya,_Ghot,_Gadchiroli.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-at-paralakhemundi-orissa",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Jawahar_Navodaya_Vidyalaya_Betaguda_Gajapati_district.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Jawahar_Navodaya_Vidyalaya_Betaguda_Gajapati_district.jpg/960px-Jawahar_Navodaya_Vidyalaya_Betaguda_Gajapati_district.jpg",
+          "caption": "Image of JNV GAJAPATI ODISHA (2015)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Gajapati",
+          "credit": "Navodaya Vidyalaya Samiti / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Navodaya Vidyalaya Samiti, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_Navodaya_Vidyalaya_Betaguda_Gajapati_district.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "jawahar-navodaya-vidyalaya-vadavathoor",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Jawahar_Navodaya_Vidyalaya%2C_Kottayam_-_gate.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Jawahar_Navodaya_Vidyalaya%2C_Kottayam_-_gate.jpg/960px-Jawahar_Navodaya_Vidyalaya%2C_Kottayam_-_gate.jpg",
+          "caption": "Jawahar Navodaya Vidyalaya, Kottayam (2023)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Kottayam",
+          "credit": "Vis M / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Vis M, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jawahar_Navodaya_Vidyalaya,_Kottayam_-_gate.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "jawahar-navodaya-vidyalaya-chendayad",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/JNV_Kannur_Gate.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/JNV_Kannur_Gate.jpg/960px-JNV_Kannur_Gate.jpg",
+          "caption": "JNV Kannur Gate (2020)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Kannur",
+          "credit": "Anjoe Paul / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Anjoe Paul, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:JNV_Kannur_Gate.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-jawahar-navodaya-vidyalaya-rangareddy",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/JNV_Gachibowli.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/JNV_Gachibowli.jpg/960px-JNV_Gachibowli.jpg",
+          "caption": "JNV Gachibowli Academic Block Building (2010)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Rangareddy",
+          "credit": "Satti.Naveen(Lingampally)(Batch 1998-2005) / Wikimedia Commons",
+          "license": "CC BY 3.0",
+          "attributionText": "Satti.Naveen(Lingampally)(Batch 1998-2005), CC BY 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:JNV_Gachibowli.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-bagudi-mahumuhan-balasore-orissa",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/JNV_Balasore.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/JNV_Balasore.jpg/960px-JNV_Balasore.jpg",
+          "caption": "JNV Balasore front (2025)",
+          "altText": "Campus of Jawahar Navodaya Vidyalaya, Baleshwar",
+          "credit": "Perfectodefecto / Wikimedia Commons",
+          "license": "CC0",
+          "attributionText": null,
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:JNV_Balasore.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "pm-shri-kendriya-vidyalaya-sadhashiv-nagar-hebbal-bangalore",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/KVH_Campus.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/d/db/KVH_Campus.jpg",
+          "caption": "KVH Campus (2004)",
+          "altText": "Campus of Kendriya Vidyalaya Hebbal, Bengaluru",
+          "credit": "Souravmohanty2005 / Wikimedia Commons",
+          "license": "CC BY 3.0",
+          "attributionText": "Souravmohanty2005, CC BY 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:KVH_Campus.jpg",
+          "sortOrder": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2732 @@
+{
+  "sets": [
+    {
+      "slug": "jnvst-mock-1",
+      "examSlug": "jnvst",
+      "title": "JNVST-style mock test 1",
+      "kind": "MOCK",
+      "level": "Class V",
+      "description": "A timed mixed test in the order of the JNVST paper: reasoning, environmental studies, arithmetic and a reading passage. Shorter than the real 2-hour paper, and the reasoning questions are text-based, while the real Mental Ability test uses figures.",
+      "durationMinutes": 30,
+      "displayOrder": 10,
+      "published": true,
+      "content": {
+        "passages": [
+          {
+            "id": "kite",
+            "title": "The kite festival",
+            "text": "Arjun and his grandmother sat on the roof on the morning of Makar Sankranti. The sky was already filled with kites of every colour. Arjun's kite was a small green one that his grandmother had helped him make from paper and thin sticks of bamboo. \"Hold the string loosely when the wind is strong,\" she told him, \"and pull it gently when the wind is weak.\" Arjun followed her advice, and soon his green kite was flying higher than the big red kite of his neighbour. When the sun set, he carefully rolled up the string so that it would not tangle, and promised to fly the kite again the next year."
+          }
+        ],
+        "questions": [
+          {
+            "id": "k1",
+            "section": "Reasoning",
+            "topic": "Number series",
+            "prompt": "What comes next? 7, 14, 21, 28, ?",
+            "options": [
+              "32",
+              "35",
+              "36",
+              "42"
+            ],
+            "answer": 1,
+            "explanation": "Each number is 7 more than the one before: 28 + 7 = 35."
+          },
+          {
+            "id": "k2",
+            "section": "Reasoning",
+            "topic": "Number series",
+            "prompt": "What comes next? 5, 10, 20, 40, ?",
+            "options": [
+              "60",
+              "70",
+              "80",
+              "100"
+            ],
+            "answer": 2,
+            "explanation": "Each number is double the one before: 40 × 2 = 80."
+          },
+          {
+            "id": "k3",
+            "section": "Reasoning",
+            "topic": "Odd one out",
+            "prompt": "Which one is different from the others?",
+            "options": [
+              "Cow",
+              "Goat",
+              "Sparrow",
+              "Buffalo"
+            ],
+            "answer": 2,
+            "explanation": "A sparrow is a bird; the others are four-legged animals."
+          },
+          {
+            "id": "k4",
+            "section": "Reasoning",
+            "topic": "Analogy",
+            "prompt": "Bird is to nest as bee is to ?",
+            "options": [
+              "Honey",
+              "Hive",
+              "Flower",
+              "Wing"
+            ],
+            "answer": 1,
+            "explanation": "A bird lives in a nest; a bee lives in a hive."
+          },
+          {
+            "id": "k5",
+            "section": "Reasoning",
+            "topic": "Coding",
+            "prompt": "If BOOK is written as CPPL, how is PEN written?",
+            "options": [
+              "QFO",
+              "OEM",
+              "QEN",
+              "PFO"
+            ],
+            "answer": 0,
+            "explanation": "Each letter moves one step forward in the alphabet: P→Q, E→F, N→O, so PEN becomes QFO."
+          },
+          {
+            "id": "k6",
+            "section": "Reasoning",
+            "topic": "Letter series",
+            "prompt": "What comes next? Z, X, V, T, ?",
+            "options": [
+              "S",
+              "R",
+              "Q",
+              "P"
+            ],
+            "answer": 1,
+            "explanation": "The letters go backwards, skipping one each time: Z (Y) X (W) V (U) T (S) R."
+          },
+          {
+            "id": "e1",
+            "section": "Environmental Studies",
+            "topic": "Solar system",
+            "prompt": "Which planet is known as the Red Planet?",
+            "options": [
+              "Venus",
+              "Mars",
+              "Jupiter",
+              "Saturn"
+            ],
+            "answer": 1,
+            "explanation": "Mars looks reddish because of iron-rich dust on its surface."
+          },
+          {
+            "id": "e2",
+            "section": "Environmental Studies",
+            "topic": "Plants",
+            "prompt": "Green plants make their own food in their leaves using sunlight. What is this process called?",
+            "options": [
+              "Respiration",
+              "Photosynthesis",
+              "Digestion",
+              "Evaporation"
+            ],
+            "answer": 1,
+            "explanation": "Photosynthesis is how plants make food from water and carbon dioxide using sunlight."
+          },
+          {
+            "id": "e3",
+            "section": "Environmental Studies",
+            "topic": "Food",
+            "prompt": "Which of these is a rich source of vitamin C?",
+            "options": [
+              "Rice",
+              "Amla",
+              "Ghee",
+              "Wheat"
+            ],
+            "answer": 1,
+            "explanation": "Amla (Indian gooseberry) is very rich in vitamin C; rice and wheat mainly give energy, and ghee is a fat."
+          },
+          {
+            "id": "e4",
+            "section": "Environmental Studies",
+            "topic": "Water",
+            "prompt": "Wet clothes dry in the sun because water turns into vapour. What is this change called?",
+            "options": [
+              "Condensation",
+              "Freezing",
+              "Evaporation",
+              "Melting"
+            ],
+            "answer": 2,
+            "explanation": "Evaporation is liquid water turning into water vapour."
+          },
+          {
+            "id": "n1",
+            "section": "Arithmetic",
+            "topic": "Subtraction",
+            "prompt": "6,005 − 2,348 = ?",
+            "options": [
+              "3,657",
+              "3,767",
+              "4,343",
+              "3,667"
+            ],
+            "answer": 0,
+            "explanation": "6,005 − 2,348 = 3,657. Check: 3,657 + 2,348 = 6,005."
+          },
+          {
+            "id": "n2",
+            "section": "Arithmetic",
+            "topic": "Multiplication",
+            "prompt": "125 × 8 = ?",
+            "options": [
+              "1,000",
+              "800",
+              "1,025",
+              "900"
+            ],
+            "answer": 0,
+            "explanation": "125 × 8 = 1,000 (125 × 4 = 500, and 500 × 2 = 1,000)."
+          },
+          {
+            "id": "n3",
+            "section": "Arithmetic",
+            "topic": "Fractions",
+            "prompt": "What is 2/5 of 150?",
+            "options": [
+              "30",
+              "50",
+              "60",
+              "75"
+            ],
+            "answer": 2,
+            "explanation": "1/5 of 150 is 30, so 2/5 of 150 is 60."
+          },
+          {
+            "id": "n4",
+            "section": "Arithmetic",
+            "topic": "Area",
+            "prompt": "A rectangle has an area of 48 square centimetres and a length of 8 cm. What is its breadth?",
+            "options": [
+              "4 cm",
+              "6 cm",
+              "8 cm",
+              "40 cm"
+            ],
+            "answer": 1,
+            "explanation": "Area = length × breadth, so breadth = 48 ÷ 8 = 6 cm."
+          },
+          {
+            "id": "n5",
+            "section": "Arithmetic",
+            "topic": "Time",
+            "prompt": "How many minutes are there in 3/4 of an hour?",
+            "options": [
+              "34",
+              "45",
+              "75",
+              "30"
+            ],
+            "answer": 1,
+            "explanation": "An hour has 60 minutes; 3/4 of 60 = 45."
+          },
+          {
+            "id": "n6",
+            "section": "Arithmetic",
+            "topic": "Fractions",
+            "prompt": "Which fraction is the greatest?",
+            "options": [
+              "3/4",
+              "4/5",
+              "7/10",
+              "2/3"
+            ],
+            "answer": 1,
+            "explanation": "As decimals: 3/4 = 0.75, 4/5 = 0.8, 7/10 = 0.7, 2/3 ≈ 0.67. The greatest is 4/5."
+          },
+          {
+            "id": "l1",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "kite",
+            "prompt": "When did Arjun fly his kite?",
+            "options": [
+              "On Diwali night",
+              "On the morning of Makar Sankranti",
+              "On his birthday",
+              "On a rainy day"
+            ],
+            "answer": 1,
+            "explanation": "The first sentence says they sat on the roof on the morning of Makar Sankranti."
+          },
+          {
+            "id": "l2",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "kite",
+            "prompt": "What was Arjun's kite made of?",
+            "options": [
+              "Plastic and wire",
+              "Cloth and wood",
+              "Paper and thin sticks of bamboo",
+              "Leaves and thread"
+            ],
+            "answer": 2,
+            "explanation": "His grandmother helped him make it from paper and thin sticks of bamboo."
+          },
+          {
+            "id": "l3",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "kite",
+            "prompt": "What did Grandmother say to do when the wind is strong?",
+            "options": [
+              "Pull the string hard",
+              "Hold the string loosely",
+              "Let go of the string",
+              "Run as fast as possible"
+            ],
+            "answer": 1,
+            "explanation": "She said: \"Hold the string loosely when the wind is strong.\""
+          },
+          {
+            "id": "l4",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "kite",
+            "prompt": "Which kite was flying lower than Arjun's?",
+            "options": [
+              "Grandmother's kite",
+              "The neighbour's big red kite",
+              "A small blue kite",
+              "No other kite was flying"
+            ],
+            "answer": 1,
+            "explanation": "Arjun's green kite was flying higher than the big red kite of his neighbour."
+          },
+          {
+            "id": "l5",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "kite",
+            "prompt": "Why did Arjun roll up the string carefully?",
+            "options": [
+              "So that it would not tangle",
+              "To give it to his neighbour",
+              "Because it was wet",
+              "To cut it into pieces"
+            ],
+            "answer": 0,
+            "explanation": "The passage says he rolled it up carefully so that it would not tangle."
+          },
+          {
+            "id": "l6",
+            "section": "Language",
+            "topic": "Vocabulary",
+            "passageId": "kite",
+            "prompt": "In the passage, the word \"gently\" means:",
+            "options": [
+              "Quickly",
+              "Softly, without force",
+              "Loudly",
+              "Angrily"
+            ],
+            "answer": 1,
+            "explanation": "To pull gently is to pull softly, without force — the opposite of pulling hard."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jnvst-arithmetic-1",
+      "examSlug": "jnvst",
+      "title": "Arithmetic practice: Class V basics",
+      "kind": "QUIZ",
+      "level": "Class V",
+      "description": "Place value, decimals, fractions, factors and multiples, measurement, perimeter and area, and reading data — the arithmetic topics listed in the JNVST prospectus.",
+      "durationMinutes": null,
+      "displayOrder": 20,
+      "published": true,
+      "content": {
+        "passages": [],
+        "questions": [
+          {
+            "id": "a1",
+            "section": "Arithmetic",
+            "topic": "Place value",
+            "prompt": "What is the place value of 7 in 4,73,215?",
+            "options": [
+              "7,000",
+              "70,000",
+              "7,00,000",
+              "700"
+            ],
+            "answer": 1,
+            "explanation": "In 4,73,215 the 7 is in the ten-thousands place, so its place value is 7 × 10,000 = 70,000."
+          },
+          {
+            "id": "a2",
+            "section": "Arithmetic",
+            "topic": "Decimals",
+            "prompt": "Which is the smallest number?",
+            "options": [
+              "0.5",
+              "0.45",
+              "0.405",
+              "0.054"
+            ],
+            "answer": 3,
+            "explanation": "Compare the tenths digit first: 0.054 has 0 tenths, the others have 4 or 5. So 0.054 is the smallest."
+          },
+          {
+            "id": "a3",
+            "section": "Arithmetic",
+            "topic": "Fractions",
+            "prompt": "3/4 + 1/8 = ?",
+            "options": [
+              "4/12",
+              "7/8",
+              "1/2",
+              "5/8"
+            ],
+            "answer": 1,
+            "explanation": "3/4 = 6/8, and 6/8 + 1/8 = 7/8."
+          },
+          {
+            "id": "a4",
+            "section": "Arithmetic",
+            "topic": "Factors and multiples",
+            "prompt": "What is the lowest common multiple (LCM) of 6 and 8?",
+            "options": [
+              "12",
+              "24",
+              "48",
+              "2"
+            ],
+            "answer": 1,
+            "explanation": "Multiples of 8: 8, 16, 24 … The first one that 6 also divides is 24."
+          },
+          {
+            "id": "a5",
+            "section": "Arithmetic",
+            "topic": "Perimeter",
+            "prompt": "A garden is a rectangle 12 m long and 8 m wide. What is its perimeter?",
+            "options": [
+              "96 m",
+              "20 m",
+              "40 m",
+              "48 m"
+            ],
+            "answer": 2,
+            "explanation": "Perimeter = 2 × (length + breadth) = 2 × (12 + 8) = 40 m. (96 would be the area in square metres.)"
+          },
+          {
+            "id": "a6",
+            "section": "Arithmetic",
+            "topic": "Area",
+            "prompt": "What is the area of a square with sides of 9 cm?",
+            "options": [
+              "36 sq cm",
+              "81 sq cm",
+              "18 sq cm",
+              "72 sq cm"
+            ],
+            "answer": 1,
+            "explanation": "Area of a square = side × side = 9 × 9 = 81 sq cm."
+          },
+          {
+            "id": "a7",
+            "section": "Arithmetic",
+            "topic": "Measurement",
+            "prompt": "2.5 kg = ? g",
+            "options": [
+              "250 g",
+              "25 g",
+              "2,500 g",
+              "25,000 g"
+            ],
+            "answer": 2,
+            "explanation": "1 kg = 1,000 g, so 2.5 kg = 2.5 × 1,000 = 2,500 g."
+          },
+          {
+            "id": "a8",
+            "section": "Arithmetic",
+            "topic": "Money",
+            "prompt": "A pencil costs ₹6. How much do 15 pencils cost?",
+            "options": [
+              "₹80",
+              "₹90",
+              "₹96",
+              "₹21"
+            ],
+            "answer": 1,
+            "explanation": "15 × ₹6 = ₹90."
+          },
+          {
+            "id": "a9",
+            "section": "Arithmetic",
+            "topic": "Time",
+            "prompt": "How many minutes are there in 2 hours 15 minutes?",
+            "options": [
+              "215",
+              "135",
+              "125",
+              "150"
+            ],
+            "answer": 1,
+            "explanation": "2 hours = 120 minutes; 120 + 15 = 135 minutes."
+          },
+          {
+            "id": "a10",
+            "section": "Arithmetic",
+            "topic": "Factors and multiples",
+            "prompt": "Which number is a factor of 36 but not a factor of 24?",
+            "options": [
+              "6",
+              "12",
+              "9",
+              "4"
+            ],
+            "answer": 2,
+            "explanation": "36 ÷ 9 = 4, but 24 ÷ 9 is not a whole number. 6, 12 and 4 divide both 36 and 24."
+          },
+          {
+            "id": "a11",
+            "section": "Arithmetic",
+            "topic": "Fractions",
+            "prompt": "What is 1/3 of 45 added to 1/5 of 45?",
+            "options": [
+              "24",
+              "18",
+              "30",
+              "15"
+            ],
+            "answer": 0,
+            "explanation": "1/3 of 45 = 15 and 1/5 of 45 = 9; 15 + 9 = 24."
+          },
+          {
+            "id": "a12",
+            "section": "Arithmetic",
+            "topic": "Data handling",
+            "prompt": "Books read in a month: Asha 12, Ravi 8, Meena 15, Kabir 10. How many more books did Meena read than Ravi?",
+            "options": [
+              "3",
+              "5",
+              "7",
+              "23"
+            ],
+            "answer": 2,
+            "explanation": "Meena read 15 and Ravi read 8; 15 − 8 = 7."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jnvst-reading-1",
+      "examSlug": "jnvst",
+      "title": "Reading comprehension: two passages",
+      "kind": "QUIZ",
+      "level": "Class V",
+      "description": "Two short passages with five questions each, like the JNVST Language Test, which has four passages with five questions each.",
+      "durationMinutes": null,
+      "displayOrder": 30,
+      "published": true,
+      "content": {
+        "passages": [
+          {
+            "id": "library",
+            "title": "The village library",
+            "text": "Every Sunday morning, Leela walked to the small library near the village pond. The library had only one room, but its shelves were full of books donated by the people of the village. Mr. Das, a retired teacher, looked after it without taking any money. He had one rule: every child who borrowed a book had to tell him one new thing they had learnt from it. Leela liked this rule. Last week she had borrowed a book about birds and told Mr. Das that the tailorbird stitches leaves together to make its nest. This Sunday she wanted a book about the stars."
+          },
+          {
+            "id": "water",
+            "title": "Saving rainwater",
+            "text": "In many parts of India, rain falls only for a few months of the year. People in dry areas have found clever ways to save rainwater. In some villages of Rajasthan, families build covered underground tanks called tankas. Rainwater from the roof or the courtyard flows into the tank and is used for drinking during the dry months. Keeping the tank covered stops dust from getting in and keeps the water clean. Today, many schools and buildings in cities also collect rainwater from their roofs. This is called rooftop rainwater harvesting."
+          }
+        ],
+        "questions": [
+          {
+            "id": "r1",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "library",
+            "prompt": "Where was the library?",
+            "options": [
+              "Next to the school",
+              "Near the village pond",
+              "In Mr. Das's house",
+              "In the town market"
+            ],
+            "answer": 1,
+            "explanation": "The first sentence says the library was near the village pond."
+          },
+          {
+            "id": "r2",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "library",
+            "prompt": "How did the library get its books?",
+            "options": [
+              "Mr. Das bought them",
+              "The government sent them",
+              "The people of the village donated them",
+              "Leela brought them"
+            ],
+            "answer": 2,
+            "explanation": "Its shelves were full of books donated by the people of the village."
+          },
+          {
+            "id": "r3",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "library",
+            "prompt": "What did a child have to do after borrowing a book?",
+            "options": [
+              "Pay a small fee",
+              "Return it the same day",
+              "Tell Mr. Das one new thing they had learnt from it",
+              "Write a story about it"
+            ],
+            "answer": 2,
+            "explanation": "Mr. Das's one rule was that every child had to tell him one new thing they had learnt."
+          },
+          {
+            "id": "r4",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "library",
+            "prompt": "What did Leela learn from the book about birds?",
+            "options": [
+              "Birds fly south in winter",
+              "The tailorbird stitches leaves together to make its nest",
+              "Crows are clever birds",
+              "The peacock is India's national bird"
+            ],
+            "answer": 1,
+            "explanation": "She told Mr. Das that the tailorbird stitches leaves together to make its nest."
+          },
+          {
+            "id": "r5",
+            "section": "Language",
+            "topic": "Vocabulary",
+            "passageId": "library",
+            "prompt": "In the passage, \"retired\" means:",
+            "options": [
+              "Very tired",
+              "No longer working at his job",
+              "Newly appointed",
+              "Very strict"
+            ],
+            "answer": 1,
+            "explanation": "A retired teacher is one who has stopped working as a teacher, usually because of age."
+          },
+          {
+            "id": "r6",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "water",
+            "prompt": "Why do people in dry areas save rainwater?",
+            "options": [
+              "Because water is expensive in shops",
+              "Because rain falls only for a few months of the year",
+              "Because river water is too cold",
+              "Because tanks look nice"
+            ],
+            "answer": 1,
+            "explanation": "The passage begins: in many parts of India, rain falls only for a few months of the year."
+          },
+          {
+            "id": "r7",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "water",
+            "prompt": "What is a tanka?",
+            "options": [
+              "A well dug by machines",
+              "A covered underground tank for rainwater",
+              "A pond for animals",
+              "A water pipe"
+            ],
+            "answer": 1,
+            "explanation": "Families in Rajasthan build covered underground tanks called tankas."
+          },
+          {
+            "id": "r8",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "water",
+            "prompt": "Why is a tanka kept covered?",
+            "options": [
+              "To keep the water clean",
+              "To keep the water warm",
+              "To hide it from visitors",
+              "To make it look smaller"
+            ],
+            "answer": 0,
+            "explanation": "Keeping the tank covered stops dust from getting in and keeps the water clean."
+          },
+          {
+            "id": "r9",
+            "section": "Language",
+            "topic": "Comprehension",
+            "passageId": "water",
+            "prompt": "What is \"rooftop rainwater harvesting\"?",
+            "options": [
+              "Growing vegetables on the roof",
+              "Collecting rainwater from roofs",
+              "Cleaning the roof after rain",
+              "Building a roof over a well"
+            ],
+            "answer": 1,
+            "explanation": "The last two sentences explain it: collecting rainwater from roofs."
+          },
+          {
+            "id": "r10",
+            "section": "Language",
+            "topic": "Main idea",
+            "passageId": "water",
+            "prompt": "Which is the best title for this passage?",
+            "options": [
+              "The deserts of India",
+              "Clever ways to save rainwater",
+              "How to build a house",
+              "Rivers of Rajasthan"
+            ],
+            "answer": 1,
+            "explanation": "The whole passage is about ways people save rainwater."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jnvst-figures-1",
+      "examSlug": "jnvst",
+      "title": "Figure reasoning practice (non-verbal)",
+      "kind": "QUIZ",
+      "level": "Class V",
+      "description": "Figure series, odd one out, mirror and water images and figure analogies — the kinds of non-verbal question in the JNVST Mental Ability Test. The figures are our own, drawn from simple shapes.",
+      "durationMinutes": null,
+      "displayOrder": 35,
+      "published": true,
+      "content": {
+        "passages": [],
+        "questions": [
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Arrow pointing up",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing up and right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 45,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 90,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing down and right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 135,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f1",
+            "topic": "Figure series",
+            "prompt": "Which figure comes next in the series?",
+            "optionFigures": [
+              {
+                "alt": "Arrow pointing down and left",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 225,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 90,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing down",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 180,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow pointing up",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 2,
+            "explanation": "The arrow turns 45° clockwise each time: up, up-right, right, down-right — so next it points straight down."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "1 dot",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "2 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "3 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "4 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f2",
+            "topic": "Figure series",
+            "prompt": "Which figure comes next in the series?",
+            "optionFigures": [
+              {
+                "alt": "4 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "5 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "6 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 70,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 20,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "3 dots",
+                "shapes": [
+                  {
+                    "kind": "dot",
+                    "x": 30,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 70,
+                    "y": 30,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 1,
+            "explanation": "One dot is added each time: 1, 2, 3, 4 — so the next figure has 5 dots."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Square with its top-left quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 30,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its top-right quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 70,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its bottom-right quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 70,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its bottom-left quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 30,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f3",
+            "topic": "Figure series",
+            "prompt": "Which figure comes next in the series?",
+            "optionFigures": [
+              {
+                "alt": "Square with its bottom-right quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 70,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its bottom-left quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 30,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its top-right quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 70,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Square with its top-left quarter shaded",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "square",
+                    "x": 30,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "answer": 3,
+            "explanation": "The shaded quarter moves clockwise round the square: top-left, top-right, bottom-right, bottom-left — and then back to top-left."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": null,
+            "figureAsksNext": false,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f4",
+            "topic": "Odd one out",
+            "prompt": "Which figure is different from the other three?",
+            "optionFigures": [
+              {
+                "alt": "Circle with a dot inside it",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 50,
+                    "size": 12,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle with a dot inside it, near the top",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 50,
+                    "y": 35,
+                    "size": 12,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle with a dot outside it",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 45,
+                    "y": 55,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 88,
+                    "y": 12,
+                    "size": 12,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle with a dot inside it, near the left",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 35,
+                    "y": 52,
+                    "size": 12,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 2,
+            "explanation": "In three figures the dot is inside the circle; in Figure C it is outside."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Arrow at the top pointing right, filled circle at the bottom left",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 90,
+                    "filled": false
+                  },
+                  {
+                    "kind": "circle",
+                    "x": 25,
+                    "y": 75,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": false,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f5",
+            "topic": "Mirror image",
+            "prompt": "A mirror is held upright on the right side of the figure. Which option is its mirror image?",
+            "optionFigures": [
+              {
+                "alt": "Arrow at the bottom pointing right, filled circle at the top left",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 90,
+                    "filled": false
+                  },
+                  {
+                    "kind": "circle",
+                    "x": 25,
+                    "y": 25,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow at the top pointing left, filled circle at the bottom right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 270,
+                    "filled": false
+                  },
+                  {
+                    "kind": "circle",
+                    "x": 75,
+                    "y": 75,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow at the top pointing right, filled circle at the bottom left",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 30,
+                    "size": 40,
+                    "rotate": 90,
+                    "filled": false
+                  },
+                  {
+                    "kind": "circle",
+                    "x": 25,
+                    "y": 75,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Arrow at the bottom pointing left, filled circle at the top right",
+                "shapes": [
+                  {
+                    "kind": "arrow",
+                    "x": 50,
+                    "y": 70,
+                    "size": 40,
+                    "rotate": 270,
+                    "filled": false
+                  },
+                  {
+                    "kind": "circle",
+                    "x": 75,
+                    "y": 25,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "answer": 1,
+            "explanation": "A side mirror swaps left and right but keeps top and bottom: the arrow stays at the top but now points left, and the circle moves to the bottom right. (Figure A is the water image, Figure C is unchanged, Figure D is turned upside down.)"
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Empty square",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Filled square",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Empty circle",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f6",
+            "topic": "Analogy",
+            "prompt": "Figure 1 is related to Figure 2 in the same way as Figure 3 is related to which figure?",
+            "optionFigures": [
+              {
+                "alt": "Empty circle",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Filled square",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Empty triangle",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 55,
+                    "size": 64,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Filled circle",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 60,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "answer": 3,
+            "explanation": "Figure 2 is Figure 1 filled in. Filling in the circle gives a filled circle."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Circle 20 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 35 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 35,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 50 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 50,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 65 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 65,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f7",
+            "topic": "Figure series",
+            "prompt": "Which figure comes next in the series?",
+            "optionFigures": [
+              {
+                "alt": "Circle 80 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 80,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 65 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 65,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 35 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 35,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Circle 20 units across",
+                "shapes": [
+                  {
+                    "kind": "circle",
+                    "x": 50,
+                    "y": 50,
+                    "size": 20,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 0,
+            "explanation": "The circle grows by the same amount each time, so the next one is the largest."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Triangle near the top pointing up, dot at the bottom left",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 40,
+                    "size": 44,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 25,
+                    "y": 80,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": false,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f8",
+            "topic": "Water image",
+            "prompt": "Which option is the water image of the figure (as seen reflected in water below it)?",
+            "optionFigures": [
+              {
+                "alt": "Triangle near the top pointing up, dot at the bottom right",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 40,
+                    "size": 44,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 75,
+                    "y": 80,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Triangle near the bottom pointing down, dot at the top right",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 60,
+                    "size": 44,
+                    "rotate": 180,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 75,
+                    "y": 20,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Triangle near the bottom pointing down, dot at the top left",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 60,
+                    "size": 44,
+                    "rotate": 180,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 25,
+                    "y": 20,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Triangle near the top pointing up, dot at the bottom left",
+                "shapes": [
+                  {
+                    "kind": "triangle",
+                    "x": 50,
+                    "y": 40,
+                    "size": 44,
+                    "rotate": 0,
+                    "filled": false
+                  },
+                  {
+                    "kind": "dot",
+                    "x": 25,
+                    "y": 80,
+                    "size": 14,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 2,
+            "explanation": "A water image turns the figure upside down but keeps left and right: the triangle now points down near the bottom, and the dot moves to the top left. (Figure A is the mirror image, Figure B is turned round, Figure D is unchanged.)"
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": null,
+            "figureAsksNext": false,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f9",
+            "topic": "Odd one out",
+            "prompt": "Which figure is different from the other three?",
+            "optionFigures": [
+              {
+                "alt": "Filled square",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Filled square, tilted",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 45,
+                    "filled": true
+                  }
+                ]
+              },
+              {
+                "alt": "Empty square",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 56,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Filled square, small",
+                "shapes": [
+                  {
+                    "kind": "square",
+                    "x": 50,
+                    "y": 50,
+                    "size": 36,
+                    "rotate": 0,
+                    "filled": true
+                  }
+                ]
+              }
+            ],
+            "answer": 2,
+            "explanation": "Three squares are shaded; Figure C is the only empty one. Size and tilt do not change that."
+          },
+          {
+            "section": "Mental Ability",
+            "passageId": null,
+            "figure": [
+              {
+                "alt": "Line turned 0 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 30 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 30,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 60 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 60,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 90 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 90,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "figureAsksNext": true,
+            "options": [
+              "Figure A",
+              "Figure B",
+              "Figure C",
+              "Figure D"
+            ],
+            "id": "f10",
+            "topic": "Figure series",
+            "prompt": "Which figure comes next in the series?",
+            "optionFigures": [
+              {
+                "alt": "Line turned 60 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 60,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 0 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 0,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 120 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 120,
+                    "filled": false
+                  }
+                ]
+              },
+              {
+                "alt": "Line turned 150 degrees clockwise from flat",
+                "shapes": [
+                  {
+                    "kind": "line",
+                    "x": 50,
+                    "y": 50,
+                    "size": 70,
+                    "rotate": 150,
+                    "filled": false
+                  }
+                ]
+              }
+            ],
+            "answer": 2,
+            "explanation": "The line turns 30° clockwise each time: 0°, 30°, 60°, 90° — so next it is at 120°."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jnvst-reasoning-1",
+      "examSlug": "jnvst",
+      "title": "Reasoning warm-up (text-based)",
+      "kind": "QUIZ",
+      "level": "Class V",
+      "description": "Series, odd-one-out, analogies, coding, order and direction questions to build reasoning speed. The real JNVST Mental Ability Test uses figures: practise those with our figure reasoning set and the official sample questions in the prospectus.",
+      "durationMinutes": null,
+      "displayOrder": 40,
+      "published": true,
+      "content": {
+        "passages": [],
+        "questions": [
+          {
+            "id": "q1",
+            "section": "Reasoning",
+            "topic": "Number series",
+            "prompt": "What comes next? 2, 5, 8, 11, ?",
+            "options": [
+              "13",
+              "14",
+              "15",
+              "16"
+            ],
+            "answer": 1,
+            "explanation": "Add 3 each time: 11 + 3 = 14."
+          },
+          {
+            "id": "q2",
+            "section": "Reasoning",
+            "topic": "Number series",
+            "prompt": "What comes next? 3, 6, 12, 24, ?",
+            "options": [
+              "36",
+              "30",
+              "48",
+              "42"
+            ],
+            "answer": 2,
+            "explanation": "Each number is doubled: 24 × 2 = 48."
+          },
+          {
+            "id": "q3",
+            "section": "Reasoning",
+            "topic": "Odd one out",
+            "prompt": "Which one is different from the others?",
+            "options": [
+              "Apple",
+              "Mango",
+              "Potato",
+              "Banana"
+            ],
+            "answer": 2,
+            "explanation": "A potato is a vegetable; the others are fruits."
+          },
+          {
+            "id": "q4",
+            "section": "Reasoning",
+            "topic": "Analogy",
+            "prompt": "Pen is to write as knife is to ?",
+            "options": [
+              "Sharp",
+              "Cut",
+              "Steel",
+              "Kitchen"
+            ],
+            "answer": 1,
+            "explanation": "A pen is used to write; a knife is used to cut."
+          },
+          {
+            "id": "q5",
+            "section": "Reasoning",
+            "topic": "Coding",
+            "prompt": "If CAT is written as DBU, how is DOG written?",
+            "options": [
+              "EPH",
+              "CNF",
+              "DPH",
+              "EOH"
+            ],
+            "answer": 0,
+            "explanation": "Each letter moves one step forward: D→E, O→P, G→H, so DOG becomes EPH."
+          },
+          {
+            "id": "q6",
+            "section": "Reasoning",
+            "topic": "Letter series",
+            "prompt": "What comes next? A, C, E, G, ?",
+            "options": [
+              "H",
+              "I",
+              "J",
+              "K"
+            ],
+            "answer": 1,
+            "explanation": "Skip one letter each time: A (B) C (D) E (F) G (H) I."
+          },
+          {
+            "id": "q7",
+            "section": "Reasoning",
+            "topic": "Number series",
+            "prompt": "What comes next? 1, 4, 9, 16, ?",
+            "options": [
+              "20",
+              "24",
+              "25",
+              "32"
+            ],
+            "answer": 2,
+            "explanation": "These are square numbers: 1×1, 2×2, 3×3, 4×4, so next is 5×5 = 25."
+          },
+          {
+            "id": "q8",
+            "section": "Reasoning",
+            "topic": "Odd one out",
+            "prompt": "Which number is different from the others?",
+            "options": [
+              "15",
+              "25",
+              "42",
+              "35"
+            ],
+            "answer": 2,
+            "explanation": "15, 25 and 35 are multiples of 5; 42 is not."
+          },
+          {
+            "id": "q9",
+            "section": "Reasoning",
+            "topic": "Order",
+            "prompt": "Ravi is taller than Sonu. Sonu is taller than Amit. Who is the shortest?",
+            "options": [
+              "Ravi",
+              "Sonu",
+              "Amit",
+              "Cannot be said"
+            ],
+            "answer": 2,
+            "explanation": "Ravi > Sonu > Amit in height, so Amit is the shortest."
+          },
+          {
+            "id": "q10",
+            "section": "Reasoning",
+            "topic": "Direction",
+            "prompt": "Meera is facing north. She turns to her right. Which direction is she facing now?",
+            "options": [
+              "South",
+              "East",
+              "West",
+              "North"
+            ],
+            "answer": 1,
+            "explanation": "When you face north, your right hand points east."
+          },
+          {
+            "id": "q11",
+            "section": "Reasoning",
+            "topic": "Calendar",
+            "prompt": "If today is Wednesday, what day will it be 10 days from today?",
+            "options": [
+              "Friday",
+              "Saturday",
+              "Sunday",
+              "Thursday"
+            ],
+            "answer": 1,
+            "explanation": "After 7 days it is Wednesday again; 3 more days is Saturday."
+          },
+          {
+            "id": "q12",
+            "section": "Reasoning",
+            "topic": "Mirror image",
+            "prompt": "Which capital letter looks exactly the same in a mirror held beside it?",
+            "options": [
+              "A",
+              "F",
+              "G",
+              "R"
+            ],
+            "answer": 0,
+            "explanation": "A is the same on its left and right halves, so its mirror image looks the same. F, G and R face the other way in a mirror."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "aissee-class6-maths-1",
+      "examSlug": "aissee",
+      "title": "AISSEE Class VI Mathematics practice",
+      "kind": "QUIZ",
+      "level": "Class V–VI",
+      "description": "Mathematics carries 150 of the 300 marks in AISSEE Class VI. These questions cover topics from the official syllabus: HCF and LCM, percentage, ratio, profit and loss, simple interest, Roman numerals, angles, volume, average and speed.",
+      "durationMinutes": null,
+      "displayOrder": 50,
+      "published": true,
+      "content": {
+        "passages": [],
+        "questions": [
+          {
+            "id": "m1",
+            "section": "Mathematics",
+            "topic": "HCF",
+            "prompt": "What is the highest common factor (HCF) of 18 and 24?",
+            "options": [
+              "3",
+              "6",
+              "12",
+              "72"
+            ],
+            "answer": 1,
+            "explanation": "Factors of 18: 1, 2, 3, 6, 9, 18. Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24. The highest common one is 6."
+          },
+          {
+            "id": "m2",
+            "section": "Mathematics",
+            "topic": "LCM",
+            "prompt": "What is the LCM of 4, 6 and 10?",
+            "options": [
+              "30",
+              "60",
+              "120",
+              "240"
+            ],
+            "answer": 1,
+            "explanation": "4 = 2², 6 = 2 × 3, 10 = 2 × 5. LCM = 2² × 3 × 5 = 60."
+          },
+          {
+            "id": "m3",
+            "section": "Mathematics",
+            "topic": "Percentage",
+            "prompt": "What is 25% of 360?",
+            "options": [
+              "90",
+              "72",
+              "36",
+              "100"
+            ],
+            "answer": 0,
+            "explanation": "25% is one quarter: 360 ÷ 4 = 90."
+          },
+          {
+            "id": "m4",
+            "section": "Mathematics",
+            "topic": "Ratio",
+            "prompt": "What is the ratio of 40 minutes to 2 hours?",
+            "options": [
+              "1 : 2",
+              "1 : 3",
+              "2 : 1",
+              "20 : 1"
+            ],
+            "answer": 1,
+            "explanation": "Use the same unit: 2 hours = 120 minutes. 40 : 120 = 1 : 3."
+          },
+          {
+            "id": "m5",
+            "section": "Mathematics",
+            "topic": "Profit and loss",
+            "prompt": "A shopkeeper buys a toy for ₹250 and sells it for ₹300. What is the profit per cent?",
+            "options": [
+              "50%",
+              "20%",
+              "25%",
+              "16%"
+            ],
+            "answer": 1,
+            "explanation": "Profit = ₹50. Profit % = 50 ÷ 250 × 100 = 20%. (Profit per cent is always on the cost price.)"
+          },
+          {
+            "id": "m6",
+            "section": "Mathematics",
+            "topic": "Simple interest",
+            "prompt": "What is the simple interest on ₹2,000 at 5% per year for 3 years?",
+            "options": [
+              "₹100",
+              "₹300",
+              "₹150",
+              "₹3,000"
+            ],
+            "answer": 1,
+            "explanation": "SI = P × R × T ÷ 100 = 2,000 × 5 × 3 ÷ 100 = ₹300."
+          },
+          {
+            "id": "m7",
+            "section": "Mathematics",
+            "topic": "Roman numerals",
+            "prompt": "What number does XLIV stand for?",
+            "options": [
+              "46",
+              "44",
+              "64",
+              "54"
+            ],
+            "answer": 1,
+            "explanation": "XL = 50 − 10 = 40 and IV = 5 − 1 = 4, so XLIV = 44."
+          },
+          {
+            "id": "m8",
+            "section": "Mathematics",
+            "topic": "Angles",
+            "prompt": "What is the supplement of an angle of 65°?",
+            "options": [
+              "25°",
+              "115°",
+              "125°",
+              "295°"
+            ],
+            "answer": 1,
+            "explanation": "Supplementary angles add up to 180°: 180° − 65° = 115°. (25° would be the complement.)"
+          },
+          {
+            "id": "m9",
+            "section": "Mathematics",
+            "topic": "Volume",
+            "prompt": "What is the volume of a cube with edges of 4 cm?",
+            "options": [
+              "16 cubic cm",
+              "48 cubic cm",
+              "64 cubic cm",
+              "96 cubic cm"
+            ],
+            "answer": 2,
+            "explanation": "Volume of a cube = edge × edge × edge = 4 × 4 × 4 = 64 cubic cm."
+          },
+          {
+            "id": "m10",
+            "section": "Mathematics",
+            "topic": "Average",
+            "prompt": "What is the average of 12, 15, 18 and 23?",
+            "options": [
+              "16",
+              "17",
+              "18",
+              "17.5"
+            ],
+            "answer": 1,
+            "explanation": "Sum = 12 + 15 + 18 + 23 = 68; 68 ÷ 4 = 17."
+          },
+          {
+            "id": "m11",
+            "section": "Mathematics",
+            "topic": "Speed and time",
+            "prompt": "A train travels 180 km in 3 hours at a steady speed. What is its speed?",
+            "options": [
+              "50 km/h",
+              "60 km/h",
+              "90 km/h",
+              "540 km/h"
+            ],
+            "answer": 1,
+            "explanation": "Speed = distance ÷ time = 180 ÷ 3 = 60 km/h."
+          },
+          {
+            "id": "m12",
+            "section": "Mathematics",
+            "topic": "Prime numbers",
+            "prompt": "Which of these is a prime number?",
+            "options": [
+              "51",
+              "57",
+              "59",
+              "91"
+            ],
+            "answer": 2,
+            "explanation": "51 = 3 × 17, 57 = 3 × 19 and 91 = 7 × 13. 59 has no factors other than 1 and itself."
+          },
+          {
+            "id": "m13",
+            "section": "Mathematics",
+            "topic": "Decimals and fractions",
+            "prompt": "Write 0.75 as a fraction in its lowest terms.",
+            "options": [
+              "75/10",
+              "3/4",
+              "7/5",
+              "15/25"
+            ],
+            "answer": 1,
+            "explanation": "0.75 = 75/100; dividing both by 25 gives 3/4."
+          },
+          {
+            "id": "m14",
+            "section": "Mathematics",
+            "topic": "Conversion of units",
+            "prompt": "5 km 40 m = ? m",
+            "options": [
+              "540 m",
+              "5,400 m",
+              "5,040 m",
+              "50,040 m"
+            ],
+            "answer": 2,
+            "explanation": "5 km = 5,000 m; 5,000 + 40 = 5,040 m."
+          },
+          {
+            "id": "m15",
+            "section": "Mathematics",
+            "topic": "Unitary method",
+            "prompt": "If 8 pens cost ₹96, how much do 5 pens cost?",
+            "options": [
+              "₹48",
+              "₹60",
+              "₹72",
+              "₹56"
+            ],
+            "answer": 1,
+            "explanation": "One pen costs 96 ÷ 8 = ₹12, so 5 pens cost 5 × 12 = ₹60."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "jnv-class-9-maths-science-1",
+      "examSlug": "jnv-class-9",
+      "title": "JNV Class IX entry: Mathematics and Science practice",
+      "kind": "QUIZ",
+      "level": "Class VIII",
+      "description": "Mathematics and General Science together carry 70 of the 100 marks in the Class IX lateral entry test. These questions follow chapters listed in the NVS prospectus syllabus.",
+      "durationMinutes": null,
+      "displayOrder": 60,
+      "published": true,
+      "content": {
+        "passages": [],
+        "questions": [
+          {
+            "id": "s1",
+            "section": "Mathematics",
+            "topic": "Square roots",
+            "prompt": "What is the square root of 1,296?",
+            "options": [
+              "34",
+              "36",
+              "38",
+              "46"
+            ],
+            "answer": 1,
+            "explanation": "36 × 36 = 1,296. (It ends in 6, so the root ends in 4 or 6; 35² = 1,225 is too small and 36² fits.)"
+          },
+          {
+            "id": "s2",
+            "section": "Mathematics",
+            "topic": "Cubes",
+            "prompt": "What is the cube of 7?",
+            "options": [
+              "49",
+              "343",
+              "349",
+              "2,401"
+            ],
+            "answer": 1,
+            "explanation": "7³ = 7 × 7 × 7 = 49 × 7 = 343."
+          },
+          {
+            "id": "s3",
+            "section": "Mathematics",
+            "topic": "Linear equations",
+            "prompt": "Solve: 3x + 5 = 20",
+            "options": [
+              "x = 3",
+              "x = 5",
+              "x = 15",
+              "x = 25/3"
+            ],
+            "answer": 1,
+            "explanation": "3x = 20 − 5 = 15, so x = 15 ÷ 3 = 5."
+          },
+          {
+            "id": "s4",
+            "section": "Mathematics",
+            "topic": "Algebraic identities",
+            "prompt": "Expand (x + 3)²",
+            "options": [
+              "x² + 9",
+              "x² + 3x + 9",
+              "x² + 6x + 9",
+              "x² + 6x + 6"
+            ],
+            "answer": 2,
+            "explanation": "(a + b)² = a² + 2ab + b², so (x + 3)² = x² + 2·x·3 + 9 = x² + 6x + 9."
+          },
+          {
+            "id": "s5",
+            "section": "Mathematics",
+            "topic": "Exponents",
+            "prompt": "2⁵ × 2³ = ?",
+            "options": [
+              "2¹⁵",
+              "2⁸",
+              "4⁸",
+              "2²"
+            ],
+            "answer": 1,
+            "explanation": "When multiplying powers of the same base, add the exponents: 2⁵⁺³ = 2⁸."
+          },
+          {
+            "id": "s6",
+            "section": "Mathematics",
+            "topic": "Quadrilaterals",
+            "prompt": "A quadrilateral has all four sides equal and every angle equal to 90°. What is it?",
+            "options": [
+              "Rhombus",
+              "Rectangle",
+              "Square",
+              "Kite"
+            ],
+            "answer": 2,
+            "explanation": "Equal sides with right angles make a square. A rhombus has equal sides but its angles need not be 90°; a rectangle has right angles but its sides need not all be equal."
+          },
+          {
+            "id": "s7",
+            "section": "Mathematics",
+            "topic": "Compound interest",
+            "prompt": "What is the compound interest on ₹10,000 for 2 years at 10% per year, compounded annually?",
+            "options": [
+              "₹2,000",
+              "₹2,100",
+              "₹1,100",
+              "₹12,100"
+            ],
+            "answer": 1,
+            "explanation": "After year 1: ₹11,000. After year 2: 11,000 × 1.1 = ₹12,100. Interest = 12,100 − 10,000 = ₹2,100."
+          },
+          {
+            "id": "s8",
+            "section": "Mathematics",
+            "topic": "Mensuration",
+            "prompt": "Find the volume of a cylinder with radius 7 cm and height 10 cm. (Take π = 22/7.)",
+            "options": [
+              "1,540 cubic cm",
+              "440 cubic cm",
+              "154 cubic cm",
+              "3,080 cubic cm"
+            ],
+            "answer": 0,
+            "explanation": "Volume = πr²h = 22/7 × 7 × 7 × 10 = 22 × 7 × 10 = 1,540 cubic cm."
+          },
+          {
+            "id": "s9",
+            "section": "General Science",
+            "topic": "Microorganisms",
+            "prompt": "Which microorganism turns milk into curd?",
+            "options": [
+              "Yeast",
+              "Lactobacillus bacteria",
+              "Rhizobium bacteria",
+              "Penicillium mould"
+            ],
+            "answer": 1,
+            "explanation": "Lactobacillus bacteria multiply in milk and turn it into curd. Yeast is used in baking, Rhizobium fixes nitrogen in root nodules, and Penicillium gives penicillin."
+          },
+          {
+            "id": "s10",
+            "section": "General Science",
+            "topic": "Combustion",
+            "prompt": "Which gas is needed for combustion (burning)?",
+            "options": [
+              "Nitrogen",
+              "Carbon dioxide",
+              "Oxygen",
+              "Hydrogen"
+            ],
+            "answer": 2,
+            "explanation": "Combustion needs a fuel, heat and oxygen (air). Carbon dioxide is used in fire extinguishers because it cuts off oxygen."
+          },
+          {
+            "id": "s11",
+            "section": "General Science",
+            "topic": "Sound",
+            "prompt": "Sound cannot travel through which of these?",
+            "options": [
+              "Water",
+              "Air",
+              "Steel",
+              "A vacuum"
+            ],
+            "answer": 3,
+            "explanation": "Sound needs a medium (solid, liquid or gas) to travel. A vacuum has no medium."
+          },
+          {
+            "id": "s12",
+            "section": "General Science",
+            "topic": "Chemical effects of electric current",
+            "prompt": "Which of these liquids conducts electricity?",
+            "options": [
+              "Distilled water",
+              "Lemon juice",
+              "Vegetable oil",
+              "Kerosene"
+            ],
+            "answer": 1,
+            "explanation": "Lemon juice is acidic and conducts electricity. Distilled water, oil and kerosene are poor conductors."
+          },
+          {
+            "id": "s13",
+            "section": "General Science",
+            "topic": "Light",
+            "prompt": "A ray of light falls on a plane mirror at an angle of incidence of 30°. What is the angle of reflection?",
+            "options": [
+              "60°",
+              "30°",
+              "90°",
+              "15°"
+            ],
+            "answer": 1,
+            "explanation": "By the law of reflection, the angle of reflection equals the angle of incidence: 30°."
+          },
+          {
+            "id": "s14",
+            "section": "General Science",
+            "topic": "Friction",
+            "prompt": "Which of these reduces friction?",
+            "options": [
+              "Making surfaces rougher",
+              "Using a lubricant such as oil",
+              "Pressing the surfaces harder together",
+              "Sprinkling sand"
+            ],
+            "answer": 1,
+            "explanation": "Lubricants form a thin layer between surfaces so they slide more easily. The other options increase friction."
+          },
+          {
+            "id": "s15",
+            "section": "General Science",
+            "topic": "Coal and petroleum",
+            "prompt": "Which of these is a fossil fuel?",
+            "options": [
+              "Wood",
+              "Cow-dung cake",
+              "Coal",
+              "Biogas"
+            ],
+            "answer": 2,
+            "explanation": "Coal formed over millions of years from buried plant remains, so it is a fossil fuel. Wood, cow-dung cake and biogas are renewable."
+          }
+        ]
+      }
+    }
+  ]
+}

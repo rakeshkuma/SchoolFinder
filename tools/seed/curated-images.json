@@ -1,0 +1,337 @@
+{
+  "_comment": "Openly licensed campus photos from Wikimedia Commons. Licence, author and description were read from the Commons API (prop=imageinfo, extmetadata) on 2026-10-25; each file's description names the school. Logos are deliberately not included (a school's logo needs its permission). Entries are ImageRequest bodies for POST /api/v1/admin/schools/{id}/images, keyed by school slug. Load with tools/seed/import-to-server.js (or LocalImageImport in development); images already registered with the same URL are skipped.",
+  "schools": [
+    {
+      "slug": "loyola-school-jamshedpur",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loyola_School_Jamshedpur.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Loyola_School_Jamshedpur.jpg/960px-Loyola_School_Jamshedpur.jpg",
+          "caption": "Main entrance of Loyola School, Jamshedpur (2019)",
+          "altText": "Main entrance of Loyola School, Jamshedpur",
+          "credit": "Atishm / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Atishm, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loyola_School_Jamshedpur.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "st-xavier-s-high-school-patna",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Primary_Building_SXS_Patna.JPG",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Primary_Building_SXS_Patna.JPG/960px-Primary_Building_SXS_Patna.JPG",
+          "caption": "Primary building of St. Xavier's High School, Patna (2013)",
+          "altText": "Primary building of St. Xavier's High School, Patna",
+          "credit": "Shivam Setu / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Shivam Setu, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Primary_Building_SXS_Patna.JPG",
+          "sortOrder": 0
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Saint_xavier%27s_patna.jpg",
+          "caption": "St. Xavier's High School, Patna (2009)",
+          "altText": "St. Xavier's High School building, Patna",
+          "credit": "Shivamsetu / Wikimedia Commons",
+          "license": "CC0",
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_xavier%27s_patna.jpg",
+          "sortOrder": 1
+        }
+      ]
+    },
+    {
+      "slug": "city-montessori-school-kanpur-road-campus",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Academic_block.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Academic_block.jpg/960px-Academic_block.jpg",
+          "caption": "Academic block, CMS Kanpur Road campus (2008)",
+          "altText": "Academic block of City Montessori School, Kanpur Road campus, Lucknow",
+          "credit": "Kakubutia / Wikimedia Commons",
+          "license": "Public domain",
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Academic_block.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "st-francis-college",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/SFC_Campus.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/SFC_Campus.jpg/960px-SFC_Campus.jpg",
+          "caption": "St. Francis' College, Lucknow (2022)",
+          "altText": "Campus of St. Francis' College, Lucknow",
+          "credit": "Sfcmun / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Sfcmun, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:SFC_Campus.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "rashtriya-military-school-dholpur",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/MILITARY_SCHOOL_DHOLPUR.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/MILITARY_SCHOOL_DHOLPUR.jpg",
+          "caption": "Academic campus of Rashtriya Military School, Dholpur, in the former Kesarbagh palace (2009)",
+          "altText": "Academic campus building of Rashtriya Military School, Dholpur",
+          "credit": "Raavigeorgian / Wikimedia Commons",
+          "license": "Public domain",
+          "attributionText": null,
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:MILITARY_SCHOOL_DHOLPUR.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "the-scindia-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Picture_of_Scindia_School_taken_from_top_swimming_pool_visible_%282009%29.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Picture_of_Scindia_School_taken_from_top_swimming_pool_visible_%282009%29.jpg",
+          "caption": "The Scindia School campus on Gwalior Fort, seen from a boarding house, with the swimming pool (2009)",
+          "altText": "The Scindia School campus on Gwalior Fort with the swimming pool",
+          "credit": "Shashank Bhargava / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Shashank Bhargava, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Picture_of_Scindia_School_taken_from_top_swimming_pool_visible_(2009).jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "the-lawrence-school-lovedale",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/LawrenceChapel1.jpg/1280px-LawrenceChapel1.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/LawrenceChapel1.jpg/640px-LawrenceChapel1.jpg",
+          "caption": "Chapel of The Lawrence School, Lovedale, Nilgiris",
+          "altText": "Stone chapel of The Lawrence School, Lovedale",
+          "credit": "L. Shyamal / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "L. Shyamal, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:LawrenceChapel1.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "rashtriya-indian-military-college",
+      "images": [
+        {
+          "imageType": "EVENT",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/The_Chief_of_the_Air_Staff%2C_Air_Chief_Marshal_Arup_Raha_with_the_cadets_of_Rashtriya_Indian_Military_College_%28RIMC%29%2C_in_Dehradun_on_October_20%2C_2015._The_Air_Chief_Marshal_%28Retired%29_N.C._Suri_is_also_seen.jpg/1280px-thumbnail.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/The_Chief_of_the_Air_Staff%2C_Air_Chief_Marshal_Arup_Raha_with_the_cadets_of_Rashtriya_Indian_Military_College_%28RIMC%29%2C_in_Dehradun_on_October_20%2C_2015._The_Air_Chief_Marshal_%28Retired%29_N.C._Suri_is_also_seen.jpg/640px-thumbnail.jpg",
+          "caption": "Cadets of the Rashtriya Indian Military College with the Chief of the Air Staff, Dehradun (2015)",
+          "altText": "Cadets of the Rashtriya Indian Military College in Dehradun",
+          "credit": "Ministry of Defence / Wikimedia Commons",
+          "license": "GODL-India",
+          "attributionText": "Ministry of Defence, GODL-India, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Chief_of_the_Air_Staff,_Air_Chief_Marshal_Arup_Raha_with_the_cadets_of_Rashtriya_Indian_Military_College_(RIMC),_in_Dehradun_on_October_20,_2015._The_Air_Chief_Marshal_(Retired)_N.C._Suri_is_also_seen.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "woodstock-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Woodstock_campus_shot.jpg/1280px-Woodstock_campus_shot.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Woodstock_campus_shot.jpg/640px-Woodstock_campus_shot.jpg",
+          "caption": "Woodstock School campus, Landour, Mussoorie",
+          "altText": "Woodstock School campus buildings on a hillside in Landour, Mussoorie",
+          "credit": "Woodstockschool at en.wikipedia / Wikimedia Commons",
+          "license": "Public domain",
+          "attributionText": null,
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woodstock_campus_shot.jpg",
+          "sortOrder": 0
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Woodstock_School_-_Mussoorie_%285284586174%29.jpg/1280px-Woodstock_School_-_Mussoorie_%285284586174%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Woodstock_School_-_Mussoorie_%285284586174%29.jpg/640px-Woodstock_School_-_Mussoorie_%285284586174%29.jpg",
+          "caption": "Woodstock School, Mussoorie (2010)",
+          "altText": "Woodstock School buildings in the hills of Mussoorie",
+          "credit": "Paul Hamilton / Wikimedia Commons",
+          "license": "CC BY-SA 2.0",
+          "attributionText": "Paul Hamilton, CC BY-SA 2.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woodstock_School_-_Mussoorie_(5284586174).jpg",
+          "sortOrder": 1
+        }
+      ]
+    },
+    {
+      "slug": "sherwood-college",
+      "images": [
+        {
+          "imageType": "OTHER",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mig-21_Sherwood_College.jpg/1280px-Mig-21_Sherwood_College.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mig-21_Sherwood_College.jpg/640px-Mig-21_Sherwood_College.jpg",
+          "caption": "MiG-21 aircraft on display at Sherwood College, Nainital",
+          "altText": "MiG-21 aircraft displayed on the Sherwood College campus",
+          "credit": "AmandeepSandhuNainital / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "AmandeepSandhuNainital, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mig-21_Sherwood_College.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "mayo-college",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Mayo_college_in_a_sunny_day.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Mayo_college_in_a_sunny_day.jpg",
+          "caption": "Mayo College main building, Ajmer",
+          "altText": "Main building of Mayo College, Ajmer, on a sunny day",
+          "credit": "Singh92karan / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Singh92karan, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mayo_college_in_a_sunny_day.jpg",
+          "sortOrder": 0
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Mayo_College.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Mayo_College.jpg",
+          "caption": "Mayo College, Ajmer, on a historical postcard (Paper Jewels collection)",
+          "altText": "Historical postcard view of Mayo College, Ajmer",
+          "credit": "Paper Jewels (Postcards from the Raj) / Wikimedia Commons",
+          "license": "CC BY 4.0",
+          "attributionText": "Paper Jewels (Postcards from the Raj), CC BY 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mayo_College.jpg",
+          "sortOrder": 1
+        }
+      ]
+    },
+    {
+      "slug": "netarhat-awasiya-vidyalaya",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Netarhat_School.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Netarhat_School.jpg",
+          "caption": "Main building of Netarhat Awasiya Vidyalaya",
+          "altText": "Main building of Netarhat Awasiya Vidyalaya, Latehar",
+          "credit": "User:Vikash.iitb / Wikimedia Commons",
+          "license": "Public domain",
+          "attributionText": null,
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Netarhat_School.jpg",
+          "sortOrder": 0
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Netarhat_Awasiya_Vidyalaya.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Netarhat_Awasiya_Vidyalaya.jpg",
+          "caption": "Main gate of Netarhat Awasiya Vidyalaya",
+          "altText": "Main gate of Netarhat Awasiya Vidyalaya",
+          "credit": "Noukayami / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Noukayami, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Netarhat_Awasiya_Vidyalaya.jpg",
+          "sortOrder": 1
+        }
+      ]
+    },
+    {
+      "slug": "sainik-school-ghorakhal",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/View_of_Bhimtal_Lake_from_Sainik_School_Ghorakhal.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/View_of_Bhimtal_Lake_from_Sainik_School_Ghorakhal.jpg",
+          "caption": "View of Bhimtal lake from Sainik School Ghorakhal",
+          "altText": "Bhimtal lake seen from the campus of Sainik School Ghorakhal",
+          "credit": "Twbnrftw / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Twbnrftw, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_of_Bhimtal_Lake_from_Sainik_School_Ghorakhal.jpg",
+          "sortOrder": 0
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Ssgk_garden.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Ssgk_garden.jpg",
+          "caption": "School garden maintained by students, Sainik School Ghorakhal",
+          "altText": "Garden on the campus of Sainik School Ghorakhal",
+          "credit": "Djay29ssgk / Wikimedia Commons",
+          "license": "CC BY 3.0",
+          "attributionText": "Djay29ssgk, CC BY 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ssgk_garden.jpg",
+          "sortOrder": 1
+        }
+      ]
+    },
+    {
+      "slug": "sainik-school-8",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Sainik_school_tilaiya.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/Sainik_school_tilaiya.jpg",
+          "caption": "Sainik School Tilaiya, Koderma",
+          "altText": "Campus of Sainik School Tilaiya, Jharkhand",
+          "credit": "Wikiditot / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Wikiditot, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sainik_school_tilaiya.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sainik-school-kunjpura",
+      "images": [
+        {
+          "imageType": "EVENT",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Minister_of_State_for_Defence%2C_Dr._Subhash_Ramrao_Bhamre_paying_homage_at_War_Memorial%2C_at_the_inauguration_of_the_48th_All_India_Sainik_School_%28AISS%29_Principals%E2%80%99_Conference%2C_at_Sainik_School_Kunjpura%2C_Haryana.JPG/1280px-thumbnail.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/The_Minister_of_State_for_Defence%2C_Dr._Subhash_Ramrao_Bhamre_paying_homage_at_War_Memorial%2C_at_the_inauguration_of_the_48th_All_India_Sainik_School_%28AISS%29_Principals%E2%80%99_Conference%2C_at_Sainik_School_Kunjpura%2C_Haryana.JPG/640px-thumbnail.jpg",
+          "caption": "War Memorial at Sainik School Kunjpura during the 48th All India Sainik School Principals' Conference (2018)",
+          "altText": "War Memorial at Sainik School Kunjpura, Karnal",
+          "credit": "Ministry of Defence / Wikimedia Commons",
+          "license": "GODL-India",
+          "attributionText": "Ministry of Defence, GODL-India, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Minister_of_State_for_Defence,_Dr._Subhash_Ramrao_Bhamre_paying_homage_at_War_Memorial,_at_the_inauguration_of_the_48th_All_India_Sainik_School_(AISS)_Principals%E2%80%99_Conference,_at_Sainik_School_Kunjpura,_Haryana.JPG",
+          "sortOrder": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2363 @@
+{
+  "exams": [
+    {
+      "slug": "jnvst",
+      "shortName": "JNVST",
+      "name": "Jawahar Navodaya Vidyalaya Selection Test (JNVST) – Class VI",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Navodaya Vidyalaya Samiti (Ministry of Education)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL"
+      ],
+      "entryClasses": [
+        6
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": true,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "JNVST-2027",
+      "academicSession": "2027-28",
+      "summary": "A single, free, district-specific selection test for admission to Class VI in a JNV. JNVs are free co-educational residential schools for Classes VI–XII; education, board and lodging, uniform and textbooks are free.",
+      "content": {
+        "forSchools": "Jawahar Navodaya Vidyalayas — 665 functional residential schools; Delhi has JNVs at Mungeshpur and Jaffarpur Kalan",
+        "entryClassText": "Class VI (session 2027-28)",
+        "eligibility": [
+          "Bona fide resident of the district where admission is sought, studying in Class V in 2026-27 in a Government, Government-aided or recognised school (or NIOS “B” certificate).",
+          "Born between 01.05.2015 and 31.07.2017 (both dates inclusive).",
+          "Must have studied Classes III, IV and V for full academic sessions; candidates who skipped a class or already passed Class V are not eligible.",
+          "A candidate can appear only once — repeaters are disqualified.",
+          "Rural-quota candidates must have studied Classes III–V in rural-area schools."
+        ],
+        "pattern": [
+          {
+            "title": "Single paper — 80 objective questions, 100 marks, 2 hours",
+            "sections": [
+              {
+                "name": "Mental Ability Test & Environmental Studies (EVS)",
+                "questions": 40,
+                "marks": 50,
+                "duration": "60 min"
+              },
+              {
+                "name": "Arithmetic Test",
+                "questions": 20,
+                "marks": 25,
+                "duration": "30 min"
+              },
+              {
+                "name": "Language Test (reading comprehension)",
+                "questions": 20,
+                "marks": 25,
+                "duration": "30 min"
+              }
+            ],
+            "notes": [
+              "1.25 marks per correct answer; no negative marking.",
+              "Minimum qualifying marks: 14 in Mental Ability & EVS, 7 in Arithmetic, 7 in Language.",
+              "OMR sheet, blue/black ball-point pen only; 40 extra minutes for Divyang candidates.",
+              "Delhi candidates can take the test in English or Hindi; the medium cannot be changed later."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Mental Ability (20 questions, non-verbal)",
+            "topics": [
+              "Pattern completion (incl. alphabet and number patterns)",
+              "Figure series completion",
+              "Geometrical figure completion",
+              "Mirror and water images",
+              "Embedded figures"
+            ]
+          },
+          {
+            "area": "Environmental Studies (20 questions)",
+            "topics": [
+              "15 MCQs + one passage with 5 questions",
+              "The natural world, our surroundings, basic science and social-science awareness"
+            ]
+          },
+          {
+            "area": "Arithmetic (20 questions)",
+            "topics": [
+              "Number system, place value, ascending/descending order",
+              "Four operations on whole numbers",
+              "Factors and multiples",
+              "Fractions (addition, subtraction, multiplication)",
+              "Measurement of length, mass, capacity, time, money; unit conversion",
+              "Simplification",
+              "Perimeter and area (square, rectangle, triangle)",
+              "Types of angles, directions and mapping",
+              "Data handling: bar diagrams, tables, pictographs"
+            ]
+          },
+          {
+            "area": "Language (20 questions)",
+            "topics": [
+              "Four passages, five questions each — reading comprehension"
+            ]
+          }
+        ],
+        "selection": [
+          "Merit in the selection test, district-wise. At least 75% of seats for rural candidates; the rest are open.",
+          "At least one-third of seats for girls; SC/ST as per district population (minimum 15% SC and 7.5% ST); 27% OBC (Central list); Divyang reservation as per GOI norms.",
+          "Ties broken by Mental Ability & EVS marks, then Arithmetic, then category and age rules in the prospectus.",
+          "Provisional selection is confirmed only after document verification at the JNV."
+        ],
+        "fee": "Application is free. In JNVs, Classes VI–VIII are free; a Vidyalaya Vikas Nidhi of ₹600/month is collected in Classes IX–XII (SC/ST, Divyang, girls and BPL students are exempt).",
+        "preparation": [
+          {
+            "step": "Read the prospectus and check eligibility first",
+            "detail": "Confirm the date-of-birth window, district of residence, and whether the Class III–V schools count as rural or urban — this decides your quota."
+          },
+          {
+            "step": "Learn the five Mental Ability question types",
+            "detail": "Practise pattern completion, figure series, geometric completion, mirror/water images and embedded figures daily; these are non-verbal and improve fast with practice."
+          },
+          {
+            "step": "Cover the 12 Arithmetic topics",
+            "detail": "Use the Class 3–5 maths textbook; focus on fractions, measurement and units, area/perimeter and reading bar graphs and pictographs."
+          },
+          {
+            "step": "Build reading comprehension",
+            "detail": "Read one short passage a day in the exam medium and answer questions on it — the Language test is four passages with five questions each."
+          },
+          {
+            "step": "Revise EVS from the Class 3–5 books",
+            "detail": "Plants, animals, water, transport, maps, our country — EVS now carries 25 marks."
+          },
+          {
+            "step": "Solve the official 2026 paper and the prospectus samples under time",
+            "detail": "Keep to 60/30/30 minutes per section and practise OMR marking with a ball-point pen."
+          },
+          {
+            "step": "Secure the qualifying marks in every section",
+            "detail": "You must reach 14, 7 and 7 marks in the three sections — do not leave a section weak."
+          }
+        ],
+        "documents": [],
+        "faq": [
+          {
+            "question": "Is there an application fee for JNVST?",
+            "answer": "No. The prospectus states that registration for the selection test is free.",
+            "guidance": false
+          },
+          {
+            "question": "Can a child appear in JNVST more than once?",
+            "answer": "No. A candidate can appear only once; repeaters are disqualified.",
+            "guidance": false
+          },
+          {
+            "question": "Which district should we apply in?",
+            "answer": "The district where the child is a bona fide resident and studying in Class V, as defined in the prospectus.",
+            "guidance": false
+          }
+        ],
+        "papers": [
+          {
+            "year": "2026",
+            "title": "JNVST 2026 question paper (English)",
+            "kind": "Question paper",
+            "url": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/PYQ_English_2026.pdf",
+            "note": "Published on the NVS admission portal"
+          },
+          {
+            "year": "2027 prospectus",
+            "title": "Solved sample questions for every section, with answers",
+            "kind": "Sample questions",
+            "url": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf",
+            "note": "Prospectus pages 19–29"
+          }
+        ],
+        "papersNote": "NVS publishes the latest question paper on its admission portal and solved sample questions in the prospectus. We did not find officially published answer keys or papers for earlier years, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "NVS admission portal",
+            "url": "https://cbseitms.rcil.gov.in/nvs/"
+          },
+          {
+            "label": "JNVST-2027 prospectus (PDF)",
+            "url": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+          },
+          {
+            "label": "Navodaya Vidyalaya Samiti",
+            "url": "https://navodaya.gov.in/"
+          }
+        ],
+        "sources": [
+          {
+            "label": "JNVST-2027 prospectus (PDF)",
+            "url": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+          },
+          {
+            "label": "Navodaya Vidyalaya Samiti",
+            "url": "https://navodaya.gov.in/"
+          }
+        ],
+        "languages": "English, Hindi and regional languages as listed in the prospectus",
+        "applicationSteps": null,
+        "examDay": [
+          "The selection test runs from 11:30 a.m. to 1:30 p.m.; Divyang candidates get 40 minutes extra.",
+          "Mark answers on the OMR sheet with a blue or black ball-point pen only."
+        ]
+      },
+      "displayOrder": 10,
+      "lastVerifiedOn": "2026-10-24",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "JNVST-2027",
+          "kind": "APPLICATION_END",
+          "label": "Last date to apply online (free)",
+          "startsOn": "2026-07-31",
+          "confirmed": true,
+          "sourceUrl": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "JNVST-2027",
+          "kind": "EXAM",
+          "label": "Selection test, 11:30 a.m. – 1:30 p.m.",
+          "startsOn": "2026-11-28",
+          "confirmed": true,
+          "sourceUrl": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "MONTH",
+          "note": "The prospectus says the result is expected by the end of March 2027.",
+          "cycle": "JNVST-2027",
+          "kind": "RESULT",
+          "label": "Result",
+          "startsOn": "2027-03-01",
+          "confirmed": false,
+          "sourceUrl": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "JNVST-2027",
+          "kind": "OTHER",
+          "label": "Admission process closes",
+          "startsOn": "2027-08-31",
+          "confirmed": true,
+          "sourceUrl": "https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "slug": "jnv-class-9",
+      "shortName": "JNV Class IX",
+      "name": "Navodaya Vidyalaya Lateral Entry Selection Test – Class IX",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Navodaya Vidyalaya Samiti (Ministry of Education)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL"
+      ],
+      "entryClasses": [
+        9
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": true,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "Class IX LEST 2027",
+      "academicSession": "2027-28",
+      "summary": "A district-wise test for admission to Class IX in a Jawahar Navodaya Vidyalaya, only against seats likely to be vacant in 2027-28. JNVs are free co-educational residential schools affiliated to CBSE.",
+      "content": {
+        "forSchools": "Jawahar Navodaya Vidyalayas — 665 functional residential schools in 27 states and 8 UTs (not Tamil Nadu); only vacant Class IX seats",
+        "entryClassText": "Class IX (session 2027-28), against vacant seats",
+        "eligibility": [
+          "Bona fide resident of the district where admission is sought, and studying Class VIII in 2026-27 in a Government or Government-recognised school of that same district.",
+          "Born between 01.05.2012 and 31.07.2014 (both dates inclusive) — for all categories, including SC/ST/OBC/Divyang.",
+          "Indian nationals studying Class VIII in India only.",
+          "Not eligible: students who passed Class VIII in an earlier session, or who already appeared in the lateral entry test in the previous session.",
+          "Rural quota: the Class VIII school must be in a rural area; a single day of Class VIII in an urban school makes the candidate urban."
+        ],
+        "pattern": [
+          {
+            "title": "One paper — 100 objective questions, 100 marks, 2½ hours (Class VIII level)",
+            "sections": [
+              {
+                "name": "English",
+                "questions": 15,
+                "marks": 15,
+                "duration": null
+              },
+              {
+                "name": "Hindi",
+                "questions": 15,
+                "marks": 15,
+                "duration": null
+              },
+              {
+                "name": "Mathematics",
+                "questions": 35,
+                "marks": 35,
+                "duration": null
+              },
+              {
+                "name": "General Science",
+                "questions": 35,
+                "marks": 35,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "OMR answer sheet, blue/black ball-point pen; one mark per correct answer and no negative marking.",
+              "Minimum qualifying marks (as per NVS criteria) are needed in all four subjects.",
+              "Merit is on Mathematics + Science + the better of the two languages.",
+              "Medium: English or Hindi, chosen in the form and not changed later. Divyang candidates get 50 minutes extra."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "English (15 marks)",
+            "topics": [
+              "Comprehension (unseen passage)",
+              "Word and sentence structure",
+              "Spelling",
+              "Rearranging jumbled words",
+              "Passivation",
+              "Degrees of comparison",
+              "Modal auxiliaries",
+              "Prepositions",
+              "Tense forms",
+              "Reported speech"
+            ]
+          },
+          {
+            "area": "Mathematics (35 marks)",
+            "topics": [
+              "Rational numbers",
+              "Squares and square roots; cubes and cube roots",
+              "Exponents and powers",
+              "Direct and inverse proportions",
+              "Comparing quantities: percentage, profit and loss, discount, simple and compound interest",
+              "Algebraic expressions and identities, factorisation",
+              "Linear equations in one variable",
+              "Understanding quadrilaterals",
+              "Mensuration: area of plane figures; surface area and volume of cube, cuboid and cylinder",
+              "Data handling: bar graph, pie chart, probability"
+            ]
+          },
+          {
+            "area": "General Science (35 marks)",
+            "topics": [
+              "Crop production and management",
+              "Microorganisms",
+              "Coal and petroleum",
+              "Combustion and flame",
+              "Conservation of plants and animals",
+              "Reproduction in animals",
+              "Reaching the age of adolescence",
+              "Force and pressure",
+              "Friction",
+              "Sound",
+              "Chemical effects of electric current",
+              "Some natural phenomena",
+              "Light"
+            ]
+          },
+          {
+            "area": "Hindi (15 marks)",
+            "topics": [
+              "Class VIII Hindi grammar and an unseen passage, as listed in the prospectus"
+            ]
+          }
+        ],
+        "selection": [
+          "Seats are only those likely to be vacant in the JNV concerned in 2027-28; vacancies may change, and provisional selection gives no right to admission.",
+          "Vacant SC/ST/OBC/Divyang seats go to candidates of those categories; OBC as per the central list.",
+          "Ties: girls first, then higher marks in two subjects out of 30, then higher total out of 100, then the younger candidate.",
+          "Admission needs passing Class VIII in 2026-27 and verification of residence, age, school, category and rural/urban status.",
+          "No re-evaluation or re-totalling; marks are not communicated."
+        ],
+        "fee": "No application fee: the prospectus says registration on the NVS portal and the JNV help desks are free of cost. Education, board and lodging, uniform and textbooks are free in JNVs. A Vidyalaya Vikas Nidhi of ₹600 a month is collected in Classes IX–XII; SC/ST, Divyang and girl students and BPL families are exempt. Wards of government employees (other than exempted categories) pay ₹1,500 a month or the Children Education Allowance received, whichever is less, but not less than ₹600.",
+        "preparation": [
+          {
+            "step": "Check the district rule first",
+            "detail": "Residence and the Class VIII school must both be in the district of the JNV you apply to."
+          },
+          {
+            "step": "Give Mathematics and Science most of your time",
+            "detail": "They carry 70 of 100 marks and always count towards merit."
+          },
+          {
+            "step": "Do not neglect either language",
+            "detail": "You need qualifying marks in English and Hindi, and the better one counts towards merit."
+          },
+          {
+            "step": "Work through the Class VIII NCERT chapters listed",
+            "detail": "The syllabus follows the Class VIII Science and Mathematics books chapter by chapter."
+          },
+          {
+            "step": "Practise the official previous paper on an OMR sheet",
+            "detail": "Time yourself to 2½ hours; there is no negative marking, so answer every question."
+          }
+        ],
+        "documents": [
+          "Birth certificate issued by the competent Government authority",
+          "Residence certificate of the parent for the district of the JNV (same district as the Class VIII school)",
+          "Rural-area certificate for the Class VIII school (rural quota)",
+          "Aadhaar card of the candidate",
+          "Divyang certificate, if applicable",
+          "OBC certificate (central list), if applicable",
+          "For registration: photograph and signatures of the candidate and a parent (JPG, 10–100 KB)"
+        ],
+        "faq": [
+          {
+            "question": "Can a child who missed JNVST in Class V apply now?",
+            "answer": "Yes, if studying Class VIII in 2026-27 in a recognised school of the JNV's district and born between 01.05.2012 and 31.07.2014 — but only vacant seats are filled.",
+            "guidance": false
+          },
+          {
+            "question": "Is there an application fee?",
+            "answer": "No. Registration on the NVS portal is free, and every JNV has a free help desk.",
+            "guidance": false
+          },
+          {
+            "question": "How many seats are there?",
+            "answer": "Only seats likely to be vacant; the prospectus attaches a tentative vacancy list and says vacancies may change.",
+            "guidance": false
+          }
+        ],
+        "papers": [
+          {
+            "year": "Previous year",
+            "title": "Class IX lateral entry question booklet",
+            "kind": "Question paper",
+            "url": "https://cbseitms.nic.in/2026/nvsix_9/assets/pdf/Previous_Year_Question_Paper.pdf",
+            "note": "Published on the NVS Class IX application portal"
+          }
+        ],
+        "papersNote": "NVS publishes one previous question booklet on the application portal. We did not find official answer keys, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "NVS Class IX application portal",
+            "url": "https://cbseitms.nic.in/2026/nvsix_9"
+          },
+          {
+            "label": "Class IX prospectus 2027-28 (PDF)",
+            "url": "https://cbseitms.nic.in/2026/nvsix_9/assets/pdf/FINAL_CLASS_IX_PROSPECTUS_2027.pdf"
+          },
+          {
+            "label": "Navodaya Vidyalaya Samiti",
+            "url": "https://navodaya.gov.in/"
+          }
+        ],
+        "sources": [
+          {
+            "label": "Class IX prospectus 2027-28 (PDF)",
+            "url": "https://cbseitms.nic.in/2026/nvsix_9/assets/pdf/FINAL_CLASS_IX_PROSPECTUS_2027.pdf"
+          },
+          {
+            "label": "NVS Class IX application portal",
+            "url": "https://cbseitms.nic.in/2026/nvsix_9"
+          }
+        ],
+        "languages": "English or Hindi",
+        "applicationSteps": [
+          "Apply online only, on the NVS application portal linked from navodaya.gov.in. Registration is free and can be done from a desktop, laptop, mobile or tablet.",
+          "Keep ready: photograph, the parent's signature and the candidate's signature (JPG, 10–100 KB each), Aadhaar number, APAAR ID/PEN, Class VIII school details and address.",
+          "Every JNV has a free help desk that uploads applications — take the candidate, the photograph and both signatures.",
+          "What you enter is treated as final. A correction window for selected fields opens for two days after the last date; no changes are allowed after that."
+        ],
+        "examDay": [
+          "Download the admit card free from the application portal (NVS plans to release it about a month before the test).",
+          "Mark answers on the OMR sheet with a blue or black ball-point pen only — pencils are not allowed, and striking, erasing or correction fluid make an answer invalid.",
+          "The test runs for 2½ hours without a break; Divyang candidates get 50 minutes extra.",
+          "The medium chosen in the form (English or Hindi) cannot be changed."
+        ]
+      },
+      "displayOrder": 12,
+      "lastVerifiedOn": "2026-10-26",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "cycle": "Class IX LEST 2027",
+          "kind": "APPLICATION_END",
+          "label": "Last date to register online (free)",
+          "startsOn": "2026-09-30",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": "Some news reports mention later extensions in October 2026; we could not find an NVS extension notice to check. Applications are closed in either case.",
+          "sourceUrl": "https://cbseitms.nic.in/2026/nvsix_9/assets/pdf/FINAL_CLASS_IX_PROSPECTUS_2027.pdf"
+        },
+        {
+          "cycle": "Class IX LEST 2027",
+          "kind": "EXAM",
+          "label": "Selection test (2½ hours, at the district JNV or allotted centre)",
+          "startsOn": "2027-04-10",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cbseitms.nic.in/2026/nvsix_9/assets/pdf/FINAL_CLASS_IX_PROSPECTUS_2027.pdf"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "slug": "jnv-class-11",
+      "shortName": "JNV Class XI",
+      "name": "Navodaya Vidyalaya Lateral Entry Selection Test – Class XI",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Navodaya Vidyalaya Samiti (Ministry of Education)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL"
+      ],
+      "entryClasses": [
+        11
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": true,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "Class XI LEST 2027",
+      "academicSession": "2027-28",
+      "summary": "A test for admission to Class XI (Science, Commerce or Humanities) in a Jawahar Navodaya Vidyalaya, against seats likely to be vacant in 2027-28 after JNV students move up. District merit first, then a state merit list.",
+      "content": {
+        "forSchools": "Jawahar Navodaya Vidyalayas — free CBSE residential schools; only vacant Class XI seats in the streams each JNV offers",
+        "entryClassText": "Class XI (session 2027-28), Science / Commerce / Humanities, against vacant seats",
+        "eligibility": [
+          "Born between 01.06.2010 and 31.07.2012 (both dates inclusive) — for all categories.",
+          "Studying Class X in 2026-27 (April–March or January–December session) in a Government or Government-recognised school of the district where the JNV is located; students who passed Class X earlier are not eligible.",
+          "Indian nationals studying Class X in India only.",
+          "Candidates from one state are not eligible for admission in another state."
+        ],
+        "pattern": [
+          {
+            "title": "One paper — 100 objective questions, 100 marks, 2½ hours (11:00 a.m. – 1:30 p.m.)",
+            "sections": [
+              {
+                "name": "Mental Ability",
+                "questions": 20,
+                "marks": 20,
+                "duration": "30 min"
+              },
+              {
+                "name": "English",
+                "questions": 20,
+                "marks": 20,
+                "duration": "30 min"
+              },
+              {
+                "name": "Science",
+                "questions": 20,
+                "marks": 20,
+                "duration": "30 min"
+              },
+              {
+                "name": "Social Science",
+                "questions": 20,
+                "marks": 20,
+                "duration": "30 min"
+              },
+              {
+                "name": "Mathematics",
+                "questions": 20,
+                "marks": 20,
+                "duration": "30 min"
+              }
+            ],
+            "notes": [
+              "Bilingual (English and Hindi) question paper; OMR answer sheet.",
+              "Divyang candidates get 50 minutes extra."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Mental Ability (20)",
+            "topics": [
+              "Pattern and figure series completion",
+              "Geometrical figure completion",
+              "Mirror imaging",
+              "Punched hole pattern (folding/unfolding)",
+              "Calendar, time and clock",
+              "Embedded figures",
+              "Coding-decoding",
+              "Orientation / direction",
+              "Space visualisation"
+            ]
+          },
+          {
+            "area": "English (20)",
+            "topics": [
+              "Reading: discursive and case-based unseen passages (10)",
+              "Grammar: tenses, modals, subject–verb concord, reported speech, determiners, spelling, syntax (10)"
+            ]
+          },
+          {
+            "area": "Mathematics (20)",
+            "topics": [
+              "Real numbers",
+              "Polynomials; pair of linear equations; quadratic equations; arithmetic progressions",
+              "Coordinate geometry",
+              "Geometry and the rest of the Class X syllabus, as listed in the prospectus"
+            ]
+          },
+          {
+            "area": "Science and Social Science (20 each)",
+            "topics": [
+              "Class X level, as listed in Annexure-I of the prospectus"
+            ]
+          }
+        ],
+        "selection": [
+          "Only seats likely to be vacant after JNV Class X students are admitted to Class XI, subject to accommodation.",
+          "District merit list first (residence and Class X study in that district), then a state-level merit list for remaining vacancies in the state.",
+          "Apply for up to two streams; options are considered in the order Science, Commerce, Humanities.",
+          "Rural/Girl/SC/ST/OBC/Divyang vacancies go to those categories; provisional selection gives no right to admission until documents are verified.",
+          "Result likely by May/June 2027 on the application portal; no re-evaluation, and marks are not communicated."
+        ],
+        "fee": "No application fee: registration on the NVS portal is free of cost. Education, board and lodging, uniform and textbooks are free in JNVs. A Vidyalaya Vikas Nidhi of ₹600 a month is collected in Classes IX–XII; SC/ST, Divyang and girl students and BPL families are exempt. Wards of government employees (other than exempted categories) pay ₹1,500 a month or the Children Education Allowance received, whichever is less, but not less than ₹600.",
+        "preparation": [
+          {
+            "step": "Decide your streams before you register",
+            "detail": "You can opt for at most two, and options are considered Science first, then Commerce, then Humanities."
+          },
+          {
+            "step": "Balance all five sections",
+            "detail": "Each carries 20 marks; Mental Ability rewards daily practice with figure and coding questions."
+          },
+          {
+            "step": "Revise the Class X NCERT books",
+            "detail": "Mathematics, Science and Social Science questions follow the Class X syllabus listed in the prospectus."
+          },
+          {
+            "step": "Keep Class X on track",
+            "detail": "Admission also needs passing Class X in 2026-27 and the documents listed below."
+          }
+        ],
+        "documents": [
+          "Birth certificate issued by the competent Government authority",
+          "Class X pass certificate",
+          "Residence certificate for the district (for district-merit selection)",
+          "Rural-area certificate for the Class X school (rural quota)",
+          "Aadhaar card of the candidate",
+          "Divyang certificate, if applicable",
+          "OBC certificate (central list), if applicable"
+        ],
+        "faq": [
+          {
+            "question": "Can a student from another state get a seat?",
+            "answer": "No. The prospectus says candidates from one state are not eligible for admission in another state.",
+            "guidance": false
+          },
+          {
+            "question": "Which streams can I choose?",
+            "answer": "Science, Commerce and Humanities, as offered by the JNV — up to two, considered in that order.",
+            "guidance": false
+          }
+        ],
+        "papers": [],
+        "papersNote": "We did not find an officially published previous Class XI paper or answer key on the NVS portal, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "NVS Class XI application portal",
+            "url": "https://cbseitms.nic.in/2026/nvsxi_11"
+          },
+          {
+            "label": "Class XI prospectus 2027-28 (PDF)",
+            "url": "https://cbseitms.nic.in/2026/nvsxi_11/assets/pdf/FINAL_CLASS_XI_PROSPECTUS_2027.pdf"
+          },
+          {
+            "label": "Navodaya Vidyalaya Samiti",
+            "url": "https://navodaya.gov.in/"
+          }
+        ],
+        "sources": [
+          {
+            "label": "Class XI prospectus 2027-28 (PDF)",
+            "url": "https://cbseitms.nic.in/2026/nvsxi_11/assets/pdf/FINAL_CLASS_XI_PROSPECTUS_2027.pdf"
+          }
+        ],
+        "languages": "Bilingual paper (English and Hindi)",
+        "applicationSteps": [
+          "Apply online only, free of cost, on the NVS application portal linked from navodaya.gov.in.",
+          "Choose at most two streams; options are considered in the order Science, Commerce, Humanities.",
+          "Every JNV has a free help desk that uploads applications.",
+          "Fill in details with care — they are taken as final. A correction window for selected fields opens briefly after the last date; no corrections are entertained after it."
+        ],
+        "examDay": [
+          "Download the admit card from the NVS application portal and bring a valid ID issued by a Government authority; the photo on the admit card is matched at the centre.",
+          "Sit the test only at the centre shown on the admit card — requests to change centre are not accepted.",
+          "The test runs from 11:00 a.m. to 1:30 p.m. with a bilingual (English and Hindi) paper and an OMR answer sheet; Divyang candidates get 50 minutes extra.",
+          "Use a blue or black ball-point pen on the OMR sheet; pencils are not allowed."
+        ]
+      },
+      "displayOrder": 14,
+      "lastVerifiedOn": "2026-10-26",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "cycle": "Class XI LEST 2027",
+          "kind": "APPLICATION_END",
+          "label": "Last date to register online (free)",
+          "startsOn": "2026-09-30",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": "Some news reports mention later extensions in October 2026; we could not find an NVS extension notice to check. Applications are closed in either case.",
+          "sourceUrl": "https://cbseitms.nic.in/2026/nvsxi_11/assets/pdf/FINAL_CLASS_XI_PROSPECTUS_2027.pdf"
+        },
+        {
+          "cycle": "Class XI LEST 2027",
+          "kind": "EXAM",
+          "label": "Selection test, 11:00 a.m. – 1:30 p.m.",
+          "startsOn": "2027-04-10",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cbseitms.nic.in/2026/nvsxi_11/assets/pdf/FINAL_CLASS_XI_PROSPECTUS_2027.pdf"
+        },
+        {
+          "cycle": "Class XI LEST 2027",
+          "kind": "RESULT",
+          "label": "Result on the application portal",
+          "startsOn": "2027-05-01",
+          "endsOn": null,
+          "precision": "MONTH",
+          "confirmed": false,
+          "note": "The prospectus says the result is likely by May/June 2027.",
+          "sourceUrl": "https://cbseitms.nic.in/2026/nvsxi_11/assets/pdf/FINAL_CLASS_XI_PROSPECTUS_2027.pdf"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "slug": "aissee",
+      "shortName": "AISSEE",
+      "name": "All India Sainik Schools Entrance Examination (AISSEE) – Class VI & IX",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "National Testing Agency (NTA) for the Sainik Schools Society (Ministry of Defence)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL",
+        "MILITARY"
+      ],
+      "entryClasses": [
+        6,
+        9
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": false,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "AISSEE-2027",
+      "academicSession": "2027-28",
+      "summary": "A national pen-and-paper (OMR) multiple-choice exam. Admission is by e-counselling on the school-wise, gender-wise, category-wise (home state / outside state) merit list, medical fitness and document verification.",
+      "content": {
+        "forSchools": "33 Sainik Schools and approved New Sainik Schools — English-medium CBSE residential schools that prepare cadets for NDA and other officer academies",
+        "entryClassText": "Class VI and Class IX",
+        "eligibility": [
+          "Class VI (2026-27 cycle): 10–12 years as on 31.03.2026 — born 01.04.2014 to 31.03.2016.",
+          "Class IX (2026-27 cycle): 13–15 years as on 31.03.2026 — born 01.04.2011 to 31.03.2013, and passed Class VIII.",
+          "Girls are eligible to apply (for approved New Sainik Schools, check the school’s own admission policy).",
+          "Home State vs Outside State is decided by the candidate’s domicile and the location of the Sainik School chosen.",
+          "Check the current year’s bulletin: age windows move forward by one year each cycle."
+        ],
+        "pattern": [
+          {
+            "title": "Class VI — 125 questions, 300 marks, 150 minutes",
+            "sections": [
+              {
+                "name": "Language",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "Mathematics",
+                "questions": 50,
+                "marks": 150,
+                "duration": null
+              },
+              {
+                "name": "Intelligence",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "General Knowledge",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Mathematics: 3 marks per question; other sections 2 marks each.",
+              "Available in English, Hindi and 11 regional languages (bilingual booklet)."
+            ]
+          },
+          {
+            "title": "Class IX — 150 questions, 400 marks, 180 minutes",
+            "sections": [
+              {
+                "name": "Mathematics",
+                "questions": 50,
+                "marks": 200,
+                "duration": null
+              },
+              {
+                "name": "Intelligence",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "English",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "General Science",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "Social Science",
+                "questions": 25,
+                "marks": 50,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Mathematics: 4 marks per question; other sections 2 marks each.",
+              "Medium: English only."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Class VI Mathematics (50 questions)",
+            "topics": [
+              "Natural numbers, LCM & HCF, unitary method, fractions, ratio & proportion",
+              "Profit & loss, simplification, average, percentage, simple interest",
+              "Area & perimeter, lines & angles, complementary/supplementary angles, types of angles, circle",
+              "Conversion of units, Roman numerals, volume of cube & cuboid, prime & composite numbers",
+              "Plane figures, decimals, speed & time, operations on numbers, temperature, arranging fractions"
+            ]
+          },
+          {
+            "area": "Class VI Intelligence (25 questions)",
+            "topics": [
+              "Analogies (mathematical & verbal)",
+              "Patterns (spatial & mathematical)",
+              "Classification",
+              "Visual & logical reasoning",
+              "Series and sequences",
+              "Critical thinking and problem solving",
+              "Familial relations"
+            ]
+          },
+          {
+            "area": "Class VI Language (25 questions)",
+            "topics": [
+              "Comprehension passage, vocabulary, synonyms/antonyms, idioms & phrases",
+              "Parts of speech: nouns, pronouns, verbs, adjectives, adverbs, prepositions, articles, interjections",
+              "Tenses, types of sentences, question tags, sentence formation and word order",
+              "Spelling, confusing words, gender, number, singular/plural, collective nouns, rhyming words"
+            ]
+          },
+          {
+            "area": "Class VI General Knowledge (25 questions)",
+            "topics": [
+              "National symbols; India at a glance; art & culture; awards; personalities (current)",
+              "Indian defence system; sports; national & international organisations",
+              "Solar system & earth; mountains; water cycle; energy; climate & natural calamities",
+              "Water in daily life; digestion & food preservation; farming; tribal communities & forests",
+              "Scientific devices; water pollution & microbial diseases; humans, plants and animals"
+            ]
+          }
+        ],
+        "selection": [
+          "Qualifying standard in the bulletin: at least 25% marks in each subject and 40% in aggregate (see the bulletin for category-specific rules).",
+          "School-wise, gender-wise and category-wise (Home State / Outside State) merit lists, followed by e-counselling.",
+          "Medical fitness and original-document verification at the allotted school.",
+          "Approved New Sainik Schools fill at least 40% of seats from AISSEE merit (Category A)."
+        ],
+        "fee": "AISSEE-2026 application fee: ₹850 (General / Defence / OBC-NCL), ₹700 (SC/ST). School fees differ by Sainik School — see each school’s fee structure.",
+        "preparation": [
+          {
+            "step": "Download the current NTA bulletin",
+            "detail": "Note the age window, your home state, and the Sainik Schools you can choose; the merit list is school-wise."
+          },
+          {
+            "step": "Give Mathematics the most time",
+            "detail": "For Class VI it is 150 of 300 marks; for Class IX, 200 of 400. Work through every topic in the syllabus list with timed practice."
+          },
+          {
+            "step": "Practise Intelligence daily",
+            "detail": "Analogies, series, classification and coding questions improve quickly with 20–25 questions a day."
+          },
+          {
+            "step": "Strengthen language grammar",
+            "detail": "Revise parts of speech, tenses and comprehension from the Class 4–5 (or 7–8 for Class IX) books."
+          },
+          {
+            "step": "Build a General Knowledge notebook",
+            "detail": "National symbols, defence, sports, awards and current personalities — revise weekly."
+          },
+          {
+            "step": "Solve past answer-keyed papers under 150/180 minutes",
+            "detail": "Use the official final answer keys below to check your work; there is no negative marking, so attempt every question."
+          },
+          {
+            "step": "Prepare for the medical",
+            "detail": "Admission also needs medical fitness — check the standards in the bulletin early."
+          }
+        ],
+        "documents": [],
+        "faq": [
+          {
+            "question": "Have the AISSEE-2027 dates been announced?",
+            "answer": "Not as of 25 October 2026: the NTA website had no AISSEE-2027 notice. This page will show the dates once NTA publishes them.",
+            "guidance": false
+          },
+          {
+            "question": "Can girls apply to Sainik Schools?",
+            "answer": "Yes, girls are eligible to apply. For approved New Sainik Schools, check the school’s own admission policy.",
+            "guidance": false
+          },
+          {
+            "question": "Is there negative marking?",
+            "answer": "The AISSEE-2026 bulletin does not provide for negative marking, so it is worth attempting every question. Check the new bulletin each year.",
+            "guidance": true
+          }
+        ],
+        "papers": [
+          {
+            "year": "2026",
+            "title": "Final answer keys — Class VI (all mediums)",
+            "kind": "Answer key",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2026/02/20260227512023012.pdf",
+            "note": "Exam held 18.01.2026"
+          },
+          {
+            "year": "2026",
+            "title": "Final answer keys — Class IX",
+            "kind": "Answer key",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2026/02/202602274525266.pdf",
+            "note": "Exam held 18.01.2026"
+          },
+          {
+            "year": "2024",
+            "title": "Final answer key — Class VI",
+            "kind": "Answer key",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20240312185342.pdf",
+            "note": "Exam held 28.01.2024"
+          },
+          {
+            "year": "2024",
+            "title": "Final answer key — Class IX",
+            "kind": "Answer key",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20240312185445.pdf",
+            "note": "Exam held 28.01.2024"
+          },
+          {
+            "year": "2023",
+            "title": "Final answer keys — Class VI (all mediums)",
+            "kind": "Answer key",
+            "url": "https://cdnbbsr.s3waas.gov.in/s38ca8da41fe1ebc8d3ca31dc14f5fc56c/uploads/2023/02/2023022654.pdf",
+            "note": "Dated 24.02.2023"
+          },
+          {
+            "year": "2022",
+            "title": "Final answer keys — Class VI",
+            "kind": "Answer key",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20220301124404.pdf",
+            "note": "Exam held 09.01.2022"
+          },
+          {
+            "year": "2021",
+            "title": "Final answer keys",
+            "kind": "Answer key",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20210312205133.pdf",
+            "note": "Exam held 07.02.2021"
+          }
+        ],
+        "papersNote": "NTA publishes final answer keys for each booklet code and medium. The question booklets themselves are shown to candidates through their NTA login during the answer-key challenge; the bulletin notes earlier papers are available on nta.ac.in. We link only NTA files and do not reproduce questions.",
+        "officialLinks": [
+          {
+            "label": "NTA AISSEE page",
+            "url": "https://exams.nta.nic.in/sainik-school-society/"
+          },
+          {
+            "label": "AISSEE-2026 information bulletin (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
+          },
+          {
+            "label": "National Testing Agency",
+            "url": "https://nta.ac.in/"
+          }
+        ],
+        "sources": [
+          {
+            "label": "AISSEE-2026 information bulletin (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
+          },
+          {
+            "label": "NTA AISSEE page",
+            "url": "https://exams.nta.nic.in/sainik-school-society/"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20251010181643.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20251030154635.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260227175656.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260211210548.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260112162229.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260106211946.pdf"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20251025180445.pdf"
+          }
+        ],
+        "languages": "Class VI: English, Hindi and 11 regional languages; Class IX: English",
+        "applicationSteps": null,
+        "examDay": null
+      },
+      "displayOrder": 20,
+      "lastVerifiedOn": "2026-10-25",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2026",
+          "kind": "APPLICATION_START",
+          "label": "Applications opened",
+          "startsOn": "2025-10-10",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20251010181643.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2026",
+          "kind": "APPLICATION_END",
+          "label": "Last date (extended)",
+          "startsOn": "2025-10-30",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20251030154635.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2026",
+          "kind": "EXAM",
+          "label": "Entrance examination",
+          "startsOn": "2026-01-18",
+          "confirmed": true,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2026",
+          "kind": "RESULT",
+          "label": "Result declared",
+          "startsOn": "2026-02-27",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260227175656.pdf"
+        }
+      ],
+      "notices": [
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "RESULT",
+          "title": "Declaration of the Results of the All India Sainik Schools Entrance Examination (AISSEE) – 2026",
+          "publishedOn": "2026-02-27",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20260227175656.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "ANSWER_KEY",
+          "title": "Display of OMR Answer Sheets, Recorded Responses and Provisional Answer Keys of AISSEE-2026",
+          "publishedOn": "2026-02-11",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20260211210548.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "ADMIT_CARD",
+          "title": "Release of Admit Card to Candidates of All India Sainik Schools Entrance Examination (AISSEE)-2026",
+          "publishedOn": "2026-01-12",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20260112162229.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "OTHER",
+          "title": "Advance Intimation of Examination City allotted to the applicants of AISSEE-2026",
+          "publishedOn": "2026-01-06",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20260106211946.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "DATE_CHANGE",
+          "title": "Extension of Last Date for Submission of Online Application Form for AISSEE-2026",
+          "publishedOn": "2025-10-30",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20251030154635.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "OTHER",
+          "title": "Additional New Sainik Schools Included for Consideration",
+          "publishedOn": "2025-10-25",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20251025180445.pdf"
+        },
+        {
+          "cycle": "AISSEE-2026",
+          "kind": "NOTIFICATION",
+          "title": "Inviting Online Application for All India Sainik Schools Entrance Examination (AISSEE)-2026",
+          "publishedOn": "2025-10-10",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20251010181643.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "rimc",
+      "shortName": "RIMC",
+      "name": "Rashtriya Indian Military College (RIMC) Entrance Examination – Class VIII",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "RIMC, Dehradun (Ministry of Defence); online applications through NTA from the December 2026 cycle",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL",
+        "MILITARY"
+      ],
+      "entryClasses": [
+        8
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": false,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "RIMCEE-2026",
+      "academicSession": "2027-28",
+      "summary": "Roughly 25 boys and 10 girls are admitted each term. Vacancies are allotted state-wise (generally one per state; Delhi has one). Selection is by written exam, viva-voce and medical examination.",
+      "content": {
+        "forSchools": "Rashtriya Indian Military College, Garhi Cantt, Dehradun — a residential military college preparing boys and girls for the Defence Forces",
+        "entryClassText": "Class VIII (admissions every six months — January and July terms)",
+        "eligibility": [
+          "For the July 2027 term: not less than 12½ and not more than 14 years old as on 01 July 2027 (revised criterion from the December 2026 cycle).",
+          "Studying in Class VII (or passed Class VII) in a recognised school at the time of joining.",
+          "Medically fit as per the prescribed standards.",
+          "Domicile of the state whose vacancy is applied for."
+        ],
+        "pattern": [
+          {
+            "title": "Stages",
+            "sections": [
+              {
+                "name": "Written examination — Mathematics and English (descriptive), General Knowledge (MCQs)",
+                "questions": null,
+                "marks": null,
+                "duration": null
+              },
+              {
+                "name": "Viva-voce (interview)",
+                "questions": null,
+                "marks": null,
+                "duration": null
+              },
+              {
+                "name": "Medical examination",
+                "questions": null,
+                "marks": null,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Pen-and-paper test. Marks, duration and syllabus are in the NTA Information Bulletin for the cycle."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Scheme",
+            "topics": [
+              "As published in the RIMC/NTA notification for the cycle"
+            ]
+          }
+        ],
+        "selection": [
+          "Written examination, then viva-voce, then medical examination, state-wise against the allotted vacancies."
+        ],
+        "fee": "Exam fee (RIMCEE-2026): ₹1,000 for General, wards of Defence personnel and ex-servicemen, and OBC (NCL); ₹750 for SC/ST; paid online. College fee for boarder cadets (w.e.f. January 2024 term): ₹1,48,650 (General) / ₹1,31,850 (SC/ST) as listed, plus a refundable security of ₹50,000. Scholarships are listed on the RIMC website.",
+        "preparation": [
+          {
+            "step": "Check your state’s vacancy and the age window",
+            "detail": "Usually one seat per state — competition is within your state."
+          },
+          {
+            "step": "Register on the NTA portal on time",
+            "detail": "Keep Aadhaar, photo, domicile, birth and school-studying certificates scanned and ready."
+          },
+          {
+            "step": "Prepare for a written test and an interview",
+            "detail": "Strong school-level Mathematics, English and General Knowledge, plus confident communication for the viva-voce."
+          },
+          {
+            "step": "Practise with the official past-papers booklet",
+            "detail": "RIMC sells a booklet of the previous 7 years’ question papers (see below)."
+          },
+          {
+            "step": "Meet the medical standards",
+            "detail": "Read the RIMC medical standards early — unfit candidates are not admitted."
+          }
+        ],
+        "documents": [
+          "Aadhaar card",
+          "Passport-size photograph",
+          "Domicile certificate",
+          "Birth certificate",
+          "Category certificate (if applicable)",
+          "School studying certificate",
+          "Scanned signature and left-thumb impression",
+          "Serving certificate (eligible Central Government employees)"
+        ],
+        "faq": [
+          {
+            "question": "Can girls apply to RIMC?",
+            "answer": "Yes. RIMC admits both boys and girls; about 25 boys and 10 girls join each term.",
+            "guidance": false
+          },
+          {
+            "question": "Where do I get the application form?",
+            "answer": "Only online through the NTA portal. RIMC and state governments do not issue forms.",
+            "guidance": false
+          }
+        ],
+        "papers": [
+          {
+            "year": "Previous 7 years",
+            "title": "Question papers booklet — sold by RIMC for ₹300",
+            "kind": "Booklet (paid)",
+            "url": "https://rimc.edu.in/admission.aspx",
+            "note": "Pay via the QR code in RIMC’s notice; send the receipt and address to 9756201212 (WhatsApp) or rimcentexam@gmail.com"
+          }
+        ],
+        "papersNote": "RIMC does not publish free past papers online; it sells the official booklet. We do not reproduce its contents.",
+        "officialLinks": [
+          {
+            "label": "RIMC admission procedure",
+            "url": "https://rimc.edu.in/admission.aspx"
+          },
+          {
+            "label": "RIMC fee structure",
+            "url": "https://rimc.edu.in/fees.aspx"
+          },
+          {
+            "label": "NTA – RIMCEE",
+            "url": "https://exams.nta.nic.in/RIMCEE/"
+          },
+          {
+            "label": "NTA public notice, 01.09.2026 (PDF)",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+          }
+        ],
+        "sources": [
+          {
+            "label": "NTA public notice, 01.09.2026 (PDF)",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+          },
+          {
+            "label": "RIMC admission procedure",
+            "url": "https://rimc.edu.in/admission.aspx"
+          },
+          {
+            "label": "rimc.edu.in",
+            "url": "https://rimc.edu.in/notice.aspx"
+          },
+          {
+            "label": "RIMC fee structure",
+            "url": "https://rimc.edu.in/fees.aspx"
+          },
+          {
+            "label": "nta.ac.in",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20261007203421.pdf"
+          }
+        ],
+        "languages": null,
+        "applicationSteps": [
+          "Apply online only, through the NTA RIMCEE portal. No hard copy is needed, and forms are not available from RIMC or state governments.",
+          "Upload the documents within the stated timelines: Aadhaar, photograph, domicile certificate, birth certificate, category certificate (if applicable), school studying certificate, and scans of the signature and left-thumb impression.",
+          "Pay the exam fee online by credit or debit card, net banking or UPI.",
+          "Read the NTA Information Bulletin for the scheme, syllabus and other details before applying, and check the NTA website for updates."
+        ],
+        "examDay": [
+          "The written test is pen and paper, at an NTA examination centre in one of 39 cities; your centre is on the admit card."
+        ]
+      },
+      "displayOrder": 30,
+      "lastVerifiedOn": "2026-10-26",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "RIMCEE-2026",
+          "kind": "APPLICATION_START",
+          "label": "Online applications opened",
+          "startsOn": "2026-09-01",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "RIMCEE-2026",
+          "kind": "APPLICATION_END",
+          "label": "Last date (5:00 p.m.)",
+          "startsOn": "2026-09-30",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        },
+        {
+          "endsOn": "2026-10-07",
+          "precision": "DAY",
+          "note": null,
+          "cycle": "RIMCEE-2026",
+          "kind": "LATE_APPLICATION_END",
+          "label": "Late submission with ₹500 late fee (5:00 p.m.)",
+          "startsOn": "2026-10-01",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "RIMCEE-2026",
+          "kind": "EXAM",
+          "label": "Written examination (pen and paper, 39 cities)",
+          "startsOn": "2026-12-06",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "MONTH",
+          "note": null,
+          "cycle": "RIMCEE-2026",
+          "kind": "SESSION_START",
+          "label": "Academic term begins",
+          "startsOn": "2027-07-01",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        }
+      ],
+      "notices": [
+        {
+          "cycle": "RIMCEE-2026",
+          "kind": "OTHER",
+          "title": "Correction in Particulars of the Online Application Form of Rashtriya Indian Military College Entrance Examination (RIMCEE)",
+          "publishedOn": "2026-10-07",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20261007203421.pdf"
+        },
+        {
+          "cycle": "RIMCEE-2026",
+          "kind": "NOTIFICATION",
+          "title": "Inviting Online Application Form for Rashtriya Indian Military College Entrance Examination (RIMCEE) - 2026",
+          "publishedOn": "2026-09-01",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20260901232135.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "netarhat",
+      "shortName": "Netarhat",
+      "name": "Netarhat Awasiya Vidyalaya Entrance Examination – Class 6",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Netarhat Awasiya Vidyalaya (Netarhat Vidyalaya Samiti, Govt. of Jharkhand)",
+      "scope": "STATE",
+      "stateCodes": [
+        "JH"
+      ],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL"
+      ],
+      "entryClasses": [
+        6
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": true,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "Netarhat 2026-27",
+      "academicSession": "2026-27",
+      "summary": "A two-level written exam on one day at each divisional headquarters of Jharkhand, followed by a physical and psychological test, for 100 seats for boys. The application is free.",
+      "content": {
+        "forSchools": "Netarhat Awasiya Vidyalaya, Latehar, Jharkhand — a free residential school for boys, established 1954",
+        "entryClassText": "Class 6 (session 2026-27)",
+        "eligibility": [
+          "Boys aged 10–12 years as on 01 August 2026 — born 01.08.2014 to 31.07.2016 (both inclusive).",
+          "Native / local resident of Jharkhand (resident certificate required).",
+          "Passed Class 5 (or higher) from a recognised school in Jharkhand.",
+          "Category certificate if applying under a reserved category; all certificates must be attached."
+        ],
+        "pattern": [
+          {
+            "title": "Paper 1 — Preliminary (qualifying), 10:00 a.m. – 12:30 p.m.",
+            "sections": [
+              {
+                "name": "Mental Ability",
+                "questions": 20,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Hindi",
+                "questions": 20,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Mathematics",
+                "questions": 20,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Science",
+                "questions": 20,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Social Studies",
+                "questions": 20,
+                "marks": 20,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Objective MCQs, 1 mark each, on OMR; no negative marking.",
+              "Qualifying only: 5 × seats (500) are short-listed on merit as per reservation rules."
+            ]
+          },
+          {
+            "title": "Paper 2 — Main (subjective), 1:30 p.m. – 4:00 p.m.",
+            "sections": [
+              {
+                "name": "Hindi",
+                "questions": null,
+                "marks": 25,
+                "duration": null
+              },
+              {
+                "name": "Mathematics",
+                "questions": null,
+                "marks": 25,
+                "duration": null
+              },
+              {
+                "name": "Science",
+                "questions": null,
+                "marks": 25,
+                "duration": null
+              },
+              {
+                "name": "Social Studies",
+                "questions": null,
+                "marks": 25,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Only the 500 short-listed candidates’ answer books are evaluated.",
+              "Questions are generally at Class 5 level; medium is Hindi and English."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Level",
+            "topics": [
+              "Questions are generally at the level of Class 5, answerable by meritorious Class 5 students"
+            ]
+          },
+          {
+            "area": "Subjects",
+            "topics": [
+              "Mental Ability",
+              "Hindi",
+              "Mathematics",
+              "Science",
+              "Social Studies"
+            ]
+          }
+        ],
+        "selection": [
+          "Paper 1 short-lists 500 candidates (5 × seats); Paper 2 marks decide the next stage.",
+          "150 candidates (1.5 × seats) are called for a physical and psychological test, including age verification by a medical board.",
+          "Final 100 admitted on merit and reservation, after verification of all certificates."
+        ],
+        "fee": "Application is free. The school is funded by the State Government; guardians pay a subsidised fee by income group (A–E).",
+        "preparation": [
+          {
+            "step": "Check domicile and age documents early",
+            "detail": "A Jharkhand resident certificate, birth certificate and Class 5 pass certificate are mandatory — the form is rejected without them."
+          },
+          {
+            "step": "Prepare both objective and written answers",
+            "detail": "Paper 1 is MCQs, but selection depends on the subjective Paper 2 — practise writing short answers in Hindi and English."
+          },
+          {
+            "step": "Master Class 5 textbooks",
+            "detail": "Hindi, Mathematics, Science and Social Studies from the Class 5 books form the base of both papers."
+          },
+          {
+            "step": "Practise Mental Ability",
+            "detail": "20 marks in Paper 1 — series, analogies, odd-one-out and figure questions."
+          },
+          {
+            "step": "Solve the official sample papers",
+            "detail": "Use the school’s sample papers below with a 2.5-hour timer for each paper."
+          },
+          {
+            "step": "Get ready for the interview stage",
+            "detail": "Short-listed boys face a physical and psychological assessment of readiness for residential life."
+          }
+        ],
+        "documents": [
+          "Jharkhand native / local resident certificate issued by the competent authority",
+          "Birth certificate issued by the competent authority",
+          "Class 5 (or higher) pass certificate signed by the head of the school",
+          "Caste / category certificate, if applying under a reserved category",
+          "Originals of all certificates at the time of admission"
+        ],
+        "faq": [
+          {
+            "question": "Can girls apply to Netarhat Awasiya Vidyalaya?",
+            "answer": "No. Advertisement no. 262 invites applications from boys for 100 seats in Class 6.",
+            "guidance": false
+          },
+          {
+            "question": "Is the application free?",
+            "answer": "Yes. The advertisement invites free (निःशुल्क) applications.",
+            "guidance": false
+          }
+        ],
+        "papers": [
+          {
+            "year": "2017-18",
+            "title": "Sample question paper — entrance test",
+            "kind": "Sample paper",
+            "url": "https://www.netarhatvidyalaya.com/pdf/22_03_18_smple_ppr_entrance_test.pdf",
+            "note": null
+          },
+          {
+            "year": "2016-17",
+            "title": "Sample question paper — first sitting",
+            "kind": "Sample paper",
+            "url": "https://www.netarhatvidyalaya.com/pdf/22_03_18_smple_ppr_first_settng_test.pdf",
+            "note": null
+          },
+          {
+            "year": "2016-17",
+            "title": "Sample question paper — second sitting",
+            "kind": "Sample paper",
+            "url": "https://www.netarhatvidyalaya.com/pdf/22_03_18_smple_ppr_second_settng_test.pdf",
+            "note": null
+          }
+        ],
+        "papersNote": "These are the sample papers published by the school. No official answer keys or more recent papers are published on its website.",
+        "officialLinks": [
+          {
+            "label": "Netarhat Vidyalaya website",
+            "url": "https://www.netarhatvidyalaya.com/"
+          },
+          {
+            "label": "2026-27 advertisement (PDF, Hindi)",
+            "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf"
+          },
+          {
+            "label": "Date-revision notice 24.09.2026 (PDF)",
+            "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+          }
+        ],
+        "sources": [
+          {
+            "label": "2026-27 advertisement (PDF, Hindi)",
+            "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf"
+          },
+          {
+            "label": "Date-revision notice 24.09.2026 (PDF)",
+            "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+          },
+          {
+            "label": "Netarhat Vidyalaya website",
+            "url": "https://www.netarhatvidyalaya.com/"
+          },
+          {
+            "label": "netarhatvidyalaya.com",
+            "url": "https://www.netarhatvidyalaya.com/gdln.php"
+          }
+        ],
+        "languages": "Hindi and English",
+        "applicationSteps": null,
+        "examDay": null
+      },
+      "displayOrder": 40,
+      "lastVerifiedOn": "2026-10-25",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "Netarhat 2026-27",
+          "kind": "APPLICATION_START",
+          "label": "Online application opened",
+          "startsOn": "2026-08-14",
+          "confirmed": true,
+          "sourceUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "Netarhat 2026-27",
+          "kind": "APPLICATION_END",
+          "label": "Last date to apply (revised from 24.09.2026)",
+          "startsOn": "2026-10-08",
+          "confirmed": true,
+          "sourceUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "Netarhat 2026-27",
+          "kind": "ADMIT_CARD",
+          "label": "Admit card download (revised from 26.10.2026)",
+          "startsOn": "2026-11-09",
+          "confirmed": true,
+          "sourceUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "Netarhat 2026-27",
+          "kind": "EXAM",
+          "label": "Entrance examination (revised from 22.11.2026)",
+          "startsOn": "2026-12-06",
+          "confirmed": true,
+          "sourceUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+        }
+      ],
+      "notices": [
+        {
+          "cycle": "Netarhat 2026-27",
+          "kind": "DATE_CHANGE",
+          "title": "Notice no. 304: revised last date, admit-card date and exam date for the Netarhat entrance examination 2026-27",
+          "publishedOn": "2026-09-24",
+          "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf"
+        },
+        {
+          "cycle": "Netarhat 2026-27",
+          "kind": "NOTIFICATION",
+          "title": "Advertisement no. 262: Netarhat entrance examination 2026-27 (Class 6, 100 boys)",
+          "publishedOn": "2026-08-13",
+          "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "rms-cet",
+      "shortName": "RMS CET",
+      "name": "Rashtriya Military Schools Common Entrance Test (CET) – Class VI & IX",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Rashtriya Military Schools (Ministry of Defence)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL",
+        "MILITARY"
+      ],
+      "entryClasses": [
+        6,
+        9
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": null,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "RMS CET 2027-28",
+      "academicSession": "2027-28",
+      "summary": "An automated OMR-based common entrance test followed by interview. All admissions are as boarders — no day scholars. Applications are online (portal linked from the RMS website).",
+      "content": {
+        "forSchools": "Rashtriya Military Schools at Chail, Ajmer, Belgaum, Bengaluru and Dholpur — boarding schools affiliated to CBSE",
+        "entryClassText": "Class VI and Class IX",
+        "eligibility": [
+          "Class VI: not less than 10 and not more than 12 years as on 31 March of the year of admission.",
+          "Class IX: not less than 13 and not more than 15 years as on 31 March of the year of admission.",
+          "Admission against available vacancies; check the latest CET notification for whether girls are eligible (the RMS site’s admission page and its application link differ on this)."
+        ],
+        "pattern": [
+          {
+            "title": "CET",
+            "sections": [
+              {
+                "name": "OMR-based written test",
+                "questions": null,
+                "marks": null,
+                "duration": null
+              },
+              {
+                "name": "Interview / medical",
+                "questions": null,
+                "marks": null,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Subjects as listed in the CET notification."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Scheme",
+            "topics": [
+              "As published in the latest CET notification"
+            ]
+          }
+        ],
+        "selection": [
+          "Merit in the CET, interview, medical fitness and reservation of vacancies as notified."
+        ],
+        "fee": "Annual fee (revised, effective 2020-21): ₹12,000 (entitled OR category), ₹18,000 (JCO), ₹32,000 (non-entitled officers), ₹51,000 (non-entitled civilians); SC/ST pay 25% of their category fee; no tuition fee for wards of personnel killed in action.",
+        "preparation": [
+          {
+            "step": "Watch for the CET notification",
+            "detail": "It is published in Employment News and on the RMS website; registration is online."
+          },
+          {
+            "step": "Prepare Mathematics, English, reasoning and GK",
+            "detail": "Use school textbooks of the class you are completing; practise OMR-style timed tests."
+          },
+          {
+            "step": "Prepare for interview and medical",
+            "detail": "Shortlisted candidates are interviewed; all admissions are residential."
+          }
+        ],
+        "documents": [],
+        "faq": [
+          {
+            "question": "Are day scholars admitted to Rashtriya Military Schools?",
+            "answer": "No. All admissions are as boarders.",
+            "guidance": false
+          }
+        ],
+        "papers": [],
+        "papersNote": "The RMS website does not publish past question papers or answer keys, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "RMS admission procedure",
+            "url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+          },
+          {
+            "label": "RMS fee structure",
+            "url": "https://www.rashtriyamilitaryschools.edu.in/fee-structure.html"
+          },
+          {
+            "label": "RMS application portal",
+            "url": "https://apply-delhi.nielit.gov.in/"
+          }
+        ],
+        "sources": [
+          {
+            "label": "RMS admission procedure",
+            "url": "https://www.rashtriyamilitaryschools.edu.in/admission.html"
+          },
+          {
+            "label": "RMS fee structure",
+            "url": "https://www.rashtriyamilitaryschools.edu.in/fee-structure.html"
+          }
+        ],
+        "languages": null,
+        "applicationSteps": null,
+        "examDay": null
+      },
+      "displayOrder": 50,
+      "lastVerifiedOn": "2026-10-24",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [],
+      "notices": []
+    },
+    {
+      "slug": "emrs-odisha",
+      "shortName": "EMRSST Odisha",
+      "name": "Eklavya Model Residential School Selection Test (EMRSST), Odisha – Class VI",
+      "kind": "ENTRANCE_TEST",
+      "conductingAuthority": "Odisha Model Tribal Education Society (OMTES), ST & SC Development, Minorities & Backward Classes Welfare Department, Government of Odisha",
+      "scope": "STATE",
+      "stateCodes": [
+        "OD"
+      ],
+      "schoolTypes": [
+        "GOVERNMENT",
+        "RESIDENTIAL"
+      ],
+      "entryClasses": [
+        6
+      ],
+      "boarding": "BOARDING",
+      "applicationFree": true,
+      "examMode": "PEN_PAPER",
+      "currentCycle": "EMRS Class VI 2027-28",
+      "academicSession": "2027-28",
+      "summary": "Entrance test for Class VI in Odisha's Eklavya Model Residential Schools — free CBSE, English-medium residential schools of the Ministry of Tribal Affairs for children predominantly from tribal backgrounds. Separate merit lists for boys and girls.",
+      "content": {
+        "forSchools": "Eklavya Model Residential Schools in Odisha run by OMTES — 47 functional and 24 opening in 2026-27 (of 111 sanctioned), 30 boys and 30 girls per school in Class VI",
+        "entryClassText": "Class VI (CBSE, English medium, NCERT syllabus)",
+        "eligibility": [
+          "Children of families listed under the Socio Economic and Caste Census (SECC); an income certificate, PHH (rice) / Antyodaya / Annapurna card, or a self-declaration of family income below ₹2.5 lakh a year is needed.",
+          "A bonafide certificate from the current school — or, for children out of school or studying at home, a self-declaration attested by the Sarpanch, Block Education Officer or headmaster — or an NIOS registration/pass certificate.",
+          "Age limits and the seat reservation table follow the NESTS Admission Guidelines of 08.12.2025, which Odisha's guideline applies but does not reproduce — check them in the official notice."
+        ],
+        "pattern": [
+          {
+            "title": "One paper — 100 objective questions, 100 marks, 2 hours",
+            "sections": [
+              {
+                "name": "Mental Ability",
+                "questions": 50,
+                "marks": 50,
+                "duration": null
+              },
+              {
+                "name": "Arithmetic",
+                "questions": 25,
+                "marks": 25,
+                "duration": null
+              },
+              {
+                "name": "English",
+                "questions": 25,
+                "marks": 25,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Questions test competencies at the Class V level prescribed by NCERT / SCERT / CBSE.",
+              "One mark per question; answers are ticked on the question booklet itself.",
+              "Divyang candidates get 30 minutes extra."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Level",
+            "topics": [
+              "Class V competencies as prescribed by NCERT / SCERT / CBSE"
+            ]
+          },
+          {
+            "area": "Sections",
+            "topics": [
+              "Mental Ability (50 marks)",
+              "Arithmetic (25 marks)",
+              "English (25 marks)"
+            ]
+          }
+        ],
+        "selection": [
+          "Separate merit lists for boys and girls, published on omtes.odisha.gov.in.",
+          "Seats are filled through up to three merit lists; absentees lose their seat after notice.",
+          "In 2026-27 (EMRSST-II), results were due by 18 July, first-list admissions ran 27–31 July and second-list admissions 4–10 August 2026."
+        ],
+        "fee": "No fee for the entrance examination. Education with residential facilities in EMRSs is provided free of cost by the Government of India.",
+        "preparation": [
+          {
+            "step": "Collect the income and school documents early",
+            "detail": "The SECC/income proof and the school certificate are needed with the application."
+          },
+          {
+            "step": "Spend half your practice on Mental Ability",
+            "detail": "It carries 50 of the 100 marks — figure series, analogies, odd-one-out and patterns."
+          },
+          {
+            "step": "Revise Class V Arithmetic and English",
+            "detail": "The test is pitched at Class V competencies; practise reading short English passages."
+          }
+        ],
+        "documents": [
+          "Income certificate (preferably e-District), PHH / Antyodaya / Annapurna card, or self-declaration of income below ₹2.5 lakh a year",
+          "Bonafide certificate from the current school, or attested self-declaration, or NIOS registration/pass certificate"
+        ],
+        "faq": [
+          {
+            "question": "Have the 2027-28 dates been announced?",
+            "answer": "Not as of 26 October 2026. The 2026-27 dates are shown as an earlier cycle for reference.",
+            "guidance": false
+          },
+          {
+            "question": "Is there an application fee?",
+            "answer": "No. The 2026-27 guideline says no fee is to be paid for the examination.",
+            "guidance": false
+          },
+          {
+            "question": "Do EMRSs in other states use the same test?",
+            "answer": "No. Each state runs its own EMRS selection test with its own dates; this page covers Odisha only.",
+            "guidance": false
+          }
+        ],
+        "papers": [],
+        "papersNote": "We did not find officially published past papers for this test, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "Odisha Model Tribal Education Society",
+            "url": "https://omtes.odisha.gov.in/"
+          },
+          {
+            "label": "ST & SC Development Department, Odisha",
+            "url": "https://stsc.odisha.gov.in/"
+          },
+          {
+            "label": "EMRSST-II 2026-27 advertisement and guideline (PDF)",
+            "url": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+          }
+        ],
+        "sources": [
+          {
+            "label": "EMRSST-II 2026-27 advertisement and state guideline (PDF)",
+            "url": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+          }
+        ],
+        "languages": null,
+        "applicationSteps": null,
+        "examDay": null
+      },
+      "displayOrder": 60,
+      "lastVerifiedOn": "2026-10-26",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "APPLICATION_START",
+          "label": "Online registration opened",
+          "startsOn": "2026-06-01",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        },
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "APPLICATION_END",
+          "label": "Last date (offline 23.06.2026, online 25.06.2026)",
+          "startsOn": "2026-06-25",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        },
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "ADMIT_CARD",
+          "label": "Online admit cards",
+          "startsOn": "2026-06-30",
+          "endsOn": "2026-07-12",
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        },
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "EXAM",
+          "label": "Entrance test, 11:00 a.m. – 1:00 p.m.",
+          "startsOn": "2026-07-12",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": "EMRSST-II 2026-27 was for the 24 EMRSs opening in 2026-27; we did not check the 2026-27 notice for the 47 existing schools.",
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        },
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "RESULT",
+          "label": "Marks and results on the portal",
+          "startsOn": "2026-07-18",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        },
+        {
+          "cycle": "EMRSST-II 2026-27",
+          "kind": "SESSION_START",
+          "label": "Classes begin",
+          "startsOn": "2026-08-16",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://stsc.odisha.gov.in/sites/default/files/2026-05/EMRSST-II%202026-27-Advt%20and%20Guidelines.pdf"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "slug": "kvs-admission",
+      "shortName": "KV admission",
+      "name": "Kendriya Vidyalaya admission (Class I lottery; Classes II–XI by vacancy, test or marks)",
+      "kind": "SELECTION_PROCESS",
+      "conductingAuthority": "Kendriya Vidyalaya Sangathan (Ministry of Education)",
+      "scope": "NATIONAL",
+      "stateCodes": [],
+      "schoolTypes": [
+        "GOVERNMENT"
+      ],
+      "entryClasses": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "boarding": "DAY",
+      "applicationFree": null,
+      "examMode": null,
+      "currentCycle": "KVS admission 2027-28",
+      "academicSession": "2027-28",
+      "summary": "Admission to Kendriya Vidyalayas follows the KVS Admission Guidelines: Class I seats are filled by draw of lots (no test), Classes II–VIII by vacant seats in order of priority category, Class IX through an admission test, and Class XI on Class X board marks. Admission is open to all, not only children of Central Government employees.",
+      "content": {
+        "forSchools": "Kendriya Vidyalayas run by Kendriya Vidyalaya Sangathan — Central Government day schools affiliated to CBSE; Balvatika (pre-primary) in selected KVs",
+        "entryClassText": "Balvatika 1–3 (selected KVs), Class I; Classes II–X and XII against vacant seats; Class XI",
+        "eligibility": [
+          "Age on 31 March of the admission year: Class I 6 to under 8 years; II 7–9; III 8–10; IV 9–11; V 10–12; VI 10–12; VII 11–13; VIII 12–14; IX 13–15; X 14–16 (lower limit inclusive, upper limit exclusive).",
+          "Balvatika 1, 2 and 3: 3 to 4, 4 to 5 and 5 to 6 years as on 31 March (2026-27 notice).",
+          "Class XI: no age limit if seeking admission in the year of passing Class X.",
+          "The maximum age may be relaxed by two years for Children with Special Needs (CwSN).",
+          "Admissions are open to all; priority categories only decide the order in which applicants are admitted."
+        ],
+        "pattern": [
+          {
+            "title": "Class I — no test: seats filled by draw of lots",
+            "sections": [],
+            "notes": [
+              "First lot: 10 of the 40 seats per section (25%, under the RTE Act) by draw of lots among SC/ST/EWS/BPL/OBC-NCL/CwSN applicants resident in the neighbourhood.",
+              "Second lot: Children with Special Needs, by priority category.",
+              "Third lot: the remaining seats by priority category."
+            ]
+          },
+          {
+            "title": "Classes II–VIII — no test: vacant seats by priority category",
+            "sections": [],
+            "notes": [
+              "The guidelines state that no admission test is conducted for Classes II to VIII; vacant seats are filled within the class strength in order of the parents' priority category."
+            ]
+          },
+          {
+            "title": "Class IX — admission test: one paper, 3 hours, 100 marks",
+            "sections": [
+              {
+                "name": "Hindi",
+                "questions": null,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "English",
+                "questions": null,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Mathematics",
+                "questions": null,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Social Science",
+                "questions": null,
+                "marks": 20,
+                "duration": null
+              },
+              {
+                "name": "Science",
+                "questions": null,
+                "marks": 20,
+                "duration": null
+              }
+            ],
+            "notes": [
+              "Minimum 33% in aggregate to qualify; 25% for SC/ST/CwSN candidates.",
+              "A merit list is prepared separately for each priority category; only vacant seats are filled."
+            ]
+          },
+          {
+            "title": "Class XI — on Class X board marks",
+            "sections": [],
+            "notes": [
+              "KV students are admitted first, by merit, up to 50 per class; streams (Science, Commerce, Humanities) are allotted on Class X CBSE marks.",
+              "Non-KV students are admitted to remaining seats on the same criteria, in order of priority category.",
+              "Ties: higher Mathematics marks, then Mathematics + Science together, then the older candidate."
+            ]
+          }
+        ],
+        "syllabus": [
+          {
+            "area": "Class IX admission test",
+            "topics": [
+              "Hindi, English, Mathematics, Social Science and Science — 20 marks each"
+            ]
+          }
+        ],
+        "selection": [
+          "Reservations in all fresh admissions: 15% SC, 7.5% ST, 27% OBC (Non-Creamy Layer); 3% of seats horizontally for Children with Special Needs.",
+          "Priority categories in Civil/Defence sector KVs: (1) children of Central Government employees and ex-servicemen; (2) employees of Central autonomous bodies, PSUs and institutes of higher learning; (3) State Government employees; (4) employees of State autonomous bodies, PSUs and institutes; (5) all others. Within a category, more transfers of the parent in the last 7 years gets preference.",
+          "Project-sector and IHL KVs give first priority to employees of the sponsoring project or institute.",
+          "Lists of registered, eligible, selected and waitlisted children are displayed on the school notice board and the Vidyalaya website.",
+          "Admission is refused if wrong or misleading information is found in the application."
+        ],
+        "fee": "No fee is charged from children admitted under the 25% RTE quota; they keep the exemption up to Class VIII. Other fees follow the KVS fee structure published by KVS.",
+        "preparation": [
+          {
+            "step": "Find your priority category first",
+            "detail": "It decides the order of admission for Classes I–VIII and XI; check it against the guidelines with your employer's details."
+          },
+          {
+            "step": "Collect documents before registration opens",
+            "detail": "Birth certificate, category certificates and the parent's address proof are needed when you register."
+          },
+          {
+            "step": "For Class IX, revise the Class VIII syllabus in all five subjects",
+            "detail": "The test has equal marks for Hindi, English, Mathematics, Social Science and Science."
+          }
+        ],
+        "documents": [
+          "Class I: birth certificate issued by the authority competent to register births",
+          "Other classes: date of birth as recorded in the transfer certificate (up to Class VIII admission is possible without a TC if the birth certificate is from a Government body)",
+          "SC/ST/EWS/OBC-NCL/BPL certificate where applicable (a parent's certificate is accepted initially; the child's within 3 months)",
+          "CwSN certificate from the competent authority, where applicable",
+          "Address proof of the parent, at registration"
+        ],
+        "faq": [
+          {
+            "question": "Is there an entrance test for Class I in a Kendriya Vidyalaya?",
+            "answer": "No. Class I seats are filled by draw of lots: first the RTE quota, then Children with Special Needs, then the remaining seats by priority category.",
+            "guidance": false
+          },
+          {
+            "question": "Are KVs only for children of Central Government employees?",
+            "answer": "No. The guidelines say admissions are open to all; priority categories only set the order of admission.",
+            "guidance": false
+          },
+          {
+            "question": "Which classes have an admission test?",
+            "answer": "Class IX: one 3-hour, 100-mark paper in five subjects. Classes II–VIII have no test, and Class XI uses Class X board marks.",
+            "guidance": false
+          },
+          {
+            "question": "When will 2027-28 admissions open?",
+            "answer": "Not announced as of 26 October 2026. In 2026-27, online Class I registration ran from 20 March to 2 April 2026.",
+            "guidance": false
+          }
+        ],
+        "papers": [],
+        "papersNote": "KVS does not publish past Class IX admission test papers on its website, so none are listed.",
+        "officialLinks": [
+          {
+            "label": "KVS admission page",
+            "url": "https://kvs.gov.in/en/admission/"
+          },
+          {
+            "label": "KVS online admission portal",
+            "url": "https://admission.kvs.gov.in/"
+          },
+          {
+            "label": "Admission Guidelines 2026-27 (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031831.pdf"
+          },
+          {
+            "label": "Admission Schedule 2026-27 (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+          }
+        ],
+        "sources": [
+          {
+            "label": "KVS Admission Guidelines 2026-27 (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031831.pdf"
+          },
+          {
+            "label": "KVS Admission Schedule 2026-27 (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+          },
+          {
+            "label": "KVS Admission Notice 2026-27 (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031819.pdf"
+          }
+        ],
+        "languages": null,
+        "applicationSteps": [
+          "Class I and Balvatika: register online on the KVS admission portal during the registration window (2026-27: 20 March to 2 April 2026).",
+          "Classes II and above (except XI) and offline Balvatika: register offline at the Principal's office of the KV, only if that class has vacancies (2026-27: 2–8 April 2026).",
+          "Class XI: KV students register within 10 days of the Class X board result; non-KV students register for any seats left after KV students are admitted.",
+          "Contact the Principal or admission in-charge only when called, in the given time slot."
+        ],
+        "examDay": null
+      },
+      "displayOrder": 70,
+      "lastVerifiedOn": "2026-10-26",
+      "verificationStatus": "VERIFIED",
+      "published": true,
+      "dates": [
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "APPLICATION_START",
+          "label": "Online registration for Class I and Balvatika opened (10 a.m.)",
+          "startsOn": "2026-03-20",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031819.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "APPLICATION_END",
+          "label": "Last date of online registration (Class I, Balvatika 1 & 3)",
+          "startsOn": "2026-04-02",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "RESULT",
+          "label": "First provisional list, Class I (10.04.2026 in Assam, Kerala and Puducherry)",
+          "startsOn": "2026-04-09",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "OTHER",
+          "label": "Offline registration for Class II and above, if vacancies",
+          "startsOn": "2026-04-02",
+          "endsOn": "2026-04-08",
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "OTHER",
+          "label": "Last date of admission, all classes except XI",
+          "startsOn": "2026-06-30",
+          "endsOn": null,
+          "precision": "DAY",
+          "confirmed": true,
+          "note": null,
+          "sourceUrl": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+        }
+      ],
+      "notices": [
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "NOTIFICATION",
+          "title": "Kendriya Vidyalaya Sangathan – Admission Notice 2026-2027",
+          "publishedOn": "2026-03-18",
+          "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031819.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "NOTIFICATION",
+          "title": "Kendriya Vidyalaya Sangathan – Admission Guidelines 2026-2027",
+          "publishedOn": "2026-03-18",
+          "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031831.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "OTHER",
+          "title": "Fresh Admissions in Kendriya Vidyalayas for the Academic Session 2026-27",
+          "publishedOn": "2026-03-18",
+          "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031816.pdf"
+        },
+        {
+          "cycle": "KVS admission 2026-27",
+          "kind": "OTHER",
+          "title": "Kendriya Vidyalaya Sangathan – Admission Schedule 2026-2027",
+          "publishedOn": "2026-03-19",
+          "url": "https://cdnbbsr.s3waas.gov.in/s32d2ca7eedf739ef4c3800713ec482e1a/uploads/2026/03/2026031939.pdf"
+        }
+      ]
+    }
+  ]
+}

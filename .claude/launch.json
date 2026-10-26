@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "isf-api-8081",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "cd /d C:\\Users\\rakes\\OneDrive\\Desktop\\New_WebSite\\india-school-finder\\backend && mvnw.cmd spring-boot:test-run -Dspring-boot.run.main-class=com.indiaschoolfinder.LocalDevApplication \"-Dspring-boot.run.workingDirectory=C:\\Users\\rakes\\AppData\\Local\\Temp\\claude\\C--Users-rakes-OneDrive-Desktop-AI-Agent\\d90833d2-e8c1-4cfe-874f-be69e266b4ef\\scratchpad\\localrun\" \"-Dspring-boot.run.jvmArguments=-Disf.pg.port=54339 -Dserver.port=8081\""
+      ],
+      "port": 8081
+    },
+    {
+      "name": "isf-web-5174",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "cd /d C:\\Users\\rakes\\OneDrive\\Desktop\\New_WebSite\\india-school-finder\\frontend && set VITE_DEV_API_PROXY=http://localhost:8081&& npx vite --port 5174 --strictPort"
+      ],
+      "port": 5174
+    }
+  ]
+}
