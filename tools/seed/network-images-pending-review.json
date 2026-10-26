@@ -1,0 +1,197 @@
+{
+    "_comment":  "Wikimedia Commons files matched to one profile by the place in their description (2026-10-25) but NOT yet reviewed by eye: Commons rate-limited thumbnail downloads. Before use, view each file, keep only campus/building/gate photos without identifiable people and with a real named author, drop the \u0027description\u0027 field, then run: node build-commons-images.js \u003cthis file\u003e \u003cout.json\u003e.",
+    "schools":  [
+                    {
+                        "slug":  "pm-shri-school-jawahar-navodaya-vidyalaya-paota",
+                        "file":  "File:Academic block of JNV Jaipur.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Jaipur",
+                        "description":  "Academic block of JNV, Paota, Jaipur"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-kulamavu",
+                        "file":  "File:J N V Idukki.JPG",
+                        "school":  "Jawahar Navodaya Vidyalaya, Idukki",
+                        "description":  "J N V idukki Entrance to academic block"
+                    },
+                    {
+                        "slug":  "pm-shri-school-jawahar-navodaya-vidyalaya-vrindavan-bettiah-west-champaran",
+                        "file":  "File:Jawahar Navodaya Vidyalaya, Vrindavan Entrance.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Champaran West",
+                        "description":  "Jawahar Navodaya Vidyalaya, Vrindavan, West Champaran, Bihar Entrance."
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-vechoochira-mannadisala",
+                        "file":  "File:Jawahar Navodaya Vidyalaya, Pathanamthitta.JPG",
+                        "school":  "Jawahar Navodaya Vidyalaya, Pathanamthitta",
+                        "description":  "Jawahar Navodaya Vidyalaya, Pathanamthitta Academic Block"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-manpur-joura",
+                        "file":  "File:Jnvm building.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Morena",
+                        "description":  "JNV Morena building"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-o-k-muri-oakam",
+                        "file":  "File:Jnvm.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Malappuram",
+                        "description":  "Entrance to the Administrative Block, JNV Malappuram"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-jail-road-khairabad-261-131",
+                        "file":  "File:JNV Khairabad.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Sitapur",
+                        "description":  "JNV khairabad is achool in Sitapur district"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-bohani-via-kauia",
+                        "file":  "File:School Building of Jawahar Navodaya Vidyalaya Bohani.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Narsinghpur",
+                        "description":  "School Building of Jawahar Navodaya Vidyalaya Bohani"
+                    },
+                    {
+                        "slug":  "jawahar-navodaya-vidyalaya-doomardallong-bamunbari-dt",
+                        "file":  "File:Entrance of JNV Dibrugarh at night 01.jpg",
+                        "school":  "Jawahar Navodaya Vidyalaya, Dibrugarh",
+                        "description":  "Entrance of JNV Dibrugarh at night"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-ambikapur-raghavpuri-ajirma-chhattisgarh",
+                        "file":  "File:KENDRIYA VIDYALAYA AMBIKAPUR - panoramio.jpg",
+                        "school":  "Kendriya Vidyalaya, Surguja",
+                        "description":  "KENDRIYA VIDYALAYA AMBIKAPUR"
+                    },
+                    {
+                        "slug":  "kendriya-vidyalaya-a-f-s-barrackpore-bengal-enamel-palta-24",
+                        "file":  "File:Kendriya Vidyalaya (AFS), Barrackpore.png",
+                        "school":  "Kendriya Vidyalaya, North 24-Pargana",
+                        "description":  "Kendriya Vidyalaya (AFS), Barrackpore"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-ajni-re-campus",
+                        "file":  "File:Kendriya Vidyalaya Ajni Nagpur.jpg",
+                        "school":  "Kendriya Vidyalaya, Nagpur",
+                        "description":  "The main building of Kendriya Vidyalaya Ajni Nagpur."
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-ganeshkhind",
+                        "file":  "File:Kendriya vidyalaya ganeshkhind.JPG",
+                        "school":  "Kendriya Vidyalaya, Pune",
+                        "description":  "Kendriya Vidyalaya Ganeshkhind Pune"
+                    },
+                    {
+                        "slug":  "kendriya-vidyalaya-charbatia-orissa",
+                        "file":  "File:Kendriya Vidyalaya Charbatia.JPG",
+                        "school":  "Kendriya Vidyalaya, Cuttack",
+                        "description":  "Entrance of Kendriya Vidyalaya, Charbatia, Cuttack, Orissa."
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-tura-meghalaya",
+                        "file":  "File:Kendriya Vidyalaya Building, Tura.JPG",
+                        "school":  "Kendriya Vidyalaya, West Garo Hills",
+                        "description":  "A building of Kendriya Vidyalaya at Tura, Meghalaya"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-mati",
+                        "file":  "File:Kendriya Vidyalaya Mati.jpg",
+                        "school":  "Kendriya Vidyalaya, Kanpur Nagar",
+                        "description":  "Kendriya Vidyalaya Mati,Akbarpur ,Kanpur Dehat,UP, India"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-ordnance-factory-dum-dum-dum-dum-estate",
+                        "file":  "File:Kendriya Vidyalaya Ordnance Factory - Jessore Road - Dum Dum - Kolkata 2017-08-08 3977.JPG",
+                        "school":  "Kendriya Vidyalaya, North 24-Pargana",
+                        "description":  "Photographed in Kolkata."
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-cossipore-seven-tank-estate-4-dum-dum-road",
+                        "file":  "File:Kendriya Vidyalaya Cossipore.jpg",
+                        "school":  "Kendriya Vidyalaya, Kolkata",
+                        "description":  "Kendriya Vidyalaya Cossipore"
+                    },
+                    {
+                        "slug":  "kendriya-vidyalaya-vijapur-road-stud-farm-mehtapura-himmatnagar",
+                        "file":  "File:Kendriya Vidyalaya Himmatnagar.jpg",
+                        "school":  "Kendriya Vidyalaya, Sabarkantha",
+                        "description":  "Kendriya Vidyalaya Himmatnagar, Gujarat, India"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-jetpur",
+                        "file":  "File:KENDRIYA VIDYALAYA JETPUR.jpg",
+                        "school":  "Kendriya Vidyalaya, Rajkot",
+                        "description":  "KENDRIYA VIDYALAYA JETPUR Camera Upload"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-a-f-station-sambra-belgaum",
+                        "file":  "File:Kendriya vidyalaya, sambra.jpg",
+                        "school":  "Kendriya Vidyalaya, Belagavi",
+                        "description":  "à¤•à¥‡à¤¨à¥à¤¦à¥à¤°à¥€à¤¯à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯à¤ƒ à¤¸à¤¾à¤®à¥à¤¬à¥à¤°à¤¾, à¤¬à¥‡à¤²à¤—à¤¾à¤µà¥€"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-no-1-saheed-nagar-unit-ix-bhubaneshwar",
+                        "file":  "File:Kendriya Vidyalaya, No. 1, Bhubaneswar, Odisha.jpg",
+                        "school":  "Kendriya Vidyalaya, Khordha",
+                        "description":  "entrance"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-pangode-tirumala-trivandrum",
+                        "file":  "File:KV Pangode.jpg",
+                        "school":  "Kendriya Vidyalaya, Thiruvananthapuram",
+                        "description":  "view of the gate of KV pangode"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-s-e-rly-new-colony-dongargarh-dt",
+                        "file":  "File:KV Dongargarh, Chhattisgarh. - panoramio.jpg",
+                        "school":  "Kendriya Vidyalaya, Rajnandgaon",
+                        "description":  "KV Dongargarh, Chhattisgarh."
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-municipal-campus",
+                        "file":  "File:Kendriya Vidyalaya, Rayagada.jpg",
+                        "school":  "Kendriya Vidyalaya, Rayagada",
+                        "description":  "à¬•à­‡à¬¨à­à¬¦à­à¬°à­€à­Ÿ à¬¬à¬¿à¬¦à­à­Ÿà¬¾à¬³à­Ÿ, à¬°à¬¾à­Ÿà¬—à¬¡à¬¾"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-no-1-kanchrapara-kampa-24-parganas-n",
+                        "file":  "File:KV No.1 Kanchrapara.jpg",
+                        "school":  "Kendriya Vidyalaya, North 24-Pargana",
+                        "description":  "Front view of Kendriya Vidyalaya No,1 Kanchrapara School"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-kanjikode",
+                        "file":  "File:Kv kanjikode main entrance.jpg",
+                        "school":  "Kendriya Vidyalaya, Palakkad",
+                        "description":  "Main Gate of Kendriya Vidyalaya Kanjikode"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-katihar",
+                        "file":  "File:Kv Katihar front.jpg",
+                        "school":  "Kendriya Vidyalaya, Katihar",
+                        "description":  ""
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-police-academy",
+                        "file":  "File:Kendriya Vidyalaya Ramavarmapuram Thrissur.jpg",
+                        "school":  "Kendriya Vidyalaya, Thrissur",
+                        "description":  "PM Shri Kendriya Vidyalaya, KPA Ramavarmapuram. Thrissur"
+                    },
+                    {
+                        "slug":  "kendriya-vidyalaya-beml-nagar-k-g-f",
+                        "file":  "File:Kvbeml.jpg",
+                        "school":  "Kendriya Vidyalaya, Kolar",
+                        "description":  "Kendriya Vidyalaya, BEML Nagar, KGF"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-bolarum-allenby-lines-j-j-nagar-secunderabad",
+                        "file":  "File:KVBolarum.jpg",
+                        "school":  "Kendriya Vidyalaya, Rangareddy",
+                        "description":  "Kendriya Vidyalaya Bolarum"
+                    },
+                    {
+                        "slug":  "pm-shri-kendriya-vidyalaya-rohtak",
+                        "file":  "File:KV RTK CAMPUS.jpg",
+                        "school":  "Kendriya Vidyalaya, Rohtak",
+                        "description":  "The image shows the campus of KV Rohtak."
+                    }
+                ]
+}

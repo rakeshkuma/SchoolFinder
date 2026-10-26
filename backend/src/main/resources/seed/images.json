@@ -1,0 +1,135 @@
+{
+  "_comment": "Freely licensed photos from Wikimedia Commons, checked by hand (licence read on each file page). Each entry is an ImageRequest for POST /api/v1/admin/schools/{id}/images (JSON).",
+  "schools": [
+    {
+      "schoolName": "Modern School Barakhamba Road",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Ig-building-pic2.jpg",
+          "caption": "Platinum Jubilee Block, Modern School, Barakhamba Road",
+          "altText": "Platinum Jubilee Block, Modern School, Barakhamba Road (Modern School Barakhamba Road)",
+          "credit": "Manank / Wikimedia Commons",
+          "license": "Public domain",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ig-building-pic2.jpg",
+          "sortOrder": 0,
+          "permissionStatus": "PUBLIC_DOMAIN"
+        },
+        {
+          "imageType": "SPORTS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Modern_school_Barakhamba_road.jpg",
+          "caption": "Basketball court, Modern School, Barakhamba Road",
+          "altText": "Basketball court, Modern School, Barakhamba Road (Modern School Barakhamba Road)",
+          "credit": "Anmolp2010 / Wikimedia Commons",
+          "license": "Public domain",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Modern_school_Barakhamba_road.jpg",
+          "sortOrder": 1,
+          "permissionStatus": "PUBLIC_DOMAIN"
+        }
+      ]
+    },
+    {
+      "schoolName": "Sanskriti School",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Sanskriti_School.jpg/1280px-Sanskriti_School.jpg",
+          "caption": "Sanskriti School campus amphitheatre",
+          "altText": "Sanskriti School campus amphitheatre (Sanskriti School)",
+          "credit": "Earthsquare / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sanskriti_School.jpg",
+          "sortOrder": 0,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "Earthsquare, CC BY-SA 4.0, via Wikimedia Commons"
+        }
+      ]
+    },
+    {
+      "schoolName": "Springdales School Pusa Road",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Going2.JPG/1280px-Going2.JPG",
+          "caption": "School building, Springdales School, Pusa Road",
+          "altText": "School building, Springdales School, Pusa Road (Springdales School Pusa Road)",
+          "credit": "Sridhar Gutam / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Going2.JPG",
+          "sortOrder": 0,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "Sridhar Gutam, CC BY-SA 3.0, via Wikimedia Commons"
+        }
+      ]
+    },
+    {
+      "schoolName": "PM SHRI Kendriya Vidyalaya NFC Vigyan Vihar",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/PM_SHRI_KENDRIYA_VIDYALAYA.jpg/1280px-PM_SHRI_KENDRIYA_VIDYALAYA.jpg",
+          "caption": "School signboard, PM SHRI Kendriya Vidyalaya, New Friends Centre, Vigyan Vihar",
+          "altText": "School signboard, PM SHRI Kendriya Vidyalaya, New Friends Centre, Vigyan Vihar (PM SHRI Kendriya Vidyalaya NFC Vigyan Vihar)",
+          "credit": "Raunakhgnis / Wikimedia Commons",
+          "license": "CC0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:PM_SHRI_KENDRIYA_VIDYALAYA.jpg",
+          "sortOrder": 0,
+          "permissionStatus": "PUBLIC_DOMAIN"
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Kv_vigyan_vihar_main_entry_gate.jpg/1280px-Kv_vigyan_vihar_main_entry_gate.jpg",
+          "caption": "Main entry gate",
+          "altText": "Main entry gate (PM SHRI Kendriya Vidyalaya NFC Vigyan Vihar)",
+          "credit": "User:Indianchemicalengineer236 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kv_vigyan_vihar_main_entry_gate.jpg",
+          "sortOrder": 1,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "User:Indianchemicalengineer236, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Kv_NFC_vigyan_vihar_inside.jpg/1280px-Kv_NFC_vigyan_vihar_inside.jpg",
+          "caption": "Inside the school campus",
+          "altText": "Inside the school campus (PM SHRI Kendriya Vidyalaya NFC Vigyan Vihar)",
+          "credit": "Indianchemicalengineer23 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kv_NFC_vigyan_vihar_inside.jpg",
+          "sortOrder": 2,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "Indianchemicalengineer23, CC BY-SA 4.0, via Wikimedia Commons"
+        }
+      ]
+    },
+    {
+      "schoolName": "Dr. Rajendra Prasad Kendriya Vidyalaya, President Estate",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/The_main_entrance_gate_of_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg/1280px-The_main_entrance_gate_of_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg",
+          "caption": "Main entrance gate, President’s Estate",
+          "altText": "Main entrance gate, President’s Estate (Dr. Rajendra Prasad Kendriya Vidyalaya, President Estate)",
+          "credit": "RJ Raawat / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_main_entrance_gate_of_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg",
+          "sortOrder": 0,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "RJ Raawat, CC BY-SA 4.0, via Wikimedia Commons"
+        },
+        {
+          "imageType": "LABORATORY",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/AI_Lab_at_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg/1280px-AI_Lab_at_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg",
+          "caption": "Artificial Intelligence lab",
+          "altText": "Artificial Intelligence lab (Dr. Rajendra Prasad Kendriya Vidyalaya, President Estate)",
+          "credit": "RJ Raawat / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:AI_Lab_at_Dr._Rajendra_Prasad_Kendriya_Vidyalaya.jpg",
+          "sortOrder": 1,
+          "permissionStatus": "OPEN_LICENCE",
+          "attributionText": "RJ Raawat, CC BY-SA 4.0, via Wikimedia Commons"
+        }
+      ]
+    }
+  ]
+}

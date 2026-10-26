@@ -1,0 +1,103 @@
+{
+  "_comment": "Facts read on 2026-10-24 from each school's own website (the page named in 'source'). Only columns listed here are changed.",
+  "Bal Bhavan Public School": {
+    "source": "http://www.balbhavan.in/",
+    "class_codes": "NURSERY;KG;I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "email": "helpdesk@bbpsmv.com",
+    "note": "The school's website states that its Mayur Vihar branch offers education from Nursery to Class 12."
+  },
+  "Bharti Public School": {
+    "source": "https://www.bpsmv.edu.in/contact-us",
+    "phone": "+91-11-43594793, 43594794",
+    "email": "info.mv@bps.edu.in",
+    "website_url": "https://www.bpsmv.edu.in/",
+    "facilities": "LIBRARY:Library;COMPUTER:IT lab",
+    "facilities_source_url": "https://www.bpsmv.edu.in/infrastructure"
+  },
+  "Dashmesh Public School": {
+    "source": "https://www.dashmeshschools.com/",
+    "website_url": "https://www.dashmeshschools.com/",
+    "facilities": "COMPUTER:Computer lab",
+    "facilities_source_url": "https://www.dashmeshschools.com/",
+    "note": "The school's website states a strength of around 4,500 students and 245 faculty members."
+  },
+  "Kerala Education Society Sr. Sec. School": {
+    "source": "https://keralaschoolmv3.com/about/",
+    "email": "info@keralaschoolmv3.com",
+    "website_url": "https://keralaschoolmv3.com/",
+    "has_transport": "yes",
+    "facilities": "LIBRARY:Library;TRANSPORT:School transport",
+    "facilities_source_url": "https://keralaschoolmv3.com/",
+    "note": "Run by the Kerala Education Society (registered 1958); the school states it was established in 1996 and recognised by the Govt. of NCT of Delhi in 1999."
+  },
+  "Lovely Heritage School": {
+    "source": "https://www.lovelyheritageschool.com/about",
+    "class_codes": "NURSERY;KG;I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "phone": "+91 98217 50630",
+    "email": "lovelyheritageschool@gmail.com",
+    "website_url": "https://www.lovelyheritageschool.com/",
+    "note": "The school's website states it offers education from nursery to class 12 and is part of the Lovely group of schools."
+  },
+  "Mother Mary's School": {
+    "source": "https://www.mothermarys.school/",
+    "gender_type": "GIRLS",
+    "class_codes": "KG;I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "phone": "011-22715538, 011-22717660",
+    "email": "info@mothermarys.school",
+    "note": "The school describes itself as a CBSE girls' day school on Sahkarita Marg, established in 2006, serving over 2,800 students from Pre-Primary through Class XII (Pre-Primary recorded as KG)."
+  },
+  "Salwan Public School Mayur Vihar": {
+    "source": "https://www.spsmayurvihar.edu.in/about",
+    "gender_type": "CO_ED",
+    "class_codes": "NURSERY;KG;I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "email": "spsmayurvihar@salwanschools.com",
+    "website_url": "https://www.spsmayurvihar.edu.in/",
+    "has_transport": "yes",
+    "note": "The school describes itself as a co-educational senior secondary school under the Salwan Education Trust, established on 5 August 1996, with around 1,650 students and 81 teachers; admissions run from Nursery (Balvatika-I); its admissions page covers transport and meal facilities."
+  },
+  "St. Mary's Secondary School Mayur Vihar": {
+    "source": "http://www.smsmayurvihar.org/About.php",
+    "gender_type": "CO_ED",
+    "medium_of_instruction": "English",
+    "class_codes": "I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "phone": "011-40534230, 011-22613539",
+    "email": "stmarysmviii@gmail.com",
+    "school_timings": "7:40 a.m. – 2:00 p.m.",
+    "facilities": "LIBRARY:Library;COMPUTER:Smart classes",
+    "facilities_source_url": "http://www.smsmayurvihar.org/",
+    "note": "A Catholic minority school founded in 1996 under the Delhi Catholic Archdiocese, administered by the C.J. Sisters. The school states it is co-educational and English-medium with classes 1 to 12 and a pre-primary section."
+  },
+  "Vanasthali Public School": {
+    "source": "https://www.vpsphase3.com/about",
+    "gender_type": "CO_ED",
+    "phone": "011-42316717, +91 7048917520",
+    "school_timings": "8:00 a.m. – 1:00 p.m. or 2:00 p.m., depending on the section (summer and winter)",
+    "has_transport": "yes",
+    "facilities": "LIBRARY:Library;LABORATORY:Laboratories;TRANSPORT:School transport",
+    "facilities_source_url": "https://www.vpsphase3.com/facility-infrastructure",
+    "note": "The school describes itself as a co-educational minority school established in 2002 and recognised by the Department of Education, Govt. of NCT of Delhi. Timings from https://www.vpsphase3.com/school-timing."
+  },
+  "Vidya Bal Bhavan Senior School": {
+    "source": "https://www.vidyabalbhawan.in/",
+    "class_codes": "NURSERY;KG;I;II;III;IV;V;VI;VII;VIII;IX;X;XI;XII",
+    "phone": "8595343139, 7303012080, 7290909901",
+    "email": "vidyabalbhawan@gmail.com",
+    "website_url": "https://www.vidyabalbhawan.in/",
+    "has_transport": "yes",
+    "facilities": "LIBRARY:Library;LABORATORY:Laboratories;COMPUTER:Smart classes;TRANSPORT:School transport",
+    "facilities_source_url": "https://www.vidyabalbhawan.in/facilities.php",
+    "note": "The school's website lists Nursery and Pre-Primary admissions and transport routes; CBSE lists it at senior secondary level (Pre-Primary recorded as KG)."
+  },
+  "Rishabh Public School": {
+    "source": "https://rishabhpublicschool.com/contact-us/",
+    "phone": "011-41671411, 9899191245",
+    "email": "rishabhpublicschool@yahoo.co.in",
+    "website_url": "https://rishabhpublicschool.com/"
+  },
+  "Amity International School Mayur Vihar": {
+    "source": "https://amityschools.in/mayur-vihar-phase/contact-us",
+    "phone": "011-22717261",
+    "email": "principal@aismv.amity.edu.in",
+    "website_url": "https://amityschools.in/mayur-vihar-phase/"
+  }
+}

@@ -1,0 +1,793 @@
+{
+  "PM SHRI Kendriya Vidyalaya Andrews Ganj": {
+    "base": "https://andrewsganj.kvs.ac.in",
+    "email": "pmshrikvandrewsganj@kvsrodelhi.in",
+    "phone": "011-26434112",
+    "contactUrl": "https://andrewsganj.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2390,
+    "balvatika": false,
+    "enrolmentUrl": "https://andrewsganj.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "11/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya R. K. Puram Sector 2": {
+    "base": "https://rkpuramsec2.kvs.ac.in",
+    "email": "kvrkpsec2@gmail.com",
+    "phone": "011-20867615",
+    "contactUrl": "https://rkpuramsec2.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2247,
+    "balvatika": false,
+    "enrolmentUrl": "https://rkpuramsec2.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "05/10/2026"
+  },
+  "Kendriya Vidyalaya R. K. Puram Sector 8": {
+    "base": "https://rkpuramsec8.kvs.ac.in",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2222,
+    "balvatika": false,
+    "enrolmentUrl": "https://rkpuramsec8.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya R. K. Puram Sector 4": {
+    "base": "http://rkpuramsec4.kvs.ac.in",
+    "email": "pmshrikvrkuram4@kvsrodelhi.in",
+    "phone": "011-20904205",
+    "contactUrl": "http://rkpuramsec4.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1058,
+    "balvatika": false,
+    "enrolmentUrl": "http://rkpuramsec4.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya INA Colony": {
+    "base": "https://www.inacolony.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya No. 1 Delhi Cantt": {
+    "base": "https://no1delhicantt.kvs.ac.in",
+    "email": "pmshrikvdelhicantt1@kvsrodelhi.in",
+    "phone": "011-25691083",
+    "contactUrl": "https://no1delhicantt.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 3290,
+    "balvatika": true,
+    "enrolmentUrl": "https://no1delhicantt.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "14/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Janakpuri": {
+    "base": "https://www.janakpuri.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya Tagore Garden": {
+    "base": "https://tagoregarden.kvs.ac.in",
+    "email": "pmshrikvtagoregarden@kvsrodelhi.in",
+    "phone": "011-25194036",
+    "contactUrl": "https://tagoregarden.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2572,
+    "balvatika": false,
+    "enrolmentUrl": "https://tagoregarden.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "01/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Gole Market": {
+    "base": "http://golemarket.kvs.ac.in",
+    "email": "ppl.golemarket@kvs.gov.in",
+    "phone": "011-23343374",
+    "contactUrl": "http://golemarket.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2618,
+    "balvatika": false,
+    "enrolmentUrl": "http://golemarket.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "14/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Jharoda Kalan": {
+    "base": "https://jharodakalan.kvs.ac.in",
+    "email": "ppl.jharodakalan@kvs.gov.in",
+    "phone": "011-25315359",
+    "contactUrl": "https://jharodakalan.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1563,
+    "balvatika": false,
+    "enrolmentUrl": "https://jharodakalan.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "03/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Keshavpuram": {
+    "base": "https://keshavpuram.kvs.ac.in",
+    "email": "pmshrikvkeshavpuram@kvsrodelhi.in",
+    "phone": "+919971381123",
+    "contactUrl": "https://keshavpuram.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1026,
+    "balvatika": false,
+    "enrolmentUrl": "https://keshavpuram.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya No. 2 Delhi Cantt": {
+    "base": "https://no2delhicantt.kvs.ac.in",
+    "email": "pmshrikvdelhicantt2@kvsrodelhi.in",
+    "phone": "011-25688853",
+    "contactUrl": "https://no2delhicantt.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 3407,
+    "balvatika": false,
+    "enrolmentUrl": "https://no2delhicantt.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Masjid Moth": {
+    "base": "https://masjidmoth.kvs.ac.in",
+    "email": "pmshrikvmasjidmoth@kvsrodelhi.in",
+    "phone": "011-20887151",
+    "contactUrl": "https://masjidmoth.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1827,
+    "balvatika": false,
+    "enrolmentUrl": "https://masjidmoth.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "14/10/2026"
+  },
+  "Kendriya Vidyalaya NTPC Badarpur": {
+    "base": "https://www.badarpurntpc.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya AGCR Colony": {
+    "base": "https://agcrcolony.kvs.ac.in",
+    "email": "pmshrikvagcrcolony@kvsrodelhi.in",
+    "phone": "011-22374384",
+    "contactUrl": "https://agcrcolony.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1888,
+    "balvatika": false,
+    "enrolmentUrl": "https://agcrcolony.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Shalimar Bagh": {
+    "base": "https://shalimarbagh.kvs.ac.in",
+    "email": "pmshrikvshalimarbagh@kvsrodelhi.in",
+    "phone": "011-46518585",
+    "contactUrl": "https://shalimarbagh.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1730,
+    "balvatika": true,
+    "enrolmentUrl": "https://shalimarbagh.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "24/08/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya AFS Tughlakabad": {
+    "base": "https://tughlakabadafs.kvs.ac.in",
+    "email": "pmshrikvtughlakabad@kvsrodelhi.in",
+    "phone": "+919435361807",
+    "contactUrl": "https://tughlakabadafs.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2143,
+    "balvatika": false,
+    "enrolmentUrl": "https://tughlakabadafs.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya JNU Campus": {
+    "base": "https://newmehrauliroadjnu.kvs.ac.in",
+    "email": "pmshrikvjnu@kvsrodelhi.in",
+    "phone": "9560618796",
+    "contactUrl": "https://newmehrauliroadjnu.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 3949,
+    "balvatika": true,
+    "enrolmentUrl": "https://newmehrauliroadjnu.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "20/09/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya AFS Arjangarh": {
+    "base": "https://arjangarhafs.kvs.ac.in",
+    "email": "pmshrikvafsarjangarh@kvsrodelhi.in",
+    "phone": "011-26503073",
+    "contactUrl": "https://arjangarhafs.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II"
+    ],
+    "studentsEnrolled": 269,
+    "balvatika": true,
+    "enrolmentUrl": "https://arjangarhafs.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Sainik Vihar": {
+    "base": "https://sainikvihar.kvs.ac.in",
+    "email": "pmshrikvsainikvihar@kvsrodelhi.in",
+    "phone": "011-27022979",
+    "contactUrl": "https://sainikvihar.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2122,
+    "balvatika": false,
+    "enrolmentUrl": "https://sainikvihar.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Pushp Vihar": {
+    "base": "https://pushpvihar.kvs.ac.in",
+    "email": "pmshrikvpushpvihar@kvsrodelhi.in",
+    "phone": "011 29553861",
+    "contactUrl": "https://pushpvihar.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2164,
+    "balvatika": false,
+    "enrolmentUrl": "https://pushpvihar.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya No. 3 Delhi Cantt": {
+    "base": "http://no3delhicantt.kvs.ac.in",
+    "email": "pmshrikvdelhicantt3@kvsrodelhi.in",
+    "phone": "11-25693499",
+    "contactUrl": "http://no3delhicantt.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2570,
+    "balvatika": false,
+    "enrolmentUrl": "http://no3delhicantt.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "14/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya NFC Vigyan Vihar": {
+    "base": "https://nfcvigyanvihar.kvs.ac.in",
+    "email": "kvvigyanviharnfc@gmail.com",
+    "phone": "+91-11-22152125",
+    "contactUrl": "https://nfcvigyanvihar.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2303,
+    "balvatika": false,
+    "enrolmentUrl": "https://nfcvigyanvihar.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Pitampura": {
+    "base": "https://www.pitampura.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya AFS Bawana": {
+    "base": "https://bawanaafs.kvs.ac.in",
+    "email": "pmshrikvafsbawana@kvsrodelhi.in",
+    "phone": "011-20873317, 011-20873319",
+    "contactUrl": "https://bawanaafs.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1465,
+    "balvatika": false,
+    "enrolmentUrl": "https://bawanaafs.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya AFS Rajokri": {
+    "base": "https://rajokariafs.kvs.ac.in",
+    "email": "pmshrikvrajokari@kvsrodelhi.in",
+    "phone": "+91-8130322337",
+    "contactUrl": "https://rajokariafs.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 990,
+    "balvatika": false,
+    "enrolmentUrl": "https://rajokariafs.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "25/09/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Vikaspuri": {
+    "base": "https://www.vikaspuri.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya BSF Chhawla": {
+    "base": "https://www.chhawalacampbsf.kvs.ac.in"
+  },
+  "Kendriya Vidyalaya No. 4 Delhi Cantt": {
+    "base": "https://no4delhicantt.kvs.ac.in",
+    "email": "kvdelhicantt4@kvsrodelhi.in",
+    "contactUrl": "https://no4delhicantt.kvs.ac.in/en/contact-us/"
+  },
+  "Kendriya Vidyalaya AAI Rangpuri": {
+    "base": "https://rangpuriaai.kvs.ac.in",
+    "email": "kvrangpuri@kvsrodelhi.in",
+    "phone": "011-26892589",
+    "contactUrl": "https://rangpuriaai.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 621,
+    "balvatika": false,
+    "enrolmentUrl": "https://rangpuriaai.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Paschim Vihar": {
+    "base": "https://www.paschimvihar.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya Rohini Sector 8": {
+    "base": "https://rohinisec8.kvs.ac.in",
+    "email": "pmshrikvrohini8@kvsrodelhi.in",
+    "phone": "011-27944923",
+    "contactUrl": "https://rohinisec8.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1545,
+    "balvatika": false,
+    "enrolmentUrl": "https://rohinisec8.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "05/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Rohini Sector 3": {
+    "base": "https://rohinisec3.kvs.ac.in",
+    "email": "pmshrikvrohini3@kvsrodelhi.in",
+    "phone": "011-27525310",
+    "contactUrl": "https://rohinisec3.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1530,
+    "balvatika": false,
+    "enrolmentUrl": "https://rohinisec3.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "21/09/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Dwarka Sector 5": {
+    "base": "https://www.dwarkasec5.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya Rohini Sector 25": {
+    "base": "https://rohinisec25.kvs.ac.in",
+    "email": "pmshrikvrohini25@kvsrodelhi.in",
+    "contactUrl": "https://rohinisec25.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1169,
+    "balvatika": true,
+    "enrolmentUrl": "https://rohinisec25.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "Kendriya Vidyalaya Rohini Sector 22": {
+    "base": "https://rohinisec22.kvs.ac.in",
+    "email": "kvrohini22@kvsrodelhi.in",
+    "phone": "011-20873022",
+    "contactUrl": "https://rohinisec22.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 990,
+    "balvatika": false,
+    "enrolmentUrl": "https://rohinisec22.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "21/09/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Vasant Kunj": {
+    "base": "https://vasantkunj.kvs.ac.in",
+    "email": "pmshrikvvasantkunj@kvsrodelhi.in",
+    "contactUrl": "https://vasantkunj.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X"
+    ],
+    "studentsEnrolled": 752,
+    "balvatika": false,
+    "enrolmentUrl": "https://vasantkunj.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "06/10/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Narela": {
+    "base": "https://narela.kvs.ac.in",
+    "email": "pmshrikvnarela@gmail.com",
+    "phone": "6826107634",
+    "contactUrl": "https://narela.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1288,
+    "balvatika": true,
+    "enrolmentUrl": "https://narela.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Dwarka Sector 12": {
+    "base": "https://dwarkasec12.kvs.ac.in",
+    "email": "pmshrikvdwarka12@kvsrodelhi.in",
+    "phone": "011-20892759",
+    "contactUrl": "https://dwarkasec12.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2552,
+    "balvatika": false,
+    "enrolmentUrl": "https://dwarkasec12.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "22/09/2026"
+  },
+  "Kendriya Vidyalaya Shakurbasti": {
+    "base": "https://www.shakurbasti.kvs.ac.in"
+  },
+  "PM SHRI Kendriya Vidyalaya Khichripur": {
+    "base": "https://www.khicharipur.kvs.ac.in"
+  },
+  "Kendriya Vidyalaya SPG Dwarka": {
+    "base": "https://dwarkaspg.kvs.ac.in",
+    "email": "kvdwarkaspg@kvsrodelhi.in",
+    "phone": "011-20894099",
+    "contactUrl": "https://dwarkaspg.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 2201,
+    "balvatika": false,
+    "enrolmentUrl": "https://dwarkaspg.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": null
+  },
+  "PM SHRI Kendriya Vidyalaya Rohini Sector 28": {
+    "base": "https://rohinisec28.kvs.ac.in",
+    "email": "pmshrikvrohini28@kvsrodelhi.in",
+    "phone": "011-27575280",
+    "contactUrl": "https://rohinisec28.kvs.ac.in/en/contact-us/"
+  },
+  "Dr. Rajendra Prasad Kendriya Vidyalaya, President Estate": {
+    "base": "https://drrajendraprasadpe.kvs.ac.in",
+    "phone": "011- 23010530",
+    "contactUrl": "https://drrajendraprasadpe.kvs.ac.in/en/contact-us/",
+    "classCodes": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII"
+    ],
+    "studentsEnrolled": 1623,
+    "balvatika": true,
+    "enrolmentUrl": "https://drrajendraprasadpe.kvs.ac.in/en/class-social-category-wise-enrolment-position/",
+    "enrolmentUpdated": "30/09/2026"
+  },
+  "PM SHRI Kendriya Vidyalaya Shahdara": {
+    "base": "https://shahadara.kvs.ac.in",
+    "email": "kvshahdra@kvsrodelhi.in",
+    "phone": "011-2082 7184",
+    "contactUrl": "https://shahadara.kvs.ac.in/en/contact-us/"
+  }
+}
