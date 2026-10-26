@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.SecureRandom;
+import java.time.Duration;
 import java.util.Base64;
 
 /**
@@ -28,6 +29,8 @@ public final class LocalDevApplication {
                 .setPort(Integer.getInteger("isf.pg.port", 54329))
                 .setDataDirectory(dataDir)
                 .setCleanDataDirectory(false)
+                // first start after a rebuild can be slow (OneDrive, antivirus); the library default is 10s
+                .setPGStartupWait(Duration.ofSeconds(Integer.getInteger("isf.pg.startup-wait", 60)))
                 .start();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
