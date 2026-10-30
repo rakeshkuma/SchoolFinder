@@ -45,8 +45,10 @@ public class ReferenceController {
     }
 
     @GetMapping("/stats")
-    public SiteStatsDto stats() {
-        return referenceData.stats();
+    public org.springframework.http.ResponseEntity<SiteStatsDto> stats() {
+        return org.springframework.http.ResponseEntity.ok()
+                .cacheControl(org.springframework.http.CacheControl.maxAge(java.time.Duration.ofMinutes(5)).cachePublic())
+                .body(referenceData.stats());
     }
 
     /** How the directory's default "recommended" order is computed (documentation, not a quality ranking). */

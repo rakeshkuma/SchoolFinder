@@ -31,7 +31,13 @@ import type {
   PracticeSession,
   PracticeSet,
   PracticeSetSummary,
+  BoardingStats,
+  ExternalRankingFacets,
+  ExternalRankingListItem,
   RankingMethodology,
+  RankingPublisher,
+  RankingPublisherKind,
+  RankingScope,
   ResidentialSystem,
   Review,
   ReviewRequest,
@@ -144,11 +150,27 @@ export interface RankingParams {
   size?: number;
 }
 
+export interface ExternalRankingParams {
+  publisher?: string;
+  kind?: RankingPublisherKind;
+  year?: string;
+  category?: string;
+  scope?: RankingScope;
+  region?: string;
+  page?: number;
+  size?: number;
+}
+
 export const rankingService = {
   list: (params: RankingParams) =>
     http.get<PageResponse<SchoolRanking>>('/rankings', { params: cleanParams(params) }).then((r) => r.data),
   top: (limit = 10) => http.get<SchoolRanking[]>('/rankings/top-schools', { params: { limit } }).then((r) => r.data),
   methodology: () => http.get<RankingMethodology>('/rankings/methodology').then((r) => r.data),
+  publishers: () => http.get<RankingPublisher[]>('/rankings/publishers').then((r) => r.data),
+  /** Verified, non-sponsored entries of rankings published by others, grouped by list in rank order. */
+  external: (params: ExternalRankingParams) =>
+    http.get<PageResponse<ExternalRankingListItem>>('/rankings/external', { params: cleanParams(params) }).then((r) => r.data),
+  externalFacets: () => http.get<ExternalRankingFacets>('/rankings/external/facets').then((r) => r.data),
 };
 
 export interface ExamListParams {
@@ -227,6 +249,8 @@ export interface PracticeSessionParams {
 export const boardingService = {
   /** Active boarding schools per residential system; systems without schools are absent. */
   systems: () => http.get<Partial<Record<ResidentialSystem, number>>>('/boarding/systems').then((r) => r.data),
+  /** Active boarding schools by state, gender (as sources state it) and system, for the landing pages. */
+  stats: () => http.get<BoardingStats>('/boarding/stats').then((r) => r.data),
 };
 
 export const locationService = {

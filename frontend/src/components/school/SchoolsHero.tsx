@@ -1,9 +1,10 @@
-import { useEffect, useId, useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
-import { useDebounce } from '../../hooks/useDebounce';
-import { locationService, referenceService, schoolService } from '../../services/publicApi';
+import { rememberSearch } from '../../hooks/usePersonal';
+import { locationService, referenceService } from '../../services/publicApi';
 import { Icon } from '../common/Icon';
+import { SchoolSuggestInput } from './SearchAutocomplete';
 
 export interface HeroSearch {
   q?: string;
@@ -13,8 +14,8 @@ export interface HeroSearch {
 }
 
 /**
- * One school search: name (with live suggestions that open a school directly), state, city and optionally board.
- * Submitting hands the choice to `onSearch`; the form itself never filters anything.
+ * One school search: name (with suggestions of schools and places, and recent searches), state, city and optionally
+ * board. Submitting hands the choice to `onSearch`; the form itself never filters anything.
  */
 export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submitLabel = 'Search', idPrefix = 'hero', stacked = false }: {
   value?: HeroSearch;
@@ -30,43 +31,20 @@ export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submi
   const states = useApi(() => locationService.states(), []);
   const boards = useApi(() => referenceService.boards(), [], withBoard);
   const cities = useApi(() => locationService.cities(draft.state as string), [draft.state], !!draft.state);
-  const q = useDebounce(draft.q ?? '', 250);
-  const suggestions = useApi(() => schoolService.suggest(q.trim(), 6), [q], q.trim().length >= 2);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const listId = useId();
-
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    setShowSuggestions(false);
+    if (draft.q?.trim()) rememberSearch(draft.q.trim());
     onSearch({ q: draft.q?.trim() || undefined, state: draft.state || undefined, city: draft.city || undefined, board: draft.board || undefined });
   };
-  const schools = showSuggestions && q.trim().length >= 2 ? suggestions.data?.schools ?? [] : [];
   const noCities = (cities.data?.length ?? 0) === 0;
 
   return (
     <form onSubmit={submit} role="search" aria-label="Search schools"
       className={`grid gap-3 rounded-3xl bg-white p-3 text-ink shadow-lift ${stacked ? 'sm:grid-cols-[1fr_1fr_auto]'
         : `sm:grid-cols-2 ${withBoard ? 'lg:grid-cols-[2fr_1fr_1fr_1fr_auto]' : 'lg:grid-cols-[2fr_1fr_1fr_auto]'}`}`}>
-      <div className={`relative ${stacked ? 'sm:col-span-3' : ''}`}>
-        <label htmlFor={`${idPrefix}-q`} className="sr-only">School name</label>
-        <Icon name="search" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
-        <input id={`${idPrefix}-q`} className="input h-12 pl-11" placeholder="School name, e.g. Delhi Public School" autoComplete="off"
-          role="combobox" aria-expanded={schools.length > 0} aria-controls={listId} aria-autocomplete="list"
-          value={draft.q ?? ''} onFocus={() => setShowSuggestions(true)} onBlur={() => window.setTimeout(() => setShowSuggestions(false), 150)}
-          onChange={(e) => { setDraft({ ...draft, q: e.target.value }); setShowSuggestions(true); }} />
-        {schools.length > 0 && (
-          <ul id={listId} role="listbox" aria-label="Matching schools"
-            className="absolute inset-x-0 top-full z-20 mt-1 overflow-hidden rounded-2xl border border-slate-200 bg-white py-1 shadow-lift">
-            {schools.map((s) => (
-              <li key={s.id} role="option" aria-selected={false}>
-                <Link to={`/schools/${s.slug}`} className="block px-4 py-2 text-sm hover:bg-brand-50">
-                  <span className="font-semibold text-ink">{s.name}</span>
-                  <span className="block text-xs text-slate-500">{[s.locality, s.city, s.stateCode].filter(Boolean).join(', ')}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className={stacked ? 'sm:col-span-3' : ''}>
+        <SchoolSuggestInput id={`${idPrefix}-q`} value={draft.q ?? ''} onChange={(q) => setDraft({ ...draft, q })}
+          placeholder="School name, city, PIN or UDISE code" />
       </div>
       <label className="sr-only" htmlFor={`${idPrefix}-state`}>State</label>
       <select id={`${idPrefix}-state`} className="input h-12" value={draft.state ?? ''} onChange={(e) => setDraft({ ...draft, state: e.target.value || undefined, city: undefined })}>

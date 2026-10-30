@@ -343,7 +343,7 @@ public class SchoolServiceImpl implements SchoolService {
     public List<ImageDto> images(Long schoolId) {
         requireActive(schoolId);
         return imageRepository.findBySchoolIdAndPermissionStatusInOrderBySortOrderAscIdAsc(schoolId, ImagePermission.PUBLISHABLE)
-                .stream().map(mapper::toImageDto).toList();
+                .stream().map(mapper::toPublicImageDto).toList();
     }
 
     @Override

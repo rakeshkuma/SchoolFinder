@@ -19,9 +19,6 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @EntityGraph(attributePaths = "classesOffered")
     Optional<School> findWithClassesBySlugAndActiveTrue(String slug);
 
-    @EntityGraph(attributePaths = "classesOffered")
-    List<School> findWithClassesByIdIn(Collection<Long> ids);
-
     Optional<School> findByIdAndActiveTrue(Long id);
 
     /** Board codes that have at least one active school (board directory pages listed in the sitemap). */
@@ -34,6 +31,8 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     List<Object[]> findClassesForSchools(@Param("ids") Collection<Long> ids);
 
     boolean existsBySlug(String slug);
+
+    Optional<School> findBySlug(String slug);
 
     /** Same name and PIN in the same state, among schools with no UDISE code or board affiliation (see uk_school_name_pin). */
     @Query("""

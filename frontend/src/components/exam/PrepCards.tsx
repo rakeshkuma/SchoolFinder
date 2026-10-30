@@ -19,6 +19,7 @@ const session = (p: Record<string, string>) => `/exams/practice/session?${new UR
 const EXAM_CARDS: PrepCard[] = [
   { to: '/exams/jnvst', title: 'JNVST', text: 'Navodaya Class VI entrance: guide and mock tests', icon: 'graduation', tone: 'from-brand-600 to-brand-400', count: (q) => q.examSlug === 'jnvst' },
   { to: '/exams/aissee', title: 'Sainik School', text: 'AISSEE Class VI and IX practice', icon: 'flag', tone: 'from-emerald-600 to-emerald-400', count: (q) => q.examSlug === 'aissee' },
+  { to: '/exams/netarhat', title: 'Netarhat', text: 'Class 6 entrance: all five Paper 1 subjects, in Hindi and English', icon: 'home', tone: 'from-teal-600 to-teal-400', count: (q) => q.examSlug === 'netarhat' },
   { to: '/exams/practice/class10-maths-1', title: 'CBSE Class 10', text: 'Mathematics, chapter by chapter, in English and Hindi', icon: 'book', tone: 'from-violet-600 to-violet-400', count: (q) => q.category === 'SCHOOL' && q.level === 'Class X' },
   { to: '/exams/practice/class12-maths-1', title: 'CBSE Class 12', text: 'Mathematics and Physics, chapter by chapter', icon: 'layers', tone: 'from-rose-600 to-rose-400', count: (q) => q.category === 'SCHOOL' && q.level === 'Class XII' },
   { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiads', text: 'Original Olympiad-style questions', icon: 'trophy', tone: 'from-accent-600 to-accent-400', count: (q) => q.category === 'OLYMPIAD' },
@@ -52,7 +53,7 @@ export function PrepCards() {
         <h2 id="prep-cards-heading" className="section-title mt-2">Start preparing</h2>
         <p className="mt-1 text-sm text-slate-600">Original practice questions with explanations — free and no sign-in needed. Not official or previous-year questions.</p>
       </div>
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {EXAM_CARDS.map((c) => (
           <li key={c.title}>
             <Link to={c.to} className={`flex h-full flex-col rounded-3xl bg-gradient-to-br ${c.tone} p-5 text-white shadow-card transition hover:-translate-y-0.5 hover:shadow-lift`}>

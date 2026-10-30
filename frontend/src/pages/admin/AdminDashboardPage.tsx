@@ -5,6 +5,40 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { adminService } from '../../services/adminApi';
 import { formatDate } from '../../utils/format';
 
+/** Work waiting for a person: nothing in these queues is shown publicly until someone approves it. */
+function ReviewQueues() {
+  const queues = useApi(async () => {
+    const [docs, rankings, duplicates] = await Promise.all([
+      adminService.documents({ status: 'PENDING_REVIEW', size: 1 }),
+      adminService.externalRankings({ status: 'UNVERIFIED', size: 1 }),
+      adminService.duplicates(),
+    ]);
+    return { docs: docs.totalElements, rankings: rankings.totalElements, duplicates: duplicates.groups.length };
+  }, []);
+  const q = queues.data;
+  const items: [string, number | undefined, string][] = [
+    ['Notices to review', q?.docs, '/admin/documents'],
+    ['Published-ranking entries to check', q?.rankings, '/admin/external-rankings'],
+    ['Possible duplicate schools', q?.duplicates, '/admin/duplicates'],
+  ];
+  return (
+    <section aria-labelledby="queues" className="card p-4">
+      <h2 id="queues" className="font-semibold">Waiting for review</h2>
+      <p className="text-xs text-slate-500">School photos waiting for approval are on <Link className="link" to="/admin/images">School images</Link>, school by school.</p>
+      <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+        {items.map(([label, n, to]) => (
+          <li key={to}>
+            <Link to={to} className="card card-hover block p-3">
+              <span className={`block text-2xl font-bold ${n ? 'text-amber-700' : 'text-slate-400'}`}>{n ?? '…'}</span>
+              <span className="text-sm text-slate-600">{label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export function AdminDashboardPage() {
   useDocumentTitle('Admin · Data quality');
   const state = useApi(() => adminService.dataQuality(), []);
@@ -16,6 +50,7 @@ export function AdminDashboardPage() {
             <h1 className="text-2xl font-bold">Data quality</h1>
             <p className="text-xs text-slate-500">Generated {formatDate(r.generatedAt)} · academic year {r.currentAcademicYear}</p>
           </div>
+          <ReviewQueues />
           <dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {[
               ['Active schools', r.activeSchools, ''],

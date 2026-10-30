@@ -291,6 +291,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
   const yesNo = (v: boolean | null) => (v === null ? null : formatYesNo(v));
   // [label, value]; null = not published by any source yet.
   const facts: [string, string | null][] = [
+    ['School category', schoolTypeLabel[s.schoolType]],
     ['Management', s.management ? managementLabel[s.management] : null],
     ['Run by (trust / society)', s.managingBody],
     ['Principal / head', s.principalName],
@@ -303,12 +304,12 @@ function Overview({ school: s }: { school: SchoolDetail }) {
       ? `${s.classesOffered[0].name} to ${s.classesOffered[s.classesOffered.length - 1].name} (${s.classesOffered.length} levels listed)`
       : null],
     ['Medium of instruction', s.mediumOfInstruction],
-    ['Co-education', s.genderType ? genderLabel[s.genderType] : null],
+    ['Gender', s.genderType ? genderLabel[s.genderType] : null],
     ['Established', s.establishedYear !== null ? String(s.establishedYear) : null],
     ['School timings', s.schoolTimings],
     ['Student–teacher ratio', s.studentTeacherRatio ? `${s.studentTeacherRatio} : 1` : null],
     ['Transport', yesNo(s.hasTransport)],
-    ['Hostel / boarding', yesNo(s.hasHostel)],
+    ['Day or boarding', s.hasHostel === null ? null : s.hasHostel ? 'Boarding (hostel available)' : 'Day school'],
     ['Accessibility', s.accessibilityFeatures],
   ];
   const known = facts.filter(([, v]) => v !== null && v !== '');
@@ -336,6 +337,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
         )}
       </section>
       <aside className="space-y-4">
+        <RankingSummary schoolId={s.id} />
         <section className="card p-5">
           <h2 className="font-semibold">Contact</h2>
           <p className="mt-1 text-xs text-slate-500">Publicly listed by the school.</p>
@@ -610,6 +612,41 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
   );
 }
 
+/**
+ * Ranking information at a glance: our evidence-based status and any published ranking verified by an editor. A school
+ * missing from published rankings says "Not listed" — never an estimated position.
+ */
+function RankingSummary({ schoolId }: { schoolId: number }) {
+  const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
+  const r = state.data;
+  if (!r) return null;
+  // The API returns verified entries only; paid or featured listings are not rankings.
+  const published = r.externalRankings.filter((e) => !e.sponsored);
+  return (
+    <section className="card p-5 text-sm">
+      <h2 className="font-semibold">Rankings</h2>
+      <p className="mt-2 text-slate-700">
+        <span className="text-slate-500">India School Finder score: </span>
+        {r.siteRanking?.rankPosition ? `Rank #${r.siteRanking.rankPosition} in India (${r.siteRanking.totalScore.toFixed(1)}/100)`
+          : r.siteRanking ? `Provisional (${r.siteRanking.totalScore.toFixed(1)}/100, not enough verified evidence for a rank)`
+            : 'Not yet ranked'}
+      </p>
+      <p className="mt-2 text-slate-500">Published rankings:</p>
+      {published.length === 0 ? <p className="text-slate-700">Not listed in any published ranking we have verified.</p> : (
+        <ul className="mt-1 space-y-1">
+          {published.map((e) => (
+            <li key={e.id} className="text-slate-700">
+              <strong className="text-ink">{e.rankPosition ? `#${e.rankPosition}` : 'Listed'}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
+              {(e.category || e.region) && <span className="text-slate-500"> ({[e.category, e.region].filter(Boolean).join(', ')})</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+      <Link to="?tab=ranking" className="link mt-2 inline-block">Ranking details and sources →</Link>
+    </section>
+  );
+}
+
 function RankingTab({ schoolId }: { schoolId: number }) {
   const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
   return (
@@ -649,13 +686,17 @@ function RankingTab({ schoolId }: { schoolId: number }) {
           <section className="card p-6">
             <h2 className="font-semibold">Independently published rankings</h2>
             {r.externalRankings.length === 0 ? (
-              <p className="mt-2 text-sm text-slate-600">None recorded.</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Not listed in any published ranking we have checked. <Link to="/rankings/published" className="link">Published rankings</Link>
+              </p>
             ) : (
               <ul className="mt-3 divide-y divide-slate-100 text-sm">
                 {r.externalRankings.map((e) => (
                   <li key={e.id} className="py-2">
                     <span className="font-medium">{e.publisher}</span> — {e.rankingName} ({e.rankingYear})
-                    {e.category && `, ${e.category}`}: {e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
+                    {e.category && `, ${e.category}`}{e.region && `, ${e.region}`}:{' '}
+                    {e.sponsored ? <span className="chip bg-amber-50 text-amber-900">Sponsored listing, not a ranking</span>
+                      : e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
                     <SourceLink url={e.sourceUrl} />
                   </li>
                 ))}

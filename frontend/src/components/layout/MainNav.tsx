@@ -63,44 +63,27 @@ export const MENUS: NavMenu[] = [
         title: 'Boarding schools',
         items: [
           { to: '/boarding#top-boarding', label: 'Best boarding schools in India', icon: 'trophy' },
-          { to: '/boarding#directory', label: 'Boarding schools by state', icon: 'map', hint: 'Choose a state in the directory' },
-          { to: '/boarding?system=government#directory', label: 'Government boarding schools', icon: 'shield' },
-          { to: '/boarding?system=private#directory', label: 'Private boarding schools', icon: 'building' },
+          { to: '/boarding/government', label: 'Government boarding schools', icon: 'shield' },
+          { to: '/boarding/private', label: 'Private boarding schools', icon: 'building' },
+          { to: '/boarding/india', label: 'Boarding schools by state', icon: 'map', hint: 'All of India, state by state' },
+          { to: '/boarding/affordable', label: 'Affordable boarding schools', icon: 'rupee', hint: 'Published fee up to ₹1.5 lakh' },
         ],
       },
       {
-        title: 'School systems',
+        title: 'Boys, girls or co-ed',
         items: [
-          { to: '/network/jawahar-navodaya-vidyalaya', label: 'Jawahar Navodaya Vidyalaya', icon: 'graduation' },
+          { to: '/boarding/boys', label: 'Boys boarding schools', icon: 'users' },
+          { to: '/boarding/girls', label: 'Girls boarding schools', icon: 'users' },
+          { to: '/boarding/co-ed', label: 'Co-ed boarding schools', icon: 'users' },
+        ],
+      },
+      {
+        title: 'Residential systems',
+        items: [
+          { to: '/schools/netarhat-awasiya-vidyalaya', label: 'Netarhat Awasiya Vidyalaya', icon: 'graduation' },
+          { to: '/network/jawahar-navodaya-vidyalaya', label: 'Jawahar Navodaya Vidyalayas', icon: 'graduation' },
           { to: '/boarding?system=SAINIK#directory', label: 'Sainik Schools', icon: 'flag' },
           { to: '/admissions/guide#hostel', label: 'School hostel information', icon: 'info', hint: 'What to check before you apply' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Exam preparation', icon: 'target', match: ['/exams'],
-    sections: [
-      {
-        title: 'Prepare for',
-        items: [
-          { to: '/exams/practice?category=SCHOOL', label: 'School subjects (CBSE syllabus)', icon: 'book', hint: 'Classes VIII, X and XII' },
-          { to: '/exams/practice/class10-maths-1', label: 'Class 10 preparation', icon: 'book', hint: 'Mathematics, English and Hindi' },
-          { to: '/exams/practice/class12-maths-1', label: 'Class 12 preparation', icon: 'layers', hint: 'Mathematics and Physics' },
-          { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation' },
-          { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag' },
-          { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy' },
-          { to: '/exams/practice?category=COMPETITIVE', label: 'Government & competitive exams', icon: 'layers' },
-          { to: '/exams', label: 'All school entrance exams', icon: 'calendar' },
-        ],
-      },
-      {
-        title: 'Practise',
-        items: [
-          { to: '/exams/practice', label: 'Mock tests & practice questions', icon: 'target' },
-          { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz', icon: 'sun', hint: 'Ten questions, new every day' },
-          { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous year papers', icon: 'file', hint: 'Official papers, linked' },
-          { to: '/exams/practice/progress', label: 'My progress', icon: 'chart' },
         ],
       },
     ],
@@ -111,19 +94,58 @@ export const MENUS: NavMenu[] = [
       {
         title: 'Top schools',
         items: [
-          { to: '/rankings?size=10', label: 'Top 10 schools in India', icon: 'trophy' },
-          { to: '/rankings', label: 'Top 20 schools in India', icon: 'trophy' },
-          { to: '/rankings?size=100', label: 'Top 100 schools in India', icon: 'trophy' },
-          { to: '/rankings?focus=place', label: 'Rankings by state or city', icon: 'map' },
+          { to: '/rankings?size=100', label: "India's top schools", icon: 'trophy', hint: 'Top 10, 20 or 100' },
+          { to: '/rankings?focus=place', label: 'State-wise and city-wise rankings', icon: 'map' },
+          { to: '/rankings?schoolType=GOVERNMENT', label: 'Government school rankings', icon: 'shield' },
+          { to: '/rankings?boarding=true', label: 'Boarding school rankings', icon: 'home' },
         ],
       },
       {
-        title: 'By category',
+        title: 'By board',
         items: [
           { to: '/rankings?board=CBSE', label: 'CBSE school rankings', icon: 'book' },
           { to: '/rankings?board=CISCE', label: 'ICSE school rankings', icon: 'book' },
-          { to: '/rankings?boarding=true', label: 'Boarding school rankings', icon: 'home' },
-          { to: '/rankings/methodology', label: 'How rankings work', icon: 'info' },
+          { to: '/rankings/methodology', label: 'Ranking sources and method', icon: 'info', hint: 'What evidence counts, and how' },
+        ],
+      },
+      {
+        title: 'Published by others',
+        items: [
+          { to: '/rankings/published', label: 'Published school rankings', icon: 'list', hint: 'EducationWorld, C fore, WIRanking …' },
+          { to: '/rankings/published?kind=GREEN', label: 'Green school rankings', icon: 'sun' },
+          { to: '/rankings/compare', label: 'Compare school rankings', icon: 'columns' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Exam preparation', icon: 'target', match: ['/exams'],
+    sections: [
+      {
+        title: 'Entrance exams',
+        items: [
+          { to: '/exams/netarhat', label: 'Netarhat entrance exam', icon: 'graduation', hint: 'Netarhat Awasiya Vidyalaya, Class VI' },
+          { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation' },
+          { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag' },
+          { to: '/exams', label: 'Other entrance exams', icon: 'calendar' },
+        ],
+      },
+      {
+        title: 'School and other exams',
+        items: [
+          { to: '/exams/practice/class10-maths-1', label: 'Class 10 preparation', icon: 'book', hint: 'Mathematics, English and Hindi' },
+          { to: '/exams/practice/class12-maths-1', label: 'Class 12 preparation', icon: 'layers', hint: 'Mathematics and Physics' },
+          { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy' },
+          { to: '/exams/practice?category=COMPETITIVE', label: 'Government & competitive exams', icon: 'layers' },
+        ],
+      },
+      {
+        title: 'Practise',
+        items: [
+          { to: '/exams/practice', label: 'Mock tests & practice questions', icon: 'target' },
+          { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz', icon: 'sun', hint: 'Ten questions, new every day' },
+          { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous year papers', icon: 'file', hint: 'Official papers, linked' },
+          { to: '/exams/practice/progress', label: 'My progress', icon: 'chart' },
         ],
       },
     ],
@@ -172,6 +194,10 @@ export function DesktopNav() {
 
   return (
     <nav ref={navRef} aria-label="Main" className="hidden min-w-0 items-center gap-0.5 xl:flex">
+      <NavLink to="/" end
+        className={({ isActive }) => `whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
+        Home
+      </NavLink>
       {MENUS.map((m, i) => (
         <Dropdown key={m.label} menu={m} align={i === 0 ? 'left' : i === MENUS.length - 1 ? 'right' : 'center'}
           open={open === m.label} active={menuIsActive(m, location.pathname)}
@@ -180,7 +206,7 @@ export function DesktopNav() {
       ))}
       <NavLink to="/compare"
         className={({ isActive }) => `whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
-        Compare
+        Compare Schools
       </NavLink>
     </nav>
   );
@@ -266,6 +292,10 @@ export function MobileNav() {
   const [open, setOpen] = useState<string | null>(() => MENUS.find((m) => menuIsActive(m, location.pathname))?.label ?? null);
   return (
     <div className="divide-y divide-slate-100">
+      <Link to="/" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="home" className="h-4 w-4" /></span>
+        Home
+      </Link>
       {MENUS.map((m) => {
         const expanded = open === m.label;
         const id = `mnav-${m.label.replace(/\s+/g, '-').toLowerCase()}`;

@@ -38,7 +38,8 @@ public class SitemapController {
 
     static final int SCHOOLS_PER_FILE = 40_000;
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
-            "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
+            "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
+            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/published", "/rankings/compare", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
@@ -47,9 +48,11 @@ public class SitemapController {
     private final ExamRepository examRepository;
     private final LocationService locationService;
     private final AppProperties properties;
+    private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
-                             AppProperties properties) {
+                             AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository) {
+        this.practiceSetRepository = practiceSetRepository;
         this.schoolRepository = schoolRepository;
         this.examRepository = examRepository;
         this.locationService = locationService;
@@ -129,6 +132,10 @@ public class SitemapController {
             if (stateCodes.contains(state.code())) {
                 url(xml, base + "/exams/state/" + state.slug(), null);
             }
+        }
+        // Published practice sets (original questions); sittings, attempts and progress stay out (robots.txt).
+        for (var set : practiceSetRepository.findByPublishedTrueOrderByDisplayOrderAscTitleAsc()) {
+            url(xml, base + "/exams/practice/" + set.getSlug(), set.getUpdatedAt());
         }
         return xml(xml.append("</urlset>\n"));
     }

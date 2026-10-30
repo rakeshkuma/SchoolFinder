@@ -19,19 +19,34 @@ import type {
   FacilityQueueItem,
   Fee,
   FeeRequest,
+  DocumentStatus,
+  DocumentUploadRequest,
+  DuplicateReport,
+  ExternalRanking,
+  ExternalRankingListItem,
+  ExternalRankingRequest,
+  ImageCandidate,
   ImageRequest,
+  ImagePermission,
+  ImageUpdateRequest,
   PageResponse,
   RankingMethodology,
+  RankingPublisher,
+  RankingPublisherRequest,
+  RankingPublisherKind,
   Review,
   ReviewStatus,
   SchoolDetail,
   SchoolImage,
   SchoolRequest,
   SchoolSummary,
+  SourceDocumentDetail,
+  SourceDocumentSummary,
   SubmissionStatus,
   TokenResponse,
   UpdateSubmission,
   VerificationHistory,
+  VerificationStatus,
   VerifyRequest,
 } from '../types/api';
 
@@ -68,6 +83,57 @@ export const adminService = {
     return http.post<SchoolImage>(`/admin/schools/${id}/images`, form).then((r) => r.data);
   },
   deleteImage: (id: number, imageId: number) => http.delete(`/admin/schools/${id}/images/${imageId}`),
+  imageCandidates: (id: number, q?: string) =>
+    http
+      .get<ImageCandidate[]>(`/admin/schools/${id}/images/candidates`, { params: cleanParams({ q, limit: 24 }) })
+      .then((r) => r.data),
+  updateImage: (id: number, imageId: number, body: ImageUpdateRequest) =>
+    http.put<SchoolImage>(`/admin/schools/${id}/images/${imageId}`, body).then((r) => r.data),
+  approveImage: (id: number, imageId: number, permissionStatus: ImagePermission, note?: string) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/approve`, { permissionStatus, note }).then((r) => r.data),
+  rejectImage: (id: number, imageId: number, reason: string) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/reject`, { reason }).then((r) => r.data),
+  makePrimaryImage: (id: number, imageId: number) =>
+    http.post<SchoolImage[]>(`/admin/schools/${id}/images/${imageId}/primary`).then((r) => r.data),
+  refreshImage: (id: number, imageId: number) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/refresh`).then((r) => r.data),
+  rankingPublishers: () => http.get<RankingPublisher[]>('/admin/ranking-publishers').then((r) => r.data),
+  saveRankingPublisher: (code: string, body: RankingPublisherRequest) =>
+    http.put<RankingPublisher>(`/admin/ranking-publishers/${encodeURIComponent(code)}`, body).then((r) => r.data),
+  externalRankings: (params: { publisher?: string; kind?: RankingPublisherKind; year?: string; status?: VerificationStatus; schoolId?: number; page?: number; size?: number }) =>
+    http
+      .get<PageResponse<ExternalRankingListItem>>('/admin/external-rankings', { params: cleanParams(params) })
+      .then((r) => r.data),
+  addExternalRanking: (schoolId: number, body: ExternalRankingRequest) =>
+    http.post<ExternalRanking>(`/admin/schools/${schoolId}/external-rankings`, body).then((r) => r.data),
+  updateExternalRanking: (id: number, body: ExternalRankingRequest) =>
+    http.put<ExternalRanking>(`/admin/external-rankings/${id}`, body).then((r) => r.data),
+  verifyExternalRanking: (id: number, status: VerificationStatus, note?: string) =>
+    http.post<ExternalRanking>(`/admin/external-rankings/${id}/verify`, { status, note }).then((r) => r.data),
+  deleteExternalRanking: (id: number) => http.delete(`/admin/external-rankings/${id}`),
+  documents: (params: { status?: DocumentStatus; schoolId?: number; page?: number; size?: number }) =>
+    http.get<PageResponse<SourceDocumentSummary>>('/admin/documents', { params: cleanParams(params) }).then((r) => r.data),
+  document: (id: number) => http.get<SourceDocumentDetail>(`/admin/documents/${id}`).then((r) => r.data),
+  uploadDocument: (file: File, metadata: DocumentUploadRequest) => {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+    return http.post<SourceDocumentDetail>('/admin/documents', form).then((r) => r.data);
+  },
+  /** A page as a PNG blob (the request needs the admin token, so it cannot be a plain image URL). */
+  documentPage: (id: number, page: number) =>
+    http.get<Blob>(`/admin/documents/${id}/pages/${page}`, { responseType: 'blob', headers: { Accept: 'image/png' } }).then((r) => r.data),
+  reviewDocument: (id: number, body: { status: DocumentStatus; reviewedText?: string | null; note?: string | null }) =>
+    http.put<SourceDocumentDetail>(`/admin/documents/${id}/review`, body).then((r) => r.data),
+  rerunOcr: (id: number) => http.post<SourceDocumentDetail>(`/admin/documents/${id}/ocr`).then((r) => r.data),
+  deleteDocument: (id: number) => http.delete(`/admin/documents/${id}`),
+  duplicates: () => http.get<DuplicateReport>('/admin/duplicates').then((r) => r.data),
+  dismissDuplicates: (schoolIds: number[], note?: string) => http.post('/admin/duplicates/dismiss', { schoolIds, note }),
+  importExternalRankings: (file: File, mode: string) => {
+    const form = new FormData();
+    form.append('file', file);
+    return http.post<CsvImportResult>('/admin/import/external-rankings', form, { params: { mode } }).then((r) => r.data);
+  },
   verify: (id: number, body: VerifyRequest) =>
     http.post<VerificationHistory>(`/admin/schools/${id}/verify`, body).then((r) => r.data),
   verifyBatch: (id: number, body: BatchVerifyRequest) =>

@@ -21,7 +21,9 @@ export type RequirementType = 'DOCUMENT' | 'ELIGIBILITY' | 'SELECTION_CRITERION'
 export type FacilityCategory =
   | 'SPORTS' | 'LIBRARY' | 'LABORATORY' | 'COMPUTER' | 'TRANSPORT' | 'HOSTEL'
   | 'ACCESSIBILITY' | 'EXTRACURRICULAR' | 'ARTS' | 'HEALTH' | 'OTHER';
-export type ImageType = 'LOGO' | 'CAMPUS' | 'CLASSROOM' | 'LABORATORY' | 'LIBRARY' | 'SPORTS' | 'EVENT' | 'OTHER';
+export type ImageType =
+  | 'LOGO' | 'CAMPUS' | 'MAIN_BUILDING' | 'CLASSROOM' | 'HOSTEL' | 'LIBRARY' | 'PLAYGROUND' | 'LABORATORY' | 'SPORTS'
+  | 'EVENT' | 'ACTIVITIES' | 'OTHER';
 export type SchoolStage = 'PRE_PRIMARY' | 'PRIMARY' | 'MIDDLE' | 'SECONDARY' | 'SENIOR_SECONDARY';
 export type ReviewStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
 export type ReviewerRelationship = 'PARENT' | 'GUARDIAN' | 'ALUMNUS' | 'OTHER';
@@ -382,6 +384,16 @@ export interface SchoolImage {
   sortOrder: number;
   verificationStatus: VerificationStatus;
   lastVerifiedDate: string | null;
+  /** The author or photographer as named at the source. */
+  author: string | null;
+  /** The title at the source, e.g. the Commons file name. */
+  title: string | null;
+  /** Host of the source page, e.g. commons.wikimedia.org. */
+  sourceWebsite: string | null;
+  /** Admin only: who granted permission, or why the image was rejected. */
+  permissionNote: string | null;
+  /** When it was added here. */
+  createdAt: string | null;
 }
 
 export interface Fee {
@@ -557,6 +569,14 @@ export interface ExternalRanking {
   sourceUrl: string;
   retrievedDate: string;
   verificationStatus: VerificationStatus;
+  publisherCode: string | null;
+  scope: RankingScope;
+  /** The state or city a STATE or CITY list covers. */
+  region: string | null;
+  /** A paid or "featured" listing: never shown as a ranking position. */
+  sponsored: boolean;
+  notes: string | null;
+  lastVerifiedDate: string | null;
 }
 
 export interface SchoolRankingDetail {
@@ -716,6 +736,44 @@ export interface ImageRequest {
   illustrative?: boolean;
   sourceUrl: string;
   sortOrder?: number | null;
+  author?: string | null;
+  title?: string | null;
+  width?: number | null;
+  height?: number | null;
+}
+
+/** A possible photograph from Wikimedia Commons or Wikipedia. Nothing is stored until it is added (as PENDING). */
+export interface ImageCandidate {
+  source: string;
+  title: string;
+  pageUrl: string | null;
+  imageUrl: string;
+  thumbnailUrl: string | null;
+  width: number | null;
+  height: number | null;
+  mime: string;
+  author: string | null;
+  licence: string | null;
+  licenceUrl: string | null;
+  attributionRequired: boolean;
+  description: string | null;
+  /** Null when the licence does not allow reuse here. */
+  suggestedPermission: ImagePermission | null;
+  attributionText: string | null;
+  alreadyAdded: boolean;
+}
+
+export interface ImageUpdateRequest {
+  imageType: ImageType;
+  caption: string | null;
+  altText: string;
+  author: string | null;
+  title: string | null;
+  credit: string | null;
+  license: string;
+  attributionText: string | null;
+  permissionStatus: ImagePermission;
+  permissionNote: string | null;
 }
 
 export interface VerifyRequest {
@@ -1162,4 +1220,125 @@ export interface ExamResource {
   url: string | null;
   path: string | null;
   lastVerifiedOn: string | null;
+}
+
+export type RankingScope = 'NATIONAL' | 'STATE' | 'CITY';
+export type RankingPublisherKind = 'SURVEY' | 'AWARD' | 'GREEN' | 'OTHER';
+
+/** A publisher of school rankings, surveys, awards or green-school ratings. */
+export interface RankingPublisher {
+  id: number;
+  code: string;
+  name: string;
+  kind: RankingPublisherKind;
+  websiteUrl: string | null;
+  methodologyUrl: string | null;
+  description: string | null;
+  active: boolean;
+  /** Checked, non-sponsored entries on this site. */
+  verifiedEntries: number;
+}
+
+export interface RankingPublisherRequest {
+  name: string;
+  kind: RankingPublisherKind;
+  websiteUrl: string | null;
+  methodologyUrl: string | null;
+  description: string | null;
+  active: boolean;
+}
+
+/** A published-ranking entry with its school, for lists across schools. */
+export interface ExternalRankingListItem {
+  entry: ExternalRanking;
+  schoolId: number;
+  schoolName: string | null;
+  schoolSlug: string | null;
+  city: string | null;
+  stateCode: string | null;
+}
+
+export interface ExternalRankingFacets {
+  years: string[];
+  categories: string[];
+}
+
+export interface ExternalRankingRequest {
+  publisherCode?: string | null;
+  publisher?: string | null;
+  rankingName: string;
+  rankingYear: string;
+  category?: string | null;
+  scope?: RankingScope;
+  region?: string | null;
+  rankPosition?: number | null;
+  scoreText?: string | null;
+  sponsored?: boolean;
+  notes?: string | null;
+  sourceUrl: string;
+  retrievedDate: string;
+}
+
+/** Active boarding schools; genderNotStated counts schools whose sources do not say who they admit. */
+export interface BoardingStats {
+  total: number;
+  byState: Record<string, number>;
+  byGender: Partial<Record<GenderType, number>>;
+  genderNotStated: number;
+  bySystem: Partial<Record<ResidentialSystem, number>>;
+}
+
+export type DocumentStatus = 'PENDING_REVIEW' | 'VERIFIED' | 'REJECTED';
+export type ExtractionMethod = 'TEXT_LAYER' | 'OCR' | 'NONE';
+
+/** An official notice uploaded for review. */
+export interface SourceDocumentSummary {
+  id: number;
+  title: string;
+  sourceUrl: string;
+  schoolId: number | null;
+  schoolName: string | null;
+  examSlug: string | null;
+  publishedOn: string | null;
+  fileName: string;
+  contentType: string;
+  sizeBytes: number;
+  pageCount: number;
+  extractionMethod: ExtractionMethod;
+  status: DocumentStatus;
+  createdAt: string;
+  reviewedBy: string | null;
+  reviewedAt: string | null;
+}
+
+export interface SourceDocumentDetail {
+  document: SourceDocumentSummary;
+  extractedText: string | null;
+  reviewedText: string | null;
+  reviewNote: string | null;
+  ocrAvailable: boolean;
+}
+
+export interface DocumentUploadRequest {
+  title: string;
+  sourceUrl: string;
+  schoolId?: number | null;
+  examSlug?: string | null;
+  publishedOn?: string | null;
+}
+
+export type DuplicateReason = 'SAME_NAME_IN_DISTRICT' | 'SAME_PHONE' | 'SAME_LOCATION' | 'SAME_PHOTO';
+
+export interface DuplicateGroup {
+  reason: DuplicateReason;
+  detail: string;
+  schools: {
+    id: number; name: string; slug: string; city: string | null; stateCode: string; pinCode: string | null;
+    boardCode: string | null; affiliationNumber: string | null; udiseCode: string | null;
+  }[];
+}
+
+export interface DuplicateReport {
+  groups: DuplicateGroup[];
+  counts: Record<DuplicateReason, number>;
 }
