@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
 import type { ApiErrorBody } from '../types/api';
 
 const TOKEN_KEY = 'dsf.admin.token';
@@ -39,6 +39,21 @@ export const http = axios.create({
   paramsSerializer: { indexes: null },
 });
 
+// Identical GETs already in flight share one network request instead of hitting the API again.
+const inflight = new Map<string, Promise<AxiosResponse>>();
+const networkAdapter = axios.getAdapter(axios.defaults.adapter);
+http.defaults.adapter = (config) => {
+  if ((config.method ?? 'get').toLowerCase() !== 'get') return networkAdapter(config);
+  const key = `${http.getUri(config)}|${String(config.headers?.Authorization ?? '')}`;
+  const pending = inflight.get(key);
+  // Each caller gets its own response object: axios transforms response.data in place after the adapter.
+  const share = (p: Promise<AxiosResponse>) => p.then((r) => ({ ...r, config }));
+  if (pending) return share(pending);
+  const request = networkAdapter(config).finally(() => inflight.delete(key));
+  inflight.set(key, request);
+  return share(request);
+};
+
 http.interceptors.request.use((config) => {
   const token = tokenStore.get();
   if (token && config.url?.startsWith('/admin')) {
@@ -53,9 +68,30 @@ export function setUnauthorizedListener(listener: UnauthorizedListener | null) {
   onUnauthorized = listener;
 }
 
+/** Temporary failures worth retrying: no response at all, or a gateway/unavailable answer. */
+const RETRYABLE_STATUS = new Set([502, 503, 504]);
+const RETRY_DELAYS_MS = [700, 2000];
+
+type RetriableConfig = InternalAxiosRequestConfig & { retryCount?: number };
+
+function shouldRetry(error: AxiosError): boolean {
+  const config = error.config as RetriableConfig | undefined;
+  // Only reads are retried: repeating a write could apply it twice.
+  if (!config || (config.method ?? 'get').toLowerCase() !== 'get') return false;
+  if ((config.retryCount ?? 0) >= RETRY_DELAYS_MS.length || axios.isCancel(error)) return false;
+  return error.response ? RETRYABLE_STATUS.has(error.response.status) : error.code !== 'ECONNABORTED';
+}
+
 http.interceptors.response.use(
   (response) => response,
-  (error: AxiosError<ApiErrorBody>) => {
+  async (error: AxiosError<ApiErrorBody>) => {
+    if (shouldRetry(error)) {
+      const config = error.config as RetriableConfig;
+      const attempt = config.retryCount ?? 0;
+      config.retryCount = attempt + 1;
+      await new Promise((resolve) => setTimeout(resolve, RETRY_DELAYS_MS[attempt]));
+      return http(config);
+    }
     if (error.response?.status === 401 && error.config?.url?.startsWith('/admin')) {
       tokenStore.clear();
       onUnauthorized?.();
@@ -77,12 +113,27 @@ export class ApiError extends Error {
   }
 }
 
+/** Plain-language fallback for each status, used when the server sends no message of its own. */
+export function statusMessage(status: number): string {
+  if (status === 400) return 'Some of the details sent were not valid. Check them and try again.';
+  if (status === 401) return 'Please sign in to continue.';
+  if (status === 403) return 'You do not have permission to view this.';
+  if (status === 404) return 'We could not find what you were looking for. It may have moved or been removed.';
+  if (status === 409) return 'This conflicts with information that already exists.';
+  if (status === 429) return 'Too many requests in a short time. Please wait a moment and try again.';
+  if (status === 502 || status === 503 || status === 504) return 'The service is temporarily unavailable. Please try again shortly.';
+  if (status >= 500) return 'Something went wrong on our side. Please try again in a moment.';
+  return 'The request could not be completed. Please try again.';
+}
+
 function toApiError(error: AxiosError<ApiErrorBody>): ApiError {
   if (error.response) {
-    const body = error.response.data;
-    const message = body?.message ?? `Request failed (${error.response.status})`;
+    const { status, data } = error.response;
+    const body = data && typeof data === 'object' ? data : undefined;
+    // API messages are written for users; an unexpected server error (500) gets the plain-language wording instead.
+    const message = status !== 500 && body?.message ? body.message : statusMessage(status);
     const code = body?.error && /^[A-Z][A-Z_]+$/.test(body.error) ? body.error : undefined;
-    return new ApiError(message, error.response.status, body?.fieldErrors ?? [], code);
+    return new ApiError(message, status, body?.fieldErrors ?? [], code);
   }
   if (error.code === 'ECONNABORTED') {
     return new ApiError('The server took too long to respond. Please try again.', 0);

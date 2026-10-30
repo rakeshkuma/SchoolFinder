@@ -1,42 +1,41 @@
 import { lazy, Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AdmissionStatusBadge } from '../components/common/Badges';
 import { Icon, type IconName } from '../components/common/Icon';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
 import { SchoolCard } from '../components/school/SchoolCard';
-import { SchoolMap } from '../components/school/SchoolMap';
-import { SearchAutocomplete } from '../components/school/SearchAutocomplete';
+import { SchoolSearchForm, type HeroSearch } from '../components/school/SchoolsHero';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useInView } from '../hooks/useInView';
 import { recentSchools, useLocalList } from '../hooks/usePersonal';
-import { admissionService, locationService, referenceService, schoolService } from '../services/publicApi';
+import {
+  admissionService, locationService, practiceService, rankingService, referenceService, schoolService,
+} from '../services/publicApi';
+import type { SchoolSummary } from '../types/api';
 import { admissionCategoryLabel, daysUntil, formatDate, formatMoneyCompact } from '../utils/format';
 
-const POPULAR: { label: string; to: string }[] = [
-  { label: 'Kendriya Vidyalaya', to: '/network/kendriya-vidyalaya' },
-  { label: 'Navodaya', to: '/network/jawahar-navodaya-vidyalaya' },
-  { label: 'CBSE', to: '/boards/CBSE' },
-  { label: 'Boarding', to: '/schools?hasHostel=true' },
-  { label: 'IB', to: '/boards/IB' },
-  { label: 'Nursery', to: '/stages/nursery' },
+/** Colourful category tiles: each opens the matching directory. */
+const CATEGORIES: { to: string; title: string; text: string; icon: IconName; tone: string }[] = [
+  { to: '/boards/CBSE', title: 'CBSE schools', text: 'Central Board of Secondary Education', icon: 'book', tone: 'from-brand-600 to-brand-400' },
+  { to: '/boards/CISCE', title: 'ICSE schools', text: 'ICSE and ISC (CISCE) schools', icon: 'graduation', tone: 'from-violet-600 to-violet-400' },
+  { to: '/type/private-aided/international', title: 'International schools', text: 'IB, Cambridge and international curricula', icon: 'globe', tone: 'from-teal-600 to-teal-400' },
+  { to: '/type/government', title: 'Government schools', text: 'Central, state and local-body schools', icon: 'shield', tone: 'from-emerald-600 to-emerald-400' },
+  { to: '/type/private-aided/private', title: 'Private schools', text: 'Private unaided schools', icon: 'building', tone: 'from-accent-600 to-accent-400' },
+  { to: '/boarding', title: 'Boarding schools', text: 'Residential and hostel schools', icon: 'home', tone: 'from-rose-600 to-rose-400' },
 ];
 
-const CATEGORIES: { to: string; title: string; text: string; icon: IconName }[] = [
-  { to: '/boards/CBSE', title: 'CBSE schools', text: 'Central Board of Secondary Education', icon: 'book' },
-  { to: '/boards/IB', title: 'IB & international', text: 'International Baccalaureate programmes', icon: 'globe' },
-  { to: '/boards/CISCE', title: 'ICSE / ISC', text: 'Council for the Indian School Certificate', icon: 'graduation' },
-  { to: '/network/kendriya-vidyalaya', title: 'Kendriya Vidyalayas', text: 'Central government schools run by KVS', icon: 'building' },
-  { to: '/network/jawahar-navodaya-vidyalaya', title: 'Navodaya Vidyalayas', text: 'Residential schools run by NVS', icon: 'users' },
-  { to: '/type/government', title: 'Government schools', text: 'Central, state and local-body schools', icon: 'shield' },
-  { to: '/stages/nursery', title: 'Nursery & KG', text: 'Entry-level and pre-primary admissions', icon: 'sparkle' },
-  { to: '/stages/senior-secondary', title: 'Senior secondary', text: 'Class XI–XII streams and admissions', icon: 'users' },
-];
+/** States shown first on the home page; every other state and UT is one click away. */
+const HOME_STATES = ['DL', 'UP', 'BR', 'JH', 'HR', 'MH', 'KA', 'TN', 'RJ', 'WB'];
+const STATE_TONES = ['bg-brand-50 text-brand-700', 'bg-violet-50 text-violet-700', 'bg-accent-50 text-accent-700', 'bg-emerald-50 text-emerald-700', 'bg-rose-50 text-rose-700'];
 
-const PILLARS: { icon: IconName; title: string; text: string }[] = [
-  { icon: 'link', title: 'Every fact has a source', text: 'Fees, dates and facilities link to the official school or government page they came from.' },
-  { icon: 'shield', title: 'Unknown stays unknown', text: 'If a school has not published something, we say so — we never fill gaps with guesses or zeros.' },
-  { icon: 'chart', title: 'Transparent rankings', text: 'Scores cite their sources, use published weights and show how much is verified; only verified evidence earns a rank.' },
+const EXAMS: { to: string; title: string; text: string; icon: IconName; tone: string }[] = [
+  { to: '/exams/jnvst', title: 'JNV entrance (JNVST)', text: 'Guide, pattern and mock tests for Class VI', icon: 'graduation', tone: 'bg-brand-600' },
+  { to: '/exams/aissee', title: 'Sainik School (AISSEE)', text: 'Class VI and IX practice by subject', icon: 'flag', tone: 'bg-emerald-600' },
+  { to: '/exams/practice/class10-maths-1', title: 'Class X Mathematics', text: 'Chapter-wise practice in English and Hindi', icon: 'book', tone: 'bg-violet-600' },
+  { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiad preparation', text: 'Original Olympiad-style questions', icon: 'trophy', tone: 'bg-accent-500' },
+  { to: '/exams/practice', title: 'Online mock tests', text: 'Timed tests with instant results', icon: 'clock', tone: 'bg-rose-600' },
+  { to: '/exams/practice/class12-maths-1', title: 'CBSE Class 12', text: 'Mathematics and Physics, chapter by chapter', icon: 'layers', tone: 'bg-teal-600' },
 ];
 
 // The charts library (~110 KB compressed) arrives after the page's first paint, only for the fee section.
@@ -44,21 +43,28 @@ const FeeChart = lazy(() => import('../components/home/FeeChart'));
 
 export function HomePage() {
   useDocumentTitle(undefined);
+  const navigate = useNavigate();
   const feeChart = useInView<HTMLDivElement>();
   const stats = useApi(() => referenceService.stats(), []);
-  // A bounded sample for the hero map and fee chart: the best-documented schools, which are the ones with confirmed
-  // locations and published fees. The directory itself is paginated server-side.
+  // A bounded sample for the fee chart: the best-documented schools, which are the ones with published fees.
   const schools = useApi(() => schoolService.search({ sortBy: 'recommended', size: 100 }), []);
   const upcoming = useApi(() => admissionService.upcoming(0, 6), []);
   const featured = useApi(() => schoolService.featured(undefined, 8), []);
+  const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 6 }), []);
+  const ranked = useApi(() => rankingService.top(5), []);
+  const bank = useApi(() => practiceService.bank(), []);
   const states = useApi(() => locationService.states(), []);
   const recent = useLocalList(recentSchools);
-  const coveredStates = (states.data ?? []).filter((s) => s.schoolCount > 0).sort((a, b) => b.schoolCount - a.schoolCount);
 
+  const onSearch = (s: HeroSearch) => {
+    const p = new URLSearchParams();
+    (['q', 'state', 'city'] as const).forEach((k) => { if (s[k]) p.set(k, s[k]!); });
+    navigate(`/schools${p.size ? `?${p}` : ''}#directory`);
+  };
+  const photos = (featured.data ?? []).filter((s) => s.coverImageUrl).slice(0, 4);
+  const homeStates = HOME_STATES.map((c) => states.data?.find((s) => s.code === c)).filter((s): s is NonNullable<typeof s> => !!s);
+  const otherStates = (states.data ?? []).filter((s) => !HOME_STATES.includes(s.code) && s.schoolCount > 0).length;
   const all = schools.data?.content ?? [];
-  // The hero map is only shown on wide screens; on phones it is not rendered at all, so the map library is not loaded.
-  const wide = typeof window !== 'undefined' && window.matchMedia?.('(min-width: 1024px)').matches;
-  const openCount = (upcoming.data?.content ?? []).filter((a) => a.status === 'OPEN').length;
   const feeData = all
     .filter((s) => s.annualFeeFrom !== null)
     .map((s) => ({
@@ -71,102 +77,56 @@ export function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-ink text-white">
-        <div className="bg-grid absolute inset-0" aria-hidden />
-        <div className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-brand-600/30 blur-3xl" aria-hidden />
-        <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-accent-500/15 blur-3xl" aria-hidden />
-        <div className="container-page relative grid items-center gap-12 py-16 lg:grid-cols-[1.1fr_1fr] lg:py-24">
-          {/* min-w-0: otherwise the search input's intrinsic width widens the grid column past a phone screen. */}
+      {/* 1. Hero: light and colourful, with real (credited) school photographs. */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-violet-50">
+        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl" aria-hidden />
+        <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-violet-200/50 blur-3xl" aria-hidden />
+        <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-accent-200/40 blur-3xl" aria-hidden />
+        <div className="container-page relative grid items-center gap-10 py-14 lg:grid-cols-[1.15fr_1fr] lg:py-20">
           <div className="animate-fade-up min-w-0">
-            {openCount > 0 ? (
-              <Link to="/admissions?status=OPEN" className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-accent-200 ring-1 ring-white/10 hover:bg-white/10">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                {openCount} admission {openCount === 1 ? 'cycle is' : 'cycles are'} open right now <Icon name="arrowRight" className="h-3.5 w-3.5" />
-              </Link>
-            ) : (
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-accent-200 ring-1 ring-white/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-400" /> Fees · Admissions · Facilities · Maps
-              </p>
-            )}
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
-              Find the right school anywhere in India —{' '}
-              <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">with facts you can check.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-              Discover schools, compare fees and track admission deadlines. Every number links to the official page it came
-              from, and nothing is guessed.
+            <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 shadow-card ring-1 ring-brand-100">
+              <Icon name="sparkle" className="h-3.5 w-3.5 text-accent-500" /> Schools · Fees · Admissions · Exam preparation
             </p>
-            <div className="mt-8">
-              <SearchAutocomplete variant="hero" />
-            </div>
-            <Link to="/find" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/20 transition hover:bg-white/20">
-              <Icon name="sparkle" className="h-4 w-4 text-accent-300" /> Not sure where to start? Find the right school for your child
-              <Icon name="arrowRight" className="h-4 w-4" />
-            </Link>
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-              <span className="text-slate-400">Popular:</span>
-              {POPULAR.map((p) => (
-                <Link key={p.label} to={p.to} className="rounded-full bg-white/5 px-3 py-1 text-slate-200 ring-1 ring-white/10 transition hover:bg-white/15">
-                  {p.label}
-                </Link>
-              ))}
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-6xl">
+              Find the Perfect School for{' '}
+              <span className="bg-gradient-to-r from-brand-600 via-violet-600 to-accent-500 bg-clip-text text-transparent">Your Child</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
+              Explore thousands of schools across India. Compare fees, facilities, rankings and admissions in one place.
+            </p>
+            <div className="mt-8"><SchoolSearchForm onSearch={onSearch} withBoard={false} submitLabel="Search Schools" idPrefix="home" stacked /></div>
+            <div className="mt-4 flex flex-wrap gap-2 text-sm">
+              <Link to="/find" className="chip bg-white px-3 py-1.5 font-semibold text-brand-700 shadow-card ring-1 ring-brand-100 hover:bg-brand-50">
+                <Icon name="sparkle" className="h-4 w-4" /> Help me choose
+              </Link>
+              <Link to="/nearby" className="chip bg-white px-3 py-1.5 font-semibold text-slate-700 shadow-card ring-1 ring-slate-200 hover:bg-slate-50">
+                <Icon name="pin" className="h-4 w-4" /> Schools near me
+              </Link>
             </div>
             {stats.data && (
-              <dl className="mt-10 grid max-w-xl grid-cols-3 gap-6">
+              <dl className="mt-8 grid max-w-xl grid-cols-3 gap-4">
                 {([
-                  ['Schools listed', stats.data.activeSchools],
-                  ['States & UTs', stats.data.statesCovered],
-                  ['Districts covered', stats.data.districtsCovered],
-                ] as const).map(([label, value]) => (
-                  <div key={label} className="min-w-0 border-l border-white/15 pl-4">
-                    <dd className="stat-value text-white">{value.toLocaleString('en-IN')}</dd>
-                    <dt className="mt-1 text-xs font-medium text-slate-400">{label}</dt>
+                  ['Schools listed', stats.data.activeSchools, 'text-brand-700'],
+                  ['States & UTs', stats.data.statesCovered, 'text-violet-700'],
+                  ['Districts', stats.data.districtsCovered, 'text-accent-600'],
+                ] as const).map(([label, value, tone]) => (
+                  <div key={label} className="rounded-2xl bg-white/80 p-3 shadow-card ring-1 ring-slate-100">
+                    <dd className={`font-display text-2xl font-extrabold tabular-nums ${tone}`}>{value.toLocaleString('en-IN')}</dd>
+                    <dt className="text-xs font-medium text-slate-500">{label}</dt>
                   </div>
                 ))}
               </dl>
             )}
           </div>
-          {wide && <div className="relative hidden lg:block">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-500/30 to-accent-500/20 blur-2xl" aria-hidden />
-            <div className="relative overflow-hidden rounded-3xl bg-white p-2 shadow-lift ring-1 ring-white/20">
-              <SchoolMap height={420} schools={all} />
-              <div className="pointer-events-none absolute bottom-5 left-5 right-5 z-[500] flex items-center justify-between rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur">
-                <div>
-                  <p className="text-xs font-medium text-slate-500">Best-documented schools</p>
-                  <p className="font-display text-lg font-bold text-ink">{all.filter((s) => s.latitude !== null).length} shown on the map</p>
-                </div>
-                <Link to="/nearby" className="btn-primary pointer-events-auto rounded-full px-4 py-2 text-xs">
-                  <Icon name="pin" className="h-3.5 w-3.5" /> Near me
-                </Link>
-              </div>
-            </div>
-          </div>}
-        </div>
-      </section>
-
-      {/* Trust pillars */}
-      <section className="container-page -mt-8 relative z-10">
-        <div className="grid gap-4 rounded-3xl bg-white p-6 shadow-lift ring-1 ring-slate-200/70 sm:grid-cols-3 sm:p-8">
-          {PILLARS.map((p) => (
-            <div key={p.title} className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                <Icon name={p.icon} className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-display font-bold text-ink">{p.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">{p.text}</p>
-              </div>
-            </div>
-          ))}
+          {photos.length >= 2 && <PhotoMosaic schools={photos} />}
         </div>
       </section>
 
       {recent.length > 0 && (
-        <section className="container-page pt-12" aria-labelledby="recent-heading">
+        <section className="container-page pt-10" aria-labelledby="recent-heading">
           <div className="flex items-center justify-between gap-3">
             <h2 id="recent-heading" className="flex items-center gap-2 font-display text-lg font-bold text-ink">
-              <Icon name="clock" className="h-5 w-5 text-slate-400" /> Recently viewed
+              <Icon name="clock" className="h-5 w-5 text-slate-500" /> Recently viewed
             </h2>
             <Link to="/saved" className="text-sm font-semibold text-brand-700 hover:underline">Saved &amp; history</Link>
           </div>
@@ -183,58 +143,186 @@ export function HomePage() {
         </section>
       )}
 
-      {/* Admissions open */}
-      <section className="container-page py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">Admissions</p>
-            <h2 className="section-title mt-2">Open and upcoming admission cycles</h2>
-          </div>
-          <Link to="/admissions" className="btn-secondary rounded-full">All deadlines <Icon name="arrowRight" className="h-4 w-4" /></Link>
+      {/* 2. Categories */}
+      <Section eyebrow="Explore" title="Explore schools by category" id="categories">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((c) => (
+            <Link key={c.to} to={c.to} className="group relative overflow-hidden rounded-3xl bg-white p-5 shadow-card ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-lift">
+              <span className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${c.tone} text-white shadow-md`}>
+                <Icon name={c.icon} className="h-6 w-6" />
+              </span>
+              <span className="mt-4 block font-display text-lg font-bold text-ink">{c.title}</span>
+              <span className="mt-1 block text-sm text-slate-600">{c.text}</span>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+                Explore <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </span>
+              <span className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${c.tone} opacity-10`} aria-hidden />
+            </Link>
+          ))}
         </div>
-        <div className="mt-6">
-          {upcoming.loading && !upcoming.data && <Spinner />}
-          {upcoming.data?.content.length === 0 && (
-            <EmptyState title="No open or upcoming cycles are recorded right now.">
-              Check the school’s website or your state education department for official schedules.
-            </EmptyState>
-          )}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {upcoming.data?.content.map((a) => {
-              const days = daysUntil(a.applicationEndDate);
-              return (
-                <Link key={a.id} to={`/schools/${a.schoolSlug}?tab=admissions`} className="card card-hover flex flex-col p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="font-display font-bold leading-snug text-ink">{a.schoolName}</p>
-                    <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
-                  </div>
-                  <p className="mt-1 text-sm text-slate-600">{a.className} · {a.academicYear} · {admissionCategoryLabel[a.category]}</p>
-                  <div className="mt-4 flex items-end justify-between border-t border-slate-100 pt-4">
-                    <div>
-                      <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Applications close</p>
-                      <p className="font-semibold text-ink">{formatDate(a.applicationEndDate)}</p>
-                    </div>
-                    {days !== null && days >= 0 && (
-                      <span className={`rounded-full px-3 py-1 text-xs font-bold ${days <= 14 ? 'bg-red-50 text-red-700' : 'bg-brand-50 text-brand-700'}`}>
-                        {days === 0 ? 'Closes today' : `${days} days left`}
-                      </span>
-                    )}
-                  </div>
+      </Section>
+
+      {/* 3. Schools with real photographs. These are not a ranking, so the heading does not call them "top". */}
+      <Section eyebrow="Featured" title="Featured schools across India" id="featured"
+        note="Schools whose photographs are public domain, openly licensed or used with permission. This is not a ranking."
+        action={<Link to="/schools" className="btn-secondary rounded-full">View all schools <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
+        <AsyncContent state={featured} loading={<SkeletonCards count={4} />} isEmpty={(d) => d.length === 0}
+          empty={<EmptyState title="No featured schools yet." />}>
+          {(list) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{list.slice(0, 8).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
+        </AsyncContent>
+      </Section>
+
+      {/* 4. States */}
+      <section className="bg-white py-14">
+        <div className="container-page">
+          <SectionHead eyebrow="States & union territories" title="Explore schools by state" id="states"
+            action={<Link to="/states" className="btn-secondary rounded-full">All states &amp; UTs <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {homeStates.map((s, i) => (
+              <li key={s.code}>
+                <Link to={`/states/${s.slug}`} className="card card-hover flex items-center gap-3 p-4">
+                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-display text-sm font-extrabold ${STATE_TONES[i % STATE_TONES.length]}`}>{s.code}</span>
+                  <span className="min-w-0">
+                    <span className="block truncate font-display font-bold text-ink">{s.name}</span>
+                    <span className="block text-xs text-slate-500">{s.schoolCount.toLocaleString('en-IN')} schools</span>
+                  </span>
                 </Link>
-              );
-            })}
+              </li>
+            ))}
+          </ul>
+          {otherStates > 0 && (
+            <p className="mt-4 text-sm text-slate-600">
+              Plus schools in {otherStates} more states and union territories — <Link to="/states" className="link">see all</Link> or <Link to="/cities" className="link">browse by city</Link>.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Admissions open (real cycles from official notices) */}
+      <Section eyebrow="Admissions" title="Open and upcoming admissions" id="admissions"
+        action={<Link to="/admissions" className="btn-secondary rounded-full">All deadlines <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
+        {upcoming.loading && !upcoming.data && <Spinner />}
+        {upcoming.data?.content.length === 0 && (
+          <EmptyState title="No open or upcoming cycles are recorded right now.">
+            Check the school’s website or your state education department for official schedules.
+          </EmptyState>
+        )}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {upcoming.data?.content.map((a) => {
+            const days = daysUntil(a.applicationEndDate);
+            return (
+              <Link key={a.id} to={`/schools/${a.schoolSlug}?tab=admissions`} className="card card-hover flex flex-col p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <p className="font-display font-bold leading-snug text-ink">{a.schoolName}</p>
+                  <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
+                </div>
+                <p className="mt-1 text-sm text-slate-600">{a.className} · {a.academicYear} · {admissionCategoryLabel[a.category]}</p>
+                <div className="mt-4 flex items-end justify-between border-t border-slate-100 pt-4">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Applications close</p>
+                    <p className="font-semibold text-ink">{formatDate(a.applicationEndDate)}</p>
+                  </div>
+                  {days !== null && days >= 0 && (
+                    <span className={`rounded-full px-3 py-1 text-xs font-bold ${days <= 14 ? 'bg-red-50 text-red-700' : 'bg-brand-50 text-brand-700'}`}>
+                      {days === 0 ? 'Closes today' : `${days} days left`}
+                    </span>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+        <p className="mt-4 text-sm"><Link to="/admissions/guide" className="link">New to school admissions? Read the admission guide →</Link></p>
+      </Section>
+
+      {/* 5. Boarding */}
+      <section className="bg-gradient-to-br from-rose-50 via-white to-accent-50 py-14">
+        <div className="container-page">
+          <SectionHead eyebrow="Boarding" title="Boarding schools to explore" id="boarding"
+            note="Residential schools with documented boarding — Navodaya, Sainik, military and private boarding schools. Ordered by how well each is documented; not a ranking."
+            action={<Link to="/boarding" className="btn-secondary rounded-full">All boarding schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+          <div className="mt-6">
+            <AsyncContent state={boarding} loading={<SkeletonCards count={3} />} isEmpty={(d) => d.content.length === 0}
+              empty={<EmptyState title="No boarding schools listed yet." />}>
+              {(page) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{page.content.slice(0, 6).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
+            </AsyncContent>
           </div>
         </div>
       </section>
 
-      {/* Fee snapshot */}
+      {/* 6. Rankings */}
+      <Section eyebrow="Rankings" title="School rankings" id="rankings"
+        note="India School Finder scores schools from source-linked evidence; only verified evidence earns a rank. These are not official government rankings.">
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+          <div className="grid grid-cols-2 gap-3">
+            {([
+              ['/rankings?size=10', 'Top 10 schools', 'in India', 'from-brand-600 to-violet-600'],
+              ['/rankings', 'Top 20 schools', 'in India', 'from-violet-600 to-rose-500'],
+              ['/rankings?size=100', 'Top 100 schools', 'in India', 'from-accent-500 to-rose-500'],
+              ['/rankings?focus=place', 'State-wise', 'rankings', 'from-emerald-600 to-teal-500'],
+            ] as const).map(([to, title, sub, tone]) => (
+              <Link key={to} to={to} className={`flex flex-col justify-between rounded-3xl bg-gradient-to-br ${tone} p-5 text-white shadow-card transition hover:-translate-y-0.5 hover:shadow-lift`}>
+                <Icon name="trophy" className="h-7 w-7 text-white/90" />
+                <span className="mt-6">
+                  <span className="block font-display text-xl font-extrabold">{title}</span>
+                  <span className="text-sm text-white/85">{sub}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="card p-5">
+            <p className="font-display font-bold text-ink">Highest scores right now</p>
+            <AsyncContent state={ranked} isEmpty={(d) => d.length === 0}
+              empty={<p className="mt-3 text-sm text-slate-600">No school has enough verified evidence for a rank yet. <Link to="/rankings/methodology" className="link">How scoring works</Link></p>}>
+              {(list) => (
+                <ol className="mt-3 divide-y divide-slate-100">
+                  {list.map((r, i) => (
+                    <li key={r.schoolId}>
+                      <Link to={`/schools/${r.slug}?tab=ranking`} className="flex items-center gap-3 py-2.5 hover:text-brand-700">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-50 font-display text-sm font-extrabold text-brand-700">{r.scopePosition ?? i + 1}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate font-semibold text-ink">{r.schoolName}</span>
+                          <span className="block truncate text-xs text-slate-500">{[r.city ?? r.districtName, r.stateName].filter(Boolean).join(', ')}</span>
+                        </span>
+                        <span className="text-sm font-bold tabular-nums text-ink">{r.totalScore.toFixed(1)}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </AsyncContent>
+            <Link to="/rankings/methodology" className="link mt-3 inline-block text-sm">How scores are calculated →</Link>
+          </div>
+        </div>
+      </Section>
+
+      {/* 7. Exam preparation */}
+      <section className="bg-gradient-to-br from-violet-50 via-white to-brand-50 py-14">
+        <div className="container-page">
+          <SectionHead eyebrow="Exam preparation" title="Prepare for school and entrance exams" id="exams"
+            note={`${bank.data ? `${bank.data.questionCount} original practice questions` : 'Original practice questions'} with explanations, timed mock tests and a daily quiz — free, no sign-in needed. Written by India School Finder; not official or previous-year questions.`}
+            action={<Link to="/exams/practice" className="btn-primary rounded-full">Start practising <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {EXAMS.map((e) => (
+              <Link key={e.to} to={e.to} className="group flex items-center gap-4 rounded-3xl bg-white p-5 shadow-card ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-lift">
+                <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${e.tone} text-white shadow-md`}><Icon name={e.icon} className="h-6 w-6" /></span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display font-bold text-ink">{e.title}</span>
+                  <span className="block text-sm text-slate-600">{e.text}</span>
+                </span>
+                <Icon name="arrowRight" className="h-5 w-5 text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-brand-600" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fees (real published schedules only) */}
       {feeData.length > 0 && (
-        <section className="bg-white py-16">
-          <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
+        <Section eyebrow="Fees" title="What schools officially charge per year" id="fees">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
             <div>
-              <p className="eyebrow">Fees</p>
-              <h2 className="section-title mt-2">What schools officially charge per year</h2>
-              <p className="mt-4 leading-relaxed text-slate-600">
+              <p className="leading-relaxed text-slate-600">
                 The lowest complete annual fee each school publishes (tuition, monthly and annual charges), for the latest year it
                 has published. Schools with incomplete fee schedules are left out rather than estimated.
               </p>
@@ -243,8 +331,7 @@ export function HomePage() {
                 <Link to="/compare" className="btn-secondary rounded-full">Compare fees side by side</Link>
               </div>
             </div>
-            {/* overflow-hidden: Recharts keeps its hidden tooltip positioned beside the chart, which would otherwise
-                widen the page on phones. */}
+            {/* overflow-hidden: Recharts keeps its hidden tooltip beside the chart, which would otherwise widen phones. */}
             <div className="card overflow-hidden p-4 sm:p-6">
               <div ref={feeChart.ref}>
                 {feeChart.inView ? (
@@ -256,93 +343,89 @@ export function HomePage() {
               <p className="mt-2 text-xs text-slate-500">Academic year shown next to each amount. Optional transport and one-time fees excluded. Click a bar for the full schedule and source.</p>
             </div>
           </div>
-        </section>
+        </Section>
       )}
 
-      {/* Featured: schools with a real photo cleared for use. Hidden until there are some. */}
-      {(featured.data?.length ?? 0) > 0 && (
-        <section className="container-page pt-16" aria-labelledby="featured-heading">
-          <p className="eyebrow">Featured</p>
-          <h2 id="featured-heading" className="section-title mt-2">Schools with photos</h2>
-          <p className="mt-2 text-sm text-slate-600">Schools whose photos are public domain, openly licensed or used with permission. This is not a ranking.</p>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {(featured.data ?? []).map((s) => <SchoolCard key={s.id} school={s} />)}
-          </div>
-        </section>
-      )}
-
-      {/* Schools */}
-      <section className="container-page py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">Directory</p>
-            <h2 className="section-title mt-2">Explore schools</h2>
-          </div>
-          <Link to="/schools" className="btn-secondary rounded-full">View all schools <Icon name="arrowRight" className="h-4 w-4" /></Link>
-        </div>
-        <div className="mt-6">
-          <AsyncContent state={schools} loading={<SkeletonCards count={6} />} isEmpty={(d) => d.content.length === 0}
-            empty={<EmptyState title="No schools have been published yet." />}>
-            {(page) => (
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {[...page.content].sort((a, b) => Number(b.annualFeeFrom !== null) - Number(a.annualFeeFrom !== null)).slice(0, 6)
-                  .map((s) => <SchoolCard key={s.id} school={s} />)}
+      {/* 8. Why choose */}
+      <section className="bg-white py-14">
+        <div className="container-page">
+          <SectionHead eyebrow="Why India School Finder" title="Why parents choose India School Finder" id="why" />
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {([
+              ['map', 'Schools across India', `${stats.data ? stats.data.activeSchools.toLocaleString('en-IN') : 'Thousands of'} schools in every state and union territory, each linked to an official source.`, 'bg-brand-50 text-brand-700'],
+              ['scale', 'Easy school comparison', 'Compare up to four schools side by side — board, classes, fees, facilities and distance — with differences highlighted.', 'bg-violet-50 text-violet-700'],
+              ['calendar', 'Admission information', 'Open and upcoming admission cycles from official notices, and a plain guide to the process and documents.', 'bg-emerald-50 text-emerald-700'],
+              ['rupee', 'Transparent fee information', 'Only official fee schedules, with their year and source — never estimated or filled in.', 'bg-accent-50 text-accent-700'],
+              ['target', 'Exam preparation', 'Guides to JNVST, AISSEE and other entrance exams, with patterns, syllabi and official papers linked.', 'bg-rose-50 text-rose-700'],
+              ['book', 'Free practice questions', 'Original quizzes and timed mock tests with explanations, many in English and Hindi, and progress tracking.', 'bg-teal-50 text-teal-700'],
+            ] as const).map(([icon, title, text, tone]) => (
+              <div key={title} className="flex gap-4 rounded-3xl bg-canvas p-5 ring-1 ring-slate-100">
+                <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${tone}`}><Icon name={icon} className="h-5 w-5" /></span>
+                <div>
+                  <p className="font-display font-bold text-ink">{title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">{text}</p>
+                </div>
               </div>
-            )}
-          </AsyncContent>
-        </div>
-      </section>
-
-      {/* Categories + localities */}
-      <section className="container-page grid gap-10 pb-8 lg:grid-cols-[1.5fr_1fr]">
-        {/* min-w-0: the truncated card text has an intrinsic width that would widen the column on phones. */}
-        <div className="min-w-0">
-          <p className="eyebrow">Browse</p>
-          <h2 className="section-title mt-2">By board, type and stage</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {CATEGORIES.map((c) => (
-              <Link key={c.to} to={c.to} className="card card-hover group flex min-w-0 items-center gap-4 p-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition group-hover:bg-brand-600 group-hover:text-white">
-                  <Icon name={c.icon} className="h-5 w-5" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display font-bold text-ink">{c.title}</span>
-                  <span className="block truncate text-sm text-slate-500">{c.text}</span>
-                </span>
-                <Icon name="arrowRight" className="h-4 w-4 text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-brand-600" />
-              </Link>
             ))}
           </div>
-        </div>
-        <div>
-          <p className="eyebrow">States &amp; union territories</p>
-          <h2 className="section-title mt-2">Where the schools are</h2>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {coveredStates.map((s) => (
-              <Link key={s.code} to={`/states/${s.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-card transition hover:border-brand-300 hover:text-brand-700">
-                <Icon name="pin" className="h-3.5 w-3.5 text-slate-400" /> {s.name}
-                <span className="text-xs text-slate-500">{s.schoolCount}</span>
-              </Link>
-            ))}
-            <Link to="/states" className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-brand-700 hover:underline">
-              All 36 states &amp; UTs <Icon name="arrowRight" className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-          {coveredStates.length > 0 && coveredStates.length < 36 && (
-            <p className="mt-3 text-xs text-slate-500">
-              Coverage is growing. We list a school only when its details can be linked to an official source.
-            </p>
-          )}
-          <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 to-brand-900 p-6 text-white shadow-lift">
-            <p className="font-display text-xl font-bold text-white">Run a school?</p>
-            <p className="mt-2 text-sm text-brand-100">
-              Send us your official fee circular or admission notice and we will link it here with its source.
-            </p>
-            <Link to="/contact" className="btn-accent mt-5 rounded-full">Submit an official source</Link>
+          <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl bg-gradient-to-r from-brand-600 to-violet-600 p-6 text-white shadow-lift sm:flex-row sm:items-center">
+            <div>
+              <p className="font-display text-xl font-bold text-white">Run a school?</p>
+              <p className="mt-1 text-sm text-blue-50">Send your official fee circular or admission notice and we will link it here with its source.</p>
+            </div>
+            <Link to="/contact" className="btn-accent shrink-0 rounded-full">Submit an official source</Link>
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+/** Up to four real school photographs, each with its credit and a link to the school. */
+function PhotoMosaic({ schools }: { schools: SchoolSummary[] }) {
+  return (
+    <div className="relative hidden lg:block">
+      <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-brand-300/40 via-violet-300/30 to-accent-300/40 blur-2xl" aria-hidden />
+      <ul className="relative grid grid-cols-2 gap-3">
+        {schools.map((s, i) => (
+          <li key={s.id} className={`overflow-hidden rounded-3xl bg-slate-100 shadow-lift ring-4 ring-white ${i % 2 === 1 ? 'translate-y-6' : ''}`}>
+            <Link to={`/schools/${s.slug}`} className="group relative block aspect-[4/3]">
+              <img src={s.coverImageUrl!} alt={`${s.name}`} loading={i < 2 ? 'eager' : 'lazy'} decoding="async"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2 pt-8">
+                <span className="block truncate text-sm font-semibold text-white">{s.name}</span>
+                {s.coverImageCredit && (
+                  <span className="block truncate text-[10px] text-white/80">{s.coverImageIllustrative ? s.coverImageCredit : `© ${s.coverImageCredit}`}</span>
+                )}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function SectionHead({ eyebrow, title, id, note, action }: { eyebrow: string; title: string; id: string; note?: string; action?: React.ReactNode }) {
+  return (
+    <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="max-w-3xl">
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 id={`${id}-heading`} className="section-title mt-2">{title}</h2>
+        {note && <p className="mt-2 text-sm text-slate-600">{note}</p>}
+      </div>
+      {action}
+    </div>
+  );
+}
+
+function Section({ eyebrow, title, id, note, action, children }: {
+  eyebrow: string; title: string; id: string; note?: string; action?: React.ReactNode; children: React.ReactNode;
+}) {
+  return (
+    <section className="container-page py-14" aria-labelledby={`${id}-heading`}>
+      <SectionHead eyebrow={eyebrow} title={title} id={id} note={note} action={action} />
+      <div className="mt-6">{children}</div>
+    </section>
   );
 }

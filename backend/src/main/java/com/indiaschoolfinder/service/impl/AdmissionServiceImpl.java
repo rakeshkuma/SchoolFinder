@@ -18,6 +18,7 @@ import com.indiaschoolfinder.repository.SchoolRepository;
 import com.indiaschoolfinder.service.AdmissionService;
 import com.indiaschoolfinder.service.AdmissionStatusResolver;
 import com.indiaschoolfinder.service.AuditService;
+import com.indiaschoolfinder.service.LocationService;
 import com.indiaschoolfinder.service.ReferenceDataService;
 import com.indiaschoolfinder.util.InputSanitizer;
 import jakarta.persistence.criteria.Predicate;
@@ -58,13 +59,16 @@ public class AdmissionServiceImpl implements AdmissionService {
     private final AuditService auditService;
     private final Clock clock;
     private final com.indiaschoolfinder.service.ProfileScoreService profileScoreService;
+    private final LocationService locationService;
 
     public AdmissionServiceImpl(AdmissionScheduleRepository scheduleRepository,
                                 AdmissionRequirementRepository requirementRepository,
                                 SchoolRepository schoolRepository, ReferenceDataService referenceData,
                                 AdmissionStatusResolver statusResolver, AuditService auditService, Clock clock,
-                                com.indiaschoolfinder.service.ProfileScoreService profileScoreService) {
+                                com.indiaschoolfinder.service.ProfileScoreService profileScoreService,
+                                LocationService locationService) {
         this.profileScoreService = profileScoreService;
+        this.locationService = locationService;
         this.scheduleRepository = scheduleRepository;
         this.requirementRepository = requirementRepository;
         this.schoolRepository = schoolRepository;
@@ -77,7 +81,8 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public PageResponse<AdmissionDto> list(String academicYear, AdmissionStatus status, AdmissionCategory category,
                                            String classCode, com.indiaschoolfinder.enums.SchoolNetwork excludeNetwork,
-                                           String sortBy, int page, int size) {
+                                           String state, String board, String sortBy, int page, int size) {
+        String stateCode = state == null || state.isBlank() ? null : locationService.resolveStateCode(state, "state");
         Ordering sort = sortBy == null || sortBy.isBlank() ? SORTS.get("updated") : SORTS.get(sortBy.toLowerCase());
         if (sort == null) {
             throw new BusinessValidationException("sortBy", "must be one of " + String.join(", ", SORTS.keySet()));
@@ -90,6 +95,12 @@ public class AdmissionServiceImpl implements AdmissionService {
             List<Predicate> schoolMatches = new ArrayList<>(List.of(cb.equal(s.get("id"), root.get("schoolId")), cb.isTrue(s.get("active"))));
             if (excludeNetwork != null) {
                 schoolMatches.add(cb.or(cb.isNull(s.get("network")), cb.notEqual(s.get("network"), excludeNetwork)));
+            }
+            if (stateCode != null) {
+                schoolMatches.add(cb.equal(s.get("stateCode"), stateCode));
+            }
+            if (board != null && !board.isBlank()) {
+                schoolMatches.add(cb.equal(cb.upper(s.get("educationBoardCode")), board.trim().toUpperCase(java.util.Locale.ROOT)));
             }
             activeSchool.select(s.get("id")).where(schoolMatches.toArray(Predicate[]::new));
             p.add(cb.exists(activeSchool));

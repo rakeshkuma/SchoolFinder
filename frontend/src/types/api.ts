@@ -99,7 +99,18 @@ export interface District {
 
 export interface City {
   name: string;
+  /** Address under the state: /states/{state}/city/{slug} */
+  slug: string;
   stateCode: string;
+  schoolCount: number;
+}
+
+export interface IndiaCity {
+  name: string;
+  slug: string;
+  stateCode: string;
+  stateName: string;
+  stateSlug: string;
   schoolCount: number;
 }
 
@@ -897,6 +908,8 @@ export interface ExamSummary {
   officialPaperCount: number;
   lastVerifiedOn: string | null;
   verificationStatus: ExamVerificationStatus;
+  /** The conducting body's main page for the exam */
+  officialUrl: string;
 }
 
 export interface ExamLink { label: string; url: string }
@@ -954,6 +967,26 @@ export interface PracticeSetSummary {
   durationMinutes: number | null;
   questionCount: number;
   sections: string[];
+  /** When a reviewer last checked every question, answer and explanation */
+  reviewedOn: string | null;
+  category: PracticeCategory;
+  /** marks for a correct answer */
+  marksPerQuestion: number;
+  /** marks deducted for a wrong answer (never for a skipped one) */
+  negativeMarks: number;
+  /** every question (and passage) has a Hindi version */
+  hindi: boolean;
+  chapters: string[];
+}
+
+export type PracticeCategory = 'SCHOOL' | 'ENTRANCE' | 'OLYMPIAD' | 'COMPETITIVE';
+export type PracticeLanguage = 'en' | 'hi';
+
+export interface PracticePassage {
+  id: string;
+  title: string;
+  text: string;
+  hi: { title: string; text: string } | null;
 }
 
 export interface PracticeShape {
@@ -983,11 +1016,17 @@ export interface PracticeQuestion {
   figureAsksNext: boolean;
   /** one per option when the options are figures */
   optionFigures: PracticeFigure[] | null;
+  difficulty: PracticeDifficulty | null;
+  chapter: string | null;
+  /** Hindi prompt and options, in the same order as the English ones */
+  hi: { prompt: string; options: string[] } | null;
 }
+
+export type PracticeDifficulty = 'EASY' | 'MEDIUM' | 'HARD';
 
 export interface PracticeSet {
   set: PracticeSetSummary;
-  passages: { id: string; title: string; text: string }[];
+  passages: PracticePassage[];
   questions: PracticeQuestion[];
 }
 
@@ -995,6 +1034,132 @@ export interface PracticeScore {
   total: number;
   attempted: number;
   correct: number;
-  sections: { section: string; total: number; attempted: number; correct: number }[];
-  questions: { id: string; chosen: number | null; answer: number; correct: boolean; explanation: string }[];
+  /** null in attempts saved before marking was recorded */
+  marks: number | null;
+  maxMarks: number | null;
+  sections: { section: string; total: number; attempted: number; correct: number; marks: number | null; maxMarks: number | null }[];
+  topics: { section: string; topic: string; total: number; attempted: number; correct: number }[];
+  questions: {
+    id: string; chosen: number | null; answer: number; correct: boolean; explanation: string;
+    marksAwarded: number | null; explanationHi: string | null;
+  }[];
+}
+
+export type PracticeMode = 'SET' | 'QUICK' | 'TOPIC' | 'MINI_MOCK' | 'FULL' | 'DAILY' | 'REVISION' | 'RETRY';
+
+/** Metadata of every question in the bank (no text, no answers); ids are "set-slug/question-id". */
+export interface PracticeBankQuestion {
+  id: string;
+  setSlug: string;
+  examSlug: string | null;
+  level: string;
+  section: string;
+  topic: string | null;
+  difficulty: PracticeDifficulty | null;
+  category: PracticeCategory;
+  chapter: string | null;
+  hindi: boolean;
+}
+
+export interface PracticeBank {
+  questionCount: number;
+  questions: PracticeBankQuestion[];
+}
+
+export interface PracticeSession {
+  mode: PracticeMode;
+  title: string;
+  description: string;
+  /** a time limit the visitor may switch on; null for untimed modes */
+  suggestedMinutes: number | null;
+  passages: PracticePassage[];
+  questions: PracticeQuestion[];
+}
+
+export interface PracticeAttemptSummary {
+  id: number;
+  title: string;
+  mode: PracticeMode;
+  examSlug: string | null;
+  setSlug: string | null;
+  total: number;
+  attempted: number;
+  correct: number;
+  durationSeconds: number | null;
+  createdAt: string;
+  sections: PracticeScore['sections'];
+  marks: number | null;
+  maxMarks: number | null;
+}
+
+/** One saved attempt for the progress dashboard: no question text, answers or explanations. */
+export interface PracticeHistoryItem {
+  attempt: PracticeAttemptSummary;
+  topics: PracticeScore['topics'];
+  questions: { id: string; attempted: boolean; correct: boolean }[];
+}
+
+/** Practice set as editors see it (published or not), with what needs checking. */
+export interface AdminPracticeSet {
+  slug: string;
+  examSlug: string | null;
+  title: string;
+  kind: 'QUIZ' | 'MOCK';
+  category: PracticeCategory;
+  level: string;
+  questionCount: number;
+  hindiQuestions: number;
+  chapterTagged: number;
+  marksPerQuestion: number;
+  negativeMarks: number;
+  published: boolean;
+  reviewedOn: string | null;
+  displayOrder: number;
+  openReports: number;
+  updatedAt: string;
+  flags: { code: string; message: string }[];
+}
+
+export type PracticeReportReason = 'WRONG_ANSWER' | 'UNCLEAR' | 'TYPO' | 'TRANSLATION' | 'OTHER';
+export type PracticeReportStatus = 'OPEN' | 'FIXED' | 'DISMISSED';
+
+export interface PracticeReport {
+  id: number;
+  questionId: string;
+  setSlug: string;
+  setTitle: string | null;
+  reason: PracticeReportReason;
+  message: string | null;
+  status: PracticeReportStatus;
+  signedIn: boolean;
+  createdAt: string;
+  resolutionNote: string | null;
+  resolvedBy: string | null;
+  resolvedAt: string | null;
+  /** null when the question is no longer in the set */
+  question: {
+    section: string; topic: string | null; prompt: string; options: string[]; answer: number; explanation: string;
+    hi: { prompt: string; options: string[]; explanation: string } | null;
+  } | null;
+}
+
+// --- Exam resources --------------------------------------------------------------------------------------------------
+
+export type ExamResourceType = 'OFFICIAL_LINK' | 'QUESTION_PAPER' | 'ANSWER_KEY' | 'SAMPLE_PAPER' | 'SYLLABUS'
+  | 'EXAM_PATTERN' | 'PREPARATION_GUIDE' | 'DOCUMENT_CHECKLIST' | 'FAQ';
+
+/** official: published by the conducting body (url, linked not copied); otherwise this site's guidance (path). */
+export interface ExamResource {
+  examSlug: string;
+  examShortName: string;
+  entryClasses: number[];
+  academicSession: string | null;
+  type: ExamResourceType;
+  title: string;
+  detail: string;
+  year: string | null;
+  official: boolean;
+  url: string | null;
+  path: string | null;
+  lastVerifiedOn: string | null;
 }

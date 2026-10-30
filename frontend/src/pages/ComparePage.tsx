@@ -260,15 +260,22 @@ export function ComparePage() {
                           {group.title}
                         </th>
                       </tr>
-                      {rows.map((row) => (
-                        <tr key={row.label} className="border-t border-slate-100">
-                          <th scope="row" className="px-4 py-3 text-left font-normal text-slate-600">{row.label}</th>
+                      {rows.map((row) => {
+                        // Rows where the schools differ are marked, so differences stand out without hiding anything.
+                        const differs = schools.length > 1 && !!row.text && new Set(schools.map((s) => row.text!(s))).size > 1;
+                        return (
+                        <tr key={row.label} className={`border-t border-slate-100 ${differs ? 'bg-amber-50/60' : ''}`}>
+                          <th scope="row" className={`px-4 py-3 text-left font-normal text-slate-600 ${differs ? 'border-l-4 border-amber-400' : 'border-l-4 border-transparent'}`}>
+                            {row.label}
+                            {differs && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-900">differs</span>}
+                          </th>
                           {schools.map((s) => {
                             const value = row.render(s);
                             return <td key={s.id} className={`px-4 py-3 align-top ${value === NOT_AVAILABLE ? 'text-slate-500' : ''}`}>{value}</td>;
                           })}
                         </tr>
-                      ))}
+                        );
+                      })}
                     </tbody>
                   ))}
                 </table>

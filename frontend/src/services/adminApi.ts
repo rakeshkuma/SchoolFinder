@@ -1,6 +1,9 @@
 import { cleanParams, http } from './http';
 import type {
   Admission,
+  AdminPracticeSet,
+  PracticeReport,
+  PracticeReportStatus,
   AdmissionRequest,
   AuditLogEntry,
   BatchVerifyRequest,
@@ -115,6 +118,27 @@ export const adminService = {
   /** Body in the practice import format: { "sets": [ … ] } (see seed/practice.json). */
   importPractice: (body: unknown) =>
     http.post<{ slugs: string[] }>('/admin/practice-sets/import', body).then((r) => r.data),
+  /** Every practice set, published or not, with what needs checking. */
+  practiceSets: () => http.get<AdminPracticeSet[]>('/admin/practice-sets').then((r) => r.data),
+  publishPractice: (slug: string, published: boolean, reviewedOn?: string) =>
+    http.patch<AdminPracticeSet>(`/admin/practice-sets/${encodeURIComponent(slug)}/published`, { published, reviewedOn })
+      .then((r) => r.data),
+  reviewPractice: (slug: string, note?: string) =>
+    http.post<AdminPracticeSet>(`/admin/practice-sets/${encodeURIComponent(slug)}/review`, { note }).then((r) => r.data),
+  /** The set in the JSON import format, answers included. */
+  exportPractice: (slug: string) =>
+    http.get<unknown>(`/admin/practice-sets/${encodeURIComponent(slug)}/export`).then((r) => r.data),
+  /** Replaces the set's questions; the set is unpublished until it is reviewed and published again. */
+  importPracticeCsv: (slug: string, file: File) => {
+    const form = new FormData();
+    form.append('file', file);
+    return http.post<{ slug: string; questions: number; hindiQuestions: number; published: boolean; message: string }>(
+      `/admin/practice-sets/${encodeURIComponent(slug)}/questions/csv`, form).then((r) => r.data);
+  },
+  practiceReports: (status: PracticeReportStatus, page = 0, size = 20) =>
+    http.get<PageResponse<PracticeReport>>('/admin/practice-reports', { params: { status, page, size } }).then((r) => r.data),
+  resolveReport: (id: number, status: Exclude<PracticeReportStatus, 'OPEN'>, note?: string) =>
+    http.patch<PracticeReport>(`/admin/practice-reports/${id}`, { status, note }).then((r) => r.data),
   importExams: (body: unknown) =>
     http.post<{ created: number; updated: number; slugs: string[] }>('/admin/exams/import', body).then((r) => r.data),
 };

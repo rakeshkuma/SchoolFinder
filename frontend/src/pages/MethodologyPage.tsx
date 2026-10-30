@@ -144,7 +144,7 @@ export function MethodologyPage() {
             };
             return (
               <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-                <div className="card prose-page p-6">
+                <div className="card prose-page min-w-0 p-6">
                   <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{m.disclaimer}</p>
 
                   <h2 id="statuses">Ranked, provisional and not yet ranked</h2>

@@ -133,7 +133,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/v1/schools/*/reviews").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/schools/*/update-submissions").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/fees/calculate").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/practice-sets/*/score").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/practice-sets/*/score", "/api/v1/practice-sessions/score",
+                                "/api/v1/practice-questions/*/*/reports").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/robots.txt", "/sitemap.xml", "/sitemaps/*.xml").permitAll()
                         .anyRequest().denyAll())

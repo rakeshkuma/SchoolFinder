@@ -103,6 +103,12 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
             and s.city is not null group by s.city order by s.city""")
     List<Object[]> countActiveByCity(@Param("stateCode") String stateCode);
 
+    /** Rows: city, state code, active school count — every city in India with listed schools, largest first. */
+    @Query("""
+            select s.city, s.stateCode, count(s) from School s where s.active = true and s.city is not null
+            group by s.city, s.stateCode order by count(s) desc, s.city""")
+    List<Object[]> countActiveByCityAcrossIndia();
+
     /** Rows: city, state code. */
     @Query("""
             select distinct s.city, s.stateCode from School s where s.active = true and s.city is not null

@@ -9,6 +9,7 @@ const LINKS = [
   { to: '/admin/import', label: 'Import', adminOnly: true },
   { to: '/admin/submissions', label: 'Suggested updates' },
   { to: '/admin/exams', label: 'Entrance exams' },
+  { to: '/admin/practice', label: 'Practice questions' },
   { to: '/admin/reviews', label: 'Review moderation' },
   { to: '/admin/rankings', label: 'Ranking weights' },
   { to: '/admin/audit', label: 'Audit log', adminOnly: true },
