@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { SchoolSummary, SchoolType } from '../../types/api';
 import {
-  NOT_AVAILABLE, facilityCategoryLabel, formatDate, formatMoneyCompact, networkLabel, placeLine, schoolTypeLabel,
+  NOT_AVAILABLE, facilityCategoryLabel, formatDate, formatMoneyCompact, genderLabel, networkLabel, placeLine, schoolTypeLabel,
 } from '../../utils/format';
 import { Stars } from '../common/Badges';
 import { Icon } from '../common/Icon';
@@ -139,6 +139,7 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
           {school.network && (
             <span className="chip bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-600/15">{networkLabel[school.network]}</span>
           )}
+          {school.genderType && <span className="chip bg-violet-50 text-violet-700 ring-1 ring-inset ring-violet-600/15">{genderLabel[school.genderType]}</span>}
           {school.hasHostel === true && <span className="chip bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/15">Boarding</span>}
           {school.hasHostel === false && <span className="chip bg-sky-50 text-sky-800 ring-1 ring-inset ring-sky-600/15">Day school</span>}
           {!board && <span className="chip bg-slate-50 text-slate-500 ring-1 ring-inset ring-slate-200">Board not stated</span>}

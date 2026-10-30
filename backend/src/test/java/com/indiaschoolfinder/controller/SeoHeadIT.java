@@ -52,6 +52,22 @@ class SeoHeadIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void practiceSetsAndNewLandingPagesHaveTheirOwnHead() throws Exception {
+        String set = head("/exams/practice/netarhat-maths-1");
+        assertThat(set).contains("<title>Netarhat Paper 1 practice: Mathematics 1")
+                .contains("href=\"http://localhost/exams/practice/netarhat-maths-1\"")
+                .contains("\"@type\":\"Quiz\"").contains("\"inLanguage\":[\"en\",\"hi\"]")
+                .contains("20 original multiple-choice questions").contains("not official exam questions")
+                .doesNotContain("noindex");
+        assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
+        assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | India School Finder</title>");
+        assertThat(head("/rankings/published")).contains("href=\"http://localhost/rankings/published\"");
+        mockMvc.perform(get("/sitemaps/pages.xml"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/practice/netarhat-maths-1</loc>")));
+    }
+
+    @Test
     void directoryAndStatePagesDescribeTheirContents() throws Exception {
         createSchool(school("Fixture Lake School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | India School Finder</title>")

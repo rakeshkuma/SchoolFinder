@@ -1,5 +1,6 @@
 package com.indiaschoolfinder.entity;
 
+import com.indiaschoolfinder.enums.RankingScope;
 import com.indiaschoolfinder.enums.VerificationStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
@@ -56,7 +58,29 @@ public class RankingSource {
     @Column(nullable = false, length = 20)
     private VerificationStatus verificationStatus = VerificationStatus.UNVERIFIED;
 
+    private Long publisherId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private RankingScope scope = RankingScope.NATIONAL;
+
+    /** The state or city named by the publisher for a STATE or CITY ranking. */
+    @Column(length = 100)
+    private String region;
+
+    /** A paid or "featured" listing: shown only with that label, never as a ranking position. */
+    @Column(nullable = false)
+    private boolean sponsored;
+
+    @Column(length = 500)
+    private String notes;
+
+    private LocalDate lastVerifiedDate;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
+
+    @LastModifiedDate
+    private Instant updatedAt;
 }

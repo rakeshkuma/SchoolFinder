@@ -50,6 +50,8 @@ public class SeoHeadService {
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
     private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
+    /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
+    private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
@@ -76,6 +78,20 @@ public class SeoHeadService {
             page("/nearby", "Schools near you", "Find schools near any location in India on a map."),
             page("/boarding", "Boarding and residential schools", "Residential schools across India — "
                     + "Navodaya, Sainik, military and private boarding schools — with entry classes and exams."),
+            page("/boarding/india", "Boarding schools in India", "Every boarding and residential school we list in "
+                    + "India, by state, with sourced profiles, fees where published, admissions and entrance exams."),
+            page("/boarding/government", "Government boarding schools in India", "Jawahar Navodaya Vidyalayas, Sainik "
+                    + "Schools, Rashtriya Military Schools, RIMC and state residential schools, with entry classes and exams."),
+            page("/boarding/private", "Private boarding schools in India", "Privately managed boarding schools across "
+                    + "India with sourced profiles, published fees and admission details."),
+            page("/boarding/boys", "Boys' boarding schools in India", "Boarding schools whose official sources say "
+                    + "they admit boys only, with sourced profiles, fees and admissions."),
+            page("/boarding/girls", "Girls' boarding schools in India", "Boarding schools whose official sources say "
+                    + "they admit girls only, with sourced profiles, fees and admissions."),
+            page("/boarding/co-ed", "Co-educational boarding schools in India", "Boarding schools that admit boys and "
+                    + "girls, with sourced profiles, fees and admissions."),
+            page("/boarding/affordable", "Affordable boarding schools in India", "Boarding schools whose official "
+                    + "published annual fee is up to ₹1.5 lakh, and government residential schools with low or no fees."),
             page("/exams", "School entrance exams in India", "JNVST, AISSEE, RIMC, RMS CET and state entrance "
                     + "exams: eligibility, confirmed dates, exam pattern, syllabus and official papers, each linked to the "
                     + "conducting body's notice."),
@@ -86,6 +102,10 @@ public class SeoHeadService {
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
                     + "aptitude, many in English and Hindi, with every answer explained — written by India School Finder, "
                     + "not official questions."),
+            page("/rankings/published", "Published school rankings", "Entries from school rankings published by "
+                    + "other organisations, each checked against the publisher's own page and shown apart from our own score."),
+            page("/rankings/compare", "Compare school rankings", "Compare schools side by side on India School "
+                    + "Finder's evidence-based score and on every published ranking we have checked."),
             page("/rankings/methodology", "How school rankings are calculated", "The criteria, weights and evidence "
                     + "rules behind India School Finder's school scores: only verified, source-linked evidence earns a rank."),
             page("/cities", "Schools by city", "Cities across India where India School Finder lists schools, with "
@@ -145,12 +165,15 @@ public class SeoHeadService {
     private final EducationBoardRepository boardRepository;
     private final SchoolRepository schoolRepository;
     private final ExamService examService;
+    private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final ObjectMapper objectMapper;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
-                          ExamService examService, ObjectMapper objectMapper) {
+                          ExamService examService, ObjectMapper objectMapper,
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository) {
         this.examService = examService;
+        this.practiceSetRepository = practiceSetRepository;
         this.schoolService = schoolService;
         this.locationService = locationService;
         this.boardRepository = boardRepository;
@@ -199,10 +222,36 @@ public class SeoHeadService {
             if ((m = EXAM_STATE.matcher(p)).matches()) {
                 return examState(m.group(1), baseUrl);
             }
+            if ((m = PRACTICE_SET.matcher(p)).matches()) {
+                String slug = m.group(1);
+                return practiceSet(practiceSetRepository.findBySlugAndPublishedTrue(slug)
+                        .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
+            }
         } catch (ResourceNotFoundException e) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
         return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, null);
+    }
+
+    /** Practice sets are original India School Finder questions; the description says so, and the data is a free Quiz. */
+    private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
+        String url = baseUrl + "/exams/practice/" + set.getSlug();
+        // The first sentence says what the set covers; the note that the questions are our own is always kept.
+        String first = set.getDescription().split("(?<=\\.)\\s", 2)[0];
+        if (first.length() > 220) first = first.substring(0, 219) + "…";
+        String description = first + " Original practice questions by " + SITE + ", not official exam questions.";
+        boolean hindi = set.getContent().questions().stream().anyMatch(q -> q.hi() != null);
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "Quiz");
+        data.put("name", set.getTitle());
+        data.put("description", description);
+        data.put("url", url);
+        data.put("educationalLevel", set.getLevel());
+        data.put("inLanguage", hindi ? java.util.List.of("en", "hi") : java.util.List.of("en"));
+        data.put("isAccessibleForFree", true);
+        data.put("provider", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        return tags(set.getTitle() + " | " + SITE, description, url, null, false, data);
     }
 
     private String school(SchoolDetailDto s, String baseUrl) {

@@ -73,8 +73,25 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
                 .toList();
     }
 
+    /** The home page asks for these counts on every visit; they change only with imports, so five minutes is fresh enough. */
+    private static final java.time.Duration STATS_TTL = java.time.Duration.ofMinutes(5);
+    private record CachedStats(SiteStatsDto stats, java.time.Instant at) {
+    }
+    private final java.util.concurrent.atomic.AtomicReference<CachedStats> statsCache = new java.util.concurrent.atomic.AtomicReference<>();
+
     @Override
     public SiteStatsDto stats() {
+        CachedStats cached = statsCache.get();
+        java.time.Instant now = clock.instant();
+        if (cached != null && cached.at().plus(STATS_TTL).isAfter(now)) {
+            return cached.stats();
+        }
+        SiteStatsDto fresh = computeStats();
+        statsCache.set(new CachedStats(fresh, now));
+        return fresh;
+    }
+
+    private SiteStatsDto computeStats() {
         String year = currentAcademicYear();
         return new SiteStatsDto(schoolRepository.countByActiveTrue(),
                 schoolRepository.countByActiveTrueAndVerificationStatus(VerificationStatus.VERIFIED),

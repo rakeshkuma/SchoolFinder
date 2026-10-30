@@ -24,6 +24,4 @@ public interface SchoolImageRepository extends JpaRepository<SchoolImage, Long> 
     List<SchoolImage> findGalleryImagesForSchools(@Param("schoolIds") Collection<Long> schoolIds,
                                                   @Param("excluded") ImageType excluded,
                                                   @Param("permissions") Collection<ImagePermission> permissions);
-
-    long countByLicenseIsNull();
 }

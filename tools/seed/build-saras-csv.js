@@ -89,12 +89,12 @@ function namesItsPlace(official) {
 }
 
 // Researched boarding data (boarding-profiles.json): per-affiliation overlays and per-network rules. Each overlay may
-// set name, network and gender_type (stated by the school itself) and the boarding-profile columns, which cite their
-// own boarding_source_url. Applying it here keeps curated names and profiles on every rebuild.
+// set name, network and gender_type (stated by the school itself), managing_body and pin_code (when the CBSE record is
+// wrong; give the reason in the overlay's _note) and the boarding-profile columns, which cite their own boarding_source_url. Applying it here keeps curated names and profiles on every rebuild.
 const BOARDING_FILE = require('path').join(__dirname, 'boarding-profiles.json');
 const boardingData = fs.existsSync(BOARDING_FILE) ? JSON.parse(fs.readFileSync(BOARDING_FILE, 'utf8')) : { cbse: {}, systems: {} };
 const BOARDING_COLUMNS = ['residential_system', 'boarding_type', 'entrance_exam', 'entry_classes', 'boarding_summary',
-  'accommodation', 'boarding_source_url'];
+  'accommodation', 'pastoral_care', 'dining', 'medical_care', 'boarding_source_url'];
 
 const header = ['name', 'school_type', 'management', 'network', 'affiliation_number', 'board_code', 'address_line',
   'district', 'state_code', 'pin_code', 'website_url', 'established_year', 'principal_name', 'managing_body', 'description', 'source_url',
@@ -164,9 +164,9 @@ for (const r of records) {
   const network = overlay?.network ?? type[2];
   const profile = overlay ?? boardingData.systems?.[network] ?? {};
   rows.push([(overlay?.name ?? name).slice(0, 200), type[0], type[1], network, r['Affiliation Number'], 'CBSE',
-    title(r['Postal Address'] ?? '').slice(0, 400), district, state, pin, website, year,
+    title(r['Postal Address'] ?? '').slice(0, 400), district, state, overlay?.pin_code ?? pin, website, year,
     title((r['Name of Principal/ Head of Institution'] ?? '').trim()).slice(0, 150),
-    title((r['Name of Trust/ Society/ Managing Committee'] ?? '').trim()).slice(0, 300), description,
+    (overlay?.managing_body ?? title((r['Name of Trust/ Society/ Managing Committee'] ?? '').trim())).slice(0, 300), description,
     `https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/${r.aff}`, retrieved,
     profile.gender_type ?? '', ...BOARDING_COLUMNS.map((c) => profile[c] ?? '')].map(csv).join(','));
   count++;

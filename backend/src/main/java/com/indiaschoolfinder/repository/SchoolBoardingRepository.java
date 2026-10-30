@@ -1,7 +1,6 @@
 package com.indiaschoolfinder.repository;
 
 import com.indiaschoolfinder.entity.SchoolBoarding;
-import com.indiaschoolfinder.enums.ResidentialSystem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -19,5 +18,16 @@ public interface SchoolBoardingRepository extends JpaRepository<SchoolBoarding, 
             group by b.residentialSystem""")
     List<Object[]> countActiveBySystem();
 
-    long countByResidentialSystem(ResidentialSystem system);
+    @Query("""
+            select s.stateCode, count(b) from SchoolBoarding b, School s
+            where s.id = b.schoolId and s.active = true
+            group by s.stateCode""")
+    List<Object[]> countActiveByState();
+
+    /** Gender is null when no source states it. */
+    @Query("""
+            select s.genderType, count(b) from SchoolBoarding b, School s
+            where s.id = b.schoolId and s.active = true
+            group by s.genderType""")
+    List<Object[]> countActiveByGender();
 }

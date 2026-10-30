@@ -237,7 +237,7 @@ export function MethodologyPage() {
                   </nav>
                   <div className="card p-4">
                     <h2 className="mb-2 font-semibold">Weights</h2>
-                    <div className="h-64">
+                    <div className="h-64 overflow-hidden">{/* the hidden tooltip is parked past the right edge; keep it from widening the page */}
                       <ResponsiveContainer>
                         <BarChart data={m.criteria.filter((c) => c.active)} layout="vertical" margin={{ left: 8 }}>
                           <XAxis type="number" domain={[0, 30]} />

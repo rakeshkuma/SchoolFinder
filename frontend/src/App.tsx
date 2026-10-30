@@ -1,10 +1,11 @@
 import { lazy, Suspense, type ComponentType } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Spinner } from './components/common/States';
 import { Layout } from './components/layout/Layout';
 import { AuthProvider } from './hooks/useAuth';
 import { MemberProvider } from './hooks/useMember';
 import { CompareProvider } from './hooks/useCompare';
+import { BOARDING_LANDINGS } from './content/boardingLandings';
 import { AdminLayout } from './pages/admin/AdminLayout';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 
@@ -51,6 +52,9 @@ const PracticeSessionPage = page(() => import('./pages/PracticePages'), 'Practic
 const PracticeProgressPage = page(() => import('./pages/PracticeProgressPage'), 'PracticeProgressPage');
 const MethodologyPage = page(() => import('./pages/MethodologyPage'), 'MethodologyPage');
 const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
+const PublishedRankingsPage = page(() => import('./pages/PublishedRankingsPage'), 'PublishedRankingsPage');
+const RankingComparePage = page(() => import('./pages/RankingComparePage'), 'RankingComparePage');
+const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').then((m) => ({ default: m.BoardingLandingPage })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
 const AboutPage = page(info, 'AboutPage');
 const ContactPage = page(info, 'ContactPage');
@@ -74,6 +78,10 @@ const AdminCoveragePage = lazy(() => import('./pages/admin/AdminCoveragePage').t
 const AdminSchoolsPage = lazy(() => import('./pages/admin/AdminSchoolsPage').then((m) => ({ default: m.AdminSchoolsPage })));
 const AdminSchoolEditorPage = lazy(() => import('./pages/admin/AdminSchoolEditorPage').then((m) => ({ default: m.AdminSchoolEditorPage })));
 const AdminFacilityVerificationPage = lazy(() => import('./pages/admin/AdminFacilityVerificationPage').then((m) => ({ default: m.AdminFacilityVerificationPage })));
+const AdminImagesPage = lazy(() => import('./pages/admin/AdminImagesPage').then((m) => ({ default: m.AdminImagesPage })));
+const AdminExternalRankingsPage = lazy(() => import('./pages/admin/AdminExternalRankingsPage').then((m) => ({ default: m.AdminExternalRankingsPage })));
+const AdminDocumentsPage = lazy(() => import('./pages/admin/AdminDocumentsPage').then((m) => ({ default: m.AdminDocumentsPage })));
+const AdminDuplicatesPage = lazy(() => import('./pages/admin/AdminDuplicatesPage').then((m) => ({ default: m.AdminDuplicatesPage })));
 const AdminImportPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminImportPage })));
 const AdminReviewsPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminReviewsPage })));
 const AdminRankingPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminRankingPage })));
@@ -103,19 +111,26 @@ export default function App() {
               <Route path="saved" element={<SavedSchoolsPage />} />
               <Route path="rankings" element={<RankingsPage />} />
               <Route path="rankings/methodology" element={<MethodologyPage />} />
+              <Route path="rankings/published" element={<PublishedRankingsPage />} />
+              <Route path="rankings/compare" element={<RankingComparePage />} />
               <Route path="admissions" element={<AdmissionsPage />} />
               <Route path="admissions/notifications" element={<NotificationsPage />} />
               <Route path="admissions/guide" element={<AdmissionGuidePage />} />
               <Route path="fees" element={<FeeCalculatorPage />} />
               <Route path="compare" element={<ComparePage />} />
+              <Route path="compare-schools" element={<Navigate to="/compare" replace />} />
               <Route path="nearby" element={<NearbyPage />} />
               <Route path="boarding" element={<BoardingPage />} />
+              {BOARDING_LANDINGS.map((l) => (
+                <Route key={l.slug} path={`boarding/${l.slug}`} element={<BoardingLandingPage slug={l.slug} />} />
+              ))}
               <Route path="boarding/:slug" element={<BoardingSchoolPage />} />
               <Route path="exams" element={<ExamsPage />} />
               <Route path="exams/finder" element={<ExamFinderPage />} />
               <Route path="exams/calendar" element={<ExamCalendarPage />} />
               <Route path="exams/class/:n" element={<ExamClassPage />} />
               <Route path="exams/state/:slug" element={<ExamStatePage />} />
+              <Route path="exams/netarhat-entrance" element={<Navigate to="/exams/netarhat" replace />} />
               <Route path="exams/syllabus" element={<ExamSyllabusPage />} />
               <Route path="exams/resources" element={<ExamResourcesPage />} />
               <Route path="exams/practice" element={<PracticeListPage />} />
@@ -149,12 +164,16 @@ export default function App() {
                 <Route path="schools" element={<AdminSchoolsPage />} />
                 <Route path="schools/:id" element={<AdminSchoolEditorPage />} />
                 <Route path="facility-verification" element={<AdminFacilityVerificationPage />} />
+                <Route path="images" element={<AdminImagesPage />} />
                 <Route path="import" element={<AdminImportPage />} />
                 <Route path="submissions" element={<AdminSubmissionsPage />} />
                 <Route path="exams" element={<AdminExamsPage />} />
                 <Route path="practice" element={<AdminPracticePage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
+                <Route path="external-rankings" element={<AdminExternalRankingsPage />} />
+                <Route path="documents" element={<AdminDocumentsPage />} />
+                <Route path="duplicates" element={<AdminDuplicatesPage />} />
                 <Route path="audit" element={<AdminAuditPage />} />
               </Route>
               <Route path="*" element={<NotFoundPage />} />
