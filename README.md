@@ -203,7 +203,7 @@ Web: http://localhost:3000 · API: http://localhost:8080 · Swagger UI: http://l
 
 ### Option B — without Docker (embedded PostgreSQL)
 
-Requires only Java 25 and Node 18+.
+Requires only Java 25 and Node 22.12+ (Node 24 recommended).
 
 ```bash
 cd backend

@@ -235,6 +235,8 @@ export function ExamCalendarPage() {
   const state = params.get('state') ?? '';
   const onlySaved = params.get('saved') === '1';
   const showPast = params.get('past') === '1';
+  const examFilter = params.get('exam') ?? '';
+  const view = params.get('view') === 'month' ? 'month' : 'list';
   const set = (k: string, v: string | null) => {
     const next = new URLSearchParams(params);
     if (v) next.set(k, v); else next.delete(k);
@@ -243,9 +245,9 @@ export function ExamCalendarPage() {
 
   const shown = (exams.data ?? []).filter((e) => (!cls || e.entryClasses.includes(cls))
     && (!state || e.scope === 'NATIONAL' || e.stateCodes.includes(state))
-    && (!onlySaved || saved.includes(e.slug)));
-  const events: ExamEvent[] = shown
-    .flatMap((exam) => exam.currentDates.map((date) => ({ exam, date })))
+    && (!onlySaved || saved.includes(e.slug)) && (!examFilter || e.slug === examFilter));
+  const allEvents: ExamEvent[] = shown.flatMap((exam) => exam.currentDates.map((date) => ({ exam, date })));
+  const events: ExamEvent[] = allEvents
     .filter(({ date }) => showPast || lastDay(date) >= today)
     .sort((a, b) => a.date.startsOn.localeCompare(b.date.startsOn));
   const months = [...new Set(events.map((e) => e.date.startsOn.slice(0, 7)))];
@@ -274,12 +276,26 @@ export function ExamCalendarPage() {
               {states.list.map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
             </select>
           </label>
+          <label><span className="label">Exam</span>
+            <select className="input" value={examFilter} onChange={(e) => set('exam', e.target.value || null)}>
+              <option value="">All exams</option>
+              {(exams.data ?? []).map((e) => <option key={e.slug} value={e.slug}>{e.shortName}</option>)}
+            </select>
+          </label>
           <label className="flex items-center gap-2 pb-2.5"><input type="checkbox" className="h-4 w-4 rounded border-slate-300" checked={onlySaved} onChange={(e) => set('saved', e.target.checked ? '1' : null)} /> Only my saved exams ({saved.length})</label>
           <label className="flex items-center gap-2 pb-2.5"><input type="checkbox" className="h-4 w-4 rounded border-slate-300" checked={showPast} onChange={(e) => set('past', e.target.checked ? '1' : null)} /> Show dates that have passed</label>
           <button type="button" disabled={firm.length === 0} className="btn-primary ml-auto disabled:opacity-50"
             onClick={() => downloadIcs('entrance-exam-dates.ics', firm.map(({ exam, date }) => ({ examSlug: exam.slug, examName: exam.shortName, date })))}>
             <Icon name="calendar" className="h-4 w-4" /> Add {firm.length} confirmed date{firm.length === 1 ? '' : 's'} to my calendar
           </button>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div role="group" aria-label="View" className="inline-flex rounded-xl bg-slate-100 p-1 text-sm">
+            {([['list', 'List'], ['month', 'Month']] as const).map(([v, label]) => (
+              <button key={v} type="button" aria-pressed={view === v} onClick={() => set('view', v === 'list' ? null : v)}
+                className={`rounded-lg px-4 py-1.5 font-semibold transition ${view === v ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:text-ink'}`}>{label}</button>
+            ))}
+          </div>
         </div>
         <p className="text-xs text-slate-500">
           Calendar entries and reminders are for your convenience only. Conducting bodies change dates — always follow the latest official notice. Tentative dates are shown but never added to calendars.
@@ -290,6 +306,10 @@ export function ExamCalendarPage() {
             <div className="card p-6 text-sm text-slate-600">You haven&apos;t saved any exams yet. Use “Save” on an exam to follow its dates here.</div>
           ) : (
             <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+              {view === 'month' ? (
+                <MonthGrid events={allEvents} today={today} month={params.get('month') ?? (events[0]?.date.startsOn.slice(0, 7) ?? today.slice(0, 7))}
+                  onMonth={(m) => set('month', m)} />
+              ) : (
               <div className="min-w-0 space-y-6">
                 {months.length === 0 && <p className="card p-6 text-sm text-slate-600">No dates ahead for these exams. Turn on “Show dates that have passed” to see the current cycle in full.</p>}
                 {months.map((m) => (
@@ -305,6 +325,7 @@ export function ExamCalendarPage() {
                   </section>
                 ))}
               </div>
+              )}
               <aside className="card h-fit p-5 text-sm">
                 <h2 className="font-display text-lg font-bold text-ink">Awaiting dates</h2>
                 {noDates.length === 0 ? <p className="mt-2 text-slate-600">Every exam shown has published dates for its current cycle.</p> : (
@@ -355,5 +376,114 @@ function CalendarRow({ exam, date, today }: { exam: ExamSummary; date: ExamEvent
         )}
       </span>
     </li>
+  );
+}
+
+/** Days of the given month between two ISO dates (inclusive); day-precision dates only. */
+function daysIn(date: ExamEvent['date'], month: string): number[] {
+  if (date.precision !== 'DAY') return [];
+  const out: number[] = [];
+  const end = lastDay(date);
+  for (let d = new Date(`${date.startsOn}T00:00:00`); isoToday(d) <= end; d.setDate(d.getDate() + 1)) {
+    const iso = isoToday(d);
+    if (iso.startsWith(month)) out.push(Number(iso.slice(8, 10)));
+  }
+  return out;
+}
+
+const KIND_TONE: Record<string, string> = {
+  APPLICATION_START: 'bg-emerald-100 text-emerald-900',
+  APPLICATION_END: 'bg-amber-100 text-amber-900',
+  LATE_APPLICATION_END: 'bg-amber-100 text-amber-900',
+  ADMIT_CARD: 'bg-sky-100 text-sky-900',
+  EXAM: 'bg-brand-600 text-white',
+  RESULT: 'bg-violet-100 text-violet-900',
+};
+
+/**
+ * A month as a grid. Dates with an exact day sit on their days (a range on each of its days); dates known only to the
+ * month, and tentative ones, are listed under the grid — never placed on a day they were not given. On phones the
+ * month is shown as a list instead of a grid.
+ */
+function MonthGrid({ events, today, month, onMonth }: { events: ExamEvent[]; today: string; month: string; onMonth: (m: string) => void }) {
+  const first = new Date(`${month}-01T00:00:00`);
+  const shift = (n: number) => {
+    const d = new Date(first);
+    d.setMonth(d.getMonth() + n);
+    onMonth(isoToday(d).slice(0, 7));
+  };
+  const daysInMonth = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+  const lead = (first.getDay() + 6) % 7; // weeks start on Monday
+  const inMonth = events.filter(({ date }) => date.startsOn.slice(0, 7) <= month && lastDay(date).slice(0, 7) >= month);
+  const placed = inMonth.filter(({ date }) => date.precision === 'DAY' && date.confirmed);
+  const unplaced = inMonth.filter(({ date }) => !(date.precision === 'DAY' && date.confirmed));
+  const onDay = (day: number) => placed.filter(({ date }) => daysIn(date, month).includes(day));
+  const title = first.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+
+  return (
+    <section aria-labelledby="month-heading" className="min-w-0">
+      <div className="flex items-center justify-between gap-3">
+        <h2 id="month-heading" aria-live="polite" className="font-display text-xl font-bold text-ink">{title}</h2>
+        <div className="flex gap-1">
+          <button type="button" className="btn-secondary px-3 py-1.5" onClick={() => shift(-1)} aria-label="Previous month">←</button>
+          <button type="button" className="btn-secondary px-3 py-1.5 text-sm" onClick={() => onMonth(today.slice(0, 7))}>Today</button>
+          <button type="button" className="btn-secondary px-3 py-1.5" onClick={() => shift(1)} aria-label="Next month">→</button>
+        </div>
+      </div>
+
+      <div className="card mt-3 hidden overflow-hidden sm:block">
+        <div className="grid grid-cols-7 border-b border-slate-100 bg-slate-50 text-center text-xs font-semibold uppercase tracking-wide text-slate-500" aria-hidden>
+          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => <div key={d} className="py-2">{d}</div>)}
+        </div>
+        <ol className="grid grid-cols-7">
+          {Array.from({ length: lead }, (_, i) => <li key={`lead-${i}`} aria-hidden className="min-h-[96px] border-b border-r border-slate-100 bg-slate-50/50" />)}
+          {Array.from({ length: daysInMonth }, (_, i) => {
+            const day = i + 1;
+            const iso = `${month}-${String(day).padStart(2, '0')}`;
+            const items = onDay(day);
+            return (
+              <li key={day} className={`min-h-[96px] border-b border-r border-slate-100 p-1.5 ${iso === today ? 'bg-brand-50/60' : ''}`}
+                aria-label={`${day} ${title}${items.length ? `: ${items.map(({ exam, date }) => `${exam.shortName} ${date.label}`).join('; ')}` : ''}`}>
+                <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold ${iso === today ? 'bg-brand-600 text-white' : 'text-slate-600'}`}>{day}</span>
+                <ul className="mt-1 space-y-1">
+                  {items.map(({ exam, date }) => (
+                    <li key={`${exam.slug}-${date.kind}-${date.startsOn}`}>
+                      <Link to={`/exams/${exam.slug}?tab=dates`} title={`${exam.shortName}: ${date.label}`}
+                        className={`block truncate rounded px-1.5 py-0.5 text-[11px] font-semibold ${KIND_TONE[date.kind] ?? 'bg-slate-100 text-slate-800'} ${lastDay(date) < today ? 'opacity-60' : ''}`}>
+                        {exam.shortName} · {examDateKindLabel[date.kind]}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+
+      <ol className="mt-3 space-y-2 sm:hidden">
+        {placed.length === 0 && <li className="card p-4 text-sm text-slate-600">No dates with an exact day this month.</li>}
+        {placed.map(({ exam, date }) => <CalendarRow key={`${exam.slug}-${date.kind}-${date.startsOn}`} exam={exam} date={date} today={today} />)}
+      </ol>
+
+      <ul className="mt-3 flex flex-wrap gap-3 text-xs text-slate-600" aria-label="Colour key">
+        {([['APPLICATION_START', 'Applications open'], ['APPLICATION_END', 'Last date to apply'], ['ADMIT_CARD', 'Admit card'], ['EXAM', 'Exam'], ['RESULT', 'Result']] as const)
+          .map(([k, label]) => <li key={k} className="inline-flex items-center gap-1.5"><span aria-hidden className={`h-3 w-3 rounded ${KIND_TONE[k]}`} />{label}</li>)}
+      </ul>
+
+      {unplaced.length > 0 && (
+        <div className="mt-4 rounded-xl border border-dashed border-slate-300 p-4 text-sm">
+          <p className="font-semibold text-ink">This month, without a fixed day</p>
+          <ul className="mt-2 space-y-1 text-slate-600">
+            {unplaced.map(({ exam, date }) => (
+              <li key={`${exam.slug}-${date.kind}-${date.startsOn}`}>
+                <Link to={`/exams/${exam.slug}?tab=dates`} className="font-medium text-ink hover:text-brand-700">{exam.shortName}</Link> · {date.label}: {formatExamDate(date)}{' '}
+                <span className="text-slate-500">({date.confirmed ? 'month given in the official notice' : 'tentative — no countdown until confirmed'})</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
   );
 }

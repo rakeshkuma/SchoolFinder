@@ -1,4 +1,5 @@
 import { http } from './http';
+import type { PageResponse, PracticeAttemptSummary, PracticeHistoryItem, PracticeMode, PracticeScore } from '../types/api';
 
 /**
  * Member accounts. The session lives on the server; the browser holds only an HttpOnly cookie that scripts cannot
@@ -42,7 +43,7 @@ function ensureCsrf() {
   return csrfReady;
 }
 
-async function send<T>(method: 'post' | 'patch' | 'delete', path: string, body?: unknown): Promise<T> {
+async function send<T>(method: 'post' | 'put' | 'patch' | 'delete', path: string, body?: unknown): Promise<T> {
   await ensureCsrf();
   const r = method === 'delete' ? await http.delete<T>(path, { data: body }) : await http[method]<T>(path, body);
   return r.data;
@@ -64,6 +65,56 @@ export const accountService = {
   /** With a password, the password; without one (Google sign-up), the account's email address. */
   deleteAccount: (confirm: { password?: string; confirmEmail?: string }) => send<void>('delete', '/account/me', confirm),
 };
+
+export interface AttemptInput {
+  /** Generated once per attempt in the browser; sending the same attempt again returns the first result. */
+  clientId: string;
+  title: string;
+  mode: PracticeMode;
+  examSlug?: string | null;
+  setSlug?: string | null;
+  questionIds: string[];
+  answers: Record<string, number>;
+  durationSeconds?: number | null;
+}
+
+export interface SavedAttempt {
+  attempt: PracticeAttemptSummary;
+  score: PracticeScore;
+  /** true when this attempt had already been saved and nothing new was stored */
+  duplicate: boolean;
+}
+
+/** The signed-in member's practice history and saved exams; each call only ever reaches the member's own data. */
+export const memberPracticeService = {
+  /** Scores the attempt on the server and saves it. */
+  record: (input: AttemptInput) => send<SavedAttempt>('post', '/account/practice-attempts', input),
+  list: (page = 0, size = 20) =>
+    http.get<PageResponse<PracticeAttemptSummary>>('/account/practice-attempts', { params: { page, size } }).then((r) => r.data),
+  get: (id: number) =>
+    http.get<{ attempt: PracticeAttemptSummary; questionIds: string[]; answers: Record<string, number>; score: PracticeScore }>(
+      `/account/practice-attempts/${id}`).then((r) => r.data),
+  /** Question ids last answered wrongly, newest first. */
+  revision: () => http.get<{ questionIds: string[] }>('/account/practice-attempts/revision').then((r) => r.data.questionIds),
+  savedExams: () => http.get<string[]>('/account/saved-exams').then((r) => r.data),
+  saveExam: (slug: string) => send<string[]>('put', `/account/saved-exams/${encodeURIComponent(slug)}`),
+  removeExam: (slug: string) => send<string[]>('delete', `/account/saved-exams/${encodeURIComponent(slug)}`),
+  mergeSavedExams: (slugs: string[]) => send<string[]>('post', '/account/saved-exams/merge', { slugs }),
+  /** Latest attempts (newest first) with topic scores and per-question outcomes. */
+  history: (limit = 200) =>
+    http.get<PracticeHistoryItem[]>('/account/practice-history', { params: { limit } }).then((r) => r.data),
+  /** Bookmarked question ids ("set/question"), newest first. */
+  bookmarks: () => http.get<string[]>('/account/bookmarks').then((r) => r.data),
+  addBookmark: (id: string) => send<string[]>('put', `/account/bookmarks/${bookmarkPath(id)}`),
+  removeBookmark: (id: string) => send<string[]>('delete', `/account/bookmarks/${bookmarkPath(id)}`),
+  mergeBookmarks: (questionIds: string[]) => send<string[]>('post', '/account/bookmarks/merge', { questionIds }),
+};
+
+/** "set-slug/question-id" → "set-slug/question-id" with each part encoded (the slash separates two path variables). */
+function bookmarkPath(id: string): string {
+  const [set, question] = id.split('/');
+  return `${encodeURIComponent(set)}/${encodeURIComponent(question ?? '')}`;
+}
 
 /**
  * Starts "Continue with Google". This is a full-page navigation, not an API call: the server redirects to Google and,

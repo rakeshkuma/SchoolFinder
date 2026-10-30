@@ -2,6 +2,7 @@ package com.indiaschoolfinder.service;
 
 import com.indiaschoolfinder.dto.exam.ExamDetailDto;
 import com.indiaschoolfinder.dto.exam.ExamSummaryDto;
+import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.DistrictDto;
 import com.indiaschoolfinder.dto.location.StateDto;
 import com.indiaschoolfinder.dto.school.ImageDto;
@@ -44,6 +45,7 @@ public class SeoHeadService {
 
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
     private static final Pattern STATE = Pattern.compile("^/states/([a-z0-9-]+)(?:/([a-z0-9-]+))?/?$");
+    private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
     private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
@@ -52,7 +54,9 @@ public class SeoHeadService {
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
     private static final Set<String> PRIVATE = Set.of("/admin", "/saved", "/suggest", "/account", "/signin", "/register",
-            "/verify-email", "/forgot-password", "/reset-password");
+            "/verify-email", "/forgot-password", "/reset-password",
+            // A student's own progress and results, and randomly drawn practice sittings, are not content to index.
+            "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session");
     /** Static pages with their own title; the rest of the app uses the site defaults. */
     private static final Map<String, String[]> PAGES = Map.ofEntries(
             page("/find", "Find the right school for your child", "Choose your area, your child's class, "
@@ -78,17 +82,59 @@ public class SeoHeadService {
             page("/exams/finder", "Which entrance exams can my child take?", "Answer up to four questions — class, "
                     + "state, school type, boarding — to see which school entrance exams may fit and why, with the "
                     + "eligibility rules to confirm in each official notice."),
-            page("/exams/practice", "Free practice tests for school entrance exams", "Original practice quizzes and "
-                    + "timed mock tests for JNVST, AISSEE and JNV Class IX entry, with answers explained — written by India "
-                    + "School Finder, not official questions."),
+            page("/exams/practice", "Free practice tests: school, entrance, Olympiad and competitive exams", "Original "
+                    + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
+                    + "aptitude, many in English and Hindi, with every answer explained — written by India School Finder, "
+                    + "not official questions."),
+            page("/rankings/methodology", "How school rankings are calculated", "The criteria, weights and evidence "
+                    + "rules behind India School Finder's school scores: only verified, source-linked evidence earns a rank."),
+            page("/cities", "Schools by city", "Cities across India where India School Finder lists schools, with "
+                    + "the number listed in each."),
+            page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
+                    + "admission works in India: the steps, age rules for Class I, reserved seats under the RTE Act, "
+                    + "documents commonly asked for and what to check about hostels."),
+            page("/admissions/notifications", "Latest school admission notifications", "School admission cycles "
+                    + "recently added or updated from official notices, by state, class, category and status."),
+            page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
+                    + "students and alumni."),
+            page("/about", "About India School Finder", "How India School Finder lists schools, fees, admissions and "
+                    + "entrance exams from official sources, and how it writes its own practice questions."),
+            page("/contact", "Contact India School Finder", "Get in touch about a school listing, a correction or "
+                    + "the practice questions."),
+            page("/privacy", "Privacy policy", "What India School Finder stores about visitors and members, and why."),
+            page("/terms", "Terms of use", "The terms for using India School Finder, its listings and its practice tests."),
+            page("/disclaimer", "Disclaimer", "School facts are taken from official sources and may change; always "
+                    + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
+            page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
+                    + "Kendriya Vidyalaya Sangathan, affiliated to CBSE, with locations and admission links."),
+            page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya schools", "Residential central "
+                    + "government schools run by Navodaya Vidyalaya Samiti; Class VI admission is through the JNVST."),
+            page("/type/government", "Government schools in India", "Schools run by central and state governments and "
+                    + "local bodies, with board, classes and admission information from official sources."),
+            page("/type/private-aided", "Private and aided schools in India", "Private unaided, government-aided and "
+                    + "international schools, with official fees where published."),
+            page("/type/private-aided/private", "Private schools in India", "Private unaided schools across India, "
+                    + "with official fees where published."),
+            page("/type/private-aided/aided", "Government-aided schools in India", "Schools that receive government "
+                    + "grants, across Indian states and union territories."),
+            page("/type/private-aided/international", "International schools in India", "International schools "
+                    + "across India, with boards, classes and official fees where published."),
+            page("/stages/nursery", "Pre-primary and nursery schools", "Schools that list pre-primary classes."),
+            page("/stages/primary", "Primary schools", "Schools that list at least one primary class."),
+            page("/stages/middle", "Middle schools", "Schools that list at least one middle-stage class."),
+            page("/stages/secondary", "Secondary schools", "Schools that list Class IX or X."),
+            page("/stages/senior-secondary", "Senior secondary schools", "Schools that list Class XI or XII."),
             page("/exams/syllabus", "Exam pattern and syllabus of school entrance exams", "Subjects, questions, marks, "
                     + "duration, format and language of JNVST, AISSEE, RIMC, JNV lateral entry and state entrance exams, from "
                     + "each conducting body's official notice."),
             page("/exams/calendar", "School entrance exam calendar", "Application deadlines, admit cards and exam dates "
-                    + "for JNVST, AISSEE, RIMC and other school entrance exams, month by month, from official notices."));
+                    + "for JNVST, AISSEE, RIMC and other school entrance exams, month by month, from official notices."),
+            page("/exams/resources", "Learning resources for school entrance exams", "Syllabus, exam pattern, preparation "
+                    + "plans, document checklists, FAQs and links to officially published papers and answer keys for JNVST, "
+                    + "AISSEE, RIMC, RMS CET and other school entrance exams."));
 
     /** Paths under /exams that are pages, not exam slugs; the exam import rejects them as slugs. */
-    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "class", "state");
+    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state");
 
     private static Map.Entry<String, String[]> page(String path, String title, String description) {
         return Map.entry(path, new String[]{title, description});
@@ -137,6 +183,9 @@ public class SeoHeadService {
             }
             if ((m = STATE.matcher(p)).matches()) {
                 return state(m.group(1), m.group(2), baseUrl);
+            }
+            if ((m = CITY.matcher(p)).matches()) {
+                return city(m.group(1), m.group(2), baseUrl);
             }
             if ((m = BOARD.matcher(p)).matches()) {
                 return board(m.group(1), baseUrl);
@@ -231,6 +280,20 @@ public class SeoHeadService {
                 .formatted(district.schoolCount(), district.name(), state.name()) + "official sources.";
         return tags(title, description, baseUrl + "/states/" + state.slug() + "/" + district.slug(), null,
                 district.schoolCount() == 0, null);
+    }
+
+    private String city(String stateSlug, String citySlug, String baseUrl) {
+        StateDto state = locationService.state(stateSlug);
+        if (!state.slug().equals(stateSlug)) {
+            throw new ResourceNotFoundException("State", stateSlug);
+        }
+        CityDto city = locationService.cities(state.code()).stream()
+                .filter(c -> c.slug().equals(citySlug)).findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
+        String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
+        String description = "%,d schools in %s, %s, with board, classes, fees and admissions linked to "
+                .formatted(city.schoolCount(), city.name(), state.name()) + "official sources.";
+        return tags(title, description, baseUrl + "/states/" + state.slug() + "/city/" + city.slug(), null, false, null);
     }
 
     private String board(String code, String baseUrl) {

@@ -107,6 +107,9 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
     <article className="card card-hover group flex flex-col overflow-hidden">
       <Link to={`/schools/${school.slug}`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
         <CardImage school={school} />
+        {school.logoUrl && (
+          <img src={school.logoUrl} alt="" loading="lazy" className="absolute bottom-3 left-3 h-12 w-12 rounded-xl bg-white object-contain p-1 shadow-md" />
+        )}
         <div className="absolute right-3 top-3 flex gap-1.5">
           {board && <span className="chip bg-white/95 font-semibold text-ink shadow-sm">{board}</span>}
           {school.admissionStatus === 'OPEN' && (
@@ -136,7 +139,8 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
           {school.network && (
             <span className="chip bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-600/15">{networkLabel[school.network]}</span>
           )}
-          {school.hasHostel && <span className="chip bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/15">Boarding</span>}
+          {school.hasHostel === true && <span className="chip bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/15">Boarding</span>}
+          {school.hasHostel === false && <span className="chip bg-sky-50 text-sky-800 ring-1 ring-inset ring-sky-600/15">Day school</span>}
           {!board && <span className="chip bg-slate-50 text-slate-500 ring-1 ring-inset ring-slate-200">Board not stated</span>}
         </div>
         <dl className="mt-3 space-y-1 text-sm">
@@ -171,12 +175,14 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
                   {/* On its own line so narrow cards never push it under the buttons. */}
                   <p className="text-xs font-medium text-slate-500">{school.annualFeeYear}</p>
                 </>
-              ) : school.averageRating !== null ? (
-                <div className="text-sm">
+              ) : <p className="text-xs text-slate-500">Fee not published</p>}
+              {/* Only real, moderated parent reviews; nothing is shown when there are none. */}
+              {school.averageRating !== null && school.reviewCount > 0 && (
+                <p className="mt-1 text-sm">
                   <Stars rating={school.averageRating} />
-                  {school.reviewCount > 0 && <span className="ml-1 text-xs text-slate-500">({school.reviewCount})</span>}
-                </div>
-              ) : null}
+                  <span className="ml-1 text-xs text-slate-500">({school.reviewCount} review{school.reviewCount === 1 ? '' : 's'})</span>
+                </p>
+              )}
             </div>
             <div className="flex shrink-0 items-center gap-2">
               <SaveButton school={{ id: school.id, name: school.name, slug: school.slug, place }} />
@@ -184,8 +190,8 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
             </div>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-            <Link to={`/schools/${school.slug}`} className="font-semibold text-brand-700 hover:text-brand-800">
-              View details<span className="sr-only">: {school.name}</span> →
+            <Link to={`/schools/${school.slug}`} className="btn-primary rounded-full px-4 py-1.5 text-sm">
+              View details<span className="sr-only">: {school.name}</span>
             </Link>
             {school.websiteUrl && (
               <a href={school.websiteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-slate-600 hover:text-ink">

@@ -4,6 +4,7 @@ import type {
   AdmissionCategory,
   AdmissionStatus,
   City,
+  IndiaCity,
   DataSource,
   District,
   EducationBoard,
@@ -12,6 +13,7 @@ import type {
   ExamKind,
   ExamMode,
   ExamNotice,
+  ExamResource,
   ExamSchoolType,
   ExamSummary,
   IndianState,
@@ -23,6 +25,10 @@ import type {
   FeeEstimate,
   PageResponse,
   PracticeScore,
+  PracticeReportReason,
+  PracticeBank,
+  PracticeMode,
+  PracticeSession,
   PracticeSet,
   PracticeSetSummary,
   RankingMethodology,
@@ -102,6 +108,10 @@ export interface AdmissionListParams {
   classCode?: string;
   /** Leave out one network's schools, e.g. the identical national JNV cycles. */
   excludeNetwork?: SchoolNetwork;
+  /** ISO code or slug: only schools in this state or UT */
+  state?: string;
+  /** board code, e.g. CBSE */
+  board?: string;
   sortBy?: 'updated' | 'deadline' | 'start';
   page?: number;
   size?: number;
@@ -167,6 +177,8 @@ export const examService = {
     http.get<PageResponse<ExamSummary>>('/exams', { params: cleanParams(params) }).then((r) => r.data),
   get: (slug: string) => http.get<ExamDetail>(`/exams/${encodeURIComponent(slug)}`).then((r) => r.data),
   notices: (limit = 10) => http.get<ExamNotice[]>('/exams/notices', { params: { limit } }).then((r) => r.data),
+  /** Official papers and links, and this site's syllabus, pattern, preparation, checklist and FAQ pages. */
+  resources: () => cached('exam-resources', () => http.get<ExamResource[]>('/exams/resources').then((r) => r.data)),
   /** Every published exam (the catalogue is small); cached for the session. */
   all: () => cached('exams', () => examService.list({ size: 100 }).then((p) => p.content)),
 };
@@ -178,7 +190,39 @@ export const practiceService = {
   /** Answers are checked on the server; nothing about the attempt is stored. */
   score: (slug: string, answers: Record<string, number>) =>
     http.post<PracticeScore>(`/practice-sets/${encodeURIComponent(slug)}/score`, { answers }).then((r) => r.data),
+  /** What the question bank holds, for building filters (no question text or answers). */
+  bank: () => cached('practice-bank', () => http.get<PracticeBank>('/practice-bank').then((r) => r.data)),
+  /** Questions for one sitting, drawn from the bank (or exactly `ids`, in order), without answers. */
+  session: (params: PracticeSessionParams) =>
+    http.get<PracticeSession>('/practice-sessions', {
+      params: cleanParams({ ...params, ids: params.ids?.join(',') }),
+    }).then((r) => r.data),
+  /** Reports a problem in a question (bank id "set/question"); reviewed by editors. */
+  report: (id: string, reason: PracticeReportReason, message?: string, website?: string) => {
+    const [set, question] = id.split('/');
+    return http.post<void>(`/practice-questions/${encodeURIComponent(set)}/${encodeURIComponent(question ?? '')}/reports`,
+      { reason, message: message || undefined, website: website || undefined }).then(() => undefined);
+  },
+  /** Scores a bank session on the server; nothing is stored. */
+  scoreSession: (questionIds: string[], answers: Record<string, number>) =>
+    http.post<PracticeScore>('/practice-sessions/score', { questionIds, answers }).then((r) => r.data),
 };
+
+export interface PracticeSessionParams {
+  mode: PracticeMode;
+  exam?: string;
+  level?: string;
+  section?: string;
+  topic?: string;
+  difficulty?: string;
+  category?: string;
+  chapter?: string;
+  /** only questions with a Hindi version */
+  hindi?: boolean;
+  count?: number;
+  ids?: string[];
+  seed?: number;
+}
 
 export const boardingService = {
   /** Active boarding schools per residential system; systems without schools are absent. */
@@ -192,6 +236,8 @@ export const locationService = {
   districts: (state: string) =>
     cached(`districts:${state}`, () => http.get<District[]>('/locations/districts', { params: { state } }).then((r) => r.data)),
   cities: (state: string) => http.get<City[]>('/locations/cities', { params: { state } }).then((r) => r.data),
+  /** Every city in India with listed schools, largest first. */
+  citiesAcrossIndia: () => http.get<IndiaCity[]>('/locations/cities/all').then((r) => r.data),
   localities: (state?: string) =>
     http.get<string[]>('/locations/localities', { params: cleanParams({ state }) }).then((r) => r.data),
 };

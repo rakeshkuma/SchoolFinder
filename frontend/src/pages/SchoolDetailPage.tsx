@@ -142,7 +142,11 @@ export function SchoolDetailPage() {
           <KeyFacts school={s} onTab={setTab} />
         </div>
       </header>
-      <div className="container-page py-6">
+      <StickyActions school={s} onAdmissions={() => {
+        setTab('admissions');
+        document.getElementById('school-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }} />
+      <div id="school-tabs" className="container-page scroll-mt-32 py-6">
         <Tabs
           active={tab}
           onChange={setTab}
@@ -162,6 +166,37 @@ export function SchoolDetailPage() {
         />
       </div>
     </>
+  );
+}
+
+/**
+ * The main actions, kept in reach under the site header while reading the profile. "Contact" uses the school's own
+ * published phone, e-mail or website — whichever exists — and is left out when none is published.
+ */
+function StickyActions({ school: s, onAdmissions }: { school: SchoolDetail; onAdmissions: () => void }) {
+  const phone = s.phone?.split(',')[0].trim();
+  const contact = phone ? { href: `tel:${phone.replace(/[^\d+]/g, '')}`, label: 'Call school', icon: 'phone' as const, external: false }
+    : s.email ? { href: `mailto:${s.email}`, label: 'Email school', icon: 'mail' as const, external: false }
+      : s.websiteUrl ? { href: s.websiteUrl, label: 'Contact school', icon: 'external' as const, external: true } : null;
+  return (
+    <div className="sticky top-[68px] z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="container-page flex items-center gap-3 overflow-x-auto py-2.5">
+        <p className="hidden min-w-0 flex-1 truncate font-display font-bold text-ink md:block">{s.name}</p>
+        <div className="flex shrink-0 items-center gap-2">
+          <CompareButton id={s.id} name={s.name} slug={s.slug} />
+          <SaveButton school={toRef(s)} withLabel />
+          {contact && (
+            <a href={contact.href} {...(contact.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="btn-secondary whitespace-nowrap rounded-full px-3 py-1.5 text-sm">
+              <Icon name={contact.icon} className="h-4 w-4" /> {contact.label}
+            </a>
+          )}
+          <button type="button" onClick={onAdmissions} className="btn-primary whitespace-nowrap rounded-full px-4 py-1.5 text-sm">
+            <Icon name="calendar" className="h-4 w-4" /> Admission details
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

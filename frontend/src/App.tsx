@@ -20,6 +20,7 @@ const info = () => import('./pages/InfoPages');
 const HomePage = page(() => import('./pages/HomePage'), 'HomePage');
 const SchoolsPage = page(directory, 'SchoolsPage');
 const StatesPage = page(directory, 'StatesPage');
+const CitiesPage = page(directory, 'CitiesPage');
 const StatePage = page(directory, 'StatePage');
 const NetworkPage = page(directory, 'NetworkPage');
 const SavedSchoolsPage = page(directory, 'SavedSchoolsPage');
@@ -30,6 +31,7 @@ const SchoolDetailPage = page(() => import('./pages/SchoolDetailPage'), 'SchoolD
 const ComparePage = page(() => import('./pages/ComparePage'), 'ComparePage');
 const AdmissionsPage = page(() => import('./pages/AdmissionsPages'), 'AdmissionsPage');
 const NotificationsPage = page(() => import('./pages/AdmissionsPages'), 'NotificationsPage');
+const AdmissionGuidePage = page(() => import('./pages/AdmissionsPages'), 'AdmissionGuidePage');
 const FeeCalculatorPage = page(() => import('./pages/FeeCalculatorPage'), 'FeeCalculatorPage');
 const NearbyPage = page(() => import('./pages/NearbyPage'), 'NearbyPage');
 const BoardingPage = page(() => import('./pages/BoardingDirectoryPage'), 'BoardingPage');
@@ -41,8 +43,12 @@ const ExamCalendarPage = page(() => import('./pages/ExamToolsPages'), 'ExamCalen
 const ExamClassPage = page(() => import('./pages/ExamHubPages'), 'ExamClassPage');
 const ExamStatePage = page(() => import('./pages/ExamHubPages'), 'ExamStatePage');
 const ExamSyllabusPage = page(() => import('./pages/ExamHubPages'), 'ExamSyllabusPage');
+const ExamResourcesPage = page(() => import('./pages/ExamResourcesPage'), 'ExamResourcesPage');
 const PracticeListPage = page(() => import('./pages/PracticePages'), 'PracticeListPage');
 const PracticeTestPage = page(() => import('./pages/PracticePages'), 'PracticeTestPage');
+const PracticeAttemptPage = page(() => import('./pages/PracticePages'), 'PracticeAttemptPage');
+const PracticeSessionPage = page(() => import('./pages/PracticePages'), 'PracticeSessionPage');
+const PracticeProgressPage = page(() => import('./pages/PracticeProgressPage'), 'PracticeProgressPage');
 const MethodologyPage = page(() => import('./pages/MethodologyPage'), 'MethodologyPage');
 const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
@@ -73,6 +79,7 @@ const AdminReviewsPage = lazy(() => import('./pages/admin/AdminOperationsPages')
 const AdminRankingPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminRankingPage })));
 const AdminSubmissionsPage = lazy(() => import('./pages/admin/AdminSubmissionsPage').then((m) => ({ default: m.AdminSubmissionsPage })));
 const AdminExamsPage = lazy(() => import('./pages/admin/AdminExamsPage').then((m) => ({ default: m.AdminExamsPage })));
+const AdminPracticePage = lazy(() => import('./pages/admin/AdminPracticePage').then((m) => ({ default: m.AdminPracticePage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
 
 export default function App() {
@@ -88,14 +95,17 @@ export default function App() {
               <Route path="schools" element={<SchoolsPage />} />
               <Route path="schools/:slug" element={<SchoolDetailPage />} />
               <Route path="states" element={<StatesPage />} />
+              <Route path="cities" element={<CitiesPage />} />
               <Route path="states/:state" element={<StatePage />} />
               <Route path="states/:state/:district" element={<StatePage />} />
+              <Route path="states/:state/city/:city" element={<StatePage />} />
               <Route path="network/:network" element={<NetworkPage />} />
               <Route path="saved" element={<SavedSchoolsPage />} />
               <Route path="rankings" element={<RankingsPage />} />
               <Route path="rankings/methodology" element={<MethodologyPage />} />
               <Route path="admissions" element={<AdmissionsPage />} />
               <Route path="admissions/notifications" element={<NotificationsPage />} />
+              <Route path="admissions/guide" element={<AdmissionGuidePage />} />
               <Route path="fees" element={<FeeCalculatorPage />} />
               <Route path="compare" element={<ComparePage />} />
               <Route path="nearby" element={<NearbyPage />} />
@@ -107,7 +117,11 @@ export default function App() {
               <Route path="exams/class/:n" element={<ExamClassPage />} />
               <Route path="exams/state/:slug" element={<ExamStatePage />} />
               <Route path="exams/syllabus" element={<ExamSyllabusPage />} />
+              <Route path="exams/resources" element={<ExamResourcesPage />} />
               <Route path="exams/practice" element={<PracticeListPage />} />
+              <Route path="exams/practice/session" element={<PracticeSessionPage />} />
+              <Route path="exams/practice/progress" element={<PracticeProgressPage />} />
+              <Route path="exams/practice/attempts/:id" element={<PracticeAttemptPage />} />
               <Route path="exams/practice/:slug" element={<PracticeTestPage />} />
               <Route path="exams/:slug" element={<ExamGuidePage />} />
               <Route path="boards/:code" element={<BoardPage />} />
@@ -138,6 +152,7 @@ export default function App() {
                 <Route path="import" element={<AdminImportPage />} />
                 <Route path="submissions" element={<AdminSubmissionsPage />} />
                 <Route path="exams" element={<AdminExamsPage />} />
+                <Route path="practice" element={<AdminPracticePage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
                 <Route path="audit" element={<AdminAuditPage />} />

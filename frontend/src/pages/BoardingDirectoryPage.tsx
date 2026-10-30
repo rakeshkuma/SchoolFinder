@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
 import { Pagination } from '../components/common/Pagination';
+import { MoreFilters } from '../components/common/FilterSheet';
 import { AsyncContent, EmptyState, SkeletonCards } from '../components/common/States';
 import { BoardingCard } from '../components/school/BoardingCard';
 import { AFFORDABLE_MAX_FEE, BOARDING_COLLECTIONS, SYSTEM_GROUPS } from '../content/boardingCollections';
@@ -21,6 +22,8 @@ const TOP_SIZES = [10, 20, 50] as const;
 const BUDGETS = [100000, 150000, 300000, 600000, 1000000];
 /** URL keys of the directory filters (the page and sort keys are handled separately). */
 const FILTER_KEYS = ['q', 'state', 'system', 'gender', 'board', 'type', 'className', 'maxFee', 'exam', 'admission', 'facility'] as const;
+/** Filters under "More filters"; State, School type and Annual fee stay in view. */
+const MORE_KEYS = ['board', 'className', 'gender', 'type', 'exam', 'admission', 'facility'] as const;
 
 /** "government" / "defence" / "private" or a single system, as the comma-separated list the API expects. */
 function systemsFor(value: string | null): string | undefined {
@@ -51,13 +54,13 @@ export function boardingSearchParams(sp: URLSearchParams): SchoolSearchParams {
   };
 }
 
-function Select({ label, value, onChange, children }: {
-  label: string; value: string; onChange: (v: string) => void; children: React.ReactNode;
+function Select({ id, label, value, onChange, children }: {
+  id?: string; label: string; value: string; onChange: (v: string) => void; children: React.ReactNode;
 }) {
   return (
-    <label className="text-sm">
+    <label className="block text-sm" htmlFor={id}>
       <span className="label">{label}</span>
-      <select className="input" value={value} onChange={(e) => onChange(e.target.value)}>{children}</select>
+      <select id={id} className="input" value={value} onChange={(e) => onChange(e.target.value)}>{children}</select>
     </label>
   );
 }
@@ -140,6 +143,24 @@ export function BoardingPage() {
     document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   const activeFilters = FILTER_KEYS.filter((k) => sp.get(k));
+  // Clearing keeps the chosen sort order.
+  const clearAll = () => setSp(new URLSearchParams(sp.get('sort') ? { sort: sp.get('sort')! } : {}));
+  const chipLabel = (k: (typeof FILTER_KEYS)[number], v: string): string => {
+    switch (k) {
+      case 'q': return `“${v}”`;
+      case 'state': return states.data?.find((x) => x.code === v)?.name ?? v;
+      case 'system': return SYSTEM_GROUPS[v]?.label ?? residentialSystemLabel[v as ResidentialSystem] ?? v;
+      case 'gender': return genderLabel[v as GenderType] ?? v;
+      case 'board': return v === 'CISCE' ? 'ICSE / ISC' : v;
+      case 'type': return boardingTypeLabel[v as BoardingType] ?? v;
+      case 'className': return `Class ${v}`;
+      case 'maxFee': return `Fee up to ${formatMoneyCompact(Number(v))}`;
+      case 'exam': return entranceExamInfo[v as EntranceExam]?.label ?? v;
+      case 'admission': return v === 'OPEN' ? 'Admissions open' : 'Admissions soon';
+      case 'facility': return facilityCategoryLabel[v as keyof typeof facilityCategoryLabel] ?? v;
+      default: return v;
+    }
+  };
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
     set({ q: query.trim() || undefined });
@@ -201,73 +222,109 @@ export function BoardingPage() {
         <section id="directory" aria-labelledby="directory-title" className="scroll-mt-24">
           <p className="eyebrow">Directory</p>
           <h2 id="directory-title" className="section-title mt-2">All boarding and residential schools</h2>
-          <div className="card mt-5 grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Select label="State / UT" value={sp.get('state') ?? ''} onChange={(v) => set({ state: v || undefined })}>
-              <option value="">All of India</option>
-              {(states.data ?? []).filter((s) => s.schoolCount > 0).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
-            </Select>
-            <Select label="School system" value={sp.get('system') ?? ''} onChange={(v) => set({ system: v || undefined })}>
-              <option value="">All</option>
-              {Object.entries(SYSTEM_GROUPS).map(([k, g]) => <option key={k} value={k}>{g.label}</option>)}
-              <optgroup label="Single system">
-                {(Object.keys(residentialSystemLabel) as ResidentialSystem[]).map((s) => (
-                  <option key={s} value={s}>{residentialSystemLabel[s]}{count(s) != null ? ` (${count(s)})` : ''}</option>
-                ))}
-              </optgroup>
-            </Select>
-            <Select label="Board" value={sp.get('board') ?? ''} onChange={(v) => set({ board: v || undefined })}>
-              <option value="">All</option>
-              {(boards.data ?? []).map((b) => <option key={b.code} value={b.code}>{b.code === 'CISCE' ? 'ICSE/ISC' : b.code}</option>)}
-            </Select>
-            <Select label="Boys / girls" value={sp.get('gender') ?? ''} onChange={(v) => set({ gender: v || undefined })}>
-              <option value="">All</option>
-              {(Object.keys(genderLabel) as GenderType[]).map((g) => <option key={g} value={g}>{genderLabel[g]}</option>)}
-            </Select>
-            <Select label="Boarding arrangement" value={sp.get('type') ?? ''} onChange={(v) => set({ type: v || undefined })}>
-              <option value="">All</option>
-              {(Object.keys(boardingTypeLabel) as BoardingType[]).map((t) => <option key={t} value={t}>{boardingTypeLabel[t]}</option>)}
-            </Select>
-            <Select label="Class offered" value={sp.get('className') ?? ''} onChange={(v) => set({ className: v || undefined })}>
-              <option value="">Any</option>
-              {['III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].map((c) => <option key={c} value={c}>Class {c}</option>)}
-            </Select>
-            <Select label="Annual budget (official fee)" value={sp.get('maxFee') ?? ''} onChange={(v) => set({ maxFee: v || undefined })}>
-              <option value="">Any</option>
-              {BUDGETS.map((b) => <option key={b} value={b}>Up to {formatMoneyCompact(b)}</option>)}
-            </Select>
-            <Select label="Entrance exam" value={sp.get('exam') ?? ''} onChange={(v) => set({ exam: v || undefined })}>
-              <option value="">Any</option>
-              {(Object.keys(entranceExamInfo) as EntranceExam[]).map((x) => <option key={x} value={x}>{entranceExamInfo[x].label}</option>)}
-            </Select>
-            <Select label="Admission status" value={sp.get('admission') ?? ''} onChange={(v) => set({ admission: v || undefined })}>
-              <option value="">Any</option>
-              <option value="OPEN">Open now</option>
-              <option value="UPCOMING">Opening soon</option>
-            </Select>
-            <Select label="Documented facility" value={sp.get('facility') ?? ''} onChange={(v) => set({ facility: v || undefined })}>
-              <option value="">Any</option>
-              {(['SPORTS', 'LIBRARY', 'LABORATORY', 'COMPUTER', 'HEALTH', 'ARTS', 'TRANSPORT'] as const).map((f) => (
-                <option key={f} value={f}>{facilityCategoryLabel[f]}</option>
+          {(() => {
+            const stateSelect = (id: string) => (
+              <Select id={id} label="State" value={sp.get('state') ?? ''} onChange={(v) => set({ state: v || undefined })}>
+                <option value="">All of India</option>
+                {(states.data ?? []).filter((x) => x.schoolCount > 0).map((x) => <option key={x.code} value={x.code}>{x.name}</option>)}
+              </Select>
+            );
+            const systemSelect = (id: string) => (
+              <Select id={id} label="School type" value={sp.get('system') ?? ''} onChange={(v) => set({ system: v || undefined })}>
+                <option value="">All boarding schools</option>
+                {Object.entries(SYSTEM_GROUPS).map(([k, g]) => <option key={k} value={k}>{g.label}</option>)}
+                <optgroup label="One school system">
+                  {(Object.keys(residentialSystemLabel) as ResidentialSystem[]).map((x) => (
+                    <option key={x} value={x}>{residentialSystemLabel[x]}{count(x) != null ? ` (${count(x)})` : ''}</option>
+                  ))}
+                </optgroup>
+              </Select>
+            );
+            const feeSelect = (id: string) => (
+              <Select id={id} label="Annual fee" value={sp.get('maxFee') ?? ''} onChange={(v) => set({ maxFee: v || undefined })}>
+                <option value="">Any fee</option>
+                {BUDGETS.map((b) => <option key={b} value={b}>Up to {formatMoneyCompact(b)}</option>)}
+              </Select>
+            );
+            const more = (
+              <>
+                <Select id="bm-board" label="Board" value={sp.get('board') ?? ''} onChange={(v) => set({ board: v || undefined })}>
+                  <option value="">Any board</option>
+                  {(boards.data ?? []).map((b) => <option key={b.code} value={b.code}>{b.code === 'CISCE' ? 'ICSE / ISC' : b.code}</option>)}
+                </Select>
+                <Select id="bm-class" label="Class" value={sp.get('className') ?? ''} onChange={(v) => set({ className: v || undefined })}>
+                  <option value="">Any class</option>
+                  {['III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].map((c) => <option key={c} value={c}>Class {c}</option>)}
+                </Select>
+                <Select id="bm-gender" label="Boys, girls or co-ed" value={sp.get('gender') ?? ''} onChange={(v) => set({ gender: v || undefined })}>
+                  <option value="">Any</option>
+                  {(Object.keys(genderLabel) as GenderType[]).map((g) => <option key={g} value={g}>{genderLabel[g]}</option>)}
+                </Select>
+                <Select id="bm-type" label="Boarding arrangement" value={sp.get('type') ?? ''} onChange={(v) => set({ type: v || undefined })}>
+                  <option value="">Any</option>
+                  {(Object.keys(boardingTypeLabel) as BoardingType[]).map((t) => <option key={t} value={t}>{boardingTypeLabel[t]}</option>)}
+                </Select>
+                <Select id="bm-exam" label="Entrance exam" value={sp.get('exam') ?? ''} onChange={(v) => set({ exam: v || undefined })}>
+                  <option value="">Any</option>
+                  {(Object.keys(entranceExamInfo) as EntranceExam[]).map((x) => <option key={x} value={x}>{entranceExamInfo[x].label}</option>)}
+                </Select>
+                <Select id="bm-adm" label="Admissions" value={sp.get('admission') ?? ''} onChange={(v) => set({ admission: v || undefined })}>
+                  <option value="">Any</option>
+                  <option value="OPEN">Open now</option>
+                  <option value="UPCOMING">Opening soon</option>
+                </Select>
+                <Select id="bm-facility" label="Documented facility" value={sp.get('facility') ?? ''} onChange={(v) => set({ facility: v || undefined })}>
+                  <option value="">Any</option>
+                  {(['SPORTS', 'LIBRARY', 'LABORATORY', 'COMPUTER', 'HEALTH', 'ARTS', 'TRANSPORT'] as const).map((x) => (
+                    <option key={x} value={x}>{facilityCategoryLabel[x]}</option>
+                  ))}
+                </Select>
+              </>
+            );
+            const moreCount = MORE_KEYS.filter((k) => sp.get(k)).length;
+            const total = results.data?.totalElements;
+            const resultLabel = total === undefined ? undefined : `${total.toLocaleString('en-IN')} school${total === 1 ? '' : 's'}`;
+            return (
+              <div className="card mt-5 flex flex-wrap items-end gap-3 p-4">
+                <div className="hidden flex-1 gap-3 sm:grid sm:grid-cols-3">{stateSelect('bf-state')}{systemSelect('bf-system')}{feeSelect('bf-fee')}</div>
+                <div className="hidden sm:block">
+                  <MoreFilters activeCount={moreCount} resultLabel={resultLabel} onClearAll={clearAll}>{more}</MoreFilters>
+                </div>
+                <div className="sm:hidden">
+                  <MoreFilters label="Filters" activeCount={activeFilters.filter((k) => k !== 'q').length} resultLabel={resultLabel} onClearAll={clearAll}>
+                    {stateSelect('bs-state')}{systemSelect('bs-system')}{feeSelect('bs-fee')}{more}
+                  </MoreFilters>
+                </div>
+                <div className="ml-auto w-full sm:w-48">
+                  <Select id="bf-sort" label="Sort by" value={sp.get('sort') ?? ''} onChange={(v) => set({ sort: v || undefined })}>
+                    <option value="">Name (A–Z)</option>
+                    <option value="fee">Fee: low to high</option>
+                    <option value="verified">Recently verified</option>
+                  </Select>
+                </div>
+              </div>
+            );
+          })()}
+
+          {activeFilters.length > 0 && (
+            <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label="Active filters">
+              {activeFilters.map((k) => (
+                <li key={k}>
+                  <button type="button" onClick={() => set({ [k]: undefined })} aria-label={`Remove filter: ${chipLabel(k, sp.get(k)!)}`}
+                    className="chip gap-1.5 bg-brand-50 px-3 py-1 text-sm font-medium text-brand-800 ring-1 ring-inset ring-brand-200 hover:bg-brand-100">
+                    {chipLabel(k, sp.get(k)!)} <Icon name="close" className="h-3.5 w-3.5" />
+                  </button>
+                </li>
               ))}
-            </Select>
-            <Select label="Sort" value={sp.get('sort') ?? ''} onChange={(v) => set({ sort: v || undefined })}>
-              <option value="">Name (A–Z)</option>
-              <option value="fee">Lowest official fee</option>
-              <option value="verified">Recently verified</option>
-            </Select>
-            <div className="flex items-end">
-              <button type="button" className="btn-secondary w-full" disabled={activeFilters.length === 0 && !sp.get('sort')}
-                onClick={() => setSp(new URLSearchParams())}>
-                Clear all
-              </button>
-            </div>
-          </div>
+              {activeFilters.length > 1 && (
+                <li><button type="button" className="text-sm font-semibold text-slate-600 hover:text-ink hover:underline" onClick={clearAll}>Clear all</button></li>
+              )}
+            </ul>
+          )}
 
           <p className="mt-4 text-sm text-slate-600" aria-live="polite">
-            {results.data ? <>{results.data.totalElements.toLocaleString('en-IN')} school{results.data.totalElements === 1 ? '' : 's'}</> : 'Loading…'}
-            {sp.get('q') && <> matching “{sp.get('q')}”</>}
-            {activeFilters.filter((k) => k !== 'q').length > 0 && <> · {activeFilters.filter((k) => k !== 'q').length} filter{activeFilters.length === 1 ? '' : 's'} applied</>}
-            {sp.get('maxFee') && <> · fee filter uses the lowest official recurring annual fee; schools without fee records are excluded</>}
+            {results.data ? <><strong className="text-ink">{results.data.totalElements.toLocaleString('en-IN')}</strong> school{results.data.totalElements === 1 ? '' : 's'}</> : 'Loading…'}
+            {sp.get('maxFee') && <> · the fee filter uses the lowest official recurring annual fee; schools without fee records are excluded</>}
           </p>
 
           <div className="mt-4">

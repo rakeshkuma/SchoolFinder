@@ -1,6 +1,7 @@
 package com.indiaschoolfinder.controller;
 
 import com.indiaschoolfinder.config.AppProperties;
+import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.StateDto;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
 import com.indiaschoolfinder.entity.Exam;
@@ -36,8 +37,8 @@ import java.util.concurrent.TimeUnit;
 public class SitemapController {
 
     static final int SCHOOLS_PER_FILE = 40_000;
-    private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/rankings", "/rankings/methodology",
-            "/admissions", "/fees", "/compare", "/nearby", "/boarding", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/reviews", "/about", "/contact",
+    private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
+            "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
@@ -70,6 +71,9 @@ public class SitemapController {
                 Disallow: /verify-email
                 Disallow: /forgot-password
                 Disallow: /reset-password
+                Disallow: /exams/practice/progress
+                Disallow: /exams/practice/attempts
+                Disallow: /exams/practice/session
 
                 Sitemap: %s/sitemap.xml
                 """.formatted(base(request));
@@ -97,6 +101,9 @@ public class SitemapController {
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);
+                for (CityDto city : locationService.cities(state.code())) {
+                    url(xml, base + "/states/" + state.slug() + "/city/" + city.slug(), null);
+                }
             }
         }
         for (Object[] row : schoolRepository.districtsWithSchools()) {

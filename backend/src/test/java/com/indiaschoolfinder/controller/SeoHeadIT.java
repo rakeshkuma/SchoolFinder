@@ -40,14 +40,26 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/admin/schools/1")).contains("noindex");
         assertThat(head("/saved")).contains("noindex");
         assertThat(head("/suggest")).contains("noindex");
+        assertThat(head("/exams/practice/progress")).contains("noindex");
+        assertThat(head("/exams/practice/attempts/12")).contains("noindex");
+        assertThat(head("/exams/practice/session")).contains("noindex");
+        assertThat(head("/exams/practice")).doesNotContain("noindex").contains("Olympiad");
+        // Fixed pages each have their own title and canonical address.
+        assertThat(head("/about")).contains("<title>About India School Finder | India School Finder</title>")
+                .contains("href=\"http://localhost/about\"");
+        assertThat(head("/stages/primary")).contains("<title>Primary schools | India School Finder</title>");
+        assertThat(head("/network/kendriya-vidyalaya")).contains("Kendriya Vidyalaya schools");
     }
 
     @Test
     void directoryAndStatePagesDescribeTheirContents() throws Exception {
-        createSchool(school("Fixture Lake School", Map.of("stateCode", "UK", "district", "Nainital")));
+        createSchool(school("Fixture Lake School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | India School Finder</title>")
                 .contains("1 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
         assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand");
+        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | India School Finder</title>")
+                .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex");
+        assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");
         assertThat(head("/schools")).contains("<title>School directory | India School Finder</title>")
                 .contains("href=\"http://localhost/schools\"");
         assertThat(head("/boards/CISCE")).contains("ICSE/ISC (CISCE) schools in India")

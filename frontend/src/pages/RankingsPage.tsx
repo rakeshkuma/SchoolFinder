@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { ProvisionalBadge } from '../components/common/Badges';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
+import { MoreFilters } from '../components/common/FilterSheet';
 import { AsyncContent } from '../components/common/States';
 import { CompareButton } from '../components/school/CompareBar';
 import { RankingCard } from '../components/school/RankingCard';
@@ -12,23 +13,65 @@ import { MAX_COMPARE, useCompare } from '../hooks/useCompare';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { locationService, rankingService, referenceService, type RankingParams } from '../services/publicApi';
 import type { SchoolType } from '../types/api';
-import { schoolTypeLabel } from '../utils/format';
+import { formatDate, schoolTypeLabel } from '../utils/format';
 
 const COLORS = ['#2448e8', '#0ea5e9', '#14b8a6', '#22c55e', '#ffa520', '#f97316', '#8b5cf6'];
 
 const TOP_N = [10, 20, 100] as const;
 const VIEW_KEY = 'dsf.rankings.view';
 
+/** One-click ranking categories. Each sets only the category fields, so the chosen state or city is kept. */
+export const CATEGORIES: { label: string; params: Pick<RankingParams, 'board' | 'schoolType' | 'boarding'> }[] = [
+  { label: 'All schools', params: {} },
+  { label: 'Boarding', params: { boarding: true } },
+  { label: 'Government', params: { schoolType: 'GOVERNMENT' } },
+  { label: 'Private', params: { schoolType: 'PRIVATE' } },
+  { label: 'CBSE', params: { board: 'CBSE' } },
+  { label: 'ICSE / ISC', params: { board: 'CISCE' } },
+];
+
+/** Rankings filters live in the URL so every view can be shared and bookmarked. Defaults are left out. */
+export function fromRankingQuery(q: URLSearchParams): RankingParams {
+  const size = Number(q.get('size'));
+  return {
+    state: q.get('state') || undefined,
+    district: q.get('district') || undefined,
+    city: q.get('city') || undefined,
+    locality: q.get('locality') || undefined,
+    board: q.get('board') || undefined,
+    schoolType: (q.get('schoolType') || undefined) as SchoolType | undefined,
+    boarding: q.get('boarding') === 'true' || undefined,
+    includeProvisional: q.get('provisional') !== 'false',
+    page: 0,
+    size: (TOP_N as readonly number[]).includes(size) ? size : 20,
+  };
+}
+
+export function toRankingQuery(p: RankingParams): URLSearchParams {
+  const q = new URLSearchParams();
+  (['state', 'district', 'city', 'locality', 'board', 'schoolType'] as const).forEach((k) => { if (p[k]) q.set(k, String(p[k])); });
+  if (p.boarding) q.set('boarding', 'true');
+  if (p.includeProvisional === false) q.set('provisional', 'false');
+  if (p.size && p.size !== 20) q.set('size', String(p.size));
+  return q;
+}
+
 export function RankingsPage() {
-  useDocumentTitle('School rankings');
-  const [params, setParams] = useState<RankingParams>({ includeProvisional: true, page: 0, size: 20 });
+  const [search, setSearch] = useSearchParams();
+  const params = useMemo(() => fromRankingQuery(search), [search]);
+  const setParams = (next: RankingParams) => setSearch(toRankingQuery(next), { replace: true });
+  // "Rankings by state or city" in the menu lands here with the state choice ready to use.
+  const focusPlace = search.get('focus') === 'place';
+  useEffect(() => {
+    if (focusPlace) window.setTimeout(() => document.getElementById('rk-state')?.focus(), 100);
+  }, [focusPlace]);
   const boards = useApi(() => referenceService.boards(), []);
   const states = useApi(() => locationService.states(), []);
   const districts = useApi(() => locationService.districts(params.state as string), [params.state], !!params.state);
   const cities = useApi(() => locationService.cities(params.state as string), [params.state], !!params.state);
   const state = useApi(() => rankingService.list(params), [JSON.stringify(params)]);
   const methodology = useApi(() => rankingService.methodology(), []);
-  const set = (patch: Partial<RankingParams>) => setParams((p) => ({ ...p, ...patch, page: patch.page ?? 0 }));
+  const set = (patch: Partial<RankingParams>) => setParams({ ...params, ...patch, page: 0 });
   const compare = useCompare();
   const navigate = useNavigate();
   const [view, setView] = useState<'cards' | 'table'>(() => {
@@ -53,9 +96,17 @@ export function RankingsPage() {
   const filtersLabel = [
     params.board && (params.board === 'CISCE' ? 'ICSE/ISC' : params.board),
     params.schoolType && schoolTypeLabel[params.schoolType],
+    params.boarding && 'Boarding',
     params.locality,
   ].filter(Boolean).join(' · ');
   const anyEvidence = (methodology.data?.rankedSchools ?? 0) + (methodology.data?.provisionalSchools ?? 0) > 0;
+  const category = CATEGORIES.find((c) => (c.params.board ?? undefined) === params.board
+    && (c.params.schoolType ?? undefined) === params.schoolType && (c.params.boarding ?? undefined) === params.boarding);
+  const kind = [params.board && (params.board === 'CISCE' ? 'ICSE/ISC' : params.board),
+    params.schoolType && schoolTypeLabel[params.schoolType].toLowerCase(), params.boarding && 'boarding'].filter(Boolean).join(' ');
+  useDocumentTitle(`Top ${params.size} ${kind ? `${kind} ` : ''}schools in ${scopeLabel}`);
+  const lastCalculated = (state.data?.content ?? []).reduce<string | null>(
+    (latest, r) => (r.calculatedAt && (!latest || r.calculatedAt > latest) ? r.calculatedAt : latest), null);
 
   return (
     <>
@@ -67,72 +118,115 @@ export function RankingsPage() {
             is <strong>not</strong> an official government ranking. <Link to="/rankings/methodology" className="link">How scores work →</Link>
           </>
         }
-      />
+      >
+        <nav aria-label="Ranking categories" className="flex flex-wrap gap-2">
+          {CATEGORIES.map((c) => (
+            <button key={c.label} type="button" aria-pressed={c === category}
+              onClick={() => set({ board: undefined, schoolType: undefined, boarding: undefined, ...c.params })}
+              className={`chip px-3 py-1 text-sm ${c === category ? 'bg-accent-400 font-semibold text-ink' : 'bg-white/10 text-slate-200 ring-1 ring-white/15 hover:bg-white/20'}`}>
+              {c.label}
+            </button>
+          ))}
+        </nav>
+      </PageHeader>
       <div className="container-page grid gap-6 py-8 lg:grid-cols-[1fr_300px]">
         <section>
-          <div className="card mb-4 flex flex-wrap items-end gap-3 p-4">
-            <label className="text-sm">
-              <span className="label">State / UT</span>
-              <select className="input" value={params.state ?? ''}
-                onChange={(e) => set({ state: e.target.value || undefined, district: undefined, city: undefined, locality: undefined })}>
-                <option value="">India (all states and UTs)</option>
-                {(states.data ?? []).filter((s) => s.schoolCount > 0).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
-              </select>
-            </label>
-            {params.state && (
-              <label className="text-sm">
-                <span className="label">District</span>
-                <select className="input" value={params.district ?? ''} onChange={(e) => set({ district: e.target.value || undefined, city: undefined })}>
-                  <option value="">All districts</option>
-                  {(districts.data ?? []).map((d) => <option key={d.id} value={d.slug}>{d.name}</option>)}
+          {(() => {
+            const stateSelect = (id: string) => (
+              <label className="block text-sm" htmlFor={id}>
+                <span className="label">State</span>
+                <select id={id} className="input" value={params.state ?? ''}
+                  onChange={(e) => set({ state: e.target.value || undefined, district: undefined, city: undefined, locality: undefined })}>
+                  <option value="">All of India</option>
+                  {(states.data ?? []).filter((s) => s.schoolCount > 0).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
                 </select>
               </label>
-            )}
-            {params.state && (
-              <label className="text-sm">
-                <span className="label">City / town</span>
-                <select className="input" value={params.city ?? ''} onChange={(e) => set({ city: e.target.value || undefined })}>
-                  <option value="">All cities</option>
-                  {(cities.data ?? []).map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+            );
+            const typeSelect = (id: string) => (
+              <label className="block text-sm" htmlFor={id}>
+                <span className="label">School category</span>
+                <select id={id} className="input" value={params.schoolType ?? ''} onChange={(e) => set({ schoolType: (e.target.value || undefined) as SchoolType | undefined })}>
+                  <option value="">All schools</option>
+                  {(Object.keys(schoolTypeLabel) as SchoolType[]).map((t) => <option key={t} value={t}>{schoolTypeLabel[t]}</option>)}
                 </select>
               </label>
-            )}
-            <label className="text-sm">
-              <span className="label">Board</span>
-              <select className="input" value={params.board ?? ''} onChange={(e) => set({ board: e.target.value || undefined })}>
-                <option value="">All</option>
-                {(boards.data ?? []).map((b) => <option key={b.code} value={b.code}>{b.code === 'CISCE' ? 'ICSE/ISC' : b.code}</option>)}
-              </select>
-            </label>
-            <label className="text-sm">
-              <span className="label">School type</span>
-              <select className="input" value={params.schoolType ?? ''} onChange={(e) => set({ schoolType: (e.target.value || undefined) as SchoolType | undefined })}>
-                <option value="">All</option>
-                {(Object.keys(schoolTypeLabel) as SchoolType[]).map((t) => <option key={t} value={t}>{schoolTypeLabel[t]}</option>)}
-              </select>
-            </label>
-            <label className="text-sm">
-              <span className="label">Locality</span>
-              <input className="input" placeholder="Exact locality" value={params.locality ?? ''} onChange={(e) => set({ locality: e.target.value || undefined })} />
-            </label>
-            <label className="flex items-center gap-2 pb-2 text-sm text-slate-700">
-              <input type="checkbox" checked={params.includeProvisional ?? true} onChange={(e) => set({ includeProvisional: e.target.checked })} />
-              Show provisional results
-            </label>
-            <div className="ml-auto grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1" role="group" aria-label="How many schools">
-              {TOP_N.map((n) => (
-                <button key={n} type="button" aria-pressed={params.size === n} onClick={() => set({ size: n })}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${params.size === n ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:text-ink'}`}>
-                  Top {n}
-                </button>
-              ))}
-            </div>
-          </div>
+            );
+            const boardSelect = (id: string) => (
+              <label className="block text-sm" htmlFor={id}>
+                <span className="label">Board</span>
+                <select id={id} className="input" value={params.board ?? ''} onChange={(e) => set({ board: e.target.value || undefined })}>
+                  <option value="">Any board</option>
+                  {(boards.data ?? []).map((b) => <option key={b.code} value={b.code}>{b.code === 'CISCE' ? 'ICSE / ISC' : b.code}</option>)}
+                </select>
+              </label>
+            );
+            const more = (
+              <>
+                {params.state ? (
+                  <>
+                    <label className="block text-sm" htmlFor="rm-district">
+                      <span className="label">District</span>
+                      <select id="rm-district" className="input" value={params.district ?? ''} onChange={(e) => set({ district: e.target.value || undefined, city: undefined })}>
+                        <option value="">All districts</option>
+                        {(districts.data ?? []).map((d) => <option key={d.id} value={d.slug}>{d.name}</option>)}
+                      </select>
+                    </label>
+                    <label className="block text-sm" htmlFor="rm-city">
+                      <span className="label">City</span>
+                      <select id="rm-city" className="input" value={params.city ?? ''} onChange={(e) => set({ city: e.target.value || undefined })}>
+                        <option value="">All cities</option>
+                        {(cities.data ?? []).map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+                      </select>
+                    </label>
+                  </>
+                ) : <p className="text-sm text-slate-600">Choose a state to rank schools by district or city.</p>}
+                <label className="block text-sm" htmlFor="rm-locality">
+                  <span className="label">Locality</span>
+                  <input id="rm-locality" className="input" placeholder="Exact locality" value={params.locality ?? ''} onChange={(e) => set({ locality: e.target.value || undefined })} />
+                </label>
+                <label className="flex items-center gap-2 text-sm text-slate-700">
+                  <input type="checkbox" checked={params.boarding === true} onChange={(e) => set({ boarding: e.target.checked || undefined })} />
+                  Boarding schools only
+                </label>
+                <label className="flex items-center gap-2 text-sm text-slate-700">
+                  <input type="checkbox" checked={params.includeProvisional ?? true} onChange={(e) => set({ includeProvisional: e.target.checked })} />
+                  Show provisional results (not enough verified evidence for a rank)
+                </label>
+              </>
+            );
+            const moreCount = [params.district, params.city, params.locality, params.boarding].filter(Boolean).length
+              + (params.includeProvisional === false ? 1 : 0);
+            const clearAll = () => setParams({ includeProvisional: true, page: 0, size: params.size });
+            const resultLabel = state.data ? `${state.data.totalElements} school${state.data.totalElements === 1 ? '' : 's'}` : undefined;
+            return (
+              <div className="card mb-4 flex flex-wrap items-end gap-3 p-4">
+                <div className="hidden flex-1 gap-3 sm:grid sm:grid-cols-3">{stateSelect('rk-state')}{typeSelect('rk-type')}{boardSelect('rk-board')}</div>
+                <div className="hidden sm:block">
+                  <MoreFilters activeCount={moreCount} resultLabel={resultLabel} onClearAll={clearAll}>{more}</MoreFilters>
+                </div>
+                <div className="sm:hidden">
+                  <MoreFilters label="Filters" resultLabel={resultLabel} onClearAll={clearAll}
+                    activeCount={moreCount + [params.state, params.schoolType, params.board].filter(Boolean).length}>
+                    {stateSelect('rs-state')}{typeSelect('rs-type')}{boardSelect('rs-board')}{more}
+                  </MoreFilters>
+                </div>
+                <div className="ml-auto grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1" role="group" aria-label="How many schools">
+                  {TOP_N.map((n) => (
+                    <button key={n} type="button" aria-pressed={params.size === n} onClick={() => set({ size: n })}
+                      className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${params.size === n ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:text-ink'}`}>
+                      Top {n}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
           <p className="mb-3 text-sm text-slate-600" aria-live="polite">
             Top {params.size} in <strong className="text-ink">{scopeLabel}</strong>{filtersLabel && <> · {filtersLabel}</>}
             {params.includeProvisional ? ' · including provisional results' : ' · fully ranked only'}
             {state.data && <> · {state.data.totalElements} school{state.data.totalElements === 1 ? '' : 's'} with a score</>}
-            {methodology.data && <> · academic year {methodology.data.academicYear}</>}
+            {methodology.data && <> · academic year {methodology.data.academicYear}, methodology v{methodology.data.methodologyVersion}</>}
+            {lastCalculated && <> · scores last calculated {formatDate(lastCalculated)}</>}
           </p>
 
           <AsyncContent
@@ -169,7 +263,7 @@ export function RankingsPage() {
                     {anyEvidence && !params.includeProvisional && (
                       <button type="button" className="btn-primary rounded-full" onClick={() => set({ includeProvisional: true })}>Show provisional results</button>
                     )}
-                    {anyEvidence && (params.state || params.board || params.schoolType || params.locality) && (
+                    {anyEvidence && (params.state || params.board || params.schoolType || params.locality || params.boarding) && (
                       <button type="button" className="btn-secondary rounded-full"
                         onClick={() => setParams({ includeProvisional: params.includeProvisional, page: 0, size: params.size })}>
                         All of India, no filters

@@ -2,9 +2,11 @@ import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { useDebounce } from '../../hooks/useDebounce';
-import { referenceService, schoolService } from '../../services/publicApi';
-import type { SchoolSearchParams } from '../../types/api';
-import { formatMoneyCompact } from '../../utils/format';
+import { locationService, referenceService, schoolService } from '../../services/publicApi';
+import type { FacilityCategory, SchoolSearchParams } from '../../types/api';
+import {
+  admissionStatusLabel, facilityCategoryLabel, formatMoneyCompact, genderLabel, managementLabel, networkLabel, schoolTypeLabel, stageLabel,
+} from '../../utils/format';
 import { Icon } from '../common/Icon';
 import { Pagination } from '../common/Pagination';
 import { AsyncContent, EmptyState, SkeletonCards } from '../common/States';
@@ -15,18 +17,17 @@ import { SchoolMap } from './SchoolMap';
 const NUMERIC: FilterKey[] = ['minAnnualFee', 'maxAnnualFee', 'minRating', 'page', 'size', 'latitude', 'longitude', 'radiusKm'];
 const BOOLEAN: FilterKey[] = ['hasHostel', 'hasTransport', 'boarding'];
 const PAGE_SIZES = [12, 24, 48] as const;
+/**
+ * Simple sort choices. "Recommended" is the best-documented order (it measures how much is published about a school,
+ * not popularity). Fee sorts leave schools without a published fee at the end. Other backend sorts still work by URL.
+ */
 const SORTS = [
-  { value: 'recommended', label: 'Recommended (best documented first)' },
-  { value: 'name', label: 'Name (A–Z)' },
-  { value: 'fee', label: 'Annual fee (lowest first)' },
-  { value: 'verified', label: 'Most recently verified' },
-  { value: 'rating', label: 'Parent rating' },
-  { value: 'reviews', label: 'Most reviewed' },
-  { value: 'city', label: 'City' },
-  { value: 'locality', label: 'Locality' },
+  { value: 'recommended', label: 'Recommended' },
+  { value: 'name', label: 'School name (A–Z)' },
   { value: 'updated', label: 'Recently updated' },
+  { value: 'fee', label: 'Fee: low to high' },
+  { value: 'fee-desc', label: 'Fee: high to low' },
 ];
-const IGNORED_FOR_COUNT = new Set(['page', 'size', 'sortBy', 'sortDirection', 'view']);
 type View = 'list' | 'split' | 'map';
 const VIEWS: { value: View; label: string; icon: 'list' | 'columns' | 'map'; className?: string }[] = [
   { value: 'list', label: 'List', icon: 'list' },
@@ -61,6 +62,45 @@ function OrderExplanation() {
   );
 }
 
+type Chip = { id: string; label: string; clear: FilterKey[]; facility?: FacilityCategory };
+
+/** One removable chip per active filter; fee bounds and map location each collapse into a single chip. */
+export function filterChips(f: SchoolSearchParams, stateName?: (code: string) => string | undefined): Chip[] {
+  const chips: Chip[] = [];
+  const add = (key: FilterKey, label: string) => chips.push({ id: key, label, clear: [key] });
+  if (f.q) add('q', `“${f.q}”`);
+  if (f.state) add('state', stateName?.(f.state) ?? `State: ${f.state}`);
+  if (f.district) add('district', `District: ${f.district.replace(/-/g, ' ')}`);
+  if (f.city) add('city', `City: ${f.city}`);
+  if (f.locality) add('locality', `Locality: ${f.locality}`);
+  if (f.pinCode) add('pinCode', `PIN ${f.pinCode}`);
+  if (f.board) add('board', f.board === 'CISCE' ? 'ICSE / ISC' : f.board);
+  if (f.schoolType) add('schoolType', schoolTypeLabel[f.schoolType]);
+  if (f.management) add('management', managementLabel[f.management]);
+  if (f.network) add('network', networkLabel[f.network]);
+  if (f.hasHostel !== undefined) add('hasHostel', f.hasHostel ? 'Boarding' : 'Day school');
+  if (f.hasTransport) add('hasTransport', 'Transport');
+  if (f.genderType) add('genderType', genderLabel[f.genderType]);
+  if (f.medium) add('medium', `${f.medium} medium`);
+  if (f.stage) add('stage', stageLabel[f.stage]);
+  if (f.className) add('className', `Class ${f.className}`);
+  if (f.admissionStatus) add('admissionStatus', admissionStatusLabel[f.admissionStatus]);
+  if (f.minRating) add('minRating', `${f.minRating}★ and above`);
+  (f.facility ?? '').split(',').filter(Boolean).forEach((x) => {
+    const facility = x as FacilityCategory;
+    chips.push({ id: `facility-${x}`, label: facilityCategoryLabel[facility] ?? x, clear: [], facility });
+  });
+  if (f.minAnnualFee !== undefined || f.maxAnnualFee !== undefined) {
+    const lo = f.minAnnualFee !== undefined ? formatMoneyCompact(f.minAnnualFee) : null;
+    const hi = f.maxAnnualFee !== undefined ? formatMoneyCompact(f.maxAnnualFee) : null;
+    chips.push({ id: 'fee', label: `Fee ${lo && hi ? `${lo}–${hi}` : lo ? `from ${lo}` : `up to ${hi}`}`, clear: ['minAnnualFee', 'maxAnnualFee'] });
+  }
+  if (f.latitude !== undefined && f.longitude !== undefined) {
+    chips.push({ id: 'near', label: `Within ${f.radiusKm ?? 3} km of a location`, clear: ['latitude', 'longitude', 'radiusKm'] });
+  }
+  return chips;
+}
+
 export function fromQuery(params: URLSearchParams): SchoolSearchParams & { view?: string } {
   const result: Record<string, unknown> = {};
   params.forEach((v, k) => {
@@ -81,7 +121,6 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
   const { view: viewParam, ...filters } = all;
   const view: View = viewParam === 'map' || viewParam === 'split' ? viewParam : 'list';
   const debounced = useDebounce(filters, 300);
-  const [showFilters, setShowFilters] = useState(false);
   const pageSize = PAGE_SIZES.includes(filters.size as (typeof PAGE_SIZES)[number]) ? (filters.size as number) : PAGE_SIZES[0];
   const query: SchoolSearchParams = {
     ...debounced, ...fixed, size: view === 'map' ? 100 : pageSize, page: view === 'map' ? 0 : debounced.page,
@@ -124,19 +163,32 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
     }
   };
 
-  const activeCount = Object.entries(filters).filter(([k, v]) => !IGNORED_FOR_COUNT.has(k) && v !== undefined && v !== '').length;
+  // Filters fixed by the page (e.g. the state on a state page) are part of the page, not removable chips.
+  const states = useApi(() => locationService.states(), []);
+  const chips = filterChips(Object.fromEntries(Object.entries(filters).filter(([k]) => !(k in fixed))) as SchoolSearchParams,
+    (code) => states.data?.find((s) => s.code === code)?.name);
+  const removeChip = (chip: Chip) => {
+    const next: SchoolSearchParams = { ...filters, page: 0 };
+    chip.clear.forEach((k) => { delete next[k]; });
+    if (chip.facility) {
+      const rest = (filters.facility ?? '').split(',').filter((x) => x && x !== chip.facility);
+      next.facility = rest.length ? rest.join(',') : undefined;
+    }
+    update({ ...next, view });
+  };
+  const clearAll = () => update({ sortBy: filters.sortBy, size: filters.size, view });
 
+  const total = state.data?.totalElements;
   return (
-    <div className="grid gap-8 lg:grid-cols-[290px_1fr]">
-      <aside className={`${showFilters ? 'block' : 'hidden'} lg:sticky lg:top-24 lg:block lg:self-start`}>
-        <FilterPanel value={{ ...filters, ...fixed }} onChange={(n) => update({ ...n, view })} locked={Object.keys(fixed) as FilterKey[]} />
-      </aside>
+    <div className="space-y-5">
+      <div className="card p-4">
+        <FilterPanel value={{ ...filters, ...fixed }} onChange={(n) => update({ ...n, view })} locked={Object.keys(fixed) as FilterKey[]}
+          resultLabel={total === undefined ? undefined : `${total.toLocaleString('en-IN')} school${total === 1 ? '' : 's'}`}
+          onClearAll={clearAll} />
+      </div>
       <section aria-live="polite" className="min-w-0">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <button type="button" className="btn-secondary rounded-full lg:hidden" onClick={() => setShowFilters((v) => !v)} aria-expanded={showFilters}>
-              <Icon name="filter" className="h-4 w-4" /> Filters{activeCount > 0 && <span className="rounded-full bg-brand-600 px-1.5 text-[11px] text-white">{activeCount}</span>}
-            </button>
             <p className="text-sm text-slate-600">
               {state.data ? (
                 <><span className="font-display text-lg font-bold text-ink">{state.data.totalElements}</span> school{state.data.totalElements === 1 ? '' : 's'} found</>
@@ -147,8 +199,14 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
             {view !== 'map' && (
               <label className="flex items-center gap-2 text-sm text-slate-600">
                 <span className="hidden sm:inline">Sort by</span>
-                <select className="input w-auto rounded-full py-1.5" value={sort === 'distance' ? 'recommended' : sort}
-                  onChange={(e) => update({ ...filters, sortBy: e.target.value as SchoolSearchParams['sortBy'], page: 0 })}>
+                <select className="input w-auto rounded-full py-1.5" aria-label="Sort schools"
+                  value={sort === 'fee' && filters.sortDirection === 'desc' ? 'fee-desc' : SORTS.some((x) => x.value === sort) ? sort : ''}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    update({ ...filters, sortBy: (v === 'fee-desc' ? 'fee' : v) as SchoolSearchParams['sortBy'],
+                      sortDirection: v === 'fee-desc' ? 'desc' : undefined, page: 0 });
+                  }}>
+                  {!SORTS.some((x) => x.value === sort) && !(sort === 'fee') && <option value="" disabled>{sort === 'distance' ? 'Nearest first' : 'Custom order'}</option>}
                   {SORTS.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
                 </select>
               </label>
@@ -175,6 +233,21 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
             </div>
           </div>
         </div>
+        {chips.length > 0 && (
+          <ul className="-mt-2 mb-5 flex flex-wrap items-center gap-2" aria-label="Active filters">
+            {chips.map((c) => (
+              <li key={c.id}>
+                <button type="button" onClick={() => removeChip(c)} aria-label={`Remove filter: ${c.label}`}
+                  className="chip gap-1.5 bg-brand-50 px-3 py-1 text-sm font-medium text-brand-800 ring-1 ring-inset ring-brand-200 transition hover:bg-brand-100">
+                  {c.label} <Icon name="close" className="h-3.5 w-3.5" />
+                </button>
+              </li>
+            ))}
+            {chips.length > 1 && (
+              <li><button type="button" onClick={clearAll} className="text-sm font-semibold text-slate-600 underline-offset-2 hover:text-ink hover:underline">Clear all</button></li>
+            )}
+          </ul>
+        )}
         <AsyncContent
           state={state}
           loading={<SkeletonCards />}
@@ -220,7 +293,7 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
             ) : (
               <>
                 {sort === 'recommended' && <OrderExplanation />}
-                <div className={`grid gap-5 sm:grid-cols-2 xl:grid-cols-3 ${state.loading ? 'opacity-60' : ''}`}>
+                <div className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${state.loading ? 'opacity-60' : ''}`}>
                   {page.content.map((s) => <SchoolCard key={s.id} school={s} />)}
                 </div>
                 <Pagination page={page.page} totalPages={page.totalPages} hrefFor={hrefFor} />
