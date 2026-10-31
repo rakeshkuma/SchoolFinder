@@ -39,11 +39,18 @@ import java.util.regex.Pattern;
 public class SeoHeadService {
 
     public static final String SITE = "India School Finder";
+    /**
+     * A district or town page listing fewer schools than this would mostly repeat those schools' own pages, so it stays
+     * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
+     */
+    public static final int MIN_SCHOOLS_TO_INDEX = 3;
     static final String DEFAULT_TITLE = "India School Finder — Discover Schools. Compare Fees. Prepare for Success.";
     static final String DEFAULT_DESCRIPTION = "Discover schools across India, compare official fees and track admission "
             + "deadlines — every fact linked to its official source.";
 
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
+    /** /schools/{state}/{place}: a short address that hands over to the state, district or town page; not a page itself. */
+    private static final Pattern PLACE_SHORTCUT = Pattern.compile("^/schools/[a-z0-9-]+/[a-z0-9-]+/?$");
     private static final Pattern STATE = Pattern.compile("^/states/([a-z0-9-]+)(?:/([a-z0-9-]+))?/?$");
     private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
@@ -204,6 +211,9 @@ public class SeoHeadService {
             if ((m = SCHOOL.matcher(p)).matches()) {
                 return school(schoolService.getActiveBySlug(m.group(1)), baseUrl);
             }
+            if (PLACE_SHORTCUT.matcher(p).matches()) {
+                return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+            }
             if ((m = STATE.matcher(p)).matches()) {
                 return state(m.group(1), m.group(2), baseUrl);
             }
@@ -307,7 +317,35 @@ public class SeoHeadService {
         if (s.latitude() != null && s.longitude() != null) {
             data.put("geo", Map.of("@type", "GeoCoordinates", "latitude", s.latitude(), "longitude", s.longitude()));
         }
-        return tags(title, description.toString(), url, image, false, data);
+        return tags(title, description.toString(), url, image, false, List.of(data, schoolBreadcrumbs(s, url, baseUrl)));
+    }
+
+    /** Schools › state › district › school: the profile page's breadcrumb (its locality link is a filter, not a page). */
+    private static Map<String, Object> schoolBreadcrumbs(SchoolDetailDto s, String url, String baseUrl) {
+        List<Map<String, Object>> items = new java.util.ArrayList<>();
+        items.add(listItem(1, "Schools", baseUrl + "/schools"));
+        if (s.stateSlug() != null) {
+            String stateUrl = baseUrl + "/states/" + s.stateSlug();
+            items.add(listItem(2, s.stateName(), stateUrl));
+            if (s.district() != null) {
+                items.add(listItem(3, s.district().name(), stateUrl + "/" + s.district().slug()));
+            }
+        }
+        items.add(listItem(items.size() + 1, s.name(), url));
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", items);
+        return data;
+    }
+
+    private static Map<String, Object> listItem(int position, String name, String url) {
+        Map<String, Object> item = new LinkedHashMap<>();
+        item.put("@type", "ListItem");
+        item.put("position", position);
+        item.put("name", name);
+        item.put("item", url);
+        return item;
     }
 
     private String state(String stateSlug, String districtSlug, String baseUrl) {
@@ -328,7 +366,7 @@ public class SeoHeadService {
         String description = "%,d schools in %s district, %s, with board, classes, fees and admissions linked to "
                 .formatted(district.schoolCount(), district.name(), state.name()) + "official sources.";
         return tags(title, description, baseUrl + "/states/" + state.slug() + "/" + district.slug(), null,
-                district.schoolCount() == 0, null);
+                district.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
     }
 
     private String city(String stateSlug, String citySlug, String baseUrl) {
@@ -342,7 +380,8 @@ public class SeoHeadService {
         String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
         String description = "%,d schools in %s, %s, with board, classes, fees and admissions linked to "
                 .formatted(city.schoolCount(), city.name(), state.name()) + "official sources.";
-        return tags(title, description, baseUrl + "/states/" + state.slug() + "/city/" + city.slug(), null, false, null);
+        return tags(title, description, baseUrl + "/states/" + state.slug() + "/city/" + city.slug(), null,
+                city.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
     }
 
     private String board(String code, String baseUrl) {
@@ -415,7 +454,7 @@ public class SeoHeadService {
     }
 
     private String tags(String title, String description, String canonical, String image, boolean noindex,
-                        Map<String, Object> jsonLd) {
+                        Object jsonLd) {
         StringBuilder h = new StringBuilder();
         h.append("<title>").append(html(title)).append("</title>\n");
         h.append(meta("name", "description", description));

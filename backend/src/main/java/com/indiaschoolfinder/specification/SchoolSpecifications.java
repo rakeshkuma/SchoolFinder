@@ -8,6 +8,7 @@ import com.indiaschoolfinder.entity.SchoolBoarding;
 import com.indiaschoolfinder.entity.SchoolClass;
 import com.indiaschoolfinder.entity.SchoolFacility;
 import com.indiaschoolfinder.entity.SchoolFee;
+import com.indiaschoolfinder.entity.State;
 import com.indiaschoolfinder.enums.FacilityCategory;
 import com.indiaschoolfinder.util.GeoUtil;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -37,6 +38,8 @@ public final class SchoolSpecifications {
     public static final String ANNUAL_FEE = "annualFee";
     /** Ordering property for the recommended order: profile score, then states taking turns within a score tier. */
     public static final String RECOMMENDED = "recommended";
+    /** Ordering property for the location order: state, district, town and locality by name, then school name. */
+    public static final String LOCATION = "location";
 
     private SchoolSpecifications() {
     }
@@ -81,6 +84,15 @@ public final class SchoolSpecifications {
                     String compact = token.replaceAll("[^a-z0-9]+", "");
                     if (!compact.isEmpty()) {
                         any.add(cb.like(root.get("searchKeywords"), likePattern(compact), ESCAPE));
+                    }
+                    // Other spellings of a place ("arrah" → Ara). Short ones would match inside unrelated words
+                    // ("ara" in "Saraswati"), so they match the town exactly; longer ones may appear anywhere.
+                    for (String other : com.indiaschoolfinder.util.PlaceAliases.othersOf(token)) {
+                        any.add(cb.equal(cb.lower(root.get("city")), other));
+                        if (other.length() >= 5) {
+                            any.add(cb.like(cb.lower(root.get("name")), likePattern(other), ESCAPE));
+                            any.add(cb.like(cb.lower(root.get("addressLine")), likePattern(other), ESCAPE));
+                        }
                     }
                     predicates.add(cb.or(any.toArray(Predicate[]::new)));
                 }
@@ -231,6 +243,21 @@ public final class SchoolSpecifications {
                             best ? cb.asc(turn) : cb.desc(turn),
                             cb.asc(root.get("name")),
                             cb.asc(root.get("id")));
+                } else if (LOCATION.equals(ordering.property())) {
+                    Subquery<String> state = query.subquery(String.class);
+                    Root<State> st = state.from(State.class);
+                    state.select(st.get("name")).where(cb.equal(st.get("code"), root.get("stateCode")));
+                    Subquery<String> district = query.subquery(String.class);
+                    Root<District> d = district.from(District.class);
+                    district.select(d.get("name")).where(cb.equal(d.get("id"), root.get("districtId")));
+                    List<jakarta.persistence.criteria.Order> order = new ArrayList<>();
+                    for (Expression<?> key : List.of(state, district, root.get("city"), root.get("locality"))) {
+                        order.add(cb.asc(cb.selectCase().when(cb.isNull(key), 1).otherwise(0))); // unknown last
+                        order.add(ordering.descending() ? cb.desc(key) : cb.asc(key));
+                    }
+                    order.add(cb.asc(root.get("name")));
+                    order.add(cb.asc(root.get("id")));
+                    query.orderBy(order);
                 } else if (ordering.property() != null) {
                     Expression<?> sortKey = ANNUAL_FEE.equals(ordering.property())
                             ? lowestAnnualFee(root, query, cb, feeAcademicYears)

@@ -259,7 +259,8 @@ export const locationService = {
     http.get<IndianState>(`/locations/states/${encodeURIComponent(codeOrSlug)}`).then((r) => r.data),
   districts: (state: string) =>
     cached(`districts:${state}`, () => http.get<District[]>('/locations/districts', { params: { state } }).then((r) => r.data)),
-  cities: (state: string) => http.get<City[]>('/locations/cities', { params: { state } }).then((r) => r.data),
+  cities: (state: string) =>
+    cached(`cities:${state}`, () => http.get<City[]>('/locations/cities', { params: { state } }).then((r) => r.data)),
   /** Every city in India with listed schools, largest first. */
   citiesAcrossIndia: () => http.get<IndiaCity[]>('/locations/cities/all').then((r) => r.data),
   localities: (state?: string) =>

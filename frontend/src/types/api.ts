@@ -344,7 +344,7 @@ export interface SchoolSearchParams {
   radiusKm?: number;
   /** fee = lowest published annual fee; schools without fee data come last */
   /** recommended (default) = ranked and best-documented profiles first; see the published order rules */
-  sortBy?: 'recommended' | 'name' | 'fee' | 'locality' | 'city' | 'rating' | 'reviews' | 'newest' | 'updated' | 'verified' | 'distance';
+  sortBy?: 'recommended' | 'name' | 'fee' | 'location' | 'locality' | 'city' | 'rating' | 'reviews' | 'newest' | 'updated' | 'verified' | 'distance';
   sortDirection?: 'asc' | 'desc';
   page?: number;
   size?: number;

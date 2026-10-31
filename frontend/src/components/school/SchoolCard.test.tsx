@@ -51,7 +51,9 @@ describe('SchoolCard', () => {
     expect(view.container.querySelector('a[href="https://school.example.org"]')?.getAttribute('rel')).toContain('noopener');
     expect(view.container.querySelector('a[href="https://school.example.org/admissions"]')).not.toBeNull();
     expect(view.container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
-    expect(text).toContain('© Example / CC BY-SA 4.0');
+    // The credit is not drawn over the photo; it is the image's tooltip (and shown in full on the profile).
+    expect(text).not.toContain('Example / CC BY-SA 4.0');
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example / CC BY-SA 4.0');
   });
 
   it('labels an illustration without a copyright mark', () => {

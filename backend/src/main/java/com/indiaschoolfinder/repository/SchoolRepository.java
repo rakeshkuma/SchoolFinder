@@ -84,13 +84,13 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @Query("select s.slug, s.updatedAt from School s where s.active = true order by s.id")
     List<Object[]> findActiveSlugs(org.springframework.data.domain.Pageable page);
 
-    /** Sitemap rows: state slug, district slug, for districts that have active schools. */
+    /** Sitemap rows: state slug, district slug, for districts with at least {@code min} active schools. */
     @Query(value = """
             select st.slug, d.slug from district d join state st on st.code = d.state_code
-             where exists (select 1 from school s where s.district_id = d.id and s.active)
+             where (select count(*) from school s where s.district_id = d.id and s.active) >= :min
              order by st.slug, d.slug
             """, nativeQuery = true)
-    List<Object[]> districtsWithSchools();
+    List<Object[]> districtsWithSchools(@org.springframework.data.repository.query.Param("min") int min);
 
     /** Rows: state code, active school count. */
     @Query("select s.stateCode, count(s) from School s where s.active = true group by s.stateCode")

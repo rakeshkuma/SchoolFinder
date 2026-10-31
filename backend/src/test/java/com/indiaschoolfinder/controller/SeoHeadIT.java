@@ -29,6 +29,10 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(h).contains("name=\"description\" content=\"Fixture Hill &amp; Valley School, Uttarakhand. Classes Class VI to Class XII.");
         assertThat(h).contains("<link rel=\"canonical\" href=\"http://localhost/schools/" + slug + "\" />");
         assertThat(h).contains("\"@type\":\"School\"").contains("\"postalCode\":\"263002\"").contains("\"latitude\":29.38");
+        // Breadcrumbs: Home › state › school (no district recorded).
+        assertThat(h).contains("\"@type\":\"BreadcrumbList\"")
+                .contains("\"name\":\"Uttarakhand\",\"item\":\"http://localhost/states/uttarakhand\"")
+                .contains("\"position\":3,\"name\":\"Fixture Hill & Valley School\"");
         assertThat(h).doesNotContain("noindex");
     }
 
@@ -37,6 +41,8 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/schools/no-such-school")).contains("<meta name=\"robots\" content=\"noindex\"")
                 .doesNotContain("canonical");
         assertThat(head("/states/atlantis")).contains("noindex");
+        // Short place addresses hand over to the canonical state, district or town page.
+        assertThat(head("/schools/bihar/arrah")).contains("noindex").doesNotContain("canonical");
         assertThat(head("/admin/schools/1")).contains("noindex");
         assertThat(head("/saved")).contains("noindex");
         assertThat(head("/suggest")).contains("noindex");
@@ -70,9 +76,14 @@ class SeoHeadIT extends AbstractIntegrationTest {
     @Test
     void directoryAndStatePagesDescribeTheirContents() throws Exception {
         createSchool(school("Fixture Lake School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
+        // A town page listing one or two schools would repeat their profiles: reachable, but not indexed.
+        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("noindex");
+        assertThat(head("/states/uttarakhand/nainital")).contains("noindex");
+        createSchool(school("Fixture Hill School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
+        createSchool(school("Fixture Valley School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | India School Finder</title>")
-                .contains("1 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
-        assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand");
+                .contains("3 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
+        assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand").doesNotContain("noindex");
         assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | India School Finder</title>")
                 .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex");
         assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");

@@ -294,7 +294,8 @@ export function ComparePage() {
                         return (
                           <th key={s.id} scope="col" className="min-w-[200px] px-4 py-3 text-left align-top">
                             <div className="mb-3 h-24 overflow-hidden rounded-xl bg-slate-100">
-                              {photo ? <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText} className="h-full w-full object-cover" loading="lazy" /> : <SchoolCover name={s.name} />}
+                              {photo ? <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText} className="h-full w-full object-cover" loading="lazy"
+                                title={photo.attributionText ?? (photo.credit ? `Photo: ${photo.credit}` : undefined)} /> : <SchoolCover name={s.name} />}
                             </div>
                             <Link to={`/schools/${s.slug}`} className="font-display font-bold leading-snug text-ink hover:text-brand-700">{s.name}</Link>
                             <button type="button" className="mt-1 block text-xs font-normal text-slate-500 hover:text-red-600" onClick={() => remove(s.id)}>Remove</button>

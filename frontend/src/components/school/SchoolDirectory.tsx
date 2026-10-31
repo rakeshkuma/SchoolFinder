@@ -24,6 +24,7 @@ const PAGE_SIZES = [12, 24, 48] as const;
 const SORTS = [
   { value: 'recommended', label: 'Recommended' },
   { value: 'name', label: 'School name (A–Z)' },
+  { value: 'location', label: 'Location (state, district, town)' },
   { value: 'updated', label: 'Recently updated' },
   { value: 'fee', label: 'Fee: low to high' },
   { value: 'fee-desc', label: 'Fee: high to low' },

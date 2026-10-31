@@ -61,16 +61,22 @@ const GENERIC = /^(PM\s*SHRI\s*(SCHOOL\s*)?)?(KENDRIYA\s+VIDYALAYA|JAWAHAR\s+NAV
 
 /** A short place name from the official postal address, without PIN, state, district or postal noise. */
 function placeFrom(address, district, stateName) {
-  let a = ` ${(address ?? '').toUpperCase()} `
-    .replace(/\b\d{6}\b/g, ' ')
+  // SARAS escapes line breaks and some characters as HTML entities (&#xD;&#xA;); their ";" must not split segments.
+  let a = ` ${(address ?? '').replace(/&#x(D|A);/gi, ', ').replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&amp;/g, '&').toUpperCase()} `
+    .replace(/\b\d{3}\s?\d{3}\b/g, ' ')
     .replace(/\b(P\.?\s?O\.?|POST|DISTT?\.?|DISTRICT|TEH(SIL)?\.?|TALUKA?|MANDAL|BLOCK|VILL(AGE)?\.?|NEAR|OPP\.?|PIN(\s*CODE)?|INDIA)\b/g, ' ');
   // Former state names still used in postal addresses.
   const FORMER = { UTTARAKHAND: ['UTTARANCHAL', 'UTTRANCHAL', 'UTTRAKHAND'], ODISHA: ['ORISSA'], PUDUCHERRY: ['PONDICHERRY'], CHATTISGARH: ['CHHATTISGARH'] };
   for (const drop of [district, stateName, STATE[stateName], ...(FORMER[stateName] ?? [])]) {
     if (drop) a = a.replace(new RegExp(`\\b${drop.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g'), ' ');
   }
-  const segments = a.split(/[,;]/).map((x) => x.replace(/[^A-Z0-9 .&-]/g, ' ').replace(/\s+/g, ' ').trim()).filter((x) => x.length > 1);
-  const first = segments.find((x) => /[A-Z]{3,}/.test(x)) ?? '';
+  const segments = a.split(/[,;]/).map((x) => x.replace(/[^A-Z0-9 .&-]/g, ' ').replace(/\s+/g, ' ').trim()
+    .replace(/^(?:[.&\s-]+|AT\b)+/, '')).filter((x) => x.length > 1);
+  // A plot, lane or building number, or a landmark ("SUB DIVISION HOSPITAL", "BEHIND ..."), does not say where a school
+  // is to a parent; such segments are skipped, and with none left the caller uses the district.
+  const NOT_PLACE = /\b(PLOT|H\.?\s?NO|HOUSE|LANE|GALI|KHASRA|HOSPITAL|BEHIND|SHIFT|PETROL|PUMP|MOTORS|BUILDING|FLOOR|PSP|SSS|FINAL|SCHOOL|COMPLEX|CAMPUS|BANK)\b/;
+  const first = segments.find((x) => /[A-Z]{3,}/.test(x) && !NOT_PLACE.test(x)) ?? '';
   // Keep whole words up to ~45 characters, and never end on a connector ("AT", "NEW", "ROAD" alone is fine).
   const words = [];
   for (const w of first.split(' ')) {
@@ -96,32 +102,104 @@ const boardingData = fs.existsSync(BOARDING_FILE) ? JSON.parse(fs.readFileSync(B
 const BOARDING_COLUMNS = ['residential_system', 'boarding_type', 'entrance_exam', 'entry_classes', 'boarding_summary',
   'accommodation', 'pastoral_care', 'dining', 'medical_care', 'boarding_source_url'];
 
+// Delhi is one city: its schools get city "Delhi" (any 110xxx PIN) and, when the postal address names a well-known
+// neighbourhood, that locality. Other states leave both blank here (towns come from build-town-facts.js), and a blank
+// cell never overwrites a stored value on re-import.
+const DELHI_LOCALITIES = [
+  ['Mayur Vihar', /\bMAYUR VIHAR\b/], ['Preet Vihar', /\bPREET VIHAR\b/], ['Laxmi Nagar', /\bLA[KX]SHMI NAGAR\b|\bLAXMI NAGAR\b/],
+  ['Patparganj', /\bPATPAR ?GANJ\b|\bI\.?P\.? EXTENSION\b/], ['Shahdara', /\bSHAHDARA\b/], ['Dilshad Garden', /\bDILSHAD GARDEN\b/],
+  ['Krishna Nagar', /\bKRISHNA NAGAR\b/], ['Vasundhara Enclave', /\bVASUNDHARA ENCLAVE\b/], ['Rohini', /\bROHINI\b/],
+  ['Dwarka', /\bDWARKA\b/], ['Janakpuri', /\bJANAK ?PURI\b/], ['Vikaspuri', /\bVIKAS ?PURI\b/], ['Uttam Nagar', /\bUTTAM NAGAR\b/],
+  ['Paschim Vihar', /\bPASCHIM VIHAR\b/], ['Punjabi Bagh', /\bPUNJABI BAGH\b/], ['Rajouri Garden', /\bRAJOURI GARDEN\b/],
+  ['Pitampura', /\bPITAM ?PURA\b/], ['Shalimar Bagh', /\bSHALIMAR BAGH\b/], ['Ashok Vihar', /\bASHOK VIHAR\b/],
+  ['Model Town', /\bMODEL TOWN\b/], ['Mukherjee Nagar', /\bMUKHERJEE NAGAR\b/], ['Narela', /\bNARELA\b/], ['Bawana', /\bBAWANA\b/],
+  ['Najafgarh', /\bNAJAFGARH\b/], ['Vasant Kunj', /\bVASANT KUNJ\b/], ['Vasant Vihar', /\bVASANT VIHAR\b/], ['Saket', /\bSAKET\b/],
+  ['Mehrauli', /\bMEHRAULI\b/], ['Kalkaji', /\bKALKAJI\b/], ['Greater Kailash', /\bGREATER KAILASH\b/],
+  ['Lajpat Nagar', /\bLAJPAT NAGAR\b/], ['Defence Colony', /\bDEFEN[CS]E COLONY\b/], ['R K Puram', /\bR\.? ?K\.? ?PURAM\b/],
+  ['Chanakyapuri', /\bCHANAKYA ?PURI\b/], ['Karol Bagh', /\bKAROL BAGH\b/], ['Sarita Vihar', /\bSARITA VIHAR\b/],
+  ['Jasola', /\bJASOLA\b/], ['Badarpur', /\bBADARPUR\b/], ['Malviya Nagar', /\bMALVIYA NAGAR\b/], ['Hauz Khas', /\bHAUZ KHAS\b/],
+  ['Delhi Cantt', /\bDELHI CANTT?\b|\bDELHI CANTONMENT\b/], ['Tilak Nagar', /\bTILAK NAGAR\b/], ['Rajinder Nagar', /\bRAJINDER NAGAR\b/],
+];
+const MAYUR_PHASE = [[/\bPH(ASE)?[- .]*(III|3)\b/, 'Phase III'], [/\bPH(ASE)?[- .]*(II|2)\b/, 'Phase II'], [/\bPH(ASE)?[- .]*(I|1)\b/, 'Phase I']];
+
+function delhiPlace(address, pinCode) {
+  if (!/^110\d{3}$/.test(pinCode ?? '')) return { city: '', locality: '' };
+  const a = (address ?? '').replace(/&#xD;&#xA;/g, ' ').toUpperCase();
+  const hit = DELHI_LOCALITIES.find(([, re]) => re.test(a));
+  let locality = hit ? hit[0] : '';
+  if (locality === 'Mayur Vihar') {
+    const phase = MAYUR_PHASE.find(([re]) => re.test(a));
+    if (phase) locality = `Mayur Vihar ${phase[1]}`;
+  }
+  return { city: 'Delhi', locality };
+}
+
 const header = ['name', 'school_type', 'management', 'network', 'affiliation_number', 'board_code', 'address_line',
   'district', 'state_code', 'pin_code', 'website_url', 'established_year', 'principal_name', 'managing_body', 'description', 'source_url',
-  'source_retrieved_date', 'gender_type', ...BOARDING_COLUMNS];
+  'source_retrieved_date', 'gender_type', ...BOARDING_COLUMNS, 'city', 'locality'];
 const rows = [header.join(',')];
 const skipped = {};
 let count = 0;
 
-const lines = inPath.split(',').flatMap((p) => fs.readFileSync(p, 'utf8').replace(/^\uFEFF/, '').split('\n'));
 // A file copied while saras-details-bulk.js was still writing can end in a partial line; skip and report it.
 let unreadable = 0;
-const records = lines.filter((l) => l.trim()).flatMap((l) => {
-  try {
-    return [JSON.parse(l)];
-  } catch {
-    unreadable++;
-    return [];
-  }
-});
+const readRecords = (paths) => paths.flatMap((p) => fs.readFileSync(p, 'utf8').replace(/^\uFEFF/, '').split('\n'))
+  .filter((l) => l.trim()).flatMap((l) => {
+    try {
+      return [JSON.parse(l)];
+    } catch {
+      unreadable++;
+      return [];
+    }
+  });
+const records = readRecords(inPath.split(','));
 if (unreadable) console.warn(`skipped ${unreadable} unreadable line(s)`);
+// Whether a name repeats is judged against every SARAS file in data/saras, not just this run's input, so a school
+// gets the same name whichever batch imports it first (an update never renames a school).
+const SARAS_DIR = require('path').join(__dirname, '../../data/saras');
+const everyRecord = new Map();
+for (const r of [...readRecords(fs.readdirSync(SARAS_DIR).filter((f) => f.endsWith('.jsonl')).map((f) => `${SARAS_DIR}/${f}`)), ...records]) {
+  everyRecord.set(r['Affiliation Number'] ?? r.aff, r);
+}
 const officialName = (r) => (r['Name of Institution'] ?? '').replace(/[,\s]+$/, '').replace(/\s+/g, ' ').trim();
 // Names that repeat within a state ("DELHI PUBLIC SCHOOL", "RAJEEV GANDHI NAVODAYA VIDYALAYA") need a place to be told apart.
+// Punctuation and spacing are ignored: "FR AGNEL SCHOOL" and "FR. AGNEL SCHOOL" read the same to a parent.
+const nameKey = (stateName, official) => `${stateName}|${official.toUpperCase().replace(/[^A-Z0-9]/g, '')}`;
 const nameCount = {};
-for (const r of records) {
-  const key = `${(r.State ?? '').trim().toUpperCase()}|${officialName(r).toUpperCase()}`;
+for (const r of everyRecord.values()) {
+  const key = nameKey((r.State ?? '').trim().toUpperCase(), officialName(r));
   nameCount[key] = (nameCount[key] ?? 0) + 1;
 }
+/** The display name: the official name, plus a place from the address (else the district) when it alone is ambiguous. */
+function displayName(r, withDistrict = false) {
+  const stateName = (r.State ?? '').trim().toUpperCase();
+  const official = officialName(r);
+  const district = r.District ? title(r.District.trim()) : '';
+  let name = title(official);
+  if ((GENERIC.test(official) && !namesItsPlace(official)) || nameCount[nameKey(stateName, official)] > 1) {
+    const place = placeFrom(r['Postal Address'], r.District, stateName);
+    if (place && !official.toUpperCase().includes(place)) name = `${name}, ${title(place)}`;
+    else if (district) name = `${name}, ${district}`;
+  }
+  if (withDistrict && district && !name.toUpperCase().includes(district.toUpperCase())) name = `${name}, ${district}`;
+  return name;
+}
+// Two schools whose display names still match (two "Kendriya Vidyalaya, Bangalore") also get their district; a pair
+// left identical after that is reported, for a person to tell apart.
+const displayCount = {};
+for (const r of everyRecord.values()) {
+  const key = nameKey((r.State ?? '').trim().toUpperCase(), displayName(r));
+  displayCount[key] = (displayCount[key] ?? 0) + 1;
+}
+const clashes = (r) => displayCount[nameKey((r.State ?? '').trim().toUpperCase(), displayName(r))] > 1;
+const stillSame = {};
+for (const r of everyRecord.values()) {
+  if (!clashes(r)) continue;
+  const key = nameKey((r.State ?? '').trim().toUpperCase(), displayName(r, true));
+  (stillSame[key] ??= []).push(r['Affiliation Number'] ?? r.aff);
+}
+const unresolved = Object.values(stillSame).filter((v) => v.length > 1);
+if (unresolved.length) console.warn(`${unresolved.length} name(s) still shared after adding the district, e.g. affiliations ${unresolved.slice(0, 3).map((v) => v.join('/')).join(', ')}`);
 for (const r of records) {
   const stateName = (r.State ?? '').trim().toUpperCase();
   const state = STATE[stateName];
@@ -134,13 +212,7 @@ for (const r of records) {
   const official = officialName(r);
   if (!official) continue;
   const district = r.District ? title(r.District.trim()) : '';
-  let name = title(official);
-  const repeated = nameCount[`${stateName}|${official.toUpperCase()}`] > 1;
-  if ((GENERIC.test(official) && !namesItsPlace(official)) || repeated) {
-    const place = placeFrom(r['Postal Address'], r.District, stateName);
-    if (place && !official.toUpperCase().includes(place)) name = `${name}, ${title(place)}`;
-    else if (district) name = `${name}, ${district}`;
-  }
+  const name = displayName(r, clashes(r));
   const pin = /^[1-9]\d{5}$/.test(r['Pin Code'] ?? '') ? r['Pin Code'] : '';
   const year = /^(18|19|20)\d{2}$/.test(r['Year of Foundation'] ?? '') ? r['Year of Foundation'] : '';
   let website = (r.Website ?? '').trim();
@@ -149,7 +221,7 @@ for (const r of records) {
     const u = new URL(website);
     // Same rule as the backend's HttpUrlValidator (java.net.URI): a hostname of letters, digits, dots and hyphens.
     // Every dot-separated label must be non-empty ("www..school.in" is rejected by java.net.URI).
-    if (!/^https?:$/.test(u.protocol) || !/^([a-z0-9-]+\.)+[a-z]{2,}$/i.test(u.hostname) || /[\s,]/.test(website)) website = '';
+    if (!/^https?:$/.test(u.protocol) || !/^([a-z0-9-]+\.)+[a-z]{2,}$/i.test(u.hostname) || /[\s,@]/.test(website)) website = ''; // "@": an email given as the website
   } catch {
     website = '';
   }
@@ -163,12 +235,13 @@ for (const r of records) {
   const overlay = boardingData.cbse?.[r['Affiliation Number']] ?? boardingData.cbse?.[r.aff];
   const network = overlay?.network ?? type[2];
   const profile = overlay ?? boardingData.systems?.[network] ?? {};
+  const place = state === 'DL' ? delhiPlace(r['Postal Address'], overlay?.pin_code ?? pin) : { city: '', locality: '' };
   rows.push([(overlay?.name ?? name).slice(0, 200), type[0], type[1], network, r['Affiliation Number'], 'CBSE',
     title(r['Postal Address'] ?? '').slice(0, 400), district, state, overlay?.pin_code ?? pin, website, year,
     title((r['Name of Principal/ Head of Institution'] ?? '').trim()).slice(0, 150),
     (overlay?.managing_body ?? title((r['Name of Trust/ Society/ Managing Committee'] ?? '').trim())).slice(0, 300), description,
     `https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/${r.aff}`, retrieved,
-    profile.gender_type ?? '', ...BOARDING_COLUMNS.map((c) => profile[c] ?? '')].map(csv).join(','));
+    profile.gender_type ?? '', ...BOARDING_COLUMNS.map((c) => profile[c] ?? ''), place.city, place.locality].map(csv).join(','));
   count++;
 }
 // The admin import accepts at most 5,000 rows per file, so larger outputs are split: out-1.csv, out-2.csv, ...

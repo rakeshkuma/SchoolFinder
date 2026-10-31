@@ -77,8 +77,9 @@ export function classRange(from: string | null, to: string | null): string | nul
 const MAX_FACILITIES = 3;
 
 /**
- * Photo with its credit, or the generated cover if there is no photo or it fails to load (the credit belongs to the
- * photo, so it is never shown over the fallback).
+ * Photo, or the generated cover if there is no photo or it fails to load. The photo credit is not drawn over the
+ * picture: the card links to the profile, which shows credit, licence and source under the photo (a link to the
+ * attribution satisfies CC BY / BY-SA), and the credit is the image's tooltip. An illustration keeps its label.
  */
 function CardImage({ school }: { school: SchoolSummary }) {
   const [failed, setFailed] = useState(false);
@@ -86,14 +87,20 @@ function CardImage({ school }: { school: SchoolSummary }) {
   return (
     <>
       <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)}
-        className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-      {school.coverImageCredit && (
+        title={photoCreditTitle(school)} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+      {school.coverImageIllustrative && school.coverImageCredit && (
         <span className="absolute bottom-1 right-1 max-w-[85%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-          {school.coverImageIllustrative ? school.coverImageCredit : `© ${school.coverImageCredit}`}
+          {school.coverImageCredit}
         </span>
       )}
     </>
   );
+}
+
+/** Tooltip credit for a card photo ("Photo: Author / Wikimedia Commons"); an illustration's note is shown instead. */
+export function photoCreditTitle(s: Pick<SchoolSummary, 'coverImageCredit' | 'coverImageIllustrative'>): string | undefined {
+  if (!s.coverImageCredit) return undefined;
+  return s.coverImageIllustrative ? s.coverImageCredit : `Photo: ${s.coverImageCredit}`;
 }
 
 export function SchoolCard({ school }: { school: SchoolSummary }) {

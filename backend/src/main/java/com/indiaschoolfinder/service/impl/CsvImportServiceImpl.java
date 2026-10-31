@@ -108,6 +108,44 @@ public class CsvImportServiceImpl implements CsvImportService {
         this.validator = validator;
     }
 
+    /**
+     * On update, a blank cell means "this file does not say", not "remove": the stored value is kept. Without this, a
+     * re-import from a source that lacks some columns (CBSE lists have no map position, classes or phone) would erase
+     * facts recorded from other sources. Values the file does give replace the stored ones, except the name: a row is
+     * matched by its UDISE code or affiliation number, and a board list's spelling ("Dashmesh Pub School") must not
+     * replace the name a person chose for the record. Renaming a school is done in the admin editor.
+     */
+    private SchoolRequest keepKnown(SchoolRequest r, School s) {
+        String district = r.district();
+        if ((district == null || district.isBlank()) && s.getDistrictId() != null) {
+            var d = locationService.districtsById(List.of(s.getDistrictId())).get(s.getDistrictId());
+            district = d == null ? null : d.getName();
+        }
+        List<String> classes = r.classCodes() != null && !r.classCodes().isEmpty() ? r.classCodes()
+                : s.getClassesOffered().stream().map(com.indiaschoolfinder.entity.SchoolClass::getCode).toList();
+        return new SchoolRequest(
+                or(s.getName(), r.name()), or(r.description(), s.getDescription()), or(r.schoolType(), s.getSchoolType()),
+                or(r.management(), s.getManagement()), or(r.network(), s.getNetwork()),
+                or(r.boardCode(), s.getEducationBoardCode()), or(r.affiliationNumber(), s.getAffiliationNumber()),
+                or(r.udiseCode(), s.getUdiseCode()), or(r.principalName(), s.getPrincipalName()),
+                or(r.managingBody(), s.getManagingBody()), or(r.genderType(), s.getGenderType()),
+                or(r.mediumOfInstruction(), s.getMediumOfInstruction()), classes, or(r.websiteUrl(), s.getWebsiteUrl()),
+                or(r.admissionPortalUrl(), s.getAdmissionPortalUrl()), or(r.phone(), s.getPhone()), or(r.email(), s.getEmail()),
+                or(r.addressLine(), s.getAddressLine()), or(r.locality(), s.getLocality()), or(r.city(), s.getCity()),
+                district, or(r.stateCode(), s.getStateCode()), or(r.pinCode(), s.getPinCode()),
+                r.latitude() != null && r.longitude() != null ? r.latitude() : s.getLatitude(),
+                r.latitude() != null && r.longitude() != null ? r.longitude() : s.getLongitude(),
+                or(r.studentTeacherRatio(), s.getStudentTeacherRatio()), or(r.schoolTimings(), s.getSchoolTimings()),
+                or(r.establishedYear(), s.getEstablishedYear()), or(r.hasTransport(), s.getHasTransport()),
+                or(r.hasHostel(), s.getHasHostel()), or(r.accessibilityFeatures(), s.getAccessibilityFeatures()),
+                or(r.logoUrl(), s.getLogoUrl()), or(r.sourceUrl(), s.getSourceUrl()),
+                or(r.sourceRetrievedDate(), s.getSourceRetrievedDate()));
+    }
+
+    private static <T> T or(T value, T stored) {
+        return value == null || (value instanceof String str && str.isBlank()) ? stored : value;
+    }
+
     private record ParsedRow(int rowNumber, SchoolRequest request, List<FacilityRequest> facilities, Optional<School> existing,
                              BoardingProfileRequest boarding) {
     }
@@ -173,7 +211,7 @@ public class CsvImportServiceImpl implements CsvImportService {
             for (ParsedRow row : valid) {
                 Long schoolId;
                 if (row.existing().isPresent()) {
-                    schoolId = schoolService.update(row.existing().get().getId(), row.request(), null).id();
+                    schoolId = schoolService.update(row.existing().get().getId(), keepKnown(row.request(), row.existing().get()), null).id();
                     updated++;
                 } else {
                     schoolId = schoolService.create(row.request()).id();
