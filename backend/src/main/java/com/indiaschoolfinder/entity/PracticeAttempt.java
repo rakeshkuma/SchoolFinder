@@ -40,8 +40,27 @@ public class PracticeAttempt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    /** The member's account; NULL for a guest participant's attempt. */
     private Long accountId;
+
+    /** Who the attempt counts for in rankings (members get a participant on their first attempt). */
+    private Long participantId;
+
+    /** Leaderboard points awarded for this attempt; separate from its raw marks. */
+    private int points;
+
+    /** The daily-quiz date this attempt counted for, if it was that day's quiz. */
+    private java.time.LocalDate dailyDate;
+
+    /** Why the attempt earned no points despite correct answers (TOO_FAST), for moderators. */
+    @Column(length = 30)
+    private String reviewFlag;
+
+    /** The challenge this attempt was for, if any. */
+    private Long challengeId;
+
+    /** Until this time the attempt is kept from the student, as its challenge releases results at the end. */
+    private Instant resultsHiddenUntil;
 
     @Column(nullable = false)
     private UUID clientId;

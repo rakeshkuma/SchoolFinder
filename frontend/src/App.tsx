@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ComponentType } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { Spinner } from './components/common/States';
 import { Layout } from './components/layout/Layout';
 import { AuthProvider } from './hooks/useAuth';
@@ -50,6 +50,11 @@ const PracticeTestPage = page(() => import('./pages/PracticePages'), 'PracticeTe
 const PracticeAttemptPage = page(() => import('./pages/PracticePages'), 'PracticeAttemptPage');
 const PracticeSessionPage = page(() => import('./pages/PracticePages'), 'PracticeSessionPage');
 const PracticeProgressPage = page(() => import('./pages/PracticeProgressPage'), 'PracticeProgressPage');
+const LeaderboardPage = page(() => import('./pages/LeaderboardPage'), 'LeaderboardPage');
+const AchievementsPage = page(() => import('./pages/AchievementsPage'), 'AchievementsPage');
+const ChallengesPage = page(() => import('./pages/ChallengePages'), 'ChallengesPage');
+const ChallengeDetailPage = page(() => import('./pages/ChallengePages'), 'ChallengeDetailPage');
+const ChallengeTakePage = page(() => import('./pages/ChallengePages'), 'ChallengeTakePage');
 const MethodologyPage = page(() => import('./pages/MethodologyPage'), 'MethodologyPage');
 const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const PublishedRankingsPage = page(() => import('./pages/PublishedRankingsPage'), 'PublishedRankingsPage');
@@ -89,7 +94,16 @@ const AdminRankingPage = lazy(() => import('./pages/admin/AdminOperationsPages')
 const AdminSubmissionsPage = lazy(() => import('./pages/admin/AdminSubmissionsPage').then((m) => ({ default: m.AdminSubmissionsPage })));
 const AdminExamsPage = lazy(() => import('./pages/admin/AdminExamsPage').then((m) => ({ default: m.AdminExamsPage })));
 const AdminPracticePage = lazy(() => import('./pages/admin/AdminPracticePage').then((m) => ({ default: m.AdminPracticePage })));
+const AdminChallengesPage = lazy(() => import('./pages/admin/AdminChallengesPage').then((m) => ({ default: m.AdminChallengesPage })));
+const AdminModerationPage = lazy(() => import('./pages/admin/AdminModerationPage').then((m) => ({ default: m.AdminModerationPage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
+
+/** /exam-preparation/... is another name for /exams/...: the rest of the address and its query are kept. */
+function ExamPreparationRedirect() {
+  const rest = useParams()['*'] ?? '';
+  const { search } = useLocation();
+  return <Navigate to={`/exams${rest ? `/${rest}` : ''}${search}`} replace />;
+}
 
 export default function App() {
   return (
@@ -133,11 +147,17 @@ export default function App() {
               <Route path="exams/class/:n" element={<ExamClassPage />} />
               <Route path="exams/state/:slug" element={<ExamStatePage />} />
               <Route path="exams/netarhat-entrance" element={<Navigate to="/exams/netarhat" replace />} />
+              <Route path="exam-preparation/*" element={<ExamPreparationRedirect />} />
               <Route path="exams/syllabus" element={<ExamSyllabusPage />} />
               <Route path="exams/resources" element={<ExamResourcesPage />} />
               <Route path="exams/practice" element={<PracticeListPage />} />
               <Route path="exams/practice/session" element={<PracticeSessionPage />} />
               <Route path="exams/practice/progress" element={<PracticeProgressPage />} />
+              <Route path="exams/leaderboard" element={<LeaderboardPage />} />
+              <Route path="exams/achievements" element={<AchievementsPage />} />
+              <Route path="exams/challenges" element={<ChallengesPage />} />
+              <Route path="exams/challenges/:slug" element={<ChallengeDetailPage />} />
+              <Route path="exams/challenges/:slug/take" element={<ChallengeTakePage />} />
               <Route path="exams/practice/attempts/:id" element={<PracticeAttemptPage />} />
               <Route path="exams/practice/:slug" element={<PracticeTestPage />} />
               <Route path="exams/:slug" element={<ExamGuidePage />} />
@@ -171,6 +191,8 @@ export default function App() {
                 <Route path="submissions" element={<AdminSubmissionsPage />} />
                 <Route path="exams" element={<AdminExamsPage />} />
                 <Route path="practice" element={<AdminPracticePage />} />
+                <Route path="challenges" element={<AdminChallengesPage />} />
+                <Route path="moderation" element={<AdminModerationPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
                 <Route path="external-rankings" element={<AdminExternalRankingsPage />} />

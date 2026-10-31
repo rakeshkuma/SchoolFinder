@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { memberPracticeService, type AttemptInput } from '../services/accountApi';
+import { memberPracticeService, type AttemptInput, type AttemptPoints } from '../services/accountApi';
+import { ApiError } from '../services/http';
+import { guestToken, participantService, type ParticipantRequest } from '../services/participantApi';
 import { practiceService } from '../services/publicApi';
 import type { PracticeMode, PracticeScore } from '../types/api';
 import { createLocalList } from '../utils/localList';
@@ -82,16 +84,32 @@ export async function scoreAttempt(
   input: AttemptInput,
   guestScore: () => Promise<PracticeScore>,
   toBankId: (resultId: string) => string = (id) => id,
-): Promise<{ score: PracticeScore; saved: boolean }> {
+): Promise<{ score: PracticeScore; saved: boolean; points: AttemptPoints | null }> {
   let score: PracticeScore;
   let saved = false;
+  let points: AttemptPoints | null = null;
+  let bankIds = signedIn;
   if (signedIn) {
-    score = (await memberPracticeService.record(input)).score;
+    const r = await memberPracticeService.record(input);
+    score = r.score;
+    points = r.points;
     saved = true;
+  } else if (guestToken.get()) {
+    // A guest who joined the leaderboard: the server records and scores the attempt and awards its points.
+    try {
+      const r = await participantService.record(input);
+      score = r.score;
+      points = r.points;
+      bankIds = true;
+    } catch (e) {
+      if (!(e instanceof ApiError) || e.status !== 401) throw e;
+      guestToken.set(null); // the guest entry was deleted: practise on as before
+      score = await guestScore();
+    }
   } else {
     score = await guestScore();
   }
-  updateRevision(score, signedIn ? (id) => id : toBankId);
+  updateRevision(score, bankIds ? (id) => id : toBankId);
   localAttempts.add({
     clientId: input.clientId,
     title: input.title,
@@ -108,13 +126,22 @@ export async function scoreAttempt(
     sections: score.sections,
     topics: score.topics,
     results: score.questions.map((q) => ({
-      id: signedIn ? q.id : toBankId(q.id), attempted: q.chosen !== null, correct: q.correct,
+      id: bankIds ? q.id : toBankId(q.id), attempted: q.chosen !== null, correct: q.correct,
     })),
     marks: score.marks,
     maxMarks: score.maxMarks,
     synced: saved,
   });
-  return { score, saved };
+  return { score, saved, points };
+}
+
+/**
+ * Joins the leaderboard as a guest and counts an attempt already scored in this browser (same clientId, so it is
+ * stored once). Returns the points it earned.
+ */
+export async function joinAndCount(request: ParticipantRequest, input: AttemptInput): Promise<AttemptPoints> {
+  await participantService.join(request);
+  return (await participantService.record(input)).points;
 }
 
 /**
@@ -138,6 +165,16 @@ export function usePracticeSync() {
         if (!cancelled) bookmarks.replace(merged);
       } catch {
         // as above: bookmarks in this browser are kept and merged next time
+      }
+      // Results earned as a guest in this browser move into the account (the browser's token proves it was them).
+      const token = guestToken.get();
+      if (token && !cancelled) {
+        try {
+          await memberPracticeService.claimGuest(token);
+          guestToken.set(null);
+        } catch (e) {
+          if (e instanceof ApiError && e.status === 401) guestToken.set(null); // already claimed or deleted
+        }
       }
       for (const a of localAttempts.get().filter((x) => !x.synced)) {
         if (cancelled) return;

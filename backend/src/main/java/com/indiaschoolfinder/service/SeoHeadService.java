@@ -65,7 +65,9 @@ public class SeoHeadService {
     private static final Set<String> PRIVATE = Set.of("/admin", "/saved", "/suggest", "/account", "/signin", "/register",
             "/verify-email", "/forgot-password", "/reset-password",
             // A student's own progress and results, and randomly drawn practice sittings, are not content to index.
-            "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session");
+            "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session",
+            // Leaderboards list students' nicknames, which should not be searchable; achievements are a student's own.
+            "/exams/leaderboard", "/exams/achievements", "/exams/challenges");
     /** Static pages with their own title; the rest of the app uses the site defaults. */
     private static final Map<String, String[]> PAGES = Map.ofEntries(
             page("/find", "Find the right school for your child", "Choose your area, your child's class, "
@@ -161,7 +163,8 @@ public class SeoHeadService {
                     + "AISSEE, RIMC, RMS CET and other school entrance exams."));
 
     /** Paths under /exams that are pages, not exam slugs; the exam import rejects them as slugs. */
-    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state");
+    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state",
+            "leaderboard", "achievements", "challenges");
 
     private static Map.Entry<String, String[]> page(String path, String title, String description) {
         return Map.entry(path, new String[]{title, description});

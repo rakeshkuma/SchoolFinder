@@ -1,4 +1,7 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { POINTS_RULES, ParticipantForm } from '../components/exam/LeaderboardJoin';
+import { AchievementsPreview, DailyHistory, ExamProgress, PeriodProgress, ProgressSnapshot, useProgressReport } from '../components/exam/ProgressReport';
+import { participantService, useGuestToken, type ParticipantProfile, type ParticipantRequest } from '../services/participantApi';
 import { Link } from 'react-router-dom';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Icon } from '../components/common/Icon';
@@ -11,7 +14,7 @@ import { useLocalList } from '../hooks/usePersonal';
 import { bookmarks, localAttempts, toggleBookmark } from '../hooks/usePracticeProgress';
 import { memberPracticeService } from '../services/accountApi';
 import { practiceService } from '../services/publicApi';
-import type { PracticeBankQuestion } from '../types/api';
+import type { PracticeBankQuestion, PracticeHistoryItem } from '../types/api';
 import { formatDate } from '../utils/format';
 import { practiceStats, type AttemptRecord, type Tally } from '../utils/practiceStats';
 
@@ -24,8 +27,9 @@ const duration = (seconds: number) => {
 
 /**
  * A student's progress across every practice test: totals, trend, results by subject and chapter, weak topics, a
- * suggested next practice, bookmarked questions and the full history. Members see their account's attempts; guests
- * see the attempts kept in this browser.
+ * suggested next practice, bookmarked questions and the full history, with streaks, rank, badges and daily quiz
+ * history for anyone with a leaderboard entry. Members see their account's attempts; joined guests their stored
+ * attempts plus any others kept in this browser; other guests the attempts kept in this browser.
  */
 export function PracticeProgressPage() {
   useDocumentTitle('Your practice progress');
@@ -34,23 +38,30 @@ export function PracticeProgressPage() {
   const local = useLocalList(localAttempts);
   const saved = useLocalList(bookmarks);
   const bank = useApi(() => practiceService.bank(), []);
+  const token = useGuestToken();
   const server = useApi(() => memberPracticeService.history(), [status], signedIn);
+  const guest = useApi(() => participantService.history(), [token], !signedIn && !!token);
+  const report = useProgressReport().data;
 
   const records: AttemptRecord[] | null = useMemo(() => {
-    if (signedIn) {
-      return server.data ? server.data.map((h) => ({
-        key: String(h.attempt.id), title: h.attempt.title, createdAt: h.attempt.createdAt, durationSeconds: h.attempt.durationSeconds,
-        total: h.attempt.total, attempted: h.attempt.attempted, correct: h.attempt.correct, marks: h.attempt.marks,
-        maxMarks: h.attempt.maxMarks, sections: h.attempt.sections, topics: h.topics, outcomes: h.questions,
-        href: `/exams/practice/attempts/${h.attempt.id}`,
-      })) : null;
-    }
-    return local.map((a) => ({
+    const stored = (items: PracticeHistoryItem[], prefix: string): AttemptRecord[] => items.map((h) => ({
+      key: h.attempt.clientId, title: h.attempt.title, createdAt: h.attempt.createdAt, durationSeconds: h.attempt.durationSeconds,
+      total: h.attempt.total, attempted: h.attempt.attempted, correct: h.attempt.correct, marks: h.attempt.marks,
+      maxMarks: h.attempt.maxMarks, sections: h.attempt.sections, topics: h.topics, outcomes: h.questions,
+      href: `/exams/practice/attempts/${prefix}${h.attempt.id}`,
+    }));
+    if (signedIn) return server.data ? stored(server.data, '') : null;
+    const inBrowser: AttemptRecord[] = local.map((a) => ({
       key: a.clientId, title: a.title, createdAt: a.createdAt, durationSeconds: a.durationSeconds, total: a.total,
       attempted: a.attempted, correct: a.correct, marks: a.marks ?? null, maxMarks: a.maxMarks ?? null, sections: a.sections,
       topics: a.topics ?? [], outcomes: a.results ?? null, href: `/exams/practice/attempts/local-${a.clientId}`,
     }));
-  }, [signedIn, server.data, local]);
+    if (!token) return inBrowser;
+    if (!guest.data) return guest.error ? inBrowser : null;
+    const onServer = stored(guest.data, 'guest-');
+    const kept = new Set(onServer.map((r) => r.key));
+    return [...onServer, ...inBrowser.filter((r) => !kept.has(r.key))]; // tests taken before joining stay in this browser only
+  }, [signedIn, server.data, local, token, guest.data, guest.error]);
 
   const meta = useMemo(() => new Map((bank.data?.questions ?? []).map((q) => [q.id, q])), [bank.data]);
   const stats = useMemo(() => (records ? practiceStats(records, (id) => {
@@ -64,7 +75,8 @@ export function PracticeProgressPage() {
       <PageHeader eyebrow="Practice centre" title="Your progress"
         subtitle={signedIn
           ? 'Every practice test saved to your account, on every device.'
-          : 'Practice results kept in this browser. Sign in to keep them on every device — results from this browser are added to your account when you sign in.'}>
+          : token ? 'Your leaderboard results, plus any others kept in this browser.'
+            : 'Practice results kept in this browser. Join with a nickname to see streaks and badges too.'}>
         <div className="flex flex-wrap gap-2">
           <Link to="/exams/practice" className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">← Practice centre</Link>
           {!signedIn && <Link to="/signin?next=%2Fexams%2Fpractice%2Fprogress" className="chip bg-accent-400 px-3 py-1.5 text-sm font-semibold text-ink">Sign in</Link>}
@@ -80,21 +92,27 @@ export function PracticeProgressPage() {
               </EmptyState>
             ) : (
               <>
+                {report && <ProgressSnapshot report={report} />}
                 <Totals stats={stats} />
-                <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
                   <TrendCard stats={stats} />
                   <NextCard stats={stats} />
                 </div>
-                <div className="grid gap-6 lg:grid-cols-2">
+                {report && <PeriodProgress report={report} />}
+                {report && <AchievementsPreview report={report} />}
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                   <TallyCard title="By subject" rows={stats.subjects.map((s) => ({ ...s, label: s.subject, params: { mode: 'TOPIC', section: s.subject, count: '10' } }))}
                     empty="No subject results yet." />
                   <TallyCard title="By chapter" rows={stats.chapters.map((c) => ({ ...c, label: c.chapter, hint: c.subject, params: { mode: 'TOPIC', section: c.subject, chapter: c.chapter, count: '10' } }))}
                     empty="Chapter results appear for practice from sets organised by chapter, such as Class X Mathematics." />
                 </div>
+                {report && report.exams.length > 0 && <ExamProgress report={report} />}
                 <WeakTopics stats={stats} />
+                {report && report.daily.length > 0 && <DailyHistory report={report} />}
                 <History records={records ?? []} />
               </>
             )}
+        <LeaderboardProfile signedIn={signedIn} />
         <Bookmarks ids={liveBookmarks} meta={meta} signedIn={signedIn} />
         <p className="text-xs text-slate-500">
           Practice scores use our own practice marking and original questions. They show how practice is going, not how an
@@ -102,6 +120,67 @@ export function PracticeProgressPage() {
         </p>
       </div>
     </>
+  );
+}
+
+/**
+ * Leaderboard nickname, visibility and points. Members always have a (private) entry; guests can join with a
+ * nickname, change it, or delete it with every result and point that came with it.
+ */
+function LeaderboardProfile({ signedIn }: { signedIn: boolean }) {
+  const token = useGuestToken();
+  const profile = useApi<ParticipantProfile | null>(
+    () => (signedIn ? memberPracticeService.participant() : token ? participantService.me() : Promise.resolve(null)),
+    [signedIn, token],
+  );
+  const [editing, setEditing] = useState(false);
+  const p = profile.data;
+  const save = async (r: ParticipantRequest) => {
+    if (signedIn) await memberPracticeService.updateParticipant(r);
+    else if (token) await participantService.update(r);
+    else await participantService.join(r);
+    setEditing(false);
+    profile.reload();
+  };
+  const remove = async () => {
+    if (!window.confirm('Delete your leaderboard entry and the points and results that came with it?')) return;
+    await participantService.remove();
+  };
+
+  return (
+    <section className="card p-5" aria-labelledby="leaderboard-profile-heading">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 id="leaderboard-profile-heading" className="flex items-center gap-2 font-display text-xl font-bold text-ink">
+            <Icon name="trophy" className="h-5 w-5 text-accent-500" /> Leaderboard profile
+          </h2>
+          {p ? (
+            <p className="mt-1 text-sm text-slate-600">
+              <strong className="text-ink">{p.nickname}</strong> · {p.points} points from {p.attempts} {p.attempts === 1 ? 'test' : 'tests'} ·{' '}
+              {p.listed ? 'shown on public leaderboards' : 'ranked privately (only you see your position)'}
+            </p>
+          ) : (
+            <p className="mt-1 text-sm text-slate-600">Join with a nickname to earn points from the practice you already do. No account needed.</p>
+          )}
+        </div>
+        {p && !editing && (
+          <div className="flex gap-2">
+            <button type="button" className="btn-secondary text-sm" onClick={() => setEditing(true)}>Change</button>
+            {!signedIn && <button type="button" className="btn-ghost text-sm text-red-700" onClick={() => void remove()}>Delete</button>}
+          </div>
+        )}
+      </div>
+      {(editing || (!p && !profile.loading)) && (
+        <div className="mt-4">
+          <ParticipantForm key={p?.publicId ?? 'new'} profile={p} member={signedIn}
+            submitLabel={p ? 'Save' : 'Join with this nickname'} onSubmit={save} />
+        </div>
+      )}
+      <details className="mt-4 text-sm text-slate-600">
+        <summary className="cursor-pointer font-medium text-ink">How points work</summary>
+        <ul className="mt-2 list-disc space-y-1 pl-5">{POINTS_RULES.map((r) => <li key={r}>{r}</li>)}</ul>
+      </details>
+    </section>
   );
 }
 
@@ -114,10 +193,12 @@ function Totals({ stats }: { stats: Stats }) {
     ['Correct', String(stats.correct)],
     ['Incorrect', String(stats.incorrect)],
     ['Accuracy', stats.accuracy === null ? '–' : `${stats.accuracy}%`, 'correct ÷ attempted'],
+    ['Average score', stats.averageScore === null ? '–' : `${stats.averageScore}%`, 'correct ÷ questions'],
+    ['Best score', stats.bestScore === null ? '–' : `${stats.bestScore}%`],
     ['Average time per test', stats.averageSeconds === null ? '–' : duration(stats.averageSeconds)],
   ];
   return (
-    <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       {tiles.map(([label, value, note]) => (
         <div key={label} className="card p-4">
           <dt className="text-xs text-slate-500">{label}</dt>
