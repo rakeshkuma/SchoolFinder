@@ -227,7 +227,7 @@ export function PracticeListPage() {
       <div className="container-page space-y-10 py-8">
         <PracticeNote />
         <PointsNote />
-        <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_340px]">
           <SessionBuilder key={category ?? 'all'} bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
             examName={examName} examSlugs={(exams.data ?? []).map((e) => e.slug)} initialCategory={category} />
           <ProgressPanel examName={examName} />
@@ -1102,7 +1102,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
       )}
       {submitError && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-3 text-sm text-red-800">{submitError} <button type="button" className="font-semibold underline" onClick={() => void submit()}>Try again</button></p>}
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_280px]">
         <section className="min-w-0 space-y-4">
           {passage && shownPassage && (
             <div tabIndex={0} role="region" aria-label={`Passage: ${shownPassage.title}`} lang={lang === 'hi' && passage.hi ? 'hi' : undefined}

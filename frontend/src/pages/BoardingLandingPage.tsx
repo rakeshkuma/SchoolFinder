@@ -71,7 +71,7 @@ function Landing({ landing }: { landing: BoardingLanding }) {
       </PageHeader>
 
       <div className="container-page space-y-10 py-10">
-        <section className="grid gap-4 lg:grid-cols-[1fr_340px]">
+        <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_340px]">
           <div className="card p-5 text-sm leading-relaxed text-slate-700">
             <h2 className="font-semibold text-ink">Which schools are listed</h2>
             <p className="mt-1">{landing.rule}</p>

@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
+import com.indiaschoolfinder.dto.ranking.RankingCatalogDtos;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +27,50 @@ public class ExternalRankingController {
 
     private final ExternalRankingService service;
 
-    public ExternalRankingController(ExternalRankingService service) {
+    private final com.indiaschoolfinder.service.RankingCatalogService catalog;
+
+    public ExternalRankingController(ExternalRankingService service, com.indiaschoolfinder.service.RankingCatalogService catalog) {
         this.service = service;
+        this.catalog = catalog;
+    }
+
+    @Operation(summary = "Published lists with entries to show, with their sources and evaluation parameters")
+    @GetMapping("/editions")
+    public List<RankingCatalogDtos.Edition> editions() {
+        return catalog.editions();
+    }
+
+    @Operation(summary = "Which ranking pages have verified data behind them")
+    @GetMapping("/sections")
+    public RankingCatalogDtos.Sections sections() {
+        return catalog.sections();
+    }
+
+    @Operation(summary = "One published list, filtered without renumbering; every rank shown is the publisher's own")
+    @GetMapping("/table")
+    public PageResponse<RankingCatalogDtos.Row> table(@RequestParam long edition,
+                                                      @RequestParam(required = false) @Pattern(regexp = "[A-Z]{2}") String state,
+                                                      @RequestParam(required = false) @Size(max = 120) String district,
+                                                      @RequestParam(required = false) @Size(max = 120) String city,
+                                                      @RequestParam(required = false) @Size(max = 20) String board,
+                                                      @RequestParam(required = false) @Pattern(regexp = "GOVERNMENT|PRIVATE|AIDED|INTERNATIONAL") String schoolType,
+                                                      @RequestParam(required = false) @Pattern(regexp = "BOYS|GIRLS|CO_ED") String gender,
+                                                      @RequestParam(required = false) @Pattern(regexp = "DAY|BOARDING|DAY_CUM_BOARDING") String residence,
+                                                      @RequestParam(required = false) @Pattern(regexp = "GREEN|YELLOW|ORANGE|RED") String rating,
+                                                      @RequestParam(required = false) @Size(max = 100) String q,
+                                                      @RequestParam(required = false) @Min(1) Integer maxRank,
+                                                      @RequestParam(required = false) @Pattern(regexp = "CENTRAL|STATE|KV|JNV|SAINIK|OTHER") String government,
+                                                      @RequestParam(required = false) @Pattern(regexp = "ANY|BOYS|GIRLS|CO_ED|DAY_CUM_BOARDING|OTHER") String boarding,
+                                                      @RequestParam(defaultValue = "0") @Min(0) int page,
+                                                      @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size) {
+        return catalog.table(new RankingCatalogDtos.Query(edition, state, district, city, board, schoolType, gender, residence, rating,
+                q == null || q.isBlank() ? null : q, maxRank, government, boarding), page, size);
+    }
+
+    @Operation(summary = "States, cities, districts, boards and school groups that have entries in a published list")
+    @GetMapping("/places")
+    public RankingCatalogDtos.Places places(@RequestParam long edition) {
+        return catalog.places(edition);
     }
 
     @Operation(summary = "Publishers of school rankings, surveys, awards and green-school ratings")

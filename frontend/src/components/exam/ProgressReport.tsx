@@ -47,7 +47,7 @@ export function ProgressSnapshot({ report }: { report: ProgressReport }) {
   return (
     <section className="card p-5" aria-labelledby="snapshot-heading">
       <h2 id="snapshot-heading" className="font-display text-lg font-bold text-ink">Your learning at a glance</h2>
-      <div className="mt-3 grid gap-6 lg:grid-cols-[1fr_auto]">
+      <div className="mt-3 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto]">
         <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {tiles.map((t) => (
             <div key={t.label} className="rounded-xl bg-slate-50 p-3">

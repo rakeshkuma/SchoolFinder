@@ -11,6 +11,7 @@ const LINKS = [
   { to: '/admin/documents', label: 'Documents (PDF / OCR)' },
   { to: '/admin/duplicates', label: 'Possible duplicates' },
   { to: '/admin/submissions', label: 'Suggested updates' },
+  { to: '/admin/contact', label: 'Contact messages' },
   { to: '/admin/exams', label: 'Entrance exams' },
   { to: '/admin/practice', label: 'Practice questions' },
   { to: '/admin/challenges', label: 'Challenges' },
@@ -28,7 +29,7 @@ export function AdminLayout() {
   if (!session) return <Navigate to="/admin/login" replace state={{ from: location.pathname }} />;
 
   return (
-    <div className="container-page grid gap-6 py-8 lg:grid-cols-[220px_1fr]">
+    <div className="container-page grid grid-cols-1 gap-6 py-8 lg:grid-cols-[220px_1fr]">
       <aside className="space-y-4">
         <div className="card p-4 text-sm">
           <p className="font-semibold">{session.username}</p>

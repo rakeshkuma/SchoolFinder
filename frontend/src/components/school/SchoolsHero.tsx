@@ -17,7 +17,7 @@ export interface HeroSearch {
  * One school search: name (with suggestions of schools and places, and recent searches), state, city and optionally
  * board. Submitting hands the choice to `onSearch`; the form itself never filters anything.
  */
-export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submitLabel = 'Search', idPrefix = 'hero', stacked = false }: {
+export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submitLabel = 'Search', idPrefix = 'hero', stacked = false, single = false }: {
   value?: HeroSearch;
   onSearch: (next: HeroSearch) => void;
   withBoard?: boolean;
@@ -25,6 +25,8 @@ export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submi
   idPrefix?: string;
   /** For narrower columns: the name on its own row, the rest below it. */
   stacked?: boolean;
+  /** One search box and its button: the box finds schools by name, city, district or state. */
+  single?: boolean;
 }) {
   const [draft, setDraft] = useState<HeroSearch>(value);
   useEffect(() => setDraft(value), [value.q, value.state, value.city, value.board]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -37,6 +39,20 @@ export function SchoolSearchForm({ value = {}, onSearch, withBoard = true, submi
     onSearch({ q: draft.q?.trim() || undefined, state: draft.state || undefined, city: draft.city || undefined, board: draft.board || undefined });
   };
   const noCities = (cities.data?.length ?? 0) === 0;
+
+  if (single) {
+    return (
+      <form onSubmit={submit} role="search" aria-label="Search schools" className="flex flex-col gap-2 sm:flex-row">
+        <div className="min-w-0 flex-1">
+          <SchoolSuggestInput id={`${idPrefix}-q`} value={draft.q ?? ''} onChange={(q) => setDraft({ ...draft, q })}
+            placeholder="Search school name, city, district or state..." />
+        </div>
+        <button type="submit" className="btn-accent h-12 whitespace-nowrap px-6 text-base">
+          <Icon name="search" className="h-5 w-5" /> {submitLabel}
+        </button>
+      </form>
+    );
+  }
 
   return (
     <form onSubmit={submit} role="search" aria-label="Search schools"

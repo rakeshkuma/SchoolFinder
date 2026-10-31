@@ -4,7 +4,7 @@ import { formatMoneyCompact, schoolTypeLabel } from '../../utils/format';
 import { ProvisionalBadge } from '../common/Badges';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { photoCreditTitle, SchoolCover } from './SchoolCard';
+import { SchoolImage } from './SchoolImage';
 
 /**
  * One school in a ranking. Fees, classes, photo and admission status are shown for context only; they are never part of
@@ -24,15 +24,8 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
 
   return (
     <article className="card card-hover group flex flex-col overflow-hidden sm:flex-row">
-      <Link to={`/schools/${r.slug}?tab=ranking`} className="relative block h-36 shrink-0 bg-slate-100 sm:h-auto sm:w-48" tabIndex={-1} aria-hidden>
-        {card?.coverImageUrl ? (
-          <img src={card.coverImageUrl} alt="" loading="lazy" title={photoCreditTitle(card)} className="h-full w-full object-cover" />
-        ) : (
-          <SchoolCover name={r.schoolName} />
-        )}
-        {card?.coverImageUrl && card.coverImageIllustrative && card.coverImageCredit && (
-          <span className="absolute bottom-1 right-1 rounded bg-black/50 px-1.5 text-[10px] text-white">{card.coverImageCredit}</span>
-        )}
+      <Link to={`/schools/${r.slug}?tab=ranking`} className="block shrink-0 sm:w-64 sm:p-3" tabIndex={-1} aria-hidden>
+        <SchoolImage src={card?.coverImageUrl} name={r.schoolName} credit={card?.coverImageCredit} illustrative={card?.coverImageIllustrative} className="sm:rounded-xl">
         <span className="absolute left-3 top-3">
           {r.scopePosition ? (
             <span className="rounded-xl bg-white/95 px-2.5 py-1 font-display text-lg font-extrabold text-ink shadow-sm">#{r.scopePosition}</span>
@@ -40,6 +33,7 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
             <ProvisionalBadge />
           )}
         </span>
+        </SchoolImage>
       </Link>
       <div className="flex min-w-0 flex-1 flex-col p-4">
         <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">

@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { AdmissionStatusBadge, SourceLink, Stars, VerificationBadge } from '../components/common/Badges';
 import { Icon } from '../components/common/Icon';
 import { ShareLinkButtons } from '../components/common/ShareLinkButtons';
-import { SchoolCover } from '../components/school/SchoolCard';
+import { SchoolImage } from '../components/school/SchoolImage';
 import { PageHeader } from '../components/common/PageHeader';
 import { AsyncContent, EmptyState, Spinner } from '../components/common/States';
 import { SchoolPicker } from '../components/school/SchoolPicker';
@@ -15,7 +15,7 @@ import type { SchoolDetail } from '../types/api';
 import { formatDate, formatMoney, formatYesNo, genderLabel, NOT_AVAILABLE, orNotAvailable, schoolTypeLabel } from '../utils/format';
 import { formatDistance, haversineKm, parseIds } from '../utils/geo';
 import {
-  ACADEMIC_FACILITIES, admissionProcess, dayOrBoarding, facilityNames, hostelDetails, publishedPositions, SPORTS_FACILITIES,
+  ACADEMIC_FACILITIES, admissionProcess, dayOrBoarding, facilityNames, hostelDetails, listPosition, rankingLists, SPORTS_FACILITIES,
 } from '../utils/compare';
 
 /** Several facts in one cell, one per line; "Not available" when there are none. */
@@ -138,6 +138,8 @@ export function ComparePage() {
   const classRange = (s: SchoolDetail) => (s.classesOffered.length
     ? `${s.classesOffered[0].name} – ${s.classesOffered[s.classesOffered.length - 1].name}` : NOT_AVAILABLE);
   const plain = (render: (s: SchoolDetail) => string): Pick<Row, 'render' | 'text'> => ({ render, text: render });
+  const rankingDetails = (extras.data ?? []).map((e) => e.ranking);
+  const lists = rankingLists(rankingDetails);
   const groups: { title: string; rows: Row[] }[] = [
     {
       title: 'Basics',
@@ -200,10 +202,10 @@ export function ComparePage() {
         { label: 'Hostel details', render: (s) => <Lines items={hostelDetails(s)} limit={4} /> },
         { label: 'Academic facilities', render: (s) => <Lines items={facilityNames(extra(s.id)?.facilities ?? [], ACADEMIC_FACILITIES)} /> },
         { label: 'Sports', render: (s) => <Lines items={facilityNames(extra(s.id)?.facilities ?? [], SPORTS_FACILITIES)} /> },
+        { label: 'Arts and extracurricular', render: (s) => <Lines items={facilityNames(extra(s.id)?.facilities ?? [], ['ARTS', 'EXTRACURRICULAR'])} /> },
         {
           label: 'Other facilities',
-          render: (s) => <Lines items={facilityNames(extra(s.id)?.facilities ?? [],
-            ['HEALTH', 'ARTS', 'EXTRACURRICULAR', 'ACCESSIBILITY', 'HOSTEL', 'TRANSPORT', 'OTHER'])} limit={4} />,
+          render: (s) => <Lines items={facilityNames(extra(s.id)?.facilities ?? [], ['HEALTH', 'ACCESSIBILITY', 'HOSTEL', 'TRANSPORT', 'OTHER'])} limit={4} />,
         },
         { label: 'Student–teacher ratio', ...plain((s) => (s.studentTeacherRatio ? `${s.studentTeacherRatio} : 1` : NOT_AVAILABLE)) },
         { label: 'Parent rating', render: (s) => <Stars rating={s.averageRating} />, text: (s) => String(s.averageRating) },
@@ -221,17 +223,13 @@ export function ComparePage() {
             return site.rankPosition ? `#${site.rankPosition} in India (${site.totalScore.toFixed(1)}/100)` : `Provisional (${site.totalScore.toFixed(1)}/100)`;
           }),
         },
-        {
-          label: 'Published rankings (source and year)',
-          render: (s) => {
-            const list = publishedPositions(extra(s.id)?.ranking);
-            return list.length === 0 ? 'Not listed in any published ranking we have checked' : (
-              <span className="flex flex-col gap-1 text-xs leading-relaxed text-slate-700">
-                {list.map((p) => <span key={p.text}>{p.text} <SourceLink url={p.sourceUrl} /></span>)}
-              </span>
-            );
-          },
-        },
+        // One row per list, naming its publisher and year, because positions compare only within the same list.
+        ...lists.map((title): Row => ({ label: title, ...plain((s) => listPosition(extra(s.id)?.ranking, title)) })),
+        ...(lists.length === 0 ? [{ label: 'Published rankings', ...plain(() => 'Not listed in any published ranking we have checked') }] : []),
+        ...(rankingDetails.some((d) => d?.externalRankings.some((e) => e.sponsored)) ? [{
+          label: 'Sponsored or featured listings (paid, not rankings)',
+          ...plain((s) => extra(s.id)?.ranking?.externalRankings.filter((e) => e.sponsored).map((e) => e.publisher).join(', ') || NOT_AVAILABLE),
+        }] : []),
       ],
     },
   ];
@@ -293,10 +291,7 @@ export function ComparePage() {
                         const photo = extra(s.id)?.images.find((i) => i.imageType !== 'LOGO');
                         return (
                           <th key={s.id} scope="col" className="min-w-[200px] px-4 py-3 text-left align-top">
-                            <div className="mb-3 h-24 overflow-hidden rounded-xl bg-slate-100">
-                              {photo ? <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText} className="h-full w-full object-cover" loading="lazy"
-                                title={photo.attributionText ?? (photo.credit ? `Photo: ${photo.credit}` : undefined)} /> : <SchoolCover name={s.name} />}
-                            </div>
+                            <SchoolImage src={photo?.thumbnailUrl ?? photo?.url} name={s.name} alt={photo?.altText} credit={photo?.credit} zoom={false} className="mb-3 rounded-xl" />
                             <Link to={`/schools/${s.slug}`} className="font-display font-bold leading-snug text-ink hover:text-brand-700">{s.name}</Link>
                             <button type="button" className="mt-1 block text-xs font-normal text-slate-500 hover:text-red-600" onClick={() => remove(s.id)}>Remove</button>
                           </th>
@@ -342,12 +337,11 @@ export function ComparePage() {
         {items.length > 0 && (
           <p className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link to="/fees" className="link">Estimate total costs with transport and books →</Link>
-            <Link to="/rankings/compare" className="link">Compare these schools' rankings in detail →</Link>
           </p>
         )}
         <p className="text-xs text-slate-500">
           “{NOT_AVAILABLE}” means no official source we have checked states it; it is never counted as zero or “no”.
-          Published ranking positions compare only within the same list and edition.
+          “Not listed” means we have no checked entry, not a low rank. Published positions compare only within the same list and year.
         </p>
       </div>
     </>

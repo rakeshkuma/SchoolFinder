@@ -19,7 +19,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, type SchoolRef } from '../hooks/usePersonal';
 import { ApiError } from '../services/http';
 import { schoolService } from '../services/publicApi';
-import type { Admission, FacilityCategory, ReviewRequest, SchoolDetail, SchoolImage } from '../types/api';
+import type { Admission, ExternalRanking, FacilityCategory, ReviewRequest, SchoolDetail, SchoolImage } from '../types/api';
 import {
   admissionCategoryLabel,
   directionsUrl,
@@ -103,7 +103,7 @@ export function SchoolDetailPage() {
                 <Link to={`/schools?state=${s.stateCode}&locality=${encodeURIComponent(s.locality)}`} className="hover:text-white">{s.locality}</Link></>
             )}
           </nav>
-          <div className={`mt-5 grid gap-6 ${photo ? 'lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start' : ''}`}>
+          <div className={`mt-5 grid grid-cols-1 gap-6 ${photo ? 'lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start' : ''}`}>
           <div className="flex min-w-0 flex-wrap items-start gap-5">
             {s.logoUrl ? (
               <img src={s.logoUrl} alt={`${s.name} logo`} className="h-20 w-20 rounded-2xl bg-white object-contain p-2 shadow-lift" />
@@ -217,10 +217,12 @@ function HeaderPhoto({ photo, name, onGallery, onFail }: {
 }) {
   return (
     <figure className="min-w-0">
-      <button type="button" onClick={onGallery} className="group block w-full overflow-hidden rounded-2xl shadow-lift ring-1 ring-white/20"
+      <button type="button" onClick={onGallery} className="group block w-full"
         aria-label={`Open the photo gallery of ${name}`}>
-        <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText || `Campus of ${name}`} onError={onFail}
-          className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+        <span className="school-image rounded-2xl shadow-lift ring-1 ring-white/20">
+          <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText || `Campus of ${name}`} onError={onFail}
+            className="transition duration-500 group-hover:scale-[1.03]" />
+        </span>
       </button>
       <figcaption className="mt-2 text-[11px] leading-snug text-slate-400">
         {photo.illustrative ? 'Illustration, not a photo of this school' : (
@@ -316,7 +318,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
   const known = facts.filter(([, v]) => v !== null && v !== '');
   const unknown = facts.filter(([, v]) => v === null || v === '').map(([label]) => label);
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
       <section className="card p-6">
         {s.description && <p className="mb-4 leading-relaxed text-slate-700">{s.description}</p>}
         <dl className="divide-y divide-slate-100">
@@ -475,7 +477,7 @@ function FeesTab({ schoolId, inDelhi }: { schoolId: number; inDelhi: boolean }) 
         const chip = (active: boolean) =>
           `chip px-3 py-1.5 text-sm ring-1 ring-inset transition ${active ? 'bg-brand-600 text-white ring-brand-600' : 'bg-white text-slate-700 ring-slate-200 hover:ring-brand-300'}`;
         return (
-          <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
             <div className="space-y-4">
               <div className="card space-y-4 p-5">
                 <div className="flex flex-wrap items-center gap-2">
@@ -681,7 +683,7 @@ function RankingSummary({ schoolId }: { schoolId: number }) {
         <ul className="mt-1 space-y-1">
           {published.map((e) => (
             <li key={e.id} className="text-slate-700">
-              <strong className="text-ink">{e.rankPosition ? `#${e.rankPosition}` : 'Listed'}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
+              <strong className="text-ink">{rankLabel(e)}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
               {(e.category || e.region) && <span className="text-slate-500"> · {[e.category, e.region].filter(Boolean).join(' · ')}</span>}
             </li>
           ))}
@@ -690,6 +692,14 @@ function RankingSummary({ schoolId }: { schoolId: number }) {
       <Link to="?tab=ranking" className="link mt-2 inline-block">Ranking details and sources →</Link>
     </section>
   );
+}
+
+/** National, state and city ranks are shown under their own names; a rating is not a rank. */
+export function rankLabel(e: Pick<ExternalRanking, 'nationalRank' | 'stateRank' | 'cityRank' | 'rating' | 'rankPosition' | 'scoreText'>): string {
+  const parts = [e.nationalRank != null && `National #${e.nationalRank}`, e.stateRank != null && `State #${e.stateRank}`, e.cityRank != null && `City #${e.cityRank}`].filter(Boolean);
+  if (parts.length > 0) return parts.join(', ');
+  if (e.rating) return `${e.rating.charAt(0)}${e.rating.slice(1).toLowerCase()} rating`;
+  return e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'Listed';
 }
 
 function RankingTab({ schoolId }: { schoolId: number }) {
@@ -732,7 +742,7 @@ function RankingTab({ schoolId }: { schoolId: number }) {
             <h2 className="font-semibold">Independently published rankings</h2>
             {r.externalRankings.length === 0 ? (
               <p className="mt-2 text-sm text-slate-600">
-                Not listed in any published ranking we have checked. <Link to="/rankings/published" className="link">Published rankings</Link>
+                Not listed in any published ranking we have checked. <Link to="/rankings" className="link">See rankings</Link>
               </p>
             ) : (
               <ul className="mt-3 divide-y divide-slate-100 text-sm">
@@ -741,8 +751,9 @@ function RankingTab({ schoolId }: { schoolId: number }) {
                     <span className="font-medium">{e.publisher}</span> — {e.rankingName} ({e.rankingYear})
                     {e.category && `, ${e.category}`}{e.region && `, ${e.region}`}:{' '}
                     {e.sponsored ? <span className="chip bg-amber-50 text-amber-900">Sponsored listing, not a ranking</span>
-                      : e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
-                    <SourceLink url={e.sourceUrl} />
+                      : rankLabel(e)}
+                    {e.score != null && <span className="text-slate-600"> · score {e.score}{e.maxScore != null ? ` / ${e.maxScore}` : ''}</span>}
+                    {' '}<Link to="/rankings/methodology#sources" className="text-xs text-slate-500 underline">Source and method</Link>
                   </li>
                 ))}
               </ul>
@@ -758,7 +769,7 @@ function ReviewsTab({ schoolId }: { schoolId: number }) {
   const [page, setPage] = useState(0);
   const state = useApi(() => schoolService.reviews(schoolId, page), [schoolId, page]);
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
       <section>
         <AsyncContent state={state} isEmpty={(d) => d.content.length === 0}
           empty={<EmptyState title="No published reviews yet.">Be the first parent to share your experience.</EmptyState>}>

@@ -60,5 +60,5 @@ public interface ExternalRankingService {
     void delete(Long id);
 
     /** Same modes as the school import; every imported or changed entry is UNVERIFIED. */
-    CsvImportResult importCsv(InputStream csv, CsvImportService.Mode mode);
+    CsvImportResult importCsv(InputStream csv, CsvImportService.Mode mode, String fileName);
 }

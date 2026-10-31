@@ -27,5 +27,10 @@ public record ExternalRankingRequest(
         RankingScope scope,
         @Size(max = 100) String region,
         Boolean sponsored,
-        @Size(max = 500) String notes) {
+        @Size(max = 500) String notes,
+        @jakarta.validation.constraints.Positive Integer stateRank,
+        @jakarta.validation.constraints.Positive Integer cityRank,
+        java.math.BigDecimal score,
+        java.math.BigDecimal maxScore,
+        @jakarta.validation.constraints.Pattern(regexp = "GREEN|YELLOW|ORANGE|RED") String rating) {
 }

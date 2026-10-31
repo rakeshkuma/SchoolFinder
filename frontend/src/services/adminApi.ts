@@ -209,6 +209,11 @@ export const adminService = {
     http.patch<PracticeReport>(`/admin/practice-reports/${id}`, { status, note }).then((r) => r.data),
   importExams: (body: unknown) =>
     http.post<{ created: number; updated: number; slugs: string[] }>('/admin/exams/import', body).then((r) => r.data),
+  rankingImportJobs: (page = 0) => http.get<PageResponse<RankingImportJob>>('/admin/import/ranking-jobs', { params: { page } }).then((r) => r.data),
+  approveRankingImport: (id: number, note: string) => http.post<{ approved: number }>(`/admin/import/ranking-jobs/${id}/approve`, { note }).then((r) => r.data),
+  contactMessages: (status: 'OPEN' | 'HANDLED', page = 0, size = 20) =>
+    http.get<PageResponse<ContactMessage>>('/admin/contact-messages', { params: { status, page, size } }).then((r) => r.data),
+  contactHandled: (id: number) => http.post<ContactMessage>(`/admin/contact-messages/${id}/handled`).then((r) => r.data),
   challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
   createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
   updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
@@ -224,6 +229,38 @@ export const adminService = {
   hideParticipant: (publicId: string, hidden: boolean, note: string) =>
     http.patch<void>(`/admin/moderation/participants/${encodeURIComponent(publicId)}`, { hidden, note }).then((r) => r.data),
 };
+
+/** One run of the ranking import. */
+export interface RankingImportJob {
+  id: number;
+  fileName: string | null;
+  mode: string;
+  totalRows: number;
+  validRows: number;
+  created: number;
+  updated: number;
+  committed: boolean;
+  errors: { row: number; field: string; message: string }[];
+  importedBy: string | null;
+  importedAt: string;
+  approvedBy: string | null;
+  approvedAt: string | null;
+  awaitingApproval: number;
+}
+
+/** A message from the contact form; name and email are null once it has been handled. */
+export interface ContactMessage {
+  id: number;
+  topic: 'FEEDBACK' | 'CORRECTION' | 'LISTING' | 'RANKING' | 'TECHNICAL';
+  name: string | null;
+  email: string | null;
+  subject: string;
+  message: string;
+  status: 'OPEN' | 'HANDLED';
+  createdAt: string;
+  handledAt: string | null;
+  handledBy: string | null;
+}
 
 /** A challenge as editors see it. */
 export interface AdminChallenge {

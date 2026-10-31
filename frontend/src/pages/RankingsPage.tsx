@@ -111,7 +111,7 @@ export function RankingsPage() {
   return (
     <>
       <PageHeader
-        title="School rankings"
+        title="India School Finder evidence score"
         subtitle={
           <>
             Scores are calculated by India School Finder from source-linked evidence; only verified evidence earns a rank. This
@@ -129,7 +129,7 @@ export function RankingsPage() {
           ))}
         </nav>
       </PageHeader>
-      <div className="container-page grid gap-6 py-8 lg:grid-cols-[1fr_300px]">
+      <div className="container-page grid grid-cols-1 gap-6 py-8 lg:grid-cols-[1fr_300px]">
         <section>
           {(() => {
             const stateSelect = (id: string) => (

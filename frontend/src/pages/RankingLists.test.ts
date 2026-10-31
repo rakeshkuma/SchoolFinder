@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { ExternalRanking, ExternalRankingListItem, SchoolRankingDetail } from '../types/api';
-import { groupByList, listTitle } from './PublishedRankingsPage';
-import { rankingRows } from './RankingComparePage';
+import { groupByList, listTitle } from '../utils/rankingLists';
+import { rankingLists as rankingRows } from '../utils/compare';
 
 const entry = (over: Partial<ExternalRanking>): ExternalRanking => ({
   id: 1, publisher: 'EducationWorld', rankingName: 'India School Rankings', rankingYear: '2025-26', category: 'Day schools',

@@ -171,7 +171,108 @@ export const rankingService = {
   external: (params: ExternalRankingParams) =>
     http.get<PageResponse<ExternalRankingListItem>>('/rankings/external', { params: cleanParams(params) }).then((r) => r.data),
   externalFacets: () => http.get<ExternalRankingFacets>('/rankings/external/facets').then((r) => r.data),
+  /** Published lists with entries to show, with their sources and evaluation parameters. */
+  editions: () => http.get<RankingEdition[]>('/rankings/editions').then((r) => r.data),
+  /** One published list, filtered without renumbering. */
+  table: (params: RankingTableParams) => http.get<PageResponse<RankingRow>>('/rankings/table', { params: cleanParams(params) }).then((r) => r.data),
+  /** Which ranking pages have verified data. Asked once per visit: the menu and the ranking pages share the answer. */
+  sections: () => {
+    sectionsRequest ??= http.get<RankingSections>('/rankings/sections').then((r) => r.data).catch((e) => { sectionsRequest = null; throw e; });
+    return sectionsRequest;
+  },
+  /** States, cities, districts, boards and school groups that have entries in a list. */
+  places: (edition: number) => http.get<RankingPlaces>('/rankings/places', { params: { edition } }).then((r) => r.data),
 };
+
+/** One published list: a publisher's list for one year, category and place. */
+export interface RankingEdition {
+  id: number;
+  publisherCode: string;
+  publisher: string;
+  kind: RankingPublisherKind;
+  name: string;
+  year: string;
+  categoryCode: string | null;
+  category: string | null;
+  family: string | null;
+  boardCode: string | null;
+  scope: 'NATIONAL' | 'STATE' | 'CITY';
+  region: string | null;
+  ratingBased: boolean;
+  hasScores: boolean;
+  maxScore: number | null;
+  methodology: string | null;
+  sourceUrl: string;
+  publishedOn: string | null;
+  collectedOn: string;
+  lastVerified: string | null;
+  entries: number;
+  parameters: { name: string; weight: number | null; description: string | null }[];
+}
+
+export interface RankingTableParams {
+  edition: number;
+  state?: string;
+  district?: string;
+  city?: string;
+  board?: string;
+  schoolType?: string;
+  gender?: string;
+  residence?: string;
+  rating?: string;
+  q?: string;
+  /** National ranks up to this number: a Top 10 is the publisher's top ten places, not ten rows. */
+  maxRank?: number;
+  government?: string;
+  boarding?: string;
+  page?: number;
+  size?: number;
+}
+
+/** One school in a list. A rank the publisher did not print is null; national, state and city ranks are separate. */
+export interface RankingRow {
+  entryId: number;
+  nationalRank: number | null;
+  stateRank: number | null;
+  cityRank: number | null;
+  score: number | null;
+  maxScore: number | null;
+  scoreText: string | null;
+  rating: string | null;
+  schoolId: number;
+  schoolName: string;
+  slug: string;
+  city: string | null;
+  district: string | null;
+  stateCode: string;
+  stateName: string;
+  board: string | null;
+  schoolType: string;
+  genderType: string | null;
+  boardingType: string | null;
+  imageUrl: string | null;
+  imageCredit: string | null;
+  lastVerified: string | null;
+}
+
+export interface RankingPlaces {
+  states: { code: string; name: string; slug: string; entries: number }[];
+  cities: { name: string; stateCode: string; entries: number }[];
+  districts: { slug: string; name: string; stateCode: string; entries: number }[];
+  boards: { code: string; entries: number }[];
+  government: { code: string; entries: number }[];
+  boarding: { code: string; entries: number }[];
+}
+
+export interface RankingSections {
+  rankings: boolean;
+  boards: boolean;
+  government: boolean;
+  boarding: boolean;
+  green: boolean;
+}
+
+let sectionsRequest: Promise<RankingSections> | null = null;
 
 export interface ExamListParams {
   q?: string;
