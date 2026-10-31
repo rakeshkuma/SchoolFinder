@@ -31,6 +31,44 @@ public class AppProperties {
     private final Exams exams = new Exams();
     private final Account account = new Account();
     private final Mail mail = new Mail();
+    private final ImageDiscovery imageDiscovery = new ImageDiscovery();
+    private final Ocr ocr = new Ocr();
+
+    /**
+     * Optional OCR for scanned notices under document review. Off unless tesseractCommand is set (for example "tesseract",
+     * with the Hindi and English language data installed); without it, scans are flagged for the reviewer to transcribe.
+     */
+    @Getter
+    @Setter
+    public static class Ocr {
+        private String tesseractCommand = "";
+        private String languages = "hin+eng";
+        private Duration timeout = Duration.ofSeconds(60);
+        /** Pages beyond this are not rendered or read. */
+        private int maxPages = 30;
+
+        public boolean isConfigured() {
+            return tesseractCommand != null && !tesseractCommand.isBlank();
+        }
+    }
+
+    /**
+     * Searching Wikimedia Commons and Wikipedia for possible school photographs (admin only). Results are suggestions:
+     * nothing is stored until an administrator adds one, always as PENDING.
+     */
+    @Getter
+    @Setter
+    public static class ImageDiscovery {
+        private boolean enabled = true;
+        private String commonsApiUrl = "https://commons.wikimedia.org/w/api.php";
+        private String wikipediaApiUrl = "https://en.wikipedia.org/w/api.php";
+        /** Wikimedia asks API clients to identify themselves with a way to contact the operator. */
+        private String userAgent = "IndiaSchoolFinder/1.0 (school image licence review; https://github.com/rakeshkuma/SchoolFinder)";
+        private Duration connectTimeout = Duration.ofSeconds(5);
+        private Duration readTimeout = Duration.ofSeconds(10);
+        /** Width of the card thumbnail requested from Commons. */
+        private int thumbnailWidth = 640;
+    }
 
     @Getter
     @Setter

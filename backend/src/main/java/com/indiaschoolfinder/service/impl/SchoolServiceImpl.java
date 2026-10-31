@@ -72,19 +72,20 @@ import java.util.stream.Collectors;
 public class SchoolServiceImpl implements SchoolService {
 
     /** Public sort keys → entity properties. Anything else is rejected with 400. */
-    static final Map<String, String> SORT_FIELDS = Map.of(
-            "name", "name",
-            "fee", SchoolSpecifications.ANNUAL_FEE,
-            "locality", "locality",
-            "city", "city",
-            "rating", "averageRating",
-            "reviews", "reviewCount",
-            "newest", "createdAt",
-            "updated", "updatedAt",
-            "verified", "lastVerifiedDate",
+    static final Map<String, String> SORT_FIELDS = Map.ofEntries(
+            Map.entry("name", "name"),
+            Map.entry("fee", SchoolSpecifications.ANNUAL_FEE),
+            Map.entry("locality", "locality"),
+            Map.entry("city", "city"),
+            Map.entry("location", SchoolSpecifications.LOCATION),
+            Map.entry("rating", "averageRating"),
+            Map.entry("reviews", "reviewCount"),
+            Map.entry("newest", "createdAt"),
+            Map.entry("updated", "updatedAt"),
+            Map.entry("verified", "lastVerifiedDate"),
             // Default order: ranked and best-documented profiles first, states taking turns within a score tier
             // (see ProfileScoreService), then name.
-            "recommended", SchoolSpecifications.RECOMMENDED);
+            Map.entry("recommended", SchoolSpecifications.RECOMMENDED));
     static final String SORT_DISTANCE = "distance";
     static final String SORT_RECOMMENDED = "recommended";
     private static final Set<String> DESCENDING_BY_DEFAULT = Set.of("rating", "reviews", "newest", "updated", "verified",
@@ -195,7 +196,18 @@ public class SchoolServiceImpl implements SchoolService {
                 .map(s -> new SuggestionDto.SchoolSuggestion(s.getId(), s.getName(), s.getSlug(), s.getLocality(),
                         s.getCity(), s.getStateCode()))
                 .toList();
-        return new SuggestionDto(schoolSuggestions, locationService.suggestPlaces(term, Math.min(capped, 6)));
+        // "Arrah" or "Allahabad" also suggest the place under the name this site uses.
+        String preferred = com.indiaschoolfinder.util.PlaceAliases.preferred(term);
+        var places = new ArrayList<>(locationService.suggestPlaces(term, Math.min(capped, 6)));
+        if (preferred != null) {
+            // Only places named by the preferred spelling ("Ara", not every place containing "ara"), shown first.
+            List<SuggestionDto.PlaceSuggestion> named = locationService.suggestPlaces(preferred, 10).stream()
+                    .filter(p -> p.label().toLowerCase(Locale.ROOT).matches(java.util.regex.Pattern.quote(preferred) + "\\b.*"))
+                    .toList();
+            places.removeAll(named);
+            places.addAll(0, named);
+        }
+        return new SuggestionDto(schoolSuggestions, places.stream().limit(Math.min(capped, 6)).toList());
     }
 
     @Override
@@ -343,7 +355,7 @@ public class SchoolServiceImpl implements SchoolService {
     public List<ImageDto> images(Long schoolId) {
         requireActive(schoolId);
         return imageRepository.findBySchoolIdAndPermissionStatusInOrderBySortOrderAscIdAsc(schoolId, ImagePermission.PUBLISHABLE)
-                .stream().map(mapper::toImageDto).toList();
+                .stream().map(mapper::toPublicImageDto).toList();
     }
 
     @Override

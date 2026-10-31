@@ -27,16 +27,33 @@ export function SkeletonCards({ count = 6 }: { count?: number }) {
   );
 }
 
+function errorTitle(status: number | undefined): string {
+  if (status === 0) return 'You seem to be offline, or the server can’t be reached.';
+  if (status === 401) return 'Sign-in needed';
+  if (status === 403) return 'Access restricted';
+  if (status === 404) return 'Not found';
+  if (status === 429) return 'Please slow down';
+  if (status === 502 || status === 503 || status === 504) return 'Temporarily unavailable';
+  return 'We couldn’t load this information.';
+}
+
 export function ErrorState({ error, onRetry }: { error: ApiError | Error; onRetry?: () => void }) {
+  const status = 'status' in error ? error.status : undefined;
+  // Retrying cannot fix a missing page or a permission problem, so the button is offered only where it can help.
+  const retryable = onRetry && status !== 401 && status !== 403 && status !== 404;
+  const notFound = status === 404;
   return (
-    <div role="alert" className="card border-red-200 bg-red-50 p-6 text-center">
-      <p className="font-medium text-red-800">We couldn’t load this information.</p>
-      <p className="mt-1 text-sm text-red-700">{error.message}</p>
-      {onRetry && (
-        <button type="button" onClick={onRetry} className="btn-secondary mt-4">
-          Try again
-        </button>
-      )}
+    <div role="alert" className={`card p-6 text-center ${notFound ? 'border-slate-200' : 'border-red-200 bg-red-50'}`}>
+      <p className={`font-medium ${notFound ? 'text-ink' : 'text-red-800'}`}>{errorTitle(status)}</p>
+      <p className={`mt-1 text-sm ${notFound ? 'text-slate-600' : 'text-red-700'}`}>{error.message}</p>
+      <div className="mt-4 flex flex-wrap justify-center gap-2">
+        {retryable && (
+          <button type="button" onClick={onRetry} className="btn-secondary">
+            Try again
+          </button>
+        )}
+        {notFound && <a href="/" className="btn-secondary">Go to the home page</a>}
+      </div>
     </div>
   );
 }

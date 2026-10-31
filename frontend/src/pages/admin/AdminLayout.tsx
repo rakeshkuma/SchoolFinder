@@ -6,11 +6,16 @@ const LINKS = [
   { to: '/admin/coverage', label: 'State coverage' },
   { to: '/admin/schools', label: 'Schools' },
   { to: '/admin/facility-verification', label: 'Facility verification' },
+  { to: '/admin/images', label: 'School images' },
   { to: '/admin/import', label: 'Import', adminOnly: true },
+  { to: '/admin/documents', label: 'Documents (PDF / OCR)' },
+  { to: '/admin/duplicates', label: 'Possible duplicates' },
   { to: '/admin/submissions', label: 'Suggested updates' },
   { to: '/admin/exams', label: 'Entrance exams' },
+  { to: '/admin/practice', label: 'Practice questions' },
   { to: '/admin/reviews', label: 'Review moderation' },
   { to: '/admin/rankings', label: 'Ranking weights' },
+  { to: '/admin/external-rankings', label: 'Published rankings' },
   { to: '/admin/audit', label: 'Audit log', adminOnly: true },
 ];
 

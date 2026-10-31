@@ -45,6 +45,11 @@ public class LocationController {
     }
 
     @Operation(summary = "Cities of a state that have active schools, with counts")
+    @GetMapping("/locations/cities/all")
+    public List<com.indiaschoolfinder.dto.location.IndiaCityDto> citiesAcrossIndia() {
+        return locationService.citiesAcrossIndia();
+    }
+
     @GetMapping({"/locations/cities", "/cities"})
     public List<CityDto> cities(@RequestParam @Size(max = 80) String state) {
         return locationService.cities(state);

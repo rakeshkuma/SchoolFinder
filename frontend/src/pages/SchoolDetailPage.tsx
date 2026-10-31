@@ -35,7 +35,7 @@ import {
   placeLine,
   schoolTypeLabel,
 } from '../utils/format';
-import { NotFoundPage } from './InfoPages';
+import { SchoolOrStateNotFound } from './PlaceRedirect';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -62,7 +62,8 @@ export function SchoolDetailPage() {
   useEffect(() => setPhotoFailed(false), [loaded?.id]);
   const photo = photoFailed ? undefined : images.data?.find((i) => i.imageType !== 'LOGO');
 
-  if (school.error?.status === 404) return <NotFoundPage />;
+  // /schools/bihar is a state rather than a school: SchoolOrStateNotFound sends it to the state page, or shows 404.
+  if (school.error?.status === 404) return <SchoolOrStateNotFound slug={slug} />;
   if (school.error) return <div className="container-page py-10"><ErrorState error={school.error} onRetry={school.reload} /></div>;
   if (!school.data) return <Spinner label="Loading school…" />;
 
@@ -142,7 +143,11 @@ export function SchoolDetailPage() {
           <KeyFacts school={s} onTab={setTab} />
         </div>
       </header>
-      <div className="container-page py-6">
+      <StickyActions school={s} onAdmissions={() => {
+        setTab('admissions');
+        document.getElementById('school-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }} />
+      <div id="school-tabs" className="container-page scroll-mt-32 py-6">
         <Tabs
           active={tab}
           onChange={setTab}
@@ -162,6 +167,37 @@ export function SchoolDetailPage() {
         />
       </div>
     </>
+  );
+}
+
+/**
+ * The main actions, kept in reach under the site header while reading the profile. "Contact" uses the school's own
+ * published phone, e-mail or website — whichever exists — and is left out when none is published.
+ */
+function StickyActions({ school: s, onAdmissions }: { school: SchoolDetail; onAdmissions: () => void }) {
+  const phone = s.phone?.split(',')[0].trim();
+  const contact = phone ? { href: `tel:${phone.replace(/[^\d+]/g, '')}`, label: 'Call school', icon: 'phone' as const, external: false }
+    : s.email ? { href: `mailto:${s.email}`, label: 'Email school', icon: 'mail' as const, external: false }
+      : s.websiteUrl ? { href: s.websiteUrl, label: 'Contact school', icon: 'external' as const, external: true } : null;
+  return (
+    <div className="sticky top-[68px] z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="container-page flex items-center gap-3 overflow-x-auto py-2.5">
+        <p className="hidden min-w-0 flex-1 truncate font-display font-bold text-ink md:block">{s.name}</p>
+        <div className="flex shrink-0 items-center gap-2">
+          <CompareButton id={s.id} name={s.name} slug={s.slug} />
+          <SaveButton school={toRef(s)} withLabel />
+          {contact && (
+            <a href={contact.href} {...(contact.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="btn-secondary whitespace-nowrap rounded-full px-3 py-1.5 text-sm">
+              <Icon name={contact.icon} className="h-4 w-4" /> {contact.label}
+            </a>
+          )}
+          <button type="button" onClick={onAdmissions} className="btn-primary whitespace-nowrap rounded-full px-4 py-1.5 text-sm">
+            <Icon name="calendar" className="h-4 w-4" /> Admission details
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -256,6 +292,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
   const yesNo = (v: boolean | null) => (v === null ? null : formatYesNo(v));
   // [label, value]; null = not published by any source yet.
   const facts: [string, string | null][] = [
+    ['School category', schoolTypeLabel[s.schoolType]],
     ['Management', s.management ? managementLabel[s.management] : null],
     ['Run by (trust / society)', s.managingBody],
     ['Principal / head', s.principalName],
@@ -268,12 +305,12 @@ function Overview({ school: s }: { school: SchoolDetail }) {
       ? `${s.classesOffered[0].name} to ${s.classesOffered[s.classesOffered.length - 1].name} (${s.classesOffered.length} levels listed)`
       : null],
     ['Medium of instruction', s.mediumOfInstruction],
-    ['Co-education', s.genderType ? genderLabel[s.genderType] : null],
+    ['Gender', s.genderType ? genderLabel[s.genderType] : null],
     ['Established', s.establishedYear !== null ? String(s.establishedYear) : null],
     ['School timings', s.schoolTimings],
     ['Student–teacher ratio', s.studentTeacherRatio ? `${s.studentTeacherRatio} : 1` : null],
     ['Transport', yesNo(s.hasTransport)],
-    ['Hostel / boarding', yesNo(s.hasHostel)],
+    ['Day or boarding', s.hasHostel === null ? null : s.hasHostel ? 'Boarding (hostel available)' : 'Day school'],
     ['Accessibility', s.accessibilityFeatures],
   ];
   const known = facts.filter(([, v]) => v !== null && v !== '');
@@ -301,6 +338,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
         )}
       </section>
       <aside className="space-y-4">
+        <RankingSummary schoolId={s.id} />
         <section className="card p-5">
           <h2 className="font-semibold">Contact</h2>
           <p className="mt-1 text-xs text-slate-500">Publicly listed by the school.</p>
@@ -548,10 +586,23 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
     </section>
   );
   if (!hasCoords) {
+    const address = [s.addressLine, s.city, s.district?.name, s.stateName, s.pinCode].filter(Boolean).join(', ');
     return (
       <div className="space-y-6">
         {contact}
-        <EmptyState title="Map location not available yet.">We only plot schools whose coordinates have been confirmed.</EmptyState>
+        <EmptyState title="Map location not available yet.">
+          We only plot schools whose coordinates have been confirmed.
+          {s.addressLine && (
+            <span className="mt-3 block">
+              <a className="btn-secondary text-sm" target="_blank" rel="noopener noreferrer"
+                href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(address)}`}>
+                Look up the postal address on OpenStreetMap ↗
+              </a>
+              <span className="mt-1 block text-xs text-slate-500">A search for the address, not a confirmed position.</span>
+            </span>
+          )}
+        </EmptyState>
+        <SchoolsInSamePlace school={s} />
       </div>
     );
   }
@@ -572,6 +623,72 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
         </div>
       </section>
     </div>
+  );
+}
+
+/**
+ * Nearby schools for a profile without coordinates: the same town, else the same PIN code, else the same district, as
+ * the source records them. Distances are never guessed.
+ */
+function SchoolsInSamePlace({ school: s }: { school: SchoolDetail }) {
+  const place = s.city ? { city: s.city, label: s.city }
+    : s.pinCode ? { pinCode: s.pinCode, label: `PIN code ${s.pinCode}` }
+      : s.district ? { district: s.district.slug, label: `${s.district.name} district` } : null;
+  const state = useApi(
+    () => schoolService.search({ state: s.stateCode, city: place?.city, pinCode: place?.pinCode, district: place?.district, size: 7 }),
+    [s.id],
+    place !== null,
+  );
+  if (!place) return null;
+  return (
+    <section>
+      <h2 className="text-lg font-semibold">Other schools in {place.label}</h2>
+      <div className="mt-3">
+        <AsyncContent state={state} isEmpty={(d) => d.content.every((n) => n.id === s.id)}
+          empty={<EmptyState title={`No other schools listed in ${place.label} yet.`} />}>
+          {(page) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {page.content.filter((n) => n.id !== s.id).slice(0, 6).map((n) => <SchoolCard key={n.id} school={n} />)}
+            </div>
+          )}
+        </AsyncContent>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Ranking information at a glance: our evidence-based status and any published ranking verified by an editor. A school
+ * missing from published rankings says "Not listed" — never an estimated position.
+ */
+function RankingSummary({ schoolId }: { schoolId: number }) {
+  const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
+  const r = state.data;
+  if (!r) return null;
+  // The API returns verified entries only; paid or featured listings are not rankings.
+  const published = r.externalRankings.filter((e) => !e.sponsored);
+  return (
+    <section className="card p-5 text-sm">
+      <h2 className="font-semibold">Rankings</h2>
+      <p className="mt-2 text-slate-700">
+        <span className="text-slate-500">India School Finder score: </span>
+        {r.siteRanking?.rankPosition ? `Rank #${r.siteRanking.rankPosition} in India (${r.siteRanking.totalScore.toFixed(1)}/100)`
+          : r.siteRanking ? `Provisional (${r.siteRanking.totalScore.toFixed(1)}/100, not enough verified evidence for a rank)`
+            : 'Not yet ranked'}
+      </p>
+      <p className="mt-2 text-slate-500">Published rankings:</p>
+      {published.length === 0 ? <p className="text-slate-700">Not listed in any published ranking we have verified.</p> : (
+        <ul className="mt-1 space-y-1">
+          {published.map((e) => (
+            <li key={e.id} className="text-slate-700">
+              <strong className="text-ink">{e.rankPosition ? `#${e.rankPosition}` : 'Listed'}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
+              {(e.category || e.region) && <span className="text-slate-500"> · {[e.category, e.region].filter(Boolean).join(' · ')}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+      <Link to="?tab=ranking" className="link mt-2 inline-block">Ranking details and sources →</Link>
+    </section>
   );
 }
 
@@ -614,13 +731,17 @@ function RankingTab({ schoolId }: { schoolId: number }) {
           <section className="card p-6">
             <h2 className="font-semibold">Independently published rankings</h2>
             {r.externalRankings.length === 0 ? (
-              <p className="mt-2 text-sm text-slate-600">None recorded.</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Not listed in any published ranking we have checked. <Link to="/rankings/published" className="link">Published rankings</Link>
+              </p>
             ) : (
               <ul className="mt-3 divide-y divide-slate-100 text-sm">
                 {r.externalRankings.map((e) => (
                   <li key={e.id} className="py-2">
                     <span className="font-medium">{e.publisher}</span> — {e.rankingName} ({e.rankingYear})
-                    {e.category && `, ${e.category}`}: {e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
+                    {e.category && `, ${e.category}`}{e.region && `, ${e.region}`}:{' '}
+                    {e.sponsored ? <span className="chip bg-amber-50 text-amber-900">Sponsored listing, not a ranking</span>
+                      : e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
                     <SourceLink url={e.sourceUrl} />
                   </li>
                 ))}

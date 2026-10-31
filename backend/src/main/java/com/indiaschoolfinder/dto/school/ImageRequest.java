@@ -26,10 +26,16 @@ public record ImageRequest(
         @Size(max = 500) String permissionNote,
         Boolean illustrative,
         @NotBlank(message = "a source URL is required") @HttpUrl String sourceUrl,
-        @Min(0) Integer sortOrder) {
+        @Min(0) Integer sortOrder,
+        /* the author or photographer as named at the source */
+        @Size(max = 200) String author,
+        /* the image's title at the source, e.g. the Commons file name */
+        @Size(max = 300) String title,
+        @Min(1) Integer width,
+        @Min(1) Integer height) {
 
     public ImageRequest withUrl(String newUrl) {
         return new ImageRequest(imageType, newUrl, thumbnailUrl, caption, altText, credit, license, attributionText,
-                permissionStatus, permissionNote, illustrative, sourceUrl, sortOrder);
+                permissionStatus, permissionNote, illustrative, sourceUrl, sortOrder, author, title, width, height);
     }
 }

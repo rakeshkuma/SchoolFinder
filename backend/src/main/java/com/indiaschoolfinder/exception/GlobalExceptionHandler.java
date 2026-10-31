@@ -4,6 +4,7 @@ import com.indiaschoolfinder.dto.common.ApiError;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -154,6 +156,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceUnavailableException.class)
     ResponseEntity<ApiError> unavailable(ServiceUnavailableException ex, HttpServletRequest req) {
         return build(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), req, List.of());
+    }
+
+    /** The database is unreachable or out of connections: temporary, so the client may retry. */
+    @ExceptionHandler({DataAccessResourceFailureException.class, CannotCreateTransactionException.class})
+    ResponseEntity<ApiError> databaseUnavailable(Exception ex, HttpServletRequest req) {
+        log.error("Database unavailable on {} {}: {}", req.getMethod(), req.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.SERVICE_UNAVAILABLE, "The service is temporarily unavailable. Please try again shortly.",
+                req, List.of());
     }
 
     @ExceptionHandler(Exception.class)

@@ -134,6 +134,8 @@
     {
       "slug": "netarhat-awasiya-vidyalaya",
       "facts": {
+        "classes": { "codes": ["VI", "VII", "VIII", "IX", "X", "XI", "XII"], "source": { "url": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf", "retrievedDate": "2026-10-30",
+          "note": "Advertisement no. 262 (13.08.2026): admission is to Class 6 (कक्षा-6), and the school is a 'CBSE-affiliated +2 school' (सी.बी.एस.ई. संबद्ध +2 विद्यालय); CBSE lists it at Senior Secondary level." } },
         "location": { "latitude": 23.4723103, "longitude": 84.2623866, "source": { "url": "https://www.openstreetmap.org/way/660695893", "retrievedDate": "2026-10-25",
           "note": "OpenStreetMap school named Netarhat Residential School (Awasiya Vidyalaya), Netarhat, Latehar." } },
         "city": { "name": "Netarhat", "source": { "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420006", "retrievedDate": "2026-10-25",

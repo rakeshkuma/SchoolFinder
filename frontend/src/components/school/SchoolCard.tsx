@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { SchoolSummary, SchoolType } from '../../types/api';
 import {
-  NOT_AVAILABLE, facilityCategoryLabel, formatDate, formatMoneyCompact, networkLabel, placeLine, schoolTypeLabel,
+  NOT_AVAILABLE, facilityCategoryLabel, formatDate, formatMoneyCompact, genderLabel, networkLabel, placeLine, schoolTypeLabel,
 } from '../../utils/format';
 import { Stars } from '../common/Badges';
 import { Icon } from '../common/Icon';
@@ -77,8 +77,9 @@ export function classRange(from: string | null, to: string | null): string | nul
 const MAX_FACILITIES = 3;
 
 /**
- * Photo with its credit, or the generated cover if there is no photo or it fails to load (the credit belongs to the
- * photo, so it is never shown over the fallback).
+ * Photo, or the generated cover if there is no photo or it fails to load. The photo credit is not drawn over the
+ * picture: the card links to the profile, which shows credit, licence and source under the photo (a link to the
+ * attribution satisfies CC BY / BY-SA), and the credit is the image's tooltip. An illustration keeps its label.
  */
 function CardImage({ school }: { school: SchoolSummary }) {
   const [failed, setFailed] = useState(false);
@@ -86,14 +87,20 @@ function CardImage({ school }: { school: SchoolSummary }) {
   return (
     <>
       <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)}
-        className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-      {school.coverImageCredit && (
+        title={photoCreditTitle(school)} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+      {school.coverImageIllustrative && school.coverImageCredit && (
         <span className="absolute bottom-1 right-1 max-w-[85%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-          {school.coverImageIllustrative ? school.coverImageCredit : `© ${school.coverImageCredit}`}
+          {school.coverImageCredit}
         </span>
       )}
     </>
   );
+}
+
+/** Tooltip credit for a card photo ("Photo: Author / Wikimedia Commons"); an illustration's note is shown instead. */
+export function photoCreditTitle(s: Pick<SchoolSummary, 'coverImageCredit' | 'coverImageIllustrative'>): string | undefined {
+  if (!s.coverImageCredit) return undefined;
+  return s.coverImageIllustrative ? s.coverImageCredit : `Photo: ${s.coverImageCredit}`;
 }
 
 export function SchoolCard({ school }: { school: SchoolSummary }) {
@@ -107,6 +114,9 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
     <article className="card card-hover group flex flex-col overflow-hidden">
       <Link to={`/schools/${school.slug}`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
         <CardImage school={school} />
+        {school.logoUrl && (
+          <img src={school.logoUrl} alt="" loading="lazy" className="absolute bottom-3 left-3 h-12 w-12 rounded-xl bg-white object-contain p-1 shadow-md" />
+        )}
         <div className="absolute right-3 top-3 flex gap-1.5">
           {board && <span className="chip bg-white/95 font-semibold text-ink shadow-sm">{board}</span>}
           {school.admissionStatus === 'OPEN' && (
@@ -136,7 +146,9 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
           {school.network && (
             <span className="chip bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-600/15">{networkLabel[school.network]}</span>
           )}
-          {school.hasHostel && <span className="chip bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/15">Boarding</span>}
+          {school.genderType && <span className="chip bg-violet-50 text-violet-700 ring-1 ring-inset ring-violet-600/15">{genderLabel[school.genderType]}</span>}
+          {school.hasHostel === true && <span className="chip bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-600/15">Boarding</span>}
+          {school.hasHostel === false && <span className="chip bg-sky-50 text-sky-800 ring-1 ring-inset ring-sky-600/15">Day school</span>}
           {!board && <span className="chip bg-slate-50 text-slate-500 ring-1 ring-inset ring-slate-200">Board not stated</span>}
         </div>
         <dl className="mt-3 space-y-1 text-sm">
@@ -171,12 +183,14 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
                   {/* On its own line so narrow cards never push it under the buttons. */}
                   <p className="text-xs font-medium text-slate-500">{school.annualFeeYear}</p>
                 </>
-              ) : school.averageRating !== null ? (
-                <div className="text-sm">
+              ) : <p className="text-xs text-slate-500">Fee not published</p>}
+              {/* Only real, moderated parent reviews; nothing is shown when there are none. */}
+              {school.averageRating !== null && school.reviewCount > 0 && (
+                <p className="mt-1 text-sm">
                   <Stars rating={school.averageRating} />
-                  {school.reviewCount > 0 && <span className="ml-1 text-xs text-slate-500">({school.reviewCount})</span>}
-                </div>
-              ) : null}
+                  <span className="ml-1 text-xs text-slate-500">({school.reviewCount} review{school.reviewCount === 1 ? '' : 's'})</span>
+                </p>
+              )}
             </div>
             <div className="flex shrink-0 items-center gap-2">
               <SaveButton school={{ id: school.id, name: school.name, slug: school.slug, place }} />
@@ -184,8 +198,8 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
             </div>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-            <Link to={`/schools/${school.slug}`} className="font-semibold text-brand-700 hover:text-brand-800">
-              View details<span className="sr-only">: {school.name}</span> →
+            <Link to={`/schools/${school.slug}`} className="btn-primary rounded-full px-4 py-1.5 text-sm">
+              View details<span className="sr-only">: {school.name}</span>
             </Link>
             {school.websiteUrl && (
               <a href={school.websiteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-slate-600 hover:text-ink">

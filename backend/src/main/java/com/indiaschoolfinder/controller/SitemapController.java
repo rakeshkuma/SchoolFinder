@@ -1,12 +1,14 @@
 package com.indiaschoolfinder.controller;
 
 import com.indiaschoolfinder.config.AppProperties;
+import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.StateDto;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
 import com.indiaschoolfinder.entity.Exam;
 import com.indiaschoolfinder.repository.ExamRepository;
 import com.indiaschoolfinder.repository.SchoolRepository;
 import com.indiaschoolfinder.service.LocationService;
+import com.indiaschoolfinder.service.SeoHeadService;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.PageRequest;
@@ -36,8 +38,9 @@ import java.util.concurrent.TimeUnit;
 public class SitemapController {
 
     static final int SCHOOLS_PER_FILE = 40_000;
-    private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/rankings", "/rankings/methodology",
-            "/admissions", "/fees", "/compare", "/nearby", "/boarding", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/reviews", "/about", "/contact",
+    private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
+            "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
+            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/published", "/rankings/compare", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
@@ -46,9 +49,11 @@ public class SitemapController {
     private final ExamRepository examRepository;
     private final LocationService locationService;
     private final AppProperties properties;
+    private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
-                             AppProperties properties) {
+                             AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository) {
+        this.practiceSetRepository = practiceSetRepository;
         this.schoolRepository = schoolRepository;
         this.examRepository = examRepository;
         this.locationService = locationService;
@@ -70,6 +75,9 @@ public class SitemapController {
                 Disallow: /verify-email
                 Disallow: /forgot-password
                 Disallow: /reset-password
+                Disallow: /exams/practice/progress
+                Disallow: /exams/practice/attempts
+                Disallow: /exams/practice/session
 
                 Sitemap: %s/sitemap.xml
                 """.formatted(base(request));
@@ -97,9 +105,14 @@ public class SitemapController {
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);
+                for (CityDto city : locationService.cities(state.code())) {
+                    if (city.schoolCount() >= SeoHeadService.MIN_SCHOOLS_TO_INDEX) {
+                        url(xml, base + "/states/" + state.slug() + "/city/" + city.slug(), null);
+                    }
+                }
             }
         }
-        for (Object[] row : schoolRepository.districtsWithSchools()) {
+        for (Object[] row : schoolRepository.districtsWithSchools(SeoHeadService.MIN_SCHOOLS_TO_INDEX)) {
             url(xml, base + "/states/" + row[0] + "/" + row[1], null);
         }
         for (String board : schoolRepository.boardCodesWithSchools()) {
@@ -122,6 +135,10 @@ public class SitemapController {
             if (stateCodes.contains(state.code())) {
                 url(xml, base + "/exams/state/" + state.slug(), null);
             }
+        }
+        // Published practice sets (original questions); sittings, attempts and progress stay out (robots.txt).
+        for (var set : practiceSetRepository.findByPublishedTrueOrderByDisplayOrderAscTitleAsc()) {
+            url(xml, base + "/exams/practice/" + set.getSlug(), set.getUpdatedAt());
         }
         return xml(xml.append("</urlset>\n"));
     }

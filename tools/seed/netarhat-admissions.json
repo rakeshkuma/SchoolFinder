@@ -1,0 +1,81 @@
+{
+ "_comment": "Netarhat Awasiya Vidyalaya admission cycles, read on 2026-10-30 from advertisement no. 262 (13.08.2026) and notice no. 304 (24.09.2026) at www.netarhatvidyalaya.com (both scanned Hindi notices). Entries are AdmissionRequest bodies for POST /api/v1/admin/schools/{id}/admissions, keyed by slug. Load with LocalAdmissionsImport or import-to-server.js.",
+ "schools": [
+  {
+   "slug": "netarhat-awasiya-vidyalaya",
+   "admissions": [
+    {
+     "classCode": "VI",
+     "academicYear": "2026-27",
+     "category": "GENERAL",
+     "applicationStartDate": "2026-08-14",
+     "applicationEndDate": "2026-10-08",
+     "statusOverride": null,
+     "statusOverrideReason": null,
+     "ageEligibility": "Boys aged 10 to 12 on 1 August 2026: born between 01.08.2014 and 31.07.2016 (both dates included).",
+     "selectionCriteria": "Netarhat Entrance Examination 2026-27 on 06.12.2026 (revised from 22.11.2026), one day, two sittings at each divisional headquarters of Jharkhand. Paper 1 (preliminary, objective, 100 marks, qualifying) short-lists 500 candidates; Paper 2 (main, subjective, 100 marks) decides the 150 called for a physical and psychological test, including age checked by a medical board. 100 boys are admitted on merit and the state reservation rules after verification of certificates. Admit cards from 09.11.2026.",
+     "officialNotificationUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/140826_advt_net_2627_ntrht.pdf",
+     "applicationUrl": "https://www.netarhatvidyalaya.com/",
+     "requirements": [
+      {
+       "type": "ELIGIBILITY",
+       "description": "Native or local resident of Jharkhand (resident certificate from the competent authority)",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "ELIGIBILITY",
+       "description": "Passed Class 5 or a higher class from a recognised school in Jharkhand",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "ELIGIBILITY",
+       "description": "Boys only; born 01.08.2014 to 31.07.2016",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "DOCUMENT",
+       "description": "Jharkhand resident certificate",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "DOCUMENT",
+       "description": "Birth certificate issued by the competent authority",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "DOCUMENT",
+       "description": "Class 5 (or higher) pass certificate signed by the head of the school",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "DOCUMENT",
+       "description": "Caste certificate (SC/ST/backward class/EWS) if applying under a reserved category",
+       "mandatory": false,
+       "points": null
+      },
+      {
+       "type": "SELECTION_CRITERION",
+       "description": "Written entrance test: Paper 1 (qualifying) and Paper 2 (merit)",
+       "mandatory": true,
+       "points": null
+      },
+      {
+       "type": "SELECTION_CRITERION",
+       "description": "Physical and psychological test, including age check by a medical board",
+       "mandatory": true,
+       "points": null
+      }
+     ],
+     "sourceUrl": "https://www.netarhatvidyalaya.com/master_login/dashboard/assest/file/24_09_26_dt_ext_notc_304_net_2627.pdf",
+     "notes": "Advertisement no. 262 dated 13.08.2026 invites free applications (no application fee) online at www.netarhatvidyalaya.com. Notice no. 304 dated 24.09.2026 moved the last date from 24.09.2026 to 08.10.2026, admit cards from 26.10.2026 to 09.11.2026 and the exam from 22.11.2026 to 06.12.2026. Helpline 6201750193, 6201750198 (working days, 10:00 am to 4:30 pm)."
+    }
+   ]
+  }
+ ]
+}

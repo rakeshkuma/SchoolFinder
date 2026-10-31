@@ -21,7 +21,9 @@ export type RequirementType = 'DOCUMENT' | 'ELIGIBILITY' | 'SELECTION_CRITERION'
 export type FacilityCategory =
   | 'SPORTS' | 'LIBRARY' | 'LABORATORY' | 'COMPUTER' | 'TRANSPORT' | 'HOSTEL'
   | 'ACCESSIBILITY' | 'EXTRACURRICULAR' | 'ARTS' | 'HEALTH' | 'OTHER';
-export type ImageType = 'LOGO' | 'CAMPUS' | 'CLASSROOM' | 'LABORATORY' | 'LIBRARY' | 'SPORTS' | 'EVENT' | 'OTHER';
+export type ImageType =
+  | 'LOGO' | 'CAMPUS' | 'MAIN_BUILDING' | 'CLASSROOM' | 'HOSTEL' | 'LIBRARY' | 'PLAYGROUND' | 'LABORATORY' | 'SPORTS'
+  | 'EVENT' | 'ACTIVITIES' | 'OTHER';
 export type SchoolStage = 'PRE_PRIMARY' | 'PRIMARY' | 'MIDDLE' | 'SECONDARY' | 'SENIOR_SECONDARY';
 export type ReviewStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
 export type ReviewerRelationship = 'PARENT' | 'GUARDIAN' | 'ALUMNUS' | 'OTHER';
@@ -99,7 +101,18 @@ export interface District {
 
 export interface City {
   name: string;
+  /** Address under the state: /states/{state}/city/{slug} */
+  slug: string;
   stateCode: string;
+  schoolCount: number;
+}
+
+export interface IndiaCity {
+  name: string;
+  slug: string;
+  stateCode: string;
+  stateName: string;
+  stateSlug: string;
   schoolCount: number;
 }
 
@@ -331,7 +344,7 @@ export interface SchoolSearchParams {
   radiusKm?: number;
   /** fee = lowest published annual fee; schools without fee data come last */
   /** recommended (default) = ranked and best-documented profiles first; see the published order rules */
-  sortBy?: 'recommended' | 'name' | 'fee' | 'locality' | 'city' | 'rating' | 'reviews' | 'newest' | 'updated' | 'verified' | 'distance';
+  sortBy?: 'recommended' | 'name' | 'fee' | 'location' | 'locality' | 'city' | 'rating' | 'reviews' | 'newest' | 'updated' | 'verified' | 'distance';
   sortDirection?: 'asc' | 'desc';
   page?: number;
   size?: number;
@@ -371,6 +384,16 @@ export interface SchoolImage {
   sortOrder: number;
   verificationStatus: VerificationStatus;
   lastVerifiedDate: string | null;
+  /** The author or photographer as named at the source. */
+  author: string | null;
+  /** The title at the source, e.g. the Commons file name. */
+  title: string | null;
+  /** Host of the source page, e.g. commons.wikimedia.org. */
+  sourceWebsite: string | null;
+  /** Admin only: who granted permission, or why the image was rejected. */
+  permissionNote: string | null;
+  /** When it was added here. */
+  createdAt: string | null;
 }
 
 export interface Fee {
@@ -546,6 +569,14 @@ export interface ExternalRanking {
   sourceUrl: string;
   retrievedDate: string;
   verificationStatus: VerificationStatus;
+  publisherCode: string | null;
+  scope: RankingScope;
+  /** The state or city a STATE or CITY list covers. */
+  region: string | null;
+  /** A paid or "featured" listing: never shown as a ranking position. */
+  sponsored: boolean;
+  notes: string | null;
+  lastVerifiedDate: string | null;
 }
 
 export interface SchoolRankingDetail {
@@ -705,6 +736,44 @@ export interface ImageRequest {
   illustrative?: boolean;
   sourceUrl: string;
   sortOrder?: number | null;
+  author?: string | null;
+  title?: string | null;
+  width?: number | null;
+  height?: number | null;
+}
+
+/** A possible photograph from Wikimedia Commons or Wikipedia. Nothing is stored until it is added (as PENDING). */
+export interface ImageCandidate {
+  source: string;
+  title: string;
+  pageUrl: string | null;
+  imageUrl: string;
+  thumbnailUrl: string | null;
+  width: number | null;
+  height: number | null;
+  mime: string;
+  author: string | null;
+  licence: string | null;
+  licenceUrl: string | null;
+  attributionRequired: boolean;
+  description: string | null;
+  /** Null when the licence does not allow reuse here. */
+  suggestedPermission: ImagePermission | null;
+  attributionText: string | null;
+  alreadyAdded: boolean;
+}
+
+export interface ImageUpdateRequest {
+  imageType: ImageType;
+  caption: string | null;
+  altText: string;
+  author: string | null;
+  title: string | null;
+  credit: string | null;
+  license: string;
+  attributionText: string | null;
+  permissionStatus: ImagePermission;
+  permissionNote: string | null;
 }
 
 export interface VerifyRequest {
@@ -897,6 +966,8 @@ export interface ExamSummary {
   officialPaperCount: number;
   lastVerifiedOn: string | null;
   verificationStatus: ExamVerificationStatus;
+  /** The conducting body's main page for the exam */
+  officialUrl: string;
 }
 
 export interface ExamLink { label: string; url: string }
@@ -954,6 +1025,26 @@ export interface PracticeSetSummary {
   durationMinutes: number | null;
   questionCount: number;
   sections: string[];
+  /** When a reviewer last checked every question, answer and explanation */
+  reviewedOn: string | null;
+  category: PracticeCategory;
+  /** marks for a correct answer */
+  marksPerQuestion: number;
+  /** marks deducted for a wrong answer (never for a skipped one) */
+  negativeMarks: number;
+  /** every question (and passage) has a Hindi version */
+  hindi: boolean;
+  chapters: string[];
+}
+
+export type PracticeCategory = 'SCHOOL' | 'ENTRANCE' | 'OLYMPIAD' | 'COMPETITIVE';
+export type PracticeLanguage = 'en' | 'hi';
+
+export interface PracticePassage {
+  id: string;
+  title: string;
+  text: string;
+  hi: { title: string; text: string } | null;
 }
 
 export interface PracticeShape {
@@ -983,11 +1074,17 @@ export interface PracticeQuestion {
   figureAsksNext: boolean;
   /** one per option when the options are figures */
   optionFigures: PracticeFigure[] | null;
+  difficulty: PracticeDifficulty | null;
+  chapter: string | null;
+  /** Hindi prompt and options, in the same order as the English ones */
+  hi: { prompt: string; options: string[] } | null;
 }
+
+export type PracticeDifficulty = 'EASY' | 'MEDIUM' | 'HARD';
 
 export interface PracticeSet {
   set: PracticeSetSummary;
-  passages: { id: string; title: string; text: string }[];
+  passages: PracticePassage[];
   questions: PracticeQuestion[];
 }
 
@@ -995,6 +1092,253 @@ export interface PracticeScore {
   total: number;
   attempted: number;
   correct: number;
-  sections: { section: string; total: number; attempted: number; correct: number }[];
-  questions: { id: string; chosen: number | null; answer: number; correct: boolean; explanation: string }[];
+  /** null in attempts saved before marking was recorded */
+  marks: number | null;
+  maxMarks: number | null;
+  sections: { section: string; total: number; attempted: number; correct: number; marks: number | null; maxMarks: number | null }[];
+  topics: { section: string; topic: string; total: number; attempted: number; correct: number }[];
+  questions: {
+    id: string; chosen: number | null; answer: number; correct: boolean; explanation: string;
+    marksAwarded: number | null; explanationHi: string | null;
+  }[];
+}
+
+export type PracticeMode = 'SET' | 'QUICK' | 'TOPIC' | 'MINI_MOCK' | 'FULL' | 'DAILY' | 'REVISION' | 'RETRY';
+
+/** Metadata of every question in the bank (no text, no answers); ids are "set-slug/question-id". */
+export interface PracticeBankQuestion {
+  id: string;
+  setSlug: string;
+  examSlug: string | null;
+  level: string;
+  section: string;
+  topic: string | null;
+  difficulty: PracticeDifficulty | null;
+  category: PracticeCategory;
+  chapter: string | null;
+  hindi: boolean;
+}
+
+export interface PracticeBank {
+  questionCount: number;
+  questions: PracticeBankQuestion[];
+}
+
+export interface PracticeSession {
+  mode: PracticeMode;
+  title: string;
+  description: string;
+  /** a time limit the visitor may switch on; null for untimed modes */
+  suggestedMinutes: number | null;
+  passages: PracticePassage[];
+  questions: PracticeQuestion[];
+}
+
+export interface PracticeAttemptSummary {
+  id: number;
+  title: string;
+  mode: PracticeMode;
+  examSlug: string | null;
+  setSlug: string | null;
+  total: number;
+  attempted: number;
+  correct: number;
+  durationSeconds: number | null;
+  createdAt: string;
+  sections: PracticeScore['sections'];
+  marks: number | null;
+  maxMarks: number | null;
+}
+
+/** One saved attempt for the progress dashboard: no question text, answers or explanations. */
+export interface PracticeHistoryItem {
+  attempt: PracticeAttemptSummary;
+  topics: PracticeScore['topics'];
+  questions: { id: string; attempted: boolean; correct: boolean }[];
+}
+
+/** Practice set as editors see it (published or not), with what needs checking. */
+export interface AdminPracticeSet {
+  slug: string;
+  examSlug: string | null;
+  title: string;
+  kind: 'QUIZ' | 'MOCK';
+  category: PracticeCategory;
+  level: string;
+  questionCount: number;
+  hindiQuestions: number;
+  chapterTagged: number;
+  marksPerQuestion: number;
+  negativeMarks: number;
+  published: boolean;
+  reviewedOn: string | null;
+  displayOrder: number;
+  openReports: number;
+  updatedAt: string;
+  flags: { code: string; message: string }[];
+}
+
+export type PracticeReportReason = 'WRONG_ANSWER' | 'UNCLEAR' | 'TYPO' | 'TRANSLATION' | 'OTHER';
+export type PracticeReportStatus = 'OPEN' | 'FIXED' | 'DISMISSED';
+
+export interface PracticeReport {
+  id: number;
+  questionId: string;
+  setSlug: string;
+  setTitle: string | null;
+  reason: PracticeReportReason;
+  message: string | null;
+  status: PracticeReportStatus;
+  signedIn: boolean;
+  createdAt: string;
+  resolutionNote: string | null;
+  resolvedBy: string | null;
+  resolvedAt: string | null;
+  /** null when the question is no longer in the set */
+  question: {
+    section: string; topic: string | null; prompt: string; options: string[]; answer: number; explanation: string;
+    hi: { prompt: string; options: string[]; explanation: string } | null;
+  } | null;
+}
+
+// --- Exam resources --------------------------------------------------------------------------------------------------
+
+export type ExamResourceType = 'OFFICIAL_LINK' | 'QUESTION_PAPER' | 'ANSWER_KEY' | 'SAMPLE_PAPER' | 'SYLLABUS'
+  | 'EXAM_PATTERN' | 'PREPARATION_GUIDE' | 'DOCUMENT_CHECKLIST' | 'FAQ';
+
+/** official: published by the conducting body (url, linked not copied); otherwise this site's guidance (path). */
+export interface ExamResource {
+  examSlug: string;
+  examShortName: string;
+  entryClasses: number[];
+  academicSession: string | null;
+  type: ExamResourceType;
+  title: string;
+  detail: string;
+  year: string | null;
+  official: boolean;
+  url: string | null;
+  path: string | null;
+  lastVerifiedOn: string | null;
+}
+
+export type RankingScope = 'NATIONAL' | 'STATE' | 'CITY';
+export type RankingPublisherKind = 'SURVEY' | 'AWARD' | 'GREEN' | 'OTHER';
+
+/** A publisher of school rankings, surveys, awards or green-school ratings. */
+export interface RankingPublisher {
+  id: number;
+  code: string;
+  name: string;
+  kind: RankingPublisherKind;
+  websiteUrl: string | null;
+  methodologyUrl: string | null;
+  description: string | null;
+  active: boolean;
+  /** Checked, non-sponsored entries on this site. */
+  verifiedEntries: number;
+}
+
+export interface RankingPublisherRequest {
+  name: string;
+  kind: RankingPublisherKind;
+  websiteUrl: string | null;
+  methodologyUrl: string | null;
+  description: string | null;
+  active: boolean;
+}
+
+/** A published-ranking entry with its school, for lists across schools. */
+export interface ExternalRankingListItem {
+  entry: ExternalRanking;
+  schoolId: number;
+  schoolName: string | null;
+  schoolSlug: string | null;
+  city: string | null;
+  stateCode: string | null;
+}
+
+export interface ExternalRankingFacets {
+  years: string[];
+  categories: string[];
+}
+
+export interface ExternalRankingRequest {
+  publisherCode?: string | null;
+  publisher?: string | null;
+  rankingName: string;
+  rankingYear: string;
+  category?: string | null;
+  scope?: RankingScope;
+  region?: string | null;
+  rankPosition?: number | null;
+  scoreText?: string | null;
+  sponsored?: boolean;
+  notes?: string | null;
+  sourceUrl: string;
+  retrievedDate: string;
+}
+
+/** Active boarding schools; genderNotStated counts schools whose sources do not say who they admit. */
+export interface BoardingStats {
+  total: number;
+  byState: Record<string, number>;
+  byGender: Partial<Record<GenderType, number>>;
+  genderNotStated: number;
+  bySystem: Partial<Record<ResidentialSystem, number>>;
+}
+
+export type DocumentStatus = 'PENDING_REVIEW' | 'VERIFIED' | 'REJECTED';
+export type ExtractionMethod = 'TEXT_LAYER' | 'OCR' | 'NONE';
+
+/** An official notice uploaded for review. */
+export interface SourceDocumentSummary {
+  id: number;
+  title: string;
+  sourceUrl: string;
+  schoolId: number | null;
+  schoolName: string | null;
+  examSlug: string | null;
+  publishedOn: string | null;
+  fileName: string;
+  contentType: string;
+  sizeBytes: number;
+  pageCount: number;
+  extractionMethod: ExtractionMethod;
+  status: DocumentStatus;
+  createdAt: string;
+  reviewedBy: string | null;
+  reviewedAt: string | null;
+}
+
+export interface SourceDocumentDetail {
+  document: SourceDocumentSummary;
+  extractedText: string | null;
+  reviewedText: string | null;
+  reviewNote: string | null;
+  ocrAvailable: boolean;
+}
+
+export interface DocumentUploadRequest {
+  title: string;
+  sourceUrl: string;
+  schoolId?: number | null;
+  examSlug?: string | null;
+  publishedOn?: string | null;
+}
+
+export type DuplicateReason = 'SAME_NAME_IN_DISTRICT' | 'SAME_PHONE' | 'SAME_LOCATION' | 'SAME_PHOTO';
+
+export interface DuplicateGroup {
+  reason: DuplicateReason;
+  detail: string;
+  schools: {
+    id: number; name: string; slug: string; city: string | null; stateCode: string; pinCode: string | null;
+    boardCode: string | null; affiliationNumber: string | null; udiseCode: string | null;
+  }[];
+}
+
+export interface DuplicateReport {
+  groups: DuplicateGroup[];
+  counts: Record<DuplicateReason, number>;
 }

@@ -24,6 +24,9 @@ public interface LocationService {
 
     List<CityDto> cities(String stateCodeOrSlug);
 
+    /** Every city in India with listed schools, largest first. */
+    List<com.indiaschoolfinder.dto.location.IndiaCityDto> citiesAcrossIndia();
+
     List<String> localities(String stateCodeOrSlug);
 
     /** Accepts an ISO code, full state/UT name or slug; throws a validation error on anything else. */

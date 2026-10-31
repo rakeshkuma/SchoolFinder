@@ -8,6 +8,7 @@ const ITEMS = [
   { to: '/saved', label: 'Saved schools' },
   { to: '/compare', label: 'School comparison' },
   { to: '/exams/calendar?saved=1', label: 'Exam favourites' },
+  { to: '/exams/practice/progress', label: 'Practice progress & bookmarks' },
   { to: '/account#pw-h', label: 'Account settings' },
 ];
 
@@ -43,8 +44,8 @@ export function AccountMenu() {
     const withNext = next.startsWith('/signin') || next.startsWith('/register') ? '' : `?next=${encodeURIComponent(next)}`;
     return (
       <span className="flex items-center gap-1">
-        <Link to={`/signin${withNext}`} className="btn-ghost whitespace-nowrap rounded-full px-3 text-sm font-semibold">Sign in</Link>
-        <Link to={`/register${withNext}`} className="btn-secondary hidden whitespace-nowrap rounded-full px-3 text-sm 2xl:inline-flex">Create account</Link>
+        <Link to={`/signin${withNext}`} className="btn-ghost h-10 whitespace-nowrap rounded-full px-3 py-0 text-sm font-semibold">Sign in</Link>
+        <Link to={`/register${withNext}`} className="btn-secondary hidden h-10 whitespace-nowrap rounded-full px-4 py-0 text-sm 2xl:inline-flex">Create account</Link>
       </span>
     );
   }

@@ -6,14 +6,12 @@ import com.indiaschoolfinder.dto.ranking.CriterionScoreDto;
 import com.indiaschoolfinder.dto.ranking.CriterionScoreRequest;
 import com.indiaschoolfinder.dto.ranking.CriterionWeightsRequest;
 import com.indiaschoolfinder.dto.ranking.ExternalRankingDto;
-import com.indiaschoolfinder.dto.ranking.ExternalRankingRequest;
 import com.indiaschoolfinder.dto.ranking.RankingMethodologyDto;
 import com.indiaschoolfinder.dto.ranking.RankingScope;
 import com.indiaschoolfinder.dto.ranking.SchoolRankingDetailDto;
 import com.indiaschoolfinder.dto.ranking.SchoolRankingDto;
 import com.indiaschoolfinder.entity.District;
 import com.indiaschoolfinder.entity.RankingCriterion;
-import com.indiaschoolfinder.entity.RankingSource;
 import com.indiaschoolfinder.entity.School;
 import com.indiaschoolfinder.dto.school.SchoolSummaryDto;
 import com.indiaschoolfinder.entity.SchoolClass;
@@ -28,7 +26,6 @@ import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.exception.BusinessValidationException;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
 import com.indiaschoolfinder.repository.RankingCriterionRepository;
-import com.indiaschoolfinder.repository.RankingSourceRepository;
 import com.indiaschoolfinder.repository.SchoolCriterionScoreRepository;
 import com.indiaschoolfinder.repository.SchoolFacilityRepository;
 import com.indiaschoolfinder.repository.SchoolRankingRepository;
@@ -74,7 +71,7 @@ public class RankingServiceImpl implements RankingService {
     private final ProfileScoreService profileScoreService;
     private final RankingCriterionRepository criterionRepository;
     private final SchoolCriterionScoreRepository scoreRepository;
-    private final RankingSourceRepository sourceRepository;
+    private final com.indiaschoolfinder.service.ExternalRankingService externalRankings;
     private final SchoolRepository schoolRepository;
     private final ReferenceDataService referenceData;
     private final RankingEngine engine;
@@ -84,7 +81,8 @@ public class RankingServiceImpl implements RankingService {
     private final LocationService locationService;
 
     public RankingServiceImpl(SchoolRankingRepository rankingRepository, RankingCriterionRepository criterionRepository,
-                              SchoolCriterionScoreRepository scoreRepository, RankingSourceRepository sourceRepository,
+                              SchoolCriterionScoreRepository scoreRepository,
+                              com.indiaschoolfinder.service.ExternalRankingService externalRankings,
                               SchoolRepository schoolRepository, ReferenceDataService referenceData, RankingEngine engine,
                               AuditService auditService, AppProperties properties, Clock clock,
                               LocationService locationService, SchoolFacilityRepository facilityRepository,
@@ -96,7 +94,7 @@ public class RankingServiceImpl implements RankingService {
         this.rankingRepository = rankingRepository;
         this.criterionRepository = criterionRepository;
         this.scoreRepository = scoreRepository;
-        this.sourceRepository = sourceRepository;
+        this.externalRankings = externalRankings;
         this.schoolRepository = schoolRepository;
         this.referenceData = referenceData;
         this.engine = engine;
@@ -167,8 +165,8 @@ public class RankingServiceImpl implements RankingService {
         SchoolRankingDto site = rankingRepository.findBySchoolIdAndAcademicYear(schoolId, defaultYear())
                 .map(r -> toDtos(List.of(r), java.util.Collections.singletonMap(r.getSchoolId(), r.getRankPosition())).get(0))
                 .orElse(null);
-        List<ExternalRankingDto> external = sourceRepository.findBySchoolIdOrderByRankingYearDesc(schoolId).stream()
-                .map(RankingServiceImpl::toExternalDto).toList();
+        // Only entries an editor has checked against the publisher's page are shown publicly.
+        List<ExternalRankingDto> external = externalRankings.forSchool(schoolId);
         return new SchoolRankingDetailDto(schoolId, site == null ? RankingStatus.NOT_YET_RANKED : site.status(), site,
                 external, DISCLAIMER);
     }
@@ -407,27 +405,6 @@ public class RankingServiceImpl implements RankingService {
                 .map(s -> toScoreDto(s, codes.get(s.getCriterionId()))).toList();
     }
 
-    @Override
-    @Transactional
-    public ExternalRankingDto addExternalRanking(Long schoolId, ExternalRankingRequest r) {
-        if (!schoolRepository.existsById(schoolId)) {
-            throw new ResourceNotFoundException("School", schoolId);
-        }
-        RankingSource source = new RankingSource();
-        source.setSchoolId(schoolId);
-        source.setPublisher(InputSanitizer.clean(r.publisher()));
-        source.setRankingName(InputSanitizer.clean(r.rankingName()));
-        source.setRankingYear(InputSanitizer.clean(r.rankingYear()));
-        source.setCategory(InputSanitizer.clean(r.category()));
-        source.setRankPosition(r.rankPosition());
-        source.setScoreText(InputSanitizer.clean(r.scoreText()));
-        source.setSourceUrl(r.sourceUrl().trim());
-        source.setRetrievedDate(r.retrievedDate());
-        RankingSource saved = sourceRepository.save(source);
-        auditService.record("EXTERNAL_RANKING_ADDED", "RANKING_SOURCE", saved.getId(), "school=" + schoolId + ", publisher=" + r.publisher());
-        return toExternalDto(saved);
-    }
-
     // ---------------------------------------------------------------------------------------------
 
     private String defaultYear() {
@@ -464,10 +441,5 @@ public class RankingServiceImpl implements RankingService {
     private static CriterionScoreDto toScoreDto(SchoolCriterionScore s, String code) {
         return new CriterionScoreDto(s.getId(), s.getSchoolId(), code, s.getAcademicYear(), s.getRawScore(), s.getMaxScore(),
                 s.getNormalizedScore(), s.getEvidenceNotes(), s.getSourceUrl(), s.getVerificationStatus(), s.getLastVerifiedDate());
-    }
-
-    private static ExternalRankingDto toExternalDto(RankingSource s) {
-        return new ExternalRankingDto(s.getId(), s.getPublisher(), s.getRankingName(), s.getRankingYear(), s.getCategory(),
-                s.getRankPosition(), s.getScoreText(), s.getSourceUrl(), s.getRetrievedDate(), s.getVerificationStatus());
     }
 }
