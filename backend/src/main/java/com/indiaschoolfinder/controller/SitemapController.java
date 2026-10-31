@@ -8,6 +8,7 @@ import com.indiaschoolfinder.entity.Exam;
 import com.indiaschoolfinder.repository.ExamRepository;
 import com.indiaschoolfinder.repository.SchoolRepository;
 import com.indiaschoolfinder.service.LocationService;
+import com.indiaschoolfinder.service.SeoHeadService;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.PageRequest;
@@ -105,11 +106,13 @@ public class SitemapController {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);
                 for (CityDto city : locationService.cities(state.code())) {
-                    url(xml, base + "/states/" + state.slug() + "/city/" + city.slug(), null);
+                    if (city.schoolCount() >= SeoHeadService.MIN_SCHOOLS_TO_INDEX) {
+                        url(xml, base + "/states/" + state.slug() + "/city/" + city.slug(), null);
+                    }
                 }
             }
         }
-        for (Object[] row : schoolRepository.districtsWithSchools()) {
+        for (Object[] row : schoolRepository.districtsWithSchools(SeoHeadService.MIN_SCHOOLS_TO_INDEX)) {
             url(xml, base + "/states/" + row[0] + "/" + row[1], null);
         }
         for (String board : schoolRepository.boardCodesWithSchools()) {

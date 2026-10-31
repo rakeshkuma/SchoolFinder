@@ -4,7 +4,7 @@ import { formatMoneyCompact, schoolTypeLabel } from '../../utils/format';
 import { ProvisionalBadge } from '../common/Badges';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { SchoolCover } from './SchoolCard';
+import { photoCreditTitle, SchoolCover } from './SchoolCard';
 
 /**
  * One school in a ranking. Fees, classes, photo and admission status are shown for context only; they are never part of
@@ -26,12 +26,12 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
     <article className="card card-hover group flex flex-col overflow-hidden sm:flex-row">
       <Link to={`/schools/${r.slug}?tab=ranking`} className="relative block h-36 shrink-0 bg-slate-100 sm:h-auto sm:w-48" tabIndex={-1} aria-hidden>
         {card?.coverImageUrl ? (
-          <img src={card.coverImageUrl} alt="" loading="lazy" className="h-full w-full object-cover" />
+          <img src={card.coverImageUrl} alt="" loading="lazy" title={photoCreditTitle(card)} className="h-full w-full object-cover" />
         ) : (
           <SchoolCover name={r.schoolName} />
         )}
-        {card?.coverImageCredit && (
-          <span className="absolute bottom-1 right-1 rounded bg-black/50 px-1.5 text-[10px] text-white">© {card.coverImageCredit}</span>
+        {card?.coverImageUrl && card.coverImageIllustrative && card.coverImageCredit && (
+          <span className="absolute bottom-1 right-1 rounded bg-black/50 px-1.5 text-[10px] text-white">{card.coverImageCredit}</span>
         )}
         <span className="absolute left-3 top-3">
           {r.scopePosition ? (

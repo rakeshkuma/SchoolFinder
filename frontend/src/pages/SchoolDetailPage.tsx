@@ -35,7 +35,7 @@ import {
   placeLine,
   schoolTypeLabel,
 } from '../utils/format';
-import { NotFoundPage } from './InfoPages';
+import { SchoolOrStateNotFound } from './PlaceRedirect';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -62,7 +62,8 @@ export function SchoolDetailPage() {
   useEffect(() => setPhotoFailed(false), [loaded?.id]);
   const photo = photoFailed ? undefined : images.data?.find((i) => i.imageType !== 'LOGO');
 
-  if (school.error?.status === 404) return <NotFoundPage />;
+  // /schools/bihar is a state rather than a school: SchoolOrStateNotFound sends it to the state page, or shows 404.
+  if (school.error?.status === 404) return <SchoolOrStateNotFound slug={slug} />;
   if (school.error) return <div className="container-page py-10"><ErrorState error={school.error} onRetry={school.reload} /></div>;
   if (!school.data) return <Spinner label="Loading school…" />;
 
@@ -585,10 +586,23 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
     </section>
   );
   if (!hasCoords) {
+    const address = [s.addressLine, s.city, s.district?.name, s.stateName, s.pinCode].filter(Boolean).join(', ');
     return (
       <div className="space-y-6">
         {contact}
-        <EmptyState title="Map location not available yet.">We only plot schools whose coordinates have been confirmed.</EmptyState>
+        <EmptyState title="Map location not available yet.">
+          We only plot schools whose coordinates have been confirmed.
+          {s.addressLine && (
+            <span className="mt-3 block">
+              <a className="btn-secondary text-sm" target="_blank" rel="noopener noreferrer"
+                href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(address)}`}>
+                Look up the postal address on OpenStreetMap ↗
+              </a>
+              <span className="mt-1 block text-xs text-slate-500">A search for the address, not a confirmed position.</span>
+            </span>
+          )}
+        </EmptyState>
+        <SchoolsInSamePlace school={s} />
       </div>
     );
   }
@@ -609,6 +623,37 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
         </div>
       </section>
     </div>
+  );
+}
+
+/**
+ * Nearby schools for a profile without coordinates: the same town, else the same PIN code, else the same district, as
+ * the source records them. Distances are never guessed.
+ */
+function SchoolsInSamePlace({ school: s }: { school: SchoolDetail }) {
+  const place = s.city ? { city: s.city, label: s.city }
+    : s.pinCode ? { pinCode: s.pinCode, label: `PIN code ${s.pinCode}` }
+      : s.district ? { district: s.district.slug, label: `${s.district.name} district` } : null;
+  const state = useApi(
+    () => schoolService.search({ state: s.stateCode, city: place?.city, pinCode: place?.pinCode, district: place?.district, size: 7 }),
+    [s.id],
+    place !== null,
+  );
+  if (!place) return null;
+  return (
+    <section>
+      <h2 className="text-lg font-semibold">Other schools in {place.label}</h2>
+      <div className="mt-3">
+        <AsyncContent state={state} isEmpty={(d) => d.content.every((n) => n.id === s.id)}
+          empty={<EmptyState title={`No other schools listed in ${place.label} yet.`} />}>
+          {(page) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {page.content.filter((n) => n.id !== s.id).slice(0, 6).map((n) => <SchoolCard key={n.id} school={n} />)}
+            </div>
+          )}
+        </AsyncContent>
+      </div>
+    </section>
   );
 }
 
@@ -637,7 +682,7 @@ function RankingSummary({ schoolId }: { schoolId: number }) {
           {published.map((e) => (
             <li key={e.id} className="text-slate-700">
               <strong className="text-ink">{e.rankPosition ? `#${e.rankPosition}` : 'Listed'}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
-              {(e.category || e.region) && <span className="text-slate-500"> ({[e.category, e.region].filter(Boolean).join(', ')})</span>}
+              {(e.category || e.region) && <span className="text-slate-500"> · {[e.category, e.region].filter(Boolean).join(' · ')}</span>}
             </li>
           ))}
         </ul>

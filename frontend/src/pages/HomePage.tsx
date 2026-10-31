@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AdmissionStatusBadge } from '../components/common/Badges';
 import { Icon, type IconName } from '../components/common/Icon';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
-import { SchoolCard } from '../components/school/SchoolCard';
+import { photoCreditTitle, SchoolCard } from '../components/school/SchoolCard';
 import { SchoolSearchForm, type HeroSearch } from '../components/school/SchoolsHero';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -391,11 +391,11 @@ function PhotoMosaic({ schools }: { schools: SchoolSummary[] }) {
           <li key={s.id} className={`overflow-hidden rounded-3xl bg-slate-100 shadow-lift ring-4 ring-white ${i % 2 === 1 ? 'translate-y-6' : ''}`}>
             <Link to={`/schools/${s.slug}`} className="group relative block aspect-[4/3]">
               <img src={s.coverImageUrl!} alt={`${s.name}`} loading={i < 2 ? 'eager' : 'lazy'} decoding="async"
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                title={photoCreditTitle(s)} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
               <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2 pt-8">
                 <span className="block truncate text-sm font-semibold text-white">{s.name}</span>
-                {s.coverImageCredit && (
-                  <span className="block truncate text-[10px] text-white/80">{s.coverImageIllustrative ? s.coverImageCredit : `© ${s.coverImageCredit}`}</span>
+                {s.coverImageIllustrative && s.coverImageCredit && (
+                  <span className="block truncate text-[10px] text-white/80">{s.coverImageCredit}</span>
                 )}
               </span>
             </Link>

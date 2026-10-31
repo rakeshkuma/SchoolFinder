@@ -18,6 +18,9 @@ class SitemapIT extends AbstractIntegrationTest {
     @Test
     void robotsAndSitemapsListPublicPagesAndActiveSchoolsOnly() throws Exception {
         createSchool(school("Sitemap Public School", Map.of("stateCode", "BR", "district", "Patna", "boardCode", "CBSE")));
+        createSchool(school("Sitemap Second School", Map.of("stateCode", "BR", "district", "Patna")));
+        createSchool(school("Sitemap Third School", Map.of("stateCode", "BR", "district", "Patna")));
+        createSchool(school("Sitemap Lone School", Map.of("stateCode", "BR", "district", "Buxar")));
         long hidden = createSchool(school("Sitemap Hidden School", Map.of()));
         mockMvc.perform(patch("/api/v1/admin/schools/{id}/status", hidden).header("Authorization", adminToken())
                         .contentType(MediaType.APPLICATION_JSON).content("{\"active\":false,\"reason\":\"closed\"}"))
@@ -38,6 +41,8 @@ class SitemapIT extends AbstractIntegrationTest {
                 .andExpect(content().string(containsString("<loc>http://localhost/schools</loc>")))
                 .andExpect(content().string(containsString("<loc>http://localhost/states/bihar</loc>")))
                 .andExpect(content().string(containsString("<loc>http://localhost/states/bihar/patna</loc>")))
+                // A district with a single school is not a page worth indexing yet.
+                .andExpect(content().string(not(containsString("/states/bihar/buxar<"))))
                 .andExpect(content().string(not(containsString("/states/uttar-pradesh<"))))
                 // Board pages only for boards that have schools.
                 .andExpect(content().string(containsString("<loc>http://localhost/boards/CBSE</loc>")))

@@ -55,6 +55,7 @@ const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const PublishedRankingsPage = page(() => import('./pages/PublishedRankingsPage'), 'PublishedRankingsPage');
 const RankingComparePage = page(() => import('./pages/RankingComparePage'), 'RankingComparePage');
 const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').then((m) => ({ default: m.BoardingLandingPage })));
+const PlaceRedirect = lazy(() => import('./pages/PlaceRedirect').then((m) => ({ default: m.PlaceRedirect })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
 const AboutPage = page(info, 'AboutPage');
 const ContactPage = page(info, 'ContactPage');
@@ -102,6 +103,7 @@ export default function App() {
               <Route index element={<HomePage />} />
               <Route path="schools" element={<SchoolsPage />} />
               <Route path="schools/:slug" element={<SchoolDetailPage />} />
+              <Route path="schools/:state/:place" element={<PlaceRedirect />} />
               <Route path="states" element={<StatesPage />} />
               <Route path="cities" element={<CitiesPage />} />
               <Route path="states/:state" element={<StatePage />} />

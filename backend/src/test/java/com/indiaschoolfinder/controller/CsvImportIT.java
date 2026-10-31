@@ -133,6 +133,45 @@ class CsvImportIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void anUpdateFromAFileWithFewerColumnsKeepsWhatItDoesNotMention() throws Exception {
+        String full = "name,school_type,source_url,pin_code,state,phone,latitude,longitude,class_codes,city,established_year\n"
+                + "Keep School,PRIVATE,https://example.org/a,110001,Delhi,011-2345 6789,28.61,77.2,VI;VII;VIII,New Delhi,1990\n";
+        mockMvc.perform(multipart("/api/v1/admin/import/csv").file(csv(full)).header("Authorization", adminToken()))
+                .andExpect(jsonPath("$.created").value(1));
+        // A board list gives only some fields; the year changes, the rest must survive.
+        String partial = "name,school_type,source_url,pin_code,state,established_year\n"
+                + "Keep School,PRIVATE,https://example.org/b,110001,Delhi,1991\n";
+        mockMvc.perform(multipart("/api/v1/admin/import/csv").file(csv(partial)).param("updateExisting", "true")
+                        .header("Authorization", adminToken()))
+                .andExpect(jsonPath("$.updated").value(1));
+        long id = jdbc.queryForObject("select id from school where name = 'Keep School'", Long.class);
+        mockMvc.perform(get("/api/v1/admin/schools/{id}", id).header("Authorization", adminToken()))
+                .andExpect(jsonPath("$.establishedYear").value(1991))
+                .andExpect(jsonPath("$.sourceUrl").value("https://example.org/b"))
+                .andExpect(jsonPath("$.phone").value("011-2345 6789"))
+                .andExpect(jsonPath("$.latitude").value(28.61))
+                .andExpect(jsonPath("$.city").value("New Delhi"))
+                .andExpect(jsonPath("$.classesOffered.length()").value(3));
+    }
+
+    @Test
+    void aBoardListMatchedByAffiliationDoesNotRenameTheSchool() throws Exception {
+        String curated = "name,school_type,source_url,pin_code,state,board_code,affiliation_number\n"
+                + "Dashmesh Public School,PRIVATE,https://example.org/a,110096,Delhi,CBSE,2799901\n";
+        mockMvc.perform(multipart("/api/v1/admin/import/csv").file(csv(curated)).header("Authorization", adminToken()))
+                .andExpect(jsonPath("$.created").value(1));
+        String board = "name,school_type,source_url,pin_code,state,board_code,affiliation_number,phone\n"
+                + "Dashmesh Pub School,PRIVATE,https://example.org/b,110096,Delhi,CBSE,2799901,011-2345 6789\n";
+        mockMvc.perform(multipart("/api/v1/admin/import/csv").file(csv(board)).param("updateExisting", "true")
+                        .header("Authorization", adminToken()))
+                .andExpect(jsonPath("$.created").value(0))
+                .andExpect(jsonPath("$.updated").value(1));
+        org.assertj.core.api.Assertions.assertThat(jdbc.queryForObject(
+                        "select name || '|' || phone from school where affiliation_number = '2799901'", String.class))
+                .isEqualTo("Dashmesh Public School|011-2345 6789");
+    }
+
+    @Test
     void importedNamesAreTidiedAndStillMatchOnReimport() throws Exception {
         // As built from a postal address: stray comma junk, a district marker and a place read twice.
         String content = "name,school_type,source_url,pin_code,state\n"

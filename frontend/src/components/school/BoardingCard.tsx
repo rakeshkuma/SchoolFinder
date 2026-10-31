@@ -5,7 +5,7 @@ import {
 } from '../../utils/format';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { schoolPlace, SchoolCover } from './SchoolCard';
+import { photoCreditTitle, schoolPlace, SchoolCover } from './SchoolCard';
 
 const boardLabel = (code: string | null) =>
   code === 'CISCE' ? 'ICSE/ISC' : code === 'STATE' ? 'State board' : code === 'IB' ? 'IB' : code;
@@ -22,14 +22,14 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
     <article className="card card-hover group flex flex-col overflow-hidden">
       <Link to={`/schools/${school.slug}?tab=boarding`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
         {school.coverImageUrl ? (
-          <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async"
+          <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async" title={photoCreditTitle(school)}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
         ) : (
           <SchoolCover name={school.name} />
         )}
-        {school.coverImageCredit && (
+        {school.coverImageUrl && school.coverImageIllustrative && school.coverImageCredit && (
           <span className="absolute bottom-1 right-1 max-w-[70%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-            © {school.coverImageCredit}
+            {school.coverImageCredit}
           </span>
         )}
         {school.residentialSystem && (

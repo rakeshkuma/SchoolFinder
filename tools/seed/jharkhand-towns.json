@@ -1,0 +1,3593 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "bharat-bharati-public-school",
+   "facts": {
+    "city": {
+     "name": "Godda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430800",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PRATAP NAGAR, CHITRAGUPTA COLONY, P.O- GODDA COLLEGE GODDA\", PIN 814133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-south-settlement-rly-engg-colony-railway",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/300022",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SOUTH SETTLEMENT RLY ENGG COLONY NEAR RAILWAY STATION TATA NAGAR JAMSHEDPUR DISTT EAST SINGHBHUM JHARKHAND\", PIN 831002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-1-sector-4-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400001",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 4 BOKARO STEEL CITY BOKARO JHARKHAND\", PIN 827004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-hinoo-doranda",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400002",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O HINOO DORANDA RANCHI JHARKHAND\", PIN 834002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-1-sector-2-heavy-engg-corpn-jagannath-nagar",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400003",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 2 HEAVY ENGG CORPN JAGANNATH NAGAR RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-ramgarh-cantt-ramgarh",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400005",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMGARH CANTT RAMGARH DISTT JHARKHAND\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-i-binod-nagar-dhanbad",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400007",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OLD D V S BUILDING NEAR RLY CLUB ( E R) DHANBAD JHARKHAND\", PIN 826001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-dipatoli-rmch",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400013",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DIPATOLI P.O. RMCH RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ccl-rajendra-nagar-colony-hehal-ratu-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400016",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CCL RAJENDRA NAGAR COLONY P O HEHAL RATU ROAD RANCHI JHARKHAND\", PIN 834005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-namkum",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400020",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAMKUM RANCHI JHARKHAND\", PIN 834010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-3-railway-colony-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400021",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAILWAY COLONY BOKARO STEEL CITY JHARKHAND\", PIN 827010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-crpf-dhruwa",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400025",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CRPF DHRUWA RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-2-behind-police-station",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400028",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BEHIND POLICE STATION, JAGJIWAN NAGAR DHANBAD, JHARKHAND\", PIN 826003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-gandhi-inter-college",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400032",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LATEHAR, NEAR GANDHI INTER COLLEGE, LATEHAR, JHARKHAND\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-girls-high-school-campus",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400033",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GIRLS HIGH SCHOOL CAMPUS, NEW TOWN, JAMTARA, JHARKHAND\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-high-school-campus",
+   "facts": {
+    "city": {
+     "name": "Godda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400034",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GODDA, HIGH SCHOOL CAMPUS, DISTT. GODDA, JHARKHAND\", PIN 814133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-at-training-school-campus",
+   "facts": {
+    "city": {
+     "name": "Gumla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400036",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GUMLA, AT-TRAINING SCHOOL CAMPUS, KARAMTOLI, PO GUMLA, DISTT. GUMLA, JHARKHAND\", PIN 835207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-sahibganj",
+   "facts": {
+    "city": {
+     "name": "Sahibganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400037",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAHIBGANJ, HABIBPUR, DISTT. SAHIBGANJ, JHARKHAND\", PIN 816109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-lohardaga",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400042",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA LOHARDAGA ,, VILL - BARHI POST - SITHIO P.S- SENHA, BLOCK - SENHA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-koderma",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400151",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PANI TANKI ROAD, JHUMRI TELAIYA\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-latehar-palamau",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440005",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O LATEHAR DISTT PALAMAU JHARKHAND\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-sidho-kanho-stadium-and-sahibganj",
+   "facts": {
+    "city": {
+     "name": "Sahibganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440009",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR SIDHO KANHO STADIUM P O &DISTT SAHIBGANJ JHARKHAND\", PIN 816109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-chatra",
+   "facts": {
+    "city": {
+     "name": "Chatra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440011",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O CHATRA CHATRA DISTT. JHARKHAND\", PIN 825401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-pauta-chandwar-via-korra",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440012",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PAUTA PO CHANDWAR VIA KORRA DISTT HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-lokai",
+   "facts": {
+    "city": {
+     "name": "Koderma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440016",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LOKAI DISTT KODERMA JHARKHAND\", PIN 825410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-paltonga-daltonganj-palamau",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440018",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PALTONGA POST DALTONGANJ DISTT PALAMAU JHARKHAND\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-tanbajore",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440022",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TANBAJORE, PO-GUHIYOJORL, JAMTARA,JHARKHAND\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalya-2",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440024",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT SEELAMPUR, PO MAHESHPUR DISTT. PAKUR II, JHARKHAND\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-khunti",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3440026",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MODEL SCHOOL CAMPUS KARRA ROAD BIRHU PO BIRHU PS KHUNTI DIST KHUNTI\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kv-garhwa",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3400030",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TANDAWA, POST OFFICE GARHWA, THANA GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jbc-district-cm-school-of-excellence-jamtara",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420101",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JAMTARA, JAMTARA\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-b-p-m-burmamines",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420102",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JAMSHEDPUR, ESAT SINGBHUM\", PIN 831007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-mitra-district-cm-school-of-excellence-deoghar",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420103",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR TOWER CHOWK,DEOGHAR, OPPOSITE G.PO. DEOGHAR\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-ramrudra-cm-school-of-excellence",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420106",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"POST YODHADIH MORE , P.S. CHAS\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420107",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJ HIGH SCHOOL ROAD PAKUR, BLOCK PAKUR DISTRICT PAKUR\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-latehar",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420108",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DHARAMPUR, NEAR ZILA KHEL STADIUM, LATEHAR\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-r-k-rama-sahu-cm-school-of-excellence-garhwa",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420109",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARHWA, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "astvs-district-cm-school-of-excellence-ranchi",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420111",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"UPPER BAZAR, RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-khunti",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420112",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO KHUNTI , PS KHUNTI\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dist-cm-soe-nadia-hindu-lohardaga",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420113",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"COURT ROAD, POST- LOHARDAGA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-medininagar-palamu",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420115",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO 10, DALTONGANJ MUNCIPAL\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-simdega",
+   "facts": {
+    "city": {
+     "name": "Simdega",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420116",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO - SIMDEGA, PS - SIMDEGA\", PIN 835223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-hazaribag",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420117",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LAKE ROAD, HAZARIBAGH, LAKE ROAD, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-godda",
+   "facts": {
+    "city": {
+     "name": "Godda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420118",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR HP PETROL PUMP , GODDA\", PIN 814133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-dumka",
+   "facts": {
+    "city": {
+     "name": "Dumka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420119",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR TATA SHOWROOM, DUMKA\", PIN 814101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zila-school-chaibasa-2",
+   "facts": {
+    "city": {
+     "name": "Chaibasa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420120",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DILIYAMARCHA, PO - CHAIBASA, PS - MUFFASIL\", PIN 833201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gandhi-memorial-district-c-m-school-of-excellence",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420121",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMGARH CANT, RAMGARH\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420123",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HARINDANGA BAZAR, POST - PAKUR\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-g-b-v-cm-school-of-excellence",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420126",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LATEHAR, LATEHAR\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-chatra",
+   "facts": {
+    "city": {
+     "name": "Chatra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420128",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHATRA, CHATRA\", PIN 825401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-k-cm-school-of-excellence-girls-garhwa",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420129",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OPPOSITE SADAR HOSPITAL, P.O.-GARHWA, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-soe-girls-khunti",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420130",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO- KHUNTI, PS- KHUNTI\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-jamtara",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420132",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW TOWN JAMTARA, PO- JAMTARA\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-s-girls-high-school-ramgarh-cantt",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420133",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEHRU ROAD, RAMGARH CANT\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-garhwa",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420134",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P.O.- SOH, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-sahibganj",
+   "facts": {
+    "city": {
+     "name": "Sahibganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420135",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAHIBGANJ, SAHIBGANJ\", PIN 816109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-sakchi",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420137",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"INFRONT OF UTKAL ASSOCIATION, SAKCHI\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-dumka",
+   "facts": {
+    "city": {
+     "name": "Dumka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420138",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DUMKA RAMPURHAT ROAD, NH 114 A\", PIN 814101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-soe-girls-latehar",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420141",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LATEHAR, LATEHAR\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-gumla",
+   "facts": {
+    "city": {
+     "name": "Gumla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420144",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TTC CAMPUS, NEAR ZILA SCHOOL GUMLA\", PIN 835207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-namkum",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420146",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAMKUM, RANCHI\", PIN 834010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-giridih",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420148",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT-MATHADIH, PO-CHAITADIH GIRIDIH\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-soe-girls-gumla",
+   "facts": {
+    "city": {
+     "name": "Gumla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420149",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JASHPUR ROAD, GUMLA\", PIN 835207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sir-j-c-bose-cm-school-of-excellence-girls-giridih",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420150",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR JHANDA MAIDAN, GIRIDIH\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-soe-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420155",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MAL PAHARI ROAD, PAKUR\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-simdega",
+   "facts": {
+    "city": {
+     "name": "Simdega",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420159",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO - SIMDEGA, PS - SIMDEGA\", PIN 835223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-sahibganj",
+   "facts": {
+    "city": {
+     "name": "Sahibganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420161",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAHIBGANJ, SAHIBGANJ\", PIN 816109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kasturba-cm-soe-girls-lohardaga",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420163",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"POST - LOHARDAGA, PS - LOHARDAGA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kgbv-cm-school-of-excellence-dumka",
+   "facts": {
+    "city": {
+     "name": "Dumka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420164",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO - MADHUWADIH, BLOCK - DUMKA\", PIN 814101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-matri-mandir-deoghar",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420166",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DEOGHAR, DEOGHAR\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-g-b-v-ramgarg-kaitha",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420168",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KAITHA, RAMGARH\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "c-d-girls-cm-school-of-excellence-jhumri-telaiya-koderma",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420170",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO- JHUMARI TELAIYA, DISTRICT- KODERMA\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-medininagar-palamu",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420171",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO 21, IN FRONT OF NPU, MEDININAGAR\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-godda",
+   "facts": {
+    "city": {
+     "name": "Godda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420173",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"POST OFFICE ROAD, GODDA\", PIN 814133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-school-of-excellence-girls-bariatu-ranchi",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420174",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARIATU, RANCHI\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "district-cm-school-of-excellence-chatra",
+   "facts": {
+    "city": {
+     "name": "Chatra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420177",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GUDRI BAZAR, MAIN ROAD, CHATRA\", PIN 825401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-emrs-negain",
+   "facts": {
+    "city": {
+     "name": "Latehar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420181",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL-NEGAIN, BLO-LATEHAR (829206), VILL-NEGAIN, BLO-LATEHAR (829206), VILL-NEGAIN, BLO-LATEHAR (829206)\", PIN 829206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "emrs-senha",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420204",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE MERHO, POST KORAMBE, BLOCK SENHA, LOHARDAGA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-onegara-peshrar-lohardaga",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420206",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"EKLAVYA MODEL RESIDENTIAL SCHOOL PESHRAR, VILL- ONEGARA, BLOCK- PESHRAR, POST- PESHRAR, DISTT- LOHARDAGA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-khunti",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420209",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL- REWA, BLOCK- KHUNTI, DIST. KHUNTI\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-murhu",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3420210",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL- GAMHARIA, BLOCK- MURHU, DIST. KHUNTI\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-mission-vidyapith",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430001",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O VIDYAPEETH RAMAKRISHNA NAGAR DEOGHAR (S P) JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430004",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHYAMALI RANCHI P.O. HINOO JHARKHAND\", PIN 834002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430005",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURU NANAK PURA PEPE COMPOUND RANCHI JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430006",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR II JAGANNATH NAGAR H E C COLONY RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lala-lajpat-rai-bal-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430007",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LAJPAT BHAWAN NEAR RAILWAY CROSSING KADRU ROAD RANCHI JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indian-school-of-learning-sr-sec-sch",
+   "facts": {
+    "city": {
+     "name": "Jharia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430009",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KATRAS MORH P O JHARIA DHANBAD DISTT JHARKHAND\", PIN 828111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-sector-iv-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430010",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR IV BOKARO STEEL CITY DIST. BOKARO JHARKHAND\", PIN 827004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-school-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430012",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOKARO STEEL CITY BOKARO DISTT JHARKHAND\", PIN 827010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chinmaya-vidyalaya-3",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430013",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT V BOKARO STEEL CITY BOKARO JHARKHAND\", PIN 827006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-bharati-chinmaya-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430015",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR P TYPE FLATS TELCO COLONY OPP. PLAZA DISPENSARY JAMSHEDPUR JHARKHAND\", PIN 831004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-school-6",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430016",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P B NO. 19 HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-sector-iii-dhurwa",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430018",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-III DHURWA RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidya-mandir-sector-iii-c-steel-city-dhanbad",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430022",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR III-C BOKARO STEEL CITY BOKARO DHANBAD JHARKHAND\", PIN 827001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "central-academy-bariatu-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430036",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARIATU ROAD RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-guru-nanak-public-school",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430037",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMGARH CANTT HAZARIBAGH DISTT JHARKHAND\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lions-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Sindri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430038",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O SINDRI DHANBAD DISTT JHARKHAND\", PIN 828122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-and-h-high-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430039",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JAIL ROAD EAST DISTT RANCHI, JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-govind-singh-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430040",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR V BOKARO STEEL CITY BOKARO JHARKHAND\", PIN 827006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kairali-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430042",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR II HEC TOWNSHIP RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sect-iv-boko-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430044",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT IV BOKO STEEL CITY DISTT BOKARO JHARKHAND\", PIN 827004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-s-pranav-children-world",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430046",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RIVERS MEET ROAD P O SONARY WEST JAMSHEDPUR JHARKHAND\", PIN 831011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidya-mandir-sindri",
+   "facts": {
+    "city": {
+     "name": "Sindri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430047",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SINDRI DISTT DHANBAD JHARKHAND\", PIN 828122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jamshedpur-public-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430051",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PANCHAVATI ROAD NEW BARIDIH JAMSHEDPUR JHARKHAND\", PIN 831017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-karmik-bhawan-office-ism",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430052",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KARMIK BHAWAN DHANBAD (POST OFFICE ISM) DISTT DHANBAD JHARKHAND\", PIN 826004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-s-a-i-l-town-ship-dhurwa",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430053",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"S A I L TOWN SHIP P O DHURWA RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-english-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430057",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KHARKAI LINK ROAD BISTUPUR JAMSHEDPUR JHARKHAND\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-ispat-sr-sec-school-sector-ii-c-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430059",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR II C BOKARO STEEL CITY JHARKHAND\", PIN 827001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-ispat-sr-sec-school-sector-iii-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430060",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR III BOKARO STEEL CITY JHARKHAND\", PIN 827003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-itki-road-hehal",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430071",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ITKI ROAD PO HEHAL RANCHI JHARKHAND\", PIN 834005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-ispat-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430077",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-VIII/ B BOKARO STEEL CITY, JHARKHAND\", PIN 827009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-ispat-vidyalaya-sector-xi-d-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430080",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-XI D BOKARO STEEL CITY JHARKHAND\", PIN 827009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-ispat-vidyalaya-sect-xii-e-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430081",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT-XII E BOKARO STEEL CITY JHARKHAND\", PIN 827012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsh-shramik-uchch-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Jharia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430084",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GOLUKDIH OPEN CART PROJECT AT- GOLUKDIH P.O.JHARIA DISTT.DHANBAD JHARKHAND\", PIN 828111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambrian-public-school-kanke-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430087",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KANKE ROAD RANCHI JHARKHAND\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsh-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430089",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BYE PASS ROAD CHAS BUS STAND BOKARO JHARKHAND\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "surendranath-centenary-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430092",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HAZARIBAGH ROAD DIPATOLI RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mgm-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430093",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR IV F BOKARO STEEL CITY JHARKHAND\", PIN 827004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-kapil-dev-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430099",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW AG COLONY KADRU RANCHI JHARKHAND\", PIN 834002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-gandhi-nagar-ccl",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430103",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GANDHI NAGAR CCL RANCHI JHARKHAND\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "subhash-public-school",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430107",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW OFFICERS COLONY MOHLICHAWEN KOLDIHA GIRIDIH JHARKHAND\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "valley-view-school-2",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430110",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ASHOK ROAD TRF NAGAR P.O TELCO JAMSHEDPUR JHARKHAND\", PIN 831004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "parmar-vidyawati-surjit-singh",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430111",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DAV PUBLIC SCHOOL JHUMRI TELAIYA DISTT KODERMA JHARKHAND\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sree-ayyappa-public-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430112",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR V D BOKARO STEEL CITY JHARKHAND\", PIN 827006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govind-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430114",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT TAMULIA P.O. MANGO JAMSHEDPUR JHARKHAND\", PIN 831012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-public-school-kusum-vihar-koyla-nagar",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430115",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KUSUM VIHAR KOYLA NAGAR DHANBAD JHARKHAND\", PIN 826005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-bariatu-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430117",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARIATU ROAD RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "netaji-subhas-public-school-pokhari-bhilai-pahari-ps-mgm-jamshedpur",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430119",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"POKHARI BHILAI PAHARI PS MGM EAST SINGHBHUM JAMSHEDPUR JHARKHAND\", PIN 831012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oxford-public-school-old-h-b-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430121",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OLD H.B. ROAD RANCHI JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidya-mandir-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Gumla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430122",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GUMLA DSP ROAD DISTT GUMLA JHARKHAND\", PIN 835207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-shishu-vidya-mandir-dhurwa",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430123",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O DHURWA RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-ramakrishna-sarada-ashrama",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430124",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RABINDRA PATH HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sido-kanu-high-school",
+   "facts": {
+    "city": {
+     "name": "Dumka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430125",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"THANA ROAD DUMKA P O DUMKA DISTT DUMKA JHARKHAND\", PIN 814101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-71-canary-hill-road",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430127",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P O 71 CANARY HILL ROAD HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-ecl-chitra-chitra-via-jamtara-b",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430130",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ECL CHITRA PO CHITRA VIA JAMTARA DISTT DISTT. B DEOGHAR JHARKHAND\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shradhanand-bal-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430132",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RATU ROAD POST HEHAL DISTT RANCHI JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mb-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430133",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DAYANAND ROAD KARAMTOLI LOHARDAGA JHARKHAND\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-contractor-area-road-no-4-bistupur",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430135",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CONTRACTOR AREA ROAD NO. 4 BISTUPUR JAMSHEDPUR JHARKHAND\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-pentecostal-assembly-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430137",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-12-B BOKARO STEEL CITY BOKARO JHARKHAND\", PIN 827012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sardar-patel-public-school-sec-ix-a-b-road-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430138",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-IX A B. ROAD BOKARO STEEL CITY JHARKHAND\", PIN 827009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ram-tahal-choudhary-high-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430140",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PHED (KH TOLA) BOOTI RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "balkia-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Jharia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430142",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JHARIA PO JHARIA DHANBAD JHARKHAND\", PIN 828111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kasidih-high-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430143",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAKCHI PO SAKCHI JAMSHEDPUR JHARKHAND\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-koyla-nagar",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430148",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KOYLA NAGAR DHANBAD JHARKHAND\", PIN 826005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-s-m-school-for-excellence",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430149",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DISPENDARY ROAD SIDHGORA PO AGRICO JAMSHEDPUR\", PIN 831009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-gokulpur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430152",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GOKULPUR PAKUR DISTT PAKUR JHARKHAND\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivek-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430153",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHHATA GOVINDPUR JAMSHEDPUR JHARKHAND\", PIN 831015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-nandraj-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430154",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOOTY ROAD VILLAGE GARI UNDVI PS SADAR DISTT RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tender-heart-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430155",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TUPUDANA PO HATIA RANCHI -834003, JHARKHAND\", PIN 834003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lady-k-c-roy-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430157",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE TINDIR RATU ROAD KANKE BLOCK RANCHI, JHARKHAND-824001\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-krishna-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430158",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VIKAS NAGAR AT & PO RAMGARH CANTT DISTT RAMGARH JHARKHAND\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radha-govind-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430159",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BEHIND RAMGARH COLLEGE JARATOLA RAMGARH CANTT DISTT HAZARIBAGH JHARKHAND\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "greenland-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430160",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PREM NAGAR HESAG PO HATIA RANCHI JHARKHAND\", PIN 834003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "geeta-devi-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430162",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BHANDAR KOLA SATAR ROAD B DEOGHAR JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "red-rose-school",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430163",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CASTAIRS TOWN B DEOGHAR JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-k-public-school-6",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430164",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SONPURWA AT / PO GARHWA DIST GARHWA JHARKHAND\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-shradhanand-dav-centenary-public-school",
+   "facts": {
+    "city": {
+     "name": "Khunti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430165",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KHUNTI RANCHI JHARKHAND\", PIN 835210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430167",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KANKE ROAD RANCHI JHARKHAND\", PIN 834006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vimla-pandey-memorial-gyan-niketan",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430175",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SCHOOL BAIRIA DALTONGANJ PALAMU JHARKHAND\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-public-school-jhumri-telaiya",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430176",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JHUMRI TELAIYA DISTT KODERMA JHARKHAND\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bridgeford-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430177",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PO HATIA PS HATIA DISTT RANCHI JHARKHAND\", PIN 834003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-at-tukypani-pondripuri",
+   "facts": {
+    "city": {
+     "name": "Simdega",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430178",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT TUKYPANI SIMDEGA PO PONDRIPURI DISTT SIMDEGA JHARKHAND\", PIN 835223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-alok-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430183",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ARGORA NAYA SARAI RAOD, PUNDAG TEH RATU RANCHI DISTT RANCHI JHARKHAND\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430184",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TURIABERA, POST BHILAI PAHARI, MANGO THANA MGM, JAMSHEDPUR JHARKHAND\", PIN 831012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-shishu-vidya-mandir-kumhar-toli-parnala",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430188",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KUMHAR TOLI PARNALA HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "crescent-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430189",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT VI BOKARO STEEL CITY JHARKHAND\", PIN 827006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-shishu-vidya-mandir-9-d-sec-ix-b-road-office-steel-city",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430190",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"9-D SEC IX B ROAD NEAR POST OFFICE BOKARO STEEL CITY JHARKHAND\", PIN 827009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-stephen-s-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430193",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHAMPA HAZARIBAGH JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bokaro-public-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430197",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 3-C BOKARO STEEL CITY DISTT BOKARO JHARKHAND\", PIN 827003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "loyola-convent-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430198",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOOTY RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kerala-public-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430201",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BURMAMINES JAMSHEDPUR JHARKHAND\", PIN 831007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kids-garden-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Jharia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430203",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SINDRI ROAD PO JHARIA DISTT DHANBAD JHARKHAND\", PIN 828111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-gobind-singh-public-school-jodadih-more",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430208",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JODADIH MORE, CHAS BOKARO STEEL CITY CHAS, DISTT BOKARO JHARKHAND\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "firayalal-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430209",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"5 MAIN ROAD NEAR RAILWAY BRIDGE RANCHI JHARKHAND\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-gobind-singh-public-school-dhanbad",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430210",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DHANBAD JHARKHAND\", PIN 826001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-blue-bells-school",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430211",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BAWAN BIGHA CASTAIRS TOWN B, DEOGHAR DEOGHAR JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "naman-vidya",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430217",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MASIPIRHI, HAZARIBAGH DISTT., JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "greater-triveni-public-school",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430218",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BAKSHI DIPA LOHARDAGA, JHARKHAND\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-gumla",
+   "facts": {
+    "city": {
+     "name": "Gumla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430219",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEEMTOLI(BEHIND POLICE LINE), LOHARDAGA ROAD, DISTT GUMLA, JHARKHAND\", PIN 835207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "l-a-garden-high-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430221",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GHAT ROAD, SAMLONG, RANCHI\", PIN 834010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aiwc-academy-of-execellence",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430223",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DIHING ROAD, OLD BARIDIH, JAMSHEDPUR, EAST SINGHBHUM, JHARKHAND\", PIN 831017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-egmont-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430225",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SASHI PATH, CANARY HILL ROAD, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramprasad-chandrabhan-saraswati-shishu-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430226",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR BAZAR SAMITI GOLA ROAD, RAMGARH CANTT, DIST - HAZARIBAG JHARKHAND - 829122\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "taurian-world-city",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430229",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KNOWLEDGE CITY, RANCHI - HATIA ROAD\", PIN 834003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "savitri-devi-d-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Jamtara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430230",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT/POST-JAMTARA\", PIN 815351."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-high-school-deoghar",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430231",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DEOGHAR, SATAR ROAD,DURGAPUR,DIST.DEOGHAR,JHARKHAND (814112)\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "elite-public-school",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430233",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHIANKI, MEDININAGAR\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chinmaya-vidyalaya-southpark",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430243",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SOUTH PARK, BISTUPUR,EAST SINGHBHUM\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-sec-vi",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430244",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"D.A.V. PUBLIC SCHOOL SEC-VI, BOKARO STEEL CITY - 827 006 (JHARKHAND)\", PIN 827006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-rangamatia",
+   "facts": {
+    "city": {
+     "name": "Sindri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430246",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RANGAMATIA, SINDRI DHANBAD\", PIN 828122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bnt-st-mary-s-school",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430247",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-augustine-high-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430250",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHAILESH SAH, FRIENDS COLONY, PUGMIL ROAD, HAZARIBAG,JHARKNAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-gurunank-vidalaya",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430252",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"STATION ROAD GIRIDIH\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-paul-s-school-3",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430253",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HURHURU HAZARIBAGH JAHRKHAND - 825301\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-r-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430254",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PUNDAG PO-PUNDAG,RANCHI-4\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mithila-academy-public-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430263",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 4E, B.S.CITY, BOKARO DISTT., JHARKHAND\", PIN 827004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-nageshwar-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430264",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL.- CHANDAGHASI, P.O.- TETARI, HATIA, P.S.- JAGGARNATHPUR, RANCHI-03.\", PIN 834003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dbms-kadma-high-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430266",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ROAD NO. 23,FARM AREA, KADMA\", PIN 831005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vikas-vidyalaya-10-2",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430270",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VIKASNAGAR, R.NO-15, JAWAHARNAGAR, GOBERHUSHI, JAMSHEDPUR\", PIN 831018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "national-public-school-new-area",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430272",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW AREA HAZARIBAGH,\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-viveka-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Chaibasa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430274",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHAIBASA, SINGHBHUM WEST, JHARKHAND\", PIN 833201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jusco-school-dispensary-road",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430275",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DISPENSARY ROAD, SOUTH PARK , BISTUPUR, DISTT EAST SINGHBHUM, JHARKHAND\", PIN 831001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angels-high-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430276",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARKAGAON ROAD, BLOCK- KATKAMDAG, SHANKARPUR, HAZARIBAG, PIN.-825301\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-johns-school-english-medium",
+   "facts": {
+    "city": {
+     "name": "Simdega",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430278",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT. PHARSABERA, P.O. KHUNTITOLI PS/DIST. SIMDEGA\", PIN 835223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montfort-school-hathiagonda",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430286",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HATHIAGONDA, KANKE ROAD, RANCHI-834008, JHARKHAND\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jusco-school-rankani-mandir",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430288",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR RANKANI MANDIR, ROAD NO -23 , KADMA\", PIN 831005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "symbiosis-public-school-barwadda",
+   "facts": {
+    "city": {
+     "name": "Dhanbad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430292",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARWADDA,NH-2 KALYANPUR,DHANBAD 826004 JHARKHAND\", PIN 826004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-land-school-2",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430294",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BY PASS ROAD, DALTONGANJ\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "skp-vidya-vihar",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430295",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOMPASS TOWN,B.DEOGHAR. JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-vikash-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430297",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOREYA ROAD, RANCHI\", PIN 834006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "blue-bells-english-high-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430300",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TURIA BERA BHILAI PAHARI, MANGO, JAMSHEDPUR\", PIN 831012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jack-and-jill-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430301",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KORRAH, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nazareth-school",
+   "facts": {
+    "city": {
+     "name": "Chatra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430303",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHATRA\", PIN 825401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-school-holy-cross-road",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430304",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HOLY CROSS ROAD, OPP. PTC GROUND HAZARIBAG\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rainbow-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430308",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHIRA CHAS , P.O. - JAMGORAIA, P.S. - CHAS , B.S.CITY\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "meridian-academy",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430315",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GUMO, WARD NO.1, JHUMRI TELAIYA\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-tv-tower-barkagaon-road",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430317",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR TV TOWER BARKAGAON ROAD, HAZARIBAG,825301\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-elden-heights-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430322",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT.- KATGHARA, SILWAR DISTT. - HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sacred-heart-school-dumka",
+   "facts": {
+    "city": {
+     "name": "Dumka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430327",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P.O. - DUMKA(H.P.O.)\", PIN 814101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "banshidhar-parasnath-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430329",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"B. P. DAV PUBLIC SCHOOL, PHARATHIA, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mishras-residential-public-school",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430332",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NANDAN PAHAR B.DEOGHAR\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kiran-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430334",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KOLDIHA,GIRIDIH\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-don-bosco-school-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430337",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHAPADANGA, PAKUR\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gaurav-awasiya-uchya-vidalay",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430344",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BANSHIIH,CHAS,\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rms-high-school-khutadih",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430345",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RMS HIGH SCHOOL, KHUTADIH,NEAR WIRELESS OFFICE, PO SONARI\", PIN 831011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lord-krishna-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430350",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT. AMRIT NAGAR, PO.KORRAH, DIST. HAZARIBAGH,STATE - JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430354",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR NEW POLICE LINE, MALIPARA, PAKUR - 816107\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-columbus-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430355",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MURGU RATU RANCHI\", PIN 834002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-child-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430359",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ITKI ROAD, BEHIND I.T.I (BUS STAND), HEHAL, RANCHI, JHARKHAND\", PIN 834005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-johns-school-ranchi",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430362",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KARBALA TANK ROAD, RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bethel-mission-school",
+   "facts": {
+    "city": {
+     "name": "Godda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430379",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO.-20, KADWA TOLA, GANGTA, GODDA\", PIN 814133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "netaji-subhas-public-school-gangadihbera",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430380",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GANGADIHBERA,PO-HALDIPOKHAR, PS-KOWALI, CIRCLE-POTKA, JAMSHEDPUR\", PIN 831002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-p-modi-international-high-school",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430383",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LARABAD,JHUMRI TELAIYA, KODERMA,JHARKHAND PIN-825409\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-hazaribagh-public-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430389",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT - HUPAD, PO - BANHA NAWADA, DIST - HAZARIBAGH, JHARKHAND - 825301\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mariams-school",
+   "facts": {
+    "city": {
+     "name": "Medininagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430393",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KOYAL RIVER SIDE, NAWATOLI,DALTONGANJ,PALAMAU, JHARKHAND\", PIN 822101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "berlin-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430397",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR HOLIDAY HOME, KANKE ROAD RANCHI 834008\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanctuary-for-educational-nurture",
+   "facts": {
+    "city": {
+     "name": "Lohardaga",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430403",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR MAHADEV ASHRAM, THANATOLI, LOHARDAGA\", PIN 835302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montfort-school-at-mariam-toli",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430404",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT-MARIAM TOLI, CANARY HILL ROAD, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rosebud-school",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430406",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HOUSING BOARD COLONY, DIPUGARHA, HAZARIBAG JHARKHAND\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "elite-public-school-pakur",
+   "facts": {
+    "city": {
+     "name": "Pakur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430601",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT - CHAKBALRAMPUR/DEVPUR, POST +P.S. + DIST- PAKUR ,JHARKHAND ,PIN CODE - 816107\", PIN 816107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-school-burdwan-compound-lalpur-and-xd",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430603",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BURDWAN COMPOUND LALPUR PO LALPUR RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jharkhand-public-school-salaidih",
+   "facts": {
+    "city": {
+     "name": "Koderma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430604",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SALAIDIH,INDERWA,KODERMA JHARKHAND, INDIA\", PIN 825410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ascot-international-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430607",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BHARAT MATA CHOWK HARMU ROAD RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-point-public-school-sahijana-road",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430609",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAHIJANA ROAD, NEAR HEAD POST OFFICE, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-oriental-foundation-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430612",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MOHANDIH (GHATIYALI), PINDRAJORA, BOKARO, JHARKHAND\", PIN 827010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fahima-academy",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430613",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAYEE BASTI, MANDAI, SADAR, HAZARIBAG, JHARKHANDD\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-giridih",
+   "facts": {
+    "city": {
+     "name": "Giridih",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430618",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HARSING RAIDIH, TUNDI ROAD,GIRIDIH 815301\", PIN 815301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "seven-stars-academy",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430625",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MANDAP TOLI NEAR ITI RANCHI\", PIN 834002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-prakash-jalan-saraswati-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430630",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AT- KUDLUM,P.O.- BALALONG, P.S.- NAGRI DIST-RANCHI(JHARKHAND) PIN- 834004\", PIN 834004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chhotanagpur-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430699",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL- GARI, RANCHI, JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-rajendra-prasad-public-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430701",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR STREET-17, BOKARO STEEL CITY\", PIN 827009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-7",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430702",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BEHIND SIDHUKANHU MAIDAN, RAMGARH\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chiranjeevee-concept-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430709",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KANKE, RANCHI\", PIN 834006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baridih-high-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430715",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BARIDIH, JAMSHEDPUR\", PIN 831017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-k-d-public-school",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430717",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"COURT ROAD, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sacred-heart-school-patratu",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430718",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PATRATU, RANCHI PATNA ROAD, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-tara-saraswati-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430721",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GAUSHALA ROAD, JHUMRI TELAIYA\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-niwas-high-school-garhwa",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430732",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARHWA, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "galaxy-public-school-narayanpur",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430735",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"P.O- NARAYANPUR, P.S- CHAS, BOKARO\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-swarnrekha-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430740",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HARMU, RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mjm-public-school",
+   "facts": {
+    "city": {
+     "name": "Chas",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430742",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DESWALIDIH, BIJULIA, CHAS\", PIN 827013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-public-school-nandan-pahar-road",
+   "facts": {
+    "city": {
+     "name": "Deoghar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430749",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NANDAN PAHAR ROAD, DEOGHAR, JHARKHAND\", PIN 814112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oxford-public-school-narayanpur",
+   "facts": {
+    "city": {
+     "name": "Garhwa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430752",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NARAYANPUR, TANDWA, GARHWA\", PIN 822114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gd-goenka-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430757",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DORANDA NAMKUM ROAD, NAMKUM BLOCK, NAMKUM , RANCHI\", PIN 834010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "central-academy-kanke-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430760",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KANKE ROAD, RANCHI, RANCHI\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "crown-public-school",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430761",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAI VIHAR COLONY, MADHUKAM, RANCHI\", PIN 834001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rameshwar-lal-khandelwal-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Chatra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430767",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MARWARI MUHALLA, CHATRA, CHATRA\", PIN 825401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kaundinya-public-school",
+   "facts": {
+    "city": {
+     "name": "Jhumri Telaiya",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430769",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SATPULIA ROAD, NEAR ASHRAM, JHUMRI TELAIYA\", PIN 825409."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ganga-prasad-budhia-saraswati-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430774",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW AREA MORABADI , NEAR ANTU CHOWK, RANCHI\", PIN 834008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "innovative-public-school",
+   "facts": {
+    "city": {
+     "name": "Bokaro Steel City",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430776",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NUTANDIH, KARHARIYA, BALIDIH, BOKARO\", PIN 827010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-shishu-vidya-mandir-malviya-marg",
+   "facts": {
+    "city": {
+     "name": "Hazaribagh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430785",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MALVIYA MARG, NEAR BIHARI GIRLS SCHOOL, HAZARIBAGH\", PIN 825301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "raj-international-school",
+   "facts": {
+    "city": {
+     "name": "Koderma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430796",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR FOREST OFFICE, KODERMA, P.O-KODERMA, P.S-KODERMA\", PIN 825410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "candy-floss-school",
+   "facts": {
+    "city": {
+     "name": "Jamshedpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3430798",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARUDBASA, NEAR ROCK GARDEN SOCIETY, TELCO COLONY, JAMSHEDPUR\", PIN 831004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-ramgarh-cantt-hazari-bagh",
+   "facts": {
+    "city": {
+     "name": "Ramgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3480003",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMGARH CANTT. DISTT.HAZARI BAGH JHARKHAND\", PIN 829122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-rameshwaram-lane-baraitu-road",
+   "facts": {
+    "city": {
+     "name": "Ranchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3480004",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMESHWARAM LANE BARAITU ROAD RANCHI JHARKHAND\", PIN 834009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eastern-railway-high-school-sahibganj",
+   "facts": {
+    "city": {
+     "name": "Sahibganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3480101",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NORTH COLONY , SAHIBGANJ\", PIN 816109."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -92,13 +92,14 @@ export function BoardingSchoolPage() {
               </div>
             ))}
           </dl>
-          {s.photos[0] && (
-            <a href={s.photos[0].sourceUrl} target="_blank" rel="noopener noreferrer" className="absolute bottom-2 right-3 text-[10px] text-white/70 hover:text-white">
-              Photo: {s.photos[0].credit} · {s.photos[0].license}
-            </a>
-          )}
         </div>
       </header>
+      {/* The header photo's credit sits under it, not over it; the Photos tab credits every photo. */}
+      {s.photos[0] && (
+        <p className="container-page pt-2 text-right text-[11px] text-slate-500">
+          Header photo: <a href={s.photos[0].sourceUrl} target="_blank" rel="noopener noreferrer" className="link">{s.photos[0].credit}</a> · {s.photos[0].license}
+        </p>
+      )}
 
       <div className="container-page py-6">
         <Tabs

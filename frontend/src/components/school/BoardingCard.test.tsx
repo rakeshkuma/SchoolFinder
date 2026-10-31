@@ -50,5 +50,7 @@ describe('BoardingCard', () => {
     const site = view.container.querySelector('a[href="https://school.example.org"]');
     expect(site?.getAttribute('rel')).toContain('noopener');
     expect(view.container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
+    expect(text).not.toContain('Example / CC BY-SA 4.0'); // no credit over the photo
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example / CC BY-SA 4.0');
   });
 });
