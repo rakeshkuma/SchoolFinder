@@ -8,6 +8,7 @@ import com.indiaschoolfinder.entity.Exam;
 import com.indiaschoolfinder.repository.ExamRepository;
 import com.indiaschoolfinder.repository.SchoolRepository;
 import com.indiaschoolfinder.service.LocationService;
+import com.indiaschoolfinder.service.RankingCatalogService;
 import com.indiaschoolfinder.service.SeoHeadService;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class SitemapController {
     static final int SCHOOLS_PER_FILE = 40_000;
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
-            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/published", "/rankings/compare", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
+            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
@@ -50,10 +51,13 @@ public class SitemapController {
     private final LocationService locationService;
     private final AppProperties properties;
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
+    private final RankingCatalogService rankingCatalog;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
-                             AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository) {
+                             AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
+                             RankingCatalogService rankingCatalog) {
         this.practiceSetRepository = practiceSetRepository;
+        this.rankingCatalog = rankingCatalog;
         this.schoolRepository = schoolRepository;
         this.examRepository = examRepository;
         this.locationService = locationService;
@@ -105,6 +109,11 @@ public class SitemapController {
         String base = base(request);
         StringBuilder xml = urlset();
         PAGES.forEach(p -> url(xml, base + p, null));
+        // Ranking pages with no verified data stay out, as they do in the menu.
+        var sections = rankingCatalog.sections();
+        if (sections.rankings()) url(xml, base + "/rankings/states", null);
+        if (sections.boards()) url(xml, base + "/rankings/boards", null);
+        if (sections.government() || sections.boarding()) url(xml, base + "/rankings/government-boarding", null);
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);

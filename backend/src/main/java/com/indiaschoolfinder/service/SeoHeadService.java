@@ -44,9 +44,9 @@ public class SeoHeadService {
      * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
      */
     public static final int MIN_SCHOOLS_TO_INDEX = 3;
-    static final String DEFAULT_TITLE = "India School Finder — Discover Schools. Compare Fees. Prepare for Success.";
-    static final String DEFAULT_DESCRIPTION = "Discover schools across India, compare official fees and track admission "
-            + "deadlines — every fact linked to its official source.";
+    static final String DEFAULT_TITLE = "India School Finder – Discover Schools, Rankings, Admissions & Exam Preparation";
+    static final String DEFAULT_DESCRIPTION = "Find schools across India, explore school rankings, compare boarding schools, "
+            + "understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources.";
 
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
     /** /schools/{state}/{place}: a short address that hands over to the state, district or town page; not a page itself. */
@@ -78,8 +78,16 @@ public class SeoHeadService {
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
-            page("/rankings", "School rankings and methodology", "Evidence-based school scores from verified "
-                    + "data only, with the full methodology. Not an official government ranking."),
+            page("/rankings", "India's top schools: Top 10, Top 20 and Top 100", "India's top schools in published rankings, with each publisher's "
+                    + "own rank and year. Search by school name, or filter by year and publisher. Not an official government ranking."),
+            page("/rankings/states", "State and city school rankings", "School rankings by state, city and district, for places with verified "
+                    + "published entries. State, city and national ranks are shown separately."),
+            page("/rankings/boards", "Board-wise school rankings", "Schools in published rankings by board. Where a publisher made no separate "
+                    + "board ranking, we say so and show each school's national rank."),
+            page("/rankings/government-boarding", "Government and boarding school rankings", "Government and boarding schools in published "
+                    + "rankings, with the rank each holds in the publisher's own list."),
+            page("/rankings/score", "India School Finder evidence score", "Our own score from source-linked evidence, kept apart from published "
+                    + "rankings. Not an official government ranking."),
             page("/admissions", "School admissions calendar", "Upcoming and open school admission cycles, "
                     + "each linked to the school's official notice."),
             page("/fees", "School fee calculator", "Estimate first-year and annual school costs from "
@@ -111,12 +119,8 @@ public class SeoHeadService {
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
                     + "aptitude, many in English and Hindi, with every answer explained — written by India School Finder, "
                     + "not official questions."),
-            page("/rankings/published", "Published school rankings", "Entries from school rankings published by "
-                    + "other organisations, each checked against the publisher's own page and shown apart from our own score."),
-            page("/rankings/compare", "Compare school rankings", "Compare schools side by side on India School "
-                    + "Finder's evidence-based score and on every published ranking we have checked."),
-            page("/rankings/methodology", "How school rankings are calculated", "The criteria, weights and evidence "
-                    + "rules behind India School Finder's school scores: only verified, source-linked evidence earns a rank."),
+            page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on India School Finder, their years, "
+                    + "how entries are verified, and how third-party rankings are presented."),
             page("/cities", "Schools by city", "Cities across India where India School Finder lists schools, with "
                     + "the number listed in each."),
             page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
@@ -243,7 +247,7 @@ public class SeoHeadService {
         } catch (ResourceNotFoundException e) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
-        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, null);
+        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? website(baseUrl) : null);
     }
 
     /** Practice sets are original India School Finder questions; the description says so, and the data is a free Quiz. */
@@ -454,6 +458,21 @@ public class SeoHeadService {
                 + ": eligibility, dates and syllabus from official notices.";
         return tags("School entrance exams in " + state.name() + " | " + SITE, description,
                 baseUrl + "/exams/state/" + state.slug(), null, own.isEmpty(), null);
+    }
+
+    /** The home page's structured data: the site and its school search. */
+    private static Map<String, Object> website(String baseUrl) {
+        Map<String, Object> search = new LinkedHashMap<>();
+        search.put("@type", "SearchAction");
+        search.put("target", baseUrl + "/schools?q={search_term_string}");
+        search.put("query-input", "required name=search_term_string");
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "WebSite");
+        data.put("name", SITE);
+        data.put("url", baseUrl + "/");
+        data.put("potentialAction", search);
+        return data;
     }
 
     private String tags(String title, String description, String canonical, String image, boolean noindex,

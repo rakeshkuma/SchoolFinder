@@ -12,7 +12,7 @@ const STAGES: SchoolStage[] = ['PRE_PRIMARY', 'PRIMARY', 'MIDDLE', 'SECONDARY', 
 export function ClassesTab({ school: s }: { school: SchoolDetail }) {
   const byStage = STAGES.map((stage) => ({ stage, classes: s.classesOffered.filter((c: SchoolClass) => c.stage === stage) }));
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
       <section className="card p-6">
         <h2 className="font-semibold">Classes offered</h2>
         {s.classesOffered.length === 0 ? (

@@ -27,3 +27,20 @@ curl -X POST "$API/admin/import/external-rankings?mode=ALL_OR_NOTHING" -H "Autho
 
 Imported entries are UNVERIFIED; an editor verifies each one under Admin → Published rankings (or
 `POST /admin/external-rankings/{id}/verify`) after checking it against the publisher's page.
+
+## Green Schools Programme, "Is Your School Green?" 2025-26
+
+| File | Contents |
+|---|---|
+| `gsp-2025-26-import.csv` | The 65 schools matched to a directory school, in the admin import format, with their rating |
+
+The programme's page lists 7,405 rated schools. A row was matched only when its name, state and district agreed with exactly one directory
+school, so most government schools with differently written names are left out. Coordinators' names are never recorded. A rating is not a rank.
+The site's terms page was empty when read on 2026-10-31 and its footer reads "Copyright 2026 Centre for Science and Environment".
+
+Import under Admin → Published rankings, then approve the import after checking it. Nothing is public before approval.
+
+## Sources not imported
+
+EducationWorld and Cfore lists are not recorded here: EducationWorld's disclaimer page forbids reproduction on another website, and Cfore
+reserves all rights. IIRF's terms also require written permission for reproduction. Load them through the admin import once the publisher agrees.

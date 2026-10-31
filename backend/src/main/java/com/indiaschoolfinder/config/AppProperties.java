@@ -20,6 +20,8 @@ public class AppProperties {
     private String timezone = "Asia/Kolkata";
     /** Public https address of the site (PUBLIC_SITE_URL), used for absolute URLs in sitemaps; blank = request host. */
     private String publicSiteUrl = "";
+    /** Where contact form messages are also emailed, when email is configured. They are always saved for staff. */
+    private String contactInbox = "";
     private final Cors cors = new Cors();
     private final Jwt jwt = new Jwt();
     private final Ranking ranking = new Ranking();

@@ -87,6 +87,9 @@ public class RateLimitFilter extends OncePerRequestFilter {
         if (path.matches("^/api/v1/practice-questions/[a-z0-9-]+/[a-z0-9-]+/reports$")) {
             return new Rule("question-report", config.getUpdateSubmissionsPerHour(), Duration.ofHours(1));
         }
+        if (path.equals("/api/v1/contact")) {
+            return new Rule("contact", config.getUpdateSubmissionsPerHour(), Duration.ofHours(1));
+        }
         if (path.startsWith("/api/v1/fees/")) {
             return new Rule("fees", config.getPublicWritesPerMinute(), Duration.ofMinutes(1));
         }

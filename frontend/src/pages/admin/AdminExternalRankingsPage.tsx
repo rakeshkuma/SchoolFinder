@@ -14,12 +14,12 @@ import type {
   SchoolSummary,
   VerificationStatus,
 } from '../../types/api';
-import { publisherKindLabel } from '../PublishedRankingsPage';
+import { publisherKindLabel } from '../../utils/rankingLists';
 
 const message = (e: unknown) => (e instanceof ApiError ? [e.message, ...e.fieldErrors.map((f) => `${f.field}: ${f.message}`)].join(' · ') : 'Something went wrong.');
 const today = () => new Date().toISOString().slice(0, 10);
 
-export const CSV_TEMPLATE = 'school_slug,publisher_code,ranking_name,ranking_year,category,scope,region,rank_position,score_text,sponsored,source_url,retrieved_date,notes';
+export const CSV_TEMPLATE = 'school_slug,publisher_code,ranking_name,ranking_year,category,scope,region,rank_position,state_rank,city_rank,score,max_score,rating,score_text,sponsored,source_url,retrieved_date,notes';
 
 function PublisherForm({ publisher, onSaved }: { publisher?: RankingPublisher; onSaved: (text: string) => void }) {
   const [v, setV] = useState({
@@ -143,7 +143,7 @@ function ImportCsv({ onDone }: { onDone: (text: string) => void }) {
   };
   return (
     <div className="space-y-2 text-sm">
-      <p className="text-xs text-slate-600">Columns: <code className="break-all">{CSV_TEMPLATE}</code>. Enter only entries you have seen on the publisher's page; do not paste whole lists from a paywalled or copyrighted source.</p>
+      <p className="text-xs text-slate-600">Columns: <code className="break-all">{CSV_TEMPLATE}</code>. A school can be given by school_slug, school_id, or school_name with state_code (matched only if exactly one school has that name there). Enter only entries you have seen on the publisher's page, and only where its terms allow reuse.</p>
       <div className="flex flex-wrap items-center gap-2">
         <input type="file" accept=".csv,text/csv" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
         <select className="input w-auto" aria-label="Mode" value={mode} onChange={(e) => setMode(e.target.value)}>
@@ -161,6 +161,47 @@ function ImportCsv({ onDone }: { onDone: (text: string) => void }) {
         </div>
       )}
     </div>
+  );
+}
+
+/** Each import, its row errors, and approval: imported entries stay hidden until an administrator approves them here. */
+function ImportJobs({ nonce, onDone }: { nonce: number; onDone: (text: string) => void }) {
+  const jobs = useApi(() => adminService.rankingImportJobs(), [nonce]);
+  const [error, setError] = useState<string | null>(null);
+  const approve = async (id: number, count: number) => {
+    const note = window.prompt(`Publish ${count} entries? Only do this after checking the import against the publisher's page. What did you check?`);
+    if (!note?.trim()) return;
+    try {
+      const r = await adminService.approveRankingImport(id, note.trim());
+      onDone(`${r.approved} entries approved and published.`);
+    } catch (e) {
+      setError(message(e));
+    }
+  };
+  const rows = jobs.data?.content ?? [];
+  return (
+    <section className="card space-y-3 p-5" aria-labelledby="import-jobs-h">
+      <h2 id="import-jobs-h" className="font-semibold">Imports <span className="text-xs font-normal text-slate-500">(administrators)</span></h2>
+      {error && <p role="alert" className="field-error">{error}</p>}
+      {rows.length === 0 ? <p className="text-sm text-slate-500">No imports yet.</p> : (
+        <ul className="divide-y divide-slate-100 text-sm">
+          {rows.map((j) => (
+            <li key={j.id} className="py-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span>{j.fileName ?? 'Import'} · {j.totalRows} rows · {j.created} new · {j.updated} changed · {j.errors.length} errors{j.committed ? '' : ' · nothing saved'}
+                  {j.approvedBy && <span className="text-slate-500"> · approved by {j.approvedBy}</span>}</span>
+                {j.awaitingApproval > 0 && <button type="button" className="btn-primary px-2 py-1 text-xs" onClick={() => approve(j.id, j.awaitingApproval)}>Approve {j.awaitingApproval}</button>}
+              </div>
+              {j.errors.length > 0 && (
+                <details className="mt-1 text-xs"><summary className="cursor-pointer text-slate-600">Error report</summary>
+                  <ul className="mt-1 max-h-40 list-disc overflow-auto pl-4 text-red-700">{j.errors.map((e, i) => <li key={i}>Row {e.row}, {e.field}: {e.message}</li>)}</ul>
+                </details>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 
@@ -195,7 +236,7 @@ export function AdminExternalRankingsPage() {
       <h1 className="text-2xl font-bold">Published rankings</h1>
       <p className="text-sm text-slate-600">
         Record a school's entry exactly as a publisher printed it, with the page it appears on. Entries are hidden until an editor opens that page and
-        marks the entry verified. Sponsored or featured listings are never shown as rankings. Public page: <Link className="link" to="/rankings/published">/rankings/published</Link>.
+        marks the entry verified. Sponsored or featured listings are never shown as rankings. Public page: <Link className="link" to="/rankings">/rankings</Link>.
       </p>
       {msg && <p role="status" className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">{msg}</p>}
 
@@ -253,6 +294,8 @@ export function AdminExternalRankingsPage() {
         <h2 className="font-semibold">Import entries from CSV <span className="text-xs font-normal text-slate-500">(administrators)</span></h2>
         <ImportCsv onDone={done} />
       </section>
+
+      <ImportJobs nonce={nonce} onDone={done} />
 
       <section className="card space-y-3 p-5">
         <h2 className="font-semibold">Publishers</h2>

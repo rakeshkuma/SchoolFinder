@@ -577,6 +577,14 @@ export interface ExternalRanking {
   sponsored: boolean;
   notes: string | null;
   lastVerifiedDate: string | null;
+  /** Each rank is the publisher's own for that area; a rank it did not print is null. */
+  nationalRank?: number | null;
+  stateRank?: number | null;
+  cityRank?: number | null;
+  score?: number | null;
+  maxScore?: number | null;
+  /** A rating band (GREEN, YELLOW, ORANGE, RED), which is not a rank. */
+  rating?: string | null;
 }
 
 export interface SchoolRankingDetail {

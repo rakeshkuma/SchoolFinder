@@ -8,51 +8,38 @@ import { savedSchools, useLocalList } from '../../hooks/usePersonal';
 import { AccountMenu, MobileAccountLinks } from './AccountMenu';
 import { Icon } from '../common/Icon';
 import { CompareBar } from '../school/CompareBar';
+import { CONTACT_EMAIL, CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER } from '../../content/site';
 
 const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
   {
-    title: 'Schools',
+    title: 'Discover Schools',
     links: [
-      { to: '/schools', label: 'Find schools' },
-      { to: '/states', label: 'Schools by state' },
-      { to: '/cities', label: 'Schools by city' },
-      { to: '/boarding', label: 'Boarding schools' },
-      { to: '/boards/CBSE', label: 'CBSE schools' },
-      { to: '/boards/CISCE', label: 'ICSE schools' },
-      { to: '/compare', label: 'Compare schools' },
-      { to: '/fees', label: 'School fees & calculator' },
+      { to: '/schools', label: 'Find Schools' },
+      { to: '/states', label: 'Schools by State' },
+      { to: '/cities', label: 'Schools by City' },
+      { to: '/boarding', label: 'Boarding Schools' },
+      { to: '/rankings', label: 'School Rankings' },
     ],
   },
   {
-    title: 'Rankings & admissions',
+    title: 'Exam Preparation',
     links: [
-      { to: '/rankings', label: 'School rankings' },
-      { to: '/rankings/methodology', label: 'How rankings work' },
-      { to: '/admissions/guide', label: 'Admission guide' },
-      { to: '/admissions', label: 'Admission dates' },
-      { to: '/admissions/notifications', label: 'Admission notifications' },
-      { to: '/reviews', label: 'Parent reviews' },
-    ],
-  },
-  {
-    title: 'Exam preparation',
-    links: [
-      { to: '/exams', label: 'School entrance exams' },
-      { to: '/exams/practice', label: 'Mock tests & practice' },
-      { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz' },
-      { to: '/exams/resources', label: 'Previous year papers & resources' },
-      { to: '/exams/practice/progress', label: 'My progress' },
+      { to: '/exams', label: 'Entrance Exams' },
+      { to: '/exams/practice/class10-maths-1', label: 'Class 10 Preparation' },
+      { to: '/exams/practice/class12-maths-1', label: 'Class 12 Preparation' },
+      { to: '/exams/practice', label: 'Mock Tests' },
+      { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily Quiz' },
+      { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous Year Papers' },
+      { to: '/exams/leaderboard', label: 'Leaderboard' },
     ],
   },
   {
     title: 'About',
     links: [
-      { to: '/about', label: 'About us' },
-      { to: '/contact', label: 'Contact us' },
-      { to: '/privacy', label: 'Privacy policy' },
-      { to: '/terms', label: 'Terms and conditions' },
-      { to: '/disclaimer', label: 'Disclaimer' },
-      { to: '/admin', label: 'Administrator login' },
+      { to: '/about', label: 'About India School Finder' },
+      { to: '/contact', label: 'Contact Us' },
+      { to: '/contact?topic=LISTING', label: 'Submit School Information' },
+      { to: '/contact?topic=CORRECTION', label: 'Report Incorrect Information' },
     ],
   },
 ];
@@ -218,24 +205,27 @@ export function Layout() {
       <BackToTop />
 
       <footer className="mt-20 bg-ink text-slate-300">
-        <div className="h-1 bg-gradient-to-r from-brand-600 via-violet-600 to-accent-400" aria-hidden />
-        <div className="container-page grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
-          <div>
-            <Logo light full />
-            <p className="mt-4 max-w-xs leading-relaxed text-slate-400">
-              Fees, admission dates, facilities and locations for schools across India — every fact linked to the official
-              page it came from — and free, original practice tests for school and entrance exams.
-            </p>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1.5 text-xs text-slate-300 ring-1 ring-white/10">
-              <Icon name="shield" className="h-4 w-4 text-accent-300" /> No invented data. Unknown stays unknown.
-            </p>
-          </div>
+        <div className="container-page grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
           {FOOTER.map((c) => <FooterColumn key={c.title} title={c.title} links={c.links} />)}
+          <div>
+            <p className="font-display text-sm font-semibold text-white">Creator</p>
+            <p className="mt-4 text-slate-300">Created by {CREATOR_NAME}</p>
+            <p className="mt-2 leading-relaxed text-slate-400">{CREATOR_INSTITUTE}</p>
+            <p className="mt-2 text-slate-400">Email: <a href={`mailto:${CONTACT_EMAIL}`} className="break-all text-slate-300 underline-offset-2 hover:text-white hover:underline">{CONTACT_EMAIL}</a></p>
+          </div>
         </div>
         <div className="border-t border-white/10">
-          <div className="container-page flex flex-col gap-2 py-5 text-xs text-slate-400 sm:flex-row sm:justify-between">
-            <span>© {new Date().getFullYear()} India School Finder. An independent directory — not affiliated with or endorsed by any school or government body. Rankings here are not official rankings.</span>
-            <span>Map data © OpenStreetMap contributors</span>
+          <div className="container-page py-5 text-xs leading-relaxed text-slate-400">
+            <p className="max-w-4xl">{DISCLAIMER} Not affiliated with or endorsed by any school, board, ranking publisher or government body.</p>
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+              <span>© {new Date().getFullYear()} India School Finder</span>
+              <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white">Terms and Conditions</Link>
+              <Link to="/disclaimer" className="hover:text-white">Disclaimer</Link>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a>
+              <Link to="/admin" className="hover:text-white">Administrator login</Link>
+              <span>Map data © OpenStreetMap contributors</span>
+            </div>
           </div>
         </div>
       </footer>

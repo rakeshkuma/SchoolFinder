@@ -77,6 +77,24 @@ public class RankingSource {
 
     private LocalDate lastVerifiedDate;
 
+    /** The published list this entry belongs to. */
+    private Long editionId;
+
+    /** Each rank is the publisher's own for that area; one is never derived from another. */
+    private Integer nationalRank;
+    private Integer stateRank;
+    private Integer cityRank;
+
+    /** Only when the publisher prints a score. */
+    private java.math.BigDecimal score;
+    private java.math.BigDecimal maxScore;
+
+    /** A rating band (GREEN, YELLOW, ORANGE, RED), which is not a rank. */
+    @Column(length = 10)
+    private String rating;
+
+    private Long importJobId;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant createdAt;

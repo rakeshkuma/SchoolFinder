@@ -87,7 +87,7 @@ function ImageCard({ school, image, isMain, onChange }: { school: SchoolDetail; 
   return (
     <li className="card overflow-hidden">
       <a href={image.url} target="_blank" rel="noopener noreferrer">
-        <img src={image.thumbnailUrl ?? image.url} alt={image.altText} loading="lazy" className="h-40 w-full bg-slate-100 object-cover" />
+        <span className="school-image"><img src={image.thumbnailUrl ?? image.url} alt={image.altText} loading="lazy" /></span>
       </a>
       <div className="space-y-1 p-3 text-xs">
         <p className="flex flex-wrap gap-1">
@@ -222,7 +222,7 @@ function CandidateCard({ school, candidate, onAdded }: { school: SchoolDetail; c
 
   return (
     <li className="card overflow-hidden">
-      <img src={candidate.thumbnailUrl ?? candidate.imageUrl} alt={candidate.description ?? candidate.title} loading="lazy" className="h-36 w-full bg-slate-100 object-cover" />
+      <span className="school-image"><img src={candidate.thumbnailUrl ?? candidate.imageUrl} alt={candidate.description ?? candidate.title} loading="lazy" /></span>
       <div className="space-y-1 p-3 text-xs">
         <p className="font-medium text-slate-800">{candidate.title.replace(/^File:/, '')}</p>
         <p className="text-slate-500">{candidate.source}{candidate.width && candidate.height ? ` · ${candidate.width}×${candidate.height}` : ''}</p>

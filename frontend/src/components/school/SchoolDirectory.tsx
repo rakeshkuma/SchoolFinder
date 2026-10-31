@@ -263,7 +263,7 @@ export function SchoolDirectory({ fixed = {} }: { fixed?: SchoolSearchParams }) 
         >
           {(page) =>
             view === 'split' ? (
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
                 <div className="space-y-4">
                   <div className={`grid gap-4 ${state.loading ? 'opacity-60' : ''}`}>
                     {page.content.map((s) => <SchoolCard key={s.id} school={s} />)}

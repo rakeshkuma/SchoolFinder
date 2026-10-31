@@ -5,8 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
 ARG VITE_API_BASE_URL=""
-ARG VITE_CONTACT_EMAIL=""
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL VITE_CONTACT_EMAIL=$VITE_CONTACT_EMAIL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 RUN npm run build
 
 # ---- Runtime stage: static files behind nginx, /api proxied to the backend ---------------------

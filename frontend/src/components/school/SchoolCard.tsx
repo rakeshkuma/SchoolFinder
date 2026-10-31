@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { SchoolSummary, SchoolType } from '../../types/api';
 import {
@@ -8,54 +7,9 @@ import { Stars } from '../common/Badges';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
 import { SaveButton } from './SaveButton';
+import { SchoolImage } from './SchoolImage';
 
-const PALETTES = [
-  ['#1d31a7', '#3b66f5'],
-  ['#0f766e', '#14b8a6'],
-  ['#7c2d12', '#ea580c'],
-  ['#4c1d95', '#8b5cf6'],
-  ['#155e75', '#0ea5e9'],
-  ['#831843', '#db2777'],
-  ['#14532d', '#22c55e'],
-  ['#1e293b', '#475569'],
-];
-
-function hash(text: string): number {
-  let h = 0;
-  for (let i = 0; i < text.length; i++) h = (h * 31 + text.charCodeAt(i)) >>> 0;
-  return h;
-}
-
-export function initials(name: string): string {
-  const words = name.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w) && !/^(the|of|and|pm|shri)$/i.test(w));
-  return words.slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '🏫';
-}
-
-/**
- * Generated cover used when no official or licensed photo exists — a deterministic colour per school
- * with its monogram. We never show stock or unrelated photos.
- */
-export function SchoolCover({ name, className = '', monogram = true }: { name: string; className?: string; monogram?: boolean }) {
-  const [from, to] = PALETTES[hash(name) % PALETTES.length];
-  return (
-    <div className={`relative h-full w-full overflow-hidden ${className}`} style={{ background: `linear-gradient(135deg, ${from}, ${to})` }}>
-      <svg className="absolute inset-0 h-full w-full opacity-[0.14]" aria-hidden>
-        <defs>
-          <pattern id={`p-${hash(name)}`} width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
-            <path d="M0 14h28" stroke="#fff" strokeWidth="1" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill={`url(#p-${hash(name)})`} />
-      </svg>
-      <div className="absolute -bottom-10 -right-6 h-36 w-36 rounded-full bg-white/10" aria-hidden />
-      {monogram && (
-        <span className="absolute bottom-3 left-4 font-display text-4xl font-extrabold tracking-tight text-white/95 drop-shadow-sm">
-          {initials(name)}
-        </span>
-      )}
-    </div>
-  );
-}
+export { initials, photoCreditTitle, SchoolCover } from './SchoolImage';
 
 const typeTone: Record<SchoolType, string> = {
   GOVERNMENT: 'bg-emerald-50 text-emerald-700 ring-emerald-600/15',
@@ -76,33 +30,6 @@ export function classRange(from: string | null, to: string | null): string | nul
 
 const MAX_FACILITIES = 3;
 
-/**
- * Photo, or the generated cover if there is no photo or it fails to load. The photo credit is not drawn over the
- * picture: the card links to the profile, which shows credit, licence and source under the photo (a link to the
- * attribution satisfies CC BY / BY-SA), and the credit is the image's tooltip. An illustration keeps its label.
- */
-function CardImage({ school }: { school: SchoolSummary }) {
-  const [failed, setFailed] = useState(false);
-  if (!school.coverImageUrl || failed) return <SchoolCover name={school.name} />;
-  return (
-    <>
-      <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)}
-        title={photoCreditTitle(school)} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-      {school.coverImageIllustrative && school.coverImageCredit && (
-        <span className="absolute bottom-1 right-1 max-w-[85%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-          {school.coverImageCredit}
-        </span>
-      )}
-    </>
-  );
-}
-
-/** Tooltip credit for a card photo ("Photo: Author / Wikimedia Commons"); an illustration's note is shown instead. */
-export function photoCreditTitle(s: Pick<SchoolSummary, 'coverImageCredit' | 'coverImageIllustrative'>): string | undefined {
-  if (!s.coverImageCredit) return undefined;
-  return s.coverImageIllustrative ? s.coverImageCredit : `Photo: ${s.coverImageCredit}`;
-}
-
 export function SchoolCard({ school }: { school: SchoolSummary }) {
   const board = school.boardCode === 'CISCE' ? 'ICSE/ISC' : school.boardCode === 'STATE' ? 'State board' : school.boardCode;
   const place = schoolPlace(school);
@@ -112,8 +39,8 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
   const checkedOn = verified ? school.lastVerifiedDate : school.sourceRetrievedDate;
   return (
     <article className="card card-hover group flex flex-col overflow-hidden">
-      <Link to={`/schools/${school.slug}`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
-        <CardImage school={school} />
+      <Link to={`/schools/${school.slug}`} className="block" tabIndex={-1} aria-hidden>
+        <SchoolImage src={school.coverImageUrl} name={school.name} credit={school.coverImageCredit} illustrative={school.coverImageIllustrative}>
         {school.logoUrl && (
           <img src={school.logoUrl} alt="" loading="lazy" className="absolute bottom-3 left-3 h-12 w-12 rounded-xl bg-white object-contain p-1 shadow-md" />
         )}
@@ -126,6 +53,7 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
           )}
           {school.admissionStatus === 'UPCOMING' && <span className="chip bg-accent-400 font-semibold text-ink shadow-sm">Admissions soon</span>}
         </div>
+        </SchoolImage>
       </Link>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-[17px] font-bold leading-snug">

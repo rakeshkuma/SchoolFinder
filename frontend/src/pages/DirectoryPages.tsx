@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
 import { ShareLinkButtons } from '../components/common/ShareLinkButtons';
@@ -11,7 +12,7 @@ import { SchoolsHero, type HeroSearch } from '../components/school/SchoolsHero';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, savedSchools, useLocalList, type SchoolRef } from '../hooks/usePersonal';
-import { locationService, referenceService, schoolService } from '../services/publicApi';
+import { locationService, rankingService, referenceService, schoolService, type RankingPlaces } from '../services/publicApi';
 import type { IndianState, SchoolNetwork, SchoolSearchParams, SchoolStage, SchoolType } from '../types/api';
 import { networkLabel, placeLine, stageLabel } from '../utils/format';
 import { NotFoundPage } from './InfoPages';
@@ -135,6 +136,10 @@ export function StatePage() {
   const state = useApi(() => locationService.state(stateSlug), [stateSlug]);
   const districts = useApi(() => locationService.districts(stateSlug), [stateSlug]);
   const cities = useApi(() => locationService.cities(stateSlug), [stateSlug]);
+  const ranked = useApi(async () => {
+    const list = (await rankingService.editions()).find((e) => !e.ratingBased);
+    return list ? rankingService.places(list.id) : null;
+  }, []);
   const district = districtSlug ? districts.data?.find((d) => d.slug === districtSlug) : undefined;
   const city = citySlug ? cities.data?.find((c) => c.slug === citySlug) : undefined;
   const name = state.data?.name;
@@ -164,12 +169,7 @@ export function StatePage() {
                 {city.schoolCount.toLocaleString('en-IN')} school{city.schoolCount === 1 ? '' : 's'} listed in {city.name}, each linked to an official source.
               </span>
             )}
-            {s.schoolCount > 0 && (
-              <Link className="mt-2 inline-flex items-center gap-1 text-accent-300 underline-offset-2 hover:underline"
-                to={`/rankings?${new URLSearchParams({ state: s.code, ...(district ? { district: district.slug } : {}), ...(city ? { city: city.name } : {}) })}`}>
-                Rankings in {city?.name ?? district?.name ?? s.name} →
-              </Link>
-            )}
+            {ranked.data && <PlaceRankingsLink places={ranked.data} state={s} district={district} city={city} />}
             {s.schoolCount === 0 && (
               <span className="mt-2 block">No schools in {s.name} are listed yet. We add schools only when they can be linked to an official source.</span>
             )}
@@ -278,7 +278,7 @@ export function SavedSchoolsPage() {
     <>
       <PageHeader eyebrow="Your shortlist" title="Saved schools"
         subtitle="Saved and recently viewed schools are stored only in this browser. Clearing your browser data removes them." />
-      <div className="container-page grid gap-10 py-8 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container-page grid grid-cols-1 gap-10 py-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="min-w-0 space-y-10">
         {sharedIds.length > 0 && (
           <section aria-labelledby="shared-heading" className="rounded-2xl bg-brand-50/60 p-5 ring-1 ring-brand-100">
@@ -366,23 +366,6 @@ function SchoolRefRow({ school, onRemove, action }: { school: SchoolRef; onRemov
         </button>
       )}
     </li>
-  );
-}
-
-function Breadcrumbs({ items }: { items: { to: string; label: string }[] }) {
-  return (
-    <nav aria-label="Breadcrumb" className="text-sm">
-      <ol className="flex flex-wrap items-center gap-1.5">
-        {items.map((item, i) => (
-          <li key={item.to} className="flex items-center gap-1.5">
-            {i > 0 && <span aria-hidden className="text-slate-500">/</span>}
-            {i === items.length - 1
-              ? <span aria-current="page" className="text-slate-200">{item.label}</span>
-              : <Link to={item.to} className="text-slate-300 hover:text-white">{item.label}</Link>}
-          </li>
-        ))}
-      </ol>
-    </nav>
   );
 }
 
@@ -494,5 +477,20 @@ export function StagePage() {
       </PageHeader>
       <div className="container-page py-8"><SchoolDirectory key={value} fixed={{ stage: value }} /></div>
     </>
+  );
+}
+
+/** Links to the rankings of a place only when that place has entries, keeping the state when a city or district has none. */
+function PlaceRankingsLink({ places, state, district, city }: {
+  places: RankingPlaces; state: { code: string; name: string }; district?: { slug: string; name: string } | null; city?: { name: string } | null;
+}) {
+  if (!places.states.some((x) => x.code === state.code)) return null;
+  const rankedCity = city && places.cities.some((c) => c.stateCode === state.code && c.name === city.name) ? city : undefined;
+  const rankedDistrict = district && places.districts.some((d) => d.slug === district.slug) ? district : undefined;
+  const query = new URLSearchParams({ state: state.code, ...(rankedDistrict ? { district: rankedDistrict.slug } : {}), ...(rankedCity ? { city: rankedCity.name } : {}) });
+  return (
+    <Link className="mt-2 inline-flex items-center gap-1 text-accent-300 underline-offset-2 hover:underline" to={`/rankings/states?${query}`}>
+      Rankings in {rankedCity?.name ?? rankedDistrict?.name ?? state.name} →
+    </Link>
   );
 }

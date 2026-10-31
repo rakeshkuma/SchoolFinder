@@ -66,7 +66,7 @@ export function ExamFinderPage() {
         subtitle="Answer up to four questions. We match them against the facts recorded for each exam and explain why each one may fit — the official notice always has the final word on eligibility.">
         <ExamToolLinks current="finder" />
       </PageHeader>
-      <div className="container-page grid gap-8 py-10 lg:grid-cols-[380px_1fr]">
+      <div className="container-page grid grid-cols-1 gap-8 py-10 lg:grid-cols-[380px_1fr]">
         <form onSubmit={show} className="card h-fit space-y-5 p-5 text-sm" aria-label="Exam finder questions">
           <fieldset>
             <legend className="font-semibold text-ink">1. Which class is your child in now?</legend>
@@ -305,7 +305,7 @@ export function ExamCalendarPage() {
           {() => savedButMissing ? (
             <div className="card p-6 text-sm text-slate-600">You haven&apos;t saved any exams yet. Use “Save” on an exam to follow its dates here.</div>
           ) : (
-            <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
               {view === 'month' ? (
                 <MonthGrid events={allEvents} today={today} month={params.get('month') ?? (events[0]?.date.startsOn.slice(0, 7) ?? today.slice(0, 7))}
                   onMonth={(m) => set('month', m)} />

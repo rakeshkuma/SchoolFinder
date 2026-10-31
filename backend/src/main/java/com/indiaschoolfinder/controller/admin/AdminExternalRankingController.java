@@ -48,9 +48,11 @@ import java.util.List;
 public class AdminExternalRankingController {
 
     private final ExternalRankingService service;
+    private final com.indiaschoolfinder.service.RankingCatalogService catalog;
 
-    public AdminExternalRankingController(ExternalRankingService service) {
+    public AdminExternalRankingController(ExternalRankingService service, com.indiaschoolfinder.service.RankingCatalogService catalog) {
         this.service = service;
+        this.catalog = catalog;
     }
 
     @GetMapping("/ranking-publishers")
@@ -120,7 +122,21 @@ public class AdminExternalRankingController {
             throw new BusinessValidationException("file", "only .csv files are accepted");
         }
         try (InputStream in = file.getInputStream()) {
-            return service.importCsv(in, mode);
+            return service.importCsv(in, mode, file.getOriginalFilename());
         }
+    }
+
+    @Operation(summary = "Ranking imports with their row errors and how many entries await approval (ADMIN)")
+    @GetMapping("/import/ranking-jobs")
+    public com.indiaschoolfinder.dto.common.PageResponse<com.indiaschoolfinder.dto.ranking.RankingCatalogDtos.ImportJob> jobs(
+            @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
+        return catalog.jobs(Math.max(0, page), Math.min(100, Math.max(1, size)));
+    }
+
+    @Operation(summary = "Approve every unverified entry of an import, after checking it (ADMIN)")
+    @PostMapping("/import/ranking-jobs/{id}/approve")
+    public java.util.Map<String, Integer> approve(@PathVariable long id,
+                                                  @Valid @RequestBody com.indiaschoolfinder.dto.ranking.RankingCatalogDtos.ApproveRequest request) {
+        return java.util.Map.of("approved", catalog.approve(id, request.note()));
     }
 }

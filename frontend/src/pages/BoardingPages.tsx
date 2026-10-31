@@ -4,6 +4,7 @@ import { Icon } from '../components/common/Icon';
 import { EmptyState } from '../components/common/States';
 import { Tabs } from '../components/common/Tabs';
 import { SchoolCover } from '../components/school/SchoolCard';
+import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolMap } from '../components/school/SchoolMap';
 import { boardingBySlug, type BoardingSchool } from '../content/boarding';
 import { ExamStatusBadge } from '../components/exam/ExamCard';
@@ -108,7 +109,7 @@ export function BoardingSchoolPage() {
           tabs={[
             {
               id: 'overview', label: 'Overview', content: (
-                <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
                   <Section title="About">
                     <Bullets items={s.highlights} />
                     <dl className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -174,7 +175,7 @@ export function BoardingSchoolPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   {s.photos.map((p) => (
                     <figure key={p.url} className="card overflow-hidden">
-                      <img src={p.url} alt={`${p.caption} — ${s.name}`} loading="lazy" className="h-64 w-full object-cover" />
+                      <SchoolImage src={p.url} name={s.name} alt={`${p.caption} — ${s.name}`} zoom={false} />
                       <figcaption className="p-3 text-xs text-slate-600">
                         {p.caption} · <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="link">{p.credit}</a> · {p.license}
                       </figcaption>

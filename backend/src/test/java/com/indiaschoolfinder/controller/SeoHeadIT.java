@@ -67,7 +67,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .doesNotContain("noindex");
         assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
         assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | India School Finder</title>");
-        assertThat(head("/rankings/published")).contains("href=\"http://localhost/rankings/published\"");
+        assertThat(head("/rankings/government-boarding")).contains("href=\"http://localhost/rankings/government-boarding\"");
         mockMvc.perform(get("/sitemaps/pages.xml"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
                         .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/practice/netarhat-maths-1</loc>")));
@@ -93,7 +93,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/boards/CISCE\"");
         assertThat(head("/find")).contains("<title>Find the right school for your child | India School Finder</title>")
                 .contains("href=\"http://localhost/find\"");
-        assertThat(head("/")).contains("<title>India School Finder — Discover Schools.");
+        assertThat(head("/")).contains("<title>India School Finder – Discover Schools, Rankings").contains("SearchAction");
         assertThat(head("/some/unknown/page")).doesNotContain("canonical");
     }
 }

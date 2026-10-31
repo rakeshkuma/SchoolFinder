@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Admission, ExternalRanking, Facility, SchoolDetail, SchoolRankingDetail } from '../types/api';
-import { ACADEMIC_FACILITIES, admissionProcess, dayOrBoarding, facilityNames, hostelDetails, publishedPositions } from './compare';
+import { ACADEMIC_FACILITIES, admissionProcess, dayOrBoarding, facilityNames, hostelDetails, listPosition, rankingLists } from './compare';
 
 const school = (over: Partial<SchoolDetail>): SchoolDetail => ({ boarding: null, hasHostel: null, ...over }) as SchoolDetail;
 const facility = (name: string, category: Facility['category'], available: boolean | null): Facility =>
@@ -35,7 +35,12 @@ describe('school comparison rows', () => {
       verificationStatus: 'VERIFIED', publisherCode: 'EDUCATIONWORLD', scope: 'NATIONAL', region: null, sponsored: false, notes: null,
       lastVerifiedDate: null, ...over });
     const r = { externalRankings: [e({}), e({ id: 2, sponsored: true, rankPosition: null }), e({ id: 3, verificationStatus: 'UNVERIFIED' })] } as SchoolRankingDetail;
-    expect(publishedPositions(r).map((p) => p.text)).toEqual(['#3 · EducationWorld India School Rankings 2025-26 (Day schools)']);
-    expect(publishedPositions(undefined)).toEqual([]);
+    const [title, ...others] = rankingLists([r, undefined]);
+    expect(others).toEqual([]);
+    expect(title).toContain('EducationWorld');
+    expect(listPosition(r, title)).toBe('#3');
+    expect(listPosition(undefined, title)).toBe('Not listed');
+    const places = { externalRankings: [e({ nationalRank: 40, stateRank: 2, cityRank: 1 })] } as SchoolRankingDetail;
+    expect(listPosition(places, title)).toBe('National #40 · State #2 · City #1');
   });
 });

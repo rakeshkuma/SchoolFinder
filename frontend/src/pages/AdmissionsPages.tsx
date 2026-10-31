@@ -29,7 +29,7 @@ export function AdmissionsPage() {
       >
         <Link to="/admissions/notifications" className="link text-sm">See all admission notifications →</Link>
       </PageHeader>
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[1fr_340px]">
+      <div className="container-page grid grid-cols-1 gap-8 py-8 lg:grid-cols-[1fr_340px]">
         <div className="min-w-0 space-y-10">
         <section aria-label="Upcoming and open admission cycles">
           <AsyncContent
@@ -123,7 +123,7 @@ export function AdmissionGuidePage() {
           ))}
         </nav>
       </PageHeader>
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[1fr_320px]">
+      <div className="container-page grid grid-cols-1 gap-8 py-8 lg:grid-cols-[1fr_320px]">
         <div className="prose-page min-w-0 space-y-10 text-[15px] leading-relaxed text-slate-700">
           <GuideSection id="process" title="Admission process">
             <ol className="list-decimal space-y-2 pl-5">

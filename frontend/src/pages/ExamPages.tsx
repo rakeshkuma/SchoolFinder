@@ -111,7 +111,7 @@ export function ExamsPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 via-brand-700 to-violet-700 text-white">
         <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-600/30 blur-3xl" aria-hidden />
-        <div className="container-page relative grid gap-8 py-10 lg:grid-cols-[1fr_340px] lg:items-center lg:py-12">
+        <div className="container-page relative grid grid-cols-1 gap-8 py-10 lg:grid-cols-[1fr_340px] lg:items-center lg:py-12">
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">School entrance exams in India</p>
             <h1 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
@@ -341,7 +341,7 @@ export function ExamsPage() {
         </section>
 
         {/* Key dates */}
-        <section aria-labelledby="dates-heading" className="grid gap-6 lg:grid-cols-[1fr_380px]">
+        <section aria-labelledby="dates-heading" className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
           <div className="min-w-0">
             <h2 id="dates-heading" className="font-display text-xl font-bold text-ink">Key dates ahead</h2>
             <p className="mt-1 text-sm text-slate-600">Confirmed dates from the latest official notices, soonest first.</p>
@@ -577,7 +577,7 @@ export function ExamGuidePage() {
           tabs={[
             {
               id: 'overview', label: 'Overview & eligibility', content: (
-                <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_340px]">
                   <section className="card p-6">
                     <h2 className="font-display text-lg font-bold text-ink">Who can apply</h2>
                     <ul className="mt-3 space-y-2 text-sm text-slate-700">
@@ -638,7 +638,7 @@ export function ExamGuidePage() {
             },
             {
               id: 'dates', label: 'Dates & notices', content: (
-                <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
                   <section className="card overflow-hidden">
                     <h2 className="border-b border-slate-100 p-5 font-display text-lg font-bold text-ink">Important dates</h2>
                     {cycles.map((cycle) => {

@@ -25,5 +25,12 @@ public record ExternalRankingDto(
         String region,
         boolean sponsored,
         String notes,
-        LocalDate lastVerifiedDate) {
+        LocalDate lastVerifiedDate,
+        Long editionId,
+        Integer nationalRank,
+        Integer stateRank,
+        Integer cityRank,
+        java.math.BigDecimal score,
+        java.math.BigDecimal maxScore,
+        String rating) {
 }

@@ -16,6 +16,10 @@ import com.indiaschoolfinder.enums.RankingScope;
 import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.exception.BusinessValidationException;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
+import com.indiaschoolfinder.entity.RankingEdition;
+import com.indiaschoolfinder.entity.RankingImportJob;
+import com.indiaschoolfinder.repository.RankingEditionRepository;
+import com.indiaschoolfinder.repository.RankingImportJobRepository;
 import com.indiaschoolfinder.repository.RankingPublisherRepository;
 import com.indiaschoolfinder.repository.RankingSourceRepository;
 import com.indiaschoolfinder.repository.SchoolRepository;
@@ -31,6 +35,8 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +45,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -73,10 +82,16 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
     private final AuditService auditService;
     private final Validator validator;
     private final Clock clock;
+    private final RankingEditionRepository editions;
+    private final RankingImportJobRepository jobs;
+    private final JdbcTemplate jdbc;
 
     public ExternalRankingServiceImpl(RankingSourceRepository sourceRepository, RankingPublisherRepository publisherRepository,
                                       SchoolRepository schoolRepository, AuditService auditService, Validator validator,
-                                      Clock clock) {
+                                      Clock clock, RankingEditionRepository editions, RankingImportJobRepository jobs, JdbcTemplate jdbc) {
+        this.editions = editions;
+        this.jobs = jobs;
+        this.jdbc = jdbc;
         this.sourceRepository = sourceRepository;
         this.publisherRepository = publisherRepository;
         this.schoolRepository = schoolRepository;
@@ -247,6 +262,9 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         if (note != null) {
             source.setNotes(note);
         }
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        jdbc.update("INSERT INTO ranking_verification (ranking_source_id, status, note, verified_by, verified_at) VALUES (?, ?, ?, ?, ?)",
+                id, r.status().name(), note, auth == null ? "system" : auth.getName(), Timestamp.from(Instant.now(clock)));
         auditService.record("EXTERNAL_RANKING_VERIFIED", "RANKING_SOURCE", id,
                 "status=" + r.status() + (note == null ? "" : ", note=" + note));
         return toDto(sourceRepository.saveAndFlush(source), publisherCodes());
@@ -269,7 +287,7 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
 
     @Override
     @Transactional
-    public CsvImportResult importCsv(InputStream csv, CsvImportService.Mode mode) {
+    public CsvImportResult importCsv(InputStream csv, CsvImportService.Mode mode, String fileName) {
         List<Row> valid = new ArrayList<>();
         List<RowError> errors = new ArrayList<>();
         Set<String> seen = new HashSet<>();
@@ -282,7 +300,9 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
                 headers.put(h.replace("﻿", "").trim().toLowerCase(Locale.ROOT), h);
             }
             List<String> missing = new ArrayList<>();
-            if (!headers.containsKey("school_slug") && !headers.containsKey("school_id")) missing.add("school_slug or school_id");
+            if (!headers.containsKey("school_slug") && !headers.containsKey("school_id") && !headers.containsKey("school_name")) {
+                missing.add("school_slug, school_id, or school_name with state_code");
+            }
             if (!headers.containsKey("publisher_code") && !headers.containsKey("publisher")) missing.add("publisher_code or publisher");
             for (String required : List.of("ranking_name", "ranking_year", "source_url", "retrieved_date")) {
                 if (!headers.containsKey(required)) missing.add(required);
@@ -322,6 +342,17 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         int created = 0;
         int updated = 0;
         int unchanged = 0;
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        RankingImportJob job = new RankingImportJob();
+        job.setFileName(fileName);
+        job.setMode(mode.name());
+        job.setTotalRows(total);
+        job.setValidRows(valid.size());
+        job.setCommitted(commit);
+        job.setErrors(new ArrayList<>(errors));
+        job.setImportedBy(auth == null ? "system" : auth.getName());
+        job.setImportedAt(Instant.now(clock));
+        job = jobs.saveAndFlush(job);
         if (commit) {
             for (Row row : valid) {
                 ExternalRankingRequest r = row.request();
@@ -338,16 +369,20 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
                     }
                     s.setVerificationStatus(VerificationStatus.UNVERIFIED);
                     s.setLastVerifiedDate(null);
+                    s.setImportJobId(job.getId());
                     updated++;
                 } else {
                     RankingSource s = new RankingSource();
                     s.setSchoolId(row.schoolId());
                     apply(s, r, row.publisher());
+                    s.setImportJobId(job.getId());
                     sourceRepository.save(s);
                     created++;
                 }
             }
             sourceRepository.flush();
+            job.setCreated(created);
+            job.setUpdated(updated);
             auditService.record("EXTERNAL_RANKING_IMPORT", "RANKING_SOURCE", null, "mode=" + mode + ", rows=" + total
                     + ", created=" + created + ", updated=" + updated + ", unchanged=" + unchanged + ", errors=" + errors.size());
         }
@@ -374,8 +409,15 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         } else if (slug != null) {
             schoolId = schoolRepository.findBySlug(slug.toLowerCase(Locale.ROOT)).map(School::getId).orElse(null);
             if (schoolId == null) errors.add(new RowError(row, "school_slug", "no school with slug " + slug));
+        } else if (cell.apply("school_name") != null && cell.apply("state_code") != null) {
+            // Matched only when exactly one school has this name in the state; a guess would attach a rank to the wrong school.
+            List<Long> matches = jdbc.queryForList("SELECT id FROM school WHERE lower(name) = lower(?) AND state_code = ?", Long.class,
+                    cell.apply("school_name"), cell.apply("state_code").toUpperCase(Locale.ROOT));
+            if (matches.size() == 1) schoolId = matches.get(0);
+            else errors.add(new RowError(row, "school_name", matches.isEmpty() ? "no school with this name in the state"
+                    : matches.size() + " schools share this name in the state; give school_slug"));
         } else {
-            errors.add(new RowError(row, "school_slug", "give school_slug or school_id"));
+            errors.add(new RowError(row, "school_slug", "give school_slug, school_id, or school_name with state_code"));
         }
         Integer rank = null;
         String rankText = cell.apply("rank_position");
@@ -409,12 +451,35 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
                 : Set.of("true", "yes", "y", "1").contains(sponsoredText.toLowerCase(Locale.ROOT));
         ExternalRankingRequest request = new ExternalRankingRequest(cell.apply("publisher"), cell.apply("ranking_name"),
                 cell.apply("ranking_year"), cell.apply("category"), rank, cell.apply("score_text"), cell.apply("source_url"),
-                retrieved, cell.apply("publisher_code"), scope, cell.apply("region"), sponsored, cell.apply("notes"));
+                retrieved, cell.apply("publisher_code"), scope, cell.apply("region"), sponsored, cell.apply("notes"),
+                wholeNumber(cell.apply("state_rank"), "state_rank", row, errors), wholeNumber(cell.apply("city_rank"), "city_rank", row, errors),
+                decimal(cell.apply("score"), "score", row, errors), decimal(cell.apply("max_score"), "max_score", row, errors),
+                cell.apply("rating") == null ? null : cell.apply("rating").toUpperCase(Locale.ROOT));
         for (ConstraintViolation<ExternalRankingRequest> v : validator.validate(request)) {
             errors.add(new RowError(row, column(v.getPropertyPath().toString()), v.getMessage()));
         }
         Optional<RankingPublisher> publisher = checkEntry(request, row, errors);
         return new Row(schoolId, clean(request), publisher);
+    }
+
+    private static Integer wholeNumber(String text, String column, int row, List<RowError> errors) {
+        if (text == null) return null;
+        try {
+            return Integer.parseInt(text.replaceFirst("^#", ""));
+        } catch (NumberFormatException e) {
+            errors.add(new RowError(row, column, "must be a whole number"));
+            return null;
+        }
+    }
+
+    private static BigDecimal decimal(String text, String column, int row, List<RowError> errors) {
+        if (text == null) return null;
+        try {
+            return new BigDecimal(text);
+        } catch (NumberFormatException e) {
+            errors.add(new RowError(row, column, "must be a number, as printed by the publisher"));
+            return null;
+        }
     }
 
     // --- rules -----------------------------------------------------------------------------------
@@ -442,8 +507,8 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
             errors.add(new RowError(row, "rankPosition", "a sponsored or featured listing is not a ranking position; leave it empty"));
         }
         boolean rankAlreadyReported = errors.stream().anyMatch(e -> e.row() == row && e.field().equals("rank_position"));
-        if (r.rankPosition() == null && InputSanitizer.clean(r.scoreText()) == null && !Boolean.TRUE.equals(r.sponsored())
-                && !rankAlreadyReported) {
+        if (r.rankPosition() == null && InputSanitizer.clean(r.scoreText()) == null && r.rating() == null && r.score() == null
+                && !Boolean.TRUE.equals(r.sponsored()) && !rankAlreadyReported) {
             errors.add(new RowError(row, "rankPosition", "give the rank position or the publisher's wording in scoreText"));
         }
         if (r.retrievedDate() != null && r.retrievedDate().isAfter(LocalDate.now(clock))) {
@@ -459,7 +524,7 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         }
     }
 
-    private static void apply(RankingSource s, ExternalRankingRequest r, Optional<RankingPublisher> publisher) {
+    private void apply(RankingSource s, ExternalRankingRequest r, Optional<RankingPublisher> publisher) {
         s.setPublisherId(publisher.map(RankingPublisher::getId).orElse(null));
         s.setPublisher(publisherName(r, publisher));
         s.setRankingName(InputSanitizer.clean(r.rankingName()));
@@ -473,6 +538,32 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         s.setRegion(s.getScope() == RankingScope.NATIONAL ? null : InputSanitizer.clean(r.region()));
         s.setSponsored(Boolean.TRUE.equals(r.sponsored()));
         s.setNotes(InputSanitizer.clean(r.notes()));
+        s.setNationalRank(s.getScope() == RankingScope.NATIONAL ? r.rankPosition() : null);
+        s.setStateRank(s.getScope() == RankingScope.STATE ? r.rankPosition() : r.stateRank());
+        s.setCityRank(s.getScope() == RankingScope.CITY ? r.rankPosition() : r.cityRank());
+        s.setScore(r.score());
+        s.setMaxScore(r.maxScore());
+        s.setRating(r.rating());
+        publisher.ifPresent(p -> s.setEditionId(edition(s, p).getId()));
+    }
+
+    /** The published list an entry belongs to, recorded the first time an entry names it. */
+    private RankingEdition edition(RankingSource s, RankingPublisher publisher) {
+        return editions.findEdition(publisher.getId(), s.getRankingName(), s.getRankingYear(), Objects.requireNonNullElse(s.getCategory(), ""),
+                s.getScope(), Objects.requireNonNullElse(s.getRegion(), "")).orElseGet(() -> {
+            RankingEdition e = new RankingEdition();
+            e.setPublisherId(publisher.getId());
+            e.setName(s.getRankingName());
+            e.setRankingYear(s.getRankingYear());
+            e.setCategoryLabel(s.getCategory());
+            e.setScope(s.getScope());
+            e.setRegion(s.getRegion());
+            e.setSourceUrl(s.getSourceUrl());
+            e.setCollectedOn(s.getRetrievedDate());
+            e.setMaxScore(s.getMaxScore());
+            e.setRatingBased(s.getRating() != null);
+            return editions.saveAndFlush(e);
+        });
     }
 
     private static String publisherName(ExternalRankingRequest r, Optional<RankingPublisher> publisher) {
@@ -484,14 +575,15 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
                 r.rankingYear(), InputSanitizer.clean(r.category()), r.rankPosition(), InputSanitizer.clean(r.scoreText()),
                 r.sourceUrl(), r.retrievedDate(), r.publisherCode(), r.scope(),
                 r.scope() == null || r.scope() == RankingScope.NATIONAL ? null : InputSanitizer.clean(r.region()),
-                r.sponsored(), InputSanitizer.clean(r.notes()));
+                r.sponsored(), InputSanitizer.clean(r.notes()), r.stateRank(), r.cityRank(), r.score(), r.maxScore(), r.rating());
     }
 
     /** Everything an editor checks; a re-import that changes none of it keeps the verification. */
     private static String fingerprint(RankingSource s) {
         return String.join("|", Objects.toString(s.getRankPosition()), Objects.toString(s.getScoreText()), s.getSourceUrl(),
                 s.getScope().name(), Objects.toString(s.getRegion()), String.valueOf(s.isSponsored()),
-                Objects.toString(s.getPublisherId()), Objects.toString(s.getNotes()));
+                Objects.toString(s.getPublisherId()), Objects.toString(s.getNotes()), Objects.toString(s.getStateRank()), Objects.toString(s.getCityRank()),
+                Objects.toString(s.getScore()), Objects.toString(s.getMaxScore()), Objects.toString(s.getRating()));
     }
 
     /** "rankPosition" → "rank_position" so CSV errors name the column. */
@@ -511,7 +603,8 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         return new ExternalRankingDto(s.getId(), s.getPublisher(), s.getRankingName(), s.getRankingYear(), s.getCategory(),
                 s.getRankPosition(), s.getScoreText(), s.getSourceUrl(), s.getRetrievedDate(), s.getVerificationStatus(),
                 s.getPublisherId() == null ? null : codes.get(s.getPublisherId()), s.getScope(), s.getRegion(),
-                s.isSponsored(), s.getNotes(), s.getLastVerifiedDate());
+                s.isSponsored(), s.getNotes(), s.getLastVerifiedDate(), s.getEditionId(), s.getNationalRank(), s.getStateRank(), s.getCityRank(),
+                s.getScore(), s.getMaxScore(), s.getRating());
     }
 
     private static RankingPublisherDto toDto(RankingPublisher p, long verifiedEntries) {

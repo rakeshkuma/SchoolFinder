@@ -59,7 +59,6 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_CONTACT_EMAIL: ${VITE_CONTACT_EMAIL:-}
     depends_on:
       - backend
     ports:

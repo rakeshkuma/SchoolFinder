@@ -132,7 +132,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/dev/**").permitAll() // exists only when the dev outbox is enabled
                         .requestMatchers(HttpMethod.POST, "/api/v1/schools/*/reviews").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/schools/*/update-submissions").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/fees/calculate").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/fees/calculate", "/api/v1/contact").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/practice-sets/*/score", "/api/v1/practice-sessions/score",
                                 "/api/v1/practice-questions/*/*/reports").permitAll()
                         // Guest participants authenticate with their X-Participant-Token header (checked in the service).

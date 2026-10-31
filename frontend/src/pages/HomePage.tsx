@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AdmissionStatusBadge } from '../components/common/Badges';
 import { Icon, type IconName } from '../components/common/Icon';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
-import { photoCreditTitle, SchoolCard } from '../components/school/SchoolCard';
+import { SchoolCard } from '../components/school/SchoolCard';
+import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolSearchForm, type HeroSearch } from '../components/school/SchoolsHero';
+import { DISCLAIMER, INFORMATION_KINDS } from '../content/site';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useInView } from '../hooks/useInView';
@@ -15,27 +17,87 @@ import {
 import type { SchoolSummary } from '../types/api';
 import { admissionCategoryLabel, daysUntil, formatDate, formatMoneyCompact } from '../utils/format';
 
-/** Colourful category tiles: each opens the matching directory. */
-const CATEGORIES: { to: string; title: string; text: string; icon: IconName; tone: string }[] = [
-  { to: '/boards/CBSE', title: 'CBSE schools', text: 'Central Board of Secondary Education', icon: 'book', tone: 'from-brand-600 to-brand-400' },
-  { to: '/boards/CISCE', title: 'ICSE schools', text: 'ICSE and ISC (CISCE) schools', icon: 'graduation', tone: 'from-violet-600 to-violet-400' },
-  { to: '/type/private-aided/international', title: 'International schools', text: 'IB, Cambridge and international curricula', icon: 'globe', tone: 'from-teal-600 to-teal-400' },
-  { to: '/type/government', title: 'Government schools', text: 'Central, state and local-body schools', icon: 'shield', tone: 'from-emerald-600 to-emerald-400' },
-  { to: '/type/private-aided/private', title: 'Private schools', text: 'Private unaided schools', icon: 'building', tone: 'from-accent-600 to-accent-400' },
-  { to: '/boarding', title: 'Boarding schools', text: 'Residential and hostel schools', icon: 'home', tone: 'from-rose-600 to-rose-400' },
+/** What a visitor can do here, each opening the page that does it. */
+const SERVICES: { to: string; title: string; icon: IconName }[] = [
+  { to: '/schools', title: 'Discover schools', icon: 'search' },
+  { to: '/compare', title: 'Compare schools', icon: 'scale' },
+  { to: '/rankings', title: 'Explore rankings', icon: 'trophy' },
+  { to: '/boarding', title: 'Boarding schools', icon: 'home' },
+  { to: '/admissions/guide', title: 'Admissions and fees', icon: 'calendar' },
+  { to: '/exams', title: 'Entrance exams', icon: 'graduation' },
+  { to: '/exams/practice', title: 'Mock tests and daily quiz', icon: 'target' },
+  { to: '/exams/practice/progress', title: 'Progress and challenges', icon: 'chart' },
+];
+
+const CATEGORIES: { to: string; title: string }[] = [
+  { to: '/boards/CBSE', title: 'CBSE' },
+  { to: '/boards/CISCE', title: 'ICSE' },
+  { to: '/type/private-aided/international', title: 'International' },
+  { to: '/type/government', title: 'Government' },
+  { to: '/type/private-aided/private', title: 'Private' },
+  { to: '/boarding', title: 'Boarding' },
 ];
 
 /** States shown first on the home page; every other state and UT is one click away. */
-const HOME_STATES = ['DL', 'UP', 'BR', 'JH', 'HR', 'MH', 'KA', 'TN', 'RJ', 'WB'];
-const STATE_TONES = ['bg-brand-50 text-brand-700', 'bg-violet-50 text-violet-700', 'bg-accent-50 text-accent-700', 'bg-emerald-50 text-emerald-700', 'bg-rose-50 text-rose-700'];
+const HOME_STATES = ['BR', 'JH', 'UP', 'DL', 'MH', 'KA', 'RJ', 'WB', 'HR', 'TN'];
+const HOME_CITIES: [string, string][] = [
+  ['Buxar', 'BR'], ['Patna', 'BR'], ['Ara', 'BR'], ['Sasaram', 'BR'], ['Ranchi', 'JH'], ['Prayagraj', 'UP'], ['Noida', 'UP'], ['Delhi', 'DL'], ['Lucknow', 'UP'],
+];
 
-const EXAMS: { to: string; title: string; text: string; icon: IconName; tone: string }[] = [
-  { to: '/exams/jnvst', title: 'JNV entrance (JNVST)', text: 'Guide, pattern and mock tests for Class VI', icon: 'graduation', tone: 'bg-brand-600' },
-  { to: '/exams/aissee', title: 'Sainik School (AISSEE)', text: 'Class VI and IX practice by subject', icon: 'flag', tone: 'bg-emerald-600' },
-  { to: '/exams/practice/class10-maths-1', title: 'Class X Mathematics', text: 'Chapter-wise practice in English and Hindi', icon: 'book', tone: 'bg-violet-600' },
-  { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiad preparation', text: 'Original Olympiad-style questions', icon: 'trophy', tone: 'bg-accent-500' },
-  { to: '/exams/practice', title: 'Online mock tests', text: 'Timed tests with instant results', icon: 'clock', tone: 'bg-rose-600' },
-  { to: '/exams/practice/class12-maths-1', title: 'CBSE Class 12', text: 'Mathematics and Physics, chapter by chapter', icon: 'layers', tone: 'bg-teal-600' },
+interface PrepLink { to?: string; label: string; note?: string }
+
+/** Every link opens an existing page. An item with no page yet says so rather than pointing somewhere misleading. */
+const PREP_GROUPS: { title: string; icon: IconName; links: PrepLink[] }[] = [
+  {
+    title: 'Entrance exam preparation', icon: 'graduation', links: [
+      { to: '/exams/netarhat', label: 'Netarhat Awasiya Vidyalaya – Class VI' },
+      { to: '/exams/jnvst', label: 'JNVST – Jawahar Navodaya Vidyalaya entrance' },
+      { to: '/exams/aissee', label: 'AISSEE – Sainik School entrance' },
+      { to: '/exams', label: 'Other entrance examinations' },
+    ],
+  },
+  {
+    title: 'School exam preparation', icon: 'book', links: [
+      { to: '/exams/practice/class10-maths-1', label: 'Class 10 Mathematics' },
+      { label: 'Class 10 English', note: 'Not available yet' },
+      { label: 'Class 10 Hindi', note: 'Not available yet' },
+      { to: '/exams/practice/class12-maths-1', label: 'Class 12 Mathematics' },
+      { to: '/exams/practice/class12-physics-1', label: 'Class 12 Physics' },
+      { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation' },
+    ],
+  },
+  {
+    title: 'Government and competitive exams', icon: 'layers', links: [
+      { to: '/exams/practice?category=COMPETITIVE', label: 'Competitive exam practice' },
+      { to: '/exams/practice/competitive-aptitude-1', label: 'Aptitude practice set' },
+    ],
+  },
+  {
+    title: 'Practice and learning', icon: 'target', links: [
+      { to: '/exams/practice', label: 'Mock tests' },
+      { to: '/exams/practice/session?mode=QUICK', label: 'Practice questions' },
+      { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz – 10 new questions every day' },
+      { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous year papers' },
+      { to: '/exams/practice/progress', label: 'My progress' },
+    ],
+  },
+  {
+    title: 'Student leaderboard and challenges', icon: 'trophy', links: [
+      { to: '/exams/leaderboard', label: 'All India leaderboard' },
+      { to: '/exams/leaderboard', label: 'State-wise leaderboard' },
+      { to: '/exams/leaderboard?exam=jnvst', label: 'Exam-wise leaderboard' },
+      { to: '/exams/challenges', label: 'Daily and weekly challenges' },
+      { to: '/exams/achievements', label: 'Student achievements' },
+    ],
+  },
+];
+
+const STEPS: { title: string; text: string; icon: IconName }[] = [
+  { title: 'Discover schools', text: 'Search by name or place, or browse by state, city and board.', icon: 'search' },
+  { title: 'Compare', text: 'Set facilities, fees and locations side by side.', icon: 'scale' },
+  { title: 'Check rankings and admissions', text: 'See who published each ranking, and open and upcoming admissions.', icon: 'calendar' },
+  { title: 'Prepare for entrance exams', text: 'Read the exam guide, pattern and official papers.', icon: 'graduation' },
+  { title: 'Practise and track progress', text: 'Take tests and the daily quiz, and see what to work on next.', icon: 'chart' },
 ];
 
 // The charts library (~110 KB compressed) arrives after the page's first paint, only for the fee section.
@@ -50,22 +112,27 @@ export function HomePage() {
   const schools = useApi(() => schoolService.search({ sortBy: 'recommended', size: 100 }), []);
   const upcoming = useApi(() => admissionService.upcoming(0, 6), []);
   const featured = useApi(() => schoolService.featured(undefined, 8), []);
-  const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 6 }), []);
+  const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 3 }), []);
   const ranked = useApi(() => rankingService.top(5), []);
+  const published = useApi(() => rankingService.external({ publisher: 'IIRF', size: 5 }), []);
   const bank = useApi(() => practiceService.bank(), []);
   const states = useApi(() => locationService.states(), []);
+  const cities = useApi(() => locationService.citiesAcrossIndia(), []);
   const recent = useLocalList(recentSchools);
 
   const onSearch = (s: HeroSearch) => {
     const p = new URLSearchParams();
-    (['q', 'state', 'city'] as const).forEach((k) => { if (s[k]) p.set(k, s[k]!); });
+    if (s.q) p.set('q', s.q);
     navigate(`/schools${p.size ? `?${p}` : ''}#directory`);
   };
   const photos = (featured.data ?? []).filter((s) => s.coverImageUrl).slice(0, 4);
   const homeStates = HOME_STATES.map((c) => states.data?.find((s) => s.code === c)).filter((s): s is NonNullable<typeof s> => !!s);
+  const homeCities = HOME_CITIES.map(([name, state]) => cities.data?.find((c) => c.name === name && c.stateCode === state))
+    .filter((c): c is NonNullable<typeof c> => !!c && c.schoolCount > 0);
   const otherStates = (states.data ?? []).filter((s) => !HOME_STATES.includes(s.code) && s.schoolCount > 0).length;
-  const all = schools.data?.content ?? [];
-  const feeData = all
+  const list = published.data?.content ?? [];
+  const source = list[0]?.entry;
+  const feeData = (schools.data?.content ?? [])
     .filter((s) => s.annualFeeFrom !== null)
     .map((s) => ({
       name: s.name.replace(/ School\b/, '').replace(/^PM SHRI /, ''),
@@ -77,48 +144,34 @@ export function HomePage() {
 
   return (
     <>
-      {/* 1. Hero: light and colourful, with real (credited) school photographs. */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-violet-50">
-        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl" aria-hidden />
-        <div className="absolute -right-24 top-1/3 h-96 w-96 rounded-full bg-violet-200/50 blur-3xl" aria-hidden />
-        <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-accent-200/40 blur-3xl" aria-hidden />
-        <div className="container-page relative grid items-center gap-10 py-14 lg:grid-cols-[1.15fr_1fr] lg:py-20">
+      <section className="border-b border-slate-200 bg-white">
+        <div className="container-page grid grid-cols-1 items-center gap-10 py-12 lg:grid-cols-[1.1fr_1fr] lg:py-16">
           <div className="animate-fade-up min-w-0">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 shadow-card ring-1 ring-brand-100">
-              <Icon name="sparkle" className="h-3.5 w-3.5 text-accent-500" /> Schools · Fees · Admissions · Exam preparation
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-6xl">
-              Find the Perfect School for{' '}
-              <span className="bg-gradient-to-r from-brand-600 via-violet-600 to-accent-500 bg-clip-text text-transparent">Your Child</span>
+            <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl">
+              Find the Right School. Build a Brighter Future.
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
-              Explore thousands of schools across India. Compare fees, facilities, rankings and admissions in one place.
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-600">
+              Discover, compare and explore thousands of schools across India. Get school rankings, admission information, boarding
+              school details and exam preparation resources in one place.
             </p>
-            <div className="mt-8"><SchoolSearchForm onSearch={onSearch} withBoard={false} submitLabel="Search Schools" idPrefix="home" stacked /></div>
-            <div className="mt-4 flex flex-wrap gap-2 text-sm">
-              <Link to="/find" className="chip bg-white px-3 py-1.5 font-semibold text-brand-700 shadow-card ring-1 ring-brand-100 hover:bg-brand-50">
-                <Icon name="sparkle" className="h-4 w-4" /> Help me choose
-              </Link>
-              <Link to="/nearby" className="chip bg-white px-3 py-1.5 font-semibold text-slate-700 shadow-card ring-1 ring-slate-200 hover:bg-slate-50">
-                <Icon name="pin" className="h-4 w-4" /> Schools near me
-              </Link>
+            <div className="mt-6"><SchoolSearchForm onSearch={onSearch} withBoard={false} submitLabel="Search" idPrefix="home" single /></div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link to="/schools" className="btn-primary">Explore Schools</Link>
+              <Link to="/rankings" className="btn-secondary">Explore Rankings</Link>
+              <Link to="/exams" className="btn-secondary">Exam Preparation</Link>
             </div>
             {stats.data && (
-              <dl className="mt-8 grid max-w-xl grid-cols-3 gap-4">
-                {([
-                  ['Schools listed', stats.data.activeSchools, 'text-brand-700'],
-                  ['States & UTs', stats.data.statesCovered, 'text-violet-700'],
-                  ['Districts', stats.data.districtsCovered, 'text-accent-600'],
-                ] as const).map(([label, value, tone]) => (
-                  <div key={label} className="rounded-2xl bg-white/80 p-3 shadow-card ring-1 ring-slate-100">
-                    <dd className={`font-display text-2xl font-extrabold tabular-nums ${tone}`}>{value.toLocaleString('en-IN')}</dd>
+              <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
+                {([['Schools listed', stats.data.activeSchools], ['States and UTs', stats.data.statesCovered], ['Districts', stats.data.districtsCovered]] as const).map(([label, value]) => (
+                  <div key={label}>
+                    <dd className="font-display text-2xl font-bold tabular-nums text-ink">{value.toLocaleString('en-IN')}</dd>
                     <dt className="text-xs font-medium text-slate-500">{label}</dt>
                   </div>
                 ))}
               </dl>
             )}
           </div>
-          {photos.length >= 2 && <PhotoMosaic schools={photos} />}
+          {photos.length >= 2 && <HeroPhotos schools={photos} />}
         </div>
       </section>
 
@@ -143,64 +196,184 @@ export function HomePage() {
         </section>
       )}
 
-      {/* 2. Categories */}
-      <Section eyebrow="Explore" title="Explore schools by category" id="categories">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
-            <Link key={c.to} to={c.to} className="group relative overflow-hidden rounded-3xl bg-white p-5 shadow-card ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-lift">
-              <span className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${c.tone} text-white shadow-md`}>
-                <Icon name={c.icon} className="h-6 w-6" />
-              </span>
-              <span className="mt-4 block font-display text-lg font-bold text-ink">{c.title}</span>
-              <span className="mt-1 block text-sm text-slate-600">{c.text}</span>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
-                Explore <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </span>
-              <span className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${c.tone} opacity-10`} aria-hidden />
-            </Link>
+      <nav className="container-page pt-10" aria-label="What you can do here">
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-1 lg:grid-cols-4">
+          {SERVICES.map((s) => (
+            <li key={s.to}>
+              <Link to={s.to} className="group flex items-center gap-3 rounded-xl px-2 py-2.5 font-semibold text-ink hover:bg-white">
+                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brand-600" />
+                <span className="min-w-0 text-sm">{s.title}</span>
+              </Link>
+            </li>
           ))}
+        </ul>
+      </nav>
+
+      <Section eyebrow="Schools" title="Discover Schools Across India" id="states"
+        action={<Link to="/states" className="btn-secondary">All states and UTs <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
+        <ul className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+          {homeStates.map((s) => (
+            <li key={s.code}>
+              <Link to={`/states/${s.slug}`} className="card card-hover block p-4">
+                <span className="block truncate font-display font-bold text-ink">{s.name}</span>
+                <span className="block text-sm text-slate-500">{s.schoolCount.toLocaleString('en-IN')} schools</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        {homeCities.length > 0 && (
+          <div className="mt-6">
+            <h3 className="text-sm font-semibold text-slate-700">Popular cities</h3>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {homeCities.map((c) => (
+                <li key={c.slug}>
+                  <Link to={`/states/${c.stateSlug}/city/${c.slug}`} className="chip border border-slate-200 bg-white px-3 py-1.5 text-sm text-ink hover:border-brand-300">
+                    {c.name} <span className="text-slate-500">{c.schoolCount.toLocaleString('en-IN')}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
+          <span>By type:</span>
+          {CATEGORIES.map((c) => <Link key={c.to} to={c.to} className="link">{c.title}</Link>)}
+          {otherStates > 0 && <span>· {otherStates} more states and UTs: <Link to="/states" className="link">see all</Link> or <Link to="/cities" className="link">browse by city</Link></span>}
         </div>
       </Section>
 
-      {/* 3. Schools with real photographs. These are not a ranking, so the heading does not call them "top". */}
-      <Section eyebrow="Featured" title="Featured schools across India" id="featured"
-        note="Schools whose photographs are public domain, openly licensed or used with permission. This is not a ranking."
-        action={<Link to="/schools" className="btn-secondary rounded-full">View all schools <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
-        <AsyncContent state={featured} loading={<SkeletonCards count={4} />} isEmpty={(d) => d.length === 0}
-          empty={<EmptyState title="No featured schools yet." />}>
-          {(list) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{list.slice(0, 8).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
-        </AsyncContent>
-      </Section>
+      <Band>
+        <SectionHead eyebrow="Featured" title="Featured schools" id="featured"
+          note="Schools with photographs that are public domain, openly licensed or used with permission. This is not a ranking."
+          action={<Link to="/schools" className="btn-secondary">View all schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+        <div className="mt-6">
+          <AsyncContent state={featured} loading={<SkeletonCards count={4} />} isEmpty={(d) => d.length === 0}
+            empty={<EmptyState title="No featured schools yet." />}>
+            {(rows) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{rows.slice(0, 4).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
+          </AsyncContent>
+        </div>
+      </Band>
 
-      {/* 4. States */}
-      <section className="bg-white py-14">
-        <div className="container-page">
-          <SectionHead eyebrow="States & union territories" title="Explore schools by state" id="states"
-            action={<Link to="/states" className="btn-secondary rounded-full">All states &amp; UTs <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {homeStates.map((s, i) => (
-              <li key={s.code}>
-                <Link to={`/states/${s.slug}`} className="card card-hover flex items-center gap-3 p-4">
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-display text-sm font-extrabold ${STATE_TONES[i % STATE_TONES.length]}`}>{s.code}</span>
-                  <span className="min-w-0">
-                    <span className="block truncate font-display font-bold text-ink">{s.name}</span>
-                    <span className="block text-xs text-slate-500">{s.schoolCount.toLocaleString('en-IN')} schools</span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          {otherStates > 0 && (
-            <p className="mt-4 text-sm text-slate-600">
-              Plus schools in {otherStates} more states and union territories — <Link to="/states" className="link">see all</Link> or <Link to="/cities" className="link">browse by city</Link>.
+      <Section eyebrow="Rankings" title="Explore India's Top-Ranked Schools" id="rankings"
+        action={<Link to="/rankings" className="btn-primary">Explore All Rankings <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
+          <section className="card p-5" aria-labelledby="published-ranking-heading">
+            {source ? (
+              <>
+                <p className="eyebrow">{source.rankingYear} · Published by {source.publisherCode}</p>
+                <h3 id="published-ranking-heading" className="mt-1 font-display text-lg font-bold text-ink">{source.rankingName}</h3>
+                <ol className="mt-3 divide-y divide-slate-100">
+                  {list.map((r) => (
+                    <li key={r.entry.id}>
+                      <Link to={r.schoolSlug ? `/schools/${r.schoolSlug}?tab=ranking` : '/rankings'} className="flex items-center gap-3 py-2.5 hover:text-brand-700">
+                        <span className="w-8 shrink-0 text-center font-display font-bold tabular-nums text-brand-700">{r.entry.rankPosition}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate font-semibold text-ink">{r.schoolName}</span>
+                          <span className="block truncate text-xs text-slate-500">{r.city}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-3 text-xs text-slate-500">
+                  Rank numbers are {source.publisherCode}&apos;s own, for schools matched to our directory. This is a third-party ranking, not
+                  India School Finder&apos;s. <Link to="/rankings/methodology#sources" className="link">Source and method</Link>
+                  {' · '}<Link to="/rankings" className="link">Full table</Link>
+                </p>
+              </>
+            ) : <p id="published-ranking-heading" className="text-sm text-slate-600">No published ranking has been verified yet.</p>}
+          </section>
+          <section className="card flex flex-col p-5" aria-labelledby="own-ranking-heading">
+            <h3 id="own-ranking-heading" className="font-display text-lg font-bold text-ink">India School Finder score</h3>
+            <p className="mt-1 text-sm text-slate-600">
+              Our own score from source-linked evidence, kept apart from published rankings. Only verified evidence earns a rank, and it is
+              not an official government ranking.
             </p>
-          )}
+            <AsyncContent state={ranked} isEmpty={(d) => d.length === 0}
+              empty={<p className="mt-3 text-sm text-slate-600">No school has enough verified evidence for a rank yet.</p>}>
+              {(rows) => (
+                <ol className="mt-3 divide-y divide-slate-100">
+                  {rows.map((r, i) => (
+                    <li key={r.schoolId}>
+                      <Link to={`/schools/${r.slug}?tab=ranking`} className="flex items-center gap-3 py-2 hover:text-brand-700">
+                        <span className="w-6 shrink-0 text-center font-bold tabular-nums text-brand-700">{r.scopePosition ?? i + 1}</span>
+                        <span className="min-w-0 flex-1 truncate font-medium text-ink">{r.schoolName}</span>
+                        <span className="text-sm font-bold tabular-nums text-ink">{r.totalScore.toFixed(1)}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </AsyncContent>
+            <ul className="mt-auto space-y-1.5 pt-4 text-sm">
+              <li><Link to="/rankings/score" className="link">See our evidence score →</Link></li>
+              <li><Link to="/rankings/states" className="link">Rankings by state and city →</Link></li>
+              <li><Link to="/rankings/government-boarding?tab=boarding" className="link">Boarding school rankings →</Link></li>
+              <li><Link to="/rankings/methodology" className="link">How scores are calculated →</Link></li>
+            </ul>
+          </section>
         </div>
-      </section>
+      </Section>
 
-      {/* Admissions open (real cycles from official notices) */}
+      <Band>
+        <SectionHead eyebrow="Exam preparation" title="Prepare for Your Dream School and Exams" id="exams"
+          note="Practise smarter with entrance exam preparation, mock tests, daily quizzes, previous-year papers and performance tracking."
+          action={<Link to="/exams" className="btn-primary">Explore Exam Preparation <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {PREP_GROUPS.map((g) => (
+            <section key={g.title} className="card p-5" aria-label={g.title}>
+              <h3 className="flex items-center gap-2 font-display font-bold text-ink">
+                <Icon name={g.icon} className="h-5 w-5 shrink-0 text-brand-600" /> {g.title}
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                {g.links.map((l) => (
+                  <li key={l.label}>
+                    {l.to ? <Link to={l.to} className="text-slate-700 hover:text-brand-700 hover:underline">{l.label}</Link>
+                      : <span className="text-slate-500">{l.label} <span className="text-xs">({l.note})</span></span>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+          <section className="flex flex-col justify-center rounded-2xl bg-brand-700 p-5 text-white" aria-label="About the questions">
+            <p className="font-display text-3xl font-bold tabular-nums text-white">{bank.data ? bank.data.questionCount.toLocaleString('en-IN') : '–'}</p>
+            <p className="mt-1 text-sm text-blue-50">
+              original practice questions with explanations. Free, with no sign-in needed. Written by India School Finder; they are not official
+              or previous-year questions.
+            </p>
+          </section>
+        </div>
+      </Band>
+
+      <Section eyebrow="How it works" title="How India School Finder Helps You" id="how">
+        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {STEPS.map((s, i) => (
+            <li key={s.title}>
+              <span className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-700"><Icon name={s.icon} className="h-5 w-5" /></span>
+                <span className="text-xs font-semibold text-slate-500">Step {i + 1}</span>
+              </span>
+              <h3 className="mt-3 font-display font-bold text-ink">{s.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Band>
+        <SectionHead eyebrow="Boarding" title="Boarding schools to explore" id="boarding"
+          note="Residential schools with documented boarding. Ordered by how well each is documented; this is not a ranking."
+          action={<Link to="/boarding" className="btn-secondary">All boarding schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+        <div className="mt-6">
+          <AsyncContent state={boarding} loading={<SkeletonCards count={3} />} isEmpty={(d) => d.content.length === 0}
+            empty={<EmptyState title="No boarding schools listed yet." />}>
+            {(page) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{page.content.slice(0, 3).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
+          </AsyncContent>
+        </div>
+      </Band>
+
       <Section eyebrow="Admissions" title="Open and upcoming admissions" id="admissions"
-        action={<Link to="/admissions" className="btn-secondary rounded-full">All deadlines <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
+        action={<Link to="/admissions" className="btn-secondary">All deadlines <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
         {upcoming.loading && !upcoming.data && <Spinner />}
         {upcoming.data?.content.length === 0 && (
           <EmptyState title="No open or upcoming cycles are recorded right now.">
@@ -235,100 +408,19 @@ export function HomePage() {
         <p className="mt-4 text-sm"><Link to="/admissions/guide" className="link">New to school admissions? Read the admission guide →</Link></p>
       </Section>
 
-      {/* 5. Boarding */}
-      <section className="bg-gradient-to-br from-rose-50 via-white to-accent-50 py-14">
-        <div className="container-page">
-          <SectionHead eyebrow="Boarding" title="Boarding schools to explore" id="boarding"
-            note="Residential schools with documented boarding — Navodaya, Sainik, military and private boarding schools. Ordered by how well each is documented; not a ranking."
-            action={<Link to="/boarding" className="btn-secondary rounded-full">All boarding schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
-          <div className="mt-6">
-            <AsyncContent state={boarding} loading={<SkeletonCards count={3} />} isEmpty={(d) => d.content.length === 0}
-              empty={<EmptyState title="No boarding schools listed yet." />}>
-              {(page) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{page.content.slice(0, 6).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
-            </AsyncContent>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Rankings */}
-      <Section eyebrow="Rankings" title="School rankings" id="rankings"
-        note="India School Finder scores schools from source-linked evidence; only verified evidence earns a rank. These are not official government rankings.">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-          <div className="grid grid-cols-2 gap-3">
-            {([
-              ['/rankings?size=10', 'Top 10 schools', 'in India', 'from-brand-600 to-violet-600'],
-              ['/rankings', 'Top 20 schools', 'in India', 'from-violet-600 to-rose-500'],
-              ['/rankings?size=100', 'Top 100 schools', 'in India', 'from-accent-500 to-rose-500'],
-              ['/rankings?focus=place', 'State-wise', 'rankings', 'from-emerald-600 to-teal-500'],
-            ] as const).map(([to, title, sub, tone]) => (
-              <Link key={to} to={to} className={`flex flex-col justify-between rounded-3xl bg-gradient-to-br ${tone} p-5 text-white shadow-card transition hover:-translate-y-0.5 hover:shadow-lift`}>
-                <Icon name="trophy" className="h-7 w-7 text-white/90" />
-                <span className="mt-6">
-                  <span className="block font-display text-xl font-extrabold">{title}</span>
-                  <span className="text-sm text-white/85">{sub}</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className="card p-5">
-            <p className="font-display font-bold text-ink">Highest scores right now</p>
-            <AsyncContent state={ranked} isEmpty={(d) => d.length === 0}
-              empty={<p className="mt-3 text-sm text-slate-600">No school has enough verified evidence for a rank yet. <Link to="/rankings/methodology" className="link">How scoring works</Link></p>}>
-              {(list) => (
-                <ol className="mt-3 divide-y divide-slate-100">
-                  {list.map((r, i) => (
-                    <li key={r.schoolId}>
-                      <Link to={`/schools/${r.slug}?tab=ranking`} className="flex items-center gap-3 py-2.5 hover:text-brand-700">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-50 font-display text-sm font-extrabold text-brand-700">{r.scopePosition ?? i + 1}</span>
-                        <span className="min-w-0 flex-1">
-                          <span className="block truncate font-semibold text-ink">{r.schoolName}</span>
-                          <span className="block truncate text-xs text-slate-500">{[r.city ?? r.districtName, r.stateName].filter(Boolean).join(', ')}</span>
-                        </span>
-                        <span className="text-sm font-bold tabular-nums text-ink">{r.totalScore.toFixed(1)}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </AsyncContent>
-            <Link to="/rankings/methodology" className="link mt-3 inline-block text-sm">How scores are calculated →</Link>
-          </div>
-        </div>
-      </Section>
-
-      {/* 7. Exam preparation */}
-      <section className="bg-gradient-to-br from-violet-50 via-white to-brand-50 py-14">
-        <div className="container-page">
-          <SectionHead eyebrow="Exam preparation" title="Prepare for school and entrance exams" id="exams"
-            note={`${bank.data ? `${bank.data.questionCount} original practice questions` : 'Original practice questions'} with explanations, timed mock tests and a daily quiz — free, no sign-in needed. Written by India School Finder; not official or previous-year questions.`}
-            action={<Link to="/exams/practice" className="btn-primary rounded-full">Start practising <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {EXAMS.map((e) => (
-              <Link key={e.to} to={e.to} className="group flex items-center gap-4 rounded-3xl bg-white p-5 shadow-card ring-1 ring-slate-100 transition hover:-translate-y-0.5 hover:shadow-lift">
-                <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${e.tone} text-white shadow-md`}><Icon name={e.icon} className="h-6 w-6" /></span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display font-bold text-ink">{e.title}</span>
-                  <span className="block text-sm text-slate-600">{e.text}</span>
-                </span>
-                <Icon name="arrowRight" className="h-5 w-5 text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-brand-600" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Fees (real published schedules only) */}
       {feeData.length > 0 && (
-        <Section eyebrow="Fees" title="What schools officially charge per year" id="fees">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
+        <Band>
+          <SectionHead eyebrow="Fees" title="What schools officially charge per year" id="fees" />
+          <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
             <div>
               <p className="leading-relaxed text-slate-600">
                 The lowest complete annual fee each school publishes (tuition, monthly and annual charges), for the latest year it
                 has published. Schools with incomplete fee schedules are left out rather than estimated.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/fees" className="btn-primary rounded-full"><Icon name="rupee" className="h-4 w-4" /> Fee calculator</Link>
-                <Link to="/compare" className="btn-secondary rounded-full">Compare fees side by side</Link>
+                <Link to="/fees" className="btn-primary"><Icon name="rupee" className="h-4 w-4" /> Fee calculator</Link>
+                <Link to="/compare" className="btn-secondary">Compare fees side by side</Link>
               </div>
             </div>
             {/* overflow-hidden: Recharts keeps its hidden tooltip beside the chart, which would otherwise widen phones. */}
@@ -343,66 +435,48 @@ export function HomePage() {
               <p className="mt-2 text-xs text-slate-500">Academic year shown next to each amount. Optional transport and one-time fees excluded. Click a bar for the full schedule and source.</p>
             </div>
           </div>
-        </Section>
+        </Band>
       )}
 
-      {/* 8. Why choose */}
-      <section className="bg-white py-14">
-        <div className="container-page">
-          <SectionHead eyebrow="Why India School Finder" title="Why parents choose India School Finder" id="why" />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {([
-              ['map', 'Schools across India', `${stats.data ? stats.data.activeSchools.toLocaleString('en-IN') : 'Thousands of'} schools in every state and union territory, each linked to an official source.`, 'bg-brand-50 text-brand-700'],
-              ['scale', 'Easy school comparison', 'Compare up to four schools side by side — board, classes, fees, facilities and distance — with differences highlighted.', 'bg-violet-50 text-violet-700'],
-              ['calendar', 'Admission information', 'Open and upcoming admission cycles from official notices, and a plain guide to the process and documents.', 'bg-emerald-50 text-emerald-700'],
-              ['rupee', 'Transparent fee information', 'Only official fee schedules, with their year and source — never estimated or filled in.', 'bg-accent-50 text-accent-700'],
-              ['target', 'Exam preparation', 'Guides to JNVST, AISSEE and other entrance exams, with patterns, syllabi and official papers linked.', 'bg-rose-50 text-rose-700'],
-              ['book', 'Free practice questions', 'Original quizzes and timed mock tests with explanations, many in English and Hindi, and progress tracking.', 'bg-teal-50 text-teal-700'],
-            ] as const).map(([icon, title, text, tone]) => (
-              <div key={title} className="flex gap-4 rounded-3xl bg-canvas p-5 ring-1 ring-slate-100">
-                <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${tone}`}><Icon name={icon} className="h-5 w-5" /></span>
-                <div>
-                  <p className="font-display font-bold text-ink">{title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-600">{text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-3xl bg-gradient-to-r from-brand-600 to-violet-600 p-6 text-white shadow-lift sm:flex-row sm:items-center">
-            <div>
-              <p className="font-display text-xl font-bold text-white">Run a school?</p>
-              <p className="mt-1 text-sm text-blue-50">Send your official fee circular or admission notice and we will link it here with its source.</p>
+      <Section eyebrow="Trust" title="Where our information comes from" id="trust">
+        <p className="max-w-3xl leading-relaxed text-slate-700">{DISCLAIMER}</p>
+        <dl className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {INFORMATION_KINDS.map((k) => (
+            <div key={k.title}>
+              <dt className="font-display font-bold text-ink">{k.title}</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-slate-600">{k.text}</dd>
             </div>
-            <Link to="/contact" className="btn-accent shrink-0 rounded-full">Submit an official source</Link>
+          ))}
+        </dl>
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl bg-ink p-6 text-white sm:flex-row sm:items-center">
+          <div>
+            <p className="font-display text-xl font-bold text-white">Run a school?</p>
+            <p className="mt-1 text-sm text-slate-300">Send your official fee circular or admission notice and we will link it here with its source.</p>
           </div>
+          <Link to="/contact" className="btn-accent shrink-0">Submit an official source</Link>
         </div>
-      </section>
+      </Section>
     </>
   );
 }
 
-/** Up to four real school photographs, each with its credit and a link to the school. */
-function PhotoMosaic({ schools }: { schools: SchoolSummary[] }) {
+/** Up to four real school photographs in equal frames. The name stays on the picture; the credit is on the school's page. */
+function HeroPhotos({ schools }: { schools: SchoolSummary[] }) {
   return (
-    <div className="relative hidden lg:block">
-      <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-brand-300/40 via-violet-300/30 to-accent-300/40 blur-2xl" aria-hidden />
-      <ul className="relative grid grid-cols-2 gap-3">
-        {schools.map((s, i) => (
-          <li key={s.id} className={`overflow-hidden rounded-3xl bg-slate-100 shadow-lift ring-4 ring-white ${i % 2 === 1 ? 'translate-y-6' : ''}`}>
-            <Link to={`/schools/${s.slug}`} className="group relative block aspect-[4/3]">
-              <img src={s.coverImageUrl!} alt={`${s.name}`} loading={i < 2 ? 'eager' : 'lazy'} decoding="async"
-                title={photoCreditTitle(s)} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2 pt-8">
+    <ul className="grid grid-cols-2 gap-3" aria-label="Schools listed here">
+      {schools.map((s, i) => (
+        <li key={s.id}>
+          <Link to={`/schools/${s.slug}`} className="group block">
+            <SchoolImage src={s.coverImageUrl} name={s.name} alt={s.name} credit={s.coverImageCredit} illustrative={s.coverImageIllustrative}
+              priority={i < 2} className="rounded-xl">
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-3 pb-2 pt-8">
                 <span className="block truncate text-sm font-semibold text-white">{s.name}</span>
-                {s.coverImageIllustrative && s.coverImageCredit && (
-                  <span className="block truncate text-[10px] text-white/80">{s.coverImageCredit}</span>
-                )}
               </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+            </SchoolImage>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -412,7 +486,7 @@ function SectionHead({ eyebrow, title, id, note, action }: { eyebrow: string; ti
       <div className="max-w-3xl">
         <p className="eyebrow">{eyebrow}</p>
         <h2 id={`${id}-heading`} className="section-title mt-2">{title}</h2>
-        {note && <p className="mt-2 text-sm text-slate-600">{note}</p>}
+        {note && <p className="mt-2 text-slate-600">{note}</p>}
       </div>
       {action}
     </div>
@@ -428,4 +502,9 @@ function Section({ eyebrow, title, id, note, action, children }: {
       <div className="mt-6">{children}</div>
     </section>
   );
+}
+
+/** A full-width white band between the page-coloured sections. */
+function Band({ children }: { children: React.ReactNode }) {
+  return <section className="border-y border-slate-200 bg-white py-14"><div className="container-page">{children}</div></section>;
 }

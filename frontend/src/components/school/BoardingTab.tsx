@@ -15,7 +15,7 @@ export function BoardingTab({ boarding }: { boarding: BoardingProfile }) {
     ['Academic session', boarding.academicSession],
   ];
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
       <section className="card p-6">
         <div className="flex flex-wrap items-center gap-2">
           <h2 className="font-display text-lg font-bold text-ink">Boarding and residential life</h2>

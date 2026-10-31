@@ -100,6 +100,19 @@
   .prose-page .not-prose p {
     @apply mb-0;
   }
+  /* The frame for every school photograph. The picture is absolutely positioned on purpose: in normal flow its height
+     counts as the frame's minimum, which is how a tall photo used to stretch a 16:9 card. */
+  .school-image {
+    @apply relative block w-full overflow-hidden bg-slate-100;
+    aspect-ratio: 16 / 9;
+  }
+  .school-image > img {
+    @apply absolute inset-0 block h-full w-full object-cover object-center;
+  }
+  /* The gallery shows the whole photo, uncropped, in the same frame. */
+  .school-image--whole > img {
+    @apply object-contain;
+  }
   .bg-grid {
     background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);

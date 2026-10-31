@@ -57,13 +57,17 @@ const ChallengeDetailPage = page(() => import('./pages/ChallengePages'), 'Challe
 const ChallengeTakePage = page(() => import('./pages/ChallengePages'), 'ChallengeTakePage');
 const MethodologyPage = page(() => import('./pages/MethodologyPage'), 'MethodologyPage');
 const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
-const PublishedRankingsPage = page(() => import('./pages/PublishedRankingsPage'), 'PublishedRankingsPage');
-const RankingComparePage = page(() => import('./pages/RankingComparePage'), 'RankingComparePage');
+const rankingPages = () => import('./pages/RankingHubPage');
+const TopSchoolsPage = page(rankingPages, 'TopSchoolsPage');
+const RankingStatesPage = page(rankingPages, 'RankingStatesPage');
+const BoardRankingsPage = page(rankingPages, 'BoardRankingsPage');
+const GovernmentBoardingPage = page(rankingPages, 'GovernmentBoardingPage');
+const RankingPlaceRedirect = page(rankingPages, 'RankingPlaceRedirect');
 const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').then((m) => ({ default: m.BoardingLandingPage })));
 const PlaceRedirect = lazy(() => import('./pages/PlaceRedirect').then((m) => ({ default: m.PlaceRedirect })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
 const AboutPage = page(info, 'AboutPage');
-const ContactPage = page(info, 'ContactPage');
+const ContactPage = page(() => import('./pages/ContactPage'), 'ContactPage');
 const PrivacyPage = page(info, 'PrivacyPage');
 const TermsPage = page(info, 'TermsPage');
 const account = () => import('./pages/AccountPages');
@@ -96,9 +100,22 @@ const AdminExamsPage = lazy(() => import('./pages/admin/AdminExamsPage').then((m
 const AdminPracticePage = lazy(() => import('./pages/admin/AdminPracticePage').then((m) => ({ default: m.AdminPracticePage })));
 const AdminChallengesPage = lazy(() => import('./pages/admin/AdminChallengesPage').then((m) => ({ default: m.AdminChallengesPage })));
 const AdminModerationPage = lazy(() => import('./pages/admin/AdminModerationPage').then((m) => ({ default: m.AdminModerationPage })));
+const AdminContactPage = lazy(() => import('./pages/admin/AdminContactPage').then((m) => ({ default: m.AdminContactPage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
 
 /** /exam-preparation/... is another name for /exams/...: the rest of the address and its query are kept. */
+/** The old page of published rankings: its contents now live on the main ranking pages. */
+function PublishedRankingsRedirect() {
+  const { search } = useLocation();
+  return <Navigate to={new URLSearchParams(search).get('kind') === 'GREEN' ? '/rankings?green=1' : '/rankings'} replace />;
+}
+
+/** Each board had its own address; they are now tabs of one page. */
+function BoardRankingRedirect() {
+  const { code = '' } = useParams();
+  return <Navigate to={`/rankings/boards?board=${code.toUpperCase()}`} replace />;
+}
+
 function ExamPreparationRedirect() {
   const rest = useParams()['*'] ?? '';
   const { search } = useLocation();
@@ -125,10 +142,22 @@ export default function App() {
               <Route path="states/:state/city/:city" element={<StatePage />} />
               <Route path="network/:network" element={<NetworkPage />} />
               <Route path="saved" element={<SavedSchoolsPage />} />
-              <Route path="rankings" element={<RankingsPage />} />
+              <Route path="rankings" element={<TopSchoolsPage />} />
+              <Route path="rankings/states" element={<RankingStatesPage />} />
+              <Route path="rankings/boards" element={<BoardRankingsPage />} />
+              <Route path="rankings/government-boarding" element={<GovernmentBoardingPage />} />
+              <Route path="rankings/score" element={<RankingsPage />} />
               <Route path="rankings/methodology" element={<MethodologyPage />} />
-              <Route path="rankings/published" element={<PublishedRankingsPage />} />
-              <Route path="rankings/compare" element={<RankingComparePage />} />
+              <Route path="rankings/india" element={<Navigate to="/rankings" replace />} />
+              <Route path="rankings/state/:slug" element={<RankingPlaceRedirect />} />
+              <Route path="rankings/city/:slug" element={<RankingPlaceRedirect />} />
+              <Route path="rankings/board/:code" element={<BoardRankingRedirect />} />
+              <Route path="rankings/government" element={<Navigate to="/rankings/government-boarding" replace />} />
+              <Route path="rankings/boarding" element={<Navigate to="/rankings/government-boarding?tab=boarding" replace />} />
+              <Route path="rankings/green" element={<Navigate to="/rankings?green=1" replace />} />
+              <Route path="rankings/special/:topic" element={<Navigate to="/rankings" replace />} />
+              <Route path="rankings/published" element={<PublishedRankingsRedirect />} />
+              <Route path="rankings/compare" element={<Navigate to="/compare" replace />} />
               <Route path="admissions" element={<AdmissionsPage />} />
               <Route path="admissions/notifications" element={<NotificationsPage />} />
               <Route path="admissions/guide" element={<AdmissionGuidePage />} />
@@ -193,6 +222,7 @@ export default function App() {
                 <Route path="practice" element={<AdminPracticePage />} />
                 <Route path="challenges" element={<AdminChallengesPage />} />
                 <Route path="moderation" element={<AdminModerationPage />} />
+                <Route path="contact" element={<AdminContactPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
                 <Route path="external-rankings" element={<AdminExternalRankingsPage />} />

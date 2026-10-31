@@ -1,5 +1,6 @@
-import type { Admission, Facility, FacilityCategory, SchoolDetail, SchoolRankingDetail } from '../types/api';
+import type { Admission, ExternalRanking, Facility, FacilityCategory, SchoolDetail, SchoolRankingDetail } from '../types/api';
 import { boardingTypeLabel, entranceExamInfo, residentialSystemLabel } from './format';
+import { listTitle } from './rankingLists';
 
 /** Facilities of the given categories that a source documents as present; "not available" records are left out. */
 export function facilityNames(list: Facility[], categories: FacilityCategory[]): string[] {
@@ -45,13 +46,19 @@ export function admissionProcess(s: SchoolDetail, admissions: Admission[]): stri
 }
 
 /** Checked, non-sponsored published positions: "#3 · EducationWorld India School Rankings 2025-26 (Day schools)". */
-export function publishedPositions(r: SchoolRankingDetail | undefined): { text: string; sourceUrl: string }[] {
-  if (!r) return [];
-  return r.externalRankings
-    .filter((e) => !e.sponsored && e.verificationStatus === 'VERIFIED')
-    .map((e) => {
-      const position = e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'Listed';
-      const scope = [e.category, e.region].filter(Boolean).join(', ');
-      return { text: `${position} · ${e.publisher} ${e.rankingName} ${e.rankingYear}${scope ? ` (${scope})` : ''}`, sourceUrl: e.sourceUrl };
-    });
+const isPublished = (e: ExternalRanking) => !e.sponsored && e.verificationStatus === 'VERIFIED';
+
+export function rankingLists(details: (SchoolRankingDetail | undefined)[]): string[] {
+  const titles = new Set<string>();
+  details.forEach((d) => d?.externalRankings.filter(isPublished).forEach((e) => titles.add(listTitle(e))));
+  return [...titles].sort();
+}
+
+/** A school's place in one list, with national, state and city ranks kept apart. */
+export function listPosition(d: SchoolRankingDetail | undefined, title: string): string {
+  const e = d?.externalRankings.find((x) => isPublished(x) && listTitle(x) === title);
+  if (!e) return 'Not listed';
+  const ranks = [e.nationalRank != null && `National #${e.nationalRank}`, e.stateRank != null && `State #${e.stateRank}`, e.cityRank != null && `City #${e.cityRank}`].filter(Boolean);
+  if (ranks.length > 0) return ranks.join(' · ');
+  return e.rating ? `${e.rating} rating` : e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'Listed';
 }

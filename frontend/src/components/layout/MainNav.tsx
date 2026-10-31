@@ -1,5 +1,7 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useApi } from '../../hooks/useApi';
+import { rankingService, type RankingSections } from '../../services/publicApi';
 import { Icon, type IconName } from '../common/Icon';
 
 export interface NavItem {
@@ -7,6 +9,8 @@ export interface NavItem {
   label: string;
   icon: IconName;
   hint?: string;
+  /** Shown only when this says there is verified data behind the page. */
+  needs?: (s: RankingSections) => boolean;
 }
 
 export interface NavMenu {
@@ -14,7 +18,25 @@ export interface NavMenu {
   icon: IconName;
   /** Paths (prefixes) that make this menu the active section. */
   match: string[];
-  sections: { title: string; items: NavItem[] }[];
+  sections: { title?: string; items: NavItem[] }[];
+}
+
+/** The ranking section: five destinations, the last being the one comparison page. */
+export const RANKING_ITEMS: NavItem[] = [
+  { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy' },
+  { to: '/rankings/states', label: 'State & City Rankings', icon: 'map', needs: (s) => s.rankings },
+  { to: '/rankings/boards', label: 'Board-wise Rankings', icon: 'book', needs: (s) => s.boards },
+  { to: '/rankings/government-boarding', label: 'Government & Boarding Schools', icon: 'shield', needs: (s) => s.government || s.boarding },
+  { to: '/compare', label: 'Compare Schools', icon: 'scale' },
+];
+
+/** Hides items with nothing behind them. Until the answer arrives, or if it fails, every item stays. */
+export const availableItems = (items: NavItem[], sections: RankingSections | null) =>
+  items.filter((item) => !item.needs || !sections || item.needs(sections));
+
+function useMenus() {
+  const sections = useApi(() => rankingService.sections(), []);
+  return useMemo(() => MENUS.map((m) => ({ ...m, sections: m.sections.map((s) => ({ ...s, items: availableItems(s.items, sections.data) })) })), [sections.data]);
 }
 
 /**
@@ -48,7 +70,7 @@ export const MENUS: NavMenu[] = [
       {
         title: 'Decide',
         items: [
-          { to: '/rankings', label: 'Best schools', icon: 'trophy', hint: 'Evidence-based scores' },
+          { to: '/rankings', label: 'Best schools', icon: 'trophy', hint: 'Published rankings' },
           { to: '/compare', label: 'Compare schools', icon: 'scale' },
           { to: '/fees', label: 'School fees & calculator', icon: 'rupee', hint: 'Official fee schedules' },
           { to: '/saved', label: 'Saved schools', icon: 'heart' },
@@ -90,33 +112,7 @@ export const MENUS: NavMenu[] = [
   },
   {
     label: 'Rankings', icon: 'trophy', match: ['/rankings'],
-    sections: [
-      {
-        title: 'Top schools',
-        items: [
-          { to: '/rankings?size=100', label: "India's top schools", icon: 'trophy', hint: 'Top 10, 20 or 100' },
-          { to: '/rankings?focus=place', label: 'State-wise and city-wise rankings', icon: 'map' },
-          { to: '/rankings?schoolType=GOVERNMENT', label: 'Government school rankings', icon: 'shield' },
-          { to: '/rankings?boarding=true', label: 'Boarding school rankings', icon: 'home' },
-        ],
-      },
-      {
-        title: 'By board',
-        items: [
-          { to: '/rankings?board=CBSE', label: 'CBSE school rankings', icon: 'book' },
-          { to: '/rankings?board=CISCE', label: 'ICSE school rankings', icon: 'book' },
-          { to: '/rankings/methodology', label: 'Ranking sources and method', icon: 'info', hint: 'What evidence counts, and how' },
-        ],
-      },
-      {
-        title: 'Published by others',
-        items: [
-          { to: '/rankings/published', label: 'Published school rankings', icon: 'list', hint: 'EducationWorld, C fore, WIRanking …' },
-          { to: '/rankings/published?kind=GREEN', label: 'Green school rankings', icon: 'sun' },
-          { to: '/rankings/compare', label: 'Compare school rankings', icon: 'columns' },
-        ],
-      },
-    ],
+    sections: [{ items: RANKING_ITEMS }],
   },
   {
     label: 'Exam preparation', icon: 'target', match: ['/exams'],
@@ -133,7 +129,7 @@ export const MENUS: NavMenu[] = [
       {
         title: 'School and other exams',
         items: [
-          { to: '/exams/practice/class10-maths-1', label: 'Class 10 preparation', icon: 'book', hint: 'Mathematics, English and Hindi' },
+          { to: '/exams/practice/class10-maths-1', label: 'Class 10 preparation', icon: 'book', hint: 'Mathematics' },
           { to: '/exams/practice/class12-maths-1', label: 'Class 12 preparation', icon: 'layers', hint: 'Mathematics and Physics' },
           { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy' },
           { to: '/exams/practice?category=COMPETITIVE', label: 'Government & competitive exams', icon: 'layers' },
@@ -179,6 +175,7 @@ export function menuIsActive(menu: NavMenu, pathname: string) {
 /** Desktop: a button per menu opening a panel on hover or click; arrow keys move between items, Escape closes. */
 export function DesktopNav() {
   const [open, setOpen] = useState<string | null>(null);
+  const menus = useMenus();
   const location = useLocation();
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number>();
@@ -201,8 +198,8 @@ export function DesktopNav() {
         className={({ isActive }) => `whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
         Home
       </NavLink>
-      {MENUS.map((m, i) => (
-        <Dropdown key={m.label} menu={m} align={i === 0 ? 'left' : i === MENUS.length - 1 ? 'right' : 'center'}
+      {menus.map((m, i) => (
+        <Dropdown key={m.label} menu={m} align={i === 0 ? 'left' : i === menus.length - 1 ? 'right' : 'center'}
           open={open === m.label} active={menuIsActive(m, location.pathname)}
           onOpen={() => setOpen(m.label)} onClose={() => setOpen(null)} onToggle={() => setOpen(open === m.label ? null : m.label)}
           onHover={() => hoverOpen(m.label)} onLeave={hoverClose} />
@@ -263,8 +260,8 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
           menu.sections.length > 2 ? 'w-[760px]' : wide ? 'w-[560px]' : 'w-[300px]'}`}>
         <div className={`grid gap-4 ${menu.sections.length > 2 ? 'grid-cols-3' : wide ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {menu.sections.map((s) => (
-            <div key={s.title}>
-              <p className="px-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>
+            <div key={s.title ?? menu.label}>
+              {s.title && <p className="px-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>}
               <ul className="mt-1.5 space-y-0.5">
                 {s.items.map((item) => (
                   <li key={item.to + item.label}>
@@ -292,6 +289,7 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
 /** Mobile and tablet: each menu is an accordion section; the current section starts open. */
 export function MobileNav() {
   const location = useLocation();
+  const menus = useMenus();
   const [open, setOpen] = useState<string | null>(() => MENUS.find((m) => menuIsActive(m, location.pathname))?.label ?? null);
   return (
     <div className="divide-y divide-slate-100">
@@ -299,7 +297,7 @@ export function MobileNav() {
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="home" className="h-4 w-4" /></span>
         Home
       </Link>
-      {MENUS.map((m) => {
+      {menus.map((m) => {
         const expanded = open === m.label;
         const id = `mnav-${m.label.replace(/\s+/g, '-').toLowerCase()}`;
         return (
@@ -312,8 +310,8 @@ export function MobileNav() {
             </button>
             <div id={id} hidden={!expanded} className="pb-3">
               {m.sections.map((s) => (
-                <div key={s.title} className="mt-1">
-                  <p className="px-3 pt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>
+                <div key={s.title ?? m.label} className="mt-1">
+                  {s.title && <p className="px-3 pt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>}
                   <ul className="grid gap-0.5 sm:grid-cols-2">
                     {s.items.map((item) => (
                       <li key={item.to + item.label}>
