@@ -1103,7 +1103,7 @@ export interface PracticeScore {
   }[];
 }
 
-export type PracticeMode = 'SET' | 'QUICK' | 'TOPIC' | 'MINI_MOCK' | 'FULL' | 'DAILY' | 'REVISION' | 'RETRY';
+export type PracticeMode = 'SET' | 'QUICK' | 'TOPIC' | 'MINI_MOCK' | 'FULL' | 'DAILY' | 'REVISION' | 'RETRY' | 'CHALLENGE';
 
 /** Metadata of every question in the bank (no text, no answers); ids are "set-slug/question-id". */
 export interface PracticeBankQuestion {
@@ -1136,6 +1136,7 @@ export interface PracticeSession {
 
 export interface PracticeAttemptSummary {
   id: number;
+  clientId: string;
   title: string;
   mode: PracticeMode;
   examSlug: string | null;

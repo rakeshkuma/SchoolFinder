@@ -1,4 +1,6 @@
 import { http } from './http';
+import type { ChallengeStarted, ChallengeSubmitted } from './challengeApi';
+import type { ParticipantProfile, ParticipantRequest } from './participantApi';
 import type { PageResponse, PracticeAttemptSummary, PracticeHistoryItem, PracticeMode, PracticeScore } from '../types/api';
 
 /**
@@ -83,12 +85,77 @@ export interface SavedAttempt {
   score: PracticeScore;
   /** true when this attempt had already been saved and nothing new was stored */
   duplicate: boolean;
+  /** leaderboard points for the attempt, kept apart from its marks */
+  points: AttemptPoints;
+}
+
+/**
+ * Points an attempt earned. reviewFlag says why correct answers earned nothing: NO_TIMING, TOO_FAST (answered
+ * faster than a person can read), DAILY_REPEAT (today's quiz already counted).
+ */
+export interface AttemptPoints {
+  earned: number;
+  dailyQuiz: boolean;
+  reviewFlag: 'NO_TIMING' | 'TOO_FAST' | 'DAILY_REPEAT' | null;
+  /** all-time position among `participants`; null before any points */
+  rank?: number | null;
+  participants?: number;
+  /** best earlier score on this set, as a percentage */
+  previousBest?: number | null;
+  /** badges this attempt earned */
+  achievements?: { code: string; title: string }[];
+}
+
+/** A badge and how far along the student is; target is 0 for rank badges, which have no progress to show. */
+export interface Achievement {
+  code: string;
+  title: string;
+  description: string;
+  group: string;
+  earnedAt: string | null;
+  current: number;
+  target: number;
+}
+
+export interface ProgressPeriod {
+  start: string;
+  tests: number;
+  answered: number;
+  correct: number;
+  accuracy: number | null;
+  points: number;
+}
+
+/** A student's own progress, worked out by the server from their attempts. */
+export interface ProgressReport {
+  points: number;
+  rank: number | null;
+  participants: number;
+  currentStreak: number;
+  longestStreak: number;
+  dailyStreak: number;
+  activeDays: string[];
+  weeks: ProgressPeriod[];
+  months: ProgressPeriod[];
+  exams: { examSlug: string; examName: string; tests: number; answered: number; correct: number; accuracy: number | null; bestScore: number }[];
+  daily: { date: string; total: number; attempted: number; correct: number; points: number }[];
+  achievements: Achievement[];
 }
 
 /** The signed-in member's practice history and saved exams; each call only ever reaches the member's own data. */
 export const memberPracticeService = {
   /** Scores the attempt on the server and saves it. */
   record: (input: AttemptInput) => send<SavedAttempt>('post', '/account/practice-attempts', input),
+  /** The member's leaderboard settings and totals. */
+  participant: () => http.get<ParticipantProfile>('/account/participant').then((r) => r.data),
+  updateParticipant: (request: ParticipantRequest) => send<ParticipantProfile>('put', '/account/participant', request),
+  /** Moves results earned as a guest in this browser into the account. */
+  claimGuest: (token: string) => send<ParticipantProfile>('post', '/account/participant/claim', { token }),
+  startChallenge: (slug: string) => send<ChallengeStarted>('post', `/account/challenges/${encodeURIComponent(slug)}/attempts`),
+  submitChallenge: (slug: string, attemptId: number, answers: Record<string, number>) =>
+    send<ChallengeSubmitted>('post', `/account/challenges/${encodeURIComponent(slug)}/attempts/${attemptId}/submit`, { answers }),
+  /** Streaks, rank, weekly and monthly progress, daily quiz history and badges. */
+  progress: () => http.get<ProgressReport>('/account/progress').then((r) => r.data),
   list: (page = 0, size = 20) =>
     http.get<PageResponse<PracticeAttemptSummary>>('/account/practice-attempts', { params: { page, size } }).then((r) => r.data),
   get: (id: number) =>

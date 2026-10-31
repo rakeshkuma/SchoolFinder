@@ -818,7 +818,10 @@ function ExamPractice({ examSlug }: { examSlug: string }) {
   if (!sets.data || sets.data.length === 0) return null;
   return (
     <div className="mt-8 border-t border-slate-100 pt-6">
-      <h2 className="font-display text-lg font-bold text-ink">Practise with our questions</h2>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="font-display text-lg font-bold text-ink">Practise with our questions</h2>
+        <Link to={`/exams/leaderboard?exam=${encodeURIComponent(examSlug)}`} className="link text-sm">This exam’s leaderboard →</Link>
+      </div>
       <p className="mt-1 text-sm text-slate-600">{PRACTICE_LABEL} — original questions in the style of the official pattern, not official questions.</p>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">{sets.data.map((s) => <li key={s.slug}><PracticeCard set={s} /></li>)}</ul>
     </div>

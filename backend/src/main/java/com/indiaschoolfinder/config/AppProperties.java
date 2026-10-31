@@ -111,6 +111,8 @@ public class AppProperties {
         /** Sign-ups, verification resends and password-reset requests/uses per client IP per hour. */
         private int accountEmailsPerHour = 10;
         private int publicWritesPerMinute = 60;
+        /** New guest leaderboard participants per address and hour (a classroom may share one address). */
+        private int participantJoinsPerHour = 60;
         private int suggestionsPerMinute = 120;
     }
 

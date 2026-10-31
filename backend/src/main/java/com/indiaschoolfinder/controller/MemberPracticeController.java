@@ -41,8 +41,15 @@ public class MemberPracticeController {
 
     private final MemberPracticeService service;
 
-    public MemberPracticeController(MemberPracticeService service) {
+    private final com.indiaschoolfinder.service.ParticipantService participants;
+
+    private final com.indiaschoolfinder.service.ChallengeService challenges;
+
+    public MemberPracticeController(MemberPracticeService service, com.indiaschoolfinder.service.ParticipantService participants,
+                                    com.indiaschoolfinder.service.ChallengeService challenges) {
         this.service = service;
+        this.participants = participants;
+        this.challenges = challenges;
     }
 
     @Operation(summary = "Score and save a practice attempt; the same clientId again returns the saved result")
@@ -51,6 +58,42 @@ public class MemberPracticeController {
                                                     @Valid @RequestBody AttemptRequest request) {
         AttemptDtos.Saved saved = service.record(member.accountId(), request);
         return ResponseEntity.status(saved.duplicate() ? HttpStatus.OK : HttpStatus.CREATED).body(saved);
+    }
+
+    @Operation(summary = "The member's leaderboard settings and totals (created privately on first use)")
+    @GetMapping("/participant")
+    public com.indiaschoolfinder.dto.practice.ParticipantDtos.Profile participant(@AuthenticationPrincipal MemberPrincipal member) {
+        return participants.memberProfile(member.accountId());
+    }
+
+    @PutMapping("/participant")
+    public com.indiaschoolfinder.dto.practice.ParticipantDtos.Profile updateParticipant(
+            @AuthenticationPrincipal MemberPrincipal member,
+            @Valid @RequestBody com.indiaschoolfinder.dto.practice.ParticipantDtos.ProfileRequest request) {
+        return participants.updateMember(member.accountId(), request);
+    }
+
+    @Operation(summary = "Move results earned as a guest in this browser into the account")
+    @PostMapping("/participant/claim")
+    public com.indiaschoolfinder.dto.practice.ParticipantDtos.Profile claim(
+            @AuthenticationPrincipal MemberPrincipal member,
+            @Valid @RequestBody com.indiaschoolfinder.dto.practice.ParticipantDtos.ClaimRequest request) {
+        return participants.claim(member.accountId(), request.token());
+    }
+
+    @Operation(summary = "Start an attempt at a challenge, or return the one in progress")
+    @PostMapping("/challenges/{slug}/attempts")
+    public com.indiaschoolfinder.dto.practice.ChallengeDtos.Started startChallenge(@AuthenticationPrincipal MemberPrincipal member,
+                                                                                   @PathVariable String slug) {
+        return challenges.start(slug, participants.member(member.accountId()).getId());
+    }
+
+    @Operation(summary = "Submit a challenge attempt; the server scores it, and a repeat returns the first result")
+    @PostMapping("/challenges/{slug}/attempts/{id}/submit")
+    public com.indiaschoolfinder.dto.practice.ChallengeDtos.Submitted submitChallenge(
+            @AuthenticationPrincipal MemberPrincipal member, @PathVariable String slug, @PathVariable long id,
+            @Valid @RequestBody com.indiaschoolfinder.dto.practice.ChallengeDtos.SubmitRequest request) {
+        return challenges.submit(slug, id, participants.member(member.accountId()), request.answers());
     }
 
     @GetMapping("/practice-attempts")
@@ -69,6 +112,12 @@ public class MemberPracticeController {
     @GetMapping("/practice-attempts/{id}")
     public AttemptDtos.Detail attempt(@AuthenticationPrincipal MemberPrincipal member, @PathVariable long id) {
         return service.get(member.accountId(), id);
+    }
+
+    @Operation(summary = "The member's streaks, rank, weekly and monthly progress, daily quiz history and badges")
+    @GetMapping("/progress")
+    public com.indiaschoolfinder.dto.practice.ProgressDtos.Report progress(@AuthenticationPrincipal MemberPrincipal member) {
+        return service.progress(member.accountId());
     }
 
     @Operation(summary = "The member's latest attempts with topic scores and per-question outcomes, for the progress dashboard")

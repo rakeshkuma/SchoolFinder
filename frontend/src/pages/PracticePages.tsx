@@ -9,9 +9,12 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMember } from '../hooks/useMember';
 import { useLocalList } from '../hooks/usePersonal';
 import {
-  bookmarks, existingIds, localAttempts, newClientId, revisionIds, scoreAttempt, toggleBookmark, wrongQuestions, type LocalAttempt,
+  bookmarks, existingIds, localAttempts, newClientId, joinAndCount, revisionIds, scoreAttempt, toggleBookmark, wrongQuestions, type LocalAttempt,
 } from '../hooks/usePracticeProgress';
-import { memberPracticeService } from '../services/accountApi';
+import { memberPracticeService, type AttemptInput, type AttemptPoints } from '../services/accountApi';
+import type { ChallengeSubmitted } from '../services/challengeApi';
+import { POINTS_RULES, PointsPanel } from '../components/exam/LeaderboardJoin';
+import { participantService, useGuestToken } from '../services/participantApi';
 import { ApiError } from '../services/http';
 import { examService, practiceService, type PracticeSessionParams } from '../services/publicApi';
 import type {
@@ -175,6 +178,24 @@ const MODES: ModeInfo[] = [
 const COUNT_CHOICES = [5, 10, 15, 20, 25, 30, 40, 50];
 const LENGTH_PRESETS = [['Quick', 10], ['Standard', 25], ['Advanced', 50]] as const;
 
+/** The tests here earn leaderboard points; how, and where to join or see your points. */
+function PointsNote() {
+  const { status } = useMember();
+  const token = useGuestToken();
+  const joined = status === 'signedIn' || !!token;
+  return (
+    <details className="card group p-4 text-sm">
+      <summary className="flex cursor-pointer flex-wrap items-center gap-x-3 gap-y-1 font-medium text-ink">
+        <Icon name="trophy" className="h-5 w-5 text-accent-500" />
+        <span>Every test here earns leaderboard points — no separate test needed.</span>
+        <Link to="/exams/practice/progress" className="link">{joined ? 'Your points and profile →' : 'Join with a nickname →'}</Link>
+        <span className="text-slate-500 group-open:hidden">How points work</span>
+      </summary>
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600">{POINTS_RULES.map((r) => <li key={r}>{r}</li>)}</ul>
+    </details>
+  );
+}
+
 export function PracticeListPage() {
   useDocumentTitle('Practice centre: free practice tests for school, entrance, Olympiad and competitive exams');
   const [params, setParams] = useSearchParams();
@@ -205,6 +226,7 @@ export function PracticeListPage() {
       </PageHeader>
       <div className="container-page space-y-10 py-8">
         <PracticeNote />
+        <PointsNote />
         <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
           <SessionBuilder key={category ?? 'all'} bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
             examName={examName} examSlugs={(exams.data ?? []).map((e) => e.slug)} initialCategory={category} />
@@ -478,6 +500,7 @@ function FilterSelect({ label, value, onChange, any, options, disabled = false }
 /** Recent results, improvement and weakest subjects: from the account for members, from this browser for guests. */
 function ProgressPanel({ examName }: { examName: (slug: string | null) => string }) {
   const { status } = useMember();
+  const token = useGuestToken();
   const local = useLocalList(localAttempts);
   const server = useApi(() => memberPracticeService.list(0, 10), [status], status === 'signedIn');
   const attempts: { key: string; title: string; total: number; correct: number; attempted: number; at: string; examSlug: string | null;
@@ -504,7 +527,8 @@ function ProgressPanel({ examName }: { examName: (slug: string | null) => string
         <Link to="/exams/practice/progress" className="link text-sm">Full dashboard →</Link>
       </div>
       <p className="mt-1 text-xs text-slate-500">
-        {status === 'signedIn' ? 'Saved to your account.' : <>Kept in this browser only. <Link to="/signin?next=%2Fexams%2Fpractice" className="link">Sign in</Link> to keep results on every device — results from this browser are added when you sign in.</>}
+        {status === 'signedIn' ? 'Saved to your account.' : token ? 'Recent results in this browser. The full dashboard has everything saved to your leaderboard entry.'
+          : <>Kept in this browser only. <Link to="/signin?next=%2Fexams%2Fpractice" className="link">Sign in</Link> to keep results on every device — results from this browser are added when you sign in.</>}
       </p>
       {status === 'signedIn' && server.loading && !server.data ? <Spinner /> : attempts.length === 0 ? (
         <p className="mt-4 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">Your results will appear here after your first practice.</p>
@@ -575,7 +599,7 @@ export function PracticeCard({ set }: { set: PracticeSetSummary }) {
 // --- Sittings: a ready-made set, or questions drawn from the bank ---------------------------------------------------
 
 /** Everything the player needs, whichever way the questions were chosen. */
-interface Sitting {
+export interface Sitting {
   key: string;
   /** Where a test in progress is saved in this tab so it survives a reload; null: not resumable. */
   progressKey: string | null;
@@ -596,6 +620,15 @@ interface Sitting {
   bankId: (questionId: string) => string;
   /** Scores a guest's attempt (the server's scoring; nothing stored). Result ids are the questions' own ids. */
   guestScore: (answers: Record<string, number>) => Promise<PracticeScore>;
+  /** A challenge: already started and timed by the server, which also scores it; it has no intro or retake. */
+  challenge?: {
+    slug: string;
+    startedAt: number;
+    deadline: number;
+    /** how points work here, for the result */
+    pointsNote: string;
+    submit: (answers: Record<string, number>) => Promise<ChallengeSubmitted>;
+  };
 }
 
 export function PracticeTestPage() {
@@ -692,7 +725,8 @@ export function PracticeSessionPage() {
 
 /**
  * A past result, reviewed question by question. Members' attempts come from their account (only their own can be
- * read); results kept in this browser ("local-…") are scored again by the server from the stored answers.
+ * read), a joined guest's ("guest-…") from their entry; results kept in this browser ("local-…") are scored again by
+ * the server from the stored answers.
  */
 export function PracticeAttemptPage() {
   const { id = '' } = useParams();
@@ -707,7 +741,7 @@ export function PracticeAttemptPage() {
         practiceService.session({ mode: 'RETRY', ids }), practiceService.scoreSession(ids, answers)]);
       return { title: local.title, examSlug: local.examSlug, seconds: local.durationSeconds, answers, session, score, saved: false };
     }
-    const detail = await memberPracticeService.get(Number(id));
+    const detail = id.startsWith('guest-') ? await participantService.attempt(Number(id.slice(6))) : await memberPracticeService.get(Number(id));
     const ids = await existingIds(detail.questionIds);
     const session = await practiceService.session({ mode: 'RETRY', ids });
     const kept = new Set(ids);
@@ -775,7 +809,7 @@ const isTyping = (t: EventTarget | null) =>
   t instanceof HTMLElement && (t.isContentEditable || ['TEXTAREA', 'SELECT'].includes(t.tagName)
     || (t.tagName === 'INPUT' && !['radio', 'checkbox'].includes((t as HTMLInputElement).type)));
 
-function Player({ sitting }: { sitting: Sitting }) {
+export function Player({ sitting }: { sitting: Sitting }) {
   const { questions, passages } = sitting;
   const { status } = useMember();
   const navigate = useNavigate();
@@ -786,7 +820,7 @@ function Player({ sitting }: { sitting: Sitting }) {
   const [startedAt, setStartedAt] = useState(0);
   const [endsAt, setEndsAt] = useState<number | null>(null);
   const [confirming, setConfirming] = useState<'submit' | 'exit' | null>(null);
-  const [result, setResult] = useState<{ score: PracticeScore; seconds: number; saved: boolean } | null>(null);
+  const [result, setResult] = useState<PlayerResult | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const clientId = useRef(newClientId());
@@ -816,11 +850,16 @@ function Player({ sitting }: { sitting: Sitting }) {
     setConfirming(null);
     setSubmitError(null);
     setNotice(null);
-    setStartedAt(from?.startedAt ?? Date.now());
-    setEndsAt(from ? from.endsAt : sitting.minutes ? Date.now() + sitting.minutes * 60_000 : null);
+    setStartedAt(from?.startedAt ?? sitting.challenge?.startedAt ?? Date.now());
+    setEndsAt(sitting.challenge?.deadline ?? (from ? from.endsAt : sitting.minutes ? Date.now() + sitting.minutes * 60_000 : null));
     setSaved(null);
     setPhase('test');
   };
+  // A challenge's rules were on its page and its clock is already running, so it opens straight on the first question.
+  useEffect(() => {
+    if (sitting.challenge) begin(saved);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once, when the challenge opens
+  }, []);
   const start = () => {
     if (sitting.progressKey) clearProgress(sitting.progressKey);
     begin(null);
@@ -859,14 +898,29 @@ function Player({ sitting }: { sitting: Sitting }) {
     const seconds = Math.round((Date.now() - startedAt) / 1000);
     try {
       const bankAnswers = Object.fromEntries(Object.entries(answers).map(([id, v]) => [sitting.bankId(id), v]));
-      const { score, saved } = await scoreAttempt(status === 'signedIn', {
+      if (sitting.challenge) {
+        const r = await sitting.challenge.submit(bankAnswers);
+        if (sitting.progressKey) clearProgress(sitting.progressKey);
+        if (!r.score) {
+          navigate(`/exams/challenges/${sitting.challenge.slug}?submitted=1`, { replace: true });
+          return;
+        }
+        setResult({ score: r.score, seconds: r.durationSeconds ?? seconds, saved: true, points: r.points });
+        setPhase('result');
+        window.scrollTo({ top: 0 });
+        return;
+      }
+      const input: AttemptInput = {
         clientId: clientId.current, title: sitting.title, mode: sitting.mode, examSlug: sitting.examSlug, setSlug: sitting.setSlug,
         questionIds: questions.map((q) => sitting.bankId(q.id)), answers: bankAnswers, durationSeconds: seconds,
-      }, () => sitting.guestScore(answers), (id) => sitting.bankId(id));
+      };
+      const { score, saved, points } = await scoreAttempt(status === 'signedIn', input,
+        () => sitting.guestScore(answers), (id) => sitting.bankId(id));
       if (sitting.progressKey) clearProgress(sitting.progressKey);
-      // Members' results come back with bank ids; show them against this sitting's own question ids.
+      // Recorded results come back with bank ids; show them against this sitting's own question ids.
       const own = new Map(questions.map((q) => [sitting.bankId(q.id), q.id]));
-      setResult({ score: { ...score, questions: score.questions.map((r) => ({ ...r, id: own.get(r.id) ?? r.id })) }, seconds, saved });
+      setResult({ score: { ...score, questions: score.questions.map((r) => ({ ...r, id: own.get(r.id) ?? r.id })) }, seconds, saved,
+        points, input });
       setPhase('result');
       window.scrollTo({ top: 0 });
     } catch (e) {
@@ -930,6 +984,7 @@ function Player({ sitting }: { sitting: Sitting }) {
     : 'Scoring: each question keeps the marking of the set it comes from — most give 1 mark and take nothing off. This is our practice scoring, not an exam\'s official marking scheme.';
 
   if (phase === 'intro') {
+    if (sitting.challenge) return <Spinner />;
     return (
       <>
         <PageHeader eyebrow={sitting.eyebrow} title={sitting.title} subtitle={sitting.description}>
@@ -1027,15 +1082,20 @@ function Player({ sitting }: { sitting: Sitting }) {
                   const open = [...marked].filter((id) => answers[id] === undefined).length;
                   return open > 0 ? `, ${open} of them still unanswered.` : '.';
                 })()}</>
-            ) : 'Your answers will not be saved or scored.'}
+            ) : sitting.challenge ? 'The timer keeps running while you are away. Come back before it ends to carry on; otherwise the attempt counts as used.'
+              : 'Your answers will not be saved or scored.'}
           </p>
           <div className="mt-3 flex gap-2">
             {confirming === 'submit'
               ? <button type="button" className="btn-primary py-1.5 text-sm" disabled={submitting} autoFocus onClick={() => void submit()}>{submitting ? 'Checking…' : 'Yes, submit'}</button>
               : <button type="button" className="btn-danger py-1.5 text-sm" autoFocus onClick={() => {
+                if (sitting.challenge) {
+                  navigate(`/exams/challenges/${sitting.challenge.slug}`);
+                  return;
+                }
                 if (sitting.progressKey) clearProgress(sitting.progressKey);
                 navigate('/exams/practice');
-              }}>Leave without saving</button>}
+              }}>{sitting.challenge ? 'Leave for now' : 'Leave without saving'}</button>}
             <button type="button" className="btn-secondary py-1.5 text-sm" onClick={() => setConfirming(null)}>Keep going</button>
           </div>
         </div>
@@ -1131,9 +1191,21 @@ function Player({ sitting }: { sitting: Sitting }) {
   );
 }
 
+/**
+ * A finished sitting: the server's score, and for recorded attempts their leaderboard points. `input` is the attempt as
+ * submitted, so a guest can join afterwards and count it (same clientId, stored once).
+ */
+interface PlayerResult {
+  score: PracticeScore;
+  seconds: number;
+  saved: boolean;
+  points?: AttemptPoints | null;
+  input?: AttemptInput;
+}
+
 function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
   sitting: Sitting;
-  result: { score: PracticeScore; seconds: number; saved: boolean };
+  result: PlayerResult;
   answers: Record<string, number>;
   marked: Set<string>;
   onRestart: () => void;
@@ -1191,7 +1263,7 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
             : 'Scoring: each question uses the marking of the set it comes from'}; accuracy is correct ÷ attempted. This is
           our practice scoring, not the official marking scheme{sitting.examSlug ? <> (see the <Link to={`/exams/${sitting.examSlug}?tab=pattern`} className="link">exam pattern</Link>)</> : ''}.
           A practice score does not predict an exam result or guarantee admission.
-          {' '}{result.saved ? 'Saved to your account.' : status === 'signedIn' ? '' : <>Saved in this browser only — <Link to="/signin?next=%2Fexams%2Fpractice" className="link">sign in</Link> to keep it on every device.</>}
+          {' '}{sitting.challenge ? '' : result.saved ? 'Saved to your account.' : status === 'signedIn' ? '' : result.points ? 'Saved to your leaderboard entry.' : <>Saved in this browser only — <Link to="/signin?next=%2Fexams%2Fpractice" className="link">sign in</Link> to keep it on every device.</>}
         </div>
         <div className="flex flex-wrap gap-2 border-t border-slate-100 p-5">
           {missedIds.length > 0 && (
@@ -1199,11 +1271,16 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
               <Icon name="repeat" className="h-4 w-4" /> Retry the {missedIds.length} you missed
             </Link>
           )}
-          <button type="button" onClick={onRestart} className="btn-secondary">Retake this test</button>
+          {sitting.challenge
+            ? <Link to={`/exams/challenges/${sitting.challenge.slug}`} className="btn-secondary">Back to the challenge</Link>
+            : <button type="button" onClick={onRestart} className="btn-secondary">Retake this test</button>}
           <Link to="/exams/practice" className="btn-secondary">Start another practice</Link>
           {sitting.examSlug && <Link to={`/exams/${sitting.examSlug}`} className="btn-ghost">Exam guide</Link>}
         </div>
       </section>
+
+      <PointsPanel points={result.points ?? null} signedIn={status === 'signedIn'} scorePercent={percent} note={sitting.challenge?.pointsNote}
+        onJoin={result.input ? (r) => joinAndCount(r, result.input!) : undefined} />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <section className="card p-5" aria-labelledby="subjects-heading">

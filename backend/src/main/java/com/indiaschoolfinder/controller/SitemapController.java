@@ -78,6 +78,9 @@ public class SitemapController {
                 Disallow: /exams/practice/progress
                 Disallow: /exams/practice/attempts
                 Disallow: /exams/practice/session
+                Disallow: /exams/leaderboard
+                Disallow: /exams/achievements
+                Disallow: /exams/challenges
 
                 Sitemap: %s/sitemap.xml
                 """.formatted(base(request));

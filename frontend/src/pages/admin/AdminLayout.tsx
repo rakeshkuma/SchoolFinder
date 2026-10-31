@@ -13,6 +13,8 @@ const LINKS = [
   { to: '/admin/submissions', label: 'Suggested updates' },
   { to: '/admin/exams', label: 'Entrance exams' },
   { to: '/admin/practice', label: 'Practice questions' },
+  { to: '/admin/challenges', label: 'Challenges' },
+  { to: '/admin/moderation', label: 'Student moderation' },
   { to: '/admin/reviews', label: 'Review moderation' },
   { to: '/admin/rankings', label: 'Ranking weights' },
   { to: '/admin/external-rankings', label: 'Published rankings' },

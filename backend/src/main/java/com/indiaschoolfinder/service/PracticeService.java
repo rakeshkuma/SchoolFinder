@@ -231,6 +231,7 @@ public class PracticeService {
             case REVISION -> "Revision: questions you got wrong";
             case RETRY -> "Retry";
             case SET -> "Practice";
+            case CHALLENGE -> "Challenge";
         };
     }
 
@@ -242,7 +243,7 @@ public class PracticeService {
             case FULL -> "A longer mixed test from the whole question bank, with an optional time limit.";
             case DAILY -> "The same ten questions for everyone today. Come back tomorrow for a new set.";
             case REVISION -> "Questions you answered wrongly before. Get them right to clear them from this list.";
-            case RETRY, SET -> "Questions from an earlier attempt.";
+            case RETRY, SET, CHALLENGE -> "Questions from an earlier attempt.";
         };
     }
 

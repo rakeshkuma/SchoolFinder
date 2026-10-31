@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Clock;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -46,9 +48,24 @@ public class MemberPracticeService {
     private final ExamRepository exams;
     private final MemberBookmarkRepository bookmarks;
 
+    private final ParticipantService participants;
+    private final PointsService pointsService;
+    private final AchievementService achievements;
+    private final ProgressService progress;
+    private final LeaderboardService leaderboard;
+    private final Clock clock;
+
     public MemberPracticeService(PracticeService practiceService, PracticeAttemptRepository attempts,
                                  MemberSavedExamRepository savedExams, ExamRepository exams,
-                                 MemberBookmarkRepository bookmarks) {
+                                 MemberBookmarkRepository bookmarks, ParticipantService participants,
+                                 PointsService pointsService, AchievementService achievements,
+                                 ProgressService progress, LeaderboardService leaderboard, Clock clock) {
+        this.clock = clock;
+        this.participants = participants;
+        this.pointsService = pointsService;
+        this.achievements = achievements;
+        this.progress = progress;
+        this.leaderboard = leaderboard;
         this.practiceService = practiceService;
         this.attempts = attempts;
         this.savedExams = savedExams;
@@ -58,7 +75,22 @@ public class MemberPracticeService {
 
     /** The member's latest attempts (at most 200, newest first) for the progress dashboard. */
     public List<AttemptDtos.HistoryItem> history(long accountId, int limit) {
-        return attempts.findTop200ByAccountIdOrderByCreatedAtDescIdDesc(accountId).stream()
+        return historyItems(attempts.findTop200ByAccountIdOrderByCreatedAtDescIdDesc(accountId), limit);
+    }
+
+    /** A guest's latest attempts, as {@link #history} gives a member's. */
+    public List<AttemptDtos.HistoryItem> guestHistory(com.indiaschoolfinder.entity.Participant guest, int limit) {
+        return historyItems(attempts.findTop200ByParticipantIdOrderByCreatedAtDescIdDesc(guest.getId()), limit);
+    }
+
+    /** False while the attempt's challenge has yet to release its results: until then it reveals nothing. */
+    private boolean visible(PracticeAttempt a) {
+        return a.getResultsHiddenUntil() == null || !a.getResultsHiddenUntil().isAfter(Instant.now(clock));
+    }
+
+    private List<AttemptDtos.HistoryItem> historyItems(List<PracticeAttempt> rows, int limit) {
+        return rows.stream()
+                .filter(this::visible)
                 .limit(Math.max(1, Math.min(MAX_HISTORY, limit)))
                 .map(a -> new AttemptDtos.HistoryItem(summary(a),
                         Objects.requireNonNullElse(a.getResponses().score().topics(), List.of()),
@@ -66,6 +98,12 @@ public class MemberPracticeService {
                                 .map(q -> new AttemptDtos.QuestionOutcome(q.id(), q.chosen() != null, q.correct()))
                                 .toList()))
                 .toList();
+    }
+
+    /** The member's progress report. */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public com.indiaschoolfinder.dto.practice.ProgressDtos.Report progress(long accountId) {
+        return progress.report(participants.member(accountId).getId());
     }
 
     // --- bookmarks --------------------------------------------------------------------------------------------------
@@ -123,13 +161,28 @@ public class MemberPracticeService {
      */
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public AttemptDtos.Saved record(long accountId, AttemptRequest r) {
-        var existing = attempts.findByAccountIdAndClientId(accountId, r.clientId());
+        return save(accountId, participants.member(accountId).getId(), r);
+    }
+
+    /** A guest participant's attempt: scored, saved and counted exactly like a member's. */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public AttemptDtos.Saved recordGuest(com.indiaschoolfinder.entity.Participant guest, AttemptRequest r) {
+        return save(null, guest.getId(), r);
+    }
+
+    private AttemptDtos.Saved save(Long accountId, long participantId, AttemptRequest r) {
+        if (r.mode() == com.indiaschoolfinder.dto.practice.PracticeMode.CHALLENGE) {
+            throw new BusinessValidationException("mode", "challenge attempts are started and submitted through the challenge");
+        }
+        var existing = accountId != null ? attempts.findByAccountIdAndClientId(accountId, r.clientId())
+                : attempts.findByParticipantIdAndClientId(participantId, r.clientId());
         if (existing.isPresent()) {
-            return saved(existing.get(), true);
+            return saved(existing.get(), true, List.of());
         }
         ScoreResultDto score = practiceService.scoreBank(r.questionIds(), r.answers());
         PracticeAttempt a = new PracticeAttempt();
         a.setAccountId(accountId);
+        a.setParticipantId(participantId);
         a.setClientId(r.clientId());
         a.setTitle(r.title().trim());
         a.setMode(r.mode());
@@ -143,21 +196,32 @@ public class MemberPracticeService {
         a.setDurationSeconds(r.durationSeconds());
         a.setResponses(new PracticeAttempt.Responses(List.copyOf(r.questionIds()), Map.copyOf(r.answers()), score));
         try {
-            return saved(attempts.saveAndFlush(a), false);
+            a = attempts.saveAndFlush(a);
         } catch (DataIntegrityViolationException race) {
-            return attempts.findByAccountIdAndClientId(accountId, r.clientId()).map(x -> saved(x, true)).orElseThrow(() -> race);
+            return attempts.findByParticipantIdAndClientId(participantId, r.clientId()).map(x -> saved(x, true, List.of())).orElseThrow(() -> race);
         }
+        pointsService.award(a);
+        return saved(a, false, achievements.evaluate(participantId));
     }
 
     public PageResponse<AttemptDtos.Summary> list(long accountId, int page, int size) {
-        Page<PracticeAttempt> p = attempts.findByAccountIdOrderByCreatedAtDescIdDesc(accountId, PageRequest.of(page, size));
+        Page<PracticeAttempt> p = attempts.findVisible(accountId, Instant.now(clock), PageRequest.of(page, size));
         return new PageResponse<>(p.getContent().stream().map(MemberPracticeService::summary).toList(), p.getNumber(),
                 p.getSize(), p.getTotalElements(), p.getTotalPages(), p.isFirst(), p.isLast());
     }
 
     public AttemptDtos.Detail get(long accountId, long id) {
-        PracticeAttempt a = attempts.findByIdAndAccountId(id, accountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Practice attempt", id));
+        return detail(attempts.findByIdAndAccountId(id, accountId).filter(this::visible)
+                .orElseThrow(() -> new ResourceNotFoundException("Practice attempt", id)));
+    }
+
+    /** A guest's own attempt; another participant's id simply does not exist. */
+    public AttemptDtos.Detail guestAttempt(com.indiaschoolfinder.entity.Participant guest, long id) {
+        return detail(attempts.findByIdAndParticipantId(id, guest.getId()).filter(this::visible)
+                .orElseThrow(() -> new ResourceNotFoundException("Practice attempt", id)));
+    }
+
+    private static AttemptDtos.Detail detail(PracticeAttempt a) {
         return new AttemptDtos.Detail(summary(a), a.getResponses().questionIds(), a.getResponses().answers(), a.getResponses().score());
     }
 
@@ -165,6 +229,7 @@ public class MemberPracticeService {
     public AttemptDtos.Revision revision(long accountId) {
         Map<String, Boolean> latest = new LinkedHashMap<>(); // question id -> answered wrongly last time
         for (PracticeAttempt a : attempts.findTop200ByAccountIdOrderByCreatedAtDescIdDesc(accountId)) {
+            if (!visible(a)) continue;
             for (ScoreResultDto.QuestionResult q : a.getResponses().score().questions()) {
                 if (q.chosen() != null) latest.putIfAbsent(q.id(), !q.correct());
             }
@@ -177,12 +242,21 @@ public class MemberPracticeService {
         return new AttemptDtos.Revision(ids);
     }
 
-    private static AttemptDtos.Saved saved(PracticeAttempt a, boolean duplicate) {
-        return new AttemptDtos.Saved(summary(a), a.getResponses().score(), duplicate);
+    private AttemptDtos.Saved saved(PracticeAttempt a, boolean duplicate, List<com.indiaschoolfinder.dto.practice.ProgressDtos.Earned> earned) {
+        return new AttemptDtos.Saved(summary(a), a.getResponses().score(), duplicate, pointsOf(a, earned));
+    }
+
+    /** What an attempt earned, for the student's result. */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public AttemptDtos.Points pointsOf(PracticeAttempt a, List<com.indiaschoolfinder.dto.practice.ProgressDtos.Earned> earned) {
+        LeaderboardService.Position position = leaderboard.position(a.getParticipantId());
+        return new AttemptDtos.Points(a.getPoints(), a.getDailyDate() != null, a.getReviewFlag(),
+                position == null ? null : position.rank(), position == null ? 0 : position.participants(),
+                progress.previousBest(a.getParticipantId(), a.getSetSlug(), a.getId(), a.getCreatedAt()), earned);
     }
 
     private static AttemptDtos.Summary summary(PracticeAttempt a) {
-        return new AttemptDtos.Summary(a.getId(), a.getTitle(), a.getMode(), a.getExamSlug(), a.getSetSlug(), a.getTotal(),
+        return new AttemptDtos.Summary(a.getId(), a.getClientId(), a.getTitle(), a.getMode(), a.getExamSlug(), a.getSetSlug(), a.getTotal(),
                 a.getAttempted(), a.getCorrect(), a.getDurationSeconds(), a.getCreatedAt(), a.getResponses().score().sections(),
                 a.getMarks(), a.getMaxMarks());
     }

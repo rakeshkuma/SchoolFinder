@@ -10,7 +10,7 @@ public final class AttemptDtos {
     private AttemptDtos() {
     }
 
-    public record Summary(long id, String title, PracticeMode mode, String examSlug, String setSlug, int total,
+    public record Summary(long id, java.util.UUID clientId, String title, PracticeMode mode, String examSlug, String setSlug, int total,
                           int attempted, int correct, Integer durationSeconds, Instant createdAt,
                           List<ScoreResultDto.SectionScore> sections,
                           /* null for attempts saved before marking was recorded */
@@ -18,7 +18,17 @@ public final class AttemptDtos {
     }
 
     /** {@code duplicate}: true when this attempt had already been saved (same clientId) and nothing new was stored. */
-    public record Saved(Summary attempt, ScoreResultDto score, boolean duplicate) {
+    public record Saved(Summary attempt, ScoreResultDto score, boolean duplicate, Points points) {
+    }
+
+    /**
+     * Leaderboard points for an attempt (separate from its marks). {@code dailyQuiz}: it counted as that day's quiz.
+     * {@code reviewFlag}: why correct answers earned nothing (NO_TIMING, TOO_FAST); null otherwise. {@code rank}: all-time
+     * position among {@code participants}, null before any points. {@code previousBest}: best earlier score on this set,
+     * as a percentage, null if there is none. {@code achievements}: badges this attempt earned.
+     */
+    public record Points(int earned, boolean dailyQuiz, String reviewFlag, Integer rank, long participants, Integer previousBest,
+                         List<ProgressDtos.Earned> achievements) {
     }
 
     public record Detail(Summary attempt, List<String> questionIds, Map<String, Integer> answers, ScoreResultDto score) {

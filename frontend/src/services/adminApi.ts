@@ -1,4 +1,6 @@
 import { cleanParams, http } from './http';
+import type { ChallengeDifficulty, ChallengeKind, ChallengeRelease, ChallengeSummary } from './challengeApi';
+import type { PracticeCategory } from '../types/api';
 import type {
   Admission,
   AdminPracticeSet,
@@ -207,4 +209,87 @@ export const adminService = {
     http.patch<PracticeReport>(`/admin/practice-reports/${id}`, { status, note }).then((r) => r.data),
   importExams: (body: unknown) =>
     http.post<{ created: number; updated: number; slugs: string[] }>('/admin/exams/import', body).then((r) => r.data),
+  challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
+  createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
+  updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
+  publishChallenge: (id: number, published: boolean) => http.patch<void>(`/admin/challenges/${id}/published`, { published }).then((r) => r.data),
+  deleteChallenge: (id: number) => http.delete<void>(`/admin/challenges/${id}`).then((r) => r.data),
+  moderationOverview: () => http.get<ModerationOverview>('/admin/moderation/overview').then((r) => r.data),
+  flaggedAttempts: (page = 0, size = 20) =>
+    http.get<PageResponse<FlaggedAttempt>>('/admin/moderation/attempts', { params: { page, size } }).then((r) => r.data),
+  decideAttempt: (id: number, decision: 'CLEAR' | 'VOID', note: string) =>
+    http.patch<void>(`/admin/moderation/attempts/${id}`, { decision, note }).then((r) => r.data),
+  moderationParticipants: (q: string) =>
+    http.get<ModeratedParticipant[]>('/admin/moderation/participants', { params: cleanParams({ q }) }).then((r) => r.data),
+  hideParticipant: (publicId: string, hidden: boolean, note: string) =>
+    http.patch<void>(`/admin/moderation/participants/${encodeURIComponent(publicId)}`, { hidden, note }).then((r) => r.data),
 };
+
+/** A challenge as editors see it. */
+export interface AdminChallenge {
+  id: number;
+  summary: ChallengeSummary;
+  rules: string | null;
+  questionIds: string[];
+  pointsPerCorrect: number;
+  completionBonus: number;
+  leaderboardEnabled: boolean;
+  published: boolean;
+  attempts: number;
+  flagged: number;
+}
+
+export interface ChallengeInput {
+  slug: string;
+  title: string;
+  description: string;
+  rules: string | null;
+  kind: ChallengeKind;
+  examSlug: string | null;
+  category: PracticeCategory | null;
+  difficulty: ChallengeDifficulty;
+  questionIds: string[];
+  durationMinutes: number;
+  startsAt: string;
+  endsAt: string;
+  pointsPerCorrect: number;
+  completionBonus: number;
+  maxAttempts: number;
+  resultRelease: ChallengeRelease;
+  leaderboardEnabled: boolean;
+}
+
+export interface ModerationOverview {
+  participants: number;
+  listed: number;
+  attemptsLast7Days: number;
+  awaitingReview: number;
+  activeChallenges: number;
+}
+
+export interface FlaggedAttempt {
+  attemptId: number;
+  publicId: string;
+  nickname: string;
+  title: string;
+  mode: string;
+  challengeSlug: string | null;
+  total: number;
+  attempted: number;
+  correct: number;
+  durationSeconds: number | null;
+  reviewFlag: string;
+  createdAt: string;
+}
+
+export interface ModeratedParticipant {
+  publicId: string;
+  nickname: string;
+  stateCode: string | null;
+  guest: boolean;
+  listed: boolean;
+  hidden: boolean;
+  points: number;
+  attempts: number;
+  flagged: number;
+}

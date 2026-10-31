@@ -37,6 +37,9 @@ export interface PracticeStats {
   correct: number;
   incorrect: number;
   accuracy: number | null;
+  /** Mean and highest test score (correct ÷ total), as whole percentages; null with no tests. */
+  averageScore: number | null;
+  bestScore: number | null;
   /** Average length of a timed-or-not test that recorded its duration, in seconds. */
   averageSeconds: number | null;
   /** Oldest first, at most the last 20 tests. */
@@ -113,9 +116,13 @@ export function practiceStats(
       params: { mode: 'MINI_MOCK', timer: '1' } };
   }
 
+  const scores = attempts.filter((a) => a.total > 0).map((a) => (a.correct / a.total) * 100);
+
   return {
     tests: attempts.length, questions: all.total, attempted: all.attempted, correct: all.correct,
     incorrect: all.attempted - all.correct, accuracy: all.accuracy,
+    averageScore: scores.length ? Math.round(scores.reduce((s, x) => s + x, 0) / scores.length) : null,
+    bestScore: scores.length ? Math.round(Math.max(...scores)) : null,
     averageSeconds: timed.length ? Math.round(timed.reduce((s, a) => s + (a.durationSeconds ?? 0), 0) / timed.length) : null,
     trend, improvement, subjects, chapters, weakTopics, suggestion,
   };
