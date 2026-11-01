@@ -4,6 +4,7 @@ import { AdmissionStatusBadge, SourceLink, Stars, VerificationBadge } from '../c
 import { Icon } from '../components/common/Icon';
 import { ShareLinkButtons } from '../components/common/ShareLinkButtons';
 import { SchoolImage } from '../components/school/SchoolImage';
+import { SchoolListSection } from '../components/school/SchoolListSection';
 import { PageHeader } from '../components/common/PageHeader';
 import { AsyncContent, EmptyState, Spinner } from '../components/common/States';
 import { SchoolPicker } from '../components/school/SchoolPicker';
@@ -331,6 +332,7 @@ export function ComparePage() {
             )}
           </AsyncContent>
         )}
+        {hydrated && items.length === 0 && <SchoolListSection listKey="india-top" title="Well-known schools to compare" />}
         {items.length === 1 && (
           <p className="rounded-lg bg-brand-50 p-3 text-sm text-brand-800">Add at least one more school (up to {MAX_COMPARE}) to compare them side by side.</p>
         )}

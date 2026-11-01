@@ -184,6 +184,35 @@ export const rankingService = {
   places: (edition: number) => http.get<RankingPlaces>('/rankings/places', { params: { edition } }).then((r) => r.data),
 };
 
+/** Lists of schools compiled by the site. They hold no ranks. */
+export const schoolListService = {
+  lists: () => http.get<SchoolListSummary[]>('/school-lists').then((r) => r.data),
+  items: (key: string, params: { q?: string; page?: number; size?: number }) =>
+    http.get<PageResponse<SchoolListItem>>(`/school-lists/${key}`, { params: cleanParams(params) }).then((r) => r.data),
+};
+
+export interface SchoolListSummary {
+  key: string;
+  kind: 'TOP' | 'STATE' | 'CITY' | 'BOARD' | 'GOVERNMENT' | 'BOARDING';
+  code: string | null;
+  title: string;
+  entries: number;
+  profiles: number;
+}
+
+export interface SchoolListItem {
+  id: number;
+  name: string;
+  place: string;
+  board: string | null;
+  type: string;
+  websiteUrl: string | null;
+  schoolId: number | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageCredit: string | null;
+}
+
 /** One published list: a publisher's list for one year, category and place. */
 export interface RankingEdition {
   id: number;
