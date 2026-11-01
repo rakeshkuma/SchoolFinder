@@ -19,6 +19,7 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
       { to: '/cities', label: 'Schools by City' },
       { to: '/boarding', label: 'Boarding Schools' },
       { to: '/rankings', label: 'School Rankings' },
+      { to: '/blog', label: 'Blogs' },
     ],
   },
   {
@@ -83,11 +84,11 @@ function BackToTop() {
  * (tablet widths; not on phones, nor beside the full desktop navigation).
  * `full` shows the tagline at every width (footer).
  */
-export function Logo({ light = false, full = false }: { light?: boolean; full?: boolean }) {
+export function Logo({ light = false, full = false, compact = false }: { light?: boolean; full?: boolean; compact?: boolean }) {
   return (
     <span className="flex shrink-0 items-center gap-2.5">
       <img src="/favicon.svg" alt="" width={36} height={36} className="h-9 w-9 shrink-0" />
-      <span className="whitespace-nowrap leading-none">
+      <span className={`whitespace-nowrap leading-none ${compact ? 'hidden min-[380px]:block' : ''}`}>
         <span className={`block font-display text-base font-extrabold tracking-tight sm:text-[17px] ${light ? 'text-white' : 'text-ink'}`}>
           India School Finder
         </span>
@@ -147,11 +148,11 @@ export function Layout() {
         {/* Wider than the page content on very wide screens, so the full navigation and every action fit on one row. */}
         <div className="container-page flex h-[68px] items-center justify-between gap-3 xl:gap-4 2xl:max-w-[1440px]">
           <Link to="/" aria-label="India School Finder home" className="shrink-0 rounded-lg">
-            <Logo />
+            <Logo compact />
           </Link>
           <DesktopNav />
           <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-            <Link to="/saved" className="btn-ghost relative h-10 rounded-full px-2.5" aria-label={`Saved schools (${savedCount})`} title="Saved schools">
+            <Link to="/saved" className="btn-ghost relative hidden h-10 rounded-full px-2.5 sm:inline-flex" aria-label={`Saved schools (${savedCount})`} title="Saved schools">
               <Icon name="heart" className="h-5 w-5" />
               {savedCount > 0 && (
                 <span className="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-accent-400 px-1 text-center text-[10px] font-bold leading-[18px] text-ink">

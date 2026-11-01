@@ -111,10 +111,6 @@ export const MENUS: NavMenu[] = [
     ],
   },
   {
-    label: 'Rankings', icon: 'trophy', match: ['/rankings'],
-    sections: [{ items: RANKING_ITEMS }],
-  },
-  {
     label: 'Exam preparation', icon: 'target', match: ['/exams'],
     sections: [
       {
@@ -148,6 +144,10 @@ export const MENUS: NavMenu[] = [
         ],
       },
     ],
+  },
+  {
+    label: 'Rankings', icon: 'trophy', match: ['/rankings'],
+    sections: [{ items: RANKING_ITEMS }],
   },
   {
     label: 'Admissions', icon: 'calendar', match: ['/admissions'],
@@ -195,7 +195,7 @@ export function DesktopNav() {
   return (
     <nav ref={navRef} aria-label="Main" className="hidden min-w-0 items-center gap-0.5 xl:flex">
       <NavLink to="/" end
-        className={({ isActive }) => `whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
+        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
         Home
       </NavLink>
       {menus.map((m, i) => (
@@ -205,8 +205,12 @@ export function DesktopNav() {
           onHover={() => hoverOpen(m.label)} onLeave={hoverClose} />
       ))}
       <NavLink to="/compare"
-        className={({ isActive }) => `whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
+        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
         Compare Schools
+      </NavLink>
+      <NavLink to="/blog"
+        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
+        Blogs
       </NavLink>
     </nav>
   );
@@ -249,7 +253,7 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
     <div className="relative" onMouseEnter={onHover} onMouseLeave={onLeave}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) onClose(); }}>
       <button ref={buttonRef} type="button" aria-expanded={open} aria-controls={panelId} onClick={onToggle} onKeyDown={onButtonKey}
-        className={`flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition ${
+        className={`flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${
           active || open ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
         {menu.label}
         <Icon name="chevronDown" className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
@@ -330,6 +334,10 @@ export function MobileNav() {
       <Link to="/compare" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="scale" className="h-4 w-4" /></span>
         Compare schools
+      </Link>
+      <Link to="/blog" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="book" className="h-4 w-4" /></span>
+        Blogs
       </Link>
     </div>
   );

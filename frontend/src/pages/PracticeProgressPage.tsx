@@ -5,6 +5,7 @@ import { participantService, useGuestToken, type ParticipantProfile, type Partic
 import { Link } from 'react-router-dom';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Icon } from '../components/common/Icon';
+import { SignInLink, SignInOptions } from '../components/common/SignInOptions';
 import { PageHeader } from '../components/common/PageHeader';
 import { EmptyState, ErrorState, Spinner } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
@@ -79,10 +80,10 @@ export function PracticeProgressPage() {
             : 'Practice results kept in this browser. Join with a nickname to see streaks and badges too.'}>
         <div className="flex flex-wrap gap-2">
           <Link to="/exams/practice" className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">← Practice centre</Link>
-          {!signedIn && <Link to="/signin?next=%2Fexams%2Fpractice%2Fprogress" className="chip bg-accent-400 px-3 py-1.5 text-sm font-semibold text-ink">Sign in</Link>}
         </div>
       </PageHeader>
       <div className="container-page space-y-8 py-8">
+        <SignInOptions text="Keep your results, streaks and badges on every device. Results from this browser are added to your account when you sign in." />
         {signedIn && server.error ? <ErrorState error={server.error} onRetry={server.reload} />
           : !stats ? <Spinner label="Loading your progress…" />
             : stats.tests === 0 ? (
@@ -360,7 +361,7 @@ function Bookmarks({ ids, meta, signedIn }: { ids: string[]; meta: Map<string, P
       {ids.length === 0 ? (
         <p className="mt-2 text-sm text-slate-600">
           Use <strong>Bookmark</strong> on any question during a test or in your results to save it here.
-          {!signedIn && ' Bookmarks are kept in this browser until you sign in.'}
+          {!signedIn && <> Bookmarks are kept in this browser until you <SignInLink />.</>}
         </p>
       ) : (
         <ul className="mt-3 divide-y divide-slate-100 text-sm">

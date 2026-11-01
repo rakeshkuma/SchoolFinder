@@ -41,6 +41,10 @@ public class UserAccount {
     @Column(length = 100)
     private String passwordHash;
 
+    /** Optional; ten digits, used for nothing without a new, explicit purpose. */
+    @Column(length = 10)
+    private String mobile;
+
     /** OpenID Connect subject of the linked Google account, if any. */
     @Column(length = 255)
     private String googleSubject;

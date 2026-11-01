@@ -16,26 +16,27 @@ export const POINTS_RULES = [
   'Challenges set their own points, shown before you start.',
 ];
 
-function guestAge(profile?: ParticipantProfile | null): AgeConfirmation {
+/** With no answer yet the safe choice is selected: private, off public lists. */
+function savedAge(profile?: ParticipantProfile | null): AgeConfirmation {
   if (profile?.ageBand === 'ADULT') return 'ADULT';
   return profile?.publicListing ? 'MINOR_WITH_GUARDIAN' : 'MINOR';
 }
 
-function initial(member: boolean, profile?: ParticipantProfile | null): ParticipantRequest {
+function initial(profile?: ParticipantProfile | null): ParticipantRequest {
   return {
     nickname: profile && !profile.nickname.startsWith('Learner ') ? profile.nickname : '',
     stateCode: profile?.stateCode ?? null,
     city: profile?.city ?? null,
     showCity: profile?.showCity ?? false,
     track: profile?.track ?? null,
-    age: member ? 'ADULT' : guestAge(profile),
+    age: savedAge(profile),
     publicListing: profile?.publicListing ?? false,
   };
 }
 
 /**
- * Nickname, state, optional city and what the student prepares for. Guests also answer the age question that decides
- * whether a public listing is allowed; accounts are for adults, so members are not asked.
+ * Nickname, state, optional city and what the student prepares for. Everyone, with an account or not, answers the age
+ * question that decides whether a public listing is allowed.
  */
 export function ParticipantForm({ profile, member, submitLabel, onSubmit }: {
   profile?: ParticipantProfile | null;
@@ -43,7 +44,7 @@ export function ParticipantForm({ profile, member, submitLabel, onSubmit }: {
   submitLabel: string;
   onSubmit: (request: ParticipantRequest) => Promise<void>;
 }) {
-  const [form, setForm] = useState<ParticipantRequest>(() => initial(member, profile));
+  const [form, setForm] = useState<ParticipantRequest>(() => initial(profile));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const states = useApi(() => locationService.states(), []);
@@ -100,19 +101,17 @@ export function ParticipantForm({ profile, member, submitLabel, onSubmit }: {
           </select>
         </label>
       </div>
-      {!member && (
-        <fieldset>
-          <legend className="label">Your age</legend>
-          <div className="space-y-1.5">
-            {ages.map(([v, label]) => (
-              <label key={v} className="flex items-start gap-2">
-                <input type="radio" name="age" className="mt-1" checked={form.age === v} onChange={() => set('age', v)} />
-                <span>{label}</span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
-      )}
+      <fieldset>
+        <legend className="label">Your age</legend>
+        <div className="space-y-1.5">
+          {ages.map(([v, label]) => (
+            <label key={v} className="flex items-start gap-2">
+              <input type="radio" name="age" className="mt-1" checked={form.age === v} onChange={() => set('age', v)} />
+              <span>{label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label className={`flex items-start gap-2 rounded-xl p-3 ${canList ? 'bg-brand-50' : 'bg-slate-50 text-slate-500'}`}>
         <input type="checkbox" className="mt-1" disabled={!canList} checked={canList && form.publicListing}
           onChange={(e) => set('publicListing', e.target.checked)} />
@@ -124,8 +123,8 @@ export function ParticipantForm({ profile, member, submitLabel, onSubmit }: {
       <p className="text-xs text-slate-500">
         We never show your email or phone number. Your results are used only for your progress and rankings.
         {member
-          ? ' Accounts are for adults. If your child practises on your account, you decide whether this nickname is shown; please choose one that doesn’t identify them.'
-          : ' Your entry is kept in this browser. Accounts are for adults (18 or older); signing in to one here moves these results into it.'}
+          ? ' If a child uses this account, please choose a nickname that doesn’t identify them.'
+          : ' Your entry is kept in this browser. Signing in to an account here moves these results into it.'}
         {' '}<Link to="/privacy" className="link">Privacy policy</Link>
       </p>
       {error && <p role="alert" className="text-sm font-medium text-red-700">{error}</p>}

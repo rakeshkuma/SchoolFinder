@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/common/Icon';
+import { SignInOptions } from '../components/common/SignInOptions';
 import { PageHeader } from '../components/common/PageHeader';
 import { EmptyState, ErrorState, SkeletonCards, Spinner } from '../components/common/States';
 import { ParticipantForm } from '../components/exam/LeaderboardJoin';
@@ -110,6 +111,7 @@ function TakePart({ d, onJoined }: { d: ChallengeDetail; onJoined: () => void })
         <>
           <p className="text-sm text-slate-700">Join with a nickname to take part. No account needed.</p>
           <ParticipantForm member={false} submitLabel="Join" onSubmit={async (r) => { await participantService.join(r); onJoined(); }} />
+          <SignInOptions bare text="Or sign in to keep your results on every device." />
         </>
       ) : mine && mine.attemptsLeft === 0 && !mine.inProgress ? (
         <p className="text-sm text-slate-700">You have used {mine.attemptsUsed === 1 ? 'your attempt' : `all ${mine.attemptsUsed} attempts`}.</p>

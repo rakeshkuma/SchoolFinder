@@ -71,8 +71,9 @@ const ContactPage = page(() => import('./pages/ContactPage'), 'ContactPage');
 const PrivacyPage = page(info, 'PrivacyPage');
 const TermsPage = page(info, 'TermsPage');
 const account = () => import('./pages/AccountPages');
-const SignInPage = page(account, 'SignInPage');
-const RegisterPage = page(account, 'RegisterPage');
+const AuthPage = page(account, 'AuthPage');
+const BlogListPage = page(() => import('./pages/BlogPages'), 'BlogListPage');
+const BlogPostPage = page(() => import('./pages/BlogPages'), 'BlogPostPage');
 const VerifyEmailPage = page(account, 'VerifyEmailPage');
 const ForgotPasswordPage = page(account, 'ForgotPasswordPage');
 const ResetPasswordPage = page(account, 'ResetPasswordPage');
@@ -101,6 +102,7 @@ const AdminPracticePage = lazy(() => import('./pages/admin/AdminPracticePage').t
 const AdminChallengesPage = lazy(() => import('./pages/admin/AdminChallengesPage').then((m) => ({ default: m.AdminChallengesPage })));
 const AdminModerationPage = lazy(() => import('./pages/admin/AdminModerationPage').then((m) => ({ default: m.AdminModerationPage })));
 const AdminContactPage = lazy(() => import('./pages/admin/AdminContactPage').then((m) => ({ default: m.AdminContactPage })));
+const AdminBlogPage = lazy(() => import('./pages/admin/AdminBlogPage').then((m) => ({ default: m.AdminBlogPage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
 
 /** /exam-preparation/... is another name for /exams/...: the rest of the address and its query are kept. */
@@ -201,8 +203,10 @@ export default function App() {
               <Route path="find" element={<FindSchoolPage />} />
               <Route path="privacy" element={<PrivacyPage />} />
               <Route path="terms" element={<TermsPage />} />
-              <Route path="signin" element={<SignInPage />} />
-              <Route path="register" element={<RegisterPage />} />
+              <Route path="signin" element={<AuthPage />} />
+              <Route path="register" element={<AuthPage />} />
+              <Route path="blog" element={<BlogListPage />} />
+              <Route path="blog/:slug" element={<BlogPostPage />} />
               <Route path="verify-email" element={<VerifyEmailPage />} />
               <Route path="forgot-password" element={<ForgotPasswordPage />} />
               <Route path="reset-password" element={<ResetPasswordPage />} />
@@ -223,6 +227,7 @@ export default function App() {
                 <Route path="challenges" element={<AdminChallengesPage />} />
                 <Route path="moderation" element={<AdminModerationPage />} />
                 <Route path="contact" element={<AdminContactPage />} />
+                <Route path="blog" element={<AdminBlogPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
                 <Route path="external-rankings" element={<AdminExternalRankingsPage />} />

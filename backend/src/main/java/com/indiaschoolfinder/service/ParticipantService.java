@@ -30,8 +30,9 @@ import java.util.HexFormat;
 /**
  * Leaderboard participants. Guests join with a nickname and get a secret token (kept in their browser; only its hash
  * is stored). Members get a private participant on their first scored attempt, and their earlier attempts are counted
- * then. Nobody is listed publicly without opting in. Accounts are for adults, so members are adults here; under-18s
- * take part as guests, listed only if they declare that a parent or guardian agrees.
+ * then. Nobody is listed publicly without opting in. Accounts are open to all ages, so members answer the same age
+ * question as guests; until they do they stay private, and under-18s are listed only if they declare that a parent or
+ * guardian agrees.
  */
 @Service
 public class ParticipantService {
@@ -67,7 +68,7 @@ public class ParticipantService {
         Participant p = new Participant();
         p.setPublicId(newPublicId());
         p.setGuestTokenHash(hash(token));
-        apply(p, request, false);
+        apply(p, request);
         participants.saveAndFlush(p);
         return new ParticipantDtos.Joined(profile(p), token);
     }
@@ -86,7 +87,7 @@ public class ParticipantService {
     @Transactional
     public ParticipantDtos.Profile updateGuest(String token, ParticipantDtos.ProfileRequest request) {
         Participant p = guest(token);
-        apply(p, request, false);
+        apply(p, request);
         return profile(participants.saveAndFlush(p));
     }
 
@@ -110,7 +111,6 @@ public class ParticipantService {
         p.setAccountId(accountId);
         p.setPublicId(newPublicId());
         p.setNickname("Learner " + p.getPublicId().substring(0, 4));
-        p.setAgeBand(Participant.AgeBand.ADULT);
         try {
             p = participants.saveAndFlush(p);
         } catch (DataIntegrityViolationException raced) {
@@ -132,7 +132,7 @@ public class ParticipantService {
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public ParticipantDtos.Profile updateMember(long accountId, ParticipantDtos.ProfileRequest request) {
         Participant p = member(accountId);
-        apply(p, request, true);
+        apply(p, request);
         return profile(participants.saveAndFlush(p));
     }
 
@@ -196,10 +196,7 @@ public class ParticipantService {
                 total == null ? 0 : total, count == null ? 0 : count);
     }
 
-    private void apply(Participant p, ParticipantDtos.ProfileRequest r, boolean member) {
-        if (member && r.age() != ParticipantDtos.AgeConfirmation.ADULT) {
-            throw new BusinessValidationException("age", "accounts are for adults; under-18s can take part as guests");
-        }
+    private void apply(Participant p, ParticipantDtos.ProfileRequest r) {
         String problem = Nicknames.problem(r.nickname());
         if (problem != null) throw new BusinessValidationException("nickname", problem);
         p.setNickname(Nicknames.clean(r.nickname()));

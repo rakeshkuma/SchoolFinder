@@ -14,11 +14,10 @@ describe('ParticipantForm', () => {
     expect(view.container.textContent).toContain('I am under 18');
   });
 
-  it('does not ask members, whose accounts are for adults', () => {
+  it('asks members too, because accounts are open to all ages', () => {
     view = render(<ParticipantForm member submitLabel="Save" onSubmit={async () => {}} />);
-    expect(view.container.textContent).not.toContain('Your age');
-    expect(view.container.textContent).not.toContain('I am under 18');
-    expect(view.container.textContent).toContain('Accounts are for adults');
+    expect(view.container.textContent).toContain('Your age');
+    expect(view.container.textContent).toContain('I am under 18');
   });
 });
 

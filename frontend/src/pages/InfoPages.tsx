@@ -91,22 +91,22 @@ export function PrivacyPage() {
         <h2 id="accounts">Accounts (optional)</h2>
         <p>You can use the whole site without an account. If you create one:</p>
         <ul>
-          <li><strong>What we keep:</strong> your name, email address, a one-way hash of your password (never the password itself), whether your email is confirmed, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
+          <li><strong>What we keep:</strong> your name, email address, your mobile number if you choose to give it, a one-way hash of your password (never the password itself), whether your email is confirmed, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
           <li><strong>Why:</strong> to let you sign in and, later, keep your saved schools and exams across devices. Your area only sets search defaults.</li>
           <li><strong>Email:</strong> we email you only about your account — confirming your address, password resets and notices such as a password change or deletion. No marketing email unless you separately agree to it.</li>
           <li><strong>Sign-in:</strong> a secure, HttpOnly session cookie keeps you signed in; it holds a random identifier, not your details. It ends when you sign out, after two hours of inactivity, or after 30 days if you chose “Keep me signed in”.</li>
           <li><strong>Protection:</strong> passwords are stored with BCrypt; links in our emails work once and expire (24 hours to confirm an email, 30 minutes to reset a password); repeated wrong passwords lock the account for a while.</li>
-          <li><strong>Your control:</strong> you can change your name, area and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
-          <li><strong>Children:</strong> accounts are for adults (parents, guardians and other adults). We do not ask for information about your children.</li>
+          <li><strong>Your control:</strong> you can change your name, area, mobile number and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
+          <li><strong>Children:</strong> accounts are open to all ages. If you are under 18, please ask a parent or guardian before creating one. Parents do not need to give us information about their children.</li>
           <li><strong>Continue with Google (optional, where offered):</strong> if you choose it, Google tells us your name, your email address, whether Google has verified that address, and a Google account ID; we keep the email, the name (which you can change) and the account ID, so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to India School Finder, under Google’s own privacy policy. If an account with the same email exists, Google sign-in is added to it and we email you to say so. Accounts created this way have no password until you set one by email.</li>
         </ul>
         <h2 id="leaderboard">Practice leaderboard (optional)</h2>
         <p>Practice works without joining. If you join the leaderboard, as a guest or with an account:</p>
         <ul>
-          <li><strong>What we keep:</strong> a nickname, your state, your city and what you prepare for if you give them, for guests an age choice (18 or older, or under 18), your choice about public listing, and your practice attempts, answers, scores, points and badges. Guests have a random key kept in their browser; we store only a hash of it.</li>
+          <li><strong>What we keep:</strong> a nickname, your state, your city and what you prepare for if you give them, an age choice (18 or older, or under 18), your choice about public listing, and your practice attempts, answers, scores, points and badges. Guests have a random key kept in their browser; we store only a hash of it.</li>
           <li><strong>Why:</strong> to work out your points, rank, streak and progress. Answers that come implausibly fast earn no points and may be reviewed for fair play: a moderator sees your nickname and the attempt, not your name or email, and can remove an attempt or hide a nickname.</li>
           <li><strong>What others see:</strong> nothing unless you opt in. You are ranked privately by default and show as “Private learner”. If you opt in, others see your nickname, state, your city only if you chose to show it, what you prepare for, and your points, tests, accuracy and streak. Your progress and badges are shown only to you. Email addresses, phone numbers and real names are never shown. Leaderboard pages are not offered to search engines.</li>
-          <li><strong>Under 18:</strong> accounts are for adults, so under-18s take part as guests or on a parent’s or guardian’s account. A guest’s nickname is shown only if they state that a parent or guardian agrees, and we cannot check this. On an account, the adult who holds it decides whether the nickname is shown.</li>
+          <li><strong>Under 18:</strong> anyone can take part, with an account or as a guest. An under-18’s nickname is shown only if they state that a parent or guardian agrees, and we cannot check this. Otherwise they are ranked privately.</li>
           <li><strong>Your control:</strong> you can change your nickname or turn off public listing at any time on your progress page. Guests can delete their entry there, with its results and points; deleting an account removes them too.</li>
         </ul>
         <h2 id="contact">Contact form (optional)</h2>
@@ -143,7 +143,7 @@ export function TermsPage() {
         </ul>
         <h2>Accounts</h2>
         <ul>
-          <li>Accounts are optional and for adults (18 or older). Give your real name and an email address you control.</li>
+          <li>Accounts are optional and open to all ages. If you are under 18, please ask a parent or guardian first. Give your real name and an email address you control.</li>
           <li>Keep your password to yourself and choose one you do not use elsewhere. Tell us if you think someone else has used your account.</li>
           <li>You can delete your account at any time from your account page. We may suspend accounts used to break these terms.</li>
           <li>How we handle account information is described in the <Link to="/privacy#accounts" className="link">Privacy Policy</Link>.</li>

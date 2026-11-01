@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AchievementCard, useProgressReport } from '../components/exam/ProgressReport';
 import { PageHeader } from '../components/common/PageHeader';
+import { SignInLink, SignInOptions } from '../components/common/SignInOptions';
 import { ErrorState, Spinner } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -37,9 +38,12 @@ export function AchievementsPage() {
       </PageHeader>
       <div className="container-page space-y-8 py-8">
         {!known && status !== 'loading' && (
-          <p className="card p-4 text-sm text-slate-700">
-            To earn badges, <Link to="/exams/practice/progress" className="link">join with a nickname</Link> or sign in. No account is needed to join.
-          </p>
+          <>
+            <p className="card p-4 text-sm text-slate-700">
+              To earn badges, <Link to="/exams/practice/progress" className="link">join with a nickname</Link> or <SignInLink />. No account is needed to join.
+            </p>
+            <SignInOptions text="Keep your badges on every device." />
+          </>
         )}
         {failed ? <ErrorState error={failed} onRetry={known ? report.reload : catalogue.reload} />
           : !list ? <Spinner label="Loading achievements…" />

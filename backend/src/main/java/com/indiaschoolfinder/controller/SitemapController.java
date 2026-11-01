@@ -52,10 +52,12 @@ public class SitemapController {
     private final AppProperties properties;
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final RankingCatalogService rankingCatalog;
+    private final com.indiaschoolfinder.repository.BlogPostRepository blogPosts;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
-                             RankingCatalogService rankingCatalog) {
+                             RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts) {
+        this.blogPosts = blogPosts;
         this.practiceSetRepository = practiceSetRepository;
         this.rankingCatalog = rankingCatalog;
         this.schoolRepository = schoolRepository;
@@ -114,6 +116,10 @@ public class SitemapController {
         if (sections.rankings()) url(xml, base + "/rankings/states", null);
         if (sections.boards()) url(xml, base + "/rankings/boards", null);
         if (sections.government() || sections.boarding()) url(xml, base + "/rankings/government-boarding", null);
+        // The blog appears once it has something to read; drafts never do.
+        var posts = blogPosts.findByPublishedAtIsNotNullOrderByPublishedAtDesc();
+        if (!posts.isEmpty()) url(xml, base + "/blog", null);
+        posts.forEach(p -> url(xml, base + "/blog/" + p.getSlug(), p.getUpdatedAt()));
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);

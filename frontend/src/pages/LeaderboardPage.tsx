@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/common/Icon';
+import { SignInOptions } from '../components/common/SignInOptions';
 import { PageHeader } from '../components/common/PageHeader';
 import { EmptyState, ErrorState } from '../components/common/States';
 import { POINTS_RULES } from '../components/exam/LeaderboardJoin';
@@ -178,7 +179,7 @@ export function LeaderboardPage() {
             {POINTS_RULES.map((r) => <li key={r}>{r}</li>)}
             <li>Ranks go by points, then accuracy (correct ÷ attempted), then whoever reached their points first.</li>
             <li>Everyone with points is ranked, so positions are true; students who keep their name private show as “Private learner”.
-              Under-18s are shown only with a parent’s or guardian’s consent.</li>
+              Under-18s are shown only if they state that a parent or guardian agrees.</li>
             <li>Browser tests cannot rule out every kind of help; unusual results are reviewed.</li>
           </ul>
         </details>
@@ -276,12 +277,15 @@ function RankRow({ row: r, stateName }: { row: LeaderboardRow; stateName: Map<st
 function MyRankCard({ data, joined, stateName }: { data: Board; joined: boolean; stateName: Map<string, string> }) {
   if (!joined) {
     return (
-      <section className="card flex flex-wrap items-center gap-4 p-5" aria-label="Your rank">
-        <Icon name="trophy" className="h-8 w-8 text-accent-500" />
-        <p className="min-w-0 flex-1 text-sm text-slate-700">
-          <strong className="text-ink">See your own rank.</strong> Join with a nickname — or sign in — and the practice you do earns points.
-        </p>
-        <Link to="/exams/practice/progress" className="btn-primary">Join with a nickname</Link>
+      <section className="card space-y-3 p-5" aria-label="Your rank">
+        <div className="flex flex-wrap items-center gap-4">
+          <Icon name="trophy" className="h-8 w-8 text-accent-500" />
+          <p className="min-w-[14rem] flex-1 text-sm text-slate-700">
+            <strong className="text-ink">See your own rank.</strong> Join with a nickname, or sign in, and the practice you do earns points.
+          </p>
+          <Link to="/exams/practice/progress" className="btn-primary">Join with a nickname</Link>
+        </div>
+        <SignInOptions bare text="Have an account, or want one?" />
       </section>
     );
   }

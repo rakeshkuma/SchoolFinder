@@ -232,17 +232,20 @@ class ParticipantPointsIT extends AbstractIntegrationTest {
     }
 
     @Test
-    void accountsAreForAdultsSoAMemberCannotBeUnderEighteen() throws Exception {
+    void anyAgeCanHaveAnAccountAndAMemberIsPrivateUntilTheyAnswerTheAgeQuestion() throws Exception {
         Cookie asha = member("asha@example.org");
         mockMvc.perform(get("/api/v1/account/participant").cookie(asha))
-                .andExpect(jsonPath("$.ageBand").value("ADULT")).andExpect(jsonPath("$.listed").value(false));
-        for (String age : List.of("MINOR_WITH_GUARDIAN", "MINOR")) {
-            mockMvc.perform(put("/api/v1/account/participant").with(csrf()).cookie(asha).contentType(MediaType.APPLICATION_JSON)
-                    .content(json(profile("Asha V", age, true)))).andExpect(status().isBadRequest());
-        }
+                .andExpect(jsonPath("$.ageBand").value("UNKNOWN")).andExpect(jsonPath("$.listed").value(false));
+        // Under 18 without a guardian's agreement: asking to be listed changes nothing.
+        mockMvc.perform(put("/api/v1/account/participant").with(csrf()).cookie(asha).contentType(MediaType.APPLICATION_JSON)
+                        .content(json(profile("Asha V", "MINOR", true))))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.ageBand").value("MINOR")).andExpect(jsonPath("$.listed").value(false));
+        mockMvc.perform(put("/api/v1/account/participant").with(csrf()).cookie(asha).contentType(MediaType.APPLICATION_JSON)
+                        .content(json(profile("Asha V", "MINOR_WITH_GUARDIAN", true))))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.ageBand").value("MINOR")).andExpect(jsonPath("$.listed").value(true));
         mockMvc.perform(put("/api/v1/account/participant").with(csrf()).cookie(asha).contentType(MediaType.APPLICATION_JSON)
                         .content(json(profile("Asha V", "ADULT", true))))
-                .andExpect(status().isOk()).andExpect(jsonPath("$.listed").value(true));
+                .andExpect(status().isOk()).andExpect(jsonPath("$.ageBand").value("ADULT")).andExpect(jsonPath("$.listed").value(true));
     }
 
     @Test

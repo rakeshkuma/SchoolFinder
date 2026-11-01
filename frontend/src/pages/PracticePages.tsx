@@ -13,6 +13,7 @@ import {
 } from '../hooks/usePracticeProgress';
 import { memberPracticeService, type AttemptInput, type AttemptPoints } from '../services/accountApi';
 import type { ChallengeSubmitted } from '../services/challengeApi';
+import { SignInLink, SignInOptions } from '../components/common/SignInOptions';
 import { POINTS_RULES, PointsPanel } from '../components/exam/LeaderboardJoin';
 import { participantService, useGuestToken } from '../services/participantApi';
 import { ApiError } from '../services/http';
@@ -389,7 +390,7 @@ function SessionBuilder({ bank, bankError, onRetry, examName, examSlugs, initial
               {wrongCount > 0
                 ? `${wrongCount} question${wrongCount === 1 ? '' : 's'} you answered wrongly before. Answer one correctly and it leaves this list.`
                 : 'Nothing to revise yet. Questions you answer wrongly in any practice appear here.'}
-              {status !== 'signedIn' && ' Kept in this browser only — sign in to keep your list on every device.'}
+              {status !== 'signedIn' && <> Kept in this browser only — <SignInLink /> to keep your list on every device.</>}
             </p>
           ) : (
             <fieldset className="mt-5">
@@ -528,8 +529,9 @@ function ProgressPanel({ examName }: { examName: (slug: string | null) => string
       </div>
       <p className="mt-1 text-xs text-slate-500">
         {status === 'signedIn' ? 'Saved to your account.' : token ? 'Recent results in this browser. The full dashboard has everything saved to your leaderboard entry.'
-          : <>Kept in this browser only. <Link to="/signin?next=%2Fexams%2Fpractice" className="link">Sign in</Link> to keep results on every device — results from this browser are added when you sign in.</>}
+          : <>Kept in this browser only. <SignInLink>Sign in</SignInLink> to keep results on every device — results from this browser are added when you sign in.</>}
       </p>
+      {!token && <div className="mt-3"><SignInOptions bare text="Keep your practice results on every device." /></div>}
       {status === 'signedIn' && server.loading && !server.data ? <Spinner /> : attempts.length === 0 ? (
         <p className="mt-4 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">Your results will appear here after your first practice.</p>
       ) : (
@@ -756,7 +758,7 @@ export function PracticeAttemptPage() {
     return (
       <div className="container-page max-w-2xl py-10">
         <EmptyState title="This result could not be opened">
-          {state.error.status === 401 ? 'Sign in to see results saved to your account.' : state.error.message}{' '}
+          {state.error.status === 401 ? <><SignInLink>Sign in</SignInLink> to see results saved to your account.</> : state.error.message}{' '}
           <Link to="/exams/practice" className="link">Back to the practice centre</Link>
         </EmptyState>
       </div>
@@ -1004,7 +1006,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
                   {hindiCount === questions.length ? 'Every question' : `${hindiCount} of the ${questions.length} questions`} can be read in Hindi; switch language at any time during the test.
                 </li>
               )}
-              <li>{status === 'signedIn' ? 'Your result is saved to your account.' : 'Your result is kept in this browser. Sign in to keep it on every device.'}</li>
+              <li>{status === 'signedIn' ? 'Your result is saved to your account.' : <>Your result is kept in this browser. <SignInLink>Sign in</SignInLink> to keep it on every device.</>}</li>
             </ul>
             {sitting.reviewedOn && <p className="text-xs text-slate-500">Questions reviewed by India School Finder on {formatDate(sitting.reviewedOn)}.</p>}
             {saved && (
@@ -1279,6 +1281,9 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
         </div>
       </section>
 
+      {!sitting.challenge && !result.saved && !result.points && (
+        <SignInOptions next="/exams/practice/progress" text="Keep this result on every device. Results saved in this browser are added to your account when you sign in." />
+      )}
       <PointsPanel points={result.points ?? null} signedIn={status === 'signedIn'} scorePercent={percent} note={sitting.challenge?.pointsNote}
         onJoin={result.input ? (r) => joinAndCount(r, result.input!) : undefined} />
 
