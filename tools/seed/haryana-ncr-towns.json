@@ -1,0 +1,4204 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kv-gc-crpf-kadarpur",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/500151",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURUGRAM, HARYANA\", PIN 122098."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-boys-seni-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520015",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GBSSS,NIT-3, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-senior-secondary-school-nangla-gujran-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520057",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NANGLA GUJRAN FARIDABAD\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-senior-secondary-school-farrukhnagar-0735",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520076",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GOVT. MODEL SANSKRITI SENIOR SECONDARY SCHOOL FARRUKHNAGAR - 0735\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-senior-secondary-school-pataudi",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520088",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO-10,GOVT MODEL SANSKRITI SENIOR SECONDARY SCHOOL ,PATAUDI\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gmssss-sohna",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520092",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR TAU DEVI LAL STADIUM WARD NUMBER 5 SOHNA GURUGRAM\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-sanskriti-senior-secondary-school-sec-55-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520118",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GMSSSS SEC 55, FARIDABAD, HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-sen-sec-school-sushant-lok-1-sector-43-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520138",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GOVT MODEL SANSKRITI SEN SEC SCHOOL SUSHANT LOK 1 SECTOR 43 GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-ser-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520202",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DISTRICT FARIDABAD , FARIDABAD\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "goverment-model-sanskriti-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520268",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AMBEDKAR CHOWK, BALLABGARH, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-girls-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520297",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NIT NO. 2, NEAR LAKHANI DHARAMSHALA, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-sr-sec-school-khandawali",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520303",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE KHANDAWALI, BALLABGARH, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-sr-sec-school-fatehpur-tagga",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520307",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO FATEHPUR TAGGA, BALLABGARH, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pmshri-gsss-chakkarpur",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520319",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PMSHRI GSSS CHAKKARPUR , VILLAGE CHAKKARPUR DLF PHASE 1 GURUGRAM, NEAR DLF 1 RAPID METRO STATION\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sanskriti-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520340",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ARJUN NAGAR, NEAR RAM LILA MAIDAN, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "754-pm-shri-saheed-shri-raghuraj-singh-government-senior-secondary-school-daul",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/520389",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO DAULAH, SOHNA, GURUGRAM\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-l-m-dayanand-pub-sr-sec-school-no-1",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530009",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEHRU GROUND N I T FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-anthony-s-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530010",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 9 ( N I T ) FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-s-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530011",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-5 N I T FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530012",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 17 FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-l-mehta-dayanand-public-s-s-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530013",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NO 2 SECTOR 16 FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-adarsh-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530014",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-47, SOHANA ROAD, GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "our-lady-of-fatima-convent-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530015",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW COLONY GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rotary-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530021",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 22 GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-s-n-sidheshwar-sr-sec-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530023",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR -9A, GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-rachna-international-school-sector-14",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530033",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 14 FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-john-s-school-a-sector-7",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530048",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"A-BLOCK SECTOR 7 FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-sector-14",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530049",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 14 FARIDABAD HARYANA\", PIN 121007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholar-s-pride",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530055",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PARK AREA, SECTOR 16 FARIDABAD, HARYANA-121002\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "blue-bells-model-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530056",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 4 NEAR TUBE WELL NO 7 URBAN ESTATE GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-p-s-mewat-model-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530062",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NUH COLONY GURGAON DISTT HARYANA\", PIN 122007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "homerton-grammar-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530064",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR - 21 A BARKHAL ROAD FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gita-bal-niketan-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530066",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"3E/PARK N I T FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-vidya-niketan-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530079",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 17 FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hermann-gemeiner-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530080",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SOS ENCLAVE SECTOR-29 FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "carmel-convent-school-6",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530086",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 7 D FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aggarwal-public-school-ballabgarh",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530091",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BALLABGARH, DISTT FARIDABAD, HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-p-s-g",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530101",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PALAM VIHAR, GURGAON, HARYANA-122 017\", PIN 122017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-thomas-school-8",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530132",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-8 NEAR MARKET FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-n-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530135",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BADRI NARAIN MANDIR SECTOR 2C NIT FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-public-school-112-sector-9-b",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530138",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"112 SECTOR 9-B FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "colonels-central-academy",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530142",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NO.5 SECTOR-4 URBAN ESTATE GURGAON HARYANA\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dynasty-international-t-t-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530145",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 28 FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-tharu-ram-arya-kanya-uchatam-madhyamik-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530146",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BHIMSEN COLONY BALLABHGARH DISTT. FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-devi-pub-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530150",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 17 GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-albans-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530151",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 15 FARIDABAD HARYANA\", PIN 121007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shreeram-model-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530163",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-21A, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashok-memorial-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530165",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ASHOK ENCLAVE PHASE-I PO AMAR NAGAR FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "summer-fields-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530176",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DLF QUTAB ENCLAVE PHASE-I GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ballabhgarh",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530180",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BALLABHGARH FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-gian-prakash-chopra-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530183",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SAINIK COLONY SECTOR -49 FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-niketan-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530188",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"2M, N.I.T. FARIDABAD-121 001\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tagore-academy-public-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530190",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR III HUDA BALLABGARH HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bohra-public-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530196",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BOHRA ENCLAVE EAST CHAWLA COLONY BALLABHGARH FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-mandir-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530199",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC 15 A FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-child-public-school-sectoe-29",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530202",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOE 29 FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sherwood-convent-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530205",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DLF QUTAB ENCLAVE PHASE II GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shreeram-global-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530207",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"J BLOCK SECTOR 10 D L F FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-8",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530208",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 10/A GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-michael-s-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530210",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHIVPURI, DISTT GURGOAN, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "golaya-progressive-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530211",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RASULPUR ROAD, PALWAL FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arqam-academy-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530221",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"FATEHPUR TAGA FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "john-f-kennedy-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530225",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-28 FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "grand-columbus-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530227",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-16A FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-p-b-n-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530230",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-17 BEHIND IFFCO GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "faridabad-model-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530231",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-31 FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dev-samaj-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530232",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW COLONY GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-maruti-kunj-bhondsi-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530233",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MARUTI KUNJ (BHONDSI) GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530241",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHANDU SULTANPUR LAKE ROAD GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sector-19-c",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530244",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-19 C FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-soldier-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530245",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW PALAM VIHAR PHASE II PO PALAM VIHAR GURGAON HARYANA\", PIN 122017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peters-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530248",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT 16 A FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rawal-convent-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530249",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"FRIENDS COLONY SOHNA ROAD BALLABGARH, DISTT FARIDABAD, HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530263",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NH-3 N.I.T. FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "colonel-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530264",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR RADHA SWAMI SATSANG BEAS PATAUDI ROAD GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sharda-international-school-shiv-nagar-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530268",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHIV NAGAR GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "salwan-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530273",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-15 II GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rao-ram-jiwan-singh-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530281",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HAILY MANDI TEH. PATAUDI DISTT. GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lion-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530293",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-10A GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-sec-37",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530303",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-37 FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-l-mehta-dayanand-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530313",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-7C FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-a-v-international-school-sector-7-extn-urban-estate-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530315",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-7 EXTN. URBAN ESTATE GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ajanta-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530318",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR - 31 GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sheetla-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530325",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAURANGPUR,SECTOR 79-B,GURUGRAM,HARYANA-122001\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aggarwal-public-school-sector-3-urban-estate",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530331",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-3 URBAN ESTATE FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eicher-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530332",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-46 FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "alpine-valley-boarding-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530342",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KARNERA BALLABGARH SOHNA ROAD FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sant-nirankari-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530343",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 16 A FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "satyug-darshan-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530355",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VASUNDHARA BHUPANI LALPUR ROAD FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "drona-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530357",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAVI NAGAR BASAI RAOD GURUGRAM HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "basant-valley-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530364",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARHI HARSARU GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahadev-desai-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530367",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"LACHHMAN BAGH SECTOR 16 A FARIDABAD HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marry-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530368",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BETHANY NAGAR BAROLI BATHOLA FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ascent-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530385",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHANDER LOK DLF PHASE IV GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-crispins-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530393",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEW RAILWAY ROAD GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rawal-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530395",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAGLA SOHNA ROAD FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pole-star-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530398",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 7 EXTN GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mewat-model-school-tauru-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530404",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TAURU DISTT GURGAON HARYANA\", PIN 122007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-site-i",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530405",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 45 URBAN ESTATE GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-b-p-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530406",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SANJAY COLONY SECTOR 23 NIT FARIDABAD HARYANA\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-pine-crest-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530410",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"B 11 ASHOKA CRESENT DLF CITY PHASE-I, GURGAON, HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dkn-global-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530419",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 11 D FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530422",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ARAVALI HILLS BADKHAL SURAJKUND ROAD FARIDABAD HARYANA\", PIN 121010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-10",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530440",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NTPC, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amity-international-school-sector-43-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530460",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 43 GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lok-deep-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530477",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJIV GANDHI MARG MOHANA ROAD BALLABAGARH DISTT FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brahm-dutt-blue-bells-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530482",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SITE NO I, SECT 10 GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-brijmohan-lal-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530484",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"V&PO ANANGPUR DISTT FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aravali-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530488",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 43 FARIDABAD HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-columbus-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530491",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DAYAL BAGH SURAJ KUND FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "laxmi-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530499",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KASAN DISTT GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rattan-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530503",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HARFALA ROAD SEEKARI FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pinewood-international-boarding-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530512",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE PAWTA MAIN SOHNA ROAD DISTT FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "infant-jesus-school-3",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530513",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SANJOE PURAM CHANDPUR FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "balaji-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530516",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MALENA ROAD ADARSH NAGAR BALLABHGARH HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rabindranath-world-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530521",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"W-10/3120 DLF CITY PHASE III W BLOCK GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-niketan-public-school-tek-chand-nagar-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530527",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TEK CHAND NAGAR GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "american-montessori-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530529",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"L 23 DFL CITY PHASE II GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-c-model-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530531",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 9 FARIDABAD HARYANA\", PIN 121006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amity-international-school-sector-46-gurgaon",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530535",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 46 GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanand-international-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530537",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT - 8 FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530539",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SOHNA DISTT GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "heritage-xperiential-learning-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530550",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-62, GURUGRAM\", PIN 122011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "faridabad-convent-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530561",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BALLABGARH, DISTT FARIDABAD, HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lady-florence-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530570",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL BEGUM PUR KHOTOLA NH-8 KHANDSA GURGAON HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "west-academy",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530573",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAILWAY ROAD PATAUDI DISTT GURGAON HARYANA\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-m-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530579",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-4, UE, GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiksha-bharti-public-school-pakhal-sohna-pali-road-2-1-116-nit",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530584",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL PAKHAL SOHNA PALI ROAD FARIDABAD /2-1-116 NIT FARIDABAD HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "asian-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530587",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE KHARODA DAUHLA HARCHANDER PUR ROAD GURGAON SOHNA HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bansi-vidya-niketan-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530593",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJIV COLONY SECTOR 56-A BALLABGARH FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sector-29",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530598",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 29, BLOCK B SUSHANT LOK PHASE I GURGAON HARYANA\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gold-field-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530599",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL CHHAINSA BALLABGARH DISTT FARIDABAD HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pathfinder-global-school",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530618",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OPP NEW BUS STAND, HAILY MANDI ROAD PATAUDI, DISTT GURGAON, HARYANA\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sumer-singh-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530625",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"9/4 SOHNA ROAD, SUMER PURAM VILLAGE PALI, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rawal-public-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530631",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MILK PLANT, MOHNA ROAD, BALLABGARH (FARIDABAD) HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saffron-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530647",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ASHOKA ENCLAVE-II,SECTOR-37, FARIDABAD, HARYANA\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "greenwood-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530649",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HUDA SITE NO - 1, SEC - 9, GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-niketan-public-school-farukh-nagar",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530650",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"FARUKH NAGAR, PATAUDI, GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rockford-convent-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530654",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHAKTI PARK, NEAR SEC-10 A, GURGAON 122001 (HR)\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "emerald-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530659",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-BHATOLA, POST OFFICE-BAROLI, DISTT FARIDABAD, HARYANA\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajmala-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530665",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHAIL FARM, VILLAGE & POST: FARRUKH NAGAR, GURGAON, HARYANA\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ryan-international-school-b-s-f-camp",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530674",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OPP, B S F CAMP, SOHNA ROAD, BHONDSI, DISTT GURGAON, HARYANA-122001\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "suncity-school-suncity-township",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530678",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUNCITY TOWNSHIP, SECTOR 54, GURGAON, HARYANA\", PIN 122003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530691",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KHURAMPUR TEHSIL, FAHROKHNAGAR, NEAR D M COLLEGE, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shalom-hills-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530693",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK - C, SUSHANT LOK -1, GURGAON-\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-deep-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530695",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHEETALA COLONY, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-delhi-international-school-sector-87",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530698",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 87, TIGAON ROAD, FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-rachna-international-school-greenhood-city",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530699",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GREENHOOD CITY, SECTOR 46-C, GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kiran-memorial-public-high-school-jawan",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530708",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-JAWAN, TEHSIL- BALLABGARH, DIST- FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-academy",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530733",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NAVADA MORE, TIGAON ROAD, BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "taksh-shila-model-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530736",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TAKSH-SHILA MODEL SR.SEC. SCHOOL SEC-3 ,BALLABGARH FAIDABAD.\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-angel-middle-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530744",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-45, URBAN EASTATE, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jhankar-high-school",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530746",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MAIN GURGAON, PATAUDI ROAD, JHUND SARAI, BABRA RAKIPUR, P.O. JAMALPUR, TEH. FARRUKHNAGAR, GURGAON, HARYANA-122503\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-luke-convent-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530762",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-CHANDPUR, TEHSIL- BALLABHGARH, DISTRICT- FARIDABAD.\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "senior-shreeram-model-high-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530771",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"60 FEET ROAD JAWAHAR COLONY N.I.T. FARIDABAD\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-bharti-public-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530786",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DURGA ENCLAVE, SEHATPUR, FARIDABAD(HARYANA)\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rose-land-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530809",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"JAIPUR ROAD, NEAR HERO HONDA CHOWK, N.H. 8, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-nikatan-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530810",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-49,SAINIK COLONY,FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "a-d-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530816",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"B-210, DABUA COLONY, NUT, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tarun-niketan-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530833",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL.PALLA NO.1 P.O.TILPAT DISTT.FARIDABAD\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-memorial-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530854",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MADAN PURI, GALI NO. 11, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-modern-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530866",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO. MOHNA, TEH. BALLABGARH, DISTT FARIDABAD, HARYANA(121004)\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-international-school-sector-10",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530877",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 10 GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arya-vidya-mandir-sr-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530888",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ARYA NAGAR, MILK PLANT ROAD, BALLABGARH, FARIDABAD,\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-international-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530893",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GARHKHERA BALLABGARH, FARIDABAD,\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kundan-green-valley-paradise",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530904",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KUNDAN COLONY BALLABHGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prakash-bal-bharti-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530909",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"A-446 DABUA COLONY, N,I,T, FARIDABAD(HARYANA)\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-v-m-high-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530922",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DAULA ROAD SOHNA\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-rachna-international-school-charmwood",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530923",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"CHARMWOOD VILLAGE, EROS GARDEN, SECTOR-37, FARIDABAD\", PIN 121008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-arya-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530929",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-SAROORPUR, TEH.- BALLABGARH, FARIDABAD(HARYANA)\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhankha-high-school",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530931",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO. 11, TEHSIL FARRUKHNAGAR, DISTT. GURGAON, HARYANA\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-international-school-3",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530935",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE BEGUMPUR KHATOLA, P.O. KHANDSA, TEHSIL & DISTT. GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navodya-vidya-niketan-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530941",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GAZIPUR ROAD, DABUA COLONY, N.I.T. FARIDABAD(HARYANA)\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "urmila-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530962",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"D-II/66 SANJAY COLONY, SECTOR-23 FARIDABAD(HARYANA)\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-c-r-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530968",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHEETLA COLONY, PART-II, OPP. SECTOR-5, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bal-bharati-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530971",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT-I, IMT, MANESAR GURGAON\", PIN 122050."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dronacharya-public-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530976",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE- KABULPUR , SECTOR-56, BALLABGARH-SOHNA ROAD,\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-d-m-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530980",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BALUDA ROAD SOHNA DISTT- GURUGRAM HARYANA 122103\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-r-mangalam-world-school-3",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/530991",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"E-BLOCK, SOUTH CITY I GURGAON.\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "c-d-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531005",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL.-BEHRAM PUR-FAZIL PUR,P.O-FAZIL PUR, DISTT. GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dronacharya-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531017",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO. 11 HAILY MANDI ROAD , FARRUKH NAGAR\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sheetla-vidya-peeth",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531043",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MAIN ROAD, JYOTI PARK, NEAR HANUMAN MURTI, GURUGRAM, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishu-kalyan-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531044",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL.- NAWADA, P.O.- SIKANDERPUR BADHA, DISST.- GURGAON\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-shisu-kalyan-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531057",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL- CHANDU, P.O- BUDHERA DISTT-GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-shikshiyan-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531084",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-108, VILLAGE-DHRAMPUR, GURGAON, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531105",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PLOT 3126, S-BLOCK, DLF PHASE III, GURGAON\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vardhman-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531118",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECT-46, FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lingayas-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531132",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KANWARA,OLD FARIDABAD-JASANA ROAD,FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "akash-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531142",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"12 -BISWA, VILL. GURGAON NEAR SECTOR-5, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-international-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531147",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-JASANA, PO-BADARPUR SAYD, FARIDABAD, HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jcm-international-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531162",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO- PANHERA KHURD, BALLABGARH, FARIDABAD,\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-l-mehta-dayanand-high-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531171",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 17 FARIDABAD (HR.)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-greater-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531178",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 81, FARIDABAD, HARYANA.\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-9",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531180",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK-A, SECTOR-48, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-devi-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531190",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-10, GURUGRAM, HARYANA\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "urmila-vidya-niketan-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531195",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PARVATYA COLONY N.I.T. FARIDABAD\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-r-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531201",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE & POST OFFICE - MOHNA, SUB-TEHSIL-MOHNA, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shraddha-mandir-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531207",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-87, FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-p-s-international-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531208",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE JAWAN, SUB TEHSIL MOHNA, BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "raghunath-bal-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531236",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO-PATLI,TEHSIL-FARRUKHNAGAR, DISTT-GURUGRAM-122506, HARYANA\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "suraj-school-vpo-janaula-gurgaon-road-pataudi",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531237",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO JANAULA GURGAON ROAD PATAUDI\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "torch-bearers-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531250",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL. & P.O BHAINSRAWALI, FARIDABAD, HARYANA-121101\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-d-s-public-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531251",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL-GAROLI KHURD, P.O.-BASAI, TEH. & DISTT.-GURGAON, HARYANA\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navyug-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531252",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC.68,I M T,FARIDABAD(NEAR MACHHGAR VILLAGE)\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apeejay-svran-global-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531286",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-21D , FARIDABAD, ,\", PIN 121012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prince-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531302",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"313 NANGLA ENCLAVE PART 1, POST OFFICE SECTOR 22 NIT FARIDABAD\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-a-v-international-school-ashram-hari-mandir",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531350",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ASHRAM HARI MANDIR,PATAUDI\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-sanskar-public-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531360",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"D BLOCK ,DHEERAJ NAGAR EXT.AITMADPUR, FARIDABAD. PIN: 121003\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "heritage-global-school-3",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531368",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL- DHAUJ, BALLABHGARH-SOHNA ROAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "broadways-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531369",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-76, NEAR KHERKI DAULA TOLL PLAZA, NH-8, GURGAON\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "udeya-bharati-high-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531385",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"AKLIMPUR-TEEKLI, ON WAY TO ANSALS ARAVALI RETREAT, OFF GURGAON SOHNA ROAD, DISTRICT GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-international-school-sector-45-greenwood-city",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531398",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-45 NEAR GREENWOOD CITY DISTT-GURUGRAM HARYANA 122001\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-high-school-6",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531406",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ROSEWOOD CITY MAIN GOLF COURSE EXTENSION ROAD SECTOR-49 GURUGRAM 122018\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vrinda-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531419",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SGM NAGAR, FARIDABAD-121001. (HARAYANA)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mukul-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531436",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MUKUL CONVENT SCHOOL, BUDHENA, SECTOR- 86, P.O - BAROLI, FARIDABAD PIN- 121004\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "paramhansa-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531443",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL.& P.O. KHERI KALAN ,SEC-84 ,GREATER FARIDABAD.\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-moksh-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531475",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"V.P.O SHIKOHPUR DISTT-GURGAON HARYANA\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gd-goenka-signature-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531501",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURGAON -SOHNA ROAD, SOHNA, HARYANA PIN-122103\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-knowledge-habitat-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531509",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK C, SUSHANT LOK III, SECTOR 57, GURGAON\", PIN 122003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-plot-no-hs-01",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531517",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PLOT NO . HS-01,STREET NO.P-01,SECTOR-84, GURGAON\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-olympus-school-plot-number-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531524",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PLOT NUMBER 2 , MALIBU TOWNE SECTOR-47,GURGAON\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shalom-presidency-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531528",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUSHANT LOK-II, GOLF COURSE EXTN ROAD, BLOCK-D, SEC-56, GURGAON\", PIN 122011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-pataudi",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531541",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-JANAULA GURGAON-PATAUDI ROAD, TEHSIL-FARRUKHNAGAR, DISTT-GURGAON\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vedas-international-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531566",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE NUNEHRA , SOHNA , GURGAON\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rawal-bal-shiksha-kendra",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531579",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAWAL BAL SHIKSHA KENDRA SECTOR-56, NEAR G.T. ROAD, BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-modern-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531617",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL. BUDHENA/KHERI KALA, FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "suraj-school-sector-56",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531622",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-56, GURUGRAM\", PIN 122011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aggarwal-public-school-machgar",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531628",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE-MACHGAR,TEH-BALLABGARH,FARIDABAD HARYANA 121004\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "roshan-lal-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531629",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-82 MAPSKO CASA BELLA ,VATIKA GURUGRAM HARYANA\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-scholars-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531633",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DELHI SCHOLARS INTERNATIONAL SCHOOL, SECTOR-88, GREATER FARIDABAD-121002\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-palam-vihar",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531635",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"C-1 BLOCK, PALAM VIHAR, GURUGRAM, HARYANA-122017\", PIN 122017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531636",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SRS ROYAL HILLS, SECTOR-87, FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rps-international-school-sector-50",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531642",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 50,OPPOSITE ARCADIA MARKET, GURUGRAM HARYANA\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "haritima-academy",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531665",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"HARITIMA ACADEMY, SEC.3, TEH. BALLABGARH, DISTT. FARIDABAD, HARYANA 121004\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peters-convent-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531674",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ST.PETERS CONVENT SCHOOL, SECTOR:88 GREATER FARIDABAD, HARYANA, PIN:121008\", PIN 121008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mvn-school-sector-88",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531676",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-88, NEAR PALWALI VILLAGE, GREATER FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-venkateshwar-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531680",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK-F, SUSHANT LOK-II, SCTOR-57, GURUGRAM\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kunskapsskolan-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531683",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KUNSKAPSSKOLAN INTERNATIONAL ADJACENT TO SEC. 70A , GUL FARM COMPLEX, GURGAON – 122004 , HARYANA, INDIA\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-nadar-school-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531685",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHIV NADAR SCHOOL, SECTOR 82, NAHAR PAAR, GREATER FARIDABAD, (HARYANA)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ideal-public-school-plot-no-5",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531689",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PLOT NO.: 5, JAGMAL ENCLAVE, AGWANPUR, FARIDABAD, HARYANA - 121013\", PIN 121013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-international-school-sector-37-d-bptp-towers",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531692",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-37 D BPTP TOWERS DISTT-GURUGRAM HARYANA\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sucheta-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531701",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUCHETA MEMORIAL SCHOOL, SECTOR-5, GURUGRAM- 122001\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jaypee-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531711",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SURYA VIHAR, VINAY NAGAR CHOWK, SECTOR - 91, FARIDABAD\", PIN 121013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindu-rao-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531712",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KHURAMPUR MUSHEDPUR BUS STAND P.O FARRUKHNAGAR TEH FARRUKNAGAR DISTT-GURUGRAM HARYANA 122506\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "open-sky",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531718",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 5 PART VI GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-ram-public-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Pataudi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531722",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SHRI RAM PUBLIC SR SEC SCHOOL, BILASPUR ROAD PATAUDI\", PIN 122503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manaskriti-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531725",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-82, GREATER FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-delhi-international-school-sector-89",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531745",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR - 89, GREATER FARIDABAD (HARYANA)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-rachna-international-school-c-mayfield-gardens",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531760",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK-C MAYFIELD GARDENS, SECTOR-50/51,GURUGRAM\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kalka-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531761",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KALKA PUBLIC SCHOOL, BPTP PARKLANDS, BLOCK - V, SECTOR 76, FARIDABAD (HARYANA)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531763",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GAIRATPUR BAS, P.O. TEEKLI, GURUGRAM 122012\", PIN 122012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiva-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531765",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEEKRI BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sector-102a-dwarka-expressway",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531771",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-102A DWARKA EXPRESSWAY GURUGRAM\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "om-shiksha-sanskar-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531774",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OM SHIKSHA SANSKAR SCHOOL VPO-PALI-FARIDABAD-121004\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sector-98-greater-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531777",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DELHI PUBLIC SCHOOL SECTOR-98 GREATER FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lady-florence-convent-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531797",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DAULA ROAD SOHNA GURUGRAM\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "suncity-school-sector-37-d-and-xd",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531800",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 37 D GURUGRAM HARYANA\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tagore-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531806",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NIRVANA COUNTRY, SECTOR 50, GURUGRAM.\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "made-easy-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531810",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MADE EASY SCHOOL BEHRAMPUR-BANDHWARI ROAD, BANDHWARI, NEAR SECTOR 58-59, GURUGRAM\", PIN 122005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-international-school-antriksh-heights-sector-84",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531817",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ANTRIKSH HEIGHTS SECTOR 84 GURUGRAM PIN 122004 HARYANA\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-international-school-sector-109",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531820",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 109 GURUGRAM\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "al-faiz-modern-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531827",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE DHAUJ FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-sector-77",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531828",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-77, GURUGRAM, DISTT. GURUGRAM, HARYANA\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-police-public-school-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531831",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"POLICE LINES SECTOR-30 FARIDABAD\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "imperial-heritage-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531835",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC 102, NEAR DWARKA EXPRESSWAY, GURUGRAM\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-columbus-global-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531842",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RPS AURIA, SECTOR-88 FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashirwad-public-high-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531844",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ASHIRWAD PUBLIC HIGH SCHOOL NEAR 21 D POLICE CHOWKI S G M NAGAR FARIDABAD\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aravali-international-school-sector-85-greater-faridabad",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531852",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK D SECTOR 85 , GREATER FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tm-public-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531859",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJIV COLONY BALLABGARH FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "millennium-world-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531863",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"B BLOCK,BPTP PARKLAND, SECTOR-85, FARIDABAD\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vega-schools",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531867",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VEGA SCHOOL SECTOR 48 DISST. GURGAON\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-public-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531877",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 63 NEAR UNCHA GAON TEH BALLABGARH DISTT FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-child-public-school-sector-75",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531884",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK-S, SECTOR-75, GREATER FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-vidya-niketan-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531889",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE ISMAILPUR, FARIDABAD\", PIN 121009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rose-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531891",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILLAGE NANGLA GUJRAN FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fogaat-public-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531896",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJEEV COLONY, SAMAYPUR ROAD, BALLABGARH, SECTOR-56, FARIDABAD-121004\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kundan-global-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531898",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PS-02 POCKET-G SECTOR 89 GREATER FARIDABAD (HARYANA 121002)\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-sector-77-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531920",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-77, FARIDABAD, DISTT. FARIDABAD, HARYANA\", PIN 121001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jagriti-vidya-niketan-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531930",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VPO MOHNA TEHSIL BALLABGARH FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "presidium-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531934",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK C1, SECTOR 1,2,&3, PALALM VIHAR, GURGAON\", PIN 122017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurugram-global-heights-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531972",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BPTP LTD. SECTOR-102, GURUGRAM, , HARYANA-122001\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oxford-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/531973",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUB TEHSIL FARRUKHNAGAR , GURUGRAM\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angels-palace-international-school",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532023",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"TEHSIL SOHNA, DISTT GURUGRAM HR.\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "h-s-v-global-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532047",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC-46, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanand-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532053",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURUGRAM, HARYANA\", PIN 122005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prince-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532062",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DABUA - GHAZIPUR ROAD,, FARIDABAD\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "karmel-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532067",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUSHANT LOK PHASE -2, GURUGRAM, HARYANA\", PIN 122011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-heritage-pride-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532070",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURUGRAM, LANDMARK ORRIS GROUP HOUSING SOCIETY\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-vivekananda-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532072",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"NEAR TULIP YELLOW, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-blue-bells-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532078",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MALIBU TOWNE, GURUGRAM\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-flagship-school-sohna-road-gurugram",
+   "facts": {
+    "city": {
+     "name": "Sohna",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532088",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SOHNA, SOHNA\", PIN 122103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-senior-secondary-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532089",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURGAON, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vega-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532091",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"KHASRA NO. 41//23/2,24,25,42//21/2/1, KHER DAULA BADHSHAPUR GURUGRAM\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gitanjali-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532097",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RYDERS ROAD, G-BLOCK, SEC-57, SUSHANT LOK-2, GURGAON\", PIN 122003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rishi-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532105",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR- 31, GURUGRAM, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pragyanam-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532111",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DHPS-02, EMERALD HILLS, SECTOR 65 GURGAON\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "wesley-international-school",
+   "facts": {
+    "city": {
+     "name": "Farrukhnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532113",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"WARD NO. 11, FAZILPUR ROAD, FARRUKHNAGAR, GURUGRAM, HARYANA,122506\", PIN 122506."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-a-v-international-school-dlf-phase-3",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532123",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"U BLOCK, DLF PHASE 3, GURUGRAM\", PIN 122010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-school-site-c",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532126",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SCHOOL SITE BLOCK C, SUSHANT LOK-II, SECTOR 56 GURUGRAM\", PIN 122002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "knowledge-tree-world-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532142",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PLOT -21, BLOCK-M, IRIS AVENUE, SECTOR-83, GURUGRAM\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-10",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532146",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR-89, FARIDABAD, HARYANA\", PIN 121002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "orchids-the-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532159",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK G, SOUTH CITY I, SECTOR 41, NEAR SOUTH CITY 1 GURUDWARA, GURUGRAM, HARYANA 122003\", PIN 122003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-andrews-world-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532181",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PS - 1, ORRIS CARNATION, SECTOR - 85, GURUGRAM\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "suraj-school-sec-1",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532210",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC 1 , PHASE 1, , IMT MANESAR, GURUGRAM\", PIN 122051."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gcm-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532226",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"VILL. NAWADA SECTOR -109-B, TIGAON, BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "parth-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532240",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"MAYFIELD GARDEN BLOCK F, SECTOR 57, GURUGRAM\", PIN 122011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ch-chiranji-lal-chandila-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532242",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GAUNCHHI, 33 FEET ROAD, NEAR CHANDILA CHOWK GAUNCHHI, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sh-s-n-sidheshwar-sr-sec-public-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532243",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 81, GURUGRAM, GURUGRAM\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-olympus-school-sector-79",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532252",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 79, NEAR- GODREJ ARIA, GURUGRAM\", PIN 122004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pw-gurukulam-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532256",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BLOCK A, SUSHANT LOK-3,, SECTOR 57, GURUGRAM\", PIN 122003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "royal-convent-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532274",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"BHAGAT SINGH COLONY BALLABGARH, BHAGAT SINGH COLONY BALLABGARH, BHAGAT SINGH COLONY BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-sector-103",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532293",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SECTOR 103, DWARKA EXPRESSWAY, GURGAON\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lord-jesus-public-school-37-d",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532296",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAMPRASTHA GROUP HOUSING COLONY, , SECTOR-37 D, GURUGRAM\", PIN 122006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-a-v-international-school-orris-township-gurugram",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532297",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"ORRIS TOWNSHIP, SECTOR 89, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "educrest-international-school",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532301",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"GURGAON, SECTOR-9B, NEAR RAIL SURAKSHA APPARTMENT SECTOR-9A\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shemford-futuristic-school-gurugram",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532307",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"PS 03, REDWOOD STREET,, MALIBU TOWNE, SECTOR 47 GURUGRAM\", PIN 122018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "skylark-global-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532318",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEC 56/A, RAJEEV COLONY,, DAGAR FARM HOUSE, SOHNA SAMAYPUR ROAD, BALLABGARH\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532320",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SEHATPUR, SEHATPUR, FARIDABAD\", PIN 121003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kanchan-vidya-mandir-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ballabgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532331",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"RAJEEV COLONY (JHARSAINTLY), SEC-56, BALLABGARH,, FARIDABAD\", PIN 121004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "orchids-the-international-school-3",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532340",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"SUSHANT LOK - 2, A1 BLOCK, SECTOR 55, GOLF COURSE ROAD, GURGAON\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sharda-international-school-opposite-plot-no-445",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/532343",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"OPPOSITE PLOT NO. 445 , SECTOR 9, GURUGRAM\", PIN 122001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-c-o-56-asp-n-h-14",
+   "facts": {
+    "city": {
+     "name": "Faridabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/580007",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"C/O 56 ASP N.H.14 FARIDABAD HARYANA\", PIN 121005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-delhi-road-gurgoan",
+   "facts": {
+    "city": {
+     "name": "Gurugram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/580008",
+      "retrievedDate": "2026-10-31",
+      "note": "CBSE postal address \"DELHI ROAD GURGOAN HARYANA\", PIN 122001."
+     }
+    }
+   }
+  }
+ ]
+}

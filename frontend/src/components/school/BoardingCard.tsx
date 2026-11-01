@@ -5,7 +5,8 @@ import {
 } from '../../utils/format';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { schoolPlace, SchoolCover } from './SchoolCard';
+import { schoolPlace } from './SchoolCard';
+import { SchoolImage } from './SchoolImage';
 
 const boardLabel = (code: string | null) =>
   code === 'CISCE' ? 'ICSE/ISC' : code === 'STATE' ? 'State board' : code === 'IB' ? 'IB' : code;
@@ -20,18 +21,8 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
   const exam = school.entranceExam ? entranceExamInfo[school.entranceExam] : null;
   return (
     <article className="card card-hover group flex flex-col overflow-hidden">
-      <Link to={`/schools/${school.slug}?tab=boarding`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
-        {school.coverImageUrl ? (
-          <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        ) : (
-          <SchoolCover name={school.name} />
-        )}
-        {school.coverImageCredit && (
-          <span className="absolute bottom-1 right-1 max-w-[70%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-            © {school.coverImageCredit}
-          </span>
-        )}
+      <Link to={`/schools/${school.slug}?tab=boarding`} className="block" tabIndex={-1} aria-hidden>
+        <SchoolImage src={school.coverImageUrl} name={school.name} credit={school.coverImageCredit} illustrative={school.coverImageIllustrative}>
         {school.residentialSystem && (
           <span className="absolute left-3 top-3 chip bg-white/95 font-semibold text-ink shadow-sm">
             {residentialSystemLabel[school.residentialSystem]}
@@ -43,6 +34,7 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
         {school.admissionStatus === 'UPCOMING' && (
           <span className="absolute right-3 top-3 chip bg-accent-400 font-semibold text-ink shadow-sm">Admissions soon</span>
         )}
+        </SchoolImage>
       </Link>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-[17px] font-bold leading-snug">

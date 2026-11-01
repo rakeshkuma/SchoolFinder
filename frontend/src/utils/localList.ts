@@ -8,6 +8,8 @@ export interface LocalList<T> {
   add(item: T): void;
   remove(item: T): void;
   clear(): void;
+  /** Replaces the whole list (e.g. with the copy saved in the member's account). */
+  replace(items: T[]): void;
   subscribe(listener: () => void): () => void;
 }
 
@@ -59,6 +61,7 @@ export function createLocalList<T>(key: string, max: number, identity: (item: T)
     add: (item) => write([item, ...read().filter((i) => identity(i) !== identity(item))].slice(0, max)),
     remove: (item) => write(read().filter((i) => identity(i) !== identity(item))),
     clear: () => write([]),
+    replace: (items) => write(items.slice(0, max)),
     subscribe: (listener) => {
       listeners.add(listener);
       return () => listeners.delete(listener);

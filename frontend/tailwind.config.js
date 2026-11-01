@@ -52,9 +52,15 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        // Opacity only, so it composes with translate utilities used to position the element.
+        'fade-down': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.5s ease-out both',
+        'fade-down': 'fade-down 0.15s ease-out both',
       },
     },
   },

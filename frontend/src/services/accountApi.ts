@@ -1,4 +1,7 @@
 import { http } from './http';
+import type { ChallengeStarted, ChallengeSubmitted } from './challengeApi';
+import type { ParticipantProfile, ParticipantRequest } from './participantApi';
+import type { PageResponse, PracticeAttemptSummary, PracticeHistoryItem, PracticeMode, PracticeScore } from '../types/api';
 
 /**
  * Member accounts. The session lives on the server; the browser holds only an HttpOnly cookie that scripts cannot
@@ -16,6 +19,7 @@ export interface Account {
   /** False for members who signed up with Google and have not set a password. */
   hasPassword: boolean;
   googleLinked: boolean;
+  mobile: string | null;
 }
 
 export interface AccountConfig {
@@ -33,6 +37,9 @@ export interface RegisterInput {
   acceptTerms: boolean;
   stateCode?: string;
   city?: string;
+  mobile?: string;
+  /** Spam trap: stays empty for people. */
+  website?: string;
 }
 
 /** Makes sure the CSRF cookie exists before the first state-changing request. */
@@ -42,7 +49,7 @@ function ensureCsrf() {
   return csrfReady;
 }
 
-async function send<T>(method: 'post' | 'patch' | 'delete', path: string, body?: unknown): Promise<T> {
+async function send<T>(method: 'post' | 'put' | 'patch' | 'delete', path: string, body?: unknown): Promise<T> {
   await ensureCsrf();
   const r = method === 'delete' ? await http.delete<T>(path, { data: body }) : await http[method]<T>(path, body);
   return r.data;
@@ -59,11 +66,126 @@ export const accountService = {
   logout: () => send<void>('post', '/account/logout'),
   forgotPassword: (email: string) => send<{ status: string }>('post', '/account/forgot-password', { email }),
   resetPassword: (token: string, newPassword: string) => send<{ status: string }>('post', '/account/reset-password', { token, newPassword }),
-  updateProfile: (input: { displayName: string; stateCode?: string | null; city?: string | null }) => send<Account>('patch', '/account/me', input),
+  updateProfile: (input: { displayName: string; stateCode?: string | null; city?: string | null; mobile?: string | null }) => send<Account>('patch', '/account/me', input),
   changePassword: (currentPassword: string, newPassword: string) => send<void>('post', '/account/change-password', { currentPassword, newPassword }),
   /** With a password, the password; without one (Google sign-up), the account's email address. */
   deleteAccount: (confirm: { password?: string; confirmEmail?: string }) => send<void>('delete', '/account/me', confirm),
 };
+
+export interface AttemptInput {
+  /** Generated once per attempt in the browser; sending the same attempt again returns the first result. */
+  clientId: string;
+  title: string;
+  mode: PracticeMode;
+  examSlug?: string | null;
+  setSlug?: string | null;
+  questionIds: string[];
+  answers: Record<string, number>;
+  durationSeconds?: number | null;
+}
+
+export interface SavedAttempt {
+  attempt: PracticeAttemptSummary;
+  score: PracticeScore;
+  /** true when this attempt had already been saved and nothing new was stored */
+  duplicate: boolean;
+  /** leaderboard points for the attempt, kept apart from its marks */
+  points: AttemptPoints;
+}
+
+/**
+ * Points an attempt earned. reviewFlag says why correct answers earned nothing: NO_TIMING, TOO_FAST (answered
+ * faster than a person can read), DAILY_REPEAT (today's quiz already counted).
+ */
+export interface AttemptPoints {
+  earned: number;
+  dailyQuiz: boolean;
+  reviewFlag: 'NO_TIMING' | 'TOO_FAST' | 'DAILY_REPEAT' | null;
+  /** all-time position among `participants`; null before any points */
+  rank?: number | null;
+  participants?: number;
+  /** best earlier score on this set, as a percentage */
+  previousBest?: number | null;
+  /** badges this attempt earned */
+  achievements?: { code: string; title: string }[];
+}
+
+/** A badge and how far along the student is; target is 0 for rank badges, which have no progress to show. */
+export interface Achievement {
+  code: string;
+  title: string;
+  description: string;
+  group: string;
+  earnedAt: string | null;
+  current: number;
+  target: number;
+}
+
+export interface ProgressPeriod {
+  start: string;
+  tests: number;
+  answered: number;
+  correct: number;
+  accuracy: number | null;
+  points: number;
+}
+
+/** A student's own progress, worked out by the server from their attempts. */
+export interface ProgressReport {
+  points: number;
+  rank: number | null;
+  participants: number;
+  currentStreak: number;
+  longestStreak: number;
+  dailyStreak: number;
+  activeDays: string[];
+  weeks: ProgressPeriod[];
+  months: ProgressPeriod[];
+  exams: { examSlug: string; examName: string; tests: number; answered: number; correct: number; accuracy: number | null; bestScore: number }[];
+  daily: { date: string; total: number; attempted: number; correct: number; points: number }[];
+  achievements: Achievement[];
+}
+
+/** The signed-in member's practice history and saved exams; each call only ever reaches the member's own data. */
+export const memberPracticeService = {
+  /** Scores the attempt on the server and saves it. */
+  record: (input: AttemptInput) => send<SavedAttempt>('post', '/account/practice-attempts', input),
+  /** The member's leaderboard settings and totals. */
+  participant: () => http.get<ParticipantProfile>('/account/participant').then((r) => r.data),
+  updateParticipant: (request: ParticipantRequest) => send<ParticipantProfile>('put', '/account/participant', request),
+  /** Moves results earned as a guest in this browser into the account. */
+  claimGuest: (token: string) => send<ParticipantProfile>('post', '/account/participant/claim', { token }),
+  startChallenge: (slug: string) => send<ChallengeStarted>('post', `/account/challenges/${encodeURIComponent(slug)}/attempts`),
+  submitChallenge: (slug: string, attemptId: number, answers: Record<string, number>) =>
+    send<ChallengeSubmitted>('post', `/account/challenges/${encodeURIComponent(slug)}/attempts/${attemptId}/submit`, { answers }),
+  /** Streaks, rank, weekly and monthly progress, daily quiz history and badges. */
+  progress: () => http.get<ProgressReport>('/account/progress').then((r) => r.data),
+  list: (page = 0, size = 20) =>
+    http.get<PageResponse<PracticeAttemptSummary>>('/account/practice-attempts', { params: { page, size } }).then((r) => r.data),
+  get: (id: number) =>
+    http.get<{ attempt: PracticeAttemptSummary; questionIds: string[]; answers: Record<string, number>; score: PracticeScore }>(
+      `/account/practice-attempts/${id}`).then((r) => r.data),
+  /** Question ids last answered wrongly, newest first. */
+  revision: () => http.get<{ questionIds: string[] }>('/account/practice-attempts/revision').then((r) => r.data.questionIds),
+  savedExams: () => http.get<string[]>('/account/saved-exams').then((r) => r.data),
+  saveExam: (slug: string) => send<string[]>('put', `/account/saved-exams/${encodeURIComponent(slug)}`),
+  removeExam: (slug: string) => send<string[]>('delete', `/account/saved-exams/${encodeURIComponent(slug)}`),
+  mergeSavedExams: (slugs: string[]) => send<string[]>('post', '/account/saved-exams/merge', { slugs }),
+  /** Latest attempts (newest first) with topic scores and per-question outcomes. */
+  history: (limit = 200) =>
+    http.get<PracticeHistoryItem[]>('/account/practice-history', { params: { limit } }).then((r) => r.data),
+  /** Bookmarked question ids ("set/question"), newest first. */
+  bookmarks: () => http.get<string[]>('/account/bookmarks').then((r) => r.data),
+  addBookmark: (id: string) => send<string[]>('put', `/account/bookmarks/${bookmarkPath(id)}`),
+  removeBookmark: (id: string) => send<string[]>('delete', `/account/bookmarks/${bookmarkPath(id)}`),
+  mergeBookmarks: (questionIds: string[]) => send<string[]>('post', '/account/bookmarks/merge', { questionIds }),
+};
+
+/** "set-slug/question-id" → "set-slug/question-id" with each part encoded (the slash separates two path variables). */
+function bookmarkPath(id: string): string {
+  const [set, question] = id.split('/');
+  return `${encodeURIComponent(set)}/${encodeURIComponent(question ?? '')}`;
+}
 
 /**
  * Starts "Continue with Google". This is a full-page navigation, not an API call: the server redirects to Google and,

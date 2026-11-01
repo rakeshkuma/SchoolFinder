@@ -76,6 +76,10 @@ public class AccountService {
 
     @Transactional
     public void register(RegisterRequest r) {
+        if (r.website() != null && !r.website().isBlank()) {
+            log.info("Discarded a registration (honeypot filled)");
+            return; // the same answer as a real sign-up, so a bot learns nothing
+        }
         String email = normaliseEmail(r.email());
         requireGoodPassword(r.password(), email, "password");
         String name = InputSanitizer.clean(r.displayName());
@@ -102,6 +106,7 @@ public class AccountService {
         account.setPasswordHash(passwordEncoder.encode(r.password()));
         account.setStateCode(r.stateCode());
         account.setCity(blankToNull(InputSanitizer.clean(r.city())));
+        account.setMobile(mobileDigits(r.mobile()));
         account.setTermsAcceptedAt(now);
         account.setTermsVersion(properties.getAccount().getTermsVersion());
         account.setPasswordChangedAt(now);
@@ -273,6 +278,7 @@ public class AccountService {
         account.setDisplayName(name.trim());
         account.setStateCode(r.stateCode());
         account.setCity(blankToNull(InputSanitizer.clean(r.city())));
+        account.setMobile(mobileDigits(r.mobile()));
         return toDto(accounts.saveAndFlush(account));
     }
 
@@ -446,7 +452,14 @@ public class AccountService {
 
     private static AccountDto toDto(UserAccount a) {
         return new AccountDto(a.getEmail(), a.getDisplayName(), a.isVerified(), a.getStateCode(), a.getCity(),
-                a.getCreatedAt(), a.getTermsVersion(), a.getPasswordHash() != null, a.getGoogleSubject() != null);
+                a.getCreatedAt(), a.getTermsVersion(), a.getPasswordHash() != null, a.getGoogleSubject() != null, a.getMobile());
+    }
+
+    /** The ten digits of an already validated number, without a +91 prefix or separators; null when none was given. */
+    private static String mobileDigits(String mobile) {
+        if (mobile == null || mobile.isBlank()) return null;
+        String digits = mobile.replaceAll("\\D", "");
+        return digits.substring(digits.length() - 10);
     }
 
     private static String blankToNull(String s) {

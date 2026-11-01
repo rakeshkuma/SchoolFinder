@@ -3,20 +3,37 @@ import { PageHeader } from '../components/common/PageHeader';
 import { AsyncContent } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { CONTACT_EMAIL, CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER, INFORMATION_KINDS } from '../content/site';
 import { referenceService } from '../services/publicApi';
 
 export function AboutPage() {
-  useDocumentTitle('About us');
+  useDocumentTitle('About India School Finder');
   const sources = useApi(() => referenceService.dataSources(), []);
   return (
     <>
       <PageHeader title="About India School Finder" />
       <div className="container-page prose-page max-w-3xl py-8">
         <p>
-          India School Finder helps families discover, compare and evaluate schools across India. We focus on facts that can be
-          checked: every school profile, fee schedule, admission cycle and ranking input carries a link to the source it came
-          from, its verification status and the date it was last checked.
+          India School Finder is an education discovery and preparation platform designed to help parents and students explore schools
+          across India.
         </p>
+        <p>
+          Our goal is to make school information easier to discover, compare and understand. The platform brings together school profiles,
+          locations, facilities, admission information, rankings and educational resources.
+        </p>
+        <p>
+          We also aim to support students through entrance examination preparation, mock tests, daily quizzes, practice questions and
+          learning progress tracking.
+        </p>
+        <p>
+          India School Finder was created by {CREATOR_NAME}, an alumnus of the {CREATOR_INSTITUTE}, with the vision of making school discovery
+          and educational resources more accessible across India.
+        </p>
+        <section className="not-prose my-6 rounded-2xl border border-slate-200 bg-white p-5" aria-labelledby="creator-heading">
+          <h2 id="creator-heading" className="font-display text-lg font-bold text-ink">Website created by {CREATOR_NAME}</h2>
+          <p className="mt-1 text-slate-700">{CREATOR_INSTITUTE}</p>
+          <p className="mt-1 text-slate-700">Contact: <a href={`mailto:${CONTACT_EMAIL}`} className="link break-all">{CONTACT_EMAIL}</a></p>
+        </section>
         <h2>Our data principles</h2>
         <ul>
           <li>We never invent information. Anything not published by an official source is shown as “Not available”.</li>
@@ -25,6 +42,15 @@ export function AboutPage() {
           <li>Photos are used only from official sources or with a clear licence, with credit shown.</li>
           <li>Our ranking is our own, published methodology — not an official government ranking.</li>
         </ul>
+        <h2>How we label information</h2>
+        <ul>
+          {INFORMATION_KINDS.map((k) => <li key={k.title}><strong>{k.title}:</strong> {k.text}</li>)}
+        </ul>
+        <p>{DISCLAIMER}</p>
+        <p>
+          India School Finder is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
+          Schools Society.
+        </p>
         <h2>Primary sources</h2>
         <AsyncContent state={sources}>
           {(list) => (
@@ -39,35 +65,8 @@ export function AboutPage() {
           )}
         </AsyncContent>
         <p>
-          Schools: if your information is missing or out of date, please <Link to="/contact" className="link">contact us</Link> with
+          Schools: if your information is missing or out of date, please <Link to="/contact?topic=LISTING" className="link">contact us</Link> with
           a link to the official source.
-        </p>
-      </div>
-    </>
-  );
-}
-
-export function ContactPage() {
-  useDocumentTitle('Contact us');
-  const email = import.meta.env.VITE_CONTACT_EMAIL as string | undefined;
-  return (
-    <>
-      <PageHeader title="Contact us" />
-      <div className="container-page prose-page max-w-3xl py-8">
-        <p>
-          <strong>To update or correct a school&apos;s profile</strong> (fees, admission dates, classes, contact details or a
-          mistake), use the <Link to="/suggest" className="link">suggest an update</Link> form and link the official page
-          that states it. An editor checks every suggestion before anything changes.
-        </p>
-        <p>For anything else, email us.</p>
-        {email ? (
-          <p><a href={`mailto:${email}`} className="btn-primary">Email {email}</a></p>
-        ) : (
-          <p className="rounded-lg bg-slate-100 p-3 text-sm text-slate-600">The contact address has not been configured for this deployment.</p>
-        )}
-        <p className="text-sm">
-          We deliberately don’t use a contact form, so we don’t store your personal details. Please don’t send information about
-          your children that we don’t need.
         </p>
       </div>
     </>
@@ -92,14 +91,29 @@ export function PrivacyPage() {
         <h2 id="accounts">Accounts (optional)</h2>
         <p>You can use the whole site without an account. If you create one:</p>
         <ul>
-          <li><strong>What we keep:</strong> your name, email address, a one-way hash of your password (never the password itself), whether your email is confirmed, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
+          <li><strong>What we keep:</strong> your name, email address, your mobile number if you choose to give it, a one-way hash of your password (never the password itself), whether your email is confirmed, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
           <li><strong>Why:</strong> to let you sign in and, later, keep your saved schools and exams across devices. Your area only sets search defaults.</li>
           <li><strong>Email:</strong> we email you only about your account — confirming your address, password resets and notices such as a password change or deletion. No marketing email unless you separately agree to it.</li>
           <li><strong>Sign-in:</strong> a secure, HttpOnly session cookie keeps you signed in; it holds a random identifier, not your details. It ends when you sign out, after two hours of inactivity, or after 30 days if you chose “Keep me signed in”.</li>
           <li><strong>Protection:</strong> passwords are stored with BCrypt; links in our emails work once and expire (24 hours to confirm an email, 30 minutes to reset a password); repeated wrong passwords lock the account for a while.</li>
-          <li><strong>Your control:</strong> you can change your name, area and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
-          <li><strong>Children:</strong> accounts are for adults (parents, guardians and other adults). We do not ask for information about your children.</li>
+          <li><strong>Your control:</strong> you can change your name, area, mobile number and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
+          <li><strong>Children:</strong> accounts are open to all ages. If you are under 18, please ask a parent or guardian before creating one. Parents do not need to give us information about their children.</li>
           <li><strong>Continue with Google (optional, where offered):</strong> if you choose it, Google tells us your name, your email address, whether Google has verified that address, and a Google account ID; we keep the email, the name (which you can change) and the account ID, so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to India School Finder, under Google’s own privacy policy. If an account with the same email exists, Google sign-in is added to it and we email you to say so. Accounts created this way have no password until you set one by email.</li>
+        </ul>
+        <h2 id="leaderboard">Practice leaderboard (optional)</h2>
+        <p>Practice works without joining. If you join the leaderboard, as a guest or with an account:</p>
+        <ul>
+          <li><strong>What we keep:</strong> a nickname, your state, your city and what you prepare for if you give them, an age choice (18 or older, or under 18), your choice about public listing, and your practice attempts, answers, scores, points and badges. Guests have a random key kept in their browser; we store only a hash of it.</li>
+          <li><strong>Why:</strong> to work out your points, rank, streak and progress. Answers that come implausibly fast earn no points and may be reviewed for fair play: a moderator sees your nickname and the attempt, not your name or email, and can remove an attempt or hide a nickname.</li>
+          <li><strong>What others see:</strong> nothing unless you opt in. You are ranked privately by default and show as “Private learner”. If you opt in, others see your nickname, state, your city only if you chose to show it, what you prepare for, and your points, tests, accuracy and streak. Your progress and badges are shown only to you. Email addresses, phone numbers and real names are never shown. Leaderboard pages are not offered to search engines.</li>
+          <li><strong>Under 18:</strong> anyone can take part, with an account or as a guest. An under-18’s nickname is shown only if they state that a parent or guardian agrees, and we cannot check this. Otherwise they are ranked privately.</li>
+          <li><strong>Your control:</strong> you can change your nickname or turn off public listing at any time on your progress page. Guests can delete their entry there, with its results and points; deleting an account removes them too.</li>
+        </ul>
+        <h2 id="contact">Contact form (optional)</h2>
+        <ul>
+          <li><strong>What we keep:</strong> your name, email address, the subject and your message.</li>
+          <li><strong>Why:</strong> to read and answer your message. Staff read messages in the admin area, and they may also be sent to the site’s email inbox.</li>
+          <li><strong>How long:</strong> your name and email are deleted when your message has been dealt with. The rest of the message is kept as a record, so please don’t include personal details in it.</li>
         </ul>
         <h2>What we don’t do</h2>
         <ul>
@@ -129,7 +143,7 @@ export function TermsPage() {
         </ul>
         <h2>Accounts</h2>
         <ul>
-          <li>Accounts are optional and for adults (18 or older). Give your real name and an email address you control.</li>
+          <li>Accounts are optional and open to all ages. If you are under 18, please ask a parent or guardian first. Give your real name and an email address you control.</li>
           <li>Keep your password to yourself and choose one you do not use elsewhere. Tell us if you think someone else has used your account.</li>
           <li>You can delete your account at any time from your account page. We may suspend accounts used to break these terms.</li>
           <li>How we handle account information is described in the <Link to="/privacy#accounts" className="link">Privacy Policy</Link>.</li>
@@ -149,6 +163,7 @@ export function DisclaimerPage() {
     <>
       <PageHeader title="Disclaimer" />
       <div className="container-page prose-page max-w-3xl py-8">
+        <p>{DISCLAIMER}</p>
         <p>
           Information on India School Finder is collected from official and public sources and is provided for general guidance.
           Fees, admission schedules and eligibility rules change; always confirm with the school and the relevant state or
@@ -162,6 +177,14 @@ export function DisclaimerPage() {
         <p>
           School names, logos and photographs belong to their respective owners and are shown for identification, with credit,
           under the licence or permission stated next to each image.
+        </p>
+        <h2>How we label information</h2>
+        <ul>
+          {INFORMATION_KINDS.map((k) => <li key={k.title}><strong>{k.title}:</strong> {k.text}</li>)}
+        </ul>
+        <p>
+          India School Finder is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
+          Schools Society.
         </p>
       </div>
     </>

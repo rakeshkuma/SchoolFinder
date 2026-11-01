@@ -33,6 +33,17 @@ const PATHS = {
   columns: 'M4 5h16v14H4zM11 5v14',
   graduation: 'M12 4 2 9l10 5 8-4v6h2V9L12 4zm-6 7.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5l-6 3-6-3z',
   users: 'M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20M10 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm10 9v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 4.1a3.5 3.5 0 0 1 0 6.8',
+  bolt: 'M13 3 5 13.5h6L10 21l8-10.5h-6L13 3z',
+  target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zm0-4a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
+  repeat: 'M17 3l3 3-3 3M20 6H8a4 4 0 0 0-4 4v1m3 10-3-3 3-3m-3 3h12a4 4 0 0 0 4-4v-1',
+  flag: 'M5 21V4m0 0h11l-2 4 2 4H5',
+  bookmark: 'M6 3.5h12v17l-6-4.2-6 4.2z',
+  chevronDown: 'm6 9 6 6 6-6',
+  trophy: 'M8 4h8v5a4 4 0 0 1-8 0V4zm0 2H5v1a3 3 0 0 0 3 3m8-4h3v1a3 3 0 0 1-3 3m-4 3v4m-4 4h8m-6-4h4v4h-4z',
+  file: 'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6m-6 4h6',
+  home: 'M4 11 12 4l8 7v9h-5v-6H9v6H4z',
+  layers: 'M12 3 3 8l9 5 9-5-9-5zm-9 9 9 5 9-5M3 16l9 5 9-5',
+  sun: 'M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-13v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4',
 } as const;
 
 export type IconName = keyof typeof PATHS;

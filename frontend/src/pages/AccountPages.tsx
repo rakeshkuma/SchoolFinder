@@ -1,12 +1,13 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Avatar } from '../components/common/Avatar';
+import { GoogleButton } from '../components/common/GoogleButton';
 import { Spinner } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useMember } from '../hooks/useMember';
 import { savedExams, savedSchools, useLocalList } from '../hooks/usePersonal';
-import { accountService, googleSignInUrl, safeNext } from '../services/accountApi';
+import { accountService, safeNext } from '../services/accountApi';
 import { ApiError } from '../services/http';
 import { locationService } from '../services/publicApi';
 
@@ -90,33 +91,12 @@ function EmailUnavailable() {
   return <Alert tone="warning">Email delivery is not set up on this server yet, so verification and password-reset emails cannot be sent.</Alert>;
 }
 
-/**
- * "Continue with Google", shown only when the server reports a configured Google client. A plain link: the server
- * redirects to Google and back, so no Google script runs on this site.
- */
-function GoogleButton({ next, remember = false, label = 'Continue with Google' }: { next: string; remember?: boolean; label?: string }) {
-  const { config } = useMember();
-  if (!config?.googleSignInEnabled) return null;
-  return (
-    <a href={googleSignInUrl(next, remember)}
-      className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-400 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">
-      <svg aria-hidden="true" viewBox="0 0 48 48" className="h-5 w-5">
-        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
-      </svg>
-      {label}
-    </a>
-  );
-}
-
 function OrDivider() {
   const { config } = useMember();
   if (!config?.googleSignInEnabled) return null;
   return (
     <div className="my-5 flex items-center gap-3 text-xs font-medium uppercase tracking-wide text-slate-500" aria-hidden="true">
-      <span className="h-px flex-1 bg-slate-200" /> or <span className="h-px flex-1 bg-slate-200" />
+      <span className="h-px flex-1 bg-slate-200" /> or use your email <span className="h-px flex-1 bg-slate-200" />
     </div>
   );
 }
@@ -128,24 +108,85 @@ const GOOGLE_ERRORS: Record<string, string> = {
   failed: 'Google sign-in did not complete. Please try again.',
 };
 
-// --- sign in ---------------------------------------------------------------------------------------------------------
+// --- login / sign up: one page, two tabs ---------------------------------------------------------------------------------
 
-export function SignInPage() {
-  useDocumentTitle('Sign in');
+const MOBILE_RE = /^(\+91[ -]?)?[6-9]\d{9}$/;
+
+/**
+ * Google first, then email with Sign In and Create Account tabs. /signin and /register are the same page, so the tabs
+ * switch without a reload and an address that has been typed carries across.
+ */
+export function AuthPage() {
+  const { pathname, search } = useLocation();
   const [params] = useSearchParams();
   const navigate = useNavigate();
-  const { status, config, setAccount, setNotice } = useMember();
+  const { status, config } = useMember();
   const next = safeNext(params.get('next'));
+  const creating = pathname === '/register';
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const googleError = GOOGLE_ERRORS[params.get('google') ?? ''];
+  useDocumentTitle(creating ? 'Create Account' : 'Login / Sign Up');
+
+  if (status === 'signedIn') return <Navigate to={next} replace />;
+
+  const show = (tab: 'signin' | 'register') => navigate({ pathname: `/${tab}`, search }, { replace: true });
+
+  if (sentTo) {
+    return (
+      <AuthShell title="Check your email" subtitle={<>We sent a confirmation link to <strong>{sentTo}</strong>.</>}>
+        <div className="space-y-4 text-sm text-slate-700">
+          <EmailUnavailable />
+          <p>Open the link to confirm your address, then sign in. The link works once and expires in 24 hours.</p>
+          <p>Nothing arrived? Check your spam folder, or <ResendLink email={sentTo} />.</p>
+          <p>If this address already has an account, we have emailed it instead — you can sign in or <Link to="/forgot-password" className="link">reset your password</Link>.</p>
+          <button type="button" className="btn-primary w-full justify-center" onClick={() => { setSentTo(null); show('signin'); }}>Go to sign in</button>
+        </div>
+      </AuthShell>
+    );
+  }
+
+  const tab = (name: 'signin' | 'register', label: string, active: boolean) => (
+    <button type="button" role="tab" id={`auth-tab-${name}`} aria-selected={active} aria-controls="auth-panel" onClick={() => show(name)}
+      className={`flex-1 rounded-lg px-3 py-2 text-sm font-semibold transition ${active ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:text-ink'}`}>
+      {label}
+    </button>
+  );
+
+  return (
+    <AuthShell title="Login / Sign Up" subtitle="Save schools, comparisons and exams to your account.">
+      {googleError && <div className="mb-4"><Alert tone="error">{googleError}</Alert></div>}
+      <GoogleButton next={next} remember={remember} />
+      {config?.googleSignInEnabled && (
+        <p className="mt-2 text-xs text-slate-500">
+          New here? Google creates your account, so there is nothing to fill in. By continuing you agree to the <Link to="/terms" className="link">Terms</Link> and <Link to="/privacy" className="link">Privacy Policy</Link>. If you are under 18, please ask a parent or guardian first.
+        </p>
+      )}
+      <OrDivider />
+      <div role="tablist" aria-label="Use your email" className="mb-5 flex gap-1 rounded-xl bg-slate-100 p-1">
+        {tab('signin', 'Sign In', !creating)}
+        {tab('register', 'Create Account', creating)}
+      </div>
+      <div id="auth-panel" role="tabpanel" aria-labelledby={`auth-tab-${creating ? 'register' : 'signin'}`}>
+        {creating
+          ? <CreateAccountForm email={email} setEmail={setEmail} onSent={setSentTo} />
+          : <SignInForm email={email} setEmail={setEmail} remember={remember} setRemember={setRemember} next={next} />}
+      </div>
+    </AuthShell>
+  );
+}
+
+function SignInForm({ email, setEmail, remember, setRemember, next }: {
+  email: string; setEmail: (v: string) => void; remember: boolean; setRemember: (v: boolean) => void; next: string;
+}) {
+  const navigate = useNavigate();
+  const { config, setAccount, setNotice } = useMember();
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState<{ code: string; message: string } | null>(null);
   const [busy, setBusy] = useState(false);
   const [resent, setResent] = useState(false);
-  const googleError = GOOGLE_ERRORS[params.get('google') ?? ''];
-
-  if (status === 'signedIn') return <Navigate to={next} replace />;
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -184,70 +225,53 @@ export function SignInPage() {
   };
 
   return (
-    <AuthShell title="Sign in" subtitle="Save schools, comparisons and exams to your account."
-      footer={<>New to India School Finder? <Link to={`/register${params.get('next') ? `?next=${encodeURIComponent(next)}` : ''}`} className="link">Create an account</Link></>}>
-      {googleError && !formError && <div className="mb-4"><Alert tone="error">{googleError}</Alert></div>}
-      <GoogleButton next={next} remember={remember} />
-      <OrDivider />
-      <form noValidate onSubmit={submit} className="space-y-4" aria-busy={busy}>
-        {formError && (
-          <Alert tone="error">
-            {formError.message}
-            {formError.code === 'EMAIL_NOT_VERIFIED' && !resent && (
-              <button type="button" className="ml-1 font-semibold underline" onClick={() => void resend()}>Send a new link</button>
-            )}
-          </Alert>
-        )}
-        {resent && <Alert tone="success">If that address needs confirming, a new link is on its way. Check your inbox.</Alert>}
-        <Field label="Email address" error={errors.email}>
-          {(id, d) => <input id={id} type="email" className="input w-full" autoComplete="email" value={email}
-            aria-invalid={!!errors.email || undefined} aria-describedby={d} onChange={(e) => setEmail(e.target.value)} />}
-        </Field>
-        <Field label="Password" error={errors.password}>
-          {(id, d) => <PasswordInput id={id} value={password} onChange={setPassword} describedBy={d} autoComplete="current-password" invalid={!!errors.password} />}
-        </Field>
-        <div className="flex items-center justify-between gap-3 text-sm">
-          <label className="flex items-center gap-2">
-            <input type="checkbox" className="h-4 w-4 rounded border-slate-300" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
-            Keep me signed in
-          </label>
-          <Link to="/forgot-password" className="link">Forgot password?</Link>
-        </div>
-        <button type="submit" className="btn-primary w-full justify-center" disabled={busy}>{busy ? 'Signing in…' : 'Sign in'}</button>
-        <p className="text-xs text-slate-500">“Keep me signed in” keeps this device signed in for up to 30 days{config?.googleSignInEnabled ? ', also when you continue with Google' : ''}. Do not use it on a shared computer.</p>
-        {config?.googleSignInEnabled && (
-          <p className="text-xs text-slate-500">Continuing with Google creates an account if you do not have one, and means you agree to the <Link to="/terms" className="link">Terms</Link> and <Link to="/privacy" className="link">Privacy Policy</Link> and confirm you are 18 or older.</p>
-        )}
-      </form>
-    </AuthShell>
+    <form noValidate onSubmit={submit} className="space-y-4" aria-busy={busy}>
+      {formError && (
+        <Alert tone="error">
+          {formError.message}
+          {formError.code === 'EMAIL_NOT_VERIFIED' && !resent && (
+            <button type="button" className="ml-1 font-semibold underline" onClick={() => void resend()}>Send a new link</button>
+          )}
+        </Alert>
+      )}
+      {resent && <Alert tone="success">If that address needs confirming, a new link is on its way. Check your inbox.</Alert>}
+      <Field label="Email address" error={errors.email}>
+        {(id, d) => <input id={id} type="email" className="input w-full" autoComplete="email" value={email}
+          aria-invalid={!!errors.email || undefined} aria-describedby={d} onChange={(e) => setEmail(e.target.value)} />}
+      </Field>
+      <Field label="Password" error={errors.password}>
+        {(id, d) => <PasswordInput id={id} value={password} onChange={setPassword} describedBy={d} autoComplete="current-password" invalid={!!errors.password} />}
+      </Field>
+      <div className="flex items-center justify-between gap-3 text-sm">
+        <label className="flex items-center gap-2">
+          <input type="checkbox" className="h-4 w-4 rounded border-slate-300" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+          Remember me
+        </label>
+        <Link to="/forgot-password" className="link">Forgot password?</Link>
+      </div>
+      <button type="submit" className="btn-primary w-full justify-center" disabled={busy}>{busy ? 'Signing in…' : 'Sign In'}</button>
+      <p className="text-xs text-slate-500">“Remember me” keeps this device signed in for up to 30 days{config?.googleSignInEnabled ? ', also when you continue with Google' : ''}. Do not use it on a shared computer.</p>
+    </form>
   );
 }
 
-// --- register --------------------------------------------------------------------------------------------------------
-
-export function RegisterPage() {
-  useDocumentTitle('Create an account');
-  const [params] = useSearchParams();
-  const { status, config } = useMember();
-  const states = useApi(() => locationService.states(), []);
-  const [form, setForm] = useState({ displayName: '', email: '', password: '', confirm: '', acceptTerms: false, stateCode: '', city: '' });
+function CreateAccountForm({ email, setEmail, onSent }: { email: string; setEmail: (v: string) => void; onSent: (email: string) => void }) {
+  const { config } = useMember();
+  const [form, setForm] = useState({ displayName: '', mobile: '', password: '', acceptTerms: false, website: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [sentTo, setSentTo] = useState<string | null>(null);
   const set = (k: keyof typeof form, v: string | boolean) => setForm((f) => ({ ...f, [k]: v }));
-
-  if (status === 'signedIn') return <Navigate to={safeNext(params.get('next'))} replace />;
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (busy) return;
     const errs: Errors = {};
     if (!form.displayName.trim()) errs.displayName = 'Enter your name.';
-    if (!EMAIL_RE.test(form.email.trim())) errs.email = 'Enter an email address like name@example.com.';
+    if (!EMAIL_RE.test(email.trim())) errs.email = 'Enter an email address like name@example.com.';
+    if (form.mobile.trim() && !MOBILE_RE.test(form.mobile.trim())) errs.mobile = 'Enter a 10-digit Indian mobile number, or leave this empty.';
     const pw = passwordProblem(form.password);
     if (pw) errs.password = pw;
-    if (form.confirm !== form.password) errs.confirm = 'The passwords do not match.';
     if (!form.acceptTerms) errs.acceptTerms = 'Please accept the Terms of Service and Privacy Policy.';
     setErrors(errs);
     setFormError(null);
@@ -255,10 +279,10 @@ export function RegisterPage() {
     setBusy(true);
     try {
       await accountService.register({
-        displayName: form.displayName.trim(), email: form.email.trim(), password: form.password, acceptTerms: true,
-        stateCode: form.stateCode || undefined, city: form.city.trim() || undefined,
+        displayName: form.displayName.trim(), email: email.trim(), password: form.password, acceptTerms: true,
+        mobile: form.mobile.trim() || undefined, website: form.website || undefined,
       });
-      setSentTo(form.email.trim());
+      onSent(email.trim());
     } catch (err) {
       setErrors(fieldErrorsFrom(err));
       setFormError(err instanceof ApiError && err.status === 429 ? 'Too many sign-ups from this connection. Please try again later.'
@@ -268,74 +292,40 @@ export function RegisterPage() {
     }
   };
 
-  if (sentTo) {
-    return (
-      <AuthShell title="Check your email" subtitle={<>We sent a confirmation link to <strong>{sentTo}</strong>.</>}>
-        <div className="space-y-4 text-sm text-slate-700">
-          <EmailUnavailable />
-          <p>Open the link to confirm your address, then sign in. The link works once and expires in 24 hours.</p>
-          <p>Nothing arrived? Check your spam folder, or <ResendLink email={sentTo} />.</p>
-          <p>If this address already has an account, we have emailed it instead — you can <Link to="/signin" className="link">sign in</Link> or <Link to="/forgot-password" className="link">reset your password</Link>.</p>
-          <Link to="/signin" className="btn-primary w-full justify-center">Go to sign in</Link>
-        </div>
-      </AuthShell>
-    );
-  }
-
   return (
-    <AuthShell title="Create an account" subtitle="Free. We only ask for what an account needs."
-      footer={<>Already have an account? <Link to="/signin" className="link">Sign in</Link></>}>
-      <GoogleButton next={safeNext(params.get('next'))} label="Sign up with Google" />
-      {config?.googleSignInEnabled && (
-        <p className="mt-2 text-xs text-slate-500">By signing up with Google you agree to the <Link to="/terms" className="link">Terms of Service</Link> and <Link to="/privacy" className="link">Privacy Policy</Link> and confirm you are 18 or older. We receive only your name, email address and Google account ID.</p>
-      )}
-      <OrDivider />
-      <form noValidate onSubmit={submit} className="space-y-4" aria-busy={busy}>
-        <EmailUnavailable />
-        {formError && <Alert tone="error">{formError}</Alert>}
-        <Field label="Your name" error={errors.displayName}>
-          {(id, d) => <input id={id} className="input w-full" autoComplete="name" maxLength={80} value={form.displayName}
-            aria-invalid={!!errors.displayName || undefined} aria-describedby={d} onChange={(e) => set('displayName', e.target.value)} />}
-        </Field>
-        <Field label="Email address" error={errors.email} hint="Used to sign in and for account emails only — never for marketing.">
-          {(id, d) => <input id={id} type="email" className="input w-full" autoComplete="email" maxLength={254} value={form.email}
-            aria-invalid={!!errors.email || undefined} aria-describedby={d} onChange={(e) => set('email', e.target.value)} />}
-        </Field>
-        <Field label="Password" error={errors.password} hint={config?.passwordPolicy ?? `At least ${PASSWORD_MIN} characters.`}>
-          {(id, d) => <PasswordInput id={id} value={form.password} onChange={(v) => set('password', v)} describedBy={d} autoComplete="new-password" invalid={!!errors.password} />}
-        </Field>
-        <Field label="Confirm password" error={errors.confirm}>
-          {(id, d) => <PasswordInput id={id} value={form.confirm} onChange={(v) => set('confirm', v)} describedBy={d} autoComplete="new-password" invalid={!!errors.confirm} />}
-        </Field>
-        <details className="rounded-xl border border-slate-200 p-3 text-sm">
-          <summary className="cursor-pointer font-semibold text-ink">Optional: your area</summary>
-          <p className="mt-2 text-xs text-slate-500">Helps us suggest schools near you. You can change or remove it later.</p>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <Field label="State or UT">
-              {(id) => (
-                <select id={id} className="input w-full" value={form.stateCode} onChange={(e) => set('stateCode', e.target.value)}>
-                  <option value="">Not set</option>
-                  {(states.data ?? []).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
-                </select>
-              )}
-            </Field>
-            <Field label="City">
-              {(id) => <input id={id} className="input w-full" autoComplete="address-level2" maxLength={80} value={form.city} onChange={(e) => set('city', e.target.value)} />}
-            </Field>
-          </div>
-        </details>
-        <div>
-          <label className="flex items-start gap-2 text-sm">
-            <input type="checkbox" className="mt-0.5 h-4 w-4 rounded border-slate-300" checked={form.acceptTerms}
-              aria-invalid={!!errors.acceptTerms || undefined} aria-describedby={errors.acceptTerms ? 'terms-err' : undefined}
-              onChange={(e) => set('acceptTerms', e.target.checked)} />
-            <span>I agree to the <Link to="/terms" className="link" target="_blank">Terms of Service</Link> and <Link to="/privacy" className="link" target="_blank">Privacy Policy</Link>, and I am 18 or older.</span>
-          </label>
-          {errors.acceptTerms && <p id="terms-err" className="field-error mt-1 text-sm text-red-700">{errors.acceptTerms}</p>}
-        </div>
-        <button type="submit" className="btn-primary w-full justify-center" disabled={busy}>{busy ? 'Creating account…' : 'Create account'}</button>
-      </form>
-    </AuthShell>
+    <form noValidate onSubmit={submit} className="space-y-4" aria-busy={busy}>
+      <EmailUnavailable />
+      {formError && <Alert tone="error">{formError}</Alert>}
+      <Field label="Your name" error={errors.displayName}>
+        {(id, d) => <input id={id} className="input w-full" autoComplete="name" maxLength={80} value={form.displayName}
+          aria-invalid={!!errors.displayName || undefined} aria-describedby={d} onChange={(e) => set('displayName', e.target.value)} />}
+      </Field>
+      <Field label="Email address" error={errors.email} hint="Used to sign in and for account emails only — never for marketing.">
+        {(id, d) => <input id={id} type="email" className="input w-full" autoComplete="email" maxLength={254} value={email}
+          aria-invalid={!!errors.email || undefined} aria-describedby={d} onChange={(e) => setEmail(e.target.value)} />}
+      </Field>
+      <Field label="Mobile number (optional)" error={errors.mobile}>
+        {(id, d) => <input id={id} type="tel" inputMode="tel" className="input w-full" autoComplete="tel-national" maxLength={16} value={form.mobile}
+          aria-invalid={!!errors.mobile || undefined} aria-describedby={d} onChange={(e) => set('mobile', e.target.value)} />}
+      </Field>
+      <Field label="Password" error={errors.password} hint={config?.passwordPolicy ?? `At least ${PASSWORD_MIN} characters.`}>
+        {(id, d) => <PasswordInput id={id} value={form.password} onChange={(v) => set('password', v)} describedBy={d} autoComplete="new-password" invalid={!!errors.password} />}
+      </Field>
+      {/* Spam trap: hidden from people, tempting to bots. */}
+      <div className="sr-only" aria-hidden="true">
+        <label>Website<input tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => set('website', e.target.value)} /></label>
+      </div>
+      <div>
+        <label className="flex items-start gap-2 text-sm">
+          <input type="checkbox" className="mt-0.5 h-4 w-4 rounded border-slate-300" checked={form.acceptTerms}
+            aria-invalid={!!errors.acceptTerms || undefined} aria-describedby={errors.acceptTerms ? 'terms-err' : undefined}
+            onChange={(e) => set('acceptTerms', e.target.checked)} />
+          <span>I agree to the <Link to="/terms" className="link" target="_blank">Terms of Service</Link> and <Link to="/privacy" className="link" target="_blank">Privacy Policy</Link>. If I am under 18, a parent or guardian agrees.</span>
+        </label>
+        {errors.acceptTerms && <p id="terms-err" className="field-error mt-1 text-sm text-red-700">{errors.acceptTerms}</p>}
+      </div>
+      <button type="submit" className="btn-primary w-full justify-center" disabled={busy}>{busy ? 'Creating account…' : 'Create Account'}</button>
+    </form>
   );
 }
 
@@ -510,7 +500,7 @@ function AccountSettings() {
   const states = useApi(() => locationService.states(), []);
   const savedSchoolCount = useLocalList(savedSchools).length;
   const savedExamCount = useLocalList(savedExams).length;
-  const [profile, setProfile] = useState({ displayName: account?.displayName ?? '', stateCode: account?.stateCode ?? '', city: account?.city ?? '' });
+  const [profile, setProfile] = useState({ displayName: account?.displayName ?? '', stateCode: account?.stateCode ?? '', city: account?.city ?? '', mobile: account?.mobile ?? '' });
   const [profileMsg, setProfileMsg] = useState<{ tone: 'success' | 'error'; text: string } | null>(null);
   const [profileErrors, setProfileErrors] = useState<Errors>({});
   const [pw, setPw] = useState({ current: '', next: '', confirm: '' });
@@ -535,7 +525,7 @@ function AccountSettings() {
     if (!profile.displayName.trim()) { setProfileErrors({ displayName: 'Enter your name.' }); return; }
     setBusy('profile'); setProfileErrors({}); setProfileMsg(null);
     try {
-      setAccount(await accountService.updateProfile({ displayName: profile.displayName.trim(), stateCode: profile.stateCode || null, city: profile.city.trim() || null }));
+      setAccount(await accountService.updateProfile({ displayName: profile.displayName.trim(), stateCode: profile.stateCode || null, city: profile.city.trim() || null, mobile: profile.mobile.trim() || null }));
       setProfileMsg({ tone: 'success', text: 'Profile saved.' });
     } catch (err) {
       setProfileErrors(fieldErrorsFrom(err));
@@ -628,6 +618,10 @@ function AccountSettings() {
           </Field>
           <Field label="City (optional)">
             {(id) => <input id={id} className="input w-full" maxLength={80} value={profile.city} onChange={(e) => setProfile({ ...profile, city: e.target.value })} />}
+          </Field>
+          <Field label="Mobile number (optional)" error={profileErrors.mobile}>
+            {(id, d) => <input id={id} type="tel" inputMode="tel" className="input w-full" autoComplete="tel-national" maxLength={16} value={profile.mobile} aria-describedby={d}
+              aria-invalid={!!profileErrors.mobile || undefined} onChange={(e) => setProfile({ ...profile, mobile: e.target.value })} />}
           </Field>
           <div className="flex flex-wrap items-center gap-3 sm:col-span-2">
             <button type="submit" className="btn-primary" disabled={busy === 'profile'}>{busy === 'profile' ? 'Saving…' : 'Save profile'}</button>

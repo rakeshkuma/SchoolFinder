@@ -77,7 +77,8 @@ describe('RankingCard', () => {
     expect(text).not.toContain('Not published');
     expect(text).toContain('Admissions open');
     expect(view.container.querySelector('img')?.getAttribute('src')).toBe('https://example.org/photo.jpg');
-    expect(text).toContain('© Example credit');
+    expect(text).not.toContain('Example credit'); // no credit over the photo
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example credit');
     expect(view.container.querySelector('[aria-label="documented, not verified"]')).toBeNull();
   });
 

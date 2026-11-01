@@ -14,8 +14,6 @@ public interface DistrictRepository extends JpaRepository<District, Long> {
 
     Optional<District> findByStateCodeAndNameIgnoreCase(String stateCode, String name);
 
-    Optional<District> findByStateCodeAndSlug(String stateCode, String slug);
-
     boolean existsByStateCodeAndSlug(String stateCode, String slug);
 
     List<District> findByIdIn(Collection<Long> ids);

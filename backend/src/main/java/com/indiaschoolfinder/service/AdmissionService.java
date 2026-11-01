@@ -10,10 +10,14 @@ import java.util.List;
 
 public interface AdmissionService {
 
-    /** @param excludeNetwork optional: leave out schools of this network (e.g. the identical national JNV cycles) */
+    /**
+     * @param excludeNetwork optional: leave out schools of this network (e.g. the identical national JNV cycles)
+     * @param state          optional ISO code, slug or name: only schools in that state or UT
+     * @param board          optional board code (e.g. CBSE): only schools affiliated to it
+     */
     PageResponse<AdmissionDto> list(String academicYear, AdmissionStatus status, AdmissionCategory category,
                                     String classCode, com.indiaschoolfinder.enums.SchoolNetwork excludeNetwork,
-                                    String sortBy, int page, int size);
+                                    String state, String board, String sortBy, int page, int size);
 
     PageResponse<AdmissionDto> upcoming(int page, int size);
 

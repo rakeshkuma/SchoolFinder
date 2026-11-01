@@ -84,10 +84,23 @@ public class RateLimitFilter extends OncePerRequestFilter {
         if (path.matches("^/api/v1/schools/\\d+/update-submissions$")) {
             return new Rule("submission", config.getUpdateSubmissionsPerHour(), Duration.ofHours(1));
         }
+        if (path.matches("^/api/v1/practice-questions/[a-z0-9-]+/[a-z0-9-]+/reports$")) {
+            return new Rule("question-report", config.getUpdateSubmissionsPerHour(), Duration.ofHours(1));
+        }
+        if (path.equals("/api/v1/contact")) {
+            return new Rule("contact", config.getUpdateSubmissionsPerHour(), Duration.ofHours(1));
+        }
         if (path.startsWith("/api/v1/fees/")) {
             return new Rule("fees", config.getPublicWritesPerMinute(), Duration.ofMinutes(1));
         }
-        if (path.matches("^/api/v1/practice-sets/[a-z0-9-]+/score$")) {
+        if (path.equals("/api/v1/participants")) {
+            // New guest identities; generous enough for a classroom sharing one address.
+            return new Rule("participant-join", config.getParticipantJoinsPerHour(), Duration.ofHours(1));
+        }
+        if (path.matches("^/api/v1/practice-sets/[a-z0-9-]+/score$") || path.equals("/api/v1/practice-sessions/score")
+                || path.equals("/api/v1/account/practice-attempts") || path.equals("/api/v1/account/bookmarks/merge")
+                || path.equals("/api/v1/participants/me/attempts") || path.equals("/api/v1/account/participant/claim")
+                || path.matches("^/api/v1(/account)?/challenges/[a-z0-9-]+/attempts(/\\d+/submit)?$")) {
             return new Rule("practice", config.getPublicWritesPerMinute(), Duration.ofMinutes(1));
         }
         return null;

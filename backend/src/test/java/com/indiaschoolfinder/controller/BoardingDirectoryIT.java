@@ -91,6 +91,15 @@ class BoardingDirectoryIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.MILITARY_SCHOOL").value(1))
                 .andExpect(jsonPath("$.PRIVATE_BOARDING").value(1))
                 .andExpect(jsonPath("$.NAVODAYA").doesNotExist());
+
+        // Landing-page counts: day schools are not counted, and an unstated gender is not guessed.
+        mockMvc.perform(get("/api/v1/boarding/stats"))
+                .andExpect(jsonPath("$.total").value(3))
+                .andExpect(jsonPath("$.byState.HR").value(1))
+                .andExpect(jsonPath("$.byState.DL").doesNotExist())
+                .andExpect(jsonPath("$.byGender.CO_ED").value(1))
+                .andExpect(jsonPath("$.genderNotStated").value(2))
+                .andExpect(jsonPath("$.bySystem.SAINIK").value(1));
     }
 
     /** Verified evidence for four criteria (75%): enough for a definitive rank. */

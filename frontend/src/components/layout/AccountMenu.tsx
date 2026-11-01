@@ -4,11 +4,8 @@ import { useMember } from '../../hooks/useMember';
 import { Avatar } from '../common/Avatar';
 
 const ITEMS = [
-  { to: '/account', label: 'My profile' },
-  { to: '/saved', label: 'Saved schools' },
-  { to: '/compare', label: 'School comparison' },
-  { to: '/exams/calendar?saved=1', label: 'Exam favourites' },
-  { to: '/account#pw-h', label: 'Account settings' },
+  { to: '/account', label: 'My Account' },
+  { to: '/saved', label: 'Saved Schools' },
 ];
 
 /**
@@ -42,10 +39,7 @@ export function AccountMenu() {
     const next = `${location.pathname}${location.search}`;
     const withNext = next.startsWith('/signin') || next.startsWith('/register') ? '' : `?next=${encodeURIComponent(next)}`;
     return (
-      <span className="flex items-center gap-1">
-        <Link to={`/signin${withNext}`} className="btn-ghost whitespace-nowrap rounded-full px-3 text-sm font-semibold">Sign in</Link>
-        <Link to={`/register${withNext}`} className="btn-secondary hidden whitespace-nowrap rounded-full px-3 text-sm 2xl:inline-flex">Create account</Link>
-      </span>
+      <Link to={`/signin${withNext}`} className="btn-primary h-9 whitespace-nowrap rounded-full px-2.5 py-0 text-xs font-semibold sm:h-10 sm:px-4 sm:text-sm">Login / Sign Up</Link>
     );
   }
 
@@ -97,7 +91,7 @@ export function AccountMenu() {
           ))}
           <button type="button" role="menuitem" tabIndex={-1} onClick={() => void doSignOut()}
             className="mt-1 block w-full rounded-lg border-t border-slate-100 px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none">
-            Sign out
+            Logout
           </button>
         </div>
       )}
@@ -109,11 +103,13 @@ export function AccountMenu() {
 export function MobileAccountLinks() {
   const { status, account, signOut, setNotice } = useMember();
   const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const here = `${pathname}${search}`;
+  const withNext = here.startsWith('/signin') || here.startsWith('/register') ? '' : `?next=${encodeURIComponent(here)}`;
   if (status !== 'signedIn' || !account) {
     return status === 'loading' ? null : (
       <div className="col-span-2 mt-2 flex gap-2 border-t border-slate-100 pt-3">
-        <Link to="/signin" className="btn-secondary flex-1 justify-center">Sign in</Link>
-        <Link to="/register" className="btn-primary flex-1 justify-center">Create account</Link>
+        <Link to={`/signin${withNext}`} className="btn-primary flex-1 justify-center">Login / Sign Up</Link>
       </div>
     );
   }
@@ -121,12 +117,12 @@ export function MobileAccountLinks() {
     <div className="col-span-2 mt-2 border-t border-slate-100 pt-3">
       <p className="px-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Signed in as {account.displayName}</p>
       <div className="mt-1 grid grid-cols-2 gap-1">
-        {ITEMS.slice(0, 4).map((item) => (
+        {ITEMS.map((item) => (
           <Link key={item.to} to={item.to} className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50">{item.label}</Link>
         ))}
         <button type="button" className="rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50"
           onClick={async () => { await signOut().catch(() => undefined); setNotice('You have signed out.'); navigate('/', { replace: true }); }}>
-          Sign out
+          Logout
         </button>
       </div>
     </div>

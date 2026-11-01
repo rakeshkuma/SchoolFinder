@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { GoogleButton } from '../components/common/GoogleButton';
+import { useMember } from '../hooks/useMember';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
 import { ShareLinkButtons } from '../components/common/ShareLinkButtons';
@@ -6,24 +10,33 @@ import { MAX_COMPARE, useCompare } from '../hooks/useCompare';
 import { parseIds } from '../utils/geo';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
 import { SchoolDirectory } from '../components/school/SchoolDirectory';
-import { SearchAutocomplete } from '../components/school/SearchAutocomplete';
+import { SchoolsHero, type HeroSearch } from '../components/school/SchoolsHero';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, savedSchools, useLocalList, type SchoolRef } from '../hooks/usePersonal';
-import { locationService, referenceService, schoolService } from '../services/publicApi';
+import { locationService, rankingService, referenceService, schoolService, type RankingPlaces } from '../services/publicApi';
 import type { IndianState, SchoolNetwork, SchoolSearchParams, SchoolStage, SchoolType } from '../types/api';
 import { networkLabel, placeLine, stageLabel } from '../utils/format';
 import { NotFoundPage } from './InfoPages';
 
 export function SchoolsPage() {
-  useDocumentTitle('Find schools across India');
+  useDocumentTitle('Discover the best schools across India');
+  const [params, setParams] = useSearchParams();
+  const stats = useApi(() => referenceService.stats(), []);
+  // The hero's search sets name, state, city and board for the directory below (other filters stay as they are).
+  const onSearch = (next: HeroSearch) => {
+    const p = new URLSearchParams(params);
+    (['q', 'state', 'city', 'board'] as const).forEach((k) => { if (next[k]) p.set(k, next[k]!); else p.delete(k); });
+    p.delete('page');
+    if (next.state !== params.get('state')) { p.delete('district'); p.delete('locality'); }
+    setParams(p);
+    document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   return (
     <>
-      <PageHeader eyebrow="Directory" title="Find schools across India"
-        subtitle="Search by name, abbreviation (DPS, KV), city, PIN or UDISE code. Filter by state, district, board, management, classes, official fees and day or boarding — or switch to the map.">
-        <div className="max-w-2xl"><SearchAutocomplete variant="compact" /></div>
-      </PageHeader>
-      <div className="container-page py-8"><SchoolDirectory /></div>
+      <SchoolsHero total={stats.data?.activeSchools} onSearch={onSearch}
+        value={{ q: params.get('q') ?? undefined, state: params.get('state') ?? undefined, city: params.get('city') ?? undefined, board: params.get('board') ?? undefined }} />
+      <div id="directory" className="container-page scroll-mt-20 py-8"><SchoolDirectory /></div>
     </>
   );
 }
@@ -72,17 +85,74 @@ export function StatesPage() {
   );
 }
 
+/** Every city with listed schools across India, largest first, with a quick name filter. */
+export function CitiesPage() {
+  useDocumentTitle('Schools by city');
+  const cities = useApi(() => locationService.citiesAcrossIndia(), []);
+  const [q, setQ] = useState('');
+  const needle = q.trim().toLowerCase();
+  return (
+    <>
+      <PageHeader eyebrow="Directory" title="Schools by city"
+        subtitle="Cities where we list schools, with the number listed today. Many schools are recorded by district only; browse by state to see every district.">
+        <div className="flex flex-wrap gap-2">
+          <Link to="/states" className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">Schools by state</Link>
+          <Link to="/schools" className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">Search all schools</Link>
+        </div>
+      </PageHeader>
+      <div className="container-page space-y-6 py-8">
+        <label className="block max-w-md">
+          <span className="label">Find a city</span>
+          <input className="input" placeholder="Type a city name…" value={q} onChange={(e) => setQ(e.target.value)} />
+        </label>
+        <AsyncContent state={cities} loading={<SkeletonCards count={6} />} isEmpty={(list) => list.length === 0}
+          empty={<EmptyState title="No cities listed yet." />}>
+          {(list) => {
+            const shown = list.filter((c) => !needle || c.name.toLowerCase().includes(needle) || c.stateName.toLowerCase().includes(needle));
+            return shown.length === 0 ? <EmptyState title={`No city matches “${q}”.`}>Try a state name, or browse <Link to="/states" className="link">schools by state</Link>.</EmptyState> : (
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {shown.map((c) => (
+                  <li key={`${c.stateCode}-${c.slug}`}>
+                    <Link to={`/states/${c.stateSlug}/city/${c.slug}`} className="card card-hover flex items-center justify-between gap-3 p-4">
+                      <span className="min-w-0">
+                        <span className="block truncate font-display font-bold text-ink">{c.name}</span>
+                        <span className="block truncate text-xs text-slate-500">{c.stateName}</span>
+                      </span>
+                      <span className="shrink-0 rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold tabular-nums text-brand-700">
+                        {c.schoolCount.toLocaleString('en-IN')}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        </AsyncContent>
+      </div>
+    </>
+  );
+}
+
 export function StatePage() {
-  const { state: stateSlug = '', district: districtSlug } = useParams();
+  const { state: stateSlug = '', district: districtSlug, city: citySlug } = useParams();
   const state = useApi(() => locationService.state(stateSlug), [stateSlug]);
   const districts = useApi(() => locationService.districts(stateSlug), [stateSlug]);
   const cities = useApi(() => locationService.cities(stateSlug), [stateSlug]);
+  const ranked = useApi(async () => {
+    const list = (await rankingService.editions()).find((e) => !e.ratingBased);
+    return list ? rankingService.places(list.id) : null;
+  }, []);
   const district = districtSlug ? districts.data?.find((d) => d.slug === districtSlug) : undefined;
+  const city = citySlug ? cities.data?.find((c) => c.slug === citySlug) : undefined;
   const name = state.data?.name;
-  const title = district ? `Schools in ${district.name} district, ${name}` : name ? `Schools in ${name}` : undefined;
+  const title = district ? `Schools in ${district.name} district, ${name}`
+    : city ? `Schools in ${city.name}, ${name}` : name ? `Schools in ${name}` : undefined;
   useDocumentTitle(title);
 
-  if (state.error?.status === 404 || (districtSlug && districts.data && !district)) return <NotFoundPage />;
+  if (state.error?.status === 404 || (districtSlug && districts.data && !district) || (citySlug && cities.data && !city)) {
+    return <NotFoundPage />;
+  }
+  if (citySlug && !city) return <AsyncContent state={cities} loading={<Spinner />}>{() => null}</AsyncContent>;
   if (!state.data) return <AsyncContent state={state} loading={<Spinner />}>{() => null}</AsyncContent>;
   const s = state.data;
 
@@ -94,14 +164,21 @@ export function StatePage() {
         subtitle={
           <>
             <Breadcrumbs items={[{ to: '/states', label: 'States & UTs' }, { to: `/states/${s.slug}`, label: s.name },
-              ...(district ? [{ to: `/states/${s.slug}/${district.slug}`, label: district.name }] : [])]} />
+              ...(district ? [{ to: `/states/${s.slug}/${district.slug}`, label: district.name }] : []),
+              ...(city ? [{ to: `/states/${s.slug}/city/${city.slug}`, label: city.name }] : [])]} />
+            {city && (
+              <span className="mt-2 block">
+                {city.schoolCount.toLocaleString('en-IN')} school{city.schoolCount === 1 ? '' : 's'} listed in {city.name}, each linked to an official source.
+              </span>
+            )}
+            {ranked.data && <PlaceRankingsLink places={ranked.data} state={s} district={district} city={city} />}
             {s.schoolCount === 0 && (
               <span className="mt-2 block">No schools in {s.name} are listed yet. We add schools only when they can be linked to an official source.</span>
             )}
           </>
         }
       >
-        {(districts.data?.length ?? 0) > 0 && (
+        {!city && (districts.data?.length ?? 0) > 0 && (
           <div className="flex flex-wrap gap-2">
             <Link to={`/states/${s.slug}`}
               className={`chip px-3 py-1 text-sm ${!district ? 'bg-accent-400 font-semibold text-ink' : 'bg-white/10 text-slate-200 ring-1 ring-white/15 hover:bg-white/20'}`}>
@@ -121,15 +198,16 @@ export function StatePage() {
           <nav aria-label="Cities" className="mb-6 flex flex-wrap items-center gap-2 text-sm">
             <span className="text-slate-500">Cities:</span>
             {(cities.data ?? []).map((c) => (
-              <Link key={c.name} to={`/schools?state=${s.code}&city=${encodeURIComponent(c.name)}`}
-                className="rounded-full border border-slate-200 bg-white px-3 py-1 font-medium text-slate-700 hover:border-brand-300 hover:text-brand-700">
-                {c.name} <span className="text-slate-500">{c.schoolCount}</span>
+              <Link key={c.slug} to={`/states/${s.slug}/city/${c.slug}`} aria-current={c.slug === citySlug ? 'page' : undefined}
+                className={`rounded-full border px-3 py-1 font-medium ${c.slug === citySlug
+                  ? 'border-brand-600 bg-brand-600 text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-700'}`}>
+                {c.name} <span className={c.slug === citySlug ? 'text-white/80' : 'text-slate-500'}>{c.schoolCount}</span>
               </Link>
             ))}
           </nav>
         )}
-        <SchoolDirectory key={`${s.code}-${districtSlug ?? ''}`}
-          fixed={district ? { state: s.code, district: district.slug } : { state: s.code }} />
+        <SchoolDirectory key={`${s.code}-${districtSlug ?? ''}-${citySlug ?? ''}`}
+          fixed={district ? { state: s.code, district: district.slug } : city ? { state: s.code, city: city.name } : { state: s.code }} />
       </div>
     </>
   );
@@ -169,6 +247,7 @@ const MAX_SHARED = 30;
 
 export function SavedSchoolsPage() {
   useDocumentTitle('Saved schools');
+  const { status, config } = useMember();
   const saved = useLocalList(savedSchools);
   const recent = useLocalList(recentSchools);
   const navigate = useNavigate();
@@ -202,8 +281,14 @@ export function SavedSchoolsPage() {
     <>
       <PageHeader eyebrow="Your shortlist" title="Saved schools"
         subtitle="Saved and recently viewed schools are stored only in this browser. Clearing your browser data removes them." />
-      <div className="container-page grid gap-10 py-8 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container-page grid grid-cols-1 gap-10 py-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="min-w-0 space-y-10">
+        {status === 'signedOut' && config?.googleSignInEnabled && (
+          <section aria-label="Sign in" className="card flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-slate-600">Sign in or create a free account. Your saved schools stay in this browser for now; signing in does not move them.</p>
+            <div className="w-full shrink-0 sm:w-64"><GoogleButton next={`/saved${searchParams.size ? `?${searchParams}` : ''}`} /></div>
+          </section>
+        )}
         {sharedIds.length > 0 && (
           <section aria-labelledby="shared-heading" className="rounded-2xl bg-brand-50/60 p-5 ring-1 ring-brand-100">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -290,23 +375,6 @@ function SchoolRefRow({ school, onRemove, action }: { school: SchoolRef; onRemov
         </button>
       )}
     </li>
-  );
-}
-
-function Breadcrumbs({ items }: { items: { to: string; label: string }[] }) {
-  return (
-    <nav aria-label="Breadcrumb" className="text-sm">
-      <ol className="flex flex-wrap items-center gap-1.5">
-        {items.map((item, i) => (
-          <li key={item.to} className="flex items-center gap-1.5">
-            {i > 0 && <span aria-hidden className="text-slate-500">/</span>}
-            {i === items.length - 1
-              ? <span aria-current="page" className="text-slate-200">{item.label}</span>
-              : <Link to={item.to} className="text-slate-300 hover:text-white">{item.label}</Link>}
-          </li>
-        ))}
-      </ol>
-    </nav>
   );
 }
 
@@ -418,5 +486,20 @@ export function StagePage() {
       </PageHeader>
       <div className="container-page py-8"><SchoolDirectory key={value} fixed={{ stage: value }} /></div>
     </>
+  );
+}
+
+/** Links to the rankings of a place only when that place has entries, keeping the state when a city or district has none. */
+function PlaceRankingsLink({ places, state, district, city }: {
+  places: RankingPlaces; state: { code: string; name: string }; district?: { slug: string; name: string } | null; city?: { name: string } | null;
+}) {
+  if (!places.states.some((x) => x.code === state.code)) return null;
+  const rankedCity = city && places.cities.some((c) => c.stateCode === state.code && c.name === city.name) ? city : undefined;
+  const rankedDistrict = district && places.districts.some((d) => d.slug === district.slug) ? district : undefined;
+  const query = new URLSearchParams({ state: state.code, ...(rankedDistrict ? { district: rankedDistrict.slug } : {}), ...(rankedCity ? { city: rankedCity.name } : {}) });
+  return (
+    <Link className="mt-2 inline-flex items-center gap-1 text-accent-300 underline-offset-2 hover:underline" to={`/rankings/states?${query}`}>
+      Rankings in {rankedCity?.name ?? rankedDistrict?.name ?? state.name} →
+    </Link>
   );
 }

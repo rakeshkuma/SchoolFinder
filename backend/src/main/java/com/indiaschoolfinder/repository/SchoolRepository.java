@@ -19,9 +19,6 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @EntityGraph(attributePaths = "classesOffered")
     Optional<School> findWithClassesBySlugAndActiveTrue(String slug);
 
-    @EntityGraph(attributePaths = "classesOffered")
-    List<School> findWithClassesByIdIn(Collection<Long> ids);
-
     Optional<School> findByIdAndActiveTrue(Long id);
 
     /** Board codes that have at least one active school (board directory pages listed in the sitemap). */
@@ -34,6 +31,8 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     List<Object[]> findClassesForSchools(@Param("ids") Collection<Long> ids);
 
     boolean existsBySlug(String slug);
+
+    Optional<School> findBySlug(String slug);
 
     /** Same name and PIN in the same state, among schools with no UDISE code or board affiliation (see uk_school_name_pin). */
     @Query("""
@@ -85,13 +84,13 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @Query("select s.slug, s.updatedAt from School s where s.active = true order by s.id")
     List<Object[]> findActiveSlugs(org.springframework.data.domain.Pageable page);
 
-    /** Sitemap rows: state slug, district slug, for districts that have active schools. */
+    /** Sitemap rows: state slug, district slug, for districts with at least {@code min} active schools. */
     @Query(value = """
             select st.slug, d.slug from district d join state st on st.code = d.state_code
-             where exists (select 1 from school s where s.district_id = d.id and s.active)
+             where (select count(*) from school s where s.district_id = d.id and s.active) >= :min
              order by st.slug, d.slug
             """, nativeQuery = true)
-    List<Object[]> districtsWithSchools();
+    List<Object[]> districtsWithSchools(@org.springframework.data.repository.query.Param("min") int min);
 
     /** Rows: state code, active school count. */
     @Query("select s.stateCode, count(s) from School s where s.active = true group by s.stateCode")
@@ -102,6 +101,12 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
             select s.city, count(s) from School s where s.active = true and s.stateCode = :stateCode
             and s.city is not null group by s.city order by s.city""")
     List<Object[]> countActiveByCity(@Param("stateCode") String stateCode);
+
+    /** Rows: city, state code, active school count — every city in India with listed schools, largest first. */
+    @Query("""
+            select s.city, s.stateCode, count(s) from School s where s.active = true and s.city is not null
+            group by s.city, s.stateCode order by count(s) desc, s.city""")
+    List<Object[]> countActiveByCityAcrossIndia();
 
     /** Rows: city, state code. */
     @Query("""

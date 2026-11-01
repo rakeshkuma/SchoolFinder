@@ -280,4 +280,36 @@ class ExamApiIT extends AbstractIntegrationTest {
                     .andExpect(jsonPath("$.exam.lastVerifiedOn").exists());
         }
     }
+
+    @Test
+    void searchFindsExamsBySchoolClassStateAndCategory() throws Exception {
+        JsonNode catalogue = objectMapper.readTree(new ClassPathResource("seed/exams.json").getInputStream());
+        mockMvc.perform(post("/api/v1/admin/exams/import").header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(catalogue))).andExpect(status().isOk());
+        java.util.function.Function<String, java.util.List<String>> search = q -> {
+            try {
+                JsonNode page = objectMapper.readTree(mockMvc.perform(get("/api/v1/exams").param("q", q).param("size", "50"))
+                        .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+                return page.get("content").findValuesAsText("slug");
+            } catch (Exception e) {
+                throw new IllegalStateException(e);
+            }
+        };
+        org.assertj.core.api.Assertions.assertThat(search.apply("Sainik School")).contains("aissee");
+        org.assertj.core.api.Assertions.assertThat(search.apply("navodaya")).contains("jnvst", "jnv-class-9");
+        org.assertj.core.api.Assertions.assertThat(search.apply("RMS CET")).containsExactly("rms-cet");
+        // Classes in digits or Roman numerals; "class 6" does not match the 6 in a year such as 2026.
+        org.assertj.core.api.Assertions.assertThat(search.apply("Class VI")).contains("jnvst", "aissee").doesNotContain("jnv-class-9");
+        org.assertj.core.api.Assertions.assertThat(search.apply("class 9")).contains("jnv-class-9", "aissee").doesNotContain("jnvst");
+        org.assertj.core.api.Assertions.assertThat(search.apply("Jharkhand")).contains("netarhat");
+        // Generic words are ignored, so "boarding schools" means boarding.
+        org.assertj.core.api.Assertions.assertThat(search.apply("boarding schools")).contains("jnvst", "rimc").doesNotContain("kvs-admission");
+        org.assertj.core.api.Assertions.assertThat(search.apply("admission process")).containsExactly("kvs-admission");
+
+        // Resources: official files are linked at the source; this site's own guidance points to the exam guide.
+        mockMvc.perform(get("/api/v1/exams/resources")).andExpect(status().isOk())
+                .andExpect(jsonPath("$[?(@.type == 'ANSWER_KEY' && @.official == true && @.url != null)]").exists())
+                .andExpect(jsonPath("$[?(@.type == 'SYLLABUS' && @.official == false && @.path == '/exams/jnvst?tab=pattern')]").exists())
+                .andExpect(jsonPath("$[?(@.type == 'SYLLABUS' && @.url != null)]").doesNotExist());
+    }
 }

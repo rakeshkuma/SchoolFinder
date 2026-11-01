@@ -61,6 +61,13 @@ class LocationApiIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         mockMvc.perform(get("/api/v1/locations/cities").param("state", "uttar-pradesh"))
                 .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].slug").value("lucknow"))
+                .andExpect(jsonPath("$[0].schoolCount").value(2));
+        // Every city in India, with its state for the city page's address.
+        mockMvc.perform(get("/api/v1/locations/cities/all"))
+                .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].stateSlug").value("uttar-pradesh"))
+                .andExpect(jsonPath("$[0].stateName").value("Uttar Pradesh"))
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         // Creating a district is an audited administrative change.
         mockMvc.perform(get("/api/v1/admin/audit-log").header("Authorization", adminToken()))
