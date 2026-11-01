@@ -252,7 +252,7 @@ export function MethodologyPage() {
             <nav className="card p-4 text-sm lg:sticky lg:top-24" aria-label="On this page">
               <h2 className="mb-2 font-semibold">On this page</h2>
               <ul className="space-y-1">
-                {[['presentation', 'How we present rankings'], ['sources', 'Ranking publishers'], ['updates', 'Ranking years'], ['evidence', 'Source data and verification'], ['own-score', 'Our own evidence score']].map(([id, label]) => (
+                {[['presentation', 'How we present rankings'], ['school-lists', 'School lists'], ['sources', 'Ranking publishers'], ['updates', 'Ranking years'], ['evidence', 'Source data and verification'], ['own-score', 'Our own evidence score']].map(([id, label]) => (
                   <li key={id}><a href={`#${id}`} className="link">{label}</a></li>
                 ))}
               </ul>

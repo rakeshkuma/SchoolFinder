@@ -1,0 +1,6365 @@
+{
+ "version": 1,
+ "lists": [
+  {
+   "key": "india-top",
+   "kind": "TOP",
+   "code": null,
+   "title": "Well-known schools across India",
+   "items": [
+    {
+     "name": "The Shri Ram School (Vasant Vihar / Moulsari)",
+     "place": "Delhi / Gurugram",
+     "stateCode": "HR",
+     "board": "CISCE, IB",
+     "type": "Day co-ed",
+     "website": "https://tsrs.org"
+    },
+    {
+     "name": "Vasant Valley School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://vasantvalley.edu.in"
+    },
+    {
+     "name": "Inventure Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://inventureacademy.com"
+    },
+    {
+     "name": "The Cathedral & John Connon School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://cathedral-school.com"
+    },
+    {
+     "name": "The Daly College",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://dalycollege.org"
+    },
+    {
+     "name": "The Emerald Heights International School",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://emeraldheights.edu.in"
+    },
+    {
+     "name": "Campion School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://campionschool.in"
+    },
+    {
+     "name": "Modern School, Barakhamba Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://modernschool.net"
+    },
+    {
+     "name": "Dhirubhai Ambani International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, IGCSE, ICSE",
+     "type": "International day",
+     "website": "https://da-is.org"
+    },
+    {
+     "name": "Oberoi International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://oberoi-is.org"
+    },
+    {
+     "name": "Aditya Birla World Academy",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, Cambridge",
+     "type": "International day",
+     "website": "https://adityabirlaworldacademy.com"
+    },
+    {
+     "name": "The International School Bangalore",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://tisb.org"
+    },
+    {
+     "name": "Pathways World School, Aravali",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://pws.edu.in"
+    },
+    {
+     "name": "Jain International Residential School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Fully residential",
+     "website": "https://jirs.ac.in"
+    },
+    {
+     "name": "Delhi Public School, R.K. Puram",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsrkp.net"
+    },
+    {
+     "name": "Sanskriti School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://sanskritischool.edu.in"
+    },
+    {
+     "name": "Mallya Aditi International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://aditi.edu.in"
+    },
+    {
+     "name": "ODM Public School",
+     "place": "Bhubaneswar, OD",
+     "stateCode": "OD",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://odmps.org"
+    },
+    {
+     "name": "Bishop Cotton Boys' School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://bishopcottonboysschool.edu.in"
+    },
+    {
+     "name": "La Martiniere for Boys",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://lamartinierecalcutta.org"
+    },
+    {
+     "name": "Springdales School, Pusa Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://springdales.com"
+    },
+    {
+     "name": "Bluebells School International",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://bluebells.org"
+    },
+    {
+     "name": "Sardar Patel Vidyalaya",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://spvdelhi.org"
+    },
+    {
+     "name": "Delhi Public School, Mathura Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsmathuraroad.org"
+    },
+    {
+     "name": "Shiv Nadar School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://shivnadarschool.edu.in"
+    },
+    {
+     "name": "Genesis Global School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://genesisglobalschool.edu.in"
+    },
+    {
+     "name": "Pathways School Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://pathways.in"
+    },
+    {
+     "name": "Amity International School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://amity.edu/ais"
+    },
+    {
+     "name": "Scottish High International School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "CBSE, IB, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://scottishigh.com"
+    },
+    {
+     "name": "The Heritage School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": "https://heritageschools.in"
+    },
+    {
+     "name": "Jamnabai Narsee School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE, IB",
+     "type": "Day co-ed",
+     "website": "https://jns.ac.in"
+    },
+    {
+     "name": "Ecole Mondiale World School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://ecolemondiale.org"
+    },
+    {
+     "name": "Podar International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://podareducation.org"
+    },
+    {
+     "name": "Greenwood High International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IB, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://greenwoodhigh.edu.in"
+    },
+    {
+     "name": "Stonehill International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://stonehill.in"
+    },
+    {
+     "name": "Canadian International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://cisb.org.in"
+    },
+    {
+     "name": "Indus International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://indusschool.com"
+    },
+    {
+     "name": "The Valley School (KFI)",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Day co-ed",
+     "website": "https://thevalleyschool.info"
+    },
+    {
+     "name": "Padma Seshadri Bala Bhavan",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://psbbschools.ac.in"
+    },
+    {
+     "name": "American International School Chennai",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://aischennai.org"
+    },
+    {
+     "name": "CHIREC International School",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://chirec.ac.in"
+    },
+    {
+     "name": "The Hyderabad Public School, Begumpet",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "ICSE, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://hpsbegumpet.org.in"
+    },
+    {
+     "name": "Oakridge International School",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "CBSE, IB",
+     "type": "Day-cum-boarding",
+     "website": "https://oakridge.in"
+    },
+    {
+     "name": "Modern High School for Girls",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Girls day",
+     "website": "https://mhsg.in"
+    },
+    {
+     "name": "The Orchid School",
+     "place": "Pune, MH",
+     "stateCode": "MH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://theorchidschool.org"
+    },
+    {
+     "name": "Mahatma Gandhi International School",
+     "place": "Ahmedabad, GJ",
+     "stateCode": "GJ",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://mgis.in"
+    },
+    {
+     "name": "Jayshree Periwal International School",
+     "place": "Jaipur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://jpischool.com"
+    },
+    {
+     "name": "City Montessori School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "ICSE",
+     "type": "Day co-ed",
+     "website": "https://cmseducation.org"
+    },
+    {
+     "name": "La Martiniere College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "ICSE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://lamartinierelucknow.org"
+    },
+    {
+     "name": "Choice School",
+     "place": "Kochi, KL",
+     "stateCode": "KL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://choiceschool.com"
+    },
+    {
+     "name": "St. Xavier's Collegiate School",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://sxcs.edu.in"
+    },
+    {
+     "name": "Bishop Cotton Girls' School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Girls day",
+     "website": "https://bishopcottongirlsschool.org"
+    },
+    {
+     "name": "Sishya School",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://sishya.com"
+    },
+    {
+     "name": "Vidyashilp Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IB",
+     "type": "Day co-ed",
+     "website": "https://vidyashilp.edu.in"
+    },
+    {
+     "name": "The Mother's International School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://tmis.edu.in"
+    },
+    {
+     "name": "Neerja Modi School",
+     "place": "Jaipur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://nmsindia.org"
+    },
+    {
+     "name": "Vibgyor High",
+     "place": "Multiple cities",
+     "stateCode": null,
+     "board": "CBSE, ICSE, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://vibgyorhigh.com"
+    },
+    {
+     "name": "The British School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "IGCSE, IB",
+     "type": "International day",
+     "website": "https://british-school.org"
+    },
+    {
+     "name": "Bombay International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, IGCSE",
+     "type": "International day",
+     "website": "https://bisindia.org"
+    },
+    {
+     "name": "American Embassy School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "IB, US",
+     "type": "International day",
+     "website": "https://aes.ac.in"
+    },
+    {
+     "name": "The Doon School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC, IB",
+     "type": "Boys boarding",
+     "website": "https://doonschool.com"
+    },
+    {
+     "name": "Mayo College",
+     "place": "Ajmer, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://mayocollege.com"
+    },
+    {
+     "name": "Rishi Valley School",
+     "place": "Chittoor, AP",
+     "stateCode": "AP",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://rishivalley.org"
+    },
+    {
+     "name": "Welham Boys' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://welhamboys.org"
+    },
+    {
+     "name": "Sarala Birla Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE, IB",
+     "type": "Boys boarding",
+     "website": "https://saralabirlaacademy.org"
+    },
+    {
+     "name": "Welham Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://welhamgirls.com"
+    },
+    {
+     "name": "Ecole Globale International Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://ecoleglobale.com"
+    },
+    {
+     "name": "The Assam Valley School",
+     "place": "Balipara, AS",
+     "stateCode": "AS",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://assamvalleyschool.com"
+    },
+    {
+     "name": "The Scindia School",
+     "place": "Gwalior, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://scindia.edu"
+    },
+    {
+     "name": "The Lawrence School, Sanawar",
+     "place": "Kasauli, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://sanawar.edu.in"
+    },
+    {
+     "name": "Kodaikanal International School",
+     "place": "Kodaikanal, TN",
+     "stateCode": "TN",
+     "board": "IB",
+     "type": "International residential",
+     "website": "https://kis.in"
+    },
+    {
+     "name": "Woodstock School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "IB, AP",
+     "type": "International co-ed boarding",
+     "website": "https://woodstockschool.in"
+    },
+    {
+     "name": "Mahindra United World College",
+     "place": "Pune, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International residential",
+     "website": "https://muwci.net"
+    },
+    {
+     "name": "Bishop Cotton School",
+     "place": "Shimla, HP",
+     "stateCode": "HP",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": "https://bishopcottonshimla.com"
+    },
+    {
+     "name": "Sherwood College",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://sherwood.edu.in"
+    },
+    {
+     "name": "Pinegrove School",
+     "place": "Solan, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://pinegroveschool.com"
+    },
+    {
+     "name": "Mussoorie International School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://misindia.net"
+    },
+    {
+     "name": "Vidya Devi Jindal School",
+     "place": "Hisar, HR",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://vdjs.edu.in"
+    },
+    {
+     "name": "Good Shepherd International School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IB, IGCSE, ICSE",
+     "type": "Co-ed boarding",
+     "website": "https://gsis.ac.in"
+    },
+    {
+     "name": "The Sanskaar Valley School",
+     "place": "Bhopal, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://sanskaarvalley.org"
+    },
+    {
+     "name": "Hebron School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IGCSE, A-Level",
+     "type": "International co-ed boarding",
+     "website": "https://hebronooty.org"
+    },
+    {
+     "name": "Unison World School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://unisonworldschool.com"
+    },
+    {
+     "name": "Selaqui International School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Co-ed boarding",
+     "website": "https://selaqui.org"
+    },
+    {
+     "name": "Hopetown Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://hopetown.in"
+    },
+    {
+     "name": "Punjab Public School",
+     "place": "Nabha, PB",
+     "stateCode": "PB",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://ppsnabha.edu.in"
+    },
+    {
+     "name": "Chinmaya International Residential School",
+     "place": "Coimbatore, TN",
+     "stateCode": "TN",
+     "board": "CBSE, IB",
+     "type": "Co-ed boarding",
+     "website": "https://cirschool.org"
+    },
+    {
+     "name": "Lancers International School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "International day-cum-boarding",
+     "website": "https://lancersinternational.org"
+    },
+    {
+     "name": "The Aga Khan Academy",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://agakhanacademies.org/hyderabad"
+    },
+    {
+     "name": "The Lawrence School, Lovedale",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://lawrencelovedale.ac.in"
+    },
+    {
+     "name": "Rashtriya Indian Military College (RIMC)",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": "https://rimc.gov.in"
+    },
+    {
+     "name": "Army Public School, Delhi Cantt",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://awesindia.edu.in"
+    },
+    {
+     "name": "Govt. Model Sr. Sec. School, Sector 16",
+     "place": "Chandigarh",
+     "stateCode": "CH",
+     "board": "CBSE",
+     "type": "State govt day",
+     "website": "https://chdeducation.gov.in"
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalayas (650+ schools)",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt co-ed boarding",
+     "website": "https://navodaya.gov.in"
+    },
+    {
+     "name": "Kendriya Vidyalayas (1,250+ schools)",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://kvsangathan.nic.in"
+    },
+    {
+     "name": "Sainik Schools (33+ schools)",
+     "place": "All India Ajmer, Bengaluru,",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boys/co-ed boarding",
+     "website": "https://sainikschool.ncog.gov.inrashtriyamilitaryschools."
+    },
+    {
+     "name": "Rashtriya Military Schools (5 schools)",
+     "place": "Belgaum, Chail, Dholpur",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": "https://edu.in"
+    },
+    {
+     "name": "Eklavya Model Residential Schools",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": "https://emrs.tribal.gov.in"
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalayas",
+     "place": "Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt day",
+     "website": "https://edudel.nic.in"
+    },
+    {
+     "name": "Atomic Energy Central Schools",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://aees.gov.in"
+    },
+    {
+     "name": "Pardada Pardadi Girls School",
+     "place": "Bulandshahr, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Philanthropic",
+     "website": "https://education4change.org"
+    }
+   ]
+  },
+  {
+   "key": "state-up",
+   "kind": "STATE",
+   "code": "UP",
+   "title": "Schools in Uttar Pradesh",
+   "items": [
+    {
+     "name": "Shiv Nadar School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Genesis Global School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://genesisglobalschool.edu.in"
+    },
+    {
+     "name": "Pathways School Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://pathways.in"
+    },
+    {
+     "name": "Amity International School, Sector 44",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://amity.edu/ais"
+    },
+    {
+     "name": "Delhi Public School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Step by Step School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Lotus Valley International School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Khaitan School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Apeejay School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kothari International School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Somerville School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Cambridge School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ramagya School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bal Bharati Public School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Vishwa Bharati Public School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Father Agnel School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mayoor School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Greater Noida",
+     "place": "Greater Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Greater Noida",
+     "place": "Greater Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Pacific World School",
+     "place": "Greater Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Sector 24, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Indirapuram",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Ghaziabad (Vasundhara)",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Presidium School, Indirapuram",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Seth Anandram Jaipuria School, Ghaziabad",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Cambridge School, Indirapuram",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Hindon",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "City Montessori School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": "https://cmseducation.org"
+    },
+    {
+     "name": "La Martiniere College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://lamartinierelucknow.org"
+    },
+    {
+     "name": "La Martiniere Girls' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Loreto Convent, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Francis' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Colvin Taluqdars' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Lucknow Public School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Eldeco",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Seth M.R. Jaipuria School, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Study Hall School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Cathedral School, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Rani Laxmi Bai Memorial School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Spring Dale College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Gomti Nagar",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Captain Manoj Kumar Pandey U.P. Sainik School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Sheiling House School",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Seth M.R. Jaipuria School, Kanpur",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Kalyanpur",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Dr. Virendra Swarup Education Centre",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT Kanpur",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Boys' High School & College",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Girls' High School & College",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Joseph's College, Prayagraj",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "St. Mary's Convent Inter College",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Sunbeam School, Lahartara",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Central Hindu Boys School (BHU)",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Varanasi",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, BHU",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "St. Peter's College",
+     "place": "Agra, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "St. Conrad's Inter College",
+     "place": "Agra, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Agra",
+     "place": "Agra, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Dewan Public School",
+     "place": "Meerut, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Sophia Girls' School",
+     "place": "Meerut, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Mary's Academy, Meerut",
+     "place": "Meerut, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Meerut Public School",
+     "place": "Meerut, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Kanpur Nagar",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Prayagraj",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Varanasi",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Agra",
+     "place": "Agra, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Meerut",
+     "place": "Meerut, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ghaziabad",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gautam Buddh Nagar",
+     "place": "Gautam Buddh Nagar, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Aligarh",
+     "place": "Aligarh, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bareilly",
+     "place": "Bareilly, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gorakhpur",
+     "place": "Gorakhpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jhansi",
+     "place": "Jhansi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Mathura",
+     "place": "Mathura, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Moradabad",
+     "place": "Moradabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Saharanpur",
+     "place": "Saharanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ayodhya",
+     "place": "Ayodhya, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Azamgarh",
+     "place": "Azamgarh, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jaunpur",
+     "place": "Jaunpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gonda",
+     "place": "Gonda, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Etawah",
+     "place": "Etawah, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bulandshahr",
+     "place": "Bulandshahr, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Firozabad",
+     "place": "Firozabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Mirzapur",
+     "place": "Mirzapur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sultanpur",
+     "place": "Sultanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Rae Bareli",
+     "place": "Rae Bareli, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sitapur",
+     "place": "Sitapur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Hardoi",
+     "place": "Hardoi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Shahjahanpur",
+     "place": "Shahjahanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Muzaffarnagar",
+     "place": "Muzaffarnagar, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ballia",
+     "place": "Ballia, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Deoria",
+     "place": "Deoria, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Basti",
+     "place": "Basti, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Banda",
+     "place": "Banda, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Lalitpur",
+     "place": "Lalitpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Pardada Pardadi Girls School",
+     "place": "Bulandshahr, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Philanthropic girls",
+     "website": "https://education4change.org"
+    }
+   ]
+  },
+  {
+   "key": "state-br",
+   "kind": "STATE",
+   "code": "BR",
+   "title": "Schools in Bihar",
+   "items": [
+    {
+     "name": "St. Michael's High School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Notre Dame Academy",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's High School, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Loyola High School, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Joseph's Convent High School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Don Bosco Academy, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Karen's High School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Dominic Savio's High School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mount Carmel High School, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Bishop Scott Boys' School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": null,
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Bishop Scott Girls' School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": null,
+     "type": "Girls day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "D.A.V. Public School, BSEB Colony",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "D.A.V. Public School, Khagaul",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Krishna Niketan",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Gyan Niketan",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "B.D. Public School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Litera Valley School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Patna Central School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Radiant International School",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Kankarbagh",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Bailey Road",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Danapur Cantt",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Danapur Cantt",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Nazareth Academy",
+     "place": "Gaya, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mount Assisi School",
+     "place": "Bhagalpur, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Joseph's School, Bhagalpur",
+     "place": "Bhagalpur, Bihar",
+     "stateCode": "BR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Vidya Vihar Residential School",
+     "place": "Purnia, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Simultala Awasiya Vidyalaya",
+     "place": "Jamui, Bihar",
+     "stateCode": "BR",
+     "board": "BSEB",
+     "type": "State govt boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Gopalganj",
+     "place": "Gopalganj, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Nalanda",
+     "place": "Nalanda, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Patna",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gaya",
+     "place": "Gaya, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Nalanda",
+     "place": "Nalanda, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Muzaffarpur",
+     "place": "Muzaffarpur, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bhagalpur",
+     "place": "Bhagalpur, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Darbhanga",
+     "place": "Darbhanga, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Purnia",
+     "place": "Purnia, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Begusarai",
+     "place": "Begusarai, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Samastipur",
+     "place": "Samastipur, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Saran",
+     "place": "Saran, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Siwan",
+     "place": "Siwan, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gopalganj",
+     "place": "Gopalganj, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Vaishali",
+     "place": "Vaishali, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bhojpur",
+     "place": "Bhojpur, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Buxar",
+     "place": "Buxar, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Rohtas",
+     "place": "Rohtas, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Kaimur",
+     "place": "Kaimur, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Aurangabad",
+     "place": "Aurangabad, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Nawada",
+     "place": "Nawada, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jehanabad",
+     "place": "Jehanabad, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Arwal",
+     "place": "Arwal, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sheikhpura",
+     "place": "Sheikhpura, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Lakhisarai",
+     "place": "Lakhisarai, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Munger",
+     "place": "Munger, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jamui",
+     "place": "Jamui, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Banka",
+     "place": "Banka, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Khagaria",
+     "place": "Khagaria, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Saharsa",
+     "place": "Saharsa, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Madhepura",
+     "place": "Madhepura, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Supaul",
+     "place": "Supaul, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Araria",
+     "place": "Araria, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Kishanganj",
+     "place": "Kishanganj, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Katihar",
+     "place": "Katihar, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Madhubani",
+     "place": "Madhubani, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sitamarhi",
+     "place": "Sitamarhi, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sheohar",
+     "place": "Sheohar, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, East Champaran",
+     "place": "East Champaran, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, West Champaran",
+     "place": "West Champaran, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "state-hr",
+   "kind": "STATE",
+   "code": "HR",
+   "title": "Schools in Haryana",
+   "items": [
+    {
+     "name": "Modern Delhi Public School",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Greater Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector 14, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector 37, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Manav Rachna International School, Sector 14",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Manav Rachna International School, Sector 21C",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Apeejay School, Sector 15, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Apeejay School, Sector 21D, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Aravali International School",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Modern Vidya Niketan",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Eicher School",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Carmel Convent School, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Rawal International School",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Sonipat",
+     "place": "Sonipat, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bhavan Vidyalaya, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector 8, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Hansraj Public School, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The British School, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Satluj Public School, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Blue Bird High School, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Chandimandir",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Pratap Public School, Karnal",
+     "place": "Karnal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Sainik School Kunjpura",
+     "place": "Karnal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Dr. M.K.K. Arya Model School",
+     "place": "Panipat, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Panipat City",
+     "place": "Panipat, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Convent of Jesus and Mary, Ambala Cantt",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Ambala Cantt",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Ambala Cantt",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Gita Niketan Awasiya Vidyalaya",
+     "place": "Kurukshetra, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Rohtak",
+     "place": "Rohtak, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Vidya Devi Jindal School",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://vdjs.edu.in"
+    },
+    {
+     "name": "O.P. Jindal Modern School",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Campus School, CCS HAU",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Hisar Cantt",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Sainik School Rewari",
+     "place": "Rewari, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ambala",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bhiwani",
+     "place": "Bhiwani, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Charkhi Dadri",
+     "place": "Charkhi Dadri, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Fatehabad",
+     "place": "Fatehabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Hisar",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jhajjar",
+     "place": "Jhajjar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jind",
+     "place": "Jind, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Kaithal",
+     "place": "Kaithal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Karnal",
+     "place": "Karnal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Kurukshetra",
+     "place": "Kurukshetra, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Mahendragarh",
+     "place": "Mahendragarh, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Nuh",
+     "place": "Nuh, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Palwal",
+     "place": "Palwal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Panchkula",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Panipat",
+     "place": "Panipat, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Rewari",
+     "place": "Rewari, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Rohtak",
+     "place": "Rohtak, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sirsa",
+     "place": "Sirsa, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sonipat",
+     "place": "Sonipat, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Yamunanagar",
+     "place": "Yamunanagar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "city-gurugram",
+   "kind": "CITY",
+   "code": "HR",
+   "title": "Schools in Gurugram",
+   "items": [
+    {
+     "name": "The Shri Ram School, Aravali",
+     "place": "DLF Phase 4, Gurugram",
+     "stateCode": "HR",
+     "board": "CISCE, IB",
+     "type": "Day co-ed",
+     "website": "https://tsrs.org"
+    },
+    {
+     "name": "The Shri Ram School, Moulsari",
+     "place": "DLF Phase 3, Gurugram",
+     "stateCode": "HR",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Pathways World School, Aravali",
+     "place": "Aravali Hills, Gurugram",
+     "stateCode": "HR",
+     "board": "IB",
+     "type": "International boarding",
+     "website": "https://pws.edu.in"
+    },
+    {
+     "name": "Pathways School Gurgaon",
+     "place": "Baliawas, Gurugram",
+     "stateCode": "HR",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://pws.edu.in"
+    },
+    {
+     "name": "Lancers International School",
+     "place": "DLF Phase 5, Gurugram",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "International day-cum-boarding",
+     "website": "https://lancersinternational.org"
+    },
+    {
+     "name": "Scottish High International School",
+     "place": "Sector 57, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE, IB, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://scottishigh.com"
+    },
+    {
+     "name": "The Heritage School",
+     "place": "Sector 62, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": "https://heritageschools.in"
+    },
+    {
+     "name": "Delhi Public School, Sector 45",
+     "place": "Sector 45, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Maruti Kunj",
+     "place": "Maruti Kunj, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Sector 46",
+     "place": "Sector 46, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Sector 43",
+     "place": "Sector 43, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Shiv Nadar School, Gurugram",
+     "place": "DLF City, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "G.D. Goenka World School",
+     "place": "Sohna Road, Gurugram",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "G.D. Goenka Public School, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Suncity School",
+     "place": "Sector 54, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Blue Bells Model School",
+     "place": "Sector 4, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Blue Bells Public School",
+     "place": "Sector 10, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Euro International School",
+     "place": "Sector 10A, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Sector 40",
+     "place": "Sector 40, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Sohna Road",
+     "place": "Sohna Road, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Salwan Public School, Gurugram",
+     "place": "Sector 15, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector 14",
+     "place": "Sector 14, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector 49",
+     "place": "Sector 49, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Shalom Hills International School",
+     "place": "Sushant Lok, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Excelsior American School",
+     "place": "Sector 43, Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "International day",
+     "website": null
+    },
+    {
+     "name": "GEMS International School, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "International day",
+     "website": null
+    },
+    {
+     "name": "Paras World School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Lotus Valley International School, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Presidium School, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Vega Schools",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kunskapsskolan International School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Manav Rachna International School, Sector 46",
+     "place": "Sector 46, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Matrikiran School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Alpine Convent School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's High School, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Chiranjiv Bharati School",
+     "place": "Palam Vihar, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Maurya School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Shikshantar School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ridge Valley School",
+     "place": "DLF Phase 4, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Pragyanam School",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, NSG Campus Manesar",
+     "place": "Manesar, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gurugram",
+     "place": "Gurugram district, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "state-dl",
+   "kind": "STATE",
+   "code": "DL",
+   "title": "Schools in Delhi",
+   "items": [
+    {
+     "name": "Delhi Public School, R.K. Puram",
+     "place": "R.K. Puram, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsrkp.net"
+    },
+    {
+     "name": "Sanskriti School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://sanskritischool.edu.in"
+    },
+    {
+     "name": "Vasant Valley School",
+     "place": "Vasant Kunj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://vasantvalley.edu.in"
+    },
+    {
+     "name": "Modern School, Barakhamba Road",
+     "place": "Barakhamba Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://modernschool.net"
+    },
+    {
+     "name": "The Shri Ram School, Vasant Vihar",
+     "place": "Vasant Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": "https://tsrs.org"
+    },
+    {
+     "name": "Springdales School, Pusa Road",
+     "place": "Pusa Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://springdales.com"
+    },
+    {
+     "name": "Springdales School, Dhaula Kuan",
+     "place": "Dhaula Kuan, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bluebells School International",
+     "place": "Kailash, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://bluebells.org"
+    },
+    {
+     "name": "Sardar Patel Vidyalaya",
+     "place": "Lodhi Estate, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://spvdelhi.org"
+    },
+    {
+     "name": "Delhi Public School, Mathura Road",
+     "place": "Mathura Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsmathuraroad.org"
+    },
+    {
+     "name": "Delhi Public School, Vasant Kunj",
+     "place": "Vasant Kunj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Dwarka",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Rohini",
+     "place": "Rohini, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, East of Kailash",
+     "place": "East of Kailash, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Mother's International School",
+     "place": "Sri Aurobindo Marg, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://tmis.edu.in"
+    },
+    {
+     "name": "Modern School, Vasant Vihar",
+     "place": "Vasant Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Modern Public School, Shalimar Bagh",
+     "place": "Shalimar Bagh, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mount Carmel School, Dwarka",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mount Carmel School, Anand Niketan",
+     "place": "Anand Niketan, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Carmel Convent School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Convent of Jesus and Mary",
+     "place": "Bangla Sahib Road, Delhi",
+     "stateCode": "DL",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Columba's School",
+     "place": "Ashok Place, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's School, Raj Niwas Marg",
+     "place": "Civil Lines, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Frank Anthony Public School",
+     "place": "Lajpat Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Don Bosco School, Alaknanda",
+     "place": "Alaknanda, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Apeejay School, Sheikh Sarai",
+     "place": "Sheikh Sarai, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Apeejay School, Pitampura",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Saket",
+     "place": "Saket, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Mayur Vihar",
+     "place": "Mayur Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Amity International School, Pushp Vihar",
+     "place": "Pushp Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bal Bharati Public School, Pitampura",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bal Bharati Public School, Ganga Ram Hospital Marg",
+     "place": "Rajinder Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bal Bharati Public School, Dwarka",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Salwan Public School, Rajinder Nagar",
+     "place": "Rajinder Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Tagore International School, Vasant Vihar",
+     "place": "Vasant Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Tagore International School, East of Kailash",
+     "place": "East of Kailash, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Laxman Public School",
+     "place": "Hauz Khas, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Sachdeva Public School, Pitampura",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Venkateshwar International School",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "ITL Public School",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Vasant Kunj",
+     "place": "Vasant Kunj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ryan International School, Rohini",
+     "place": "Rohini, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "G.D. Goenka Public School, Vasant Kunj",
+     "place": "Vasant Kunj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Air Force Bal Bharati School",
+     "place": "Lodhi Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Dhaula Kuan",
+     "place": "Delhi Cantt, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Navy Children School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Navy day",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Andrews Ganj",
+     "place": "Andrews Ganj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 2, Delhi Cantt",
+     "place": "Delhi Cantt, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, JNU",
+     "place": "JNU Campus, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Sector 8, R.K. Puram",
+     "place": "R.K. Puram, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT Delhi",
+     "place": "Hauz Khas, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Janakpuri",
+     "place": "Janakpuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Pitampura",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Surajmal Vihar",
+     "place": "Surajmal Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Yamuna Vihar",
+     "place": "Yamuna Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Kishan Ganj",
+     "place": "Kishan Ganj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Lajpat Nagar",
+     "place": "Lajpat Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Navyug School, Lodhi Road",
+     "place": "Lodhi Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "NDMC govt",
+     "website": null
+    },
+    {
+     "name": "Indraprastha International School",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mater Dei School",
+     "place": "Tolstoy Marg, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Loreto Convent School, Delhi Cantt",
+     "place": "Delhi Cantt, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Thomas' School, Mandir Marg",
+     "place": "Mandir Marg, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Queen Mary's School",
+     "place": "Tis Hazari, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Presentation Convent Sr. Sec. School",
+     "place": "Old Delhi, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Mary's School, Safdarjung Enclave",
+     "place": "Safdarjung Enclave, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Father Agnel School",
+     "place": "Gautam Nagar, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Hans Raj Model School",
+     "place": "Punjabi Bagh, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kulachi Hansraj Model School",
+     "place": "Ashok Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Shreshtha Vihar",
+     "place": "Shreshtha Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Darbari Lal DAV Model School",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Maharaja Agrasen Model School",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Vidya Jain Public School",
+     "place": "Rohini, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mahavir Senior Model School",
+     "place": "GT Karnal Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Montfort School",
+     "place": "Ashok Vihar, Delhi",
+     "stateCode": "DL",
+     "board": null,
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Mark's Sr. Sec. Public School",
+     "place": "Meera Bagh, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Guru Harkrishan Public School, Vasant Vihar",
+     "place": "Vasant Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Guru Harkrishan Public School, India Gate",
+     "place": "India Gate, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ahlcon International School",
+     "place": "Mayur Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ahlcon Public School",
+     "place": "Mayur Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mother Mary's School",
+     "place": "Mayur Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bal Bhavan Public School",
+     "place": "Mayur Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Bharatiya Vidya Bhavan's Mehta Vidyalaya",
+     "place": "K.G. Marg, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Birla Vidya Niketan",
+     "place": "Pushp Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Rukmini Devi Public School",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kalka Public School",
+     "place": "Alaknanda, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Summer Fields School",
+     "place": "Kailash Colony, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Gyan Bharati School",
+     "place": "Saket, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Manav Sthali School",
+     "place": "Rajinder Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Cambridge School, Srinivaspuri",
+     "place": "Srinivaspuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Cambridge Foundation School",
+     "place": "Rajouri Garden, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Gregorios School",
+     "place": "Dwarka, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Mount Abu Public School",
+     "place": "Rohini, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ramjas School, Pusa Road",
+     "place": "Pusa Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Ramjas School, R.K. Puram",
+     "place": "R.K. Puram, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Lancer's Convent",
+     "place": "Prashant Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Indian School",
+     "place": "Sadiq Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Heritage School, Rohini",
+     "place": "Rohini, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Police Public School",
+     "place": "Safdarjung Enclave, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The British School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "IGCSE, IB",
+     "type": "International day",
+     "website": "https://british-school.org"
+    },
+    {
+     "name": "American Embassy School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://aes.ac.in"
+    }
+   ]
+  },
+  {
+   "key": "state-jh",
+   "kind": "STATE",
+   "code": "JH",
+   "title": "Schools in Jharkhand",
+   "items": [
+    {
+     "name": "Delhi Public School, Ranchi",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's School, Doranda",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Bishop Westcott Boys' School",
+     "place": "Ranchi (Namkum), Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Bishop Westcott Girls' School",
+     "place": "Ranchi (Namkum), Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Loreto Convent, Ranchi",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Surendranath Centenary School",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Jawahar Vidya Mandir, Shyamali",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Hehal",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Oxford Public School",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Gurunanak School",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Sarla Birla Public School",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Taurian World School",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Hinoo",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Loyola School, Jamshedpur",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Sacred Heart Convent School",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Little Flower School",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Bistupur",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Rajendra Vidyalaya",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Hill Top School",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "J.H. Tarapore School",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Mary's English High School",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Vidya Bharati Chinmaya Vidyalaya",
+     "place": "Jamshedpur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "De Nobili School, CMRI",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "De Nobili School, FRI Digwadih",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Dhanbad",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Carmel School, Dhanbad",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT (ISM) Dhanbad",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Delhi Public School, Bokaro",
+     "place": "Bokaro, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Chinmaya Vidyalaya, Bokaro",
+     "place": "Bokaro, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's School, Bokaro",
+     "place": "Bokaro, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "DAV Public School, Sector IV, Bokaro",
+     "place": "Bokaro, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "St. Xavier's School, Hazaribagh",
+     "place": "Hazaribagh, Jharkhand",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Indira Gandhi Balika Vidyalaya",
+     "place": "Hazaribagh, Jharkhand",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt girls residential",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyapith, Deoghar",
+     "place": "Deoghar, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Netarhat Vidyalaya",
+     "place": "Netarhat (Latehar), Jharkhand",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Tilaiya",
+     "place": "Koderma, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ranchi",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, East Singhbhum",
+     "place": "East Singhbhum, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, West Singhbhum",
+     "place": "West Singhbhum, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Seraikela-Kharsawan",
+     "place": "Seraikela, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Dhanbad",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Bokaro",
+     "place": "Bokaro, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Giridih",
+     "place": "Giridih, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Hazaribagh",
+     "place": "Hazaribagh, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Ramgarh",
+     "place": "Ramgarh, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Koderma",
+     "place": "Koderma, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Chatra",
+     "place": "Chatra, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Palamu",
+     "place": "Palamu, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Garhwa",
+     "place": "Garhwa, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Latehar",
+     "place": "Latehar, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Lohardaga",
+     "place": "Lohardaga, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Gumla",
+     "place": "Gumla, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Simdega",
+     "place": "Simdega, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Khunti",
+     "place": "Khunti, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Dumka",
+     "place": "Dumka, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Deoghar",
+     "place": "Deoghar, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Godda",
+     "place": "Godda, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Sahebganj",
+     "place": "Sahebganj, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Pakur",
+     "place": "Pakur, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Jawahar Navodaya Vidyalaya, Jamtara",
+     "place": "Jamtara, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "board-cbse",
+   "kind": "BOARD",
+   "code": "CBSE",
+   "title": "CBSE schools",
+   "items": [
+    {
+     "name": "Vasant Valley School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://vasantvalley.edu.in"
+    },
+    {
+     "name": "The Daly College",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://dalycollege.org"
+    },
+    {
+     "name": "The Emerald Heights International School",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://emeraldheights.edu.in"
+    },
+    {
+     "name": "Modern School, Barakhamba Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://modernschool.net"
+    },
+    {
+     "name": "Jain International Residential School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Fully residential",
+     "website": "https://jirs.ac.in"
+    },
+    {
+     "name": "Delhi Public School, R.K. Puram",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsrkp.net"
+    },
+    {
+     "name": "Sanskriti School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://sanskritischool.edu.in"
+    },
+    {
+     "name": "ODM Public School",
+     "place": "Bhubaneswar, OD",
+     "stateCode": "OD",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://odmps.org"
+    },
+    {
+     "name": "Springdales School, Pusa Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://springdales.com"
+    },
+    {
+     "name": "Bluebells School International",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://bluebells.org"
+    },
+    {
+     "name": "Sardar Patel Vidyalaya",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://spvdelhi.org"
+    },
+    {
+     "name": "Delhi Public School, Mathura Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://dpsmathuraroad.org"
+    },
+    {
+     "name": "Shiv Nadar School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://shivnadarschool.edu.in"
+    },
+    {
+     "name": "Genesis Global School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://genesisglobalschool.edu.in"
+    },
+    {
+     "name": "Amity International School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://amity.edu/ais"
+    },
+    {
+     "name": "Scottish High International School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "CBSE, IB, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://scottishigh.com"
+    },
+    {
+     "name": "The Heritage School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": "https://heritageschools.in"
+    },
+    {
+     "name": "Podar International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://podareducation.org"
+    },
+    {
+     "name": "Padma Seshadri Bala Bhavan",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://psbbschools.ac.in"
+    },
+    {
+     "name": "CHIREC International School",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://chirec.ac.in"
+    },
+    {
+     "name": "Oakridge International School",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "CBSE, IB",
+     "type": "Day-cum-boarding",
+     "website": "https://oakridge.in"
+    },
+    {
+     "name": "The Orchid School",
+     "place": "Pune, MH",
+     "stateCode": "MH",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://theorchidschool.org"
+    },
+    {
+     "name": "Jayshree Periwal International School",
+     "place": "Jaipur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://jpischool.com"
+    },
+    {
+     "name": "Choice School",
+     "place": "Kochi, KL",
+     "stateCode": "KL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://choiceschool.com"
+    },
+    {
+     "name": "The Mother's International School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day co-ed",
+     "website": "https://tmis.edu.in"
+    },
+    {
+     "name": "Neerja Modi School",
+     "place": "Jaipur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://nmsindia.org"
+    },
+    {
+     "name": "Vibgyor High",
+     "place": "Multiple cities",
+     "stateCode": null,
+     "board": "CBSE, ICSE, Cambridge",
+     "type": "Day co-ed",
+     "website": "https://vibgyorhigh.com"
+    },
+    {
+     "name": "Mayo College",
+     "place": "Ajmer, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://mayocollege.com"
+    },
+    {
+     "name": "Welham Boys' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://welhamboys.org"
+    },
+    {
+     "name": "Welham Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://welhamgirls.com"
+    },
+    {
+     "name": "Ecole Globale International Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://ecoleglobale.com"
+    },
+    {
+     "name": "The Scindia School",
+     "place": "Gwalior, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://scindia.edu"
+    },
+    {
+     "name": "The Lawrence School, Sanawar",
+     "place": "Kasauli, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://sanawar.edu.in"
+    },
+    {
+     "name": "Pinegrove School",
+     "place": "Solan, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://pinegroveschool.com"
+    }
+   ]
+  },
+  {
+   "key": "board-cisce",
+   "kind": "BOARD",
+   "code": "CISCE",
+   "title": "ICSE and ISC schools",
+   "items": [
+    {
+     "name": "The Shri Ram School (Vasant Vihar / Moulsari)",
+     "place": "Delhi / Gurugram",
+     "stateCode": "HR",
+     "board": "CISCE, IB",
+     "type": "Day co-ed",
+     "website": "https://tsrs.org"
+    },
+    {
+     "name": "Inventure Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://inventureacademy.com"
+    },
+    {
+     "name": "The Cathedral & John Connon School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://cathedral-school.com"
+    },
+    {
+     "name": "Campion School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://campionschool.in"
+    },
+    {
+     "name": "Mallya Aditi International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://aditi.edu.in"
+    },
+    {
+     "name": "Bishop Cotton Boys' School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://bishopcottonboysschool.edu.in"
+    },
+    {
+     "name": "La Martiniere for Boys",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://lamartinierecalcutta.org"
+    },
+    {
+     "name": "Jamnabai Narsee School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "ICSE, IB",
+     "type": "Day co-ed",
+     "website": "https://jns.ac.in"
+    },
+    {
+     "name": "Greenwood High International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IB, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://greenwoodhigh.edu.in"
+    },
+    {
+     "name": "The Valley School (KFI)",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Day co-ed",
+     "website": "https://thevalleyschool.info"
+    },
+    {
+     "name": "The Hyderabad Public School, Begumpet",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "ICSE, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://hpsbegumpet.org.in"
+    },
+    {
+     "name": "Modern High School for Girls",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Girls day",
+     "website": "https://mhsg.in"
+    },
+    {
+     "name": "City Montessori School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "ICSE",
+     "type": "Day co-ed",
+     "website": "https://cmseducation.org"
+    },
+    {
+     "name": "La Martiniere College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "ICSE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://lamartinierelucknow.org"
+    },
+    {
+     "name": "St. Xavier's Collegiate School",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "ICSE",
+     "type": "Boys day",
+     "website": "https://sxcs.edu.in"
+    },
+    {
+     "name": "Bishop Cotton Girls' School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Girls day",
+     "website": "https://bishopcottongirlsschool.org"
+    },
+    {
+     "name": "Sishya School",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "ICSE, IGCSE",
+     "type": "Day co-ed",
+     "website": "https://sishya.com"
+    },
+    {
+     "name": "Vidyashilp Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IB",
+     "type": "Day co-ed",
+     "website": "https://vidyashilp.edu.in"
+    },
+    {
+     "name": "The Doon School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC, IB",
+     "type": "Boys boarding",
+     "website": "https://doonschool.com"
+    },
+    {
+     "name": "Rishi Valley School",
+     "place": "Chittoor, AP",
+     "stateCode": "AP",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://rishivalley.org"
+    },
+    {
+     "name": "Sarala Birla Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE, IB",
+     "type": "Boys boarding",
+     "website": "https://saralabirlaacademy.org"
+    },
+    {
+     "name": "The Assam Valley School",
+     "place": "Balipara, AS",
+     "stateCode": "AS",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://assamvalleyschool.com"
+    },
+    {
+     "name": "Bishop Cotton School",
+     "place": "Shimla, HP",
+     "stateCode": "HP",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": "https://bishopcottonshimla.com"
+    },
+    {
+     "name": "Sherwood College",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://sherwood.edu.in"
+    },
+    {
+     "name": "La Martiniere Girls' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "Loreto Convent, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Girls day",
+     "website": null
+    },
+    {
+     "name": "St. Francis' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day",
+     "website": null
+    },
+    {
+     "name": "Colvin Taluqdars' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Study Hall School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Cathedral School, Lucknow (25)",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Day co-ed",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "board-ib",
+   "kind": "BOARD",
+   "code": "IB",
+   "title": "IB schools",
+   "items": [
+    {
+     "name": "Dhirubhai Ambani International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, IGCSE, ICSE",
+     "type": "International day",
+     "website": "https://da-is.org"
+    },
+    {
+     "name": "Oberoi International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://oberoi-is.org"
+    },
+    {
+     "name": "Aditya Birla World Academy",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, Cambridge",
+     "type": "International day",
+     "website": "https://adityabirlaworldacademy.com"
+    },
+    {
+     "name": "The International School Bangalore",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://tisb.org"
+    },
+    {
+     "name": "Pathways World School, Aravali",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://pws.edu.in"
+    },
+    {
+     "name": "Pathways School Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://pathways.in"
+    },
+    {
+     "name": "Ecole Mondiale World School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://ecolemondiale.org"
+    },
+    {
+     "name": "Stonehill International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://stonehill.in"
+    },
+    {
+     "name": "Canadian International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://cisb.org.in"
+    },
+    {
+     "name": "Indus International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://indusschool.com"
+    },
+    {
+     "name": "American International School Chennai",
+     "place": "Chennai, TN",
+     "stateCode": "TN",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://aischennai.org"
+    },
+    {
+     "name": "Mahatma Gandhi International School",
+     "place": "Ahmedabad, GJ",
+     "stateCode": "GJ",
+     "board": "IB",
+     "type": "International day",
+     "website": "https://mgis.in"
+    },
+    {
+     "name": "The British School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "IGCSE, IB",
+     "type": "International day",
+     "website": "https://british-school.org"
+    },
+    {
+     "name": "Bombay International School",
+     "place": "Mumbai, MH",
+     "stateCode": "MH",
+     "board": "IB, IGCSE",
+     "type": "International day",
+     "website": "https://bisindia.org"
+    },
+    {
+     "name": "American Embassy School",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "IB, US",
+     "type": "International day",
+     "website": "https://aes.ac.in"
+    },
+    {
+     "name": "Kodaikanal International School",
+     "place": "Kodaikanal, TN",
+     "stateCode": "TN",
+     "board": "IB",
+     "type": "International residential",
+     "website": "https://kis.in"
+    },
+    {
+     "name": "Woodstock School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "IB, AP",
+     "type": "International co-ed boarding",
+     "website": "https://woodstockschool.in"
+    },
+    {
+     "name": "Mahindra United World College",
+     "place": "Pune, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International residential",
+     "website": "https://muwci.net"
+    },
+    {
+     "name": "Good Shepherd International School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IB, IGCSE, ICSE",
+     "type": "Co-ed boarding",
+     "website": "https://gsis.ac.in"
+    },
+    {
+     "name": "Chinmaya International Residential School",
+     "place": "Coimbatore, TN",
+     "stateCode": "TN",
+     "board": "CBSE, IB",
+     "type": "Co-ed boarding",
+     "website": "https://cirschool.org"
+    },
+    {
+     "name": "Lancers International School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "International day-cum-boarding",
+     "website": "https://lancersinternational.org"
+    },
+    {
+     "name": "The Aga Khan Academy",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://agakhanacademies.org/hyderabad"
+    },
+    {
+     "name": "Step by Step School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "Kothari International School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB",
+     "type": "Day co-ed",
+     "website": null
+    },
+    {
+     "name": "The Shri Ram School, Aravali",
+     "place": "DLF Phase 4, Gurugram",
+     "stateCode": "HR",
+     "board": "CISCE, IB",
+     "type": "Day co-ed",
+     "website": "https://tsrs.org"
+    }
+   ]
+  },
+  {
+   "key": "board-cambridge",
+   "kind": "BOARD",
+   "code": "CAMBRIDGE",
+   "title": "Cambridge schools",
+   "items": [
+    {
+     "name": "Mussoorie International School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://misindia.net"
+    },
+    {
+     "name": "The Sanskaar Valley School",
+     "place": "Bhopal, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://sanskaarvalley.org"
+    },
+    {
+     "name": "Hebron School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IGCSE, A-Level",
+     "type": "International co-ed boarding",
+     "website": "https://hebronooty.org"
+    },
+    {
+     "name": "Unison World School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://unisonworldschool.com"
+    },
+    {
+     "name": "Selaqui International School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Co-ed boarding",
+     "website": "https://selaqui.org"
+    },
+    {
+     "name": "Kasiga School Boards (5)",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Co-ed boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "board-state",
+   "kind": "BOARD",
+   "code": "STATE",
+   "title": "State board schools",
+   "items": [
+    {
+     "name": "Simultala Awasiya Vidyalaya",
+     "place": "Jamui, Bihar",
+     "stateCode": "BR",
+     "board": "BSEB",
+     "type": "State govt boarding",
+     "website": null
+    },
+    {
+     "name": "Indira Gandhi Balika Vidyalaya",
+     "place": "Hazaribagh, Jharkhand",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt girls residential",
+     "website": null
+    },
+    {
+     "name": "Netarhat Vidyalaya",
+     "place": "Netarhat (Latehar), Jharkhand",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyalaya, Narendrapur",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "WBBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyapith, Purulia",
+     "place": "Purulia, WB",
+     "stateCode": "WB",
+     "board": "WBBSE",
+     "type": "Boys boarding",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "government",
+   "kind": "GOVERNMENT",
+   "code": null,
+   "title": "Government schools",
+   "items": [
+    {
+     "name": "Rashtriya Indian Military College (RIMC)",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": "https://rimc.gov.in"
+    },
+    {
+     "name": "Army Public School, Delhi Cantt",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://awesindia.edu.in"
+    },
+    {
+     "name": "Govt. Model Sr. Sec. School, Sector 16",
+     "place": "Chandigarh",
+     "stateCode": "CH",
+     "board": "CBSE",
+     "type": "State govt day",
+     "website": "https://chdeducation.gov.in"
+    },
+    {
+     "name": "Kendriya Vidyalayas (1,250+ schools)",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://kvsangathan.nic.in"
+    },
+    {
+     "name": "Sainik Schools (33+ schools)",
+     "place": "All India Ajmer, Bengaluru,",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boys/co-ed boarding",
+     "website": "https://sainikschool.ncog.gov.inrashtriyamilitaryschools."
+    },
+    {
+     "name": "Rashtriya Military Schools (5 schools)",
+     "place": "Belgaum, Chail, Dholpur",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": "https://edu.in"
+    },
+    {
+     "name": "Eklavya Model Residential Schools",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": "https://emrs.tribal.gov.in"
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalayas",
+     "place": "Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt day",
+     "website": "https://edudel.nic.in"
+    },
+    {
+     "name": "Atomic Energy Central Schools",
+     "place": "All India",
+     "stateCode": null,
+     "board": "CBSE",
+     "type": "Central govt day",
+     "website": "https://aees.gov.in"
+    },
+    {
+     "name": "Kendriya Vidyalaya, Sector 24, Noida",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Hindon",
+     "place": "Ghaziabad, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Gomti Nagar",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Captain Manoj Kumar Pandey U.P. Sainik School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT Kanpur",
+     "place": "Kanpur, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, BHU",
+     "place": "Varanasi, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Kankarbagh",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Bailey Road",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Danapur Cantt",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Danapur Cantt",
+     "place": "Patna, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Simultala Awasiya Vidyalaya",
+     "place": "Jamui, Bihar",
+     "stateCode": "BR",
+     "board": "BSEB",
+     "type": "State govt boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Gopalganj",
+     "place": "Gopalganj, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Nalanda",
+     "place": "Nalanda, Bihar",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Faridabad",
+     "place": "Faridabad, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Chandimandir",
+     "place": "Panchkula, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Sainik School Kunjpura",
+     "place": "Karnal, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Ambala Cantt",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Ambala Cantt",
+     "place": "Ambala, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Rohtak",
+     "place": "Rohtak, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Hisar Cantt",
+     "place": "Hisar, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Sainik School Rewari",
+     "place": "Rewari, Haryana",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Army Public School, Dhaula Kuan",
+     "place": "Delhi Cantt, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Army (AWES) day",
+     "website": null
+    },
+    {
+     "name": "Navy Children School",
+     "place": "Chanakyapuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Navy day",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Andrews Ganj",
+     "place": "Andrews Ganj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 2, Delhi Cantt",
+     "place": "Delhi Cantt, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, JNU",
+     "place": "JNU Campus, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Sector 8, R.K. Puram",
+     "place": "R.K. Puram, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT Delhi",
+     "place": "Hauz Khas, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Janakpuri",
+     "place": "Janakpuri, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Pitampura",
+     "place": "Pitampura, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Surajmal Vihar",
+     "place": "Surajmal Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Yamuna Vihar",
+     "place": "Yamuna Vihar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Kishan Ganj",
+     "place": "Kishan Ganj, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Rajkiya Pratibha Vikas Vidyalaya, Lajpat Nagar",
+     "place": "Lajpat Nagar, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "State govt",
+     "website": null
+    },
+    {
+     "name": "Navyug School, Lodhi Road",
+     "place": "Lodhi Road, Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "NDMC govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya No. 1, Gurugram",
+     "place": "Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, NSG Campus Manesar",
+     "place": "Manesar, Gurugram",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, Hinoo",
+     "place": "Ranchi, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Kendriya Vidyalaya, IIT (ISM) Dhanbad",
+     "place": "Dhanbad, Jharkhand",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Central govt",
+     "website": null
+    },
+    {
+     "name": "Indira Gandhi Balika Vidyalaya",
+     "place": "Hazaribagh, Jharkhand",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt girls residential",
+     "website": null
+    }
+   ]
+  },
+  {
+   "key": "boarding",
+   "kind": "BOARDING",
+   "code": null,
+   "title": "Boarding schools",
+   "items": [
+    {
+     "name": "The Doon School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC, IB",
+     "type": "Boys boarding",
+     "website": "https://doonschool.com"
+    },
+    {
+     "name": "Mayo College",
+     "place": "Ajmer, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://mayocollege.com"
+    },
+    {
+     "name": "Rishi Valley School",
+     "place": "Chittoor, AP",
+     "stateCode": "AP",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://rishivalley.org"
+    },
+    {
+     "name": "Welham Boys' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://welhamboys.org"
+    },
+    {
+     "name": "Sarala Birla Academy",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IGCSE, IB",
+     "type": "Boys boarding",
+     "website": "https://saralabirlaacademy.org"
+    },
+    {
+     "name": "Welham Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://welhamgirls.com"
+    },
+    {
+     "name": "Ecole Globale International Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://ecoleglobale.com"
+    },
+    {
+     "name": "The Assam Valley School",
+     "place": "Balipara, AS",
+     "stateCode": "AS",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://assamvalleyschool.com"
+    },
+    {
+     "name": "The Scindia School",
+     "place": "Gwalior, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": "https://scindia.edu"
+    },
+    {
+     "name": "The Lawrence School, Sanawar",
+     "place": "Kasauli, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://sanawar.edu.in"
+    },
+    {
+     "name": "Kodaikanal International School",
+     "place": "Kodaikanal, TN",
+     "stateCode": "TN",
+     "board": "IB",
+     "type": "International boarding",
+     "website": "https://kis.in"
+    },
+    {
+     "name": "Woodstock School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "IB, AP",
+     "type": "International boarding",
+     "website": "https://woodstockschool.in"
+    },
+    {
+     "name": "Mahindra United World College",
+     "place": "Pune, MH",
+     "stateCode": "MH",
+     "board": "IB",
+     "type": "International boarding",
+     "website": "https://muwci.net"
+    },
+    {
+     "name": "Bishop Cotton School",
+     "place": "Shimla, HP",
+     "stateCode": "HP",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": "https://bishopcottonshimla.com"
+    },
+    {
+     "name": "Sherwood College",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": "https://sherwood.edu.in"
+    },
+    {
+     "name": "Pinegrove School",
+     "place": "Solan, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://pinegroveschool.com"
+    },
+    {
+     "name": "Mussoorie International School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://misindia.net"
+    },
+    {
+     "name": "Vidya Devi Jindal School",
+     "place": "Hisar, HR",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://vdjs.edu.in"
+    },
+    {
+     "name": "Good Shepherd International School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IB, IGCSE, ICSE",
+     "type": "Co-ed boarding",
+     "website": "https://gsis.ac.in"
+    },
+    {
+     "name": "The Sanskaar Valley School",
+     "place": "Bhopal, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://sanskaarvalley.org"
+    },
+    {
+     "name": "Hebron School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "IGCSE, A-Level",
+     "type": "International boarding",
+     "website": "https://hebronooty.org"
+    },
+    {
+     "name": "Unison World School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Girls boarding",
+     "website": "https://unisonworldschool.com"
+    },
+    {
+     "name": "Selaqui International School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Co-ed boarding",
+     "website": "https://selaqui.org"
+    },
+    {
+     "name": "Hopetown Girls' School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": "https://hopetown.in"
+    },
+    {
+     "name": "Punjab Public School",
+     "place": "Nabha, PB",
+     "stateCode": "PB",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://ppsnabha.edu.in"
+    },
+    {
+     "name": "Chinmaya International Residential School",
+     "place": "Coimbatore, TN",
+     "stateCode": "TN",
+     "board": "CBSE, IB",
+     "type": "Co-ed boarding",
+     "website": "https://cirschool.org"
+    },
+    {
+     "name": "Lancers International School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "International day-cum-boarding",
+     "website": "https://lancersinternational.org"
+    },
+    {
+     "name": "The Aga Khan Academy",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "IB",
+     "type": "International boarding",
+     "website": "https://agakhanacademies.org/hyderabad"
+    },
+    {
+     "name": "The Lawrence School, Lovedale",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": "https://lawrencelovedale.ac.in"
+    },
+    {
+     "name": "Pathways World School, Aravali",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB",
+     "type": "International boarding",
+     "website": "https://pws.edu.in"
+    },
+    {
+     "name": "Jain International Residential School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Co-ed boarding",
+     "website": "https://jirs.ac.in"
+    },
+    {
+     "name": "The Daly College",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://dalycollege.org"
+    },
+    {
+     "name": "The Emerald Heights International School",
+     "place": "Indore, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://emeraldheights.edu.in"
+    },
+    {
+     "name": "St. Paul's School",
+     "place": "Darjeeling, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Mount Hermon School",
+     "place": "Darjeeling, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "St. Joseph's School, North Point",
+     "place": "Darjeeling, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Goethals Memorial School",
+     "place": "Kurseong, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Dr. Graham's Homes",
+     "place": "Kalimpong, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Dow Hill School",
+     "place": "Kurseong, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Victoria Boys' School",
+     "place": "Kurseong, WB",
+     "stateCode": "WB",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Wynberg-Allen School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "St. George's College",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Oak Grove School",
+     "place": "Jharipani, Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Guru Nanak Fifth Centenary School",
+     "place": "Mussoorie, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Doon International School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Tula's International School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Kasiga School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE, Cambridge",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Brightlands School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "The Aryan School",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Rashtriya Indian Military College",
+     "place": "Dehradun, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "St. Joseph's College, Nainital",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Birla Vidya Mandir",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "All Saints' College",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "St. Mary's Convent High School",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "ICSE/ISC",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Ghorakhal",
+     "place": "Nainital, UK",
+     "stateCode": "UK",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ashok Hall Girls' Residential School",
+     "place": "Ranikhet, UK",
+     "stateCode": "UK",
+     "board": null,
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Auckland House School",
+     "place": "Shimla, HP",
+     "stateCode": "HP",
+     "board": "ICSE/ISC",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Rashtriya Military School, Chail",
+     "place": "Chail, HP",
+     "stateCode": "HP",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Breeks Memorial School",
+     "place": "Ooty, TN",
+     "stateCode": "TN",
+     "board": "ICSE/ISC",
+     "type": "Co-ed boarding",
+     "website": null
+    },
+    {
+     "name": "Stonehill International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://stonehill.in"
+    },
+    {
+     "name": "Canadian International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://cisb.org.in"
+    },
+    {
+     "name": "Indus International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB",
+     "type": "International day-cum-boarding",
+     "website": "https://indusschool.com"
+    },
+    {
+     "name": "Mayo College Girls' School",
+     "place": "Ajmer, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Scindia Kanya Vidyalaya",
+     "place": "Gwalior, MP",
+     "stateCode": "MP",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Birla Public School",
+     "place": "Pilani, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Birla Balika Vidyapeeth",
+     "place": "Pilani, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Mody School",
+     "place": "Lakshmangarh, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Girls boarding",
+     "website": null
+    },
+    {
+     "name": "Rajkumar College, Rajkot",
+     "place": "Rajkot, GJ",
+     "stateCode": "GJ",
+     "board": null,
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Rajkumar College, Raipur",
+     "place": "Raipur, CG",
+     "stateCode": "CG",
+     "board": "CBSE",
+     "type": "Co-ed day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "G.D. Goenka World School",
+     "place": "Gurugram, HR",
+     "stateCode": "HR",
+     "board": "IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Netarhat Vidyalaya",
+     "place": "Latehar, JH",
+     "stateCode": "JH",
+     "board": "JAC",
+     "type": "State govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Tilaiya",
+     "place": "Koderma, JH",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyapith, Deoghar",
+     "place": "Deoghar, JH",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyalaya, Narendrapur",
+     "place": "Kolkata, WB",
+     "stateCode": "WB",
+     "board": "WBBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Ramakrishna Mission Vidyapith, Purulia",
+     "place": "Purulia, WB",
+     "stateCode": "WB",
+     "board": "WBBSE",
+     "type": "Boys boarding",
+     "website": null
+    },
+    {
+     "name": "Taurian World School",
+     "place": "Ranchi, JH",
+     "stateCode": "JH",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Bishop Westcott Boys' School",
+     "place": "Ranchi, JH",
+     "stateCode": "JH",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Simultala Awasiya Vidyalaya",
+     "place": "Jamui, BR",
+     "stateCode": "BR",
+     "board": "BSEB",
+     "type": "State govt boarding",
+     "website": null
+    },
+    {
+     "name": "Vidya Vihar Residential School",
+     "place": "Purnia, BR",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Nalanda",
+     "place": "Nalanda, BR",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Gopalganj",
+     "place": "Gopalganj, BR",
+     "stateCode": "BR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Kunjpura",
+     "place": "Karnal, HR",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Sainik School Rewari",
+     "place": "Rewari, HR",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Captain Manoj Kumar Pandey U.P. Sainik School",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CBSE",
+     "type": "Govt boarding",
+     "website": null
+    },
+    {
+     "name": "Gita Niketan Awasiya Vidyalaya",
+     "place": "Kurukshetra, HR",
+     "stateCode": "HR",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "La Martiniere College, Lucknow",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://lamartinierelucknow.org"
+    },
+    {
+     "name": "Colvin Taluqdars' College",
+     "place": "Lucknow, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Boys' High School & College",
+     "place": "Prayagraj, UP",
+     "stateCode": "UP",
+     "board": "CISCE",
+     "type": "Boys day-cum-boarding",
+     "website": null
+    },
+    {
+     "name": "Genesis Global School",
+     "place": "Noida, UP",
+     "stateCode": "UP",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://genesisglobalschool.edu.in"
+    },
+    {
+     "name": "Modern School, Barakhamba Road",
+     "place": "New Delhi",
+     "stateCode": "DL",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://modernschool.net"
+    },
+    {
+     "name": "Bishop Cotton Boys' School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE",
+     "type": "Boys day-cum-boarding",
+     "website": "https://bishopcottonboysschool.edu.in"
+    },
+    {
+     "name": "Greenwood High International School",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "ICSE, IB, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://greenwoodhigh.edu.in"
+    },
+    {
+     "name": "Oakridge International School",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "CBSE, IB",
+     "type": "Day-cum-boarding",
+     "website": "https://oakridge.in"
+    },
+    {
+     "name": "The Hyderabad Public School, Begumpet",
+     "place": "Hyderabad, TS",
+     "stateCode": "TS",
+     "board": "ICSE, IGCSE",
+     "type": "Day-cum-boarding",
+     "website": "https://hpsbegumpet.org.in"
+    },
+    {
+     "name": "Jayshree Periwal International School",
+     "place": "Jaipur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE, IB, Cambridge",
+     "type": "Day-cum-boarding",
+     "website": "https://jpischool.com"
+    },
+    {
+     "name": "ODM Public School",
+     "place": "Bhubaneswar, OD",
+     "stateCode": "OD",
+     "board": "CBSE",
+     "type": "Day-cum-boarding",
+     "website": "https://odmps.org"
+    },
+    {
+     "name": "The International School Bangalore",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "IB, IGCSE",
+     "type": "International day-cum-boarding",
+     "website": "https://tisb.org"
+    },
+    {
+     "name": "Rashtriya Military School, Ajmer",
+     "place": "Ajmer, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Rashtriya Military School, Bengaluru",
+     "place": "Bengaluru, KA",
+     "stateCode": "KA",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    },
+    {
+     "name": "Rashtriya Military School, Dholpur",
+     "place": "Dholpur, RJ",
+     "stateCode": "RJ",
+     "board": "CBSE",
+     "type": "Govt boys boarding",
+     "website": null
+    }
+   ]
+  }
+ ]
+}

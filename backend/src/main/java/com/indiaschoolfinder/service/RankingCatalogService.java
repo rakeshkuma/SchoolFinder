@@ -71,13 +71,16 @@ public class RankingCatalogService {
     /** Whether each ranking page has anything to show, so navigation never leads to an empty page. */
     @Transactional(readOnly = true)
     public RankingCatalogDtos.Sections sections() {
+        // A page with a school list has something to show even before a published ranking covers it.
+        List<String> kinds = jdbc.getJdbcTemplate().queryForList("SELECT DISTINCT kind FROM school_list", String.class);
         return jdbc.getJdbcTemplate().queryForObject("""
                 SELECT count(*) FILTER (WHERE NOT e.rating_based), count(*) FILTER (WHERE NOT e.rating_based AND s.education_board_code <> 'OTHER'),
                        count(*) FILTER (WHERE NOT e.rating_based AND s.school_type = 'GOVERNMENT'),
                        count(*) FILTER (WHERE NOT e.rating_based AND b.school_id IS NOT NULL), count(*) FILTER (WHERE e.rating_based)
                 FROM ranking_source r JOIN ranking_edition e ON e.id = r.edition_id JOIN ranking_publisher p ON p.id = e.publisher_id
                 JOIN school s ON s.id = r.school_id LEFT JOIN school_boarding b ON b.school_id = s.id
-                WHERE p.active AND %s""".formatted(PUBLIC), (rs, i) -> new RankingCatalogDtos.Sections(rs.getLong(1) > 0, rs.getLong(2) > 0, rs.getLong(3) > 0, rs.getLong(4) > 0, rs.getLong(5) > 0));
+                WHERE p.active AND %s""".formatted(PUBLIC), (rs, i) -> new RankingCatalogDtos.Sections(rs.getLong(1) > 0 || kinds.contains("STATE"), rs.getLong(2) > 0 || kinds.contains("BOARD"),
+                rs.getLong(3) > 0 || kinds.contains("GOVERNMENT"), rs.getLong(4) > 0 || kinds.contains("BOARDING"), rs.getLong(5) > 0));
     }
 
     /** Lists with at least one public entry, newest first; a list's page is reached by its id. */

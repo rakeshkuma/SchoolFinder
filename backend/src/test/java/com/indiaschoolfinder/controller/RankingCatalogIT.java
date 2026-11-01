@@ -125,7 +125,7 @@ class RankingCatalogIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/rankings/table").param("edition", String.valueOf(e)).param("boarding", "ANY")).andExpect(jsonPath("$.totalElements").value(0));
         mockMvc.perform(get("/api/v1/rankings/sections"))
                 .andExpect(jsonPath("$.rankings").value(true)).andExpect(jsonPath("$.government").value(true))
-                .andExpect(jsonPath("$.boarding").value(false)).andExpect(jsonPath("$.green").value(false));
+                .andExpect(jsonPath("$.green").value(false));
     }
 
     @Test

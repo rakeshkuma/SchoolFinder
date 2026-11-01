@@ -17,6 +17,12 @@ export function RankingSources() {
         <li>A place, board or category with no verified entries is not shown, and nothing is added to fill a list.</li>
       </ul>
       <p>We do not sell ranking positions, and schools cannot pay for a better rank. Paid or featured listings are never shown as rankings.</p>
+      <h2 id="school-lists">School lists</h2>
+      <p>
+        Below the rankings you will find lists of well-known schools by place, board and kind, compiled by India School Finder to help families start
+        their search. They are listed A to Z and are not rankings: a school’s place in a list says nothing about its quality. Not every detail has been
+        checked against an official source, so please confirm with the school. Schools with a “View School Details” link have a profile in our directory.
+      </p>
       <h2 id="sources">Ranking publishers</h2>
       <AsyncContent state={editions} isEmpty={(d) => d.length === 0} empty={<p>No published list has verified entries yet.</p>}>
         {(list) => (
