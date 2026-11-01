@@ -19,6 +19,7 @@ export interface Account {
   /** False for members who signed up with Google and have not set a password. */
   hasPassword: boolean;
   googleLinked: boolean;
+  mobile: string | null;
 }
 
 export interface AccountConfig {
@@ -36,6 +37,9 @@ export interface RegisterInput {
   acceptTerms: boolean;
   stateCode?: string;
   city?: string;
+  mobile?: string;
+  /** Spam trap: stays empty for people. */
+  website?: string;
 }
 
 /** Makes sure the CSRF cookie exists before the first state-changing request. */
@@ -62,7 +66,7 @@ export const accountService = {
   logout: () => send<void>('post', '/account/logout'),
   forgotPassword: (email: string) => send<{ status: string }>('post', '/account/forgot-password', { email }),
   resetPassword: (token: string, newPassword: string) => send<{ status: string }>('post', '/account/reset-password', { token, newPassword }),
-  updateProfile: (input: { displayName: string; stateCode?: string | null; city?: string | null }) => send<Account>('patch', '/account/me', input),
+  updateProfile: (input: { displayName: string; stateCode?: string | null; city?: string | null; mobile?: string | null }) => send<Account>('patch', '/account/me', input),
   changePassword: (currentPassword: string, newPassword: string) => send<void>('post', '/account/change-password', { currentPassword, newPassword }),
   /** With a password, the password; without one (Google sign-up), the account's email address. */
   deleteAccount: (confirm: { password?: string; confirmEmail?: string }) => send<void>('delete', '/account/me', confirm),

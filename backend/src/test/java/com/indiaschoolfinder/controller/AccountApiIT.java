@@ -69,6 +69,23 @@ class AccountApiIT extends AbstractIntegrationTest {
         return matcher.group(1);
     }
 
+    @org.junit.jupiter.api.Test
+    void aFilledHoneypotCreatesNoAccountAndAMobileIsOptionalAndNormalised() throws Exception {
+        Map<String, Object> spam = new java.util.HashMap<>(Map.of("displayName", "Bot", "email", "bot@example.org", "password", PASSWORD,
+                "acceptTerms", true, "website", "http://spam.example"));
+        postJson("/register", spam).andExpect(status().is2xxSuccessful());
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM user_account WHERE email = 'bot@example.org'", Integer.class)).isZero();
+
+        Map<String, Object> real = new java.util.HashMap<>(Map.of("displayName", "Meera", "email", "meera@example.org", "password", PASSWORD,
+                "acceptTerms", true, "mobile", "+91 9876543210"));
+        postJson("/register", real).andExpect(status().is2xxSuccessful());
+        assertThat(jdbc.queryForObject("SELECT mobile FROM user_account WHERE email = 'meera@example.org'", String.class)).isEqualTo("9876543210");
+
+        real.put("email", "ravi@example.org");
+        real.put("mobile", "12345");
+        postJson("/register", real).andExpect(status().isBadRequest());
+    }
+
     private void registerAndVerify(String email) throws Exception {
         postJson("/register", registration(email, PASSWORD)).andExpect(status().isAccepted());
         postJson("/verify-email", Map.of("token", lastToken(email))).andExpect(status().isOk());

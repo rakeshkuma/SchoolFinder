@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
+import { GoogleButton } from '../components/common/GoogleButton';
+import { useMember } from '../hooks/useMember';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
 import { ShareLinkButtons } from '../components/common/ShareLinkButtons';
@@ -245,6 +247,7 @@ const MAX_SHARED = 30;
 
 export function SavedSchoolsPage() {
   useDocumentTitle('Saved schools');
+  const { status, config } = useMember();
   const saved = useLocalList(savedSchools);
   const recent = useLocalList(recentSchools);
   const navigate = useNavigate();
@@ -280,6 +283,12 @@ export function SavedSchoolsPage() {
         subtitle="Saved and recently viewed schools are stored only in this browser. Clearing your browser data removes them." />
       <div className="container-page grid grid-cols-1 gap-10 py-8 lg:grid-cols-[1.4fr_1fr]">
         <div className="min-w-0 space-y-10">
+        {status === 'signedOut' && config?.googleSignInEnabled && (
+          <section aria-label="Sign in" className="card flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-slate-600">Sign in or create a free account. Your saved schools stay in this browser for now; signing in does not move them.</p>
+            <div className="w-full shrink-0 sm:w-64"><GoogleButton next={`/saved${searchParams.size ? `?${searchParams}` : ''}`} /></div>
+          </section>
+        )}
         {sharedIds.length > 0 && (
           <section aria-labelledby="shared-heading" className="rounded-2xl bg-brand-50/60 p-5 ring-1 ring-brand-100">
             <div className="flex flex-wrap items-center justify-between gap-3">

@@ -59,6 +59,7 @@ public class SeoHeadService {
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
     private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
@@ -119,6 +120,8 @@ public class SeoHeadService {
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
                     + "aptitude, many in English and Hindi, with every answer explained — written by India School Finder, "
                     + "not official questions."),
+            page("/blog", "School admission and parenting blog", "Practical guides for Indian parents on admissions, choosing a board, "
+                    + "fees and scholarships, and parenting."),
             page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on India School Finder, their years, "
                     + "how entries are verified, and how third-party rankings are presented."),
             page("/cities", "Schools by city", "Cities across India where India School Finder lists schools, with "
@@ -181,11 +184,13 @@ public class SeoHeadService {
     private final ExamService examService;
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final ObjectMapper objectMapper;
+    private final BlogService blogService;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
                           ExamService examService, ObjectMapper objectMapper,
-                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository) {
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService) {
+        this.blogService = blogService;
         this.examService = examService;
         this.practiceSetRepository = practiceSetRepository;
         this.schoolService = schoolService;
@@ -239,6 +244,9 @@ public class SeoHeadService {
             if ((m = EXAM_STATE.matcher(p)).matches()) {
                 return examState(m.group(1), baseUrl);
             }
+            if ((m = BLOG_POST.matcher(p)).matches()) {
+                return blogPost(blogService.published(m.group(1)), baseUrl);
+            }
             if ((m = PRACTICE_SET.matcher(p)).matches()) {
                 String slug = m.group(1);
                 return practiceSet(practiceSetRepository.findBySlugAndPublishedTrue(slug)
@@ -248,6 +256,24 @@ public class SeoHeadService {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
         return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? website(baseUrl) : null);
+    }
+
+    private String blogPost(com.indiaschoolfinder.entity.BlogPost post, String baseUrl) {
+        String url = baseUrl + "/blog/" + post.getSlug();
+        String title = post.getMetaTitle() != null ? post.getMetaTitle() : post.getTitle();
+        String description = post.getMetaDescription() != null ? post.getMetaDescription() : post.getExcerpt();
+        String image = post.getCoverImageUrl() == null ? null : post.getCoverImageUrl().startsWith("/") ? baseUrl + post.getCoverImageUrl() : post.getCoverImageUrl();
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BlogPosting");
+        data.put("headline", post.getTitle());
+        data.put("description", description);
+        data.put("url", url);
+        data.put("datePublished", post.getPublishedAt().toString());
+        data.put("dateModified", post.getUpdatedAt().toString());
+        data.put("author", Map.of("@type", "Person", "name", post.getAuthorName()));
+        if (image != null) data.put("image", image);
+        return tags(title + " | " + SITE, description, url, image, false, data);
     }
 
     /** Practice sets are original India School Finder questions; the description says so, and the data is a free Quiz. */

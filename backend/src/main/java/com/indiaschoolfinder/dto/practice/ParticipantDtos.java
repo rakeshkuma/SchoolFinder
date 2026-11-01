@@ -12,8 +12,7 @@ public final class ParticipantDtos {
 
     /**
      * How old the student says they are. ADULT: 18 or over. MINOR_WITH_GUARDIAN: under 18, and a parent or guardian
-     * agrees to the nickname being shown publicly (the guest's own declaration). MINOR: under 18, never listed publicly.
-     * Accounts are for adults, so members can only be ADULT.
+     * agrees to the nickname being shown publicly (the student's own declaration). MINOR: under 18, never listed publicly.
      */
     public enum AgeConfirmation { ADULT, MINOR_WITH_GUARDIAN, MINOR }
 

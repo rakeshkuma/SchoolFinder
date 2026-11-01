@@ -12,6 +12,7 @@ const LINKS = [
   { to: '/admin/duplicates', label: 'Possible duplicates' },
   { to: '/admin/submissions', label: 'Suggested updates' },
   { to: '/admin/contact', label: 'Contact messages' },
+  { to: '/admin/blog', label: 'Blog' },
   { to: '/admin/exams', label: 'Entrance exams' },
   { to: '/admin/practice', label: 'Practice questions' },
   { to: '/admin/challenges', label: 'Challenges' },
