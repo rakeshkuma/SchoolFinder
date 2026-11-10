@@ -42,7 +42,7 @@ public class SitemapController {
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
-            "/privacy", "/terms", "/disclaimer");
+            "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
 

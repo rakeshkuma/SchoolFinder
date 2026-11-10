@@ -36,6 +36,9 @@ import {
   schoolTypeLabel,
 } from '../utils/format';
 import { SchoolOrStateNotFound } from './PlaceRedirect';
+import { AD_SLOTS, AdSlot } from '../components/common/AdSlot';
+import { track } from '../utils/analytics';
+import { schoolFaqs } from '../utils/schoolFaq';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -52,7 +55,9 @@ export function SchoolDetailPage() {
   useSchoolSeo(school.data);
   const loaded = school.data;
   useEffect(() => {
-    if (loaded) recentSchools.add(toRef(loaded));
+    if (!loaded) return;
+    recentSchools.add(toRef(loaded));
+    track('school_profile_view', { school_slug: loaded.slug, state: loaded.stateCode, board: loaded.board?.code });
   }, [loaded]);
   const [copied, setCopied] = useState(false);
   // The main photo (first non-logo image cleared for publication) is shown in the header.
@@ -165,8 +170,33 @@ export function SchoolDetailPage() {
             { id: 'sources', label: 'Sources', content: <SourcesTab school={s} /> },
           ]}
         />
+        <AdSlot slot={AD_SLOTS.schoolProfile} />
+        <SchoolFaq school={s} />
       </div>
     </>
+  );
+}
+
+/** Common questions about this school, answered only from its own record (see schoolFaqs). */
+function SchoolFaq({ school: s }: { school: SchoolDetail }) {
+  const faqs = useMemo(() => schoolFaqs(s), [s]);
+  if (faqs.length === 0) return null;
+  return (
+    <section className="mt-10" aria-labelledby="faq-h">
+      <h2 id="faq-h" className="font-display text-xl font-bold text-ink">Questions about {s.name}</h2>
+      <p className="mt-1 text-sm text-slate-500">Answered from the sources listed on this profile. Confirm important details with the school.</p>
+      <div className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
+        {faqs.map((f) => (
+          <details key={f.question} className="group p-4">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink">
+              {f.question}
+              <Icon name="chevronDown" className="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180" />
+            </summary>
+            <p className="mt-2 break-words text-sm leading-relaxed text-slate-700">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
   );
 }
 

@@ -69,6 +69,16 @@ public class SeoHeadService {
             "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session",
             // Leaderboards list students' nicknames, which should not be searchable; achievements are a student's own.
             "/exams/leaderboard", "/exams/achievements", "/exams/challenges");
+    /**
+     * First path segments the React app has routes for (frontend/src/App.tsx). Any other address shows the app's
+     * "page not found" page, so it is marked noindex instead of being offered as a copy of the home page.
+     */
+    static final Set<String> APP_SECTIONS = Set.of("schools", "states", "cities", "network", "saved", "rankings",
+            "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "exams", "exam-preparation", "boards",
+            "type", "stages", "reviews", "about", "contact", "suggest", "find", "privacy", "privacy-policy", "terms",
+            "terms-of-service", "terms-and-conditions", "disclaimer", "editorial-policy", "corrections-policy",
+            "data-deletion", "signin", "register", "blog", "verify-email", "forgot-password", "reset-password", "account",
+            "admin");
     /** Static pages with their own title; the rest of the app uses the site defaults. */
     private static final Map<String, String[]> PAGES = Map.ofEntries(
             page("/find", "Find the right school for your child", "Choose your area, your child's class, "
@@ -141,6 +151,12 @@ public class SeoHeadService {
             page("/terms", "Terms of use", "The terms for using SchoolDhundo, its listings and its practice tests."),
             page("/disclaimer", "Disclaimer", "School facts are taken from official sources and may change; always "
                     + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
+            page("/editorial-policy", "Editorial policy", "How SchoolDhundo chooses sources, checks school information, "
+                    + "presents published rankings and writes its own practice questions, and how paid content is kept apart."),
+            page("/corrections-policy", "Corrections policy", "How to report a mistake in a school listing, ranking or "
+                    + "practice question on SchoolDhundo, and how corrections are checked and shown."),
+            page("/data-deletion", "Account and data deletion", "How to delete your SchoolDhundo account, leaderboard "
+                    + "entry or other information, what is removed and what is kept."),
             page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
                     + "Kendriya Vidyalaya Sangathan, affiliated to CBSE, with locations and admission links."),
             page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya schools", "Residential central "
@@ -253,6 +269,9 @@ public class SeoHeadService {
                         .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
             }
         } catch (ResourceNotFoundException e) {
+            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+        }
+        if (!p.equals("/") && !APP_SECTIONS.contains(p.substring(1).split("/", 2)[0])) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
         return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? website(baseUrl) : null);

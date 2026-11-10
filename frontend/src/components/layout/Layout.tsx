@@ -1,7 +1,9 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Spinner } from '../common/States';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { DesktopNav, MobileNav } from './MainNav';
+import { ConsentBanner } from './ConsentBanner';
+import { analyticsConfigured, initAnalytics, resetConsent, track, trackPageView } from '../../utils/analytics';
 import { useMember } from '../../hooks/useMember';
 import { usePracticeSync } from '../../hooks/usePracticeProgress';
 import { savedSchools, useLocalList } from '../../hooks/usePersonal';
@@ -41,6 +43,8 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
       { to: '/contact', label: 'Contact Us' },
       { to: '/contact?topic=LISTING', label: 'Submit School Information' },
       { to: '/contact?topic=CORRECTION', label: 'Report Incorrect Information' },
+      { to: '/editorial-policy', label: 'Editorial Policy' },
+      { to: '/corrections-policy', label: 'Corrections Policy' },
     ],
   },
 ];
@@ -125,6 +129,23 @@ export function Layout() {
       .forEach((el) => el.remove());
   }, [location.pathname, firstPath]);
 
+  // Analytics (only with consent; see utils/analytics): start once, then one page view per page.
+  useEffect(() => initAnalytics(), []);
+  useEffect(() => trackPageView(location.pathname), [location.pathname]);
+
+  // Google sign-in adds ?welcome=1 when it has just created the account: greet once, then drop the flag.
+  const navigate = useNavigate();
+  const { account } = useMember();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('welcome') !== '1' || !account) return;
+    setNotice(`Welcome to SchoolDhundo, ${account.displayName}! Your account is ready.`);
+    track('user_registration', { method: 'google' });
+    params.delete('welcome');
+    const query = params.toString();
+    navigate({ pathname: location.pathname, search: query ? `?${query}` : '', hash: location.hash }, { replace: true });
+  }, [location.search, location.pathname, location.hash, account, navigate, setNotice]);
+
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
@@ -205,6 +226,8 @@ export function Layout() {
 
       <BackToTop />
 
+      <ConsentBanner />
+
       <footer className="mt-20 bg-ink text-slate-300">
         <div className="container-page grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
           {FOOTER.map((c) => <FooterColumn key={c.title} title={c.title} links={c.links} />)}
@@ -223,6 +246,10 @@ export function Layout() {
               <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-white">Terms and Conditions</Link>
               <Link to="/disclaimer" className="hover:text-white">Disclaimer</Link>
+              <Link to="/data-deletion" className="hover:text-white">Delete Your Data</Link>
+              {analyticsConfigured() && (
+                <button type="button" onClick={resetConsent} className="hover:text-white">Cookie settings</button>
+              )}
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a>
               <Link to="/admin" className="hover:text-white">Administrator login</Link>
               <span>Map data © OpenStreetMap contributors</span>

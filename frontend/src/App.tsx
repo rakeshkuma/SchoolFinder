@@ -79,6 +79,9 @@ const ForgotPasswordPage = page(account, 'ForgotPasswordPage');
 const ResetPasswordPage = page(account, 'ResetPasswordPage');
 const AccountPage = page(account, 'AccountPage');
 const DisclaimerPage = page(info, 'DisclaimerPage');
+const EditorialPolicyPage = page(info, 'EditorialPolicyPage');
+const CorrectionsPolicyPage = page(info, 'CorrectionsPolicyPage');
+const DataDeletionPage = page(info, 'DataDeletionPage');
 const NotFoundPage = page(info, 'NotFoundPage');
 const SuggestUpdatePage = page(() => import('./pages/SuggestUpdatePage'), 'SuggestUpdatePage');
 const FindSchoolPage = page(() => import('./pages/FindSchoolPage'), 'FindSchoolPage');
@@ -202,7 +205,13 @@ export default function App() {
               <Route path="suggest" element={<SuggestUpdatePage />} />
               <Route path="find" element={<FindSchoolPage />} />
               <Route path="privacy" element={<PrivacyPage />} />
+              <Route path="privacy-policy" element={<Navigate to="/privacy" replace />} />
               <Route path="terms" element={<TermsPage />} />
+              <Route path="terms-of-service" element={<Navigate to="/terms" replace />} />
+              <Route path="terms-and-conditions" element={<Navigate to="/terms" replace />} />
+              <Route path="editorial-policy" element={<EditorialPolicyPage />} />
+              <Route path="corrections-policy" element={<CorrectionsPolicyPage />} />
+              <Route path="data-deletion" element={<DataDeletionPage />} />
               <Route path="signin" element={<AuthPage />} />
               <Route path="register" element={<AuthPage />} />
               <Route path="blog" element={<BlogListPage />} />

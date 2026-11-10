@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+import { track } from '../utils/analytics';
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { ExamCard, ExamStatusBadge, SaveExamButton, scopeText } from '../components/exam/ExamCard';
 import { DiscoveryTiles, ExamSearch, StatTiles } from '../components/exam/ExamDiscovery';
@@ -502,6 +503,9 @@ export function ExamGuidePage() {
   const { name: stateName } = useStateNames();
   const detail = state.data;
   useDocumentTitle(detail ? `${detail.exam.shortName}: eligibility, dates, pattern and syllabus` : undefined);
+  useEffect(() => {
+    if (detail) track('exam_page_view', { exam_slug: detail.exam.slug });
+  }, [detail]);
 
   if (state.error instanceof ApiError && state.error.status === 404) return <NotFoundPage />;
   if (state.error) return <div className="container-page py-10"><ErrorState error={state.error} onRetry={state.reload} /></div>;

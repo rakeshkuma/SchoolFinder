@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { track } from '../utils/analytics';
 import { Link, useSearchParams } from 'react-router-dom';
 import { AdmissionStatusBadge, SourceLink, Stars, VerificationBadge } from '../components/common/Badges';
 import { Icon } from '../components/common/Icon';
@@ -46,6 +47,11 @@ export function ComparePage() {
   const { items, toggle, remove, clear, replace } = useCompare();
   const ids = items.map((i) => i.id);
   const [searchParams, setSearchParams] = useSearchParams();
+  // One event per distinct set of two or more schools compared.
+  const compared = ids.length >= 2 ? [...ids].sort((a, b) => a - b).join(',') : '';
+  useEffect(() => {
+    if (compared) track('school_comparison', { schools: compared.split(',').length });
+  }, [compared]);
 
   // A shared link (?ids=) replaces this browser's selection once, on arrival.
   const [hydrated, setHydrated] = useState(false);
