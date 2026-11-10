@@ -111,6 +111,14 @@ public class RankingCatalogService {
 
     @Transactional(readOnly = true)
     public PageResponse<RankingCatalogDtos.Row> table(RankingCatalogDtos.Query f, int page, int size) {
+        return table(f, page, size, null);
+    }
+
+    /**
+     * @param sort null or RANK: the publisher's order (below); NAME, STATE or CITY: alphabetical. Sorting changes only the
+     *             order rows are shown in, never a rank.
+     */
+    public PageResponse<RankingCatalogDtos.Row> table(RankingCatalogDtos.Query f, int page, int size, String sort) {
         MapSqlParameterSource p = new MapSqlParameterSource("edition", f.edition());
         StringBuilder where = new StringBuilder(" WHERE r.edition_id = :edition AND " + PUBLIC);
         if (f.state() != null) { where.append(" AND s.state_code = :state"); p.addValue("state", f.state()); }
@@ -145,9 +153,15 @@ public class RankingCatalogService {
                 + " LEFT JOIN district d ON d.id = s.district_id LEFT JOIN school_boarding b ON b.school_id = s.id";
         Long total = jdbc.queryForObject("SELECT count(*)" + from + where, p, Long.class);
         // A place view follows the publisher's order for that place where it printed one; otherwise national order keeps its meaning.
-        String order = (f.city() != null ? "r.city_rank NULLS LAST, " : "") + (f.state() != null ? "r.state_rank NULLS LAST, " : "")
+        String rankOrder = (f.city() != null ? "r.city_rank NULLS LAST, " : "") + (f.state() != null ? "r.state_rank NULLS LAST, " : "")
                 + "coalesce(r.national_rank, r.state_rank, r.city_rank, r.rank_position) NULLS LAST,"
                 + " CASE r.rating WHEN 'GREEN' THEN 1 WHEN 'YELLOW' THEN 2 WHEN 'ORANGE' THEN 3 WHEN 'RED' THEN 4 ELSE 5 END, s.name, r.id";
+        String order = switch (sort == null ? "RANK" : sort) {
+            case "NAME" -> "lower(s.name), r.id";
+            case "STATE" -> "st.name, " + rankOrder;
+            case "CITY" -> "coalesce(s.city, d.name) NULLS LAST, " + rankOrder;
+            default -> rankOrder;
+        };
         p.addValue("limit", size).addValue("offset", (long) page * size);
         record Raw(RankingCatalogDtos.Row row) {
         }

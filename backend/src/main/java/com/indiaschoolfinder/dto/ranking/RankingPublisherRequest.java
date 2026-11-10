@@ -13,5 +13,7 @@ public record RankingPublisherRequest(
         @HttpUrl String websiteUrl,
         @HttpUrl String methodologyUrl,
         @Size(max = 1000) String description,
-        Boolean active) {
+        Boolean active,
+        /* null keeps the current status */
+        @jakarta.validation.constraints.Pattern(regexp = "NOT_REQUESTED|REQUESTED|GRANTED|NOT_NEEDED") String permissionStatus) {
 }

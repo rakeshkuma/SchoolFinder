@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import { useState, type FormEvent, type ReactNode } from 'react';
 import { Link, Navigate, NavLink, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
-import { Icon } from '../components/common/Icon';
+import { Icon, type IconName } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
 import { Pagination } from '../components/common/Pagination';
 import { AsyncContent, EmptyState, Spinner } from '../components/common/States';
@@ -12,8 +12,12 @@ import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolListSection } from '../components/school/SchoolListSection';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { locationService, rankingService, schoolListService, type RankingEdition, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
-import { formatDate } from '../utils/format';
+import { NETWORK_PAGES } from '../content/networks';
+import { locationService, rankingService, schoolListService, schoolService, type BestPlaceSummary, type RankingEdition, type RankingPlaces, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
+import type { Faq } from '../utils/schoolFaq';
+import { NotFoundPage } from './InfoPages';
+import type { BoardingType, SchoolType } from '../types/api';
+import { boardingTypeLabel, formatDate, networkLabel, schoolTypeLabel } from '../utils/format';
 
 export const NO_SEPARATE_RANKING = 'No separate published ranking available for this category.';
 
@@ -92,14 +96,16 @@ function useLists(select: (e: RankingEdition) => boolean) {
   return { editions, pick, sp, set };
 }
 
-function RankingShell({ title, heading, subtitle, description, crumbs = [], children }: {
-  title: string; heading?: string; subtitle: ReactNode; description?: string; crumbs?: { to: string; label: string }[]; children: ReactNode;
+function RankingShell({ title, heading, subtitle, description, crumbs = [], hero, children }: {
+  title: string; heading?: string; subtitle: ReactNode; description?: string; crumbs?: { to: string; label: string }[];
+  /** Shown inside the page header, under the subtitle (the search on India's Top Schools). */
+  hero?: ReactNode; children: ReactNode;
 }) {
   useDocumentTitle(title, description);
   return (
     <>
       <PageHeader title={heading ?? title} subtitle={subtitle}
-        top={<Breadcrumbs items={[{ to: '/', label: 'Home' }, { to: '/rankings', label: 'Rankings' }, ...crumbs]} />} />
+        top={<Breadcrumbs items={[{ to: '/', label: 'Home' }, { to: '/rankings', label: 'Rankings' }, ...crumbs]} />}>{hero}</PageHeader>
       <RankingSubNav />
       <div className="container-page space-y-5 py-8">
         {children}
@@ -201,13 +207,15 @@ const listFor = (lists: SchoolListSummary[] | null, kind: SchoolListSummary['kin
   lists?.find((l) => l.kind === kind && (code === undefined || l.code === code));
 
 /** One published list as a table, with its loading, empty and paged states. */
-function RankedSchools({ list, filters, ranks, pageKey = 'page', summary, showCaption = true }: {
+function RankedSchools({ list, filters, ranks, pageKey = 'page', summary, showCaption = true, limit }: {
   list: RankingEdition; filters: Omit<RankingTableParams, 'edition' | 'page' | 'size'>; ranks: RankKind[]; pageKey?: string;
   summary?: (total: number) => string; showCaption?: boolean;
+  /** Only the first rows in the publisher's order for this place (a place's Top 10, 20, 50 or 100), on one page. */
+  limit?: number;
 }) {
   const { sp, set } = useFilters();
-  const page = Math.max(0, Number(sp.get(pageKey)) || 0);
-  const table = useApi(() => rankingService.table({ edition: list.id, ...filters, page, size: PAGE_SIZE }), [list.id, JSON.stringify(filters), page]);
+  const page = limit ? 0 : Math.max(0, Number(sp.get(pageKey)) || 0);
+  const table = useApi(() => rankingService.table({ edition: list.id, ...filters, page, size: limit ?? PAGE_SIZE }), [list.id, JSON.stringify(filters), page, limit]);
   const school = (n: number) => `${n.toLocaleString('en-IN')} ${n === 1 ? 'school' : 'schools'}`;
   return (
     <AsyncContent state={table} isEmpty={(d) => d.content.length === 0} empty={(
@@ -224,7 +232,8 @@ function RankedSchools({ list, filters, ranks, pageKey = 'page', summary, showCa
             <p className="text-sm text-slate-600">{summary?.(data.totalElements) ?? school(data.totalElements)}</p>
           </div>
           <RankingTable rows={data.content} list={list} ranks={ranks} />
-          <Pagination page={data.page} totalPages={data.totalPages} onChange={(p) => set({ [pageKey]: p > 0 ? String(p) : undefined })} />
+          {!limit && <Pagination page={data.page} totalPages={data.totalPages} onChange={(p) => set({ [pageKey]: p > 0 ? String(p) : undefined })} />}
+          {limit && data.totalElements > limit && <p className="text-sm text-slate-600">Showing the first {limit} of {data.totalElements}.</p>}
         </div>
       )}
     </AsyncContent>
@@ -248,6 +257,10 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
   const scored = !green && hasScores(rows, list);
   const details = (r: RankingRow) => `/schools/${r.slug}?tab=ranking`;
   const place = (r: RankingRow) => (green ? r.district : r.city ?? r.district) ?? '–';
+  const source = `${list.publisherCode} ${list.year}`;
+  // School type, and boarding only where a source says so (no boarding profile is not proof of a day school).
+  const kind = (r: RankingRow) => [schoolTypeLabel[r.schoolType as SchoolType] ?? r.schoolType,
+    r.boardingType ? boardingTypeLabel[r.boardingType as BoardingType] ?? 'Boarding' : null].filter(Boolean).join(' · ');
   return (
     <>
       <ol className="space-y-3 md:hidden">
@@ -262,6 +275,7 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
               </p>
               <Link to={details(r)} className="mt-0.5 block font-semibold text-ink hover:text-brand-700">{r.schoolName}</Link>
               <p className="text-xs text-slate-500">{[place(r), r.stateName].filter((x) => x !== '–').join(', ')} · {boardName(r.board)}</p>
+              <p className="text-xs text-slate-500">{kind(r)} · {source}</p>
               {scored && <p className="text-xs text-slate-500">Score: {scoreText(r)}</p>}
               <p className="mt-1.5 flex flex-wrap items-center gap-3">
                 <Link to={details(r)} className="link text-xs">View School Details</Link>
@@ -280,6 +294,8 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
               <th scope="col" className="px-4 py-3">{green ? 'District' : 'City'}</th>
               <th scope="col" className="px-4 py-3">State</th>
               <th scope="col" className="px-4 py-3">Board</th>
+              <th scope="col" className="px-4 py-3">Type</th>
+              <th scope="col" className="px-4 py-3">Source</th>
               {scored && <th scope="col" className="px-4 py-3 text-right">Score</th>}
               <th scope="col" className="px-4 py-3"><span className="sr-only">Details</span></th>
             </tr>
@@ -297,6 +313,8 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
                 <td className="px-4 py-3 text-slate-700">{place(r)}</td>
                 <td className="px-4 py-3 text-slate-700">{r.stateName}</td>
                 <td className="px-4 py-3 text-slate-700">{boardName(r.board)}</td>
+                <td className="px-4 py-3 text-slate-700">{kind(r)}</td>
+                <td className="whitespace-nowrap px-4 py-3 text-slate-500">{source}</td>
                 {scored && <td className="px-4 py-3 text-right tabular-nums text-slate-700">{scoreText(r)}</td>}
                 <td className="whitespace-nowrap px-4 py-3 text-right">
                   <Link to={details(r)} className="link mr-3">View School Details</Link>
@@ -330,6 +348,104 @@ function FilteredListNote({ list, what }: { list: RankingEdition; what: string }
   );
 }
 
+const SCHOOL_TYPES: [string, string][] = [['GOVERNMENT', 'Government'], ['PRIVATE', 'Private'], ['AIDED', 'Government-aided'], ['INTERNATIONAL', 'International']];
+const RESIDENCES: [string, string][] = [['BOARDING', 'Boarding'], ['DAY_CUM_BOARDING', 'Day-cum-boarding'], ['DAY', 'No boarding listed']];
+const GENDERS: [string, string][] = [['BOYS', 'Boys'], ['GIRLS', 'Girls'], ['CO_ED', 'Co-educational']];
+const SORTS: [string, string][] = [['NAME', 'School name'], ['STATE', 'State'], ['CITY', 'City']];
+
+/** The search in the page header: picks the filters of the table below and scrolls to it. Only places, boards and types in the list are offered. */
+function RankingHero({ places, sp, set }: { places: RankingPlaces | null; sp: URLSearchParams; set: Set }) {
+  const [state, setState] = useState(sp.get('state') ?? '');
+  const cities = (places?.cities ?? []).filter((c) => c.stateCode === state);
+  const explore = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const v = (k: string) => String(f.get(k) ?? '').trim() || undefined;
+    set({ q: v('q'), state: v('state'), city: v('city'), board: v('board'), stype: v('stype'), top: 'all' });
+    document.getElementById('ranking-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const field = 'w-full rounded-xl border-0 bg-white px-3 py-2.5 text-sm text-ink shadow-sm focus:ring-2 focus:ring-accent-300';
+  return (
+    <form onSubmit={explore} role="search" aria-label="Search the rankings" className="grid gap-2 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20 backdrop-blur sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr_auto]">
+      <label className="min-w-0"><span className="sr-only">School name</span>
+        <input name="q" className={field} placeholder="Search schools" maxLength={100} defaultValue={sp.get('q') ?? ''} /></label>
+      <label className="min-w-0"><span className="sr-only">State</span>
+        <select name="state" className={field} value={state} onChange={(e) => setState(e.target.value)}>
+          <option value="">All states</option>
+          {(places?.states ?? []).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
+        </select></label>
+      <label className="min-w-0"><span className="sr-only">City</span>
+        <select name="city" className={field} disabled={cities.length === 0} defaultValue={sp.get('city') ?? ''} key={state}>
+          <option value="">{state ? 'All cities' : 'Choose a state first'}</option>
+          {cities.map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+        </select></label>
+      <label className="min-w-0"><span className="sr-only">Board</span>
+        <select name="board" className={field} defaultValue={sp.get('board') ?? ''}>
+          <option value="">All boards</option>
+          {(places?.boards ?? []).map((b) => <option key={b.code} value={b.code}>{boardName(b.code)}</option>)}
+        </select></label>
+      <label className="min-w-0"><span className="sr-only">School type</span>
+        <select name="stype" className={field} defaultValue={sp.get('stype') ?? ''}>
+          <option value="">All school types</option>
+          {SCHOOL_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+        </select></label>
+      <button type="submit" className="btn-primary whitespace-nowrap rounded-xl bg-accent-400 px-5 text-ink hover:bg-accent-300">
+        <Icon name="search" className="h-4 w-4" /> Explore rankings
+      </button>
+    </form>
+  );
+}
+
+/**
+ * Doors into each kind of ranking. The number is how many schools hold a rank in the published list shown on this page;
+ * where there is none, a compiled A-to-Z list or a plain "no published ranking yet" says so instead.
+ */
+export function rankingCategories(places: RankingPlaces | null, lists: SchoolListSummary[] | null, source: string | null) {
+  const sum = (xs: { code: string; entries: number }[] | undefined, codes?: string[]) =>
+    (xs ?? []).filter((x) => !codes || codes.includes(x.code)).reduce((a, x) => a + x.entries, 0);
+  const listed = (kind: SchoolListSummary['kind'], ...codes: (string | null)[]) =>
+    (lists ?? []).filter((l) => l.kind === kind && (codes.length === 0 || codes.includes(l.code))).reduce((a, l) => a + l.entries, 0);
+  const card = (to: string, title: string, icon: IconName, ranked: number, compiled = 0) => ({
+    to, title, icon,
+    note: ranked > 0 && source ? `${ranked} ${ranked === 1 ? 'school' : 'schools'} ranked in ${source}`
+      : compiled > 0 ? `${compiled} listed A to Z (not ranked)` : 'No published ranking yet',
+  });
+  return [
+    { to: '/rankings?top=100', title: 'India’s Top 100 Schools', icon: 'trophy' as IconName, note: source ? `National ranks 1 to 100, ${source}` : 'No published ranking yet' },
+    card('/rankings/government-boarding?tab=boarding', 'India’s Top Boarding Schools', 'home', sum(places?.boarding), listed('BOARDING')),
+    card('/rankings/government-boarding', 'India’s Top Government Schools', 'shield', sum(places?.government), listed('GOVERNMENT')),
+    card('/rankings/boards?board=CBSE', 'India’s Top CBSE Schools', 'graduation', sum(places?.boards, ['CBSE']), listed('BOARD', 'CBSE')),
+    card('/rankings/boards?board=CISCE', 'India’s Top ICSE Schools', 'graduation', sum(places?.boards, ['CISCE']), listed('BOARD', 'CISCE')),
+    card('/rankings/boards?board=IB', 'India’s Top International Schools', 'globe', sum(places?.boards, ['IB', 'CAMBRIDGE']), listed('BOARD', 'IB', 'CAMBRIDGE')),
+    card('/rankings/government-boarding?tab=boarding&group=BOYS', 'India’s Top Boys Boarding Schools', 'users', sum(places?.boarding, ['BOYS'])),
+    card('/rankings/government-boarding?tab=boarding&group=GIRLS', 'India’s Top Girls Boarding Schools', 'users', sum(places?.boarding, ['GIRLS'])),
+    card('/rankings/government-boarding?tab=boarding&group=CO_ED', 'India’s Top Co-educational Boarding Schools', 'users', sum(places?.boarding, ['CO_ED'])),
+  ];
+}
+
+function RankingCategories({ cards }: { cards: ReturnType<typeof rankingCategories> }) {
+  return (
+    <section aria-labelledby="rk-cats">
+      <h2 id="rk-cats" className="font-display text-xl font-bold text-ink">Ranking categories</h2>
+      <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {cards.map((c) => (
+          <li key={c.to}>
+            <Link to={c.to} className="card group flex h-full items-start gap-3 p-4 transition hover:-translate-y-0.5 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand-500">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700 transition group-hover:bg-brand-600 group-hover:text-white">
+                <Icon name={c.icon} className="h-5 w-5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block font-semibold text-ink">{c.title}</span>
+                <span className="mt-0.5 block text-xs text-slate-500">{c.note}</span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 /** India's top schools: one page for the national table, with Top 10, 20 and 100 as tabs. */
 export function TopSchoolsPage() {
   const { editions, pick, sp, set } = useLists(isNational);
@@ -339,24 +455,49 @@ export function TopSchoolsPage() {
   const q = sp.get('q') ?? undefined;
   const green = editions.data?.find((e) => e.ratingBased);
   const schoolLists = useApi(() => schoolListService.lists(), []);
+  const places = useApi(() => rankingService.places(list!.id), [list?.id], !!list);
   const compiled = listFor(schoolLists.data, 'TOP');
+  const opt = (k: string) => sp.get(k) || undefined;
+  const filters = { q, maxRank, state: opt('state'), city: opt('city'), board: opt('board'), schoolType: opt('stype'), residence: opt('res'), gender: opt('gender'), sort: opt('sort') };
+  const narrowed = !!(filters.state || filters.city || filters.board || filters.schoolType || filters.residence || filters.gender);
+  const cities = (places.data?.cities ?? []).filter((c) => c.stateCode === filters.state);
   const tie = 'Publishers can tie schools, and schools we cannot match to our directory are left out, so ranks can repeat or skip. We never fill the gaps.';
   return (
-    <RankingShell title="India’s Top Schools" subtitle="National school rankings, as published. Every rank is the publisher’s own."
-      description="India’s top schools in published rankings, with each publisher’s own rank and year.">
+    <RankingShell title="India’s Top Schools" heading="Discover India’s Best Schools"
+      subtitle="Explore school rankings across India by state, city, education board, school type and residential facilities. Every rank is the publisher’s own."
+      description="India’s top schools in published rankings, with each publisher’s own rank and year. Filter by state, city, board, school type and boarding."
+      hero={<RankingHero places={places.data} sp={sp} set={set} />}>
       <AsyncContent state={editions} isEmpty={() => !list && !green && !compiled} empty={<NoRankings />}>
         {() => (
           <>
+            <RankingCategories cards={rankingCategories(places.data, schoolLists.data, list ? `${list.publisherCode} ${list.year}` : null)} />
             {list && (
-              <>
+              <div id="ranking-table" className="scroll-mt-24 space-y-5">
                 <FilterCard>
                   <Segmented label="How many schools" value={top} options={TOPS} onChange={(v) => set({ top: v === '20' ? undefined : v })} />
                   <div className={FILTER_GRID}><SearchBox value={q ?? ''} set={set} /><ListPicker pick={pick} set={set} /></div>
+                  <div className={FILTER_GRID}>
+                    <Select label="State" value={filters.state ?? ''} empty="All states" onChange={(v) => set({ state: v, city: undefined })}
+                      options={(places.data?.states ?? []).map((s) => [s.code, s.name])} />
+                    <Select label="City" value={filters.city ?? ''} empty={filters.state ? 'All cities' : 'Choose a state first'} disabled={cities.length === 0}
+                      onChange={(v) => set({ city: v })} options={cities.map((c) => [c.name, c.name])} />
+                    <Select label="Board" value={filters.board ?? ''} empty="All boards" onChange={(v) => set({ board: v })}
+                      options={(places.data?.boards ?? []).map((b) => [b.code, boardName(b.code)])} />
+                    <Select label="Government / private" value={filters.schoolType ?? ''} empty="All" onChange={(v) => set({ stype: v })} options={SCHOOL_TYPES} />
+                    <Select label="Boarding / day" value={filters.residence ?? ''} empty="All" onChange={(v) => set({ res: v })} options={RESIDENCES} />
+                    <Select label="Boys / girls / co-ed" value={filters.gender ?? ''} empty="All" onChange={(v) => set({ gender: v })} options={GENDERS} />
+                    <Select label="Sort by" value={filters.sort ?? ''} empty="Rank" onChange={(v) => set({ sort: v })} options={SORTS} />
+                  </div>
                 </FilterCard>
-                <RankedSchools list={list} filters={{ q, maxRank }} ranks={['national']}
+                {narrowed && (
+                  <p role="status" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
+                    Filters narrow {list.publisherCode}’s national list; each school keeps its national rank. This is not a separate ranking of these schools.
+                  </p>
+                )}
+                <RankedSchools list={list} filters={filters} ranks={['national']}
                   summary={(n) => (maxRank ? `${n} ${n === 1 ? 'school holds' : 'schools hold'} a national rank from 1 to ${maxRank}. ${tie}` : `${n} schools. ${tie}`)} />
-                <SourceNote list={list} />
-              </>
+                <SourceNote list={list} filtered={narrowed} />
+              </div>
             )}
             {compiled && <SchoolListSection listKey={compiled.key} title={compiled.title} />}
             {green && <GreenSection list={green} />}
@@ -426,6 +567,11 @@ export function RankingStatesPage() {
   const gurugram = city?.name === 'Gurugram' || sp.get('city') === 'Gurugram';
   const chosenList = stateLists.find((l) => l.key === sp.get('slist')) ?? stateLists.find((l) => (gurugram ? l.kind === 'CITY' : l.kind === 'STATE')) ?? stateLists[0];
   const stateLink = state ? `${here}?state=${state.code}` : here;
+  const shown = PLACE_TOPS.some(([v]) => v === sp.get('top')) ? Number(sp.get('top')) : undefined;
+  const opt = (k: string) => sp.get(k) || undefined;
+  const extra = { board: opt('board'), schoolType: opt('stype'), residence: opt('res') };
+  const best = useApi(() => rankingService.bestPlaces(), []);
+  const bestHere = best.data?.find((b) => b.slug === (city ? slugOf(city.name) : state ? slugOf(state.name) : ''));
   return (
     <RankingShell title={name ? `School rankings in ${name}` : 'State & City Rankings'}
       subtitle="Published rankings and school lists by place. State, city and national ranks are shown separately."
@@ -450,12 +596,25 @@ export function RankingStatesPage() {
                 {list && <ListPicker pick={pick} set={set} />}
                 {list && <SearchBox value={q ?? ''} set={set} />}
               </div>
+              {list && state && (state.ranked ?? 0) > 0 && (
+                <div className={FILTER_GRID}>
+                  <Select label="Show" value={shown ? String(shown) : ''} empty="All, page by page" onChange={(v) => set({ top: v })} options={PLACE_TOPS} />
+                  <Select label="Board" value={extra.board ?? ''} empty="All boards" onChange={(v) => set({ board: v })}
+                    options={(p?.boards ?? []).map((b) => [b.code, boardName(b.code)])} />
+                  <Select label="Government / private" value={extra.schoolType ?? ''} empty="All" onChange={(v) => set({ stype: v })} options={SCHOOL_TYPES} />
+                  <Select label="Boarding / day" value={extra.residence ?? ''} empty="All" onChange={(v) => set({ res: v })} options={RESIDENCES} />
+                </div>
+              )}
             </FilterCard>
+            {bestHere && bestHere.ranked + bestHere.listed >= 3 && (
+              <p className="text-sm"><Link to={`/rankings/best-schools-in-${bestHere.slug}`} className="link font-semibold">Best schools in {bestHere.name}: overview and FAQ →</Link></p>
+            )}
             {state || q ? (
               <>
                 {list && (q || (state?.ranked ?? 0) > 0) && (
                   <>
-                    <RankedSchools list={list} filters={{ state: state?.code, city: city?.name, district: district?.slug, q }} ranks={['state', 'city', 'national']} />
+                    <RankedSchools list={list} filters={{ state: state?.code, city: city?.name, district: district?.slug, q, ...extra }}
+                      ranks={['state', 'city', 'national']} limit={shown} />
                     <SourceNote list={list} filtered={!!(state || q)} />
                   </>
                 )}
@@ -469,9 +628,126 @@ export function RankingStatesPage() {
                 )}
               </>
             ) : <PlacePicker states={choices} cities={p?.cities ?? []} />}
+            {!state && !q && <BestPlacesIndex places={best.data ?? []} />}
           </>
         )}
       </AsyncContent>
+    </RankingShell>
+  );
+}
+
+const PLACE_TOPS: [string, string][] = [['10', 'Top 10'], ['20', 'Top 20'], ['50', 'Top 50'], ['100', 'Top 100']];
+
+/** Same rule as the backend's SlugUtil for plain names: "New Delhi" → "new-delhi". */
+export const slugOf = (name: string) => name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/** Links to the "best schools in" pages that have enough behind them to be worth reading. */
+function BestPlacesIndex({ places }: { places: BestPlaceSummary[] }) {
+  const useful = places.filter((p) => p.ranked + p.listed >= 3);
+  if (useful.length === 0) return null;
+  return (
+    <section aria-labelledby="best-in" className="space-y-3">
+      <h2 id="best-in" className="section-title">Best schools by state and city</h2>
+      <ul className="flex flex-wrap gap-2">
+        {useful.map((p) => (
+          <li key={p.slug}>
+            <Link to={`/rankings/best-schools-in-${p.slug}`} className="chip border border-slate-200 bg-white px-3 py-1.5 text-sm text-ink hover:border-brand-300">
+              Best schools in {p.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/**
+ * "Best schools in {state or city}": what is ranked there in published rankings, what is named in the compiled A-to-Z
+ * lists, a FAQ answered from that data, and nearby places. Every number on the page comes from the records shown.
+ */
+export function BestPlacePage() {
+  const { page = '' } = useParams();
+  const slug = page.startsWith('best-schools-in-') ? page.slice('best-schools-in-'.length) : '';
+  const place = useApi(() => rankingService.bestPlace(slug), [slug], !!slug);
+  const editions = useApi(() => rankingService.editions(), []);
+  const lists = useApi(() => schoolListService.lists(), []);
+  const p = place.data;
+  const national = (editions.data ?? []).find(isNational);
+  const where = p ? { state: p.stateCode, city: p.city ?? undefined } : {};
+  const top = useApi(() => rankingService.table({ edition: national!.id, ...where, page: 0, size: 3 }), [national?.id, p?.slug], !!national && !!p && p.ranked > 0);
+  if (!slug || place.error) return <NotFoundPage />;
+  if (!p) return <Spinner label="Loading…" />;
+  const year = p.rankingSource ? ` ${p.rankingSource.split(' ').pop()}` : '';
+  // A city page shows its own city list where one exists, else its state's list narrowed to the city.
+  const ownCity = p.kind === 'CITY' ? (lists.data ?? []).find((l) => l.kind === 'CITY' && l.title.toLowerCase().includes((p.city ?? '').toLowerCase())) : undefined;
+  const placeLists = ownCity ? [{ list: ownCity, place: undefined }]
+    : (lists.data ?? []).filter((l) => l.kind === 'STATE' && l.code === p.stateCode).map((l) => ({ list: l, place: p.kind === 'CITY' ? p.city ?? undefined : undefined }));
+  const names = (top.data?.content ?? []).map((r) => `${r.schoolName} (${rankText(p.kind === 'CITY' ? r.cityRank ?? r.nationalRank : r.stateRank ?? r.nationalRank)})`);
+  const directory = p.kind === 'CITY' ? `/states/${p.stateSlug}/city/${p.slug}` : `/states/${p.stateSlug}`;
+  const faqs: Faq[] = [
+    ...(names.length ? [{ question: `Which are the best schools in ${p.name}?`, answer: `In ${p.rankingSource}, the highest-placed schools in ${p.name} are ${names.join(', ')}. These are the publisher’s own ranks; the full list is below.` }] : []),
+    { question: `How are schools in ${p.name} ranked here?`, answer: p.ranked > 0
+      ? `SchoolDhundo does not rank schools itself on this page. It shows ranks from published rankings (${p.rankingSource}), checked against the publisher’s list, with each publisher’s own rank and year.`
+      : `No published ranking that we have checked covers ${p.name} yet, so no school here has a rank. The schools shown come from SchoolDhundo’s A-to-Z lists, which are not rankings.` },
+    { question: `Is there an official government ranking of schools in ${p.name}?`, answer: 'No. Government data such as UDISE+ and PGI-D describes schools and states but does not rank individual schools. Rankings shown here come from independent publishers.' },
+    { question: `How many schools are listed in ${p.name}?`, answer: `SchoolDhundo’s directory has ${p.schools.toLocaleString('en-IN')} schools in ${p.name}, each linked to its official source. Most are not in any published ranking.` },
+  ];
+  return (
+    <RankingShell title={`Best Schools in ${p.name}${year}`} heading={`Best Schools in ${p.name}${year}`}
+      subtitle={p.kind === 'CITY' ? `${p.name}, ${p.stateName}. Published school rankings and school lists, with every rank as its publisher printed it.`
+        : `${p.name}. Published school rankings and school lists, with every rank as its publisher printed it.`}
+      description={`Best schools in ${p.name}: published rankings and school lists, with sources.`}
+      crumbs={[{ to: '/rankings/states', label: 'State & City' }, { to: `/rankings/best-schools-in-${p.slug}`, label: p.name }]}>
+      <section className="card grid gap-px overflow-hidden bg-slate-100 p-0 sm:grid-cols-3" aria-label="At a glance">
+        {[
+          [p.ranked.toLocaleString('en-IN'), p.rankingSource ? `ranked in ${p.rankingSource}` : 'ranked in published rankings'],
+          [p.listed.toLocaleString('en-IN'), 'in SchoolDhundo’s A-to-Z lists (not ranks)'],
+          [p.schools.toLocaleString('en-IN'), 'schools in the directory'],
+        ].map(([n, label]) => (
+          <div key={label} className="bg-white p-4"><p className="font-display text-2xl font-bold text-ink">{n}</p><p className="text-sm text-slate-600">{label}</p></div>
+        ))}
+      </section>
+      <p className="text-slate-700">
+        {p.ranked > 0 ? `${p.ranked} ${p.ranked === 1 ? 'school' : 'schools'} in ${p.name} ${p.ranked === 1 ? 'holds' : 'hold'} a rank in ${p.rankingSource}. ` : `No published ranking we have checked covers ${p.name} yet. `}
+        {p.listed > 0 && `${p.listed} ${p.listed === 1 ? 'school is' : 'schools are'} named in SchoolDhundo’s compiled A-to-Z lists, which help you find well-known schools but are not rankings. `}
+        Confirm fees, admissions and eligibility with each school before you decide.
+        {p.checkedOn && ` Ranks last checked ${formatDate(p.checkedOn)}.`}
+      </p>
+      {national && p.ranked > 0 && (
+        <>
+          <RankedSchools list={national} filters={where} ranks={p.kind === 'CITY' ? ['city', 'state', 'national'] : ['state', 'national']} />
+          <SourceNote list={national} filtered />
+        </>
+      )}
+      {placeLists.map(({ list: l, place: town }) => <SchoolListSection key={l.key} listKey={l.key} place={town} title={town ? `${l.title}: ${town}` : l.title} />)}
+      <section className="card p-5 text-sm text-slate-700" aria-labelledby="best-method">
+        <h2 id="best-method" className="font-semibold text-ink">How this page is put together</h2>
+        <p className="mt-1">Ranks come only from published rankings we have checked against the publisher’s list, and each publisher’s rank is shown as printed; we never combine them into an overall rank. A-to-Z lists are not rankings. <Link to="/rankings/methodology" className="link">Ranking methodology</Link></p>
+      </section>
+      <section aria-labelledby="best-faq">
+        <h2 id="best-faq" className="font-display text-xl font-bold text-ink">Questions about schools in {p.name}</h2>
+        <div className="mt-3 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
+          {faqs.map((f) => (
+            <details key={f.question} className="group p-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink">
+                {f.question}<Icon name="chevronDown" className="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180" />
+              </summary>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700">{f.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <section aria-labelledby="best-related" className="space-y-2">
+        <h2 id="best-related" className="section-title">Related places</h2>
+        <ul className="flex flex-wrap gap-2">
+          <li><Link to={directory} className="chip border border-slate-200 bg-white px-3 py-1.5 text-sm text-ink hover:border-brand-300">All {p.schools.toLocaleString('en-IN')} schools in {p.name}</Link></li>
+          {p.related.filter((r) => r.ranked + r.listed >= 3).map((r) => (
+            <li key={r.slug}>
+              <Link to={`/rankings/best-schools-in-${r.slug}`} className="chip border border-slate-200 bg-white px-3 py-1.5 text-sm text-ink hover:border-brand-300">Best schools in {r.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </RankingShell>
   );
 }
@@ -579,7 +855,39 @@ export function GovernmentBoardingPage() {
       {!loaded ? <Spinner label="Loading rankings…" /> : tabs.length === 0 ? <NoRankings /> : (
         <Tabs tabs={tabs} active={active.id} label="School group" onChange={(id) => set({ tab: id, group: undefined, q: undefined })} />
       )}
+      <GovernmentNetworks />
     </RankingShell>
+  );
+}
+
+/**
+ * The government school networks, each kept separate: residential networks first, then Kendriya Vidyalayas, labelled as
+ * day schools. Counts are schools in the directory, not ranks; each card links to the network's own official site.
+ */
+function GovernmentNetworks() {
+  const entries = Object.entries(NETWORK_PAGES);
+  const counts = useApi(() => Promise.all(entries.map(([, c]) => schoolService.search({ network: c.network, size: 1 }).then((r) => r.totalElements))), []);
+  return (
+    <section aria-labelledby="gov-networks" className="space-y-3">
+      <h2 id="gov-networks" className="font-display text-xl font-bold text-ink">Government and residential school networks</h2>
+      <p className="text-sm text-slate-600">Directories of each network, not rankings. Admission rules, fees and dates come from each network’s official notices.</p>
+      <ul className="grid gap-3 md:grid-cols-2">
+        {entries.map(([slug, c], i) => (
+          <li key={slug} className="card flex flex-col gap-2 p-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="font-semibold text-ink">{networkLabel[c.network]}s</h3>
+              <span className={`chip ${c.residential ? 'bg-emerald-50 text-emerald-800' : 'bg-sky-50 text-sky-800'}`}>{c.residential ? 'Residential' : 'Day schools'}</span>
+              {counts.data && <span className="text-xs text-slate-500">{counts.data[i].toLocaleString('en-IN')} in our directory</span>}
+            </div>
+            <p className="text-sm text-slate-600">{c.intro}</p>
+            <p className="mt-auto flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              <Link to={`/network/${slug}`} className="link font-semibold">Browse {networkLabel[c.network]}s</Link>
+              <a href={c.officialUrl} target="_blank" rel="noopener noreferrer" className="link">{c.officialName} ↗</a>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

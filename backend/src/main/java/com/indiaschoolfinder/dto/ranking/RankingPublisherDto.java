@@ -12,5 +12,8 @@ public record RankingPublisherDto(
         String methodologyUrl,
         String description,
         boolean active,
-        long verifiedEntries) {
+        long verifiedEntries,
+        /* NOT_REQUESTED, REQUESTED, GRANTED or NOT_NEEDED, and when it last changed */
+        String permissionStatus,
+        java.time.LocalDate permissionUpdatedOn) {
 }

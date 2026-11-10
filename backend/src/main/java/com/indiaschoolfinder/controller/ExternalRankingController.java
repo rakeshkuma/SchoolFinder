@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Size;
 import com.indiaschoolfinder.dto.ranking.RankingCatalogDtos;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,9 +30,25 @@ public class ExternalRankingController {
 
     private final com.indiaschoolfinder.service.RankingCatalogService catalog;
 
-    public ExternalRankingController(ExternalRankingService service, com.indiaschoolfinder.service.RankingCatalogService catalog) {
+    private final com.indiaschoolfinder.service.BestPlacesService bestPlaces;
+
+    public ExternalRankingController(ExternalRankingService service, com.indiaschoolfinder.service.RankingCatalogService catalog,
+                                     com.indiaschoolfinder.service.BestPlacesService bestPlaces) {
         this.service = service;
         this.catalog = catalog;
+        this.bestPlaces = bestPlaces;
+    }
+
+    @Operation(summary = "States and cities with ranked or listed schools, for the \"best schools in\" pages")
+    @GetMapping("/best")
+    public List<com.indiaschoolfinder.service.BestPlacesService.Related> bestPlaces() {
+        return bestPlaces.all();
+    }
+
+    @Operation(summary = "One state or city: schools ranked and listed there, the latest ranking, and related places")
+    @GetMapping("/best/{slug}")
+    public com.indiaschoolfinder.service.BestPlacesService.Place bestPlace(@PathVariable @Pattern(regexp = "[a-z0-9-]{1,80}") String slug) {
+        return bestPlaces.place(slug);
     }
 
     @Operation(summary = "Published lists with entries to show, with their sources and evaluation parameters")
@@ -61,10 +78,11 @@ public class ExternalRankingController {
                                                       @RequestParam(required = false) @Min(1) Integer maxRank,
                                                       @RequestParam(required = false) @Pattern(regexp = "CENTRAL|STATE|KV|JNV|SAINIK|OTHER") String government,
                                                       @RequestParam(required = false) @Pattern(regexp = "ANY|BOYS|GIRLS|CO_ED|DAY_CUM_BOARDING|OTHER") String boarding,
+                                                      @RequestParam(required = false) @Pattern(regexp = "RANK|NAME|STATE|CITY") String sort,
                                                       @RequestParam(defaultValue = "0") @Min(0) int page,
                                                       @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size) {
         return catalog.table(new RankingCatalogDtos.Query(edition, state, district, city, board, schoolType, gender, residence, rating,
-                q == null || q.isBlank() ? null : q, maxRank, government, boarding), page, size);
+                q == null || q.isBlank() ? null : q, maxRank, government, boarding), page, size, sort);
     }
 
     @Operation(summary = "States, cities, districts, boards and school groups that have entries in a published list")

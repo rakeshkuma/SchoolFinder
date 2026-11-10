@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { track } from '../utils/analytics';
+import { NETWORK_PAGES } from '../content/networks';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { GoogleButton } from '../components/common/GoogleButton';
@@ -16,7 +17,7 @@ import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, savedSchools, useLocalList, type SchoolRef } from '../hooks/usePersonal';
 import { locationService, rankingService, referenceService, schoolService, type RankingPlaces } from '../services/publicApi';
-import type { IndianState, SchoolNetwork, SchoolSearchParams, SchoolStage, SchoolType } from '../types/api';
+import type { IndianState, SchoolSearchParams, SchoolStage, SchoolType } from '../types/api';
 import { networkLabel, placeLine, stageLabel } from '../utils/format';
 import { NotFoundPage } from './InfoPages';
 
@@ -216,28 +217,15 @@ export function StatePage() {
   );
 }
 
-const NETWORK_PAGES: Record<string, { network: SchoolNetwork; intro: string; officialUrl: string; officialName: string }> = {
-  'kendriya-vidyalaya': {
-    network: 'KENDRIYA_VIDYALAYA',
-    intro: 'Central government schools run by Kendriya Vidyalaya Sangathan under the Ministry of Education, affiliated to CBSE.',
-    officialUrl: 'https://kvsangathan.nic.in/', officialName: 'Kendriya Vidyalaya Sangathan',
-  },
-  'jawahar-navodaya-vidyalaya': {
-    network: 'JAWAHAR_NAVODAYA_VIDYALAYA',
-    intro: 'Residential central government schools run by Navodaya Vidyalaya Samiti; admission to Class VI is through the JNV Selection Test.',
-    officialUrl: 'https://navodaya.gov.in/', officialName: 'Navodaya Vidyalaya Samiti',
-  },
-};
-
 export function NetworkPage() {
   const { network = '' } = useParams();
   const config = NETWORK_PAGES[network];
-  const label = config ? `${networkLabel[config.network]} schools` : undefined;
+  const label = config ? `${networkLabel[config.network]}s` : undefined;
   useDocumentTitle(label);
   if (!config) return <NotFoundPage />;
   return (
     <>
-      <PageHeader eyebrow="Central government" title={`${networkLabel[config.network]} schools`}
+      <PageHeader eyebrow={config.residential ? 'Government residential schools' : 'Central government'} title={label as string}
         subtitle={<>{config.intro} Admission notices are published by{' '}
           <a href={config.officialUrl} target="_blank" rel="noopener noreferrer" className="text-accent-300 underline-offset-2 hover:underline">{config.officialName} ↗</a>.</>} />
       <div className="container-page py-8"><SchoolDirectory key={network} fixed={{ network: config.network }} /></div>

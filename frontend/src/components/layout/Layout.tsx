@@ -165,7 +165,7 @@ export function Layout() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:p-2">
         Skip to content
       </a>
-      <header className={`sticky top-0 z-40 border-b bg-white/90 backdrop-blur-lg transition-shadow ${scrolled ? 'border-slate-200 shadow-card' : 'border-transparent'}`}>
+      <header data-print="hide" className={`sticky top-0 z-40 border-b bg-white/90 backdrop-blur-lg transition-shadow ${scrolled ? 'border-slate-200 shadow-card' : 'border-transparent'}`}>
         {/* Wider than the page content on very wide screens, so the full navigation and every action fit on one row. */}
         <div className="container-page flex h-[68px] items-center justify-between gap-3 xl:gap-4 2xl:max-w-[1440px]">
           <Link to="/" aria-label="SchoolDhundo home" className="shrink-0 rounded-lg">
@@ -222,13 +222,13 @@ export function Layout() {
         </Suspense>
       </main>
 
-      <CompareBar />
+      <div data-print="hide"><CompareBar /></div>
 
-      <BackToTop />
+      <div data-print="hide"><BackToTop /></div>
 
-      <ConsentBanner />
+      <div data-print="hide"><ConsentBanner /></div>
 
-      <footer className="mt-20 bg-ink text-slate-300">
+      <footer data-print="hide" className="mt-20 bg-ink text-slate-300">
         <div className="container-page grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-4">
           {FOOTER.map((c) => <FooterColumn key={c.title} title={c.title} links={c.links} />)}
           <div>

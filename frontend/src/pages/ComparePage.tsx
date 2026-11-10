@@ -143,7 +143,8 @@ export function ComparePage() {
   const feeFor = (id: number) => fees.data?.schools.find((s) => s.schoolId === id)?.fee ?? null;
   const className = classes.data?.find((c) => c.code === classCode)?.name ?? classCode;
   const classRange = (s: SchoolDetail) => (s.classesOffered.length
-    ? `${s.classesOffered[0].name} – ${s.classesOffered[s.classesOffered.length - 1].name}` : NOT_AVAILABLE);
+    ? `${s.classesOffered[0].name} – ${s.classesOffered[s.classesOffered.length - 1].name}`
+    : s.affiliatedUpTo ? `Up to ${s.affiliatedUpTo} (lowest class not published)` : NOT_AVAILABLE);
   const plain = (render: (s: SchoolDetail) => string): Pick<Row, 'render' | 'text'> => ({ render, text: render });
   const rankingDetails = (extras.data ?? []).map((e) => e.ranking);
   const lists = rankingLists(rankingDetails);
@@ -263,6 +264,9 @@ export function ComparePage() {
         {hydrated && items.length > 0 && (
           <div className="flex flex-wrap items-center gap-2">
             <ShareLinkButtons url={shareUrl} text={shareText} />
+            <button type="button" className="btn-secondary rounded-full px-4 py-2 text-sm" onClick={() => window.print()}>
+              <Icon name="list" className="h-4 w-4" /> Print comparison
+            </button>
             <button type="button" className="btn-secondary rounded-full px-4 py-2 text-sm" onClick={locate} disabled={locating}>
               <Icon name="pin" className="h-4 w-4" /> {locating ? 'Finding you…' : home ? 'Update my location' : 'Distance from my location'}
             </button>

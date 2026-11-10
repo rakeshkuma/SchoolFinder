@@ -42,7 +42,9 @@ public class SitemapController {
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
-            "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion");
+            "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion",
+            "/network/jawahar-navodaya-vidyalaya", "/network/sainik-school", "/network/eklavya-model-residential-school",
+            "/network/rashtriya-military-school", "/network/kendriya-vidyalaya");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");
     private static final CacheControl CACHE = CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic();
 
@@ -53,10 +55,13 @@ public class SitemapController {
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final RankingCatalogService rankingCatalog;
     private final com.indiaschoolfinder.repository.BlogPostRepository blogPosts;
+    private final com.indiaschoolfinder.service.BestPlacesService bestPlaces;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
-                             RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts) {
+                             RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts,
+                             com.indiaschoolfinder.service.BestPlacesService bestPlaces) {
+        this.bestPlaces = bestPlaces;
         this.blogPosts = blogPosts;
         this.practiceSetRepository = practiceSetRepository;
         this.rankingCatalog = rankingCatalog;
@@ -116,6 +121,9 @@ public class SitemapController {
         if (sections.rankings()) url(xml, base + "/rankings/states", null);
         if (sections.boards()) url(xml, base + "/rankings/boards", null);
         if (sections.government() || sections.boarding()) url(xml, base + "/rankings/government-boarding", null);
+        // "Best schools in" pages only where enough schools are ranked or listed (the same rule as their noindex).
+        bestPlaces.all().stream().filter(r -> r.ranked() + r.listed() >= com.indiaschoolfinder.service.BestPlacesService.MIN_TO_INDEX)
+                .forEach(r -> url(xml, base + "/rankings/best-schools-in-" + r.slug(), null));
         // The blog appears once it has something to read; drafts never do.
         var posts = blogPosts.findByPublishedAtIsNotNullOrderByPublishedAtDesc();
         if (!posts.isEmpty()) url(xml, base + "/blog", null);

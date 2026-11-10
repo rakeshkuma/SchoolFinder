@@ -30,6 +30,39 @@ export const RANKING_ITEMS: NavItem[] = [
   { to: '/compare', label: 'Compare Schools', icon: 'scale' },
 ];
 
+/**
+ * The Rankings dropdown: ten destinations in three groups. Board and boarding items open filtered views of the pages
+ * above (the tabs under every ranking page stay the five pages themselves). Each item opens a page that says plainly
+ * when no published ranking exists yet, rather than showing an invented one.
+ */
+export const RANKING_MENU: { title: string; items: NavItem[] }[] = [
+  {
+    title: 'Rankings',
+    items: [
+      { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy', hint: 'Top 10, 20 and 100 in published rankings' },
+      { to: '/rankings/states', label: 'State & City Rankings', icon: 'map', hint: 'Every state, city and district' },
+      { to: '/rankings/boards', label: 'Board-wise Rankings', icon: 'book', hint: 'CBSE, ICSE, IB, Cambridge, state boards' },
+      { to: '/compare', label: 'Compare Schools', icon: 'scale', hint: 'Up to four, side by side' },
+    ],
+  },
+  {
+    title: 'Boarding & residential',
+    items: [
+      { to: '/rankings/government-boarding?tab=boarding', label: 'Boarding Schools', icon: 'home', hint: 'Ranked and listed boarding schools' },
+      { to: '/rankings/government-boarding', label: 'Government & Residential Schools', icon: 'shield', hint: 'JNV, Sainik, EMRS, KV and more' },
+      { to: '/boarding/boys', label: 'Boys & Girls Boarding Schools', icon: 'users', hint: 'Boys, girls and co-ed pages' },
+    ],
+  },
+  {
+    title: 'By board',
+    items: [
+      { to: '/rankings/boards?board=CBSE', label: 'Top CBSE Schools', icon: 'graduation' },
+      { to: '/rankings/boards?board=CISCE', label: 'Top ICSE Schools', icon: 'graduation', hint: 'CISCE: ICSE and ISC' },
+      { to: '/rankings/boards?board=IB', label: 'International Schools', icon: 'globe', hint: 'IB; Cambridge on the same page' },
+    ],
+  },
+];
+
 /** Hides items with nothing behind them. Until the answer arrives, or if it fails, every item stays. */
 export const availableItems = (items: NavItem[], sections: RankingSections | null) =>
   items.filter((item) => !item.needs || !sections || item.needs(sections));
@@ -68,10 +101,9 @@ export const MENUS: NavMenu[] = [
         ],
       },
       {
-        title: 'Decide',
+        // Rankings and comparison live in the Rankings menu only.
+        title: 'Plan',
         items: [
-          { to: '/rankings', label: 'Best schools', icon: 'trophy', hint: 'Published rankings' },
-          { to: '/compare', label: 'Compare schools', icon: 'scale' },
           { to: '/fees', label: 'School fees & calculator', icon: 'rupee', hint: 'Official fee schedules' },
           { to: '/saved', label: 'Saved schools', icon: 'heart' },
         ],
@@ -79,7 +111,8 @@ export const MENUS: NavMenu[] = [
     ],
   },
   {
-    label: 'Boarding', icon: 'home', match: ['/boarding', '/network/jawahar-navodaya-vidyalaya'],
+    label: 'Boarding', icon: 'home', match: ['/boarding', '/network/jawahar-navodaya-vidyalaya', '/network/sainik-school',
+      '/network/eklavya-model-residential-school', '/network/rashtriya-military-school'],
     sections: [
       {
         title: 'Boarding schools',
@@ -105,6 +138,7 @@ export const MENUS: NavMenu[] = [
           { to: '/schools/netarhat-awasiya-vidyalaya', label: 'Netarhat Awasiya Vidyalaya', icon: 'graduation' },
           { to: '/network/jawahar-navodaya-vidyalaya', label: 'Jawahar Navodaya Vidyalayas', icon: 'graduation' },
           { to: '/boarding?system=SAINIK#directory', label: 'Sainik Schools', icon: 'flag' },
+          { to: '/network/eklavya-model-residential-school', label: 'Eklavya Model Residential Schools', icon: 'graduation', hint: 'For Scheduled Tribe students' },
           { to: '/admissions/guide#hostel', label: 'School hostel information', icon: 'info', hint: 'What to check before you apply' },
         ],
       },
@@ -147,7 +181,7 @@ export const MENUS: NavMenu[] = [
   },
   {
     label: 'Rankings', icon: 'trophy', match: ['/rankings'],
-    sections: [{ items: RANKING_ITEMS }],
+    sections: RANKING_MENU,
   },
   {
     label: 'Admissions', icon: 'calendar', match: ['/admissions'],

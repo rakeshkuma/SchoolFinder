@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useConsentGranted } from '../layout/ConsentBanner';
+import { PaidLabel } from './Badges';
 
 const CLIENT = (import.meta.env.VITE_ADSENSE_CLIENT ?? '').trim();
 
@@ -46,7 +47,7 @@ export function AdSlot({ slot, className = '' }: { slot: string; className?: str
   if (!show) return null;
   return (
     <aside aria-label="Advertisement" className={`my-10 ${className}`}>
-      <p className="mb-1 text-center text-[11px] uppercase tracking-wide text-slate-400">Advertisement</p>
+      <p className="mb-1 text-center"><PaidLabel kind="Advertisement" /></p>
       <ins ref={ref} className="adsbygoogle block min-h-[100px]" data-ad-client={CLIENT} data-ad-slot={slot}
         data-ad-format="auto" data-full-width-responsive="true" />
     </aside>

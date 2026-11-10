@@ -41,9 +41,10 @@ function SchoolListCard({ item }: { item: SchoolListItem }) {
 }
 
 /** A compiled list of schools, kept visibly apart from published rankings: no numbers, A to Z, and labelled as a guide. */
-export function SchoolListSection({ listKey, title }: { listKey: string; title: string }) {
+/** `place`: start narrowed to one town (a city page showing its state's list); the visitor's own search replaces it. */
+export function SchoolListSection({ listKey, title, place }: { listKey: string; title: string; place?: string }) {
   const [sp, setSp] = useSearchParams();
-  const q = sp.get('lq') ?? undefined;
+  const q = sp.get('lq') ?? place;
   const page = Math.max(0, Number(sp.get('lpage')) || 0);
   const items = useApi(() => schoolListService.items(listKey, { q, page, size: PAGE_SIZE }), [listKey, q, page]);
   const set = (patch: Record<string, string | undefined>) => {

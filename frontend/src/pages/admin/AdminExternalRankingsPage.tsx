@@ -9,6 +9,7 @@ import type {
   CsvImportResult,
   ExternalRankingRequest,
   RankingPublisher,
+  PublisherPermission,
   RankingPublisherKind,
   RankingScope,
   SchoolSummary,
@@ -19,13 +20,22 @@ import { publisherKindLabel } from '../../utils/rankingLists';
 const message = (e: unknown) => (e instanceof ApiError ? [e.message, ...e.fieldErrors.map((f) => `${f.field}: ${f.message}`)].join(' · ') : 'Something went wrong.');
 const today = () => new Date().toISOString().slice(0, 10);
 
+/** Permission to show a publisher's ranks: private publishers need it; government and board sources do not. */
+export const PERMISSION: Record<PublisherPermission, { label: string; tone: string }> = {
+  NOT_REQUESTED: { label: 'Permission not requested', tone: 'bg-red-50 text-red-800' },
+  REQUESTED: { label: 'Permission requested', tone: 'bg-amber-50 text-amber-900' },
+  GRANTED: { label: 'Permission granted', tone: 'bg-emerald-50 text-emerald-800' },
+  NOT_NEEDED: { label: 'Official source (no permission needed)', tone: 'bg-sky-50 text-sky-800' },
+};
+const needsPermission = (p?: RankingPublisher) => !!p && p.permissionStatus !== 'GRANTED' && p.permissionStatus !== 'NOT_NEEDED';
+
 export const CSV_TEMPLATE = 'school_slug,publisher_code,ranking_name,ranking_year,category,scope,region,rank_position,state_rank,city_rank,score,max_score,rating,score_text,sponsored,source_url,retrieved_date,notes';
 
 function PublisherForm({ publisher, onSaved }: { publisher?: RankingPublisher; onSaved: (text: string) => void }) {
   const [v, setV] = useState({
     code: publisher?.code ?? '', name: publisher?.name ?? '', kind: publisher?.kind ?? ('SURVEY' as RankingPublisherKind),
     websiteUrl: publisher?.websiteUrl ?? '', methodologyUrl: publisher?.methodologyUrl ?? '', description: publisher?.description ?? '',
-    active: publisher?.active ?? true,
+    active: publisher?.active ?? true, permissionStatus: publisher?.permissionStatus ?? ('NOT_REQUESTED' as PublisherPermission),
   });
   const [error, setError] = useState<string | null>(null);
   const nul = (s: string) => (s.trim() ? s.trim() : null);
@@ -35,7 +45,7 @@ function PublisherForm({ publisher, onSaved }: { publisher?: RankingPublisher; o
     try {
       await adminService.saveRankingPublisher(v.code.trim().toUpperCase(), {
         name: v.name.trim(), kind: v.kind, websiteUrl: nul(v.websiteUrl), methodologyUrl: nul(v.methodologyUrl),
-        description: nul(v.description), active: v.active,
+        description: nul(v.description), active: v.active, permissionStatus: v.permissionStatus,
       });
       onSaved(`Publisher ${v.name} saved.`);
     } catch (err) {
@@ -52,6 +62,9 @@ function PublisherForm({ publisher, onSaved }: { publisher?: RankingPublisher; o
       <input className="input" aria-label="Website" placeholder="Official website (https://…)" value={v.websiteUrl} onChange={(e) => setV({ ...v, websiteUrl: e.target.value })} />
       <input className="input" aria-label="Methodology page" placeholder="Methodology page (https://…)" value={v.methodologyUrl} onChange={(e) => setV({ ...v, methodologyUrl: e.target.value })} />
       <textarea className="input sm:col-span-2" rows={2} aria-label="Description" placeholder="Short neutral description in your own words (who publishes it, how often)" value={v.description} onChange={(e) => setV({ ...v, description: e.target.value })} />
+      <select className="input" aria-label="Permission" value={v.permissionStatus} onChange={(e) => setV({ ...v, permissionStatus: e.target.value as PublisherPermission })}>
+        {(Object.keys(PERMISSION) as PublisherPermission[]).map((k) => <option key={k} value={k}>{PERMISSION[k].label}</option>)}
+      </select>
       <label className="flex items-center gap-2"><input type="checkbox" checked={v.active} onChange={(e) => setV({ ...v, active: e.target.checked })} /> Shown publicly</label>
       <div className="flex items-center gap-2"><button className="btn-primary">Save publisher</button>{error && <span role="alert" className="field-error">{error}</span>}</div>
     </form>
@@ -107,6 +120,11 @@ function AddEntry({ publishers, onAdded }: { publishers: RankingPublisher[]; onA
       <select className="input" aria-label="Publisher" value={v.publisherCode} onChange={(e) => setV({ ...v, publisherCode: e.target.value })}>
         {publishers.map((p) => <option key={p.code} value={p.code}>{p.name}</option>)}
       </select>
+      {needsPermission(publishers.find((p) => p.code === v.publisherCode)) && (
+        <p role="status" className="rounded-lg bg-amber-50 p-2 text-amber-900 sm:col-span-2">
+          This publisher has not given permission to show its ranks. Enter its entries only after it agrees, and record that under Publishers.
+        </p>
+      )}
       <input className="input" aria-label="Ranking name" placeholder="Ranking name as published *" value={v.rankingName} onChange={(e) => setV({ ...v, rankingName: e.target.value })} required />
       <input className="input" aria-label="Edition" placeholder="Edition, e.g. 2025-26 *" value={v.rankingYear} onChange={(e) => setV({ ...v, rankingYear: e.target.value })} required />
       <input className="input" aria-label="Category" placeholder="Category, e.g. Co-ed day schools" value={v.category} onChange={(e) => setV({ ...v, category: e.target.value })} />
@@ -304,6 +322,7 @@ export function AdminExternalRankingsPage() {
             <li key={p.code} className="py-2">
               <div className="flex flex-wrap items-baseline gap-2">
                 <strong>{p.name}</strong><span className="text-xs text-slate-500">{p.code} · {publisherKindLabel[p.kind]} · {p.verifiedEntries} verified{p.active ? '' : ' · hidden'}</span>
+                <span className={`chip ${PERMISSION[p.permissionStatus].tone}`}>{PERMISSION[p.permissionStatus].label}{p.permissionUpdatedOn ? ` · ${p.permissionUpdatedOn}` : ''}</span>
                 {!p.websiteUrl && <span className="chip bg-amber-50 text-amber-900">Website not recorded</span>}
                 <button type="button" className="link ml-auto text-xs" onClick={() => setEditing(editing === p.code ? null : p.code)}>{editing === p.code ? 'Close' : 'Edit'}</button>
               </div>

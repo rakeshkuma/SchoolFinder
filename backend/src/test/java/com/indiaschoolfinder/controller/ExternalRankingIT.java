@@ -111,7 +111,18 @@ class ExternalRankingIT extends AbstractIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json(Map.of("name", "Test Green Rating", "kind", "GREEN", "websiteUrl", "https://green.example.org"))))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.code").value("TEST_GREEN"));
+                .andExpect(jsonPath("$.code").value("TEST_GREEN"))
+                .andExpect(jsonPath("$.permissionStatus").value("NOT_REQUESTED"));
+        // Recording permission dates it; an unknown status is refused.
+        mockMvc.perform(put("/api/v1/admin/ranking-publishers/{code}", "TEST_GREEN").header("Authorization", editorToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json(Map.of("name", "Test Green Rating", "kind", "GREEN", "permissionStatus", "GRANTED"))))
+                .andExpect(jsonPath("$.permissionStatus").value("GRANTED"))
+                .andExpect(jsonPath("$.permissionUpdatedOn").isNotEmpty());
+        mockMvc.perform(put("/api/v1/admin/ranking-publishers/{code}", "TEST_GREEN").header("Authorization", editorToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json(Map.of("name", "Test Green Rating", "kind", "GREEN", "permissionStatus", "MAYBE"))))
+                .andExpect(status().isBadRequest());
         long school = createSchool(school("Green School", Map.of()));
         long survey = createSchool(school("Survey School", Map.of()));
         verify(add(school, entry(Map.of("publisherCode", "TEST_GREEN", "rankingName", "Green rating", "rankPosition", 1))), "VERIFIED");
