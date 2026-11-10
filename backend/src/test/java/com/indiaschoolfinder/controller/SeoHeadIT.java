@@ -58,6 +58,24 @@ class SeoHeadIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void addressesOutsideTheAppAreNotIndexedButItsPagesAre() throws Exception {
+        // No route in the app: the "page not found" page, not a copy of the home page.
+        assertThat(head("/this-page-does-not-exist")).contains("noindex").doesNotContain("canonical");
+        assertThat(head("/wp-login.php")).contains("noindex");
+        // The home page and app pages without their own title stay indexable.
+        assertThat(head("/")).doesNotContain("noindex").contains("href=\"http://localhost/\"");
+        assertThat(head("/rankings/lists")).doesNotContain("noindex");
+        // The policy pages have their own title and canonical address, and are in the sitemap.
+        assertThat(head("/editorial-policy")).contains("<title>Editorial policy | SchoolDhundo</title>")
+                .contains("href=\"http://localhost/editorial-policy\"");
+        assertThat(head("/corrections-policy")).contains("<title>Corrections policy | SchoolDhundo</title>");
+        assertThat(head("/data-deletion")).contains("<title>Account and data deletion | SchoolDhundo</title>");
+        mockMvc.perform(get("/sitemaps/pages.xml"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/data-deletion</loc>")));
+    }
+
+    @Test
     void practiceSetsAndNewLandingPagesHaveTheirOwnHead() throws Exception {
         String set = head("/exams/practice/netarhat-maths-1");
         assertThat(set).contains("<title>Netarhat Paper 1 practice: Mathematics 1")

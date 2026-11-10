@@ -49,6 +49,10 @@ public class UserAccount {
     @Column(length = 255)
     private String googleSubject;
 
+    /** Google profile photo address (googleusercontent.com only); null for accounts without Google sign-in. */
+    @Column(length = 500)
+    private String pictureUrl;
+
     @Column(nullable = false, length = 20)
     private String role = "USER";
 

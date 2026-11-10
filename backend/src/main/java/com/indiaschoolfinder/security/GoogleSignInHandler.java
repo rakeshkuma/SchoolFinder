@@ -1,6 +1,5 @@
 package com.indiaschoolfinder.security;
 
-import com.indiaschoolfinder.entity.UserAccount;
 import com.indiaschoolfinder.exception.AccountException;
 import com.indiaschoolfinder.service.AccountService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -44,9 +43,10 @@ public class GoogleSignInHandler implements AuthenticationSuccessHandler, Authen
             fail(request, response, "failed");
             return;
         }
-        UserAccount account;
+        AccountService.GoogleSignInResult result;
         try {
-            account = accountService.signInWithGoogle(user.getSubject(), user.getEmail(), user.getEmailVerified(), user.getFullName());
+            result = accountService.signInWithGoogle(user.getSubject(), user.getEmail(), user.getEmailVerified(), user.getFullName(),
+                    user.getPicture());
         } catch (AccountException e) {
             fail(request, response, switch (e.getCode()) {
                 case "GOOGLE_EMAIL_UNVERIFIED" -> "unverified";
@@ -60,8 +60,18 @@ public class GoogleSignInHandler implements AuthenticationSuccessHandler, Authen
             session.removeAttribute(GoogleSignIn.REMEMBER);
         }
         // Replaces Spring's Google authentication in the session with the member principal (and a new session id).
-        sessions.signIn(request, response, account.getId(), remember);
-        redirect(response, GoogleSignIn.safeNext(next));
+        sessions.signIn(request, response, result.account().getId(), remember);
+        // A new member is greeted once by the page they land on (WelcomeBanner); the flag carries nothing else.
+        String target = GoogleSignIn.safeNext(next);
+        redirect(response, result.created() ? withWelcome(target) : target);
+    }
+
+    /** Adds welcome=1 to the query, before any #fragment. */
+    static String withWelcome(String path) {
+        int hash = path.indexOf('#');
+        String base = hash < 0 ? path : path.substring(0, hash);
+        String fragment = hash < 0 ? "" : path.substring(hash);
+        return base + (base.contains("?") ? "&" : "?") + "welcome=1" + fragment;
     }
 
     /**

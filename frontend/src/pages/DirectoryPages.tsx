@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { track } from '../utils/analytics';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { GoogleButton } from '../components/common/GoogleButton';
@@ -30,6 +31,8 @@ export function SchoolsPage() {
     p.delete('page');
     if (next.state !== params.get('state')) { p.delete('district'); p.delete('locality'); }
     setParams(p);
+    // The filters only; the typed text is not sent.
+    track('school_search', { state: next.state, city: next.city, board: next.board, has_query: !!next.q });
     document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   return (

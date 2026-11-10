@@ -20,6 +20,8 @@ export interface Account {
   hasPassword: boolean;
   googleLinked: boolean;
   mobile: string | null;
+  /** Google profile photo address, for members who signed in with Google. */
+  pictureUrl: string | null;
 }
 
 export interface AccountConfig {

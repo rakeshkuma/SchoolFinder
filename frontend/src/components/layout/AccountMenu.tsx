@@ -72,7 +72,7 @@ export function AccountMenu() {
         onClick={() => setOpen((v) => !v)}
         onKeyDown={(e) => { if (e.key === 'ArrowDown') { e.preventDefault(); setOpen(true); } }}
         className="flex items-center gap-2 rounded-full p-0.5 pr-2 hover:bg-slate-100">
-        <Avatar name={account.displayName} />
+        <Avatar name={account.displayName} pictureUrl={account.pictureUrl} />
         <span className="hidden max-w-[9rem] truncate text-sm font-semibold text-ink 2xl:inline">{account.displayName}</span>
         <span className="sr-only">Account menu for {account.displayName}</span>
       </button>

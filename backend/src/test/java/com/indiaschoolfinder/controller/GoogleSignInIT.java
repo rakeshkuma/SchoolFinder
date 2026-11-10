@@ -172,7 +172,8 @@ class GoogleSignInIT extends AbstractIntegrationTest {
     void newGoogleUserGetsAVerifiedAccountWithoutPasswordAndASession() throws Exception {
         MvcResult callback = continueWithGoogle(user("g-100", "Meera.Iyer@Example.org", true, "Meera Iyer"), "/exams/jnvst", true);
         assertThat(callback.getResponse().getStatus()).isEqualTo(302);
-        assertThat(callback.getResponse().getRedirectedUrl()).isEqualTo("/exams/jnvst");
+        // A new account is greeted once on the page the member came from.
+        assertThat(callback.getResponse().getRedirectedUrl()).isEqualTo("/exams/jnvst?welcome=1");
         Cookie session = callback.getResponse().getCookie("ISF_SESSION");
         assertThat(session).isNotNull();
         assertThat(session.isHttpOnly()).isTrue();
@@ -203,7 +204,7 @@ class GoogleSignInIT extends AbstractIntegrationTest {
     @Test
     void unsafeReturnAddressFallsBackToTheAccountPage() throws Exception {
         MvcResult callback = continueWithGoogle(user("g-101", "a@example.org", true, "A"), "//evil.example/x", false);
-        assertThat(callback.getResponse().getRedirectedUrl()).isEqualTo("/account");
+        assertThat(callback.getResponse().getRedirectedUrl()).isEqualTo("/account?welcome=1");
     }
 
     @Test

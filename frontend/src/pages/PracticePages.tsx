@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { track } from '../utils/analytics';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Icon, type IconName } from '../components/common/Icon';
 import { FigureRow, FigureView } from '../components/exam/FigureView';
@@ -856,6 +857,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
     setEndsAt(sitting.challenge?.deadline ?? (from ? from.endsAt : sitting.minutes ? Date.now() + sitting.minutes * 60_000 : null));
     setSaved(null);
     setPhase('test');
+    track('quiz_start', { mode: sitting.mode, set_slug: sitting.setSlug ?? undefined, exam_slug: sitting.examSlug ?? undefined, resumed: !!from });
   };
   // A challenge's rules were on its page and its clock is already running, so it opens straight on the first question.
   useEffect(() => {
@@ -923,6 +925,8 @@ export function Player({ sitting }: { sitting: Sitting }) {
       const own = new Map(questions.map((q) => [sitting.bankId(q.id), q.id]));
       setResult({ score: { ...score, questions: score.questions.map((r) => ({ ...r, id: own.get(r.id) ?? r.id })) }, seconds, saved,
         points, input });
+      track('quiz_complete', { mode: sitting.mode, set_slug: sitting.setSlug ?? undefined, exam_slug: sitting.examSlug ?? undefined,
+        questions: questions.length, seconds });
       setPhase('result');
       window.scrollTo({ top: 0 });
     } catch (e) {

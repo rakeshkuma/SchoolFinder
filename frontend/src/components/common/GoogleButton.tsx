@@ -1,5 +1,6 @@
 import { useMember } from '../../hooks/useMember';
 import { googleSignInUrl } from '../../services/accountApi';
+import { track } from '../../utils/analytics';
 
 /**
  * "Continue with Google", shown only when the server reports a configured Google client. A plain link: the server
@@ -9,7 +10,7 @@ export function GoogleButton({ next, remember = false, label = 'Continue with Go
   const { config } = useMember();
   if (!config?.googleSignInEnabled) return null;
   return (
-    <a href={googleSignInUrl(next, remember)}
+    <a href={googleSignInUrl(next, remember)} onClick={() => track('google_sign_in', { step: 'start' })}
       className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-400 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">
       <svg aria-hidden="true" viewBox="0 0 48 48" className="h-5 w-5">
         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />

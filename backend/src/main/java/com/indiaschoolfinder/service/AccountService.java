@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -135,8 +136,8 @@ public class AccountService {
     private void sendVerification(UserAccount account) {
         String token = issueToken(account.getId(), AccountToken.Purpose.VERIFY_EMAIL, properties.getAccount().getVerificationTtl());
         mail.send(account.getEmail(), "Confirm your email for SchoolDhundo",
-                "Hello " + account.getDisplayName() + ",\n\nPlease confirm your email address to finish creating your India "
-                        + "School Finder account:\n\n" + link("/verify-email?token=" + token) + "\n\nThis link works once and "
+                "Hello " + account.getDisplayName() + ",\n\nPlease confirm your email address to finish creating your "
+                        + "SchoolDhundo account:\n\n" + link("/verify-email?token=" + token) + "\n\nThis link works once and "
                         + "expires in " + hours(properties.getAccount().getVerificationTtl()) + ". If you did not create an "
                         + "account, you can ignore this email.");
     }
@@ -200,17 +201,20 @@ public class AccountService {
      *   they own the mailbox, so its password is removed (the Google user now proves ownership).</li>
      *   <li>Otherwise a new account is created with a confirmed email and no password.</li>
      * </ul>
+     * The profile photo Google reports is stored (and refreshed at each sign-in) when it is on Google's image host.
      */
     @Transactional
-    public UserAccount signInWithGoogle(String subject, String rawEmail, Boolean emailVerified, String name) {
+    public GoogleSignInResult signInWithGoogle(String subject, String rawEmail, Boolean emailVerified, String name, String picture) {
         if (subject == null || subject.isBlank()) {
             throw googleFailed();
         }
         Instant now = Instant.now(clock);
+        String pictureUrl = googlePicture(picture);
         UserAccount linked = accounts.findByGoogleSubject(subject).orElse(null);
         if (linked != null) {
             linked.setLastLoginAt(now);
-            return linked;
+            linked.setPictureUrl(pictureUrl);
+            return new GoogleSignInResult(linked, false);
         }
         String email = normaliseEmail(rawEmail);
         if (!Boolean.TRUE.equals(emailVerified) || email.isEmpty()) {
@@ -231,13 +235,14 @@ public class AccountService {
                 auditService.record("ACCOUNT_UNVERIFIED_PASSWORD_REMOVED", "USER_ACCOUNT", account.getId(), null);
             }
             account.setGoogleSubject(subject);
+            account.setPictureUrl(pictureUrl);
             account.setLastLoginAt(now);
             account = accounts.saveAndFlush(account);
             auditService.record("ACCOUNT_GOOGLE_LINKED", "USER_ACCOUNT", account.getId(), null);
             mail.send(email, "Google sign-in was added to your SchoolDhundo account",
                     "You can now sign in to your SchoolDhundo account with Google. If this was not you, reset your "
                             + "password at " + link("/forgot-password") + " and secure your Google account.");
-            return account;
+            return new GoogleSignInResult(account, false);
         }
         account = new UserAccount();
         account.setEmail(email);
@@ -247,6 +252,7 @@ public class AccountService {
         }
         account.setDisplayName(display.trim().length() > 80 ? display.trim().substring(0, 80) : display.trim());
         account.setGoogleSubject(subject);
+        account.setPictureUrl(pictureUrl);
         account.setEmailVerifiedAt(now);
         // The Google button is shown with the notice that continuing accepts the Terms and Privacy Policy.
         account.setTermsAcceptedAt(now);
@@ -255,7 +261,11 @@ public class AccountService {
         account.setLastLoginAt(now);
         account = accounts.saveAndFlush(account);
         auditService.record("ACCOUNT_REGISTERED_GOOGLE", "USER_ACCOUNT", account.getId(), null);
-        return account;
+        return new GoogleSignInResult(account, true);
+    }
+
+    /** The member who signed in with Google, and whether this sign-in created the account (to greet them). */
+    public record GoogleSignInResult(UserAccount account, boolean created) {
     }
 
     private static AccountException googleFailed() {
@@ -452,7 +462,22 @@ public class AccountService {
 
     private static AccountDto toDto(UserAccount a) {
         return new AccountDto(a.getEmail(), a.getDisplayName(), a.isVerified(), a.getStateCode(), a.getCity(),
-                a.getCreatedAt(), a.getTermsVersion(), a.getPasswordHash() != null, a.getGoogleSubject() != null, a.getMobile());
+                a.getCreatedAt(), a.getTermsVersion(), a.getPasswordHash() != null, a.getGoogleSubject() != null, a.getMobile(),
+                a.getPictureUrl());
+    }
+
+    /** Google's profile photo address, kept only when it is an https address on Google's own image host. */
+    static String googlePicture(String url) {
+        if (url == null || url.isBlank() || url.length() > 500) {
+            return null;
+        }
+        try {
+            URI uri = URI.create(url.trim());
+            String host = uri.getHost();
+            return "https".equals(uri.getScheme()) && host != null && host.endsWith(".googleusercontent.com") ? uri.toString() : null;
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     /** The ten digits of an already validated number, without a +91 prefix or separators; null when none was given. */

@@ -8,5 +8,6 @@ import java.time.Instant;
  * works for this account.
  */
 public record AccountDto(String email, String displayName, boolean emailVerified, String stateCode, String city,
-                         Instant createdAt, String termsVersion, boolean hasPassword, boolean googleLinked, String mobile) {
+                         Instant createdAt, String termsVersion, boolean hasPassword, boolean googleLinked, String mobile,
+                         String pictureUrl) {
 }

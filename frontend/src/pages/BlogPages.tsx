@@ -1,4 +1,5 @@
 import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { AD_SLOTS, AdSlot } from '../components/common/AdSlot';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Icon } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
@@ -169,6 +170,7 @@ export function BlogPostPage() {
             <p className="mt-1 font-display font-bold text-ink">{card.authorName}</p>
             {post.authorBio && <p className="mt-1 text-sm text-slate-600">{post.authorBio}</p>}
           </section>
+          <AdSlot slot={AD_SLOTS.blogPost} />
           <section className="rounded-2xl bg-gradient-to-br from-brand-700 to-violet-700 p-6 text-white">
             <h2 className="font-display text-xl font-bold text-white">Find the best school near you</h2>
             <p className="mt-1 text-sm text-blue-100">Search by location, board and fees, with every fact linked to its source.</p>

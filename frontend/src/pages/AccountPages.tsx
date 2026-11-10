@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Avatar } from '../components/common/Avatar';
+import { track } from '../utils/analytics';
 import { GoogleButton } from '../components/common/GoogleButton';
 import { Spinner } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
@@ -282,6 +283,7 @@ function CreateAccountForm({ email, setEmail, onSent }: { email: string; setEmai
         displayName: form.displayName.trim(), email: email.trim(), password: form.password, acceptTerms: true,
         mobile: form.mobile.trim() || undefined, website: form.website || undefined,
       });
+      track('user_registration', { method: 'email' });
       onSent(email.trim());
     } catch (err) {
       setErrors(fieldErrorsFrom(err));
@@ -580,7 +582,7 @@ function AccountSettings() {
     <div className="container-page max-w-3xl space-y-6 py-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <Avatar name={account.displayName} size="lg" />
+          <Avatar name={account.displayName} pictureUrl={account.pictureUrl} size="lg" />
           <div>
             <h1 className="font-display text-2xl font-bold text-ink">{account.displayName}</h1>
             <p className="text-sm text-slate-600">{account.email} · {account.emailVerified ? <span className="text-emerald-700">email confirmed</span> : 'email not confirmed'}</p>
