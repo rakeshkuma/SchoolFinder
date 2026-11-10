@@ -26,3 +26,16 @@ describe('blog article text', () => {
     expect(parseInline('<script>alert(1)</script>')).toEqual([{ kind: 'text', text: '<script>alert(1)</script>' }]);
   });
 });
+
+describe('tables and notes in articles', () => {
+  it('reads a table with its header and skips the divider row', () => {
+    const [table] = parseBody('| Document | Why |\n| --- | --- |\n| Birth certificate | Age proof |\n| Address proof | Distance rules |');
+    expect(table).toEqual({ kind: 'table', head: ['Document', 'Why'], rows: [['Birth certificate', 'Age proof'], ['Address proof', 'Distance rules']] });
+  });
+
+  it('joins note lines into one note and keeps ordinary lines apart', () => {
+    const blocks = parseBody('> Dates change every year.\n> Check the official notice.\n\nA paragraph | with a bar');
+    expect(blocks[0]).toEqual({ kind: 'note', text: 'Dates change every year. Check the official notice.' });
+    expect(blocks[1].kind).toBe('p');
+  });
+});

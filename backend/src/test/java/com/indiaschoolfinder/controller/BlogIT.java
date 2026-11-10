@@ -22,7 +22,7 @@ class BlogIT extends AbstractIntegrationTest {
 
     @BeforeEach
     void clean() {
-        jdbc.execute("TRUNCATE blog_post RESTART IDENTITY");
+        jdbc.execute("TRUNCATE blog_post, blog_post_source, blog_post_faq RESTART IDENTITY");
     }
 
     private Map<String, Object> draft(String title, String category, boolean published) {
@@ -60,8 +60,57 @@ class BlogIT extends AbstractIntegrationTest {
 
         mockMvc.perform(post("/api/v1/admin/blog/posts").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(draft("Hack", "ADMISSIONS", true)))).andExpect(status().isUnauthorized());
-        mockMvc.perform(delete("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken())).andExpect(status().isNoContent());
+        // A live article cannot be deleted in one step: it is unpublished first.
+        mockMvc.perform(delete("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken())).andExpect(status().isBadRequest());
+        mockMvc.perform(put("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken()).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(draft("Nursery admission guide", "ADMISSIONS", false)))).andExpect(status().isOk());
         mockMvc.perform(get("/api/v1/blog/posts/nursery-admission-guide")).andExpect(status().isNotFound());
+        mockMvc.perform(delete("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken())).andExpect(status().isNoContent());
+    }
+
+    @Test
+    void theWorkflowSchedulingSourcesAndTopicsWork() throws Exception {
+        Map<String, Object> article = draft("JNV admission guide", "GOVERNMENT_SCHOOLS", false);
+        article.put("status", "REVIEW");
+        article.put("tags", java.util.List.of("JNVST", "Class 6"));
+        article.put("faqs", java.util.List.of(Map.of("question", "Who can apply?", "answer", "Children studying in Class 5.")));
+        long id = id(create(article).andExpect(status().isCreated()).andExpect(jsonPath("$.status").value("REVIEW")));
+        mockMvc.perform(get("/api/v1/blog/posts")).andExpect(jsonPath("$.totalElements").value(0));
+
+        // Publishing through the workflow needs a source.
+        article.put("status", "PUBLISHED");
+        mockMvc.perform(put("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken()).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(article))).andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.fieldErrors[0].field").value("sources"));
+        article.put("sources", java.util.List.of(Map.of("title", "Navodaya Vidyalaya Samiti", "url", "https://navodaya.gov.in/", "checkedOn", "2026-11-11")));
+
+        // Scheduled for tomorrow: not public yet.
+        article.put("publishAt", java.time.Instant.now().plus(java.time.Duration.ofDays(1)).toString());
+        mockMvc.perform(put("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken()).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(article))).andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/blog/posts/jnv-admission-guide")).andExpect(status().isNotFound());
+
+        // Published now: visible with its sources, FAQ and topics; the topic filter and topic list find it.
+        article.remove("publishAt");
+        article.put("publishAt", java.time.Instant.now().minusSeconds(60).toString());
+        mockMvc.perform(put("/api/v1/admin/blog/posts/" + id).header("Authorization", adminToken()).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(article))).andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/blog/posts/jnv-admission-guide")).andExpect(status().isOk())
+                .andExpect(jsonPath("$.sources[0].url").value("https://navodaya.gov.in/"))
+                .andExpect(jsonPath("$.faqs[0].question").value("Who can apply?"))
+                .andExpect(jsonPath("$.card.tags[0]").value("JNVST"));
+        mockMvc.perform(get("/api/v1/blog/posts").param("tag", "class 6")).andExpect(jsonPath("$.totalElements").value(1));
+        mockMvc.perform(get("/api/v1/blog/posts/topics")).andExpect(jsonPath("$[0].articles").value(1));
+        mockMvc.perform(get("/api/v1/blog/posts/categories")).andExpect(jsonPath("$.GOVERNMENT_SCHOOLS").value(1));
+        String head = mockMvc.perform(get("/api/v1/seo/head/blog/jnv-admission-guide")).andReturn().getResponse().getContentAsString();
+        org.assertj.core.api.Assertions.assertThat(head).contains("og:type\" content=\"article\"").contains("twitter:card")
+                .contains("BreadcrumbList").contains("/blog/category/government-schools");
+        org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/blog/category/parenting"))
+                .andReturn().getResponse().getContentAsString()).contains("noindex");
+        // Addresses the blog needs for itself are refused.
+        Map<String, Object> clash = draft("Topics", "ADMISSIONS", false);
+        clash.put("slug", "topics");
+        create(clash).andExpect(status().isBadRequest());
     }
 
     @Test
