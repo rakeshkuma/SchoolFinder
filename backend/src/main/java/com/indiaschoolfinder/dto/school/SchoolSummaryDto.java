@@ -57,5 +57,7 @@ public record SchoolSummaryDto(
         /* date the cited source was read; lastVerifiedDate is set only after an editor's verification */
         LocalDate sourceRetrievedDate,
         /* true when the cover is an illustration, not a photograph of this school */
-        boolean coverImageIllustrative) {
+        boolean coverImageIllustrative,
+        /* highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated */
+        String affiliatedUpTo) {
 }

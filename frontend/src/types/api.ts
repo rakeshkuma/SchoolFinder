@@ -191,6 +191,8 @@ export interface SchoolSummary {
   sourceRetrievedDate: string | null;
   /** The cover is an illustration, not a photograph of this school. */
   coverImageIllustrative: boolean;
+  /** Highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated. */
+  affiliatedUpTo: string | null;
 }
 
 export type UpdateTopic = 'FEES' | 'ADMISSIONS' | 'CLASSES' | 'CONTACT' | 'FACILITIES' | 'PHOTOS' | 'CORRECTION' | 'OTHER';
@@ -302,6 +304,8 @@ export interface SchoolDetail {
   updatedAt: string;
   /** null when the school has no boarding profile */
   boarding: BoardingProfile | null;
+  /** Highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated. */
+  affiliatedUpTo: string | null;
 }
 
 export interface SchoolSearchParams {

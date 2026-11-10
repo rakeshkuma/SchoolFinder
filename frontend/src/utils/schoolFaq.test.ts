@@ -39,6 +39,12 @@ describe('schoolFaqs', () => {
     expect(text).not.toMatch(/apply|fee/i);
   });
 
+  it('gives the highest affiliated class, never a guessed lowest one, when classes are not listed', () => {
+    const [faq] = schoolFaqs({ ...base, board: { code: 'CBSE', name: 'CBSE' }, affiliatedUpTo: 'Class X' } as unknown as SchoolDetail)
+      .filter((f) => f.question.startsWith('Up to which class'));
+    expect(faq.answer).toBe('CBSE affiliates it up to Class X. The lowest class it admits is not published in that record; check with the school.');
+  });
+
   it('says a day school is a day school', () => {
     const [faq] = schoolFaqs({ ...base, hasHostel: false });
     expect(faq.answer).toBe('No. Its source lists it as a day school.');

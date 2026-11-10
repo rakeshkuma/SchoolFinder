@@ -12,7 +12,7 @@ const school = (o: Partial<SchoolSummary> = {}): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: 'CO_ED', websiteUrl: null, boardingType: null,
   residentialSystem: 'PRIVATE_BOARDING', entranceExam: 'SCHOOL_TEST', entryClasses: null,
   boardingSummary: 'Fixture summary.', boardingVerificationStatus: 'UNVERIFIED', classesFrom: null, classesTo: null,
-  facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null, coverImageIllustrative: false, ...o,
+  facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null, coverImageIllustrative: false, affiliatedUpTo: null, ...o,
 });
 
 describe('BoardingCard', () => {

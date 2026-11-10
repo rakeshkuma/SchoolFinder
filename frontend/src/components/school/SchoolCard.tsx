@@ -33,7 +33,8 @@ const MAX_FACILITIES = 3;
 export function SchoolCard({ school }: { school: SchoolSummary }) {
   const board = school.boardCode === 'CISCE' ? 'ICSE/ISC' : school.boardCode === 'STATE' ? 'State board' : school.boardCode;
   const place = schoolPlace(school);
-  const classes = classRange(school.classesFrom, school.classesTo);
+  // The full range when classes are published; otherwise the highest class the board's record states.
+  const classes = classRange(school.classesFrom, school.classesTo) ?? (school.affiliatedUpTo ? `Up to ${school.affiliatedUpTo}` : null);
   const facilities = school.facilityCategories ?? [];
   const verified = school.verificationStatus === 'VERIFIED';
   const checkedOn = verified ? school.lastVerifiedDate : school.sourceRetrievedDate;
@@ -94,11 +95,14 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
             </div>
           )}
         </dl>
-        <p className={`mt-3 flex items-center gap-1 text-xs ${verified ? 'text-emerald-700' : 'text-slate-500'}`}>
-          <Icon name={verified ? 'check' : 'info'} className="h-3.5 w-3.5 shrink-0" />
-          {verified ? 'Verified by an editor' : 'From official source, not yet editor-verified'}
-          {checkedOn && <span className="text-slate-500">· {formatDate(checkedOn)}</span>}
-        </p>
+        {/* Only the positive mark on cards; the profile page still shows every school's verification status. */}
+        {verified && (
+          <p className="mt-3 flex items-center gap-1 text-xs text-emerald-700">
+            <Icon name="check" className="h-3.5 w-3.5 shrink-0" />
+            Verified by an editor
+            {checkedOn && <span className="text-slate-500">· {formatDate(checkedOn)}</span>}
+          </p>
+        )}
         <div className="mt-auto pt-4">
           <div className="flex items-end justify-between gap-3 border-t border-slate-100 pt-4">
             <div className="min-w-0">

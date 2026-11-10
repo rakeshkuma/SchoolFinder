@@ -60,7 +60,9 @@ public record SchoolDetailDto(
         long version,
         Instant updatedAt,
         /* null when the school has no boarding profile */
-        BoardingProfileDto boarding) {
+        BoardingProfileDto boarding,
+        /* highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated */
+        String affiliatedUpTo) {
 
     public record DistrictRef(String name, String slug) {
     }

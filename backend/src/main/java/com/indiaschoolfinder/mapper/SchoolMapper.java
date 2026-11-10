@@ -69,7 +69,8 @@ public class SchoolMapper {
                 b == null ? null : b.getEntranceExam(), b == null ? null : b.getEntryClasses(),
                 b == null ? null : b.getSummary(), b == null ? null : b.getVerificationStatus(),
                 h.classesFrom(), h.classesTo(), h.facilityCategories(), s.getAdmissionPortalUrl(),
-                s.getSourceRetrievedDate(), cover != null && cover.isIllustrative());
+                s.getSourceRetrievedDate(), cover != null && cover.isIllustrative(),
+                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()));
     }
 
     public SchoolDetailDto toDetail(School s, EducationBoard board, State state, District district, SchoolBoarding boarding) {
@@ -92,7 +93,8 @@ public class SchoolMapper {
                 s.getEstablishedYear(), s.getHasTransport(), s.getHasHostel(), s.getAccessibilityFeatures(),
                 s.getLogoUrl(), s.getAverageRating(), s.getReviewCount(), s.getSourceUrl(),
                 s.getSourceRetrievedDate(), s.getVerificationStatus(), s.getLastVerifiedDate(),
-                s.isActive(), s.getVersion(), s.getUpdatedAt(), boarding == null ? null : toBoardingDto(boarding));
+                s.isActive(), s.getVersion(), s.getUpdatedAt(), boarding == null ? null : toBoardingDto(boarding),
+                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()));
     }
 
     /**
