@@ -30,7 +30,7 @@ const card = (overrides: Partial<SchoolSummary>): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: null, websiteUrl: null, boardingType: null,
   residentialSystem: null, entranceExam: null, entryClasses: null, boardingSummary: null, boardingVerificationStatus: null,
   classesFrom: null, classesTo: null, facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null,
-  coverImageIllustrative: false, ...overrides,
+  coverImageIllustrative: false, affiliatedUpTo: null, ...overrides,
 });
 
 describe('RankingCard', () => {

@@ -40,6 +40,7 @@ const LEVEL = {
   'Senior Secondary Level': 'Senior Secondary (up to Class XII)',
   'Secondary Level': 'Secondary (up to Class X)',
   'Middle Level': 'Middle (up to Class VIII)',
+  'Middle Class': 'Middle (up to Class VIII)', // the spelling SARAS actually uses
 };
 
 const KEEP_UPPER = new Set(['PM', 'SHRI', 'KV', 'JNV', 'DAV', 'DPS', 'CBSE', 'BSF', 'CRPF', 'ITBP', 'SSB', 'CISF',

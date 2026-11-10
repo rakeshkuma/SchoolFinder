@@ -275,7 +275,7 @@ function KeyFacts({ school: s, onTab }: { school: SchoolDetail; onTab: (id: stri
   const open = (admissions.data ?? []).find((a) => a.status === 'OPEN') ?? (admissions.data ?? []).find((a) => a.status === 'UPCOMING');
   const classes = s.classesOffered.length
     ? `${s.classesOffered[0].name.replace('Class ', '')} – ${s.classesOffered[s.classesOffered.length - 1].name.replace('Class ', '')}`
-    : null;
+    : s.affiliatedUpTo ? `Up to ${s.affiliatedUpTo.replace('Class ', '')}` : null;
 
   const items: { label: string; value: string | null; hint?: string; tab?: string; highlight?: boolean }[] = [
     { label: 'Annual fee from', value: feeFrom === null ? null : feeFrom === 0 ? 'Free' : formatMoneyCompact(feeFrom), hint: latestYear, tab: 'fees' },
@@ -335,7 +335,9 @@ function Overview({ school: s }: { school: SchoolDetail }) {
     ['State / UT', s.stateName],
     ['Classes offered', s.classesOffered.length
       ? `${s.classesOffered[0].name} to ${s.classesOffered[s.classesOffered.length - 1].name} (${s.classesOffered.length} levels listed)`
-      : null],
+      : s.affiliatedUpTo
+        ? `Up to ${s.affiliatedUpTo}, as affiliated by ${s.board?.code ?? 'the board'} (the lowest class is not published)`
+        : null],
     ['Medium of instruction', s.mediumOfInstruction],
     ['Gender', s.genderType ? genderLabel[s.genderType] : null],
     ['Established', s.establishedYear !== null ? String(s.establishedYear) : null],

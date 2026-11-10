@@ -27,6 +27,11 @@ export function schoolFaqs(s: SchoolDetail): Faq[] {
       question: `Which classes does ${s.name} have?`,
       answer: first === last ? `Its source lists ${first}.` : `Its source lists classes from ${first} to ${last}.`,
     });
+  } else if (s.affiliatedUpTo) {
+    faqs.push({
+      question: `Up to which class does ${s.name} teach?`,
+      answer: `${s.board?.code ?? 'Its board'} affiliates it up to ${s.affiliatedUpTo}. The lowest class it admits is not published in that record; check with the school.`,
+    });
   }
   if (s.addressLine || place) {
     faqs.push({
