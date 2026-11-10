@@ -215,7 +215,7 @@ public class AppProperties {
         /** Load the verified exam catalogue file when the exam table is empty (first start of a new database). */
         private boolean seedOnEmpty = true;
         private String seedLocation = "classpath:seed/exams.json";
-        /** India School Finder practice quizzes and mock tests, loaded with the exam catalogue. */
+        /** SchoolDhundo practice quizzes and mock tests, loaded with the exam catalogue. */
         private String practiceSeedLocation = "classpath:seed/practice.json";
         /** Exam records not re-checked against their official sources for longer than this are flagged for review. */
         private int staleAfterDays = 60;

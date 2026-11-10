@@ -1020,7 +1020,7 @@ export interface ExamReview {
   flags: { code: string; message: string }[];
 }
 
-// --- Practice (India School Finder's own questions) ------------------------------------------------------------------
+// --- Practice (SchoolDhundo's own questions) ------------------------------------------------------------------
 
 export interface PracticeSetSummary {
   slug: string;

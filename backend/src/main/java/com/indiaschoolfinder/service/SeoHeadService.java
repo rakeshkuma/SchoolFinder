@@ -38,13 +38,13 @@ import java.util.regex.Pattern;
 @Service
 public class SeoHeadService {
 
-    public static final String SITE = "India School Finder";
+    public static final String SITE = "SchoolDhundo";
     /**
      * A district or town page listing fewer schools than this would mostly repeat those schools' own pages, so it stays
      * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
      */
     public static final int MIN_SCHOOLS_TO_INDEX = 3;
-    static final String DEFAULT_TITLE = "India School Finder – Discover Schools, Rankings, Admissions & Exam Preparation";
+    static final String DEFAULT_TITLE = "SchoolDhundo – Discover Schools, Rankings, Admissions & Exam Preparation";
     static final String DEFAULT_DESCRIPTION = "Find schools across India, explore school rankings, compare boarding schools, "
             + "understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources.";
 
@@ -87,7 +87,7 @@ public class SeoHeadService {
                     + "board ranking, we say so and show each school's national rank."),
             page("/rankings/government-boarding", "Government and boarding school rankings", "Government and boarding schools in published "
                     + "rankings, with the rank each holds in the publisher's own list."),
-            page("/rankings/score", "India School Finder evidence score", "Our own score from source-linked evidence, kept apart from published "
+            page("/rankings/score", "SchoolDhundo evidence score", "Our own score from source-linked evidence, kept apart from published "
                     + "rankings. Not an official government ranking."),
             page("/admissions", "School admissions calendar", "Upcoming and open school admission cycles, "
                     + "each linked to the school's official notice."),
@@ -118,13 +118,13 @@ public class SeoHeadService {
                     + "eligibility rules to confirm in each official notice."),
             page("/exams/practice", "Free practice tests: school, entrance, Olympiad and competitive exams", "Original "
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
-                    + "aptitude, many in English and Hindi, with every answer explained — written by India School Finder, "
+                    + "aptitude, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
                     + "not official questions."),
             page("/blog", "School admission and parenting blog", "Practical guides for Indian parents on admissions, choosing a board, "
                     + "fees and scholarships, and parenting."),
-            page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on India School Finder, their years, "
+            page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on SchoolDhundo, their years, "
                     + "how entries are verified, and how third-party rankings are presented."),
-            page("/cities", "Schools by city", "Cities across India where India School Finder lists schools, with "
+            page("/cities", "Schools by city", "Cities across India where SchoolDhundo lists schools, with "
                     + "the number listed in each."),
             page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
                     + "admission works in India: the steps, age rules for Class I, reserved seats under the RTE Act, "
@@ -133,12 +133,12 @@ public class SeoHeadService {
                     + "recently added or updated from official notices, by state, class, category and status."),
             page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
                     + "students and alumni."),
-            page("/about", "About India School Finder", "How India School Finder lists schools, fees, admissions and "
+            page("/about", "About SchoolDhundo", "How SchoolDhundo lists schools, fees, admissions and "
                     + "entrance exams from official sources, and how it writes its own practice questions."),
-            page("/contact", "Contact India School Finder", "Get in touch about a school listing, a correction or "
+            page("/contact", "Contact SchoolDhundo", "Get in touch about a school listing, a correction or "
                     + "the practice questions."),
-            page("/privacy", "Privacy policy", "What India School Finder stores about visitors and members, and why."),
-            page("/terms", "Terms of use", "The terms for using India School Finder, its listings and its practice tests."),
+            page("/privacy", "Privacy policy", "What SchoolDhundo stores about visitors and members, and why."),
+            page("/terms", "Terms of use", "The terms for using SchoolDhundo, its listings and its practice tests."),
             page("/disclaimer", "Disclaimer", "School facts are taken from official sources and may change; always "
                     + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
             page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
@@ -276,7 +276,7 @@ public class SeoHeadService {
         return tags(title + " | " + SITE, description, url, image, false, data);
     }
 
-    /** Practice sets are original India School Finder questions; the description says so, and the data is a free Quiz. */
+    /** Practice sets are original SchoolDhundo questions; the description says so, and the data is a free Quiz. */
     private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
         String url = baseUrl + "/exams/practice/" + set.getSlug();
         // The first sentence says what the set covers; the note that the questions are our own is always kept.

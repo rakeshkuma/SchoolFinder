@@ -17,7 +17,7 @@ public class OpenApiConfig {
     public OpenAPI indiaSchoolFinderOpenApi() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("India School Finder API")
+                        .title("SchoolDhundo API")
                         .version("v1")
                         .description("""
                                 Search, compare and evaluate schools in Delhi. Every factual record carries a \

@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface RankingService {
 
-    String DISCLAIMER = "India School Finder rankings are independent assessments calculated by this website from "
+    String DISCLAIMER = "SchoolDhundo rankings are independent assessments calculated by this website from "
             + "verified, source-linked evidence using the published methodology. They are not an official ranking by the "
             + "Government of India, any state or union territory government, CBSE, CISCE, a state board or any other "
             + "authority, and do not imply endorsement by them. Results marked provisional are based on incomplete "

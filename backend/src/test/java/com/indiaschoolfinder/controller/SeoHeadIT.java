@@ -25,7 +25,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
         String slug = body(mockMvc.perform(get("/api/v1/schools/{id}", id)).andReturn()).get("slug").asText();
         String h = head("/schools/" + slug + "?utm_source=x");
 
-        assertThat(h).contains("<title>Fixture Hill &amp; Valley School, Uttarakhand | India School Finder</title>");
+        assertThat(h).contains("<title>Fixture Hill &amp; Valley School, Uttarakhand | SchoolDhundo</title>");
         assertThat(h).contains("name=\"description\" content=\"Fixture Hill &amp; Valley School, Uttarakhand. Classes Class VI to Class XII.");
         assertThat(h).contains("<link rel=\"canonical\" href=\"http://localhost/schools/" + slug + "\" />");
         assertThat(h).contains("\"@type\":\"School\"").contains("\"postalCode\":\"263002\"").contains("\"latitude\":29.38");
@@ -51,9 +51,9 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/exams/practice/session")).contains("noindex");
         assertThat(head("/exams/practice")).doesNotContain("noindex").contains("Olympiad");
         // Fixed pages each have their own title and canonical address.
-        assertThat(head("/about")).contains("<title>About India School Finder | India School Finder</title>")
+        assertThat(head("/about")).contains("<title>About SchoolDhundo | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/about\"");
-        assertThat(head("/stages/primary")).contains("<title>Primary schools | India School Finder</title>");
+        assertThat(head("/stages/primary")).contains("<title>Primary schools | SchoolDhundo</title>");
         assertThat(head("/network/kendriya-vidyalaya")).contains("Kendriya Vidyalaya schools");
     }
 
@@ -66,7 +66,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("20 original multiple-choice questions").contains("not official exam questions")
                 .doesNotContain("noindex");
         assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
-        assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | India School Finder</title>");
+        assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | SchoolDhundo</title>");
         assertThat(head("/rankings/government-boarding")).contains("href=\"http://localhost/rankings/government-boarding\"");
         mockMvc.perform(get("/sitemaps/pages.xml"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
@@ -81,19 +81,19 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/states/uttarakhand/nainital")).contains("noindex");
         createSchool(school("Fixture Hill School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         createSchool(school("Fixture Valley School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
-        assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | India School Finder</title>")
+        assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | SchoolDhundo</title>")
                 .contains("3 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
         assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand").doesNotContain("noindex");
-        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | India School Finder</title>")
+        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex");
         assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");
-        assertThat(head("/schools")).contains("<title>School directory | India School Finder</title>")
+        assertThat(head("/schools")).contains("<title>School directory | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/schools\"");
         assertThat(head("/boards/CISCE")).contains("ICSE/ISC (CISCE) schools in India")
                 .contains("href=\"http://localhost/boards/CISCE\"");
-        assertThat(head("/find")).contains("<title>Find the right school for your child | India School Finder</title>")
+        assertThat(head("/find")).contains("<title>Find the right school for your child | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/find\"");
-        assertThat(head("/")).contains("<title>India School Finder – Discover Schools, Rankings").contains("SearchAction");
+        assertThat(head("/")).contains("<title>SchoolDhundo – Discover Schools, Rankings").contains("SearchAction");
         assertThat(head("/some/unknown/page")).doesNotContain("canonical");
     }
 }

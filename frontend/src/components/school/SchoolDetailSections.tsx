@@ -144,7 +144,7 @@ export function useSchoolSeo(s: SchoolDetail | null | undefined) {
     const description = [
       `${s.name}${place.length ? `, ${[...new Set(place)].join(', ')}` : ''}.`,
       s.board ? `${s.board.code === 'CISCE' ? 'ICSE/ISC' : s.board.code} school.` : '',
-      'Official fees, admissions, facilities and sources on India School Finder.',
+      'Official fees, admissions, facilities and sources on SchoolDhundo.',
     ].filter(Boolean).join(' ');
     const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const previous = meta?.content;

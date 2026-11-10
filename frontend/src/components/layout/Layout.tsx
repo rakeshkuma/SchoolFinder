@@ -37,7 +37,7 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
   {
     title: 'About',
     links: [
-      { to: '/about', label: 'About India School Finder' },
+      { to: '/about', label: 'About SchoolDhundo' },
       { to: '/contact', label: 'Contact Us' },
       { to: '/contact?topic=LISTING', label: 'Submit School Information' },
       { to: '/contact?topic=CORRECTION', label: 'Report Incorrect Information' },
@@ -90,7 +90,7 @@ export function Logo({ light = false, full = false, compact = false }: { light?:
       <img src="/favicon.svg" alt="" width={36} height={36} className="h-9 w-9 shrink-0" />
       <span className={`whitespace-nowrap leading-none ${compact ? 'hidden min-[380px]:block' : ''}`}>
         <span className={`block font-display text-base font-extrabold tracking-tight sm:text-[17px] ${light ? 'text-white' : 'text-ink'}`}>
-          India School Finder
+          SchoolDhundo
         </span>
         <span className={`mt-1 text-[11px] font-medium ${full ? 'block' : 'hidden sm:block xl:hidden'} ${light ? 'text-slate-400' : 'text-slate-500'}`}>
           Discover schools · Compare fees · Prepare
@@ -147,7 +147,7 @@ export function Layout() {
       <header className={`sticky top-0 z-40 border-b bg-white/90 backdrop-blur-lg transition-shadow ${scrolled ? 'border-slate-200 shadow-card' : 'border-transparent'}`}>
         {/* Wider than the page content on very wide screens, so the full navigation and every action fit on one row. */}
         <div className="container-page flex h-[68px] items-center justify-between gap-3 xl:gap-4 2xl:max-w-[1440px]">
-          <Link to="/" aria-label="India School Finder home" className="shrink-0 rounded-lg">
+          <Link to="/" aria-label="SchoolDhundo home" className="shrink-0 rounded-lg">
             <Logo compact />
           </Link>
           <DesktopNav />
@@ -219,7 +219,7 @@ export function Layout() {
           <div className="container-page py-5 text-xs leading-relaxed text-slate-400">
             <p className="max-w-4xl">{DISCLAIMER} Not affiliated with or endorsed by any school, board, ranking publisher or government body.</p>
             <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-              <span>© {new Date().getFullYear()} India School Finder</span>
+              <span>© {new Date().getFullYear()} SchoolDhundo</span>
               <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-white">Terms and Conditions</Link>
               <Link to="/disclaimer" className="hover:text-white">Disclaimer</Link>

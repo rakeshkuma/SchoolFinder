@@ -90,8 +90,8 @@ public class AccountService {
         if (existing != null) {
             // Same answer as a new registration; the mailbox owner learns what happened.
             if (existing.isVerified()) {
-                mail.send(email, "Your India School Finder account",
-                        "Someone tried to create an India School Finder account with this email address, which already has an "
+                mail.send(email, "Your SchoolDhundo account",
+                        "Someone tried to create a SchoolDhundo account with this email address, which already has an "
                                 + "account.\n\nIf it was you, sign in at " + link("/signin") + " or reset your password at "
                                 + link("/forgot-password") + ".\n\nIf it was not you, you can ignore this email.");
             } else {
@@ -134,7 +134,7 @@ public class AccountService {
 
     private void sendVerification(UserAccount account) {
         String token = issueToken(account.getId(), AccountToken.Purpose.VERIFY_EMAIL, properties.getAccount().getVerificationTtl());
-        mail.send(account.getEmail(), "Confirm your email for India School Finder",
+        mail.send(account.getEmail(), "Confirm your email for SchoolDhundo",
                 "Hello " + account.getDisplayName() + ",\n\nPlease confirm your email address to finish creating your India "
                         + "School Finder account:\n\n" + link("/verify-email?token=" + token) + "\n\nThis link works once and "
                         + "expires in " + hours(properties.getAccount().getVerificationTtl()) + ". If you did not create an "
@@ -234,8 +234,8 @@ public class AccountService {
             account.setLastLoginAt(now);
             account = accounts.saveAndFlush(account);
             auditService.record("ACCOUNT_GOOGLE_LINKED", "USER_ACCOUNT", account.getId(), null);
-            mail.send(email, "Google sign-in was added to your India School Finder account",
-                    "You can now sign in to your India School Finder account with Google. If this was not you, reset your "
+            mail.send(email, "Google sign-in was added to your SchoolDhundo account",
+                    "You can now sign in to your SchoolDhundo account with Google. If this was not you, reset your "
                             + "password at " + link("/forgot-password") + " and secure your Google account.");
             return account;
         }
@@ -298,8 +298,8 @@ public class AccountService {
         requireGoodPassword(next, account.getEmail(), "newPassword");
         setPassword(account, next);
         auditService.record("ACCOUNT_PASSWORD_CHANGED", "USER_ACCOUNT", accountId, null);
-        mail.send(account.getEmail(), "Your India School Finder password was changed",
-                "The password for your India School Finder account was changed. If this was not you, reset your password at "
+        mail.send(account.getEmail(), "Your SchoolDhundo password was changed",
+                "The password for your SchoolDhundo account was changed. If this was not you, reset your password at "
                         + link("/forgot-password") + ".");
     }
 
@@ -307,8 +307,8 @@ public class AccountService {
     public void requestPasswordReset(String rawEmail) {
         accounts.findByEmail(normaliseEmail(rawEmail)).ifPresent(account -> {
             String token = issueToken(account.getId(), AccountToken.Purpose.RESET_PASSWORD, properties.getAccount().getResetTtl());
-            mail.send(account.getEmail(), "Reset your India School Finder password",
-                    "We received a request to reset the password for your India School Finder account.\n\nChoose a new "
+            mail.send(account.getEmail(), "Reset your SchoolDhundo password",
+                    "We received a request to reset the password for your SchoolDhundo account.\n\nChoose a new "
                             + "password here:\n\n" + link("/reset-password?token=" + token) + "\n\nThis link works once and "
                             + "expires in " + minutes(properties.getAccount().getResetTtl()) + ". If you did not ask for this, "
                             + "you can ignore this email; your password stays the same.");
@@ -330,7 +330,7 @@ public class AccountService {
             account.setEmailVerifiedAt(Instant.now(clock));
         }
         auditService.record("ACCOUNT_PASSWORD_RESET", "USER_ACCOUNT", account.getId(), null);
-        mail.send(account.getEmail(), "Your India School Finder password was reset",
+        mail.send(account.getEmail(), "Your SchoolDhundo password was reset",
                 "Your password was reset and you were signed out everywhere. If this was not you, reset it again at "
                         + link("/forgot-password") + ".");
         return account.getId();
@@ -363,8 +363,8 @@ public class AccountService {
         String email = account.getEmail();
         accounts.delete(account); // account_token rows go with it (ON DELETE CASCADE)
         auditService.record("ACCOUNT_DELETED", "USER_ACCOUNT", accountId, null);
-        mail.send(email, "Your India School Finder account was deleted",
-                "Your India School Finder account and the information saved with it have been deleted.");
+        mail.send(email, "Your SchoolDhundo account was deleted",
+                "Your SchoolDhundo account and the information saved with it have been deleted.");
     }
 
     @Transactional

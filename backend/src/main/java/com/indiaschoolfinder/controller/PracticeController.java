@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "Practice", description = "India School Finder practice quizzes, mock tests and question bank (original questions, not official)")
+@Tag(name = "Practice", description = "SchoolDhundo practice quizzes, mock tests and question bank (original questions, not official)")
 @Validated
 @RestController
 public class PracticeController {

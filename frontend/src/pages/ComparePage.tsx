@@ -81,7 +81,7 @@ export function ComparePage() {
   }, [ids.join(','), hydrated]);
 
   const shareUrl = `${window.location.origin}/compare?ids=${ids.join(',')}`;
-  const shareText = `Comparing schools on India School Finder: ${items.map((i) => i.name).join(' vs ')}`;
+  const shareText = `Comparing schools on SchoolDhundo: ${items.map((i) => i.name).join(' vs ')}`;
 
   // Distance from home: the position stays in this browser and is never sent anywhere.
   const [home, setHome] = useState<{ lat: number; lon: number } | null>(null);
@@ -217,7 +217,7 @@ export function ComparePage() {
       title: 'Rankings',
       rows: [
         {
-          label: 'India School Finder score',
+          label: 'SchoolDhundo score',
           ...plain((s) => {
             const site = extra(s.id)?.ranking?.siteRanking;
             if (!site) return 'Not yet ranked';
@@ -268,7 +268,7 @@ export function ComparePage() {
               </label>
             )}
             {locationError && <p className="w-full text-xs text-amber-700">{locationError}</p>}
-            {home && <p className="w-full text-xs text-slate-500">Your location stays in this browser; it is not sent to India School Finder.</p>}
+            {home && <p className="w-full text-xs text-slate-500">Your location stays in this browser; it is not sent to SchoolDhundo.</p>}
           </div>
         )}
 

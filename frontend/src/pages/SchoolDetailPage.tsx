@@ -359,7 +359,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
           </p>
           <div className="mt-2"><SourceLink url={s.sourceUrl} /></div>
           <p className="mt-3 text-xs text-slate-500">
-            India School Finder is independent; listing a school does not mean the school endorses this site.
+            SchoolDhundo is independent; listing a school does not mean the school endorses this site.
           </p>
           <Link to={`/suggest?school=${encodeURIComponent(s.slug)}&topic=CORRECTION`} className="btn-secondary mt-3 w-full text-xs">
             <Icon name="info" className="h-4 w-4" /> Report incorrect information
@@ -673,7 +673,7 @@ function RankingSummary({ schoolId }: { schoolId: number }) {
     <section className="card p-5 text-sm">
       <h2 className="font-semibold">Rankings</h2>
       <p className="mt-2 text-slate-700">
-        <span className="text-slate-500">India School Finder score: </span>
+        <span className="text-slate-500">SchoolDhundo score: </span>
         {r.siteRanking?.rankPosition ? `Rank #${r.siteRanking.rankPosition} in India (${r.siteRanking.totalScore.toFixed(1)}/100)`
           : r.siteRanking ? `Provisional (${r.siteRanking.totalScore.toFixed(1)}/100, not enough verified evidence for a rank)`
             : 'Not yet ranked'}
@@ -709,7 +709,7 @@ function RankingTab({ schoolId }: { schoolId: number }) {
       {(r) => (
         <div className="space-y-6">
           <section className="card p-6">
-            <h2 className="font-semibold">India School Finder score</h2>
+            <h2 className="font-semibold">SchoolDhundo score</h2>
             {r.siteRanking ? (
               <>
                 <div className="mt-3 flex flex-wrap items-baseline gap-4">
@@ -859,7 +859,7 @@ function ReviewForm({ schoolId }: { schoolId: number }) {
       </div>
       <label className="flex items-start gap-2 text-sm text-slate-700">
         <input type="checkbox" className="mt-1" {...register('consentGiven', { required: 'Consent is required to publish your review' })} />
-        I agree that this review may be published on India School Finder, and it reflects my own experience.
+        I agree that this review may be published on SchoolDhundo, and it reflects my own experience.
       </label>
       {errors.consentGiven && <p className="field-error">{errors.consentGiven.message}</p>}
       {result instanceof ApiError && <p className="field-error">{result.message}</p>}

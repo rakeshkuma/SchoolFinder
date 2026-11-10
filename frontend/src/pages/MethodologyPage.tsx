@@ -131,7 +131,7 @@ function WorkedExample({ m }: { m: RankingMethodology }) {
 }
 
 export function MethodologyPage() {
-  useDocumentTitle('Ranking methodology', 'Who publishes the rankings shown on India School Finder, their years, and how entries are verified and presented.');
+  useDocumentTitle('Ranking methodology', 'Who publishes the rankings shown on SchoolDhundo, their years, and how entries are verified and presented.');
   const state = useApi(() => rankingService.methodology(), []);
   const stats = useApi(() => referenceService.stats(), []);
   return (
@@ -143,7 +143,7 @@ export function MethodologyPage() {
           <div className="card prose-page min-w-0 p-6">
             <RankingSources />
             <details id="own-score" className="mt-8 border-t border-slate-200 pt-4">
-              <summary className="cursor-pointer font-display text-lg font-bold text-ink">India School Finder’s own evidence score</summary>
+              <summary className="cursor-pointer font-display text-lg font-bold text-ink">SchoolDhundo’s own evidence score</summary>
               <AsyncContent state={state}>
                 {(m) => {
                   const notYet = stats.data ? Math.max(0, stats.data.activeSchools - m.rankedSchools - m.provisionalSchools) : null;
