@@ -60,6 +60,7 @@ public class SeoHeadService {
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
     private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
     private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_CATEGORY = Pattern.compile("^/blog/category/([a-z0-9-]+)/?$");
     private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
@@ -132,8 +133,8 @@ public class SeoHeadService {
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
                     + "aptitude, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
                     + "not official questions."),
-            page("/blog", "School admission and parenting blog", "Practical guides for Indian parents on admissions, choosing a board, "
-                    + "fees and scholarships, and parenting."),
+            page("/blog", "Education insights for parents and students", "Original guides on school admissions, boarding and "
+                    + "government schools, entrance exams, boards and parenting in India, with official sources linked."),
             page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on SchoolDhundo, their years, "
                     + "how entries are verified, and how third-party rankings are presented."),
             page("/cities", "Schools by city", "Cities across India where SchoolDhundo lists schools, with "
@@ -274,6 +275,9 @@ public class SeoHeadService {
             if ((m = BEST_IN.matcher(p)).matches()) {
                 return bestPlace(m.group(1), baseUrl);
             }
+            if ((m = BLOG_CATEGORY.matcher(p)).matches()) {
+                return blogCategory(m.group(1), baseUrl);
+            }
             if ((m = BLOG_POST.matcher(p)).matches()) {
                 return blogPost(blogService.published(m.group(1)), baseUrl);
             }
@@ -291,22 +295,61 @@ public class SeoHeadService {
         return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? website(baseUrl) : null);
     }
 
+    /**
+     * An article: Article and BreadcrumbList structured data, og:type article with its dates, and a Twitter/X card. Only
+     * blog pages get these extra tags; every other page keeps the shared ones.
+     */
     private String blogPost(com.indiaschoolfinder.entity.BlogPost post, String baseUrl) {
         String url = baseUrl + "/blog/" + post.getSlug();
         String title = post.getMetaTitle() != null ? post.getMetaTitle() : post.getTitle();
         String description = post.getMetaDescription() != null ? post.getMetaDescription() : post.getExcerpt();
         String image = post.getCoverImageUrl() == null ? null : post.getCoverImageUrl().startsWith("/") ? baseUrl + post.getCoverImageUrl() : post.getCoverImageUrl();
+        var category = post.getCategory();
+        Map<String, Object> article = new LinkedHashMap<>();
+        article.put("@type", "BlogPosting");
+        article.put("headline", post.getTitle());
+        article.put("description", description);
+        article.put("url", url);
+        article.put("mainEntityOfPage", url);
+        article.put("datePublished", post.getPublishedAt().toString());
+        article.put("dateModified", post.getUpdatedAt().toString());
+        article.put("articleSection", category.label());
+        if (post.getTags() != null) article.put("keywords", post.getTags());
+        article.put("author", Map.of("@type", "Person", "name", post.getAuthorName(), "url", baseUrl + "/about"));
+        article.put("publisher", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        if (image != null) article.put("image", image);
+        Map<String, Object> crumbs = new LinkedHashMap<>();
+        crumbs.put("@type", "BreadcrumbList");
+        crumbs.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Blog", "item", baseUrl + "/blog"),
+                Map.of("@type", "ListItem", "position", 3, "name", category.label(), "item", baseUrl + "/blog/category/" + category.slug()),
+                Map.of("@type", "ListItem", "position", 4, "name", post.getTitle(), "item", url)));
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
-        data.put("@type", "BlogPosting");
-        data.put("headline", post.getTitle());
-        data.put("description", description);
-        data.put("url", url);
-        data.put("datePublished", post.getPublishedAt().toString());
-        data.put("dateModified", post.getUpdatedAt().toString());
-        data.put("author", Map.of("@type", "Person", "name", post.getAuthorName()));
-        if (image != null) data.put("image", image);
-        return tags(title + " | " + SITE, description, url, image, false, data);
+        data.put("@graph", java.util.List.of(article, crumbs));
+        String head = tags(title + " | " + SITE, description, url, image, false, data)
+                .replace(meta("property", "og:type", "website"), meta("property", "og:type", "article"));
+        StringBuilder extra = new StringBuilder();
+        extra.append(meta("property", "article:published_time", post.getPublishedAt().toString()));
+        extra.append(meta("property", "article:modified_time", post.getUpdatedAt().toString()));
+        extra.append(meta("property", "article:section", category.label()));
+        extra.append(meta("name", "twitter:card", image != null ? "summary_large_image" : "summary"));
+        extra.append(meta("name", "twitter:title", title));
+        extra.append(meta("name", "twitter:description", description));
+        if (image != null) extra.append(meta("name", "twitter:image", image));
+        return head + extra;
+    }
+
+    /** A blog category page exists only once the category has a published article; until then it is noindex. */
+    private String blogCategory(String slug, String baseUrl) {
+        var category = com.indiaschoolfinder.entity.BlogPost.Category.bySlug(slug)
+                .orElseThrow(() -> new ResourceNotFoundException("Blog category", slug));
+        long articles = blogService.categoryCounts().getOrDefault(category, 0L);
+        String url = baseUrl + "/blog/category/" + category.slug();
+        return tags(category.label() + ": articles for parents and students | " + SITE,
+                category.label() + " on the SchoolDhundo blog: original guides for Indian parents and students, with official sources linked.",
+                url, null, articles == 0, null);
     }
 
     /** Practice sets are original SchoolDhundo questions; the description says so, and the data is a free Quiz. */

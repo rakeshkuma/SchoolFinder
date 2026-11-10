@@ -1,11 +1,14 @@
 /**
- * Blog articles are stored as plain text with light formatting: ## and ### headings, - and 1. lists, **bold** and
- * [links](url). It is read into blocks and shown as React elements, so nothing in an article can run as HTML.
+ * Blog articles are stored as plain text with light formatting: ## and ### headings, - and 1. lists, **bold**,
+ * [links](url), tables (| a | b | rows, the first row being the header; a | --- | row is ignored) and notes (lines
+ * starting with > , shown as a highlighted box). It is read into blocks and shown as React elements, so nothing in an article can run as HTML.
  */
 export type Block =
   | { kind: 'h2' | 'h3'; text: string; id: string }
   | { kind: 'p'; text: string }
-  | { kind: 'ul' | 'ol'; items: string[] };
+  | { kind: 'ul' | 'ol'; items: string[] }
+  | { kind: 'table'; head: string[]; rows: string[][] }
+  | { kind: 'note'; text: string };
 
 export type Inline =
   | { kind: 'text'; text: string }
@@ -33,7 +36,21 @@ export function parseBody(body: string): Block[] {
     const bullet = /^[-*]\s+(.+)$/.exec(line);
     const numbered = /^\d+\.\s+(.+)$/.exec(line);
     const item = bullet ?? numbered;
-    if (!line) {
+    const cells = /^\|(.+)\|$/.exec(line);
+    const note = /^>\s?(.*)$/.exec(line);
+    if (cells) {
+      flush();
+      const row = cells[1].split('|').map((c) => c.trim());
+      if (row.every((c) => /^:?-{3,}:?$/.test(c))) continue; // the | --- | line under the header
+      const last = blocks[blocks.length - 1];
+      if (last?.kind === 'table') last.rows.push(row);
+      else blocks.push({ kind: 'table', head: row, rows: [] });
+    } else if (note) {
+      flush();
+      const last = blocks[blocks.length - 1];
+      if (last?.kind === 'note') last.text += ' ' + note[1];
+      else blocks.push({ kind: 'note', text: note[1] });
+    } else if (!line) {
       flush();
     } else if (heading) {
       flush();

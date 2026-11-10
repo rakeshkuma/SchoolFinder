@@ -75,6 +75,7 @@ const account = () => import('./pages/AccountPages');
 const AuthPage = page(account, 'AuthPage');
 const BlogListPage = page(() => import('./pages/BlogPages'), 'BlogListPage');
 const BlogPostPage = page(() => import('./pages/BlogPages'), 'BlogPostPage');
+const BlogCategoryPage = page(() => import('./pages/BlogPages'), 'BlogCategoryPage');
 const VerifyEmailPage = page(account, 'VerifyEmailPage');
 const ForgotPasswordPage = page(account, 'ForgotPasswordPage');
 const ResetPasswordPage = page(account, 'ResetPasswordPage');
@@ -227,6 +228,7 @@ export default function App() {
               <Route path="register" element={<AuthPage />} />
               <Route path="blog" element={<BlogListPage />} />
               <Route path="blog/:slug" element={<BlogPostPage />} />
+              <Route path="blog/category/:slug" element={<BlogCategoryPage />} />
               <Route path="verify-email" element={<VerifyEmailPage />} />
               <Route path="forgot-password" element={<ForgotPasswordPage />} />
               <Route path="reset-password" element={<ResetPasswordPage />} />

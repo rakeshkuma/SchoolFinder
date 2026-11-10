@@ -125,9 +125,11 @@ public class SitemapController {
         bestPlaces.all().stream().filter(r -> r.ranked() + r.listed() >= com.indiaschoolfinder.service.BestPlacesService.MIN_TO_INDEX)
                 .forEach(r -> url(xml, base + "/rankings/best-schools-in-" + r.slug(), null));
         // The blog appears once it has something to read; drafts never do.
-        var posts = blogPosts.findByPublishedAtIsNotNullOrderByPublishedAtDesc();
+        var posts = blogPosts.findVisible(java.time.Instant.now());
         if (!posts.isEmpty()) url(xml, base + "/blog", null);
         posts.forEach(p -> url(xml, base + "/blog/" + p.getSlug(), p.getUpdatedAt()));
+        // A category page is listed once it has a published article.
+        posts.stream().map(p -> p.getCategory()).distinct().forEach(c -> url(xml, base + "/blog/category/" + c.slug(), null));
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);
