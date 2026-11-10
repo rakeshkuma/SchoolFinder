@@ -182,6 +182,8 @@ export const rankingService = {
   },
   /** States, cities, districts, boards and school groups that have entries in a list. */
   places: (edition: number) => http.get<RankingPlaces>('/rankings/places', { params: { edition } }).then((r) => r.data),
+  bestPlaces: () => http.get<BestPlaceSummary[]>('/rankings/best').then((r) => r.data),
+  bestPlace: (slug: string) => http.get<BestPlace>(`/rankings/best/${encodeURIComponent(slug)}`).then((r) => r.data),
 };
 
 /** Lists of schools compiled by the site. They hold no ranks. */
@@ -254,6 +256,8 @@ export interface RankingTableParams {
   maxRank?: number;
   government?: string;
   boarding?: string;
+  /** Display order only (RANK, NAME, STATE, CITY); ranks are never changed. */
+  sort?: string;
   page?: number;
   size?: number;
 }
@@ -291,6 +295,35 @@ export interface RankingPlaces {
   boards: { code: string; entries: number }[];
   government: { code: string; entries: number }[];
   boarding: { code: string; entries: number }[];
+}
+
+/** A state or city with schools ranked in published rankings and/or named in the compiled A-to-Z lists. */
+export interface BestPlaceSummary {
+  slug: string;
+  name: string;
+  kind: 'STATE' | 'CITY';
+  ranked: number;
+  listed: number;
+}
+
+export interface BestPlace {
+  kind: 'STATE' | 'CITY';
+  slug: string;
+  name: string;
+  stateCode: string;
+  stateName: string;
+  stateSlug: string;
+  city: string | null;
+  ranked: number;
+  listed: number;
+  /** Schools in the directory there, ranked or not. */
+  schools: number;
+  /** "IIRF 2026" when a published ranking covers the place. */
+  rankingSource: string | null;
+  checkedOn: string | null;
+  /** Enough ranked or listed schools to be offered to search engines. */
+  indexable: boolean;
+  related: BestPlaceSummary[];
 }
 
 export interface RankingSections {

@@ -106,6 +106,32 @@ class RankingCatalogIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/rankings/table").param("edition", String.valueOf(e)).param("size", "100")).andExpect(jsonPath("$.content.length()").value(3));
         mockMvc.perform(get("/api/v1/rankings/places").param("edition", String.valueOf(e)))
                 .andExpect(jsonPath("$.states.length()").value(2)).andExpect(jsonPath("$.cities.length()").value(2));
+        // Sorting by state puts Bihar's school first and keeps its national rank of 3; an unknown sort is refused.
+        mockMvc.perform(get("/api/v1/rankings/table").param("edition", String.valueOf(e)).param("sort", "STATE"))
+                .andExpect(jsonPath("$.content[0].schoolName").value("Ccc Rank School"))
+                .andExpect(jsonPath("$.content[0].nationalRank").value(3));
+        mockMvc.perform(get("/api/v1/rankings/table").param("edition", String.valueOf(e)).param("sort", "RANDOM"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void bestSchoolsPagesCountOnlyWhatIsRankedOrListedThere() throws Exception {
+        upload(list(), "ALL_OR_NOTHING");
+        approveLatestJob();
+        mockMvc.perform(get("/api/v1/rankings/best/bihar"))
+                .andExpect(jsonPath("$.kind").value("STATE")).andExpect(jsonPath("$.ranked").value(1))
+                .andExpect(jsonPath("$.rankingSource").isNotEmpty());
+        mockMvc.perform(get("/api/v1/rankings/best/patna"))
+                .andExpect(jsonPath("$.kind").value("CITY")).andExpect(jsonPath("$.stateCode").value("BR"))
+                .andExpect(jsonPath("$.ranked").value(1))
+                .andExpect(jsonPath("$.related[0].slug").value("bihar"));
+        mockMvc.perform(get("/api/v1/rankings/best/atlantis")).andExpect(status().isNotFound());
+        mockMvc.perform(get("/api/v1/rankings/best/no%20spaces")).andExpect(status().isBadRequest());
+        String head = mockMvc.perform(get("/api/v1/seo/head/rankings/best-schools-in-patna")).andReturn().getResponse().getContentAsString();
+        org.assertj.core.api.Assertions.assertThat(head).contains("<title>Best Schools in Patna")
+                .contains("href=\"http://localhost/rankings/best-schools-in-patna\"").contains("BreadcrumbList");
+        org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/rankings/best-schools-in-atlantis"))
+                .andReturn().getResponse().getContentAsString()).contains("noindex");
     }
 
     @Test

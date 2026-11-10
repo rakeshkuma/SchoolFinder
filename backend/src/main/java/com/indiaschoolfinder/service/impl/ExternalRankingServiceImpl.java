@@ -139,6 +139,10 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
         p.setMethodologyUrl(blankToNull(r.methodologyUrl()));
         p.setDescription(InputSanitizer.clean(r.description()));
         p.setActive(r.active() == null || r.active());
+        if (r.permissionStatus() != null && !r.permissionStatus().equals(p.getPermissionStatus())) {
+            p.setPermissionStatus(r.permissionStatus());
+            p.setPermissionUpdatedOn(java.time.LocalDate.now(clock));
+        }
         RankingPublisher saved = publisherRepository.save(p);
         if (oldName != null && !oldName.equals(name)) {
             // Entries keep the publisher's display name with them.
@@ -609,7 +613,7 @@ public class ExternalRankingServiceImpl implements ExternalRankingService {
 
     private static RankingPublisherDto toDto(RankingPublisher p, long verifiedEntries) {
         return new RankingPublisherDto(p.getId(), p.getCode(), p.getName(), p.getKind(), p.getWebsiteUrl(),
-                p.getMethodologyUrl(), p.getDescription(), p.isActive(), verifiedEntries);
+                p.getMethodologyUrl(), p.getDescription(), p.isActive(), verifiedEntries, p.getPermissionStatus(), p.getPermissionUpdatedOn());
     }
 
     private static String blankToNull(String v) {

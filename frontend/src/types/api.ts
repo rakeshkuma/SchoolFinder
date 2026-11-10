@@ -1250,7 +1250,12 @@ export interface RankingPublisher {
   active: boolean;
   /** Checked, non-sponsored entries on this site. */
   verifiedEntries: number;
+  /** Whether the publisher agreed to its ranks being shown here (official sources need no permission). */
+  permissionStatus: PublisherPermission;
+  permissionUpdatedOn: string | null;
 }
+
+export type PublisherPermission = 'NOT_REQUESTED' | 'REQUESTED' | 'GRANTED' | 'NOT_NEEDED';
 
 export interface RankingPublisherRequest {
   name: string;
@@ -1259,6 +1264,7 @@ export interface RankingPublisherRequest {
   methodologyUrl: string | null;
   description: string | null;
   active: boolean;
+  permissionStatus?: PublisherPermission;
 }
 
 /** A published-ranking entry with its school, for lists across schools. */

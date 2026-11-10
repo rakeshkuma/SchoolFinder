@@ -60,6 +60,7 @@ const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const rankingPages = () => import('./pages/RankingHubPage');
 const TopSchoolsPage = page(rankingPages, 'TopSchoolsPage');
 const RankingStatesPage = page(rankingPages, 'RankingStatesPage');
+const BestPlacePage = page(rankingPages, 'BestPlacePage');
 const BoardRankingsPage = page(rankingPages, 'BoardRankingsPage');
 const GovernmentBoardingPage = page(rankingPages, 'GovernmentBoardingPage');
 const RankingPlaceRedirect = page(rankingPages, 'RankingPlaceRedirect');
@@ -121,6 +122,13 @@ function BoardRankingRedirect() {
   return <Navigate to={`/rankings/boards?board=${code.toUpperCase()}`} replace />;
 }
 
+/** /boarding-schools/... is another name for the boarding directory at /boarding/... (nginx answers it with a 301). */
+function BoardingSchoolsRedirect() {
+  const rest = useParams()['*'] ?? '';
+  const { search } = useLocation();
+  return <Navigate to={`/boarding${rest ? `/${rest}` : ''}${search}`} replace />;
+}
+
 function ExamPreparationRedirect() {
   const rest = useParams()['*'] ?? '';
   const { search } = useLocation();
@@ -153,6 +161,8 @@ export default function App() {
               <Route path="rankings/government-boarding" element={<GovernmentBoardingPage />} />
               <Route path="rankings/score" element={<RankingsPage />} />
               <Route path="rankings/methodology" element={<MethodologyPage />} />
+              {/* /rankings/best-schools-in-{state or city}; fixed /rankings/... routes above and below match first. */}
+              <Route path="rankings/:page" element={<BestPlacePage />} />
               <Route path="rankings/india" element={<Navigate to="/rankings" replace />} />
               <Route path="rankings/state/:slug" element={<RankingPlaceRedirect />} />
               <Route path="rankings/city/:slug" element={<RankingPlaceRedirect />} />
@@ -182,6 +192,7 @@ export default function App() {
               <Route path="exams/state/:slug" element={<ExamStatePage />} />
               <Route path="exams/netarhat-entrance" element={<Navigate to="/exams/netarhat" replace />} />
               <Route path="exam-preparation/*" element={<ExamPreparationRedirect />} />
+              <Route path="boarding-schools/*" element={<BoardingSchoolsRedirect />} />
               <Route path="exams/syllabus" element={<ExamSyllabusPage />} />
               <Route path="exams/resources" element={<ExamResourcesPage />} />
               <Route path="exams/practice" element={<PracticeListPage />} />

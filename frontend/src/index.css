@@ -125,3 +125,19 @@
     scrollbar-width: none;
   }
 }
+
+/* Printing (comparison, study plan): the page's own content only, on white, without the site chrome. */
+@media print {
+  [data-print="hide"] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  table {
+    page-break-inside: auto;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+}

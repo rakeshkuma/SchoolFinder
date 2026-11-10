@@ -60,6 +60,7 @@ public class SeoHeadService {
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
     private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
     private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
+    private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
@@ -74,7 +75,8 @@ public class SeoHeadService {
      * "page not found" page, so it is marked noindex instead of being offered as a copy of the home page.
      */
     static final Set<String> APP_SECTIONS = Set.of("schools", "states", "cities", "network", "saved", "rankings",
-            "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "exams", "exam-preparation", "boards",
+            "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "boarding-schools", "exams",
+            "exam-preparation", "boards",
             "type", "stages", "reviews", "about", "contact", "suggest", "find", "privacy", "privacy-policy", "terms",
             "terms-of-service", "terms-and-conditions", "disclaimer", "editorial-policy", "corrections-policy",
             "data-deletion", "signin", "register", "blog", "verify-email", "forgot-password", "reset-password", "account",
@@ -161,6 +163,12 @@ public class SeoHeadService {
                     + "Kendriya Vidyalaya Sangathan, affiliated to CBSE, with locations and admission links."),
             page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya schools", "Residential central "
                     + "government schools run by Navodaya Vidyalaya Samiti; Class VI admission is through the JNVST."),
+            page("/network/sainik-school", "Sainik Schools in India", "Residential schools run by the Sainik Schools Society "
+                    + "under the Ministry of Defence; Class VI and IX admission is through AISSEE."),
+            page("/network/eklavya-model-residential-school", "Eklavya Model Residential Schools (EMRS)", "Residential schools "
+                    + "for Scheduled Tribe students under the Ministry of Tribal Affairs, with state-wise admission information."),
+            page("/network/rashtriya-military-school", "Rashtriya Military Schools", "Residential schools under the Ministry "
+                    + "of Defence; Class VI and IX admission is through the RMS CET."),
             page("/type/government", "Government schools in India", "Schools run by central and state governments and "
                     + "local bodies, with board, classes and admission information from official sources."),
             page("/type/private-aided", "Private and aided schools in India", "Private unaided, government-aided and "
@@ -201,12 +209,15 @@ public class SeoHeadService {
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final ObjectMapper objectMapper;
     private final BlogService blogService;
+    private final BestPlacesService bestPlacesService;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
                           ExamService examService, ObjectMapper objectMapper,
-                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService) {
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
+                          BestPlacesService bestPlacesService) {
         this.blogService = blogService;
+        this.bestPlacesService = bestPlacesService;
         this.examService = examService;
         this.practiceSetRepository = practiceSetRepository;
         this.schoolService = schoolService;
@@ -259,6 +270,9 @@ public class SeoHeadService {
             }
             if ((m = EXAM_STATE.matcher(p)).matches()) {
                 return examState(m.group(1), baseUrl);
+            }
+            if ((m = BEST_IN.matcher(p)).matches()) {
+                return bestPlace(m.group(1), baseUrl);
             }
             if ((m = BLOG_POST.matcher(p)).matches()) {
                 return blogPost(blogService.published(m.group(1)), baseUrl);
@@ -468,6 +482,34 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName(), "item", url)));
         return tags(title, description.toString(), url, null, false, data);
+    }
+
+    /**
+     * "Best schools in {state or city}": the title carries the ranking year only when a published ranking covers the
+     * place; the description states the counts; places with too little behind them are noindex.
+     */
+    private String bestPlace(String slug, String baseUrl) {
+        BestPlacesService.Place p = bestPlacesService.place(slug);
+        String year = p.rankingSource() == null ? "" : " " + p.rankingSource().substring(p.rankingSource().lastIndexOf(' ') + 1);
+        String where = p.kind() == BestPlacesService.Kind.CITY ? p.name() + ", " + p.stateName() : p.name();
+        String title = "Best Schools in " + p.name() + year + ": Rankings and School Lists | " + SITE;
+        StringBuilder description = new StringBuilder("Best schools in ").append(where).append(": ");
+        if (p.ranked() > 0) {
+            description.append(p.ranked()).append(p.ranked() == 1 ? " school" : " schools").append(" ranked in ").append(p.rankingSource());
+            if (p.listed() > 0) description.append(" and ");
+        }
+        if (p.listed() > 0) description.append(p.listed()).append(" in SchoolDhundo's A-to-Z school lists");
+        if (p.ranked() == 0 && p.listed() == 0) description.append("no published ranking yet");
+        description.append(". Each rank is the publisher's own; compare schools and visit their official websites.");
+        String url = baseUrl + "/rankings/best-schools-in-" + p.slug();
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
+                Map.of("@type", "ListItem", "position", 3, "name", "Best schools in " + p.name(), "item", url)));
+        return tags(title, description.toString(), url, null, !p.indexable(), data);
     }
 
     /** Exams admitting to one class; classes without a published exam are not pages (noindex via not-found). */

@@ -44,4 +44,10 @@ public class RankingPublisher extends AuditableEntity {
 
     @Column(nullable = false)
     private boolean active = true;
+
+    /** NOT_REQUESTED, REQUESTED, GRANTED or NOT_NEEDED (official sources): may its ranks be shown here. */
+    @Column(nullable = false, length = 20)
+    private String permissionStatus = "NOT_REQUESTED";
+
+    private java.time.LocalDate permissionUpdatedOn;
 }

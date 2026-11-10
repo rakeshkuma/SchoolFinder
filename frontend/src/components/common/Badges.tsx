@@ -71,3 +71,15 @@ export function Stars({ rating, size = 'sm' }: { rating: number | null; size?: '
     </span>
   );
 }
+
+/**
+ * The one label for anything paid: "Sponsored" on a promoted school or article, "Advertisement" on an ad unit. Paid
+ * placements always carry it, never sit inside rankings or school facts, and never change a rank or a fact.
+ */
+export function PaidLabel({ kind = 'Sponsored', className = '' }: { kind?: 'Sponsored' | 'Advertisement'; className?: string }) {
+  return (
+    <span className={`inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600 ring-1 ring-inset ring-slate-300 ${className}`}>
+      {kind}
+    </span>
+  );
+}

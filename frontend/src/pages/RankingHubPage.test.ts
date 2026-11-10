@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { RankingEdition, RankingRow } from '../services/publicApi';
-import { boardTabs, pickList, rankText, shownRanks } from './RankingHubPage';
+import { boardTabs, pickList, rankingCategories, rankText, shownRanks } from './RankingHubPage';
 
 const edition = (id: number, o: Partial<RankingEdition>): RankingEdition => ({
   id, publisherCode: 'X', publisher: 'X', kind: 'SURVEY', name: 'List', year: '2026', categoryCode: null, category: null, family: null, boardCode: null,
@@ -54,5 +54,29 @@ describe('ranks', () => {
   it('shows a column only for ranks the publisher printed, and keeps them apart', () => {
     expect(shownRanks([row({ nationalRank: 3, stateRank: 1 })], ['state', 'city', 'national'])).toEqual(['state', 'national']);
     expect(shownRanks([row({})], ['state', 'city', 'national'])).toEqual(['national']);
+  });
+});
+
+describe('ranking category cards', () => {
+  const places = { states: [], cities: [], districts: [], boards: [{ code: 'CBSE', entries: 80 }, { code: 'IB', entries: 2 }],
+    government: [{ code: 'KV', entries: 3 }], boarding: [{ code: 'BOYS', entries: 4 }] };
+  const lists = [{ key: 'b', kind: 'BOARD' as const, code: 'CISCE', title: 'ICSE', entries: 30, profiles: 5 }];
+  const cards = rankingCategories(places, lists, 'IIRF 2026');
+  const note = (title: string) => cards.find((c) => c.title.includes(title))?.note;
+
+  it('counts schools ranked in the published list', () => {
+    expect(note('CBSE')).toBe('80 schools ranked in IIRF 2026');
+    expect(note('Boys')).toBe('4 schools ranked in IIRF 2026');
+    expect(note('Government')).toBe('3 schools ranked in IIRF 2026');
+  });
+
+  it('falls back to a compiled A-to-Z list, then to saying there is no ranking', () => {
+    expect(note('ICSE')).toBe('30 listed A to Z (not ranked)');
+    expect(note('Girls')).toBe('No published ranking yet');
+  });
+
+  it('offers nine categories, each with a working page', () => {
+    expect(cards).toHaveLength(9);
+    cards.forEach((c) => expect(c.to.startsWith('/rankings')).toBe(true));
   });
 });
