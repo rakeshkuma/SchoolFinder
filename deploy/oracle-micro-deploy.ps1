@@ -9,7 +9,10 @@ param(
     [string]$Key = "C:\Users\rakes\Documents\oracle-keys\ssh-key-2026-11-10.key",
     [switch]$SkipBuild
 )
-$ErrorActionPreference = "Stop"
+# Windows PowerShell 5.1 turns any stderr line of a native program (Maven's JDK warnings) into an error under "Stop",
+# so failures are detected from each program's exit code instead.
+$ErrorActionPreference = "Continue"
+function Check($what) { if ($LASTEXITCODE -ne 0) { throw "$what failed (exit code $LASTEXITCODE)" } }
 $root = Split-Path -Parent $PSScriptRoot
 $ssh = @("-i", $Key, "-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=accept-new")
 $target = "ubuntu@$Server"
@@ -30,11 +33,12 @@ $jar = Get-ChildItem "$root\backend\target\india-school-finder-backend-*.jar" | 
 if (-not $jar) { throw "no backend jar in backend\target; run without -SkipBuild" }
 
 Step "Uploading to $Server"
-ssh @ssh $target "rm -rf /tmp/schooldhundo; mkdir -p /tmp/schooldhundo"
-scp @ssh -q $jar.FullName "${target}:/tmp/schooldhundo/app.jar"
-scp @ssh -q -r "$root\frontend\dist" "${target}:/tmp/schooldhundo/www"
+# sudo: folders uploaded from Windows can arrive read-only, which a plain rm cannot clear.
+ssh @ssh $target "sudo rm -rf /tmp/schooldhundo && mkdir -p /tmp/schooldhundo"; Check "preparing the upload folder"
+scp @ssh -q $jar.FullName "${target}:/tmp/schooldhundo/app.jar"; Check "uploading the backend"
+scp @ssh -q -r "$root\frontend\dist" "${target}:/tmp/schooldhundo/www"; Check "uploading the website"
 scp @ssh -q "$root\frontend\nginx.conf" "$root\frontend\security-headers.conf" "$root\deploy\oracle-micro-web.sh" "${target}:/tmp/schooldhundo/"
-if ($LASTEXITCODE -ne 0) { throw "upload failed" }
+Check "uploading the server settings"
 
 Step "Installing on the server (the backend takes about a minute to start)"
 ssh @ssh $target "sed -i 's/\r$//' /tmp/schooldhundo/oracle-micro-web.sh && bash /tmp/schooldhundo/oracle-micro-web.sh > /tmp/web-setup.log 2>&1; code=`$?; tail -6 /tmp/web-setup.log; rm -f /tmp/schooldhundo/app.jar; exit `$code"
