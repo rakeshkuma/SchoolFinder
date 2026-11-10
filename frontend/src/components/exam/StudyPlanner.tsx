@@ -45,7 +45,7 @@ export function StudyPlanner({ exam, content }: { exam: ExamSummary; content: Ex
         <div>
           <h2 id="planner-heading" className="font-display text-lg font-bold text-ink">Build a study plan</h2>
           <p className="mt-1 text-sm text-slate-600">
-            Spreads the official syllabus over your time and weights daily practice by marks. India School Finder guidance — not issued by the exam body, and no plan can promise a result.
+            Spreads the official syllabus over your time and weights daily practice by marks. SchoolDhundo guidance — not issued by the exam body, and no plan can promise a result.
           </p>
         </div>
         <button type="button" onClick={() => window.print()} className="btn-secondary py-1.5 text-sm print:hidden"><Icon name="list" className="h-4 w-4" /> Print plan</button>

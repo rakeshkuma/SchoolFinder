@@ -102,7 +102,7 @@ export function ExamResourcesPage() {
             <select className="input" value={source} onChange={(e) => set('source', e.target.value)}>
               <option value="">Official and our guides</option>
               <option value="official">Official only</option>
-              <option value="guide">India School Finder guides only</option>
+              <option value="guide">SchoolDhundo guides only</option>
             </select>
           </label>
           {filtered && <button type="button" className="btn-secondary" onClick={() => setParams(new URLSearchParams(), { replace: true })}>Clear</button>}
@@ -122,7 +122,7 @@ export function ExamResourcesPage() {
                   rows={official} />
               )}
               {own.length > 0 && (
-                <ResourceGroup title="India School Finder guides and practice" note="Our own material, built from the official notices. Practice questions are original, not official."
+                <ResourceGroup title="SchoolDhundo guides and practice" note="Our own material, built from the official notices. Practice questions are original, not official."
                   rows={own} />
               )}
             </div>
@@ -149,7 +149,7 @@ export function ExamResourcesPage() {
           ]} />
         </section>
         <p className="text-xs text-slate-500">
-          These two checklists are general India School Finder guidance, not rules of any exam. Each exam&apos;s official notice and admit card come first.
+          These two checklists are general SchoolDhundo guidance, not rules of any exam. Each exam&apos;s official notice and admit card come first.
         </p>
       </div>
     </>
@@ -200,7 +200,7 @@ function ResourceGroup({ title, note, rows }: { title: string; note: string; row
 function GuideCard({ title, items }: { title: string; items: string[] }) {
   return (
     <div className="card p-5">
-      <p className="eyebrow">India School Finder guidance</p>
+      <p className="eyebrow">SchoolDhundo guidance</p>
       <h3 className="mt-1 font-display text-lg font-bold text-ink">{title}</h3>
       <ul className="mt-3 space-y-2 text-sm text-slate-700">
         {items.map((i) => (

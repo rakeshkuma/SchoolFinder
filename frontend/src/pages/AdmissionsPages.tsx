@@ -198,7 +198,7 @@ export function AdmissionGuidePage() {
           <div className="card p-5 text-sm">
             <p className="font-semibold text-ink">This is general guidance</p>
             <p className="mt-1 text-slate-600">
-              It is written by India School Finder from the rules that apply across India. It is not legal advice and does not replace any school&apos;s,
+              It is written by SchoolDhundo from the rules that apply across India. It is not legal advice and does not replace any school&apos;s,
               board&apos;s or state&apos;s official notice.
             </p>
           </div>

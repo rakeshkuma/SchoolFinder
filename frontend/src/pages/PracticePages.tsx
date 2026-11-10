@@ -27,7 +27,7 @@ import { clearProgress, loadProgress, saveProgress, type TestProgress } from '..
 import { NotFoundPage } from './InfoPages';
 
 /** Shown wherever practice questions appear: they are this site's own, never the exam body's. */
-export const PRACTICE_LABEL = 'India School Finder Practice Questions';
+export const PRACTICE_LABEL = 'SchoolDhundo Practice Questions';
 
 const DIFFICULTY_LABEL: Record<string, string> = { EASY: 'Easy', MEDIUM: 'Medium', HARD: 'Hard' };
 
@@ -112,7 +112,7 @@ function ReportProblem({ id, hindi }: { id: string; hindi: boolean }) {
       </label>
       <label className="sr-only" aria-hidden>Website<input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} /></label>
       {error && <p role="alert" className="text-xs text-red-700">{error}</p>}
-      <p className="text-xs text-slate-500">Please don&apos;t include personal details. Reports are read by India School Finder editors.</p>
+      <p className="text-xs text-slate-500">Please don&apos;t include personal details. Reports are read by SchoolDhundo editors.</p>
       <div className="flex gap-2">
         <button type="submit" className="btn-primary py-1.5 text-xs" disabled={state === 'sending' || (needsText && !text.trim())}>
           {state === 'sending' ? 'Sending…' : 'Send report'}
@@ -1008,7 +1008,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
               )}
               <li>{status === 'signedIn' ? 'Your result is saved to your account.' : <>Your result is kept in this browser. <SignInLink>Sign in</SignInLink> to keep it on every device.</>}</li>
             </ul>
-            {sitting.reviewedOn && <p className="text-xs text-slate-500">Questions reviewed by India School Finder on {formatDate(sitting.reviewedOn)}.</p>}
+            {sitting.reviewedOn && <p className="text-xs text-slate-500">Questions reviewed by SchoolDhundo on {formatDate(sitting.reviewedOn)}.</p>}
             {saved && (
               <div role="status" className="rounded-xl bg-brand-50 p-4 text-brand-900 ring-1 ring-brand-100">
                 <p className="font-semibold">You have this test in progress.</p>

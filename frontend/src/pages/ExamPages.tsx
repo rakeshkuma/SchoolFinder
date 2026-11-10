@@ -724,7 +724,7 @@ export function ExamGuidePage() {
                 <StudyPlanner exam={exam} content={content} />
                 <section className="card p-6">
                   <p className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
-                    India School Finder guidance, built on the official exam pattern — it is not issued by the exam body and does not promise a result.
+                    SchoolDhundo guidance, built on the official exam pattern — it is not issued by the exam body and does not promise a result.
                   </p>
                   <ol className="mt-5 space-y-4">
                     {content.preparation.map((p, i) => (

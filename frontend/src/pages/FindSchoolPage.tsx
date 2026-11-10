@@ -225,7 +225,7 @@ function Results({ criteria: c, className, onRelax }: {
                 </h2>
                 <p className="text-sm text-slate-600">Each school&apos;s official sources state everything you asked for.</p>
               </div>
-              <div className="flex flex-wrap gap-2"><ShareLinkButtons url={shareUrl} text="Schools that match what we need, on India School Finder:" /></div>
+              <div className="flex flex-wrap gap-2"><ShareLinkButtons url={shareUrl} text="Schools that match what we need, on SchoolDhundo:" /></div>
             </div>
             {page.totalElements === 0 ? (
               <div className="card space-y-3 p-5">

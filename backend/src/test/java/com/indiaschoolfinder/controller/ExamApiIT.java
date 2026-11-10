@@ -217,7 +217,7 @@ class ExamApiIT extends AbstractIntegrationTest {
         String head = mockMvc.perform(get("/api/v1/seo/head/exams/seo-test")).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         org.assertj.core.api.Assertions.assertThat(head)
-                .contains("<title>SEO: eligibility, dates, pattern and syllabus | India School Finder</title>")
+                .contains("<title>SEO: eligibility, dates, pattern and syllabus | SchoolDhundo</title>")
                 .contains("/exams/seo-test\" />")
                 .contains("(official notice)")
                 .contains("BreadcrumbList")

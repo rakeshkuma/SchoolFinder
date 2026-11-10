@@ -271,7 +271,7 @@ export function SavedSchoolsPage() {
   };
 
   const shareUrl = `${window.location.origin}/saved?shared=${saved.slice(0, MAX_SHARED).map((s) => s.id).join(',')}`;
-  const shareText = `My school shortlist on India School Finder (${saved.length} school${saved.length === 1 ? '' : 's'}):`;
+  const shareText = `My school shortlist on SchoolDhundo (${saved.length} school${saved.length === 1 ? '' : 's'}):`;
   const compareSaved = () => {
     replaceCompare(saved.slice(0, MAX_COMPARE).map(({ id, name, slug }) => ({ id, name, slug })));
     navigate('/compare');

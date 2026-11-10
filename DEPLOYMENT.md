@@ -1,4 +1,4 @@
-# Deploying India School Finder
+# Deploying SchoolDhundo
 
 This guide takes the site from a fresh server to production: PostgreSQL, the Spring Boot API and the React site behind
 nginx, with HTTPS in front. Local development is covered in [README.md](README.md).
@@ -24,6 +24,20 @@ and the browser calls the API on the same origin (`/api/v1/...`), so no CORS is 
   uses `!reset` / `!override`).
 - A domain name pointing at the server.
 - Outbound HTTPS for the browser-side extras: OpenStreetMap tiles and licensed photos are loaded by visitors' browsers.
+
+### Quick setup on Oracle Cloud (Always Free)
+
+On a fresh Ubuntu 24.04 server, [deploy/oracle-setup.sh](deploy/oracle-setup.sh) does sections 2 to 4 in one go:
+it opens ports 80/443 in the server firewall, adds swap, installs Docker and Caddy, clones the repository, writes a
+`.env` with fresh secrets (the first admin password goes to `~/schooldhundo-admin.txt`), and starts the site behind
+HTTPS. Running it again updates to the latest code.
+
+```bash
+ssh -i <ssh key> ubuntu@<server ip> 'bash -s' < deploy/oracle-setup.sh
+```
+
+The cloud security list must also allow TCP 80 and 443. Then point the domain's A records at the server, add the
+Google keys and SMTP settings to `~/schooldhundo/.env`, and load the data (section 5).
 
 ## 2. Configure
 
@@ -92,7 +106,7 @@ the session and CSRF cookies are `SameSite=Lax` and the API does not accept cros
 ### 4a. Google sign-in (optional)
 
 1. In the [Google Cloud console](https://console.cloud.google.com/), create or pick a project, then **Google Auth
-   Platform → Branding**: app name "India School Finder", support email, your domain under authorised domains, and
+   Platform → Branding**: app name "SchoolDhundo", support email, your domain under authorised domains, and
    links to `https://<your domain>/privacy` and `https://<your domain>/terms`. Audience: **External**.
 2. **Data access**: only the non-sensitive scopes `openid`, `.../auth/userinfo.email` and `.../auth/userinfo.profile`
    (no Google verification review is needed for these).

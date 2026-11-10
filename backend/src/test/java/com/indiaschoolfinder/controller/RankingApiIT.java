@@ -96,7 +96,7 @@ class RankingApiIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/rankings/methodology"))
                 .andExpect(jsonPath("$.rankedSchools").value(0))
                 .andExpect(jsonPath("$.provisionalSchools").value(0))
-                .andExpect(jsonPath("$.disclaimer", containsString("India School Finder")));
+                .andExpect(jsonPath("$.disclaimer", containsString("SchoolDhundo")));
     }
 
     @Test

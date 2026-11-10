@@ -277,14 +277,14 @@ export function HomePage() {
                 </ol>
                 <p className="mt-3 text-xs text-slate-500">
                   Rank numbers are {source.publisherCode}&apos;s own, for schools matched to our directory. This is a third-party ranking, not
-                  India School Finder&apos;s. <Link to="/rankings/methodology#sources" className="link">Source and method</Link>
+                  SchoolDhundo&apos;s. <Link to="/rankings/methodology#sources" className="link">Source and method</Link>
                   {' · '}<Link to="/rankings" className="link">Full table</Link>
                 </p>
               </>
             ) : <p id="published-ranking-heading" className="text-sm text-slate-600">No published ranking has been verified yet.</p>}
           </section>
           <section className="card flex flex-col p-5" aria-labelledby="own-ranking-heading">
-            <h3 id="own-ranking-heading" className="font-display text-lg font-bold text-ink">India School Finder score</h3>
+            <h3 id="own-ranking-heading" className="font-display text-lg font-bold text-ink">SchoolDhundo score</h3>
             <p className="mt-1 text-sm text-slate-600">
               Our own score from source-linked evidence, kept apart from published rankings. Only verified evidence earns a rank, and it is
               not an official government ranking.
@@ -338,14 +338,14 @@ export function HomePage() {
           <section className="flex flex-col justify-center rounded-2xl bg-brand-700 p-5 text-white" aria-label="About the questions">
             <p className="font-display text-3xl font-bold tabular-nums text-white">{bank.data ? bank.data.questionCount.toLocaleString('en-IN') : '–'}</p>
             <p className="mt-1 text-sm text-blue-50">
-              original practice questions with explanations. Free, with no sign-in needed. Written by India School Finder; they are not official
+              original practice questions with explanations. Free, with no sign-in needed. Written by SchoolDhundo; they are not official
               or previous-year questions.
             </p>
           </section>
         </div>
       </Band>
 
-      <Section eyebrow="How it works" title="How India School Finder Helps You" id="how">
+      <Section eyebrow="How it works" title="How SchoolDhundo Helps You" id="how">
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {STEPS.map((s, i) => (
             <li key={s.title}>

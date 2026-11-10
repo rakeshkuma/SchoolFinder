@@ -368,7 +368,7 @@ export function BoardingPage() {
         <p className="text-xs leading-relaxed text-slate-500">
           Boarding profiles describe only what each school's official website, prospectus or board record states, with the
           source on every profile; profiles are unverified until an editor checks them. Fees, admission dates and photos
-          appear only when sourced. India School Finder listings and rankings are independent and are not official
+          appear only when sourced. SchoolDhundo listings and rankings are independent and are not official
           government rankings or board endorsements.
         </p>
       </div>

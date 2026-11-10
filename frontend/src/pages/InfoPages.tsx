@@ -7,14 +7,14 @@ import { CONTACT_EMAIL, CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER, INFORMATION
 import { referenceService } from '../services/publicApi';
 
 export function AboutPage() {
-  useDocumentTitle('About India School Finder');
+  useDocumentTitle('About SchoolDhundo');
   const sources = useApi(() => referenceService.dataSources(), []);
   return (
     <>
-      <PageHeader title="About India School Finder" />
+      <PageHeader title="About SchoolDhundo" />
       <div className="container-page prose-page max-w-3xl py-8">
         <p>
-          India School Finder is an education discovery and preparation platform designed to help parents and students explore schools
+          SchoolDhundo is an education discovery and preparation platform designed to help parents and students explore schools
           across India.
         </p>
         <p>
@@ -26,7 +26,7 @@ export function AboutPage() {
           learning progress tracking.
         </p>
         <p>
-          India School Finder was created by {CREATOR_NAME}, an alumnus of the {CREATOR_INSTITUTE}, with the vision of making school discovery
+          SchoolDhundo was created by {CREATOR_NAME}, an alumnus of the {CREATOR_INSTITUTE}, with the vision of making school discovery
           and educational resources more accessible across India.
         </p>
         <section className="not-prose my-6 rounded-2xl border border-slate-200 bg-white p-5" aria-labelledby="creator-heading">
@@ -48,7 +48,7 @@ export function AboutPage() {
         </ul>
         <p>{DISCLAIMER}</p>
         <p>
-          India School Finder is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
+          SchoolDhundo is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
           Schools Society.
         </p>
         <h2>Primary sources</h2>
@@ -98,7 +98,7 @@ export function PrivacyPage() {
           <li><strong>Protection:</strong> passwords are stored with BCrypt; links in our emails work once and expire (24 hours to confirm an email, 30 minutes to reset a password); repeated wrong passwords lock the account for a while.</li>
           <li><strong>Your control:</strong> you can change your name, area, mobile number and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
           <li><strong>Children:</strong> accounts are open to all ages. If you are under 18, please ask a parent or guardian before creating one. Parents do not need to give us information about their children.</li>
-          <li><strong>Continue with Google (optional, where offered):</strong> if you choose it, Google tells us your name, your email address, whether Google has verified that address, and a Google account ID; we keep the email, the name (which you can change) and the account ID, so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to India School Finder, under Google’s own privacy policy. If an account with the same email exists, Google sign-in is added to it and we email you to say so. Accounts created this way have no password until you set one by email.</li>
+          <li><strong>Continue with Google (optional, where offered):</strong> if you choose it, Google tells us your name, your email address, whether Google has verified that address, and a Google account ID; we keep the email, the name (which you can change) and the account ID, so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to SchoolDhundo, under Google’s own privacy policy. If an account with the same email exists, Google sign-in is added to it and we email you to say so. Accounts created this way have no password until you set one by email.</li>
         </ul>
         <h2 id="leaderboard">Practice leaderboard (optional)</h2>
         <p>Practice works without joining. If you join the leaderboard, as a guest or with an account:</p>
@@ -133,11 +133,11 @@ export function TermsPage() {
   useDocumentTitle('Terms of Service');
   return (
     <>
-      <PageHeader title="Terms of Service" subtitle="Plain-language terms for using India School Finder and its optional accounts." />
+      <PageHeader title="Terms of Service" subtitle="Plain-language terms for using SchoolDhundo and its optional accounts." />
       <div className="container-page prose-page max-w-3xl py-8">
         <h2>Using the site</h2>
         <ul>
-          <li>India School Finder is an independent directory. Information is collected from official and public sources and linked to them; it can be out of date or incomplete. Always confirm fees, dates and eligibility with the school or the official notice before acting. See the <Link to="/disclaimer" className="link">disclaimer</Link>.</li>
+          <li>SchoolDhundo is an independent directory. Information is collected from official and public sources and linked to them; it can be out of date or incomplete. Always confirm fees, dates and eligibility with the school or the official notice before acting. See the <Link to="/disclaimer" className="link">disclaimer</Link>.</li>
           <li>Rankings and practice questions are our own work, not official rankings or exam questions.</li>
           <li>Do not misuse the site: no automated scraping that harms the service, no attempts to break its security, and no false or abusive reviews or suggestions.</li>
         </ul>
@@ -165,12 +165,12 @@ export function DisclaimerPage() {
       <div className="container-page prose-page max-w-3xl py-8">
         <p>{DISCLAIMER}</p>
         <p>
-          Information on India School Finder is collected from official and public sources and is provided for general guidance.
+          Information on SchoolDhundo is collected from official and public sources and is provided for general guidance.
           Fees, admission schedules and eligibility rules change; always confirm with the school and the relevant state or
           central education authority before making decisions or payments.
         </p>
         <p>
-          India School Finder rankings are calculated by this website using its published methodology. They are not an official
+          SchoolDhundo rankings are calculated by this website using its published methodology. They are not an official
           ranking by any government body, education board or school, and are not endorsed by them. Independently published
           rankings are shown separately and belong to their publishers.
         </p>
@@ -183,7 +183,7 @@ export function DisclaimerPage() {
           {INFORMATION_KINDS.map((k) => <li key={k.title}><strong>{k.title}:</strong> {k.text}</li>)}
         </ul>
         <p>
-          India School Finder is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
+          SchoolDhundo is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya or the Sainik
           Schools Society.
         </p>
       </div>

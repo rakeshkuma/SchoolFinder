@@ -111,10 +111,10 @@ export function RankingsPage() {
   return (
     <>
       <PageHeader
-        title="India School Finder evidence score"
+        title="SchoolDhundo evidence score"
         subtitle={
           <>
-            Scores are calculated by India School Finder from source-linked evidence; only verified evidence earns a rank. This
+            Scores are calculated by SchoolDhundo from source-linked evidence; only verified evidence earns a rank. This
             is <strong>not</strong> an official government ranking. <Link to="/rankings/methodology" className="link">How scores work →</Link>
           </>
         }
@@ -242,7 +242,7 @@ export function RankingsPage() {
                     <>
                       <h2 className="mt-4 font-display text-xl font-bold text-ink">No school has enough evidence to be scored yet</h2>
                       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-                        None of the schools listed in India School Finder has source-linked evidence for any ranking criterion
+                        None of the schools listed in SchoolDhundo has source-linked evidence for any ranking criterion
                         yet, so every school is shown as not yet ranked. We would rather show no ranking than an invented one.
                         A school is scored from verified evidence (board results, inspection reports, safety certificates) or
                         from facts a cited source documents, such as its facilities. Until then, compare schools on facts that

@@ -8,7 +8,7 @@ export function RankingSources() {
   const editions = useApi(() => rankingService.editions(), []);
   return (
     <>
-      <h2 id="presentation">How India School Finder presents rankings</h2>
+      <h2 id="presentation">How SchoolDhundo presents rankings</h2>
       <ul>
         <li>Rankings are shown on this site, list by list. Each table is one publisher’s list for one year.</li>
         <li>Positions are never added together into one rank, and they compare only within the same list and year.</li>
@@ -19,7 +19,7 @@ export function RankingSources() {
       <p>We do not sell ranking positions, and schools cannot pay for a better rank. Paid or featured listings are never shown as rankings.</p>
       <h2 id="school-lists">School lists</h2>
       <p>
-        Below the rankings you will find lists of well-known schools by place, board and kind, compiled by India School Finder to help families start
+        Below the rankings you will find lists of well-known schools by place, board and kind, compiled by SchoolDhundo to help families start
         their search. They are listed A to Z and are not rankings: a school’s place in a list says nothing about its quality. Not every detail has been
         checked against an official source, so please confirm with the school. Schools with a “View School Details” link have a profile in our directory.
       </p>
@@ -55,7 +55,7 @@ export function RankingSources() {
       <ul>
         <li><strong>Original published ranking:</strong> a position or rating set by the publisher. We record it as printed.</li>
         <li><strong>School information verified through official sources:</strong> facts such as board, classes and facilities, from official records.</li>
-        <li><strong>India School Finder’s own comparison features:</strong> tools and our evidence score, which are ours and are not a published ranking.</li>
+        <li><strong>SchoolDhundo’s own comparison features:</strong> tools and our evidence score, which are ours and are not a published ranking.</li>
       </ul>
       <p>
         An imported entry stays hidden until an administrator approves it. We check entries against the publisher’s list, not the publisher’s underlying

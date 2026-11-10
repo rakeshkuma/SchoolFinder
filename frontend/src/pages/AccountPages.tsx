@@ -42,7 +42,7 @@ function AuthShell({ title, subtitle, children, footer }: { title: string; subti
           <div className="mt-6">{children}</div>
         </div>
         {footer && <div className="mt-4 text-center text-sm text-slate-600">{footer}</div>}
-        <p className="mt-6 text-center text-sm"><Link to="/" className="link">← Back to India School Finder</Link></p>
+        <p className="mt-6 text-center text-sm"><Link to="/" className="link">← Back to SchoolDhundo</Link></p>
       </div>
     </div>
   );

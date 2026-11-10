@@ -36,16 +36,16 @@ function fold(line: string): string {
 
 export function buildIcs(events: IcsEvent[], now = new Date()): string {
   const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}${pad(now.getUTCSeconds())}Z`;
-  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//India School Finder//Exam dates//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SchoolDhundo//Exam dates//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
   for (const { examSlug, examName, date } of events.filter((e) => isFirm(e.date))) {
     lines.push(
       'BEGIN:VEVENT',
-      `UID:${examSlug}-${date.cycle.replace(/\s+/g, '_')}-${date.kind}-${compact(date.startsOn)}@indiaschoolfinder`,
+      `UID:${examSlug}-${date.cycle.replace(/\s+/g, '_')}-${date.kind}-${compact(date.startsOn)}@schooldhundo.in`,
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${compact(date.startsOn)}`,
       `DTEND;VALUE=DATE:${nextDay(lastDay(date))}`,
       `SUMMARY:${text(`${examName}: ${date.label}`)}`,
-      `DESCRIPTION:${text(`${date.cycle}. Date from the official notice: ${date.sourceUrl} — dates can change; always check the latest official notice. Added from India School Finder.`)}`,
+      `DESCRIPTION:${text(`${date.cycle}. Date from the official notice: ${date.sourceUrl} — dates can change; always check the latest official notice. Added from SchoolDhundo.`)}`,
       `URL:${date.sourceUrl}`,
       'TRANSP:TRANSPARENT',
       'BEGIN:VALARM',

@@ -104,7 +104,7 @@ function RankingShell({ title, heading, subtitle, description, crumbs = [], chil
       <div className="container-page space-y-5 py-8">
         {children}
         <p className="border-t border-slate-200 pt-4 text-xs text-slate-500">
-          Every rank belongs to its publisher. India School Finder is not affiliated with any publisher.{' '}
+          Every rank belongs to its publisher. SchoolDhundo is not affiliated with any publisher.{' '}
           <Link to="/rankings/methodology" className="underline hover:text-brand-700">Ranking methodology</Link>
         </p>
       </div>
