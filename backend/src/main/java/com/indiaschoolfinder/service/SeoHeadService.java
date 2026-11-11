@@ -5,6 +5,7 @@ import com.indiaschoolfinder.dto.exam.ExamSummaryDto;
 import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.DistrictDto;
 import com.indiaschoolfinder.dto.location.StateDto;
+import com.indiaschoolfinder.dto.ranking.PremierDirectoryDtos;
 import com.indiaschoolfinder.dto.school.ImageDto;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
 import com.indiaschoolfinder.enums.ExamKind;
@@ -62,6 +63,8 @@ public class SeoHeadService {
     private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
     private static final Pattern BLOG_CATEGORY = Pattern.compile("^/blog/category/([a-z0-9-]+)/?$");
     private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
+    /** A view of the premier school directory, e.g. /rankings/girls-boarding-schools; fixed /rankings pages match first. */
+    private static final Pattern DIRECTORY = Pattern.compile("^/rankings/([a-z-]+-schools)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
@@ -92,8 +95,12 @@ public class SeoHeadService {
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
-            page("/rankings", "India's top schools: Top 10, Top 20 and Top 100", "India's top schools in published rankings, with each publisher's "
-                    + "own rank and year. Search by school name, or filter by year and publisher. Not an official government ranking."),
+            page("/rankings", "India's Top Schools & Boarding Schools Rankings", "Explore India's premier schools and boarding schools. "
+                    + "Compare CBSE, ICSE, IB and international schools by location, school type and other important details."),
+            page("/rankings/schools-by-state", "Premier and boarding schools by state", "India's premier and boarding schools grouped by "
+                    + "state, with board, boarding, gender and an approximate fee for each school."),
+            page("/rankings/schools-by-city", "Premier and boarding schools by city", "India's premier and boarding schools grouped by "
+                    + "city, from Dehradun and Mussoorie to Bengaluru, Mumbai and Delhi."),
             page("/rankings/states", "State and city school rankings", "School rankings by state, city and district, for places with verified "
                     + "published entries. State, city and national ranks are shown separately."),
             page("/rankings/boards", "Board-wise school rankings", "Schools in published rankings by board. Where a publisher made no separate "
@@ -211,12 +218,14 @@ public class SeoHeadService {
     private final ObjectMapper objectMapper;
     private final BlogService blogService;
     private final BestPlacesService bestPlacesService;
+    private final PremierDirectoryService premierDirectory;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
                           ExamService examService, ObjectMapper objectMapper,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
-                          BestPlacesService bestPlacesService) {
+                          BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory) {
+        this.premierDirectory = premierDirectory;
         this.blogService = blogService;
         this.bestPlacesService = bestPlacesService;
         this.examService = examService;
@@ -274,6 +283,9 @@ public class SeoHeadService {
             }
             if ((m = BEST_IN.matcher(p)).matches()) {
                 return bestPlace(m.group(1), baseUrl);
+            }
+            if ((m = DIRECTORY.matcher(p)).matches()) {
+                return directoryCategory(premierDirectory.category(m.group(1)), baseUrl);
             }
             if ((m = BLOG_CATEGORY.matcher(p)).matches()) {
                 return blogCategory(m.group(1), baseUrl);
@@ -553,6 +565,23 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
                 Map.of("@type", "ListItem", "position", 3, "name", "Best schools in " + p.name(), "item", url)));
         return tags(title, description.toString(), url, null, !p.indexable(), data);
+    }
+
+    /** A directory view: its own title and the number of schools in it; a view without schools is not a page. */
+    private String directoryCategory(PremierDirectoryDtos.Category c, String baseUrl) {
+        String url = baseUrl + "/rankings/" + c.slug();
+        String name = c.title().replace('’', '\'');
+        String title = name + (name.contains("India") ? ": " : " in India: ") + c.schools() + (c.schools() == 1 ? " School" : " Schools") + " | " + SITE;
+        String description = c.description().replace('’', '\'') + " Board, boarding, gender, classes and an approximate fee for each of the "
+                + c.schools() + " schools, with links to official websites.";
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
+                Map.of("@type", "ListItem", "position", 3, "name", c.title().replace('’', '\''), "item", url)));
+        return tags(title, description, url, null, false, data);
     }
 
     /** Exams admitting to one class; classes without a published exam are not pages (noindex via not-found). */

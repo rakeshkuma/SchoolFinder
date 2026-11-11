@@ -24,6 +24,8 @@ export interface NavMenu {
 /** The ranking section: five destinations, the last being the one comparison page. */
 export const RANKING_ITEMS: NavItem[] = [
   { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy' },
+  { to: '/rankings/top-premier-schools', label: 'Premier Schools', icon: 'star' },
+  { to: '/rankings/boarding-schools', label: 'Boarding Schools', icon: 'home' },
   { to: '/rankings/states', label: 'State & City Rankings', icon: 'map', needs: (s) => s.rankings },
   { to: '/rankings/boards', label: 'Board-wise Rankings', icon: 'book', needs: (s) => s.boards },
   { to: '/rankings/government-boarding', label: 'Government & Boarding Schools', icon: 'shield', needs: (s) => s.government || s.boarding },
@@ -39,7 +41,7 @@ export const RANKING_MENU: { title: string; items: NavItem[] }[] = [
   {
     title: 'Rankings',
     items: [
-      { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy', hint: 'Top 10, 20 and 100 in published rankings' },
+      { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy', hint: 'Categories, premier schools and published ranks' },
       { to: '/rankings/states', label: 'State & City Rankings', icon: 'map', hint: 'Every state, city and district' },
       { to: '/rankings/boards', label: 'Board-wise Rankings', icon: 'book', hint: 'CBSE, ICSE, IB, Cambridge, state boards' },
       { to: '/compare', label: 'Compare Schools', icon: 'scale', hint: 'Up to four, side by side' },
@@ -48,17 +50,17 @@ export const RANKING_MENU: { title: string; items: NavItem[] }[] = [
   {
     title: 'Boarding & residential',
     items: [
-      { to: '/rankings/government-boarding?tab=boarding', label: 'Boarding Schools', icon: 'home', hint: 'Ranked and listed boarding schools' },
+      { to: '/rankings/boarding-schools', label: 'Boarding Schools', icon: 'home', hint: 'India’s leading residential schools' },
       { to: '/rankings/government-boarding', label: 'Government & Residential Schools', icon: 'shield', hint: 'JNV, Sainik, EMRS, KV and more' },
-      { to: '/boarding/boys', label: 'Boys & Girls Boarding Schools', icon: 'users', hint: 'Boys, girls and co-ed pages' },
+      { to: '/rankings/girls-boarding-schools', label: 'Boys & Girls Boarding Schools', icon: 'users', hint: 'Boys, girls and co-ed lists' },
     ],
   },
   {
     title: 'By board',
     items: [
-      { to: '/rankings/boards?board=CBSE', label: 'Top CBSE Schools', icon: 'graduation' },
-      { to: '/rankings/boards?board=CISCE', label: 'Top ICSE Schools', icon: 'graduation', hint: 'CISCE: ICSE and ISC' },
-      { to: '/rankings/boards?board=IB', label: 'International Schools', icon: 'globe', hint: 'IB; Cambridge on the same page' },
+      { to: '/rankings/cbse-schools', label: 'Top CBSE Schools', icon: 'graduation' },
+      { to: '/rankings/icse-schools', label: 'Top ICSE Schools', icon: 'graduation', hint: 'CISCE: ICSE and ISC' },
+      { to: '/rankings/international-schools', label: 'International Schools', icon: 'globe', hint: 'IB and Cambridge schools' },
     ],
   },
 ];

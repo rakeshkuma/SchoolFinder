@@ -60,7 +60,7 @@ const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const rankingPages = () => import('./pages/RankingHubPage');
 const TopSchoolsPage = page(rankingPages, 'TopSchoolsPage');
 const RankingStatesPage = page(rankingPages, 'RankingStatesPage');
-const BestPlacePage = page(rankingPages, 'BestPlacePage');
+const RankingSlugPage = page(rankingPages, 'RankingSlugPage');
 const BoardRankingsPage = page(rankingPages, 'BoardRankingsPage');
 const GovernmentBoardingPage = page(rankingPages, 'GovernmentBoardingPage');
 const RankingPlaceRedirect = page(rankingPages, 'RankingPlaceRedirect');
@@ -162,8 +162,8 @@ export default function App() {
               <Route path="rankings/government-boarding" element={<GovernmentBoardingPage />} />
               <Route path="rankings/score" element={<RankingsPage />} />
               <Route path="rankings/methodology" element={<MethodologyPage />} />
-              {/* /rankings/best-schools-in-{state or city}; fixed /rankings/... routes above and below match first. */}
-              <Route path="rankings/:page" element={<BestPlacePage />} />
+              {/* /rankings/{directory view}-schools and /rankings/best-schools-in-{place}; fixed /rankings/... routes match first. */}
+              <Route path="rankings/:page" element={<RankingSlugPage />} />
               <Route path="rankings/india" element={<Navigate to="/rankings" replace />} />
               <Route path="rankings/state/:slug" element={<RankingPlaceRedirect />} />
               <Route path="rankings/city/:slug" element={<RankingPlaceRedirect />} />

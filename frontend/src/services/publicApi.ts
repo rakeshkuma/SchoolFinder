@@ -186,6 +186,47 @@ export const rankingService = {
   bestPlace: (slug: string) => http.get<BestPlace>(`/rankings/best/${encodeURIComponent(slug)}`).then((r) => r.data),
 };
 
+/** SchoolDhundo's premier and boarding school directory: listed A to Z, never ranked by us. */
+export const directoryService = {
+  summary: () => http.get<DirectorySummary>('/rankings/directory/summary').then((r) => r.data),
+  list: (params: DirectoryParams) =>
+    http.get<PageResponse<DirectorySchool>>('/rankings/directory', { params: cleanParams(params) }).then((r) => r.data),
+  facets: (category?: string) => http.get<DirectoryFacets>('/rankings/directory/facets', { params: cleanParams({ category }) }).then((r) => r.data),
+};
+
+export interface DirectoryParams {
+  category?: string; q?: string; state?: string; city?: string; board?: string; residence?: string; gender?: string; section?: string;
+  class?: number; sort?: string; page?: number; size?: number;
+}
+
+export interface DirectoryCategory { slug: string; title: string; description: string; schools: number }
+
+export interface DirectorySummary {
+  schools: number; states: number; cities: number; boarding: number; boards: number; checkedOn: string | null; categories: DirectoryCategory[];
+}
+
+export interface DirectoryFacet { code: string; name: string; stateCode: string | null; schools: number }
+
+export interface DirectoryFacets {
+  states: DirectoryFacet[]; cities: DirectoryFacet[]; boards: DirectoryFacet[]; residences: DirectoryFacet[]; genders: DirectoryFacet[];
+  sections: DirectoryFacet[]; classes: number[];
+}
+
+/** A publisher's own published rank, exactly as printed. */
+export interface DirectoryRank { publisher: string; publisherName: string; year: string; list: string; rank: number; sourceUrl: string | null }
+
+export interface DirectorySchool {
+  id: number; key: string; name: string; city: string | null; stateCode: string; stateName: string; section: string;
+  boards: { code: string; confirmed: boolean }[]; curriculumNote: string | null;
+  gender: 'BOYS' | 'GIRLS' | 'CO_ED' | null; genderConfirmed: boolean;
+  residence: 'BOARDING' | 'DAY_CUM_BOARDING' | 'DAY' | null; residenceConfirmed: boolean;
+  classesLabel: string | null; classesConfirmed: boolean;
+  feeMinInr: number | null; feeMaxInr: number | null; feeText: string | null;
+  websiteUrl: string | null; websiteChecked: boolean; schoolId: number | null; slug: string | null; campusSearch: string | null;
+  imageUrl: string | null; imageCredit: string | null; featured: boolean; sponsored: boolean; note: string | null; checkedOn: string | null;
+  rank: DirectoryRank | null;
+}
+
 /** Lists of schools compiled by the site. They hold no ranks. */
 export const schoolListService = {
   lists: () => http.get<SchoolListSummary[]>('/school-lists').then((r) => r.data),
