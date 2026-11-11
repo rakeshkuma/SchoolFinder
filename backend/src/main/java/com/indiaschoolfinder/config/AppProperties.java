@@ -110,8 +110,6 @@ public class AppProperties {
         private int reviewsPerHour = 5;
         /** Suggested updates per client IP per hour. */
         private int updateSubmissionsPerHour = 10;
-        /** Sign-ups, verification resends and password-reset requests/uses per client IP per hour. */
-        private int accountEmailsPerHour = 10;
         private int publicWritesPerMinute = 60;
         /** New guest leaderboard participants per address and hour (a classroom may share one address). */
         private int participantJoinsPerHour = 60;
@@ -170,14 +168,9 @@ public class AppProperties {
         private String linkBaseUrl = "";
         /** Version of the Terms of Service and Privacy Policy that new members accept. */
         private String termsVersion = "2026-10-27";
-        private Duration verificationTtl = Duration.ofHours(24);
-        private Duration resetTtl = Duration.ofMinutes(30);
-        /** Failed sign-ins in a row before the account is locked for {@link #lockDuration}. */
-        private int maxFailedLogins = 5;
-        private Duration lockDuration = Duration.ofMinutes(15);
         /** Session lifetime with "Keep me signed in"; otherwise the session ends after server.servlet.session.timeout. */
         private Duration rememberMe = Duration.ofDays(30);
-        /** Members without a password (Google sign-in) must have signed in this recently to delete their account. */
+        /** Members must have signed in with Google this recently to delete their account. */
         private Duration recentSignIn = Duration.ofMinutes(10);
         private final Google google = new Google();
 

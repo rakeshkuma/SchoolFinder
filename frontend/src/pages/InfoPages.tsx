@@ -92,14 +92,14 @@ export function PrivacyPage() {
         <h2 id="accounts">Accounts (optional)</h2>
         <p>You can use the whole site without an account. If you create one:</p>
         <ul>
-          <li><strong>What we keep:</strong> your name, email address, your mobile number if you choose to give it, a one-way hash of your password (never the password itself), whether your email is confirmed, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
+          <li><strong>What we keep:</strong> your name, email address, your mobile number if you choose to give it, the optional state and city you choose, when you accepted these terms, and when you last signed in.</li>
           <li><strong>Why:</strong> to let you sign in and, later, keep your saved schools and exams across devices. Your area only sets search defaults.</li>
-          <li><strong>Email:</strong> we email you only about your account — confirming your address, password resets and notices such as a password change or deletion. No marketing email unless you separately agree to it.</li>
+          <li><strong>Email:</strong> we email you only about your account, such as a notice that Google sign-in was added or that your account was deleted. No marketing email unless you separately agree to it.</li>
           <li><strong>Sign-in:</strong> a secure, HttpOnly session cookie keeps you signed in; it holds a random identifier, not your details. It ends when you sign out, after two hours of inactivity, or after 30 days if you chose “Keep me signed in”.</li>
-          <li><strong>Protection:</strong> passwords are stored with BCrypt; links in our emails work once and expire (24 hours to confirm an email, 30 minutes to reset a password); repeated wrong passwords lock the account for a while.</li>
-          <li><strong>Your control:</strong> you can change your name, area, mobile number and password, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
+          <li><strong>Protection:</strong> you sign in with Google, so we never see or store a password. Your session is kept on our server and your browser holds only a cookie that scripts cannot read.</li>
+          <li><strong>Your control:</strong> you can change your name, area and mobile number, and delete your account on your account page. Deletion removes your account details at once and signs you out everywhere.</li>
           <li><strong>Children:</strong> accounts are open to all ages. If you are under 18, please ask a parent or guardian before creating one. Parents do not need to give us information about their children.</li>
-          <li><strong>Continue with Google (optional, where offered):</strong> if you choose it, Google tells us your name, your email address, whether Google has verified that address, a Google account ID and the address of your Google profile photo; we keep the email, the name (which you can change), the account ID and the photo address (refreshed each time you sign in with Google, and shown only to you in your account menu), so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to SchoolDhundo, under Google’s own privacy policy. If an account with the same email exists, Google sign-in is added to it and we email you to say so. Accounts created this way have no password until you set one by email.</li>
+          <li><strong>Sign in with Google:</strong> accounts are created and signed in with Google only. Google tells us your name, your email address, whether Google has verified that address, a Google account ID and the address of your Google profile photo; we keep the email, the name (which you can change), the account ID and the photo address (refreshed each time you sign in with Google, and shown only to you in your account menu), so you can sign in again. We ask Google for nothing else and do not keep Google access tokens, so we cannot read your Gmail, contacts or files. Google learns that you signed in to SchoolDhundo, under Google’s own privacy policy. If an account with the same email was created earlier with a password, Google sign-in is added to it, the old password is removed, and we email you to say so.</li>
         </ul>
         <h2 id="leaderboard">Practice leaderboard (optional)</h2>
         <p>Practice works without joining. If you join the leaderboard, as a guest or with an account:</p>
@@ -125,7 +125,7 @@ export function PrivacyPage() {
         <h2>Who else processes data</h2>
         <ul>
           <li><strong>Hosting:</strong> the site and its database run on servers rented from Oracle Cloud in Mumbai, India.</li>
-          <li><strong>Google:</strong> only if you use “Continue with Google” or accept analytics, as described above.</li>
+          <li><strong>Google:</strong> only if you use “Sign in with Google” or accept analytics, as described above.</li>
           <li><strong>Email:</strong> account emails are sent through an email delivery service once one is set up; it receives the address and the message.</li>
           <li><strong>Maps:</strong> map tiles are loaded from OpenStreetMap, which receives standard web requests (such as your IP address) when tiles are displayed.</li>
         </ul>
@@ -168,7 +168,7 @@ export function TermsPage() {
         <h2>Accounts</h2>
         <ul>
           <li>Accounts are optional and open to all ages. If you are under 18, please ask a parent or guardian first. Give your real name and an email address you control.</li>
-          <li>Keep your password to yourself and choose one you do not use elsewhere. Tell us if you think someone else has used your account.</li>
+          <li>Keep your Google account secure, and sign out on shared computers. Tell us if you think someone else has used your account.</li>
           <li>You can delete your account at any time from your account page. We may suspend accounts used to break these terms.</li>
           <li>How we handle account information is described in the <Link to="/privacy#accounts" className="link">Privacy Policy</Link>.</li>
         </ul>
@@ -294,12 +294,12 @@ export function DataDeletionPage() {
         <ol>
           <li>Sign in and open <Link to="/account" className="link">My Account</Link>.</li>
           <li>Find “Delete account” at the bottom of the page.</li>
-          <li>Confirm with your password. If you signed up with Google and have no password, type your email address; if you signed in more than a short while ago, you will be asked to sign in with Google again first.</li>
+          <li>Type your email address to confirm. If you signed in more than a short while ago, you will be asked to sign in with Google again first.</li>
         </ol>
         <p>Deletion happens at once. You are signed out on every device and we email you to confirm.</p>
         <h2>What is deleted</h2>
         <ul>
-          <li>Your account details: name, email address, mobile number, area, password hash, Google account ID and profile photo address.</li>
+          <li>Your account details: name, email address, mobile number, area, Google account ID and profile photo address.</li>
           <li>Your sign-in links and sessions.</li>
           <li>Your practice attempts, saved exams and bookmarked questions, and your leaderboard entry with its results and points.</li>
         </ul>

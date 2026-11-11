@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useMember } from '../../hooks/useMember';
 import { Avatar } from '../common/Avatar';
+import { GoogleButton } from '../common/GoogleButton';
 
 const ITEMS = [
   { to: '/account', label: 'My Account' },
@@ -13,7 +14,7 @@ const ITEMS = [
  * appear before the server confirms the session. The menu follows the WAI-ARIA menu button pattern.
  */
 export function AccountMenu() {
-  const { status, account, signOut, setNotice } = useMember();
+  const { status, account, config, signOut, setNotice } = useMember();
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -36,11 +37,11 @@ export function AccountMenu() {
   if (status === 'loading') return <span className="inline-block h-9 w-9" aria-hidden />;
 
   if (status === 'signedOut' || !account) {
-    const next = `${location.pathname}${location.search}`;
-    const withNext = next.startsWith('/signin') || next.startsWith('/register') ? '' : `?next=${encodeURIComponent(next)}`;
-    return (
-      <Link to={`/signin${withNext}`} className="btn-primary h-9 whitespace-nowrap rounded-full px-2.5 py-0 text-xs font-semibold sm:h-10 sm:px-4 sm:text-sm">Login / Sign Up</Link>
-    );
+    const here = `${location.pathname}${location.search}`;
+    const next = here.startsWith('/signin') ? '/' : here;
+    if (!config) return <span className="inline-block h-9 w-9" aria-hidden />;
+    if (!config.googleSignInEnabled) return <Link to="/signin" className="text-sm font-semibold text-brand-700 hover:underline">Sign in</Link>;
+    return <GoogleButton next={next} compact />;
   }
 
   const items = () => Array.from(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? []);
@@ -105,11 +106,10 @@ export function MobileAccountLinks() {
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
   const here = `${pathname}${search}`;
-  const withNext = here.startsWith('/signin') || here.startsWith('/register') ? '' : `?next=${encodeURIComponent(here)}`;
   if (status !== 'signedIn' || !account) {
     return status === 'loading' ? null : (
-      <div className="col-span-2 mt-2 flex gap-2 border-t border-slate-100 pt-3">
-        <Link to={`/signin${withNext}`} className="btn-primary flex-1 justify-center">Login / Sign Up</Link>
+      <div className="col-span-2 mt-2 border-t border-slate-100 pt-3">
+        <GoogleButton next={here.startsWith('/signin') ? '/' : here} />
       </div>
     );
   }

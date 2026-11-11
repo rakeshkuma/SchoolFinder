@@ -68,13 +68,6 @@ public class MemberSessions {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
     }
 
-    /** Issues a new id for the current session (after a password change). */
-    public void rotate(HttpServletRequest request) {
-        if (request.getSession(false) != null) {
-            request.changeSessionId();
-        }
-    }
-
     /** Ends every session of the member except the one with {@code keepSessionId} (may be null to end all). */
     public void revokeAll(long accountId, String keepSessionId) {
         sessions.findByPrincipalName(MemberPrincipal.nameOf(accountId)).keySet().stream()

@@ -71,12 +71,8 @@ public class RateLimitFilter extends OncePerRequestFilter {
         if (!HttpMethod.POST.matches(request.getMethod())) {
             return null;
         }
-        if (path.equals("/api/v1/auth/login") || path.equals("/api/v1/account/login")) {
+        if (path.equals("/api/v1/auth/login")) {
             return new Rule("login", config.getLoginPerMinute(), Duration.ofMinutes(1));
-        }
-        if (path.equals("/api/v1/account/register") || path.equals("/api/v1/account/resend-verification")
-                || path.equals("/api/v1/account/forgot-password") || path.equals("/api/v1/account/reset-password")) {
-            return new Rule("account-email", config.getAccountEmailsPerHour(), Duration.ofHours(1));
         }
         if (path.matches("^/api/v1/schools/\\d+/reviews$")) {
             return new Rule("review", config.getReviewsPerHour(), Duration.ofHours(1));

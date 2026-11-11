@@ -17,8 +17,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.Instant;
 
 /**
- * A member account (parent or visitor). Staff use {@link AdminUser}. The password is a BCrypt hash and never leaves
- * the server; the email is stored lower-case and must be verified before the account can sign in.
+ * A member account (parent or visitor). Staff use {@link AdminUser}. Members sign in with Google; the email is stored
+ * lower-case.
  */
 @Getter
 @Setter
@@ -37,7 +37,7 @@ public class UserAccount {
     @Column(nullable = false, length = 80)
     private String displayName;
 
-    /** Null for members who signed up with Google and have not set a password. */
+    /** A BCrypt hash left from email sign-up, cleared at the first Google sign-in; nothing reads it any more. */
     @Column(length = 100)
     private String passwordHash;
 
@@ -70,10 +70,6 @@ public class UserAccount {
     @Column(nullable = false, length = 20)
     private String termsVersion;
 
-    @Column(nullable = false)
-    private int failedLoginCount;
-
-    private Instant lockedUntil;
 
     @Column(nullable = false)
     private Instant passwordChangedAt;
