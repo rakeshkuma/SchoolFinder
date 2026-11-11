@@ -70,8 +70,7 @@ public class ContactService {
 
     public PageResponse<ContactDtos.ContactRow> list(ContactMessage.Status status, int page, int size) {
         Page<ContactMessage> p = messages.findByStatusOrderByCreatedAtDesc(status, PageRequest.of(page, size));
-        return new PageResponse<>(p.getContent().stream().map(ContactService::row).toList(), p.getNumber(), p.getSize(),
-                p.getTotalElements(), p.getTotalPages(), p.isFirst(), p.isLast());
+        return PageResponse.of(p, ContactService::row);
     }
 
     @Transactional

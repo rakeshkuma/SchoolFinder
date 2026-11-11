@@ -14,7 +14,7 @@ import { NotFoundPage } from './InfoPages';
 
 const PAGE_SIZE = 24;
 
-export const BOARD_LABEL: Record<string, string> = { CBSE: 'CBSE', CISCE: 'ICSE / ISC', IB: 'IB', CAMBRIDGE: 'Cambridge', STATE: 'State board', OTHER: 'Other curriculum' };
+const BOARD_LABEL: Record<string, string> = { CBSE: 'CBSE', CISCE: 'ICSE / ISC', IB: 'IB', CAMBRIDGE: 'Cambridge', STATE: 'State board', OTHER: 'Other curriculum' };
 const RESIDENCE_LABEL: Record<string, string> = { BOARDING: 'Boarding', DAY_CUM_BOARDING: 'Day-cum-boarding', DAY: 'Day school' };
 const GENDER_LABEL: Record<string, string> = { BOYS: 'Boys', GIRLS: 'Girls', CO_ED: 'Co-ed' };
 const GENDER_WORD: Record<string, string> = { BOYS: 'boys’', GIRLS: 'girls’', CO_ED: 'co-educational' };
@@ -74,7 +74,7 @@ function Fact({ children, confirmed }: { children: ReactNode; confirmed: boolean
 }
 
 /** A school card. The rank shown is a publisher’s own, with its source; the directory itself has no ranks. */
-export function DirectorySchoolCard({ s, priority = false }: { s: DirectorySchool; priority?: boolean }) {
+function DirectorySchoolCard({ s, priority = false }: { s: DirectorySchool; priority?: boolean }) {
   const link = profileLink(s);
   const fee = feeEstimate(s);
   const where = [s.city, s.stateName].filter(Boolean).join(', ');

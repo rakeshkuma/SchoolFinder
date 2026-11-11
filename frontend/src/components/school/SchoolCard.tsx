@@ -9,7 +9,7 @@ import { CompareButton } from './CompareBar';
 import { SaveButton } from './SaveButton';
 import { SchoolImage } from './SchoolImage';
 
-export { initials, photoCreditTitle, SchoolCover } from './SchoolImage';
+export { SchoolCover } from './SchoolImage';
 
 const typeTone: Record<SchoolType, string> = {
   GOVERNMENT: 'bg-emerald-50 text-emerald-700 ring-emerald-600/15',

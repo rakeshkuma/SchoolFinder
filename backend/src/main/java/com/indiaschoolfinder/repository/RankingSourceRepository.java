@@ -14,8 +14,6 @@ import java.util.Optional;
 
 public interface RankingSourceRepository extends JpaRepository<RankingSource, Long> {
 
-    List<RankingSource> findBySchoolIdOrderByRankingYearDesc(Long schoolId);
-
     List<RankingSource> findBySchoolIdAndVerificationStatusOrderByRankingYearDesc(Long schoolId, VerificationStatus status);
 
     /** Null filters match everything; text filters are exact and case-insensitive. */

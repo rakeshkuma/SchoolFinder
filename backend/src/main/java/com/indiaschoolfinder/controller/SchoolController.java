@@ -70,7 +70,8 @@ public class SchoolController {
     @Operation(summary = "Paginated school directory with filters",
             description = "Filters: name, locality, state (ISO code or slug), district (slug), city, pinCode, board, "
                     + "schoolType, management, network, className, stage, minAnnualFee, maxAnnualFee "
-                    + "(official recurring annual fee for feeAcademicYear, default current), admissionStatus, minRating, "
+                    + "(official recurring annual fee for feeAcademicYear, default current), hasFee (true = a published "
+                    + "annual fee for any year), admissionStatus, minRating, "
                     + "hasHostel (true = boarding, false = day), hasTransport, medium, genderType, "
                     + "facility (categories, all required), latitude+longitude+radiusKm. "
                     + "sortBy: name, fee (lowest published annual fee; schools without fees last), locality, city, "

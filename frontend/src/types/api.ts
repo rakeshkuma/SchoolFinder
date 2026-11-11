@@ -327,6 +327,8 @@ export interface SchoolSearchParams {
   minAnnualFee?: number;
   maxAnnualFee?: number;
   feeAcademicYear?: string;
+  /** true = has a published annual fee for any year (the one shown as annualFeeFrom) */
+  hasFee?: boolean;
   admissionStatus?: AdmissionStatus;
   minRating?: number;
   /** true = boarding (hostel stated); false = day school (no hostel stated); unknown matches neither */

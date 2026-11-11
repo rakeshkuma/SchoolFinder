@@ -88,7 +88,7 @@ function BackToTop() {
  * (tablet widths; not on phones, nor beside the full desktop navigation).
  * `full` shows the tagline at every width (footer).
  */
-export function Logo({ light = false, full = false, compact = false }: { light?: boolean; full?: boolean; compact?: boolean }) {
+function Logo({ light = false, full = false, compact = false }: { light?: boolean; full?: boolean; compact?: boolean }) {
   return (
     <span className="flex shrink-0 items-center gap-2.5">
       <img src="/favicon.svg" alt="" width={36} height={36} className="h-9 w-9 shrink-0" />

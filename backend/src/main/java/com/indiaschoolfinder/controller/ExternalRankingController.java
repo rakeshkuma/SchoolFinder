@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -59,8 +60,8 @@ public class ExternalRankingController {
 
     @Operation(summary = "Which ranking pages have verified data behind them")
     @GetMapping("/sections")
-    public RankingCatalogDtos.Sections sections() {
-        return catalog.sections();
+    public ResponseEntity<RankingCatalogDtos.Sections> sections() {
+        return ResponseEntity.ok().cacheControl(ReferenceController.REFERENCE_CACHE).body(catalog.sections());
     }
 
     @Operation(summary = "One published list, filtered without renumbering; every rank shown is the publisher's own")

@@ -2,12 +2,16 @@ package com.indiaschoolfinder.controller;
 
 import com.indiaschoolfinder.support.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class SeoHeadIT extends AbstractIntegrationTest {
@@ -77,6 +81,15 @@ class SeoHeadIT extends AbstractIntegrationTest {
 
     @Test
     void practiceSetsAndNewLandingPagesHaveTheirOwnHead() throws Exception {
+        // The shipped catalogue is loaded only into an empty database at start-up; other test classes clear it, so
+        // import it here when the set is missing, whatever the test order.
+        Integer present = jdbc.queryForObject("SELECT count(*) FROM practice_set WHERE slug = 'netarhat-maths-1'", Integer.class);
+        if (present == null || present == 0) {
+            mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(new ClassPathResource("seed/practice.json").getContentAsString(StandardCharsets.UTF_8)))
+                    .andExpect(status().isOk());
+        }
         String set = head("/exams/practice/netarhat-maths-1");
         assertThat(set).contains("<title>Netarhat Paper 1 practice: Mathematics 1")
                 .contains("href=\"http://localhost/exams/practice/netarhat-maths-1\"")

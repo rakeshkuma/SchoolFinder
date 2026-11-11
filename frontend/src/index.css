@@ -81,9 +81,6 @@
   .section-title {
     @apply font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl;
   }
-  .stat-value {
-    @apply font-display text-3xl font-bold tabular-nums tracking-tight;
-  }
   .prose-page p {
     @apply mb-4 leading-relaxed text-slate-700;
   }

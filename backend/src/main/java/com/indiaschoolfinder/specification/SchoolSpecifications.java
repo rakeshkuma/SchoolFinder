@@ -204,6 +204,15 @@ public final class SchoolSpecifications {
                 fee.select(f.get("id")).where(feePredicates.toArray(Predicate[]::new));
                 predicates.add(cb.exists(fee));
             }
+            if (c.hasFee() != null) {
+                // Any year counts: this is the fee the summary shows as annualFeeFrom.
+                Subquery<Long> anyFee = query.subquery(Long.class);
+                Root<SchoolFee> f = anyFee.from(SchoolFee.class);
+                anyFee.select(f.get("id")).where(
+                        cb.equal(f.get("schoolId"), root.get("id")),
+                        cb.isNotNull(f.get("recurringAnnualOfficial")));
+                predicates.add(c.hasFee() ? cb.exists(anyFee) : cb.not(cb.exists(anyFee)));
+            }
             if (c.admissionStatus() != null) {
                 Subquery<Long> adm = query.subquery(Long.class);
                 Root<AdmissionSchedule> a = adm.from(AdmissionSchedule.class);

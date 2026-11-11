@@ -17,7 +17,7 @@ function hash(text: string): number {
   return h;
 }
 
-export function initials(name: string): string {
+function initials(name: string): string {
   const words = name.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w) && !/^(the|of|and|pm|shri)$/i.test(w));
   return words.slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '🏫';
 }
@@ -49,7 +49,7 @@ export function SchoolCover({ name, className = '', monogram = true, small = fal
 }
 
 /** Tooltip credit for a card photo ("Photo: Author / Wikimedia Commons"); an illustration's note is shown instead. */
-export function photoCreditTitle(s: { coverImageCredit: string | null; coverImageIllustrative: boolean }): string | undefined {
+function photoCreditTitle(s: { coverImageCredit: string | null; coverImageIllustrative: boolean }): string | undefined {
   if (!s.coverImageCredit) return undefined;
   return s.coverImageIllustrative ? s.coverImageCredit : `Photo: ${s.coverImageCredit}`;
 }

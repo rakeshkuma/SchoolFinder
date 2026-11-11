@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-export function adsConfigured(): boolean {
+function adsConfigured(): boolean {
   return /^ca-pub-\d{10,20}$/.test(CLIENT);
 }
 

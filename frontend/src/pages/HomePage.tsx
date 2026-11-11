@@ -109,7 +109,8 @@ export function HomePage() {
   const feeChart = useInView<HTMLDivElement>();
   const stats = useApi(() => referenceService.stats(), []);
   // A bounded sample for the fee chart: the best-documented schools, which are the ones with published fees.
-  const schools = useApi(() => schoolService.search({ sortBy: 'recommended', size: 100 }), []);
+  // Only schools with a published fee feed the fee chart (6 of 19,000+ today), so ask for just those.
+  const schools = useApi(() => schoolService.search({ sortBy: 'recommended', hasFee: true, size: 100 }), []);
   const upcoming = useApi(() => admissionService.upcoming(0, 6), []);
   const featured = useApi(() => schoolService.featured(undefined, 8), []);
   const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 3 }), []);

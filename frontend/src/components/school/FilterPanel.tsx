@@ -14,7 +14,7 @@ export type FilterKey = keyof SchoolSearchParams;
 const FACILITY_FILTERS: FacilityCategory[] = ['LIBRARY', 'LABORATORY', 'COMPUTER', 'SPORTS', 'TRANSPORT', 'ARTS', 'HEALTH', 'ACCESSIBILITY'];
 
 /** Annual fee bands shown as one simple choice; exact amounts are under More filters. */
-export const FEE_BANDS: { label: string; min?: number; max?: number }[] = [
+const FEE_BANDS: { label: string; min?: number; max?: number }[] = [
   { label: 'Under ₹25,000', max: 25000 },
   { label: '₹25,000 – ₹1 lakh', min: 25000, max: 100000 },
   { label: '₹1 – 2.5 lakh', min: 100000, max: 250000 },
@@ -22,7 +22,7 @@ export const FEE_BANDS: { label: string; min?: number; max?: number }[] = [
 ];
 
 /** Filters shown under "More filters"; the rest are in the bar. Used for the count on the button. */
-export const MORE_FILTER_KEYS: FilterKey[] = ['q', 'district', 'locality', 'schoolType', 'management', 'network', 'hasHostel',
+const MORE_FILTER_KEYS: FilterKey[] = ['q', 'district', 'locality', 'schoolType', 'management', 'network', 'hasHostel',
   'hasTransport', 'genderType', 'medium', 'facility', 'stage', 'admissionStatus', 'pinCode', 'minRating'];
 
 /**
