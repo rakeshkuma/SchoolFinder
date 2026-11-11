@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "checkedOn": "2026-11-11",
  "entries": [
   {
@@ -91,7 +91,7 @@
    ],
    "curriculumNote": null,
    "gender": "BOYS",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 4 to 12",
@@ -154,7 +154,7 @@
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -386,7 +386,7 @@
    "boards": [
     {
      "code": "CBSE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -494,7 +494,7 @@
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -526,14 +526,14 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "GIRLS",
    "genderConfirmed": true,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 6 to 12",
    "lowestClass": 6,
    "highestClass": 12,
@@ -558,11 +558,11 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -963,7 +963,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 4 to 12",
@@ -1191,7 +1191,7 @@
    ],
    "curriculumNote": "US High School Diploma",
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 6 to 12",
@@ -1263,7 +1263,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 2 to 12",
@@ -1322,7 +1322,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
@@ -1335,9 +1335,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "LKG to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -1373,7 +1373,7 @@
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Nursery to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -1402,14 +1402,14 @@
     },
     {
      "code": "IB",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": "US curriculum",
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-KG to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -1515,7 +1515,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 5 to 12",
@@ -1574,14 +1574,14 @@
    "boards": [
     {
      "code": "IB",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 1 to 12",
    "lowestClass": 1,
    "highestClass": 12,
@@ -1714,14 +1714,14 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 4 to 12",
    "lowestClass": 4,
    "highestClass": 12,
@@ -1746,7 +1746,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -1783,9 +1783,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 3 to 12",
    "lowestClass": 3,
    "highestClass": 12,
@@ -1942,7 +1942,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -2006,14 +2006,14 @@
    "boards": [
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": "Own curriculum",
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "DAY_CUM_BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Primary to Class 12",
    "lowestClass": 1,
    "highestClass": 12,
@@ -2047,9 +2047,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2174,18 +2174,18 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 1 to 12",
    "lowestClass": 1,
    "highestClass": 12,
@@ -2210,7 +2210,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -2310,7 +2310,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
@@ -2319,9 +2319,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-KG to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2359,9 +2359,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Nursery to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2563,9 +2563,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY_CUM_BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2626,22 +2626,22 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "IB",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY_CUM_BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2677,7 +2677,7 @@
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Nursery to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -2715,7 +2715,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
    "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
@@ -2783,7 +2783,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Classes 1 to 12",
@@ -2815,9 +2815,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Classes 1 to 12",
    "lowestClass": 1,
    "highestClass": 12,
@@ -2842,7 +2842,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
@@ -2951,7 +2951,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
    "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
@@ -2978,18 +2978,18 @@
    "boards": [
     {
      "code": "IB",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
    "genderConfirmed": false,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Nursery to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -3178,14 +3178,14 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     }
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "BOARDING",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "LKG to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -3215,7 +3215,7 @@
    ],
    "curriculumNote": null,
    "gender": "BOYS",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
    "residenceConfirmed": false,
    "classesLabel": "Classes 1 to 10",
@@ -3274,7 +3274,7 @@
    "boards": [
     {
      "code": "CISCE",
-     "confirmed": false
+     "confirmed": true
     },
     {
      "code": "CAMBRIDGE",
@@ -3283,9 +3283,9 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
-   "residenceConfirmed": false,
+   "residenceConfirmed": true,
    "classesLabel": "Pre-primary to Class 12",
    "lowestClass": 0,
    "highestClass": 12,
@@ -3355,7 +3355,7 @@
    ],
    "curriculumNote": null,
    "gender": "CO_ED",
-   "genderConfirmed": false,
+   "genderConfirmed": true,
    "residence": "DAY",
    "residenceConfirmed": false,
    "classesLabel": "Pre-primary to Class 12",

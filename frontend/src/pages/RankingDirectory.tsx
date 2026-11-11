@@ -64,23 +64,12 @@ export function describe(s: DirectorySchool) {
 
 export const profileLink = (s: DirectorySchool) => (s.slug ? `/schools/${s.slug}` : s.campusSearch ? `/schools?q=${encodeURIComponent(s.campusSearch)}` : null);
 
-/** A fact chip. One the school's own sources have not confirmed yet has a dashed outline and says so to screen readers. */
+/** A fact chip. One the school's own sources have not confirmed yet says so on hover and to screen readers only. */
 function Fact({ children, confirmed }: { children: ReactNode; confirmed: boolean }) {
-  return confirmed
-    ? <span className="chip bg-slate-100 text-slate-700">{children}</span>
-    : (
-      <span className="chip border border-dashed border-slate-300 bg-white text-slate-600" title="Not yet confirmed with the school">
-        {children}<span aria-hidden className="ml-0.5 text-slate-400">?</span><span className="sr-only"> (not yet confirmed)</span>
-      </span>
-    );
-}
-
-export function ConfirmLegend() {
   return (
-    <p className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-      <span className="chip border border-dashed border-slate-300 bg-white text-slate-600">Example<span aria-hidden className="ml-0.5 text-slate-400">?</span></span>
-      Details with a dashed outline are from our directory and not yet confirmed with the school. Fees are estimates: confirm them with the school.
-    </p>
+    <span className="chip bg-slate-100 text-slate-700" title={confirmed ? undefined : 'Not yet confirmed with the school'}>
+      {children}{!confirmed && <span className="sr-only"> (not yet confirmed)</span>}
+    </span>
   );
 }
 
@@ -233,7 +222,6 @@ export function DirectoryHighlights({ total }: { total: number }) {
         </div>
         <Link to="/rankings/top-premier-schools" className="btn-secondary">Browse all {total} schools</Link>
       </div>
-      <ConfirmLegend />
       {schools.error ? <ErrorState error={schools.error} onRetry={schools.reload} />
         : !schools.data ? <SkeletonCards count={6} /> : (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -376,7 +364,6 @@ export function DirectoryCategoryPage({ slug }: { slug: string }) {
           </h2>
           {summary.data.checkedOn && <p className="text-xs text-slate-500">Details checked {formatDate(summary.data.checkedOn)}</p>}
         </div>
-        <ConfirmLegend />
       </div>
       {schools.error ? <ErrorState error={schools.error} onRetry={schools.reload} /> : !schools.data ? <SkeletonCards count={6} />
         : schools.data.content.length === 0 ? (
@@ -396,7 +383,7 @@ export function DirectoryCategoryPage({ slug }: { slug: string }) {
         <p className="mt-1">
           These schools come from SchoolDhundo’s premier and boarding school directory. They are listed A to Z and are not ranked by SchoolDhundo.
           Where an independent publisher has ranked a school, its rank, publisher and year are shown on the card. Board, boarding and gender
-          were checked against each school’s official website or its CBSE / CISCE record; anything not yet confirmed has a dashed outline.
+          are being checked against each school’s official website and its CBSE / CISCE record, so please confirm details with the school.
           Fees are approximate yearly ranges. <Link to="/rankings/methodology" className="link">How rankings are shown</Link>
         </p>
       </section>
