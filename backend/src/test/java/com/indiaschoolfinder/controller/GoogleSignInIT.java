@@ -183,17 +183,11 @@ class GoogleSignInIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.email").value("meera.iyer@example.org"))
                 .andExpect(jsonPath("$.displayName").value("Meera Iyer"))
                 .andExpect(jsonPath("$.emailVerified").value(true))
-                .andExpect(jsonPath("$.hasPassword").value(false))
                 .andExpect(jsonPath("$.googleLinked").value(true));
         assertThat(jdbc.queryForObject("SELECT password_hash IS NULL FROM user_account", Boolean.class)).isTrue();
         // No Google tokens are kept anywhere in the session store.
         assertThat(jdbc.queryForObject("SELECT count(*) FROM spring_session_attributes "
                 + "WHERE position('fake-access-token'::bytea in attribute_bytes) > 0", Integer.class)).isZero();
-
-        // Password sign-in is not possible for this account (generic answer).
-        mockMvc.perform(post("/api/v1/account/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                .content(json(Map.of("email", "meera.iyer@example.org", "password", "any password at all"))))
-                .andExpect(status().isUnauthorized());
 
         // Signing in again with the same Google account reuses the account.
         MvcResult again = continueWithGoogle(user("g-100", "meera.iyer@example.org", true, "Meera Iyer"), "/account", false);
@@ -242,15 +236,14 @@ class GoogleSignInIT extends AbstractIntegrationTest {
     }
 
     @Test
-    void verifiedPasswordAccountIsLinkedAndKeepsItsPassword() throws Exception {
+    void accountFromEmailSignUpIsLinkedAndItsOldPasswordRemoved() throws Exception {
         insertPasswordAccount("ravi@example.org", "mango season again", true);
         MvcResult callback = continueWithGoogle(user("g-200", "ravi@example.org", true, "Ravi K"), "/account", false);
         Cookie session = callback.getResponse().getCookie("ISF_SESSION");
         mockMvc.perform(get("/api/v1/account/me").cookie(session)).andExpect(status().isOk())
                 .andExpect(jsonPath("$.displayName").value("Ravi")) // the member's own name is kept
-                .andExpect(jsonPath("$.hasPassword").value(true)).andExpect(jsonPath("$.googleLinked").value(true));
-        mockMvc.perform(post("/api/v1/account/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                .content(json(Map.of("email", "ravi@example.org", "password", "mango season again")))).andExpect(status().isOk());
+                .andExpect(jsonPath("$.googleLinked").value(true));
+        assertThat(jdbc.queryForObject("SELECT password_hash IS NULL FROM user_account", Boolean.class)).isTrue();
         assertThat(((DevOutboxMailService) mail).messages()).anyMatch(m -> m.subject().contains("Google sign-in was added"));
 
         // A different Google account with the same email cannot take it over.
@@ -265,18 +258,12 @@ class GoogleSignInIT extends AbstractIntegrationTest {
         continueWithGoogle(user("g-300", "owner@example.org", true, "Owner"), "/account", false);
         assertThat(jdbc.queryForObject("SELECT password_hash IS NULL AND email_verified_at IS NOT NULL FROM user_account",
                 Boolean.class)).isTrue();
-        mockMvc.perform(post("/api/v1/account/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content(json(Map.of("email", "owner@example.org", "password", "attacker chosen secret"))))
-                .andExpect(status().isUnauthorized());
     }
 
     @Test
-    void googleOnlyAccountDeletionNeedsTheEmailAndARecentSignIn() throws Exception {
+    void accountDeletionNeedsTheEmailAndARecentSignIn() throws Exception {
         Cookie session = continueWithGoogle(user("g-400", "del@example.org", true, "Del"), "/account", false)
                 .getResponse().getCookie("ISF_SESSION");
-        mockMvc.perform(post("/api/v1/account/change-password").with(csrf()).cookie(session).contentType(MediaType.APPLICATION_JSON)
-                .content(json(Map.of("currentPassword", "x", "newPassword", "a brand new long password"))))
-                .andExpect(status().isBadRequest());
         mockMvc.perform(delete("/api/v1/account/me").with(csrf()).cookie(session).contentType(MediaType.APPLICATION_JSON)
                 .content(json(Map.of("confirmEmail", "someone@example.org")))).andExpect(status().isBadRequest());
         // A sign-in older than the allowed window needs a fresh Google sign-in first.

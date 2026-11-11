@@ -125,9 +125,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/account/csrf", "/api/v1/account/config",
                                 "/api/v1/account/oauth2/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/account/register", "/api/v1/account/login",
-                                "/api/v1/account/logout", "/api/v1/account/verify-email", "/api/v1/account/resend-verification",
-                                "/api/v1/account/forgot-password", "/api/v1/account/reset-password").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/account/logout").permitAll()
                         .requestMatchers("/api/v1/account/**").hasRole("USER")
                         .requestMatchers("/api/v1/dev/**").permitAll() // exists only when the dev outbox is enabled
                         .requestMatchers(HttpMethod.POST, "/api/v1/schools/*/reviews").permitAll()

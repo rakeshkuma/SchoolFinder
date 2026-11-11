@@ -15,7 +15,7 @@ export function SignInLink({ next, children = 'sign in' }: { next?: string; chil
 }
 
 /**
- * For signed-out visitors: why to sign in, then Google (when configured) and email. Pass `next` when returning to this
+ * For signed-out visitors: why to sign in, then the Google button (when configured). Pass `next` when returning to this
  * exact address would lose something, such as a finished test. `bare` is for use inside a card.
  */
 export function SignInOptions({ text, next, bare = false }: { text: string; next?: string; bare?: boolean }) {
@@ -27,7 +27,6 @@ export function SignInOptions({ text, next, bare = false }: { text: string; next
       <p className="min-w-0 text-sm text-slate-600">{text}</p>
       <div className="w-full shrink-0 space-y-1.5 sm:w-64">
         <GoogleButton next={back} />
-        <p className="text-center text-xs"><SignInLink next={back}>Sign in with email</SignInLink></p>
       </div>
     </section>
   );

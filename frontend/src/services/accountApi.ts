@@ -16,32 +16,16 @@ export interface Account {
   city: string | null;
   createdAt: string;
   termsVersion: string;
-  /** False for members who signed up with Google and have not set a password. */
-  hasPassword: boolean;
   googleLinked: boolean;
   mobile: string | null;
   /** Google profile photo address, for members who signed in with Google. */
   pictureUrl: string | null;
 }
 
+/** Members sign in with Google only; the button shows when the server has a Google client configured. */
 export interface AccountConfig {
-  emailDeliveryConfigured: boolean;
-  emailDeliveryMode: 'smtp' | 'dev-outbox' | 'none';
   googleSignInEnabled: boolean;
-  passwordPolicy: string;
   termsVersion: string;
-}
-
-export interface RegisterInput {
-  displayName: string;
-  email: string;
-  password: string;
-  acceptTerms: boolean;
-  stateCode?: string;
-  city?: string;
-  mobile?: string;
-  /** Spam trap: stays empty for people. */
-  website?: string;
 }
 
 /** Makes sure the CSRF cookie exists before the first state-changing request. */
@@ -61,17 +45,10 @@ export const accountService = {
   config: () => http.get<AccountConfig>('/account/config').then((r) => r.data),
   /** Resolves with the signed-in member, or rejects with status 401 when signed out. */
   me: () => http.get<Account>('/account/me').then((r) => r.data),
-  register: (input: RegisterInput) => send<{ status: string }>('post', '/account/register', input),
-  verifyEmail: (token: string) => send<{ status: string }>('post', '/account/verify-email', { token }),
-  resendVerification: (email: string) => send<{ status: string }>('post', '/account/resend-verification', { email }),
-  login: (email: string, password: string, rememberMe: boolean) => send<Account>('post', '/account/login', { email, password, rememberMe }),
   logout: () => send<void>('post', '/account/logout'),
-  forgotPassword: (email: string) => send<{ status: string }>('post', '/account/forgot-password', { email }),
-  resetPassword: (token: string, newPassword: string) => send<{ status: string }>('post', '/account/reset-password', { token, newPassword }),
   updateProfile: (input: { displayName: string; stateCode?: string | null; city?: string | null; mobile?: string | null }) => send<Account>('patch', '/account/me', input),
-  changePassword: (currentPassword: string, newPassword: string) => send<void>('post', '/account/change-password', { currentPassword, newPassword }),
-  /** With a password, the password; without one (Google sign-up), the account's email address. */
-  deleteAccount: (confirm: { password?: string; confirmEmail?: string }) => send<void>('delete', '/account/me', confirm),
+  /** The account's email address, typed again; needs a Google sign-in within the last few minutes. */
+  deleteAccount: (confirmEmail: string) => send<void>('delete', '/account/me', { confirmEmail }),
 };
 
 export interface AttemptInput {
@@ -190,7 +167,7 @@ function bookmarkPath(id: string): string {
 }
 
 /**
- * Starts "Continue with Google". This is a full-page navigation, not an API call: the server redirects to Google and,
+ * Starts "Sign in with Google". This is a full-page navigation, not an API call: the server redirects to Google and,
  * after Google sends the browser back, sets the session cookie and redirects to `next` (a path on this site).
  */
 export function googleSignInUrl(next: string, remember = false): string {

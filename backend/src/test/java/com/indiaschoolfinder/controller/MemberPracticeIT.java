@@ -17,8 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -32,8 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /** Saved attempts and saved exams of signed-in members: scored on the server, private to each member. */
 class MemberPracticeIT extends AbstractIntegrationTest {
 
-    private static final String PASSWORD = "plum tree by the river";
-    private static final Pattern TOKEN = Pattern.compile("token=([A-Za-z0-9_-]+)");
 
     @Autowired
     private MailService mail;
@@ -53,19 +49,7 @@ class MemberPracticeIT extends AbstractIntegrationTest {
     }
 
     private Cookie member(String email) throws Exception {
-        Map<String, Object> r = new HashMap<>(Map.of("displayName", "Asha Verma", "email", email, "password", PASSWORD,
-                "acceptTerms", true));
-        mockMvc.perform(post("/api/v1/account/register").with(csrf()).contentType(MediaType.APPLICATION_JSON).content(json(r)))
-                .andExpect(status().isAccepted());
-        DevOutboxMailService.Message m = ((DevOutboxMailService) mail).messages().stream()
-                .filter(x -> x.to().equals(email)).findFirst().orElseThrow();
-        Matcher matcher = TOKEN.matcher(m.text());
-        assertThat(matcher.find()).isTrue();
-        mockMvc.perform(post("/api/v1/account/verify-email").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                .content(json(Map.of("token", matcher.group(1))))).andExpect(status().isOk());
-        MvcResult login = mockMvc.perform(post("/api/v1/account/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                .content(json(Map.of("email", email, "password", PASSWORD, "rememberMe", false)))).andExpect(status().isOk()).andReturn();
-        return login.getResponse().getCookie("ISF_SESSION");
+        return memberSession(email);
     }
 
     private ResultActions submit(Cookie session, Object body) throws Exception {

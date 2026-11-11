@@ -72,13 +72,10 @@ const ContactPage = page(() => import('./pages/ContactPage'), 'ContactPage');
 const PrivacyPage = page(info, 'PrivacyPage');
 const TermsPage = page(info, 'TermsPage');
 const account = () => import('./pages/AccountPages');
-const AuthPage = page(account, 'AuthPage');
+const SignInPage = page(account, 'SignInPage');
 const BlogListPage = page(() => import('./pages/BlogPages'), 'BlogListPage');
 const BlogPostPage = page(() => import('./pages/BlogPages'), 'BlogPostPage');
 const BlogCategoryPage = page(() => import('./pages/BlogPages'), 'BlogCategoryPage');
-const VerifyEmailPage = page(account, 'VerifyEmailPage');
-const ForgotPasswordPage = page(account, 'ForgotPasswordPage');
-const ResetPasswordPage = page(account, 'ResetPasswordPage');
 const AccountPage = page(account, 'AccountPage');
 const DisclaimerPage = page(info, 'DisclaimerPage');
 const EditorialPolicyPage = page(info, 'EditorialPolicyPage');
@@ -224,14 +221,14 @@ export default function App() {
               <Route path="editorial-policy" element={<EditorialPolicyPage />} />
               <Route path="corrections-policy" element={<CorrectionsPolicyPage />} />
               <Route path="data-deletion" element={<DataDeletionPage />} />
-              <Route path="signin" element={<AuthPage />} />
-              <Route path="register" element={<AuthPage />} />
+              <Route path="signin" element={<SignInPage />} />
+              <Route path="register" element={<Navigate to="/signin" replace />} />
               <Route path="blog" element={<BlogListPage />} />
               <Route path="blog/:slug" element={<BlogPostPage />} />
               <Route path="blog/category/:slug" element={<BlogCategoryPage />} />
-              <Route path="verify-email" element={<VerifyEmailPage />} />
-              <Route path="forgot-password" element={<ForgotPasswordPage />} />
-              <Route path="reset-password" element={<ResetPasswordPage />} />
+              <Route path="verify-email" element={<Navigate to="/signin" replace />} />
+              <Route path="forgot-password" element={<Navigate to="/signin" replace />} />
+              <Route path="reset-password" element={<Navigate to="/signin" replace />} />
               <Route path="account" element={<AccountPage />} />
               <Route path="disclaimer" element={<DisclaimerPage />} />
               <Route path="admin/login" element={<AdminLoginPage />} />
