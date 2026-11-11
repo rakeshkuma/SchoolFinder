@@ -1,21 +1,19 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
-import { Link, Navigate, NavLink, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
-import { Icon, type IconName } from '../components/common/Icon';
-import { PageHeader } from '../components/common/PageHeader';
+import { type ReactNode } from 'react';
+import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Icon } from '../components/common/Icon';
 import { Pagination } from '../components/common/Pagination';
-import { AsyncContent, EmptyState, Spinner } from '../components/common/States';
+import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
 import { Tabs } from '../components/common/Tabs';
-import { availableItems, RANKING_ITEMS } from '../components/layout/MainNav';
+import { RankingShell } from '../components/ranking/RankingShell';
 import { CompareButton } from '../components/school/CompareBar';
 import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolListSection } from '../components/school/SchoolListSection';
 import { useApi } from '../hooks/useApi';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { NETWORK_PAGES } from '../content/networks';
-import { locationService, rankingService, schoolListService, schoolService, type BestPlaceSummary, type RankingEdition, type RankingPlaces, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
+import { directoryService, locationService, rankingService, schoolListService, schoolService, type BestPlaceSummary, type RankingEdition, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
 import type { Faq } from '../utils/schoolFaq';
 import { NotFoundPage } from './InfoPages';
+import { DirectoryCategoryCards, DirectoryCategoryPage, DirectoryHero, DirectoryHighlights, DirectoryPlacesPage, PartnerCard } from './RankingDirectory';
 import type { BoardingType, SchoolType } from '../types/api';
 import { boardingTypeLabel, formatDate, networkLabel, schoolTypeLabel } from '../utils/format';
 
@@ -96,47 +94,6 @@ function useLists(select: (e: RankingEdition) => boolean) {
   return { editions, pick, sp, set };
 }
 
-function RankingShell({ title, heading, subtitle, description, crumbs = [], hero, children }: {
-  title: string; heading?: string; subtitle: ReactNode; description?: string; crumbs?: { to: string; label: string }[];
-  /** Shown inside the page header, under the subtitle (the search on India's Top Schools). */
-  hero?: ReactNode; children: ReactNode;
-}) {
-  useDocumentTitle(title, description);
-  return (
-    <>
-      <PageHeader title={heading ?? title} subtitle={subtitle}
-        top={<Breadcrumbs items={[{ to: '/', label: 'Home' }, { to: '/rankings', label: 'Rankings' }, ...crumbs]} />}>{hero}</PageHeader>
-      <RankingSubNav />
-      <div className="container-page space-y-5 py-8">
-        {children}
-        <p className="border-t border-slate-200 pt-4 text-xs text-slate-500">
-          Every rank belongs to its publisher. SchoolDhundo is not affiliated with any publisher.{' '}
-          <Link to="/rankings/methodology" className="underline hover:text-brand-700">Ranking methodology</Link>
-        </p>
-      </div>
-    </>
-  );
-}
-
-/** The ranking sections, under the page header, so moving between them never needs the main menu. */
-function RankingSubNav() {
-  const sections = useApi(() => rankingService.sections(), []);
-  return (
-    <nav aria-label="Ranking sections" className="border-b border-slate-200 bg-white">
-      <ul className="container-page no-scrollbar flex gap-1 overflow-x-auto">
-        {availableItems(RANKING_ITEMS, sections.data).map((item) => (
-          <li key={item.to}>
-            <NavLink to={item.to} end className={({ isActive }) => `block whitespace-nowrap border-b-2 px-3 py-3 text-sm font-semibold transition ${
-              isActive ? 'border-brand-600 text-brand-700' : 'border-transparent text-slate-600 hover:text-ink'}`}>
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-}
-
 function NoRankings() {
   return (
     <EmptyState title="No verified rankings to show here yet.">
@@ -184,13 +141,13 @@ function SearchBox({ value, set }: { value: string; set: Set }) {
   );
 }
 
-/** Year and publisher always say which list this is; with one choice they are shown but cannot be changed. */
+/** Year, publisher and list choices, shown only when there is more than one to choose; the table caption names the list. */
 function ListPicker({ pick, set }: { pick: Pick; set: Set }) {
   const name = (code: string) => pick.matching.find((e) => e.publisherCode === code)?.publisher ?? code;
   return (
     <>
-      <Select label="Ranking year" value={pick.year ?? ''} disabled={pick.years.length < 2} onChange={(v) => set({ year: v, list: undefined })} options={pick.years.map((y) => [y, y])} />
-      <Select label="Publisher" value={pick.source ?? ''} disabled={pick.sources.length < 2} onChange={(v) => set({ source: v, list: undefined })} options={pick.sources.map((s) => [s, name(s)])} />
+      {pick.years.length > 1 && <Select label="Ranking year" value={pick.year ?? ''} onChange={(v) => set({ year: v, list: undefined })} options={pick.years.map((y) => [y, y])} />}
+      {pick.sources.length > 1 && <Select label="Publisher" value={pick.source ?? ''} onChange={(v) => set({ source: v, list: undefined })} options={pick.sources.map((s) => [s, name(s)])} />}
       {pick.matching.length > 1 && (
         <Select label="List" value={String(pick.list?.id)} onChange={(v) => set({ list: v })} options={pick.matching.map((e) => [String(e.id), e.category ?? e.name])} />
       )}
@@ -339,114 +296,13 @@ function SourceNote({ list: e, filtered }: { list: RankingEdition; filtered?: bo
   );
 }
 
-/** Says plainly that these schools are a filter of a national list, not a ranking of their own. */
-function FilteredListNote({ list, what }: { list: RankingEdition; what: string }) {
-  return (
-    <p role="status" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
-      {list.publisherCode} did not publish a separate {what} ranking. These are {what} schools in its national list, each with its national rank.
-    </p>
-  );
-}
-
 const SCHOOL_TYPES: [string, string][] = [['GOVERNMENT', 'Government'], ['PRIVATE', 'Private'], ['AIDED', 'Government-aided'], ['INTERNATIONAL', 'International']];
 const RESIDENCES: [string, string][] = [['BOARDING', 'Boarding'], ['DAY_CUM_BOARDING', 'Day-cum-boarding'], ['DAY', 'No boarding listed']];
-const GENDERS: [string, string][] = [['BOYS', 'Boys'], ['GIRLS', 'Girls'], ['CO_ED', 'Co-educational']];
-const SORTS: [string, string][] = [['NAME', 'School name'], ['STATE', 'State'], ['CITY', 'City']];
-
-/** The search in the page header: picks the filters of the table below and scrolls to it. Only places, boards and types in the list are offered. */
-function RankingHero({ places, sp, set }: { places: RankingPlaces | null; sp: URLSearchParams; set: Set }) {
-  const [state, setState] = useState(sp.get('state') ?? '');
-  const cities = (places?.cities ?? []).filter((c) => c.stateCode === state);
-  const explore = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const f = new FormData(e.currentTarget);
-    const v = (k: string) => String(f.get(k) ?? '').trim() || undefined;
-    set({ q: v('q'), state: v('state'), city: v('city'), board: v('board'), stype: v('stype'), top: 'all' });
-    document.getElementById('ranking-table')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-  const field = 'w-full rounded-xl border-0 bg-white px-3 py-2.5 text-sm text-ink shadow-sm focus:ring-2 focus:ring-accent-300';
-  return (
-    <form onSubmit={explore} role="search" aria-label="Search the rankings" className="grid gap-2 rounded-2xl bg-white/10 p-3 ring-1 ring-white/20 backdrop-blur sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr_auto]">
-      <label className="min-w-0"><span className="sr-only">School name</span>
-        <input name="q" className={field} placeholder="Search schools" maxLength={100} defaultValue={sp.get('q') ?? ''} /></label>
-      <label className="min-w-0"><span className="sr-only">State</span>
-        <select name="state" className={field} value={state} onChange={(e) => setState(e.target.value)}>
-          <option value="">All states</option>
-          {(places?.states ?? []).map((s) => <option key={s.code} value={s.code}>{s.name}</option>)}
-        </select></label>
-      <label className="min-w-0"><span className="sr-only">City</span>
-        <select name="city" className={field} disabled={cities.length === 0} defaultValue={sp.get('city') ?? ''} key={state}>
-          <option value="">{state ? 'All cities' : 'Choose a state first'}</option>
-          {cities.map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
-        </select></label>
-      <label className="min-w-0"><span className="sr-only">Board</span>
-        <select name="board" className={field} defaultValue={sp.get('board') ?? ''}>
-          <option value="">All boards</option>
-          {(places?.boards ?? []).map((b) => <option key={b.code} value={b.code}>{boardName(b.code)}</option>)}
-        </select></label>
-      <label className="min-w-0"><span className="sr-only">School type</span>
-        <select name="stype" className={field} defaultValue={sp.get('stype') ?? ''}>
-          <option value="">All school types</option>
-          {SCHOOL_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-        </select></label>
-      <button type="submit" className="btn-primary whitespace-nowrap rounded-xl bg-accent-400 px-5 text-ink hover:bg-accent-300">
-        <Icon name="search" className="h-4 w-4" /> Explore rankings
-      </button>
-    </form>
-  );
-}
 
 /**
- * Doors into each kind of ranking. The number is how many schools hold a rank in the published list shown on this page;
- * where there is none, a compiled A-to-Z list or a plain "no published ranking yet" says so instead.
+ * The rankings home page: the premier school directory (search, live counts, categories and school cards) first, then
+ * the published national ranking as its publisher printed it, kept apart because a directory is not a ranking.
  */
-export function rankingCategories(places: RankingPlaces | null, lists: SchoolListSummary[] | null, source: string | null) {
-  const sum = (xs: { code: string; entries: number }[] | undefined, codes?: string[]) =>
-    (xs ?? []).filter((x) => !codes || codes.includes(x.code)).reduce((a, x) => a + x.entries, 0);
-  const listed = (kind: SchoolListSummary['kind'], ...codes: (string | null)[]) =>
-    (lists ?? []).filter((l) => l.kind === kind && (codes.length === 0 || codes.includes(l.code))).reduce((a, l) => a + l.entries, 0);
-  const card = (to: string, title: string, icon: IconName, ranked: number, compiled = 0) => ({
-    to, title, icon,
-    note: ranked > 0 && source ? `${ranked} ${ranked === 1 ? 'school' : 'schools'} ranked in ${source}`
-      : compiled > 0 ? `${compiled} listed A to Z (not ranked)` : 'No published ranking yet',
-  });
-  return [
-    { to: '/rankings?top=100', title: 'India’s Top 100 Schools', icon: 'trophy' as IconName, note: source ? `National ranks 1 to 100, ${source}` : 'No published ranking yet' },
-    card('/rankings/government-boarding?tab=boarding', 'India’s Top Boarding Schools', 'home', sum(places?.boarding), listed('BOARDING')),
-    card('/rankings/government-boarding', 'India’s Top Government Schools', 'shield', sum(places?.government), listed('GOVERNMENT')),
-    card('/rankings/boards?board=CBSE', 'India’s Top CBSE Schools', 'graduation', sum(places?.boards, ['CBSE']), listed('BOARD', 'CBSE')),
-    card('/rankings/boards?board=CISCE', 'India’s Top ICSE Schools', 'graduation', sum(places?.boards, ['CISCE']), listed('BOARD', 'CISCE')),
-    card('/rankings/boards?board=IB', 'India’s Top International Schools', 'globe', sum(places?.boards, ['IB', 'CAMBRIDGE']), listed('BOARD', 'IB', 'CAMBRIDGE')),
-    card('/rankings/government-boarding?tab=boarding&group=BOYS', 'India’s Top Boys Boarding Schools', 'users', sum(places?.boarding, ['BOYS'])),
-    card('/rankings/government-boarding?tab=boarding&group=GIRLS', 'India’s Top Girls Boarding Schools', 'users', sum(places?.boarding, ['GIRLS'])),
-    card('/rankings/government-boarding?tab=boarding&group=CO_ED', 'India’s Top Co-educational Boarding Schools', 'users', sum(places?.boarding, ['CO_ED'])),
-  ];
-}
-
-function RankingCategories({ cards }: { cards: ReturnType<typeof rankingCategories> }) {
-  return (
-    <section aria-labelledby="rk-cats">
-      <h2 id="rk-cats" className="font-display text-xl font-bold text-ink">Ranking categories</h2>
-      <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map((c) => (
-          <li key={c.to}>
-            <Link to={c.to} className="card group flex h-full items-start gap-3 p-4 transition hover:-translate-y-0.5 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand-500">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700 transition group-hover:bg-brand-600 group-hover:text-white">
-                <Icon name={c.icon} className="h-5 w-5" />
-              </span>
-              <span className="min-w-0">
-                <span className="block font-semibold text-ink">{c.title}</span>
-                <span className="mt-0.5 block text-xs text-slate-500">{c.note}</span>
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-/** India's top schools: one page for the national table, with Top 10, 20 and 100 as tabs. */
 export function TopSchoolsPage() {
   const { editions, pick, sp, set } = useLists(isNational);
   const list = pick.list;
@@ -454,58 +310,71 @@ export function TopSchoolsPage() {
   const maxRank = top === 'all' ? undefined : Number(top);
   const q = sp.get('q') ?? undefined;
   const green = editions.data?.find((e) => e.ratingBased);
-  const schoolLists = useApi(() => schoolListService.lists(), []);
+  const summary = useApi(() => directoryService.summary(), []);
   const places = useApi(() => rankingService.places(list!.id), [list?.id], !!list);
-  const compiled = listFor(schoolLists.data, 'TOP');
   const opt = (k: string) => sp.get(k) || undefined;
-  const filters = { q, maxRank, state: opt('state'), city: opt('city'), board: opt('board'), schoolType: opt('stype'), residence: opt('res'), gender: opt('gender'), sort: opt('sort') };
-  const narrowed = !!(filters.state || filters.city || filters.board || filters.schoolType || filters.residence || filters.gender);
-  const cities = (places.data?.cities ?? []).filter((c) => c.stateCode === filters.state);
+  const filters = { q, maxRank, state: opt('state'), board: opt('board') };
+  const narrowed = !!(filters.state || filters.board);
   const tie = 'Publishers can tie schools, and schools we cannot match to our directory are left out, so ranks can repeat or skip. We never fill the gaps.';
   return (
-    <RankingShell title="India’s Top Schools" heading="Discover India’s Best Schools"
-      subtitle="Explore school rankings across India by state, city, education board, school type and residential facilities. Every rank is the publisher’s own."
-      description="India’s top schools in published rankings, with each publisher’s own rank and year. Filter by state, city, board, school type and boarding."
-      hero={<RankingHero places={places.data} sp={sp} set={set} />}>
-      <AsyncContent state={editions} isEmpty={() => !list && !green && !compiled} empty={<NoRankings />}>
+    <RankingShell title="India’s Top Schools & Boarding Schools Rankings" heading="Discover India’s Leading Schools"
+      subtitle="Explore India’s premier schools, boarding schools and leading educational institutions. Compare school boards, locations, facilities and admission information to make informed decisions."
+      description="Explore India’s premier schools and boarding schools. Compare CBSE, ICSE, IB and international schools by location, school type and other important details."
+      hero={<DirectoryHero summary={summary.data} />}>
+      {summary.data ? (
+        <>
+          {summary.data.schools > 0 && <DirectoryCategoryCards summary={summary.data} />}
+          {summary.data.schools > 0 && <DirectoryHighlights total={summary.data.schools} />}
+        </>
+      ) : !summary.error && <SkeletonCards count={4} />}
+      <AsyncContent state={editions} isEmpty={() => !list && !green && !summary.data?.schools} empty={<NoRankings />}>
         {() => (
           <>
-            <RankingCategories cards={rankingCategories(places.data, schoolLists.data, list ? `${list.publisherCode} ${list.year}` : null)} />
             {list && (
-              <div id="ranking-table" className="scroll-mt-24 space-y-5">
+              <section id="ranking-table" aria-labelledby="published-title" className="scroll-mt-24 space-y-4">
+                <div>
+                  <h2 id="published-title" className="font-display text-2xl font-bold text-ink">Published national ranking</h2>
+                  <p className="mt-1 text-sm text-slate-600">
+                    {list.publisher}’s {list.year} list of India’s schools, with each school’s rank exactly as the publisher printed it.
+                  </p>
+                </div>
                 <FilterCard>
                   <Segmented label="How many schools" value={top} options={TOPS} onChange={(v) => set({ top: v === '20' ? undefined : v })} />
-                  <div className={FILTER_GRID}><SearchBox value={q ?? ''} set={set} /><ListPicker pick={pick} set={set} /></div>
                   <div className={FILTER_GRID}>
-                    <Select label="State" value={filters.state ?? ''} empty="All states" onChange={(v) => set({ state: v, city: undefined })}
-                      options={(places.data?.states ?? []).map((s) => [s.code, s.name])} />
-                    <Select label="City" value={filters.city ?? ''} empty={filters.state ? 'All cities' : 'Choose a state first'} disabled={cities.length === 0}
-                      onChange={(v) => set({ city: v })} options={cities.map((c) => [c.name, c.name])} />
-                    <Select label="Board" value={filters.board ?? ''} empty="All boards" onChange={(v) => set({ board: v })}
-                      options={(places.data?.boards ?? []).map((b) => [b.code, boardName(b.code)])} />
-                    <Select label="Government / private" value={filters.schoolType ?? ''} empty="All" onChange={(v) => set({ stype: v })} options={SCHOOL_TYPES} />
-                    <Select label="Boarding / day" value={filters.residence ?? ''} empty="All" onChange={(v) => set({ res: v })} options={RESIDENCES} />
-                    <Select label="Boys / girls / co-ed" value={filters.gender ?? ''} empty="All" onChange={(v) => set({ gender: v })} options={GENDERS} />
-                    <Select label="Sort by" value={filters.sort ?? ''} empty="Rank" onChange={(v) => set({ sort: v })} options={SORTS} />
+                    <SearchBox value={q ?? ''} set={set} />
+                    <ListPicker pick={pick} set={set} />
+                    {(places.data?.states.length ?? 0) > 1 && (
+                      <Select label="State" value={filters.state ?? ''} empty="All states" onChange={(v) => set({ state: v })}
+                        options={(places.data?.states ?? []).map((s) => [s.code, s.name])} />
+                    )}
+                    {(places.data?.boards.length ?? 0) > 1 && (
+                      <Select label="Board" value={filters.board ?? ''} empty="All boards" onChange={(v) => set({ board: v })}
+                        options={(places.data?.boards ?? []).map((b) => [b.code, boardName(b.code)])} />
+                    )}
                   </div>
                 </FilterCard>
-                {narrowed && (
-                  <p role="status" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
-                    Filters narrow {list.publisherCode}’s national list; each school keeps its national rank. This is not a separate ranking of these schools.
-                  </p>
-                )}
                 <RankedSchools list={list} filters={filters} ranks={['national']}
                   summary={(n) => (maxRank ? `${n} ${n === 1 ? 'school holds' : 'schools hold'} a national rank from 1 to ${maxRank}. ${tie}` : `${n} schools. ${tie}`)} />
                 <SourceNote list={list} filtered={narrowed} />
-              </div>
+              </section>
             )}
-            {compiled && <SchoolListSection listKey={compiled.key} title={compiled.title} />}
             {green && <GreenSection list={green} />}
           </>
         )}
       </AsyncContent>
+      <PartnerCard />
     </RankingShell>
   );
+}
+
+/** /rankings/{page}: a directory view, the state or city index, or a "best schools in" page. */
+export function RankingSlugPage() {
+  const { page = '' } = useParams();
+  if (page.startsWith('best-schools-in-')) return <BestPlacePage />;
+  if (page === 'schools-by-state') return <DirectoryPlacesPage kind="state" />;
+  if (page === 'schools-by-city') return <DirectoryPlacesPage kind="city" />;
+  if (/^[a-z-]+-schools$/.test(page)) return <DirectoryCategoryPage key={page} slug={page} />;
+  return <NotFoundPage />;
 }
 
 /** An optional, separate block: an environmental rating is not an academic rank, so the two never share a table. */
@@ -819,7 +688,6 @@ export function BoardRankingsPage() {
           </FilterCard>
           {ranked && list ? (
             <>
-              {own.length === 0 && <FilteredListNote list={list} what={boardName(board)} />}
               <RankedSchools list={list} filters={{ board: own.length === 0 ? board : undefined, q }} ranks={['national']} />
               <SourceNote list={list} filtered={own.length === 0} />
             </>
@@ -915,7 +783,6 @@ function GroupTab({ kind, lists, national, compiled }: { kind: 'government' | 'b
             {groups.length > 0 && <Segmented label="Kind of school" value={group ?? ''} options={[['', 'All'], ...groups]} onChange={(v) => set({ group: v || undefined })} />}
             <div className={FILTER_GRID}><SearchBox value={q ?? ''} set={set} /><ListPicker pick={picked} set={set} /></div>
           </FilterCard>
-          {lists.length === 0 && <FilteredListNote list={list} what={government ? 'government' : 'boarding'} />}
           <RankedSchools list={list} filters={filters} ranks={['national']} />
           {missing.length > 0 && <p className="text-sm text-slate-600">No published ranking data for {joinNames(missing)} yet.</p>}
           <SourceNote list={list} filtered={lists.length === 0} />

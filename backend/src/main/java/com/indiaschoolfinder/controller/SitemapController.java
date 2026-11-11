@@ -56,11 +56,14 @@ public class SitemapController {
     private final RankingCatalogService rankingCatalog;
     private final com.indiaschoolfinder.repository.BlogPostRepository blogPosts;
     private final com.indiaschoolfinder.service.BestPlacesService bestPlaces;
+    private final com.indiaschoolfinder.service.PremierDirectoryService premierDirectory;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
                              RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts,
-                             com.indiaschoolfinder.service.BestPlacesService bestPlaces) {
+                             com.indiaschoolfinder.service.BestPlacesService bestPlaces,
+                             com.indiaschoolfinder.service.PremierDirectoryService premierDirectory) {
+        this.premierDirectory = premierDirectory;
         this.bestPlaces = bestPlaces;
         this.blogPosts = blogPosts;
         this.practiceSetRepository = practiceSetRepository;
@@ -121,6 +124,13 @@ public class SitemapController {
         if (sections.rankings()) url(xml, base + "/rankings/states", null);
         if (sections.boards()) url(xml, base + "/rankings/boards", null);
         if (sections.government() || sections.boarding()) url(xml, base + "/rankings/government-boarding", null);
+        // Directory views that hold schools, and the state and city indexes once there is something to group.
+        var views = premierDirectory.categories();
+        views.forEach(c -> url(xml, base + "/rankings/" + c.slug(), null));
+        if (!views.isEmpty()) {
+            url(xml, base + "/rankings/schools-by-state", null);
+            url(xml, base + "/rankings/schools-by-city", null);
+        }
         // "Best schools in" pages only where enough schools are ranked or listed (the same rule as their noindex).
         bestPlaces.all().stream().filter(r -> r.ranked() + r.listed() >= com.indiaschoolfinder.service.BestPlacesService.MIN_TO_INDEX)
                 .forEach(r -> url(xml, base + "/rankings/best-schools-in-" + r.slug(), null));

@@ -1,4 +1,4 @@
-﻿package com.indiaschoolfinder.service;
+package com.indiaschoolfinder.service;
 
 import com.indiaschoolfinder.repository.UserAccountRepository;
 import com.indiaschoolfinder.support.AbstractIntegrationTest;

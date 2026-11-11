@@ -161,3 +161,24 @@ Never sell ranks, never promise admission, never present paid content as editori
 Deploy with `.\deploy\oracle-micro-deploy.ps1` after approval. Migration V38 adds two columns with defaults, so older
 code keeps working; rolling back the code needs no database change. nginx gains the `/boarding-schools` redirects (the
 deploy script installs `nginx.conf`).
+
+## 10. Premier school directory (added 11 November 2026)
+
+The owner's "Top 100 Premier and Boarding Schools in India" document is loaded as SchoolDhundo's **premier school directory**. It is a curated directory, listed A to Z, and is **not a ranking**: the document's serial numbers are stored (`premier_school.source_order`) for reference only and are never shown or sorted on. A card shows a rank only when an independent publisher has a verified rank for that school (from `ranking_source`), with publisher, year and source link.
+
+**Data.** `V40__premier_directory.sql` adds `premier_school` (one row per document school, unique per profile) and `premier_school_board` (boards, each with a `confirmed` flag). `seed/premier-directory.json` is loaded at start by `PremierDirectoryLoader` when its version or entry count changes; profile links are recomputed at every start (seed `schoolSlug` first, else exactly one active school with the same name in the state). Four entries (City Montessori School, Seth M.R. Jaipuria School, The Chintels School, The Shri Ram School) cover several campuses and link to a campus search instead of one profile.
+
+**Confirmed vs unconfirmed.** Board, gender and boarding are marked confirmed only where the school's official website (fetched 11 November 2026) or its CBSE / CISCE record in the directory says the same. Unconfirmed facts are shown with a dashed outline and "not yet confirmed". Classes are all unconfirmed. Fees are the document's approximate ranges, always labelled "estimate, confirm with the school". To confirm a fact, edit the seed entry and raise the file's `version`.
+
+**New school profiles.** `tools/seed/premier-schools.json` holds the 62 document schools that were not in the directory, with only confirmed facts (board, gender, boarding) and the official website as source. Import them with the admin import, then restart (or wait for the next start) so the directory links them:
+
+```
+ADMIN_USERNAME=... ADMIN_PASSWORD=... node tools/seed/import-to-server.js https://schooldhundo.in/api/v1 --mode VALIDATE_ONLY tools/seed/premier-schools.json
+ADMIN_USERNAME=... ADMIN_PASSWORD=... node tools/seed/import-to-server.js https://schooldhundo.in/api/v1 --mode VALID_ROWS_ONLY tools/seed/premier-schools.json
+```
+
+**Pages.** `/rankings` (hero with search and live counts, category cards, directory highlights, the published national ranking, partnership card); `/rankings/{view}` for `top-premier-schools`, `boarding-schools`, `boys-` / `girls-` / `co-ed-boarding-schools`, `international-schools`, `cbse-` / `icse-` / `ib-` / `cambridge-schools`, `alternative-schools`; `/rankings/schools-by-state` and `/rankings/schools-by-city`. A view with no schools is not offered and returns not found. Filters: search, state, city, board, and under "More filters" school type, gender, category, class and sort; a filter with a single possible answer is hidden.
+
+**API** (`/api/v1/rankings/directory`, because `GET /api/v1/rankings` is the site's own score table): `/summary`, `/categories`, `/` (list with `category, q, state, city, board, residence, gender, section, class, sort, page, size`), `/category/{slug}`, `/top-premier`, `/boarding`, `/facets`, `/states`, `/boards`, `/schools/{schoolId}`.
+
+**Monetization.** `premier_school.featured` and `.sponsored` are editorial flags (no admin screen yet; set in SQL). Featured schools sort first in a view and carry a "Featured" label; sponsored ones carry the "Sponsored" label. Neither changes or creates a published rank.
