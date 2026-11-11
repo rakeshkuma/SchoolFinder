@@ -153,4 +153,27 @@ class FeeApiIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$[1].feeDataAvailable").value(false))
                 .andExpect(jsonPath("$[1].firstYearTotal").value(nullValue()));
     }
+
+    @Test
+    void hasFeeFilterMatchesSchoolsWithAPublishedAnnualFeeForAnyYear() throws Exception {
+        // An old year still counts (it is the fee the summary shows); an incomplete schedule does not.
+        postFee(cheap, fee("2022-23", 2000)).andExpect(status().isCreated());
+        Map<String, Object> partial = fee("2026-27", 3000);
+        partial.remove("developmentCharges");
+        postFee(expensive, partial).andExpect(status().isCreated());
+
+        mockMvc.perform(get("/api/v1/schools/search").param("hasFee", "true"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.content[0].id").value(cheap))
+                .andExpect(jsonPath("$.content[0].annualFeeFrom").value(24000.00))
+                .andExpect(jsonPath("$.content[0].annualFeeYear").value("2022-23"));
+        mockMvc.perform(get("/api/v1/schools/search").param("hasFee", "false"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.content[0].id").value(expensive));
+        mockMvc.perform(get("/api/v1/schools/search"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value(2));
+    }
 }

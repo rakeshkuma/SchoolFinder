@@ -102,7 +102,7 @@ export function filterChips(f: SchoolSearchParams, stateName?: (code: string) =>
   return chips;
 }
 
-export function fromQuery(params: URLSearchParams): SchoolSearchParams & { view?: string } {
+function fromQuery(params: URLSearchParams): SchoolSearchParams & { view?: string } {
   const result: Record<string, unknown> = {};
   params.forEach((v, k) => {
     if (NUMERIC.includes(k as FilterKey)) result[k] = Number(v);

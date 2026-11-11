@@ -37,7 +37,7 @@ export const RANKING_ITEMS: NavItem[] = [
  * above (the tabs under every ranking page stay the five pages themselves). Each item opens a page that says plainly
  * when no published ranking exists yet, rather than showing an invented one.
  */
-export const RANKING_MENU: { title: string; items: NavItem[] }[] = [
+const RANKING_MENU: { title: string; items: NavItem[] }[] = [
   {
     title: 'Rankings',
     items: [
@@ -78,7 +78,7 @@ function useMenus() {
  * The main menus. Every item opens a working page or a filtered view of one; fee information lives under Schools
  * (calculator, school profiles, comparison) rather than in a menu of its own.
  */
-export const MENUS: NavMenu[] = [
+const MENUS: NavMenu[] = [
   {
     label: 'Schools', icon: 'graduation', match: ['/schools', '/find', '/states', '/cities', '/boards', '/type', '/stages', '/network', '/nearby', '/fees', '/saved'],
     sections: [
@@ -204,7 +204,7 @@ export const MENUS: NavMenu[] = [
 ];
 
 /** Whether the current address belongs to a menu (for highlighting it). */
-export function menuIsActive(menu: NavMenu, pathname: string) {
+function menuIsActive(menu: NavMenu, pathname: string) {
   return menu.match.some((p) => pathname === p || pathname.startsWith(`${p}/`));
 }
 

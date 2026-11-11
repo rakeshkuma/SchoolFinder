@@ -9,7 +9,7 @@ import { SchoolImage } from './SchoolImage';
 
 const PAGE_SIZE = 24;
 
-export const SCHOOL_LIST_NOTE = 'Listed A to Z. This is a guide to schools, not a ranking, so please confirm details with the school.';
+const SCHOOL_LIST_NOTE = 'Listed A to Z. This is a guide to schools, not a ranking, so please confirm details with the school.';
 
 function SchoolListCard({ item }: { item: SchoolListItem }) {
   const profile = item.slug ? `/schools/${item.slug}` : null;

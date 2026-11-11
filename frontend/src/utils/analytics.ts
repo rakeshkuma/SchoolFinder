@@ -6,7 +6,7 @@
  * names, emails, mobile numbers, passwords, tokens or free text a visitor typed about themselves.
  */
 
-export const GA_ID = (import.meta.env.VITE_GA_MEASUREMENT_ID ?? '').trim();
+const GA_ID = (import.meta.env.VITE_GA_MEASUREMENT_ID ?? '').trim();
 const CONSENT_KEY = 'sd-consent-analytics';
 
 export type Consent = 'granted' | 'denied';

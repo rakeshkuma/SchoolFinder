@@ -9,13 +9,13 @@ import { formatDate } from '../../utils/format';
 
 const message = (e: unknown) => (e instanceof ApiError ? [e.message, ...e.fieldErrors.map((f) => f.message)].join(' · ') : 'Something went wrong.');
 
-export const statusLabel: Record<DocumentStatus, string> = {
+const statusLabel: Record<DocumentStatus, string> = {
   PENDING_REVIEW: 'Waiting for review',
   VERIFIED: 'Verified',
   REJECTED: 'Rejected',
 };
 
-export const methodLabel: Record<ExtractionMethod, string> = {
+const methodLabel: Record<ExtractionMethod, string> = {
   TEXT_LAYER: 'Text read from the PDF',
   OCR: 'Text read by OCR — check every word',
   NONE: 'Scanned, no text: type it from the pages',

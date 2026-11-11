@@ -71,7 +71,7 @@ class SchoolServiceImplTest {
     /** Criteria with only a sort key and/or a partial location set. */
     private static SchoolSearchCriteria criteria(Double latitude, Double radiusKm, String sortBy) {
         return new SchoolSearchCriteria(null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                 latitude, null, radiusKm, sortBy, null, 0, 20);
     }
 

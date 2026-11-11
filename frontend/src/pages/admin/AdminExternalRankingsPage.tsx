@@ -21,7 +21,7 @@ const message = (e: unknown) => (e instanceof ApiError ? [e.message, ...e.fieldE
 const today = () => new Date().toISOString().slice(0, 10);
 
 /** Permission to show a publisher's ranks: private publishers need it; government and board sources do not. */
-export const PERMISSION: Record<PublisherPermission, { label: string; tone: string }> = {
+const PERMISSION: Record<PublisherPermission, { label: string; tone: string }> = {
   NOT_REQUESTED: { label: 'Permission not requested', tone: 'bg-red-50 text-red-800' },
   REQUESTED: { label: 'Permission requested', tone: 'bg-amber-50 text-amber-900' },
   GRANTED: { label: 'Permission granted', tone: 'bg-emerald-50 text-emerald-800' },
@@ -29,7 +29,7 @@ export const PERMISSION: Record<PublisherPermission, { label: string; tone: stri
 };
 const needsPermission = (p?: RankingPublisher) => !!p && p.permissionStatus !== 'GRANTED' && p.permissionStatus !== 'NOT_NEEDED';
 
-export const CSV_TEMPLATE = 'school_slug,publisher_code,ranking_name,ranking_year,category,scope,region,rank_position,state_rank,city_rank,score,max_score,rating,score_text,sponsored,source_url,retrieved_date,notes';
+const CSV_TEMPLATE = 'school_slug,publisher_code,ranking_name,ranking_year,category,scope,region,rank_position,state_rank,city_rank,score,max_score,rating,score_text,sponsored,source_url,retrieved_date,notes';
 
 function PublisherForm({ publisher, onSaved }: { publisher?: RankingPublisher; onSaved: (text: string) => void }) {
   const [v, setV] = useState({

@@ -33,8 +33,6 @@ public interface PracticeAttemptRepository extends JpaRepository<PracticeAttempt
 
     List<PracticeAttempt> findTop200ByParticipantIdOrderByCreatedAtDescIdDesc(Long participantId);
 
-    boolean existsByParticipantIdAndDailyDate(Long participantId, java.time.LocalDate dailyDate);
-
     /** A member's attempts saved before they had a participant, oldest first, to be counted when one is created. */
     List<PracticeAttempt> findByAccountIdAndParticipantIdIsNullOrderByCreatedAtAscIdAsc(Long accountId);
 

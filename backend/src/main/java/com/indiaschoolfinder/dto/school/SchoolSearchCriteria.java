@@ -41,6 +41,8 @@ public record SchoolSearchCriteria(
         @DecimalMin("0") BigDecimal minAnnualFee,
         @DecimalMin("0") BigDecimal maxAnnualFee,
         @AcademicYear String feeAcademicYear,
+        /* true = has a published official annual fee for any year (the one shown as annualFeeFrom); false = has none */
+        Boolean hasFee,
         AdmissionStatus admissionStatus,
         @DecimalMin("1") @DecimalMax("5") BigDecimal minRating,
         /* true = boarding (source states a hostel); false = day schools (source states no hostel) */
@@ -70,7 +72,7 @@ public record SchoolSearchCriteria(
     public static SchoolSearchCriteria ofQuery(String q) {
         return new SchoolSearchCriteria(q, null, null, null, null, null, null, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null);
+                null, null, null, null, null);
     }
 
     public int pageOrDefault() {

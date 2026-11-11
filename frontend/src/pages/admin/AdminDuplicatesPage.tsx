@@ -7,7 +7,7 @@ import { adminService } from '../../services/adminApi';
 import { ApiError } from '../../services/http';
 import type { DuplicateGroup, DuplicateReason } from '../../types/api';
 
-export const reasonLabel: Record<DuplicateReason, string> = {
+const reasonLabel: Record<DuplicateReason, string> = {
   SAME_NAME_IN_DISTRICT: 'Same name in one district',
   SAME_PHONE: 'Same phone number',
   SAME_LOCATION: 'Same map position',
@@ -15,7 +15,7 @@ export const reasonLabel: Record<DuplicateReason, string> = {
 };
 
 /** A group is identified by its reason and schools; the detail text is shared by many groups. */
-export const groupKey = (g: DuplicateGroup) => `${g.reason}-${g.schools.map((s) => s.id).join('-')}`;
+const groupKey = (g: DuplicateGroup) => `${g.reason}-${g.schools.map((s) => s.id).join('-')}`;
 
 const message = (e: unknown) => (e instanceof ApiError ? e.message : 'Something went wrong.');
 

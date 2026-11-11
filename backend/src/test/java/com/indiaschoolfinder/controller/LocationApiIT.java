@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,6 +38,19 @@ class LocationApiIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/locations/states/tamil-nadu"))
                 .andExpect(jsonPath("$.code").value("TN"));
         mockMvc.perform(get("/api/v1/locations/states/XX")).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void referenceListsMayBeCachedBriefly() throws Exception {
+        // Fetched on every page load and rarely changed: browsers may keep them for five minutes. Everything else
+        // keeps Spring Security's no-store default.
+        for (String path : new String[]{"/api/v1/locations/states", "/api/v1/locations/cities/all", "/api/v1/boards",
+                "/api/v1/classes", "/api/v1/rankings/sections", "/api/v1/directory/order-rules"}) {
+            mockMvc.perform(get(path)).andExpect(status().isOk())
+                    .andExpect(header().string("Cache-Control", "max-age=300, public"));
+        }
+        mockMvc.perform(get("/api/v1/schools/search")).andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", containsString("no-store")));
     }
 
     @Test
