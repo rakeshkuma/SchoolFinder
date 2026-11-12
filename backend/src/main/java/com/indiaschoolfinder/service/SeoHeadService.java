@@ -56,6 +56,10 @@ public class SeoHeadService {
     private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
+    /** The eligibility and dates guide of an exam that has its own preparation page (JNVST). */
+    private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
+    /** Exams whose /exams/{slug} is a preparation dashboard, with the guide at /exams/{slug}/guide. */
+    private static final java.util.Set<String> PREP_PAGES = java.util.Set.of("jnvst");
     private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
@@ -273,6 +277,9 @@ public class SeoHeadService {
                 return board(m.group(1), baseUrl);
             }
             if ((m = EXAM.matcher(p)).matches()) {
+                return PREP_PAGES.contains(m.group(1)) ? jnvstPrep(examService.get(m.group(1)), baseUrl) : exam(examService.get(m.group(1)), baseUrl);
+            }
+            if ((m = EXAM_GUIDE.matcher(p)).matches()) {
                 return exam(examService.get(m.group(1)), baseUrl);
             }
             if ((m = EXAM_CLASS.matcher(p)).matches()) {
@@ -528,7 +535,7 @@ public class SeoHeadService {
             description.append(' ').append(e.currentCycle()).append(" dates not announced yet.");
         }
         description.append(" Eligibility, pattern, syllabus and official papers.");
-        String url = baseUrl + "/exams/" + e.slug();
+        String url = baseUrl + "/exams/" + e.slug() + (PREP_PAGES.contains(e.slug()) ? "/guide" : "");
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
@@ -537,6 +544,24 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName(), "item", url)));
         return tags(title, description.toString(), url, null, false, data);
+    }
+
+    /** The JNVST Class VI preparation dashboard: practice, mock tests and the study plan. */
+    private String jnvstPrep(ExamDetailDto detail, String baseUrl) {
+        ExamSummaryDto e = detail.exam();
+        String title = "JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan";
+        String description = "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
+                + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
+                + "progress tracking." + (e.examDate() == null ? "" : " Selection test: " + DAY.format(e.examDate()) + ".");
+        String url = baseUrl + "/exams/" + e.slug();
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
+                Map.of("@type", "ListItem", "position", 3, "name", e.shortName() + " preparation", "item", url)));
+        return tags(title, description, url, null, false, data);
     }
 
     /**
