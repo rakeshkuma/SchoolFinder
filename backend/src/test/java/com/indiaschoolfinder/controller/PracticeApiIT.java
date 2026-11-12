@@ -59,6 +59,29 @@ class PracticeApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void sectionMarksOverrideTheSetMarksForThatSectionOnly() throws Exception {
+        // Like the AISSEE Class VI paper: Mathematics 3 marks a question, other sections 2.
+        Map<String, Object> s = set("marked", "MOCK", 10, List.of(q("m1", "Mathematics", 0), q("m2", "Mathematics", 1), q("g1", "General Knowledge", 2)));
+        s.put("marksPerQuestion", 2);
+        s.put("content", Map.of("passages", List.of(), "questions", s.get("content") instanceof Map<?, ?> c ? c.get("questions") : List.of(),
+                "sectionMarks", Map.of("Mathematics", 3)));
+        importJson(Map.of("sets", List.of(s))).andExpect(status().isOk());
+
+        mockMvc.perform(get("/api/v1/practice-sets").param("exam", "jnvst")).andExpect(status().isOk())
+                .andExpect(jsonPath("$[?(@.slug == 'marked')].sectionMarks.Mathematics").value(3));
+        mockMvc.perform(post("/api/v1/practice-sets/marked/score").contentType(MediaType.APPLICATION_JSON)
+                        .content(json(Map.of("answers", Map.of("m1", 0, "m2", 0, "g1", 2)))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.marks").value(5))        // 3 (right maths) + 0 (wrong maths) + 2 (right GK)
+                .andExpect(jsonPath("$.maxMarks").value(8))     // 3 + 3 + 2
+                .andExpect(jsonPath("$.sections[?(@.section == 'Mathematics')].maxMarks").value(6));
+        // A bank sitting drawing the same questions keeps their section marks.
+        mockMvc.perform(post("/api/v1/practice-sessions/score").contentType(MediaType.APPLICATION_JSON)
+                        .content(json(Map.of("questionIds", List.of("marked/m1", "marked/g1"), "answers", Map.of("marked/m1", 0, "marked/g1", 2)))))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.marks").value(5));
+    }
+
+    @Test
     void setsAreServedWithoutAnswersAndScoredOnTheServer() throws Exception {
         importJson(Map.of("sets", List.of(set("fixture", "QUIZ", null,
                 List.of(q("a", "Arithmetic", 1), q("b", "Arithmetic", 2), q("c", "Language", 0))))))

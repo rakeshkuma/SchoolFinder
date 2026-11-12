@@ -71,6 +71,13 @@ function passageText(p: PracticePassage, lang: PracticeLanguage) {
 /** 1 → "1 mark", 0.25 → "0.25 marks" */
 const marksWord = (n: number) => `${n} mark${n === 1 ? '' : 's'}`;
 
+/** "3 marks in Mathematics, 2 marks in other sections" when a set marks sections differently, else "2 marks". */
+function perCorrect(m: { marks: number; sections?: Record<string, number> | null }): string {
+  const special = Object.entries(m.sections ?? {}).filter(([, v]) => v !== m.marks);
+  if (!special.length) return marksWord(m.marks);
+  return `${special.map(([s, v]) => `${marksWord(v)} in ${s}`).join(', ')}, ${marksWord(m.marks)} in other sections`;
+}
+
 const REPORT_REASONS: [PracticeReportReason, string][] = [
   ['WRONG_ANSWER', 'The answer key looks wrong'], ['UNCLEAR', 'The question is unclear'], ['TYPO', 'Typo or formatting'],
   ['TRANSLATION', 'Problem in the Hindi version'], ['OTHER', 'Something else'],
@@ -615,7 +622,7 @@ export interface Sitting {
   passages: PracticePassage[];
   questions: PracticeQuestion[];
   /** One set's marking; null when the questions come from several sets (each keeps its own set's marking). */
-  marking: { marks: number; negative: number } | null;
+  marking: { marks: number; negative: number; sections?: Record<string, number> | null } | null;
   /** null: untimed */
   minutes: number | null;
   reviewedOn: string | null;
@@ -644,7 +651,7 @@ export function PracticeTestPage() {
     return {
       key: set.slug, progressKey: `set:${set.slug}`, mode: 'SET', eyebrow: set.kind === 'MOCK' ? 'Timed mock test' : 'Topic quiz', title: set.title,
       description: set.description, examSlug: set.examSlug, setSlug: set.slug, passages, questions,
-      marking: { marks: set.marksPerQuestion, negative: set.negativeMarks },
+      marking: { marks: set.marksPerQuestion, negative: set.negativeMarks, sections: set.sectionMarks },
       minutes: set.durationMinutes, reviewedOn: set.reviewedOn,
       bankId: (id) => `${set.slug}/${id}`,
       guestScore: (answers) => practiceService.score(set.slug, answers),
@@ -986,7 +993,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
   const scoringLine = sitting.marking
     ? sitting.marking.negative > 0
       ? `Scoring: ${marksWord(sitting.marking.marks)} for each correct answer, ${marksWord(sitting.marking.negative)} taken off for each wrong one, nothing for a skipped one. This is our practice marking, not the exam's official scheme — leave a question if you are only guessing.`
-      : `Scoring: ${marksWord(sitting.marking.marks)} for each correct answer, nothing taken off for a wrong or skipped one. This is our practice scoring, not the exam's official marking scheme.`
+      : `Scoring: ${perCorrect(sitting.marking)} for each correct answer, nothing taken off for a wrong or skipped one. This is our practice scoring, not the exam's official marking scheme.`
     : 'Scoring: each question keeps the marking of the set it comes from — most give 1 mark and take nothing off. This is our practice scoring, not an exam\'s official marking scheme.';
 
   if (phase === 'intro') {
@@ -1265,7 +1272,7 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
         </dl>
         <div className="border-t border-slate-100 p-5 text-xs text-slate-600">
           {sitting.marking
-            ? `Scoring: ${marksWord(sitting.marking.marks)} per correct answer${sitting.marking.negative > 0 ? `, ${marksWord(sitting.marking.negative)} deducted per wrong answer` : ', nothing deducted for wrong ones'}, nothing for skipped ones`
+            ? `Scoring: ${perCorrect(sitting.marking)} per correct answer${sitting.marking.negative > 0 ? `, ${marksWord(sitting.marking.negative)} deducted per wrong answer` : ', nothing deducted for wrong ones'}, nothing for skipped ones`
             : 'Scoring: each question uses the marking of the set it comes from'}; accuracy is correct ÷ attempted. This is
           our practice scoring, not the official marking scheme{sitting.examSlug ? <> (see the <Link to={`/exams/${sitting.examSlug}?tab=pattern`} className="link">exam pattern</Link>)</> : ''}.
           A practice score does not predict an exam result or guarantee admission.

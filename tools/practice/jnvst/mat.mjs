@@ -55,7 +55,7 @@ const QNAME = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
 const QNAME_HI = ['ऊपर-बाएँ', 'ऊपर-दाएँ', 'नीचे-बाएँ', 'नीचे-दाएँ'];
 const CLOCK = [0, 1, 3, 2]; // reading corners clockwise from top-left
 
-function patternQuestion(r) {
+export function patternQuestion(r) {
   const missing = int(r, 0, 3);
   const rule = pick(r, ['rotate', 'checker', 'count', 'size']);
   const tile = (shapesAt) => fig('', shapesAt(50, 50, 2)); // answer tile: same motif, drawn twice as large
@@ -112,7 +112,7 @@ function patternQuestion(r) {
 }
 
 // ── Part II: figure series (three figures, find the fourth) ──────────────────────────────────────────────────────
-function seriesQuestion(r) {
+export function seriesQuestion(r) {
   const rule = pick(r, ['rotate', 'dots', 'fillrotate', 'grow', 'corner']);
   if (rule === 'rotate') {
     const kind = pick(r, ['arrow', 'triangle', 'line']);
@@ -199,7 +199,7 @@ function completeQuestion(r) {
 }
 
 // ── Part IV: mirror and water images ─────────────────────────────────────────────────────────────────────────────
-function mirrorQuestion(r) {
+export function mirrorQuestion(r) {
   const isWater = r() < 0.4;
   const main = pick(r, ['arrow', 'triangle']);
   const angle = pick(r, [30, 45, 60, 120, 135, 150, -30, -60]);
