@@ -29,6 +29,9 @@ import { NotFoundPage } from './InfoPages';
 
 const PAGE_SIZE = 12;
 
+/** Exams whose /exams/{slug} is a preparation dashboard; their guide is at /exams/{slug}/guide. */
+const PREP_PAGES: Record<string, string> = { jnvst: 'JNVST Class 6 preparation', aissee: 'AISSEE Class 6 preparation' };
+
 const HERO_CHIP = 'chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 transition hover:bg-white/20';
 const HERO_ACTION = 'btn w-full justify-start bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20';
 
@@ -544,13 +547,13 @@ export function ExamGuidePage() {
           <ol className="flex flex-wrap items-center gap-1.5">
             <li><Link to="/" className="hover:text-brand-700">Home</Link> /</li>
             <li><Link to={backTo} className="hover:text-brand-700">Entrance exams</Link> /</li>
-            {exam.slug === 'jnvst' && <li><Link to="/exams/jnvst" className="hover:text-brand-700">Preparation</Link> /</li>}
-            <li aria-current="page" className="font-medium text-ink">{exam.slug === 'jnvst' ? 'Guide' : exam.shortName}</li>
+            {PREP_PAGES[exam.slug] && <li><Link to={`/exams/${exam.slug}`} className="hover:text-brand-700">Preparation</Link> /</li>}
+            <li aria-current="page" className="font-medium text-ink">{PREP_PAGES[exam.slug] ? 'Guide' : exam.shortName}</li>
           </ol>
         </nav>
-        {exam.slug === 'jnvst' && (
-          <Link to="/exams/jnvst" className="card mb-6 flex flex-wrap items-center justify-between gap-3 border-brand-100 bg-brand-50/60 p-4 text-sm hover:shadow-lift">
-            <span><span className="font-semibold text-ink">JNVST Class 6 preparation:</span> full mock tests, section quizzes and a study plan, in English and <span lang="hi">हिन्दी</span>.</span>
+        {PREP_PAGES[exam.slug] && (
+          <Link to={`/exams/${exam.slug}`} className="card mb-6 flex flex-wrap items-center justify-between gap-3 border-brand-100 bg-brand-50/60 p-4 text-sm hover:shadow-lift">
+            <span><span className="font-semibold text-ink">{PREP_PAGES[exam.slug]}:</span> full mock tests, section quizzes and a study plan, in English and <span lang="hi">हिन्दी</span>.</span>
             <span className="font-semibold text-brand-700">Open the dashboard →</span>
           </Link>
         )}

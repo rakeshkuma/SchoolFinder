@@ -3,8 +3,9 @@
  * Notification for JNVST 2027 (sections 5–7); edit the roadmap and tips here without touching the page code.
  * `section` matches the section name of the questions in the practice bank (tools/practice/jnvst).
  */
-export type Lang = 'en' | 'hi';
-export type Bi = Record<Lang, string>;
+import type { Bi, PrepConfig, PrepTexts, RoadmapStage } from './examPrep';
+
+export type { Bi, Lang } from './examPrep';
 
 export const JNVST_PROSPECTUS_URL = 'https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf';
 export const JNVST_PREVIOUS_PAPER_URL = 'https://cbseitms.rcil.gov.in/nvs/assets/pdf/PYQ_English_2026.pdf';
@@ -14,6 +15,8 @@ export const JNVST_PATTERN_YEAR = 'JNVST 2027 (admission to Class VI, session 20
 export const JNVST_PATTERN_CHECKED = '2026-11-12';
 
 export interface JnvstSection {
+  variants?: undefined;
+  syllabusArea?: undefined;
   key: string;
   section: string;
   name: Bi;
@@ -97,15 +100,6 @@ export const JNVST_SECTIONS: JnvstSection[] = [
     ],
   },
 ];
-
-export interface RoadmapStage {
-  title: Bi;
-  weeks: Bi;
-  steps: Bi[];
-  /** where the stage's main button goes */
-  to: string;
-  action: Bi;
-}
 
 const session = (q: Record<string, string>) => `/exams/practice/session?${new URLSearchParams({ exam: 'jnvst', ...q })}`;
 
@@ -232,4 +226,34 @@ export const T = {
   total: { en: 'Total', hi: 'कुल' },
   minutes: { en: 'Time', hi: 'समय' },
   part: { en: 'Section', hi: 'खंड' },
-} satisfies Record<string, Bi>;
+} satisfies PrepTexts & Record<string, Bi>;
+
+/** The JNVST page as configured for the shared preparation page (pages/ExamPrepPage.tsx). */
+export const JNVST_PREP: PrepConfig = {
+  exam: 'jnvst',
+  docTitle: 'JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan',
+  breadcrumb: 'JNVST',
+  firstMock: 'jnvst-mock-1',
+  T,
+  sections: JNVST_SECTIONS,
+  roadmap: JNVST_ROADMAP,
+  heroStats: [[80, T.questions], [100, T.marks], ['2 h', T.minutes]],
+  examDateFallback: { en: '28 Nov 2026', hi: '28 Nov 2026' },
+  mockLine: (m, t) => `${m.questionCount} ${t(T.questions)} · ${m.durationMinutes} min · 1.25 × ${m.questionCount} = 100 ${t(T.marks)}`,
+  links: [[JNVST_PROSPECTUS_URL, T.prospectus], [JNVST_PORTAL_URL, T.portal], [JNVST_PREVIOUS_PAPER_URL, T.previousPaper]],
+  findSchools: { to: '/schools?network=JAWAHAR_NAVODAYA_VIDYALAYA', label: { en: 'Find the JNV in your district', hi: 'अपने ज़िले का जवाहर नवोदय विद्यालय खोजें' } },
+  pattern: {
+    year: { en: JNVST_PATTERN_YEAR, hi: JNVST_PATTERN_YEAR },
+    sourceLabel: 'NVS Prospectus cum Notification, JNVST 2027, sections 5–7',
+    sourceUrl: JNVST_PROSPECTUS_URL,
+    checked: () => JNVST_PATTERN_CHECKED,
+    table: (lang) => ({
+      rows: [
+        { label: `1. ${JNVST_SECTIONS[0].name[lang]} + ${JNVST_SECTIONS[1].name[lang]}`, questions: '20 + 20', marks: '25 + 25', minutes: '60 min', qualifying: '14' },
+        ...JNVST_SECTIONS.slice(2).map((s, i) => ({ label: `${i + 2}. ${s.name[lang]}`, questions: s.questions, marks: s.marks, minutes: '30 min', qualifying: '7' })),
+      ],
+      total: { questions: 80, marks: 100, minutes: '2 h' },
+    }),
+  },
+};
+

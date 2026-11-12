@@ -1049,6 +1049,8 @@ export interface PracticeSetSummary {
   /** every question (and passage) has a Hindi version */
   hindi: boolean;
   chapters: string[];
+  /** marks per correct answer for sections marked differently from marksPerQuestion (null for most sets) */
+  sectionMarks?: Record<string, number> | null;
 }
 
 export type PracticeCategory = 'SCHOOL' | 'ENTRANCE' | 'OLYMPIAD' | 'COMPETITIVE';

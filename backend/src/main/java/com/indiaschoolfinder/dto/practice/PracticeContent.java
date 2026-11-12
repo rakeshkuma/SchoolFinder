@@ -1,6 +1,8 @@
 package com.indiaschoolfinder.dto.practice;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -9,12 +11,28 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
-/** The questions of a practice set, with answers and explanations; stored as one JSON document. */
+/**
+ * The questions of a practice set, with answers and explanations; stored as one JSON document. {@code sectionMarks}
+ * (optional) gives the marks for a correct answer in a section when it differs from the set's marks per question, as in
+ * an exam that marks Mathematics higher than the other sections.
+ */
 public record PracticeContent(
         @NotNull List<@Valid Passage> passages,
-        @NotEmpty @Size(max = 200) List<@Valid @NotNull Question> questions) {
+        @NotEmpty @Size(max = 200) List<@Valid @NotNull Question> questions,
+        @Size(max = 10) Map<@NotBlank @Size(max = 60) String, @NotNull @DecimalMin("0.25") @DecimalMax("10") BigDecimal> sectionMarks) {
+
+    public PracticeContent(List<Passage> passages, List<Question> questions) {
+        this(passages, questions, null);
+    }
+
+    /** Marks for a correct answer to {@code q}: its section's marks when set, otherwise {@code setMarks}. */
+    public BigDecimal marksFor(Question q, BigDecimal setMarks) {
+        return sectionMarks == null ? setMarks : sectionMarks.getOrDefault(q.section(), setMarks);
+    }
 
     /** {@code hi}, when present, is the Hindi text of the passage. */
     public record Passage(@NotBlank @Pattern(regexp = "[a-z0-9-]+") String id, @NotBlank @Size(max = 200) String title,

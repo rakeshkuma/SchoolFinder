@@ -141,5 +141,9 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
         assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex");
+        assertThat(head("/exams/aissee")).contains("<title>AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan</title>")
+                .contains("href=\"http://localhost/exams/aissee\"").doesNotContain("noindex");
+        assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")
+                .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
     }
 }

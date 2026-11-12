@@ -78,7 +78,7 @@ public class PracticeService {
     public ScoreResultDto score(String slug, ScoreRequest request) {
         PracticeSet set = published(slug);
         List<Marked> questions = set.getContent().questions().stream()
-                .map(q -> new Marked(q.id(), q, set.getMarksPerQuestion(), set.getNegativeMarks())).toList();
+                .map(q -> new Marked(q.id(), q, set.getContent().marksFor(q, set.getMarksPerQuestion()), set.getNegativeMarks())).toList();
         return score(questions, request.answers());
     }
 
@@ -182,7 +182,8 @@ public class PracticeService {
             if (item == null) {
                 throw new BusinessValidationException("questionIds", "unknown question '" + id + "'");
             }
-            questions.add(new Marked(id, item.question(), item.set().getMarksPerQuestion(), item.set().getNegativeMarks()));
+            questions.add(new Marked(id, item.question(), item.set().getContent().marksFor(item.question(), item.set().getMarksPerQuestion()),
+                    item.set().getNegativeMarks()));
         }
         return score(questions, answers);
     }
@@ -413,6 +414,6 @@ public class PracticeService {
                 && s.getContent().passages().stream().allMatch(p -> p.hi() != null);
         return new PracticeSetSummaryDto(s.getSlug(), s.getExamSlug(), s.getTitle(), s.getKind(), s.getLevel(),
                 s.getDescription(), s.getDurationMinutes(), questions.size(), sections, s.getReviewedOn(), s.getCategory(),
-                plain(s.getMarksPerQuestion()), plain(s.getNegativeMarks()), hindi, chapters);
+                plain(s.getMarksPerQuestion()), plain(s.getNegativeMarks()), hindi, chapters, s.getContent().sectionMarks());
     }
 }
