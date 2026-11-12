@@ -161,6 +161,7 @@ public class SitemapController {
         List<Exam> exams = examRepository.findByPublishedTrueOrderByDisplayOrderAscShortNameAsc();
         for (Exam exam : exams) {
             url(xml, base + "/exams/" + exam.getSlug(), exam.getUpdatedAt());
+            if ("jnvst".equals(exam.getSlug())) url(xml, base + "/exams/jnvst/guide", exam.getUpdatedAt());
         }
         // Class pages only for classes with an entrance test; state pages only for states with their own exam
         // (others would repeat existing pages).

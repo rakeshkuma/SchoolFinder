@@ -544,9 +544,16 @@ export function ExamGuidePage() {
           <ol className="flex flex-wrap items-center gap-1.5">
             <li><Link to="/" className="hover:text-brand-700">Home</Link> /</li>
             <li><Link to={backTo} className="hover:text-brand-700">Entrance exams</Link> /</li>
-            <li aria-current="page" className="font-medium text-ink">{exam.shortName}</li>
+            {exam.slug === 'jnvst' && <li><Link to="/exams/jnvst" className="hover:text-brand-700">Preparation</Link> /</li>}
+            <li aria-current="page" className="font-medium text-ink">{exam.slug === 'jnvst' ? 'Guide' : exam.shortName}</li>
           </ol>
         </nav>
+        {exam.slug === 'jnvst' && (
+          <Link to="/exams/jnvst" className="card mb-6 flex flex-wrap items-center justify-between gap-3 border-brand-100 bg-brand-50/60 p-4 text-sm hover:shadow-lift">
+            <span><span className="font-semibold text-ink">JNVST Class 6 preparation:</span> full mock tests, section quizzes and a study plan, in English and <span lang="hi">हिन्दी</span>.</span>
+            <span className="font-semibold text-brand-700">Open the dashboard →</span>
+          </Link>
+        )}
 
         <section aria-label="Current status" className="card mb-6 flex flex-wrap items-center gap-x-6 gap-y-3 p-4 text-sm">
           <ExamStatusBadge status={exam.status} />

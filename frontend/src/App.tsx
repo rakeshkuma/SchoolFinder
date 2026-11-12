@@ -39,6 +39,7 @@ const BoardingPage = page(() => import('./pages/BoardingDirectoryPage'), 'Boardi
 const BoardingSchoolPage = page(() => import('./pages/BoardingPages'), 'BoardingSchoolPage');
 const ExamsPage = page(() => import('./pages/ExamPages'), 'ExamsPage');
 const ExamGuidePage = page(() => import('./pages/ExamPages'), 'ExamGuidePage');
+const JnvstPrepPage = page(() => import('./pages/JnvstPrepPage'), 'JnvstPrepPage');
 const ExamFinderPage = page(() => import('./pages/ExamToolsPages'), 'ExamFinderPage');
 const ExamCalendarPage = page(() => import('./pages/ExamToolsPages'), 'ExamCalendarPage');
 const ExamClassPage = page(() => import('./pages/ExamHubPages'), 'ExamClassPage');
@@ -203,6 +204,8 @@ export default function App() {
               <Route path="exams/challenges/:slug/take" element={<ChallengeTakePage />} />
               <Route path="exams/practice/attempts/:id" element={<PracticeAttemptPage />} />
               <Route path="exams/practice/:slug" element={<PracticeTestPage />} />
+              <Route path="exams/jnvst" element={<JnvstPrepPage />} />
+              <Route path="exams/:slug/guide" element={<ExamGuidePage />} />
               <Route path="exams/:slug" element={<ExamGuidePage />} />
               <Route path="boards/:code" element={<BoardPage />} />
               <Route path="type/:type" element={<SchoolTypePage />} />

@@ -127,4 +127,19 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/")).contains("<title>SchoolDhundo – Discover Schools, Rankings").contains("SearchAction");
         assertThat(head("/some/unknown/page")).doesNotContain("canonical");
     }
+
+    @Test
+    void jnvstHasAPreparationPageAndAGuide() throws Exception {
+        Integer present = jdbc.queryForObject("SELECT count(*) FROM exam WHERE slug = 'jnvst'", Integer.class);
+        if (present == null || present == 0) {
+            mockMvc.perform(post("/api/v1/admin/exams/import").header("Authorization", editorToken())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(new ClassPathResource("seed/exams.json").getContentAsString(StandardCharsets.UTF_8)))
+                    .andExpect(status().isOk());
+        }
+        assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan</title>")
+                .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
+        assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
+                .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex");
+    }
 }

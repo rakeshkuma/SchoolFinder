@@ -41,7 +41,7 @@ const isCategory = (v: string | null): v is PracticeCategory => CATEGORY_ORDER.i
 const LANG_KEY = 'isf.practice.lang';
 
 /** English or Hindi, remembered in this browser; questions without a Hindi version are always shown in English. */
-function useLanguage(): [PracticeLanguage, (lang: PracticeLanguage) => void] {
+export function useLanguage(): [PracticeLanguage, (lang: PracticeLanguage) => void] {
   const [lang, setLang] = useState<PracticeLanguage>(() => {
     try {
       return localStorage.getItem(LANG_KEY) === 'hi' ? 'hi' : 'en';

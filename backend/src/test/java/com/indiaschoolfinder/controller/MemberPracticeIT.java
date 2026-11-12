@@ -34,6 +34,14 @@ class MemberPracticeIT extends AbstractIntegrationTest {
     @Autowired
     private MailService mail;
 
+    @Autowired
+    private com.indiaschoolfinder.service.PracticeService practice;
+
+    /** The answer key of a bank question, so the test does not depend on the wording of the seed questions. */
+    private int key(String id) {
+        return practice.bankIndex().get(id).question().answer();
+    }
+
     @BeforeEach
     void clean() throws Exception {
         jdbc.execute("TRUNCATE user_account RESTART IDENTITY CASCADE");
@@ -72,9 +80,10 @@ class MemberPracticeIT extends AbstractIntegrationTest {
     void attemptsAreScoredOnTheServerSavedOnceAndPrivate() throws Exception {
         Cookie asha = member("asha@example.org");
         List<String> ids = List.of("jnvst-arithmetic-1/a6", "jnvst-arithmetic-1/a7", "jnvst-arithmetic-1/a8");
-        // a6 answer is option 1 (81 sq cm); a7 answered wrongly; a8 skipped.
+        // a6 answered correctly; a7 answered wrongly; a8 skipped.
+        int a6 = key("jnvst-arithmetic-1/a6"), a7 = key("jnvst-arithmetic-1/a7"), a7Wrong = (a7 + 1) % 4;
         UUID clientId = UUID.randomUUID();
-        Map<String, Object> body = attempt(clientId, ids, Map.of("jnvst-arithmetic-1/a6", 1, "jnvst-arithmetic-1/a7", 0));
+        Map<String, Object> body = attempt(clientId, ids, Map.of("jnvst-arithmetic-1/a6", a6, "jnvst-arithmetic-1/a7", a7Wrong));
         // A score sent by the browser is not accepted at all: the server works it out.
         Map<String, Object> withScore = new HashMap<>(body);
         withScore.put("correct", 3);
@@ -106,10 +115,10 @@ class MemberPracticeIT extends AbstractIntegrationTest {
         // Ravi reusing Asha's clientId gets his own attempt, not hers.
         submit(ravi, body).andExpect(status().isCreated()).andExpect(jsonPath("$.duplicate").value(false));
         mockMvc.perform(get("/api/v1/account/practice-attempts/" + id).cookie(asha)).andExpect(status().isOk())
-                .andExpect(jsonPath("$.answers['jnvst-arithmetic-1/a6']").value(1));
+                .andExpect(jsonPath("$.answers['jnvst-arithmetic-1/a6']").value(a6));
 
         // Answering it correctly later clears it from revision.
-        submit(asha, attempt(UUID.randomUUID(), List.of("jnvst-arithmetic-1/a7"), Map.of("jnvst-arithmetic-1/a7", 2)))
+        submit(asha, attempt(UUID.randomUUID(), List.of("jnvst-arithmetic-1/a7"), Map.of("jnvst-arithmetic-1/a7", a7)))
                 .andExpect(jsonPath("$.score.correct").value(1));
         mockMvc.perform(get("/api/v1/account/practice-attempts/revision").cookie(asha))
                 .andExpect(jsonPath("$.questionIds.length()").value(0));
