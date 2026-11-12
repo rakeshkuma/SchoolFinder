@@ -39,6 +39,7 @@ import { SchoolOrStateNotFound } from './PlaceRedirect';
 import { AD_SLOTS, AdSlot } from '../components/common/AdSlot';
 import { track } from '../utils/analytics';
 import { schoolFaqs } from '../utils/schoolFaq';
+import { EnquiryButton } from '../components/school/EnquiryForm';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -160,7 +161,7 @@ export function SchoolDetailPage() {
             { id: 'overview', label: 'Overview', content: <Overview school={s} /> },
             ...(s.boarding ? [{ id: 'boarding', label: 'Boarding', content: <BoardingTab boarding={s.boarding} /> }] : []),
             { id: 'photos', label: 'Gallery', content: <PhotosTab schoolId={s.id} /> },
-            { id: 'admissions', label: 'Admissions', content: <AdmissionsTab schoolId={s.id} portal={s.admissionPortalUrl} inDelhi={s.stateCode === 'DL'} /> },
+            { id: 'admissions', label: 'Admissions', content: <><EnquiryCard school={s} /><AdmissionsTab schoolId={s.id} portal={s.admissionPortalUrl} inDelhi={s.stateCode === 'DL'} /></> },
             { id: 'fees', label: 'Fees', content: <FeesTab schoolId={s.id} inDelhi={s.stateCode === 'DL'} /> },
             { id: 'classes', label: 'Classes & curriculum', content: <ClassesTab school={s} /> },
             { id: 'facilities', label: 'Facilities', content: <FacilitiesTab school={s} /> },
@@ -172,6 +173,11 @@ export function SchoolDetailPage() {
         />
         <AdSlot slot={AD_SLOTS.schoolProfile} />
         <SchoolFaq school={s} />
+        <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
+          <Icon name="building" className="h-4 w-4 text-slate-500" />
+          Work at {s.name}? Keep its fees, admission notices and photos up to date.
+          <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} className="link font-semibold">Claim this profile</Link>
+        </p>
       </div>
     </>
   );
@@ -227,9 +233,10 @@ function StickyActions({ school: s, onAdmissions }: { school: SchoolDetail; onAd
               <Icon name={contact.icon} className="h-4 w-4" /> {contact.label}
             </a>
           )}
-          <button type="button" onClick={onAdmissions} className="btn-primary whitespace-nowrap rounded-full px-4 py-1.5 text-sm">
+          <button type="button" onClick={onAdmissions} className="btn-secondary whitespace-nowrap rounded-full px-3 py-1.5 text-sm">
             <Icon name="calendar" className="h-4 w-4" /> Admission details
           </button>
+          <EnquiryButton school={s} />
         </div>
       </div>
     </div>
@@ -404,6 +411,19 @@ function Overview({ school: s }: { school: SchoolDetail }) {
         </section>
       </aside>
     </div>
+  );
+}
+
+/** The way to ask the school a question, at the top of the admissions tab. */
+function EnquiryCard({ school: s }: { school: SchoolDetail }) {
+  return (
+    <section className="mb-5 flex flex-col items-start justify-between gap-3 rounded-2xl border border-brand-100 bg-brand-50/60 p-5 sm:flex-row sm:items-center">
+      <div>
+        <h3 className="font-display font-bold text-ink">Have a question about admission?</h3>
+        <p className="mt-1 text-sm text-slate-600">Send your query about seats, eligibility, fees or hostel. We pass it to the school with your consent.</p>
+      </div>
+      <EnquiryButton school={s} className="btn-primary shrink-0" />
+    </section>
   );
 }
 

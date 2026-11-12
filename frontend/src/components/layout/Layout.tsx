@@ -44,6 +44,8 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
       { to: '/contact', label: 'Contact Us' },
       { to: '/contact?topic=LISTING', label: 'Submit School Information' },
       { to: '/contact?topic=CORRECTION', label: 'Report Incorrect Information' },
+      { to: '/claim-school', label: 'Claim Your School' },
+      { to: '/advertise', label: 'Advertise With Us' },
       { to: '/editorial-policy', label: 'Editorial Policy' },
       { to: '/corrections-policy', label: 'Corrections Policy' },
     ],

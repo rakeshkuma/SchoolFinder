@@ -7,6 +7,7 @@ import { SchoolCard } from '../components/school/SchoolCard';
 import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolSearchForm, type HeroSearch } from '../components/school/SchoolsHero';
 import { DISCLAIMER, INFORMATION_KINDS } from '../content/site';
+import { blogCategoryLabel, blogService } from '../services/blogApi';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useInView } from '../hooks/useInView';
@@ -117,6 +118,7 @@ export function HomePage() {
   const bank = useApi(() => practiceService.bank(), [], true, 'home.bank');
   const states = useApi(() => locationService.states(), [], true, 'home.states');
   const cities = useApi(() => locationService.citiesAcrossIndia(), []);
+  const articles = useApi(() => blogService.list({ size: 3 }), [], true, 'home.blog');
   const recent = useLocalList(recentSchools);
 
   const onSearch = (s: HeroSearch) => {
@@ -446,6 +448,29 @@ export function HomePage() {
               <p className="mt-2 text-xs text-slate-500">Academic year shown next to each amount. Optional transport and one-time fees excluded. Click a bar for the full schedule and source.</p>
             </div>
           </div>
+        </Band>
+      )}
+
+      {(articles.data?.content.length ?? 0) > 0 && (
+        <Band>
+          <SectionHead eyebrow="Guides" title="Latest guides for parents and students" id="guides"
+            note="Plain-language articles on admissions, boards, boarding schools and entrance exams, checked against official sources."
+            action={<Link to="/blog" className="btn-secondary">All articles <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
+          <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.data!.content.slice(0, 3).map((p) => (
+              <li key={p.slug}>
+                <Link to={`/blog/${p.slug}`} className="card card-hover group flex h-full flex-col overflow-hidden">
+                  <SchoolImage src={p.coverImageUrl} name={p.title} alt={p.coverImageAlt ?? ""} zoom={false} />
+                  <span className="flex flex-1 flex-col p-5">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-700">{blogCategoryLabel(p.category)}{p.sponsored ? " · Sponsored" : ""}</span>
+                    <span className="mt-1.5 font-display text-lg font-bold leading-snug text-ink group-hover:text-brand-700">{p.title}</span>
+                    <span className="mt-2 line-clamp-2 flex-1 text-sm text-slate-600">{p.excerpt}</span>
+                    <span className="mt-3 text-xs text-slate-500">{formatDate(p.publishedAt)} · {p.minutesToRead} min read</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Band>
       )}
 

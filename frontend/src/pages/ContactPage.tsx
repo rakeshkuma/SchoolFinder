@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from '../content/site';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { ApiError, http } from '../services/http';
 
-export type ContactTopic = 'FEEDBACK' | 'CORRECTION' | 'LISTING' | 'RANKING' | 'TECHNICAL';
+export type ContactTopic = 'FEEDBACK' | 'CORRECTION' | 'LISTING' | 'RANKING' | 'TECHNICAL' | 'CLAIM' | 'ADVERTISING';
 
 export const CONTACT_TOPICS: { value: ContactTopic; label: string }[] = [
   { value: 'FEEDBACK', label: 'Website feedback' },
@@ -14,6 +14,8 @@ export const CONTACT_TOPICS: { value: ContactTopic; label: string }[] = [
   { value: 'LISTING', label: 'School listing request' },
   { value: 'RANKING', label: 'Ranking correction' },
   { value: 'TECHNICAL', label: 'Technical issue' },
+  { value: 'CLAIM', label: 'Claim or manage a school profile' },
+  { value: 'ADVERTISING', label: 'Advertising and featured listings' },
 ];
 
 interface Form { name: string; email: string; subject: string; message: string }
@@ -34,7 +36,7 @@ export function ContactPage() {
   const [params] = useSearchParams();
   const initial = CONTACT_TOPICS.find((t) => t.value === params.get('topic'))?.value ?? 'FEEDBACK';
   const [topic, setTopic] = useState<ContactTopic>(initial);
-  const [form, setForm] = useState<Form>({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState<Form>({ name: '', email: '', subject: (params.get('subject') ?? '').slice(0, 150), message: '' });
   const [website, setWebsite] = useState(''); // honeypot: hidden from people
   const [problems, setProblems] = useState<Partial<Record<keyof Form, string>>>({});
   const [state, setState] = useState<'idle' | 'sending' | 'sent'>('idle');
