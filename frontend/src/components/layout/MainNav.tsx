@@ -32,60 +32,29 @@ export const RANKING_ITEMS: NavItem[] = [
   { to: '/compare', label: 'Compare Schools', icon: 'scale' },
 ];
 
-/**
- * The Rankings dropdown: ten destinations in three groups. Board and boarding items open filtered views of the pages
- * above (the tabs under every ranking page stay the five pages themselves). Each item opens a page that says plainly
- * when no published ranking exists yet, rather than showing an invented one.
- */
-const RANKING_MENU: { title: string; items: NavItem[] }[] = [
-  {
-    title: 'Rankings',
-    items: [
-      { to: '/rankings', label: 'India’s Top Schools', icon: 'trophy', hint: 'Categories, premier schools and published ranks' },
-      { to: '/rankings/states', label: 'State & City Rankings', icon: 'map', hint: 'Every state, city and district' },
-      { to: '/rankings/boards', label: 'Board-wise Rankings', icon: 'book', hint: 'CBSE, ICSE, IB, Cambridge, state boards' },
-      { to: '/compare', label: 'Compare Schools', icon: 'scale', hint: 'Up to four, side by side' },
-    ],
-  },
-  {
-    title: 'Boarding & residential',
-    items: [
-      { to: '/rankings/boarding-schools', label: 'Boarding Schools', icon: 'home', hint: 'India’s leading residential schools' },
-      { to: '/rankings/government-boarding', label: 'Government & Residential Schools', icon: 'shield', hint: 'JNV, Sainik, EMRS, KV and more' },
-      { to: '/rankings/girls-boarding-schools', label: 'Boys & Girls Boarding Schools', icon: 'users', hint: 'Boys, girls and co-ed lists' },
-    ],
-  },
-  {
-    title: 'By board',
-    items: [
-      { to: '/rankings/cbse-schools', label: 'Top CBSE Schools', icon: 'graduation' },
-      { to: '/rankings/icse-schools', label: 'Top ICSE Schools', icon: 'graduation', hint: 'CISCE: ICSE and ISC' },
-      { to: '/rankings/international-schools', label: 'International Schools', icon: 'globe', hint: 'IB and Cambridge schools' },
-    ],
-  },
-];
-
 /** Hides items with nothing behind them. Until the answer arrives, or if it fails, every item stays. */
 export const availableItems = (items: NavItem[], sections: RankingSections | null) =>
   items.filter((item) => !item.needs || !sections || item.needs(sections));
 
-function useMenus() {
-  const sections = useApi(() => rankingService.sections(), []);
-  return useMemo(() => MENUS.map((m) => ({ ...m, sections: m.sections.map((s) => ({ ...s, items: availableItems(s.items, sections.data) })) })), [sections.data]);
-}
+/** A top-level link with no menu of its own. */
+interface NavLinkEntry { label: string; icon: IconName; to: string; match: string[] }
+type NavEntry = NavMenu | NavLinkEntry;
+const isMenu = (e: NavEntry): e is NavMenu => 'sections' in e;
 
 /**
- * The main menus. Every item opens a working page or a filtered view of one; fee information lives under Schools
- * (calculator, school profiles, comparison) rather than in a menu of its own.
+ * Five pillars, each a parent's question: where are the schools, which boarding school, how do they compare, how and
+ * when do I apply and what will it cost, and how does my child prepare. Every item opens a working page or a filtered
+ * view of one, and each destination appears under one pillar only.
  */
-const MENUS: NavMenu[] = [
+const ENTRIES: NavEntry[] = [
   {
-    label: 'Schools', icon: 'graduation', match: ['/schools', '/find', '/states', '/cities', '/boards', '/type', '/stages', '/network', '/nearby', '/fees', '/saved'],
+    label: 'Find Schools', icon: 'search',
+    match: ['/schools', '/find', '/states', '/cities', '/boards', '/type', '/stages', '/network', '/nearby', '/rankings'],
     sections: [
       {
         title: 'Find schools',
         items: [
-          { to: '/schools', label: 'Find schools', icon: 'search', hint: 'Search and filter every school' },
+          { to: '/schools', label: 'Search all schools', icon: 'search', hint: 'Every school, with filters' },
           { to: '/find', label: 'Help me choose', icon: 'sparkle', hint: 'Answer a few questions' },
           { to: '/states', label: 'Schools by state', icon: 'map' },
           { to: '/cities', label: 'Schools by city', icon: 'building' },
@@ -93,7 +62,7 @@ const MENUS: NavMenu[] = [
         ],
       },
       {
-        title: 'By type',
+        title: 'By board and type',
         items: [
           { to: '/boards/CBSE', label: 'CBSE schools', icon: 'book' },
           { to: '/boards/CISCE', label: 'ICSE schools', icon: 'book' },
@@ -103,26 +72,28 @@ const MENUS: NavMenu[] = [
         ],
       },
       {
-        // Rankings and comparison live in the Rankings menu only.
-        title: 'Plan',
+        title: 'Rankings',
         items: [
-          { to: '/fees', label: 'School fees & calculator', icon: 'rupee', hint: 'Official fee schedules' },
-          { to: '/saved', label: 'Saved schools', icon: 'heart' },
+          { to: '/rankings', label: 'India’s top schools', icon: 'trophy', hint: 'Published rankings, with their sources' },
+          { to: '/rankings/top-premier-schools', label: 'Premier schools', icon: 'star' },
+          { to: '/rankings/states', label: 'State & city rankings', icon: 'map', needs: (s) => s.rankings },
+          { to: '/rankings/boards', label: 'Board-wise rankings', icon: 'book', hint: 'CBSE, ICSE, IB, Cambridge', needs: (s) => s.boards },
         ],
       },
     ],
   },
   {
-    label: 'Boarding', icon: 'home', match: ['/boarding', '/network/jawahar-navodaya-vidyalaya', '/network/sainik-school',
-      '/network/eklavya-model-residential-school', '/network/rashtriya-military-school'],
+    label: 'Boarding Schools', icon: 'home',
+    match: ['/boarding', '/network/jawahar-navodaya-vidyalaya', '/network/sainik-school', '/network/eklavya-model-residential-school',
+      '/network/rashtriya-military-school', '/rankings/boarding-schools', '/rankings/government-boarding', '/rankings/girls-boarding-schools'],
     sections: [
       {
         title: 'Boarding schools',
         items: [
-          { to: '/boarding#top-boarding', label: 'Best boarding schools in India', icon: 'trophy' },
+          { to: '/rankings/boarding-schools', label: 'Top boarding schools', icon: 'trophy', hint: 'India’s leading residential schools' },
           { to: '/boarding/government', label: 'Government boarding schools', icon: 'shield' },
           { to: '/boarding/private', label: 'Private boarding schools', icon: 'building' },
-          { to: '/boarding/india', label: 'Boarding schools by state', icon: 'map', hint: 'All of India, state by state' },
+          { to: '/boarding/india', label: 'Boarding schools by state', icon: 'map' },
           { to: '/boarding/affordable', label: 'Affordable boarding schools', icon: 'rupee', hint: 'Published fee up to ₹1.5 lakh' },
         ],
       },
@@ -137,25 +108,48 @@ const MENUS: NavMenu[] = [
       {
         title: 'Residential systems',
         items: [
-          { to: '/schools/netarhat-awasiya-vidyalaya', label: 'Netarhat Awasiya Vidyalaya', icon: 'graduation' },
           { to: '/network/jawahar-navodaya-vidyalaya', label: 'Jawahar Navodaya Vidyalayas', icon: 'graduation' },
           { to: '/boarding?system=SAINIK#directory', label: 'Sainik Schools', icon: 'flag' },
+          { to: '/schools/netarhat-awasiya-vidyalaya', label: 'Netarhat Awasiya Vidyalaya', icon: 'graduation' },
           { to: '/network/eklavya-model-residential-school', label: 'Eklavya Model Residential Schools', icon: 'graduation', hint: 'For Scheduled Tribe students' },
-          { to: '/admissions/guide#hostel', label: 'School hostel information', icon: 'info', hint: 'What to check before you apply' },
+          { to: '/rankings/government-boarding', label: 'Government & residential rankings', icon: 'shield', hint: 'JNV, Sainik, EMRS, KV and more' },
+        ],
+      },
+    ],
+  },
+  { label: 'Compare', icon: 'scale', to: '/compare', match: ['/compare'] },
+  {
+    label: 'Admissions & Fees', icon: 'calendar', match: ['/admissions', '/fees', '/saved', '/blog'],
+    sections: [
+      {
+        title: 'Admissions',
+        items: [
+          { to: '/admissions', label: 'Open admissions & deadlines', icon: 'calendar', hint: 'Every open and upcoming cycle' },
+          { to: '/admissions/notifications', label: 'Admission notifications', icon: 'bolt', hint: 'Official notices, newest first' },
+          { to: '/admissions/guide', label: 'Admission guide', icon: 'book', hint: 'Process, eligibility and age rules' },
+          { to: '/admissions/guide#documents', label: 'Documents required', icon: 'file' },
+        ],
+      },
+      {
+        title: 'Fees and planning',
+        items: [
+          { to: '/fees', label: 'Fee calculator', icon: 'rupee', hint: 'From official fee schedules' },
+          { to: '/saved', label: 'My shortlist', icon: 'heart', hint: 'Saved and recently viewed schools' },
+          { to: '/blog', label: 'Guides for parents', icon: 'file', hint: 'Admissions, boards and exams explained' },
         ],
       },
     ],
   },
   {
-    label: 'Exam preparation', icon: 'target', match: ['/exams'],
+    label: 'Exam Prep', icon: 'target', match: ['/exams'],
     sections: [
       {
         title: 'Entrance exams',
         items: [
+          { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation', hint: 'Class 6 mock tests and study plan' },
+          { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag', hint: 'Class 6 mock tests and study plan' },
           { to: '/exams/netarhat', label: 'Netarhat entrance exam', icon: 'graduation', hint: 'Netarhat Awasiya Vidyalaya, Class VI' },
-          { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation' },
-          { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag' },
-          { to: '/exams', label: 'Other entrance exams', icon: 'calendar' },
+          { to: '/exams', label: 'All entrance exams', icon: 'calendar', hint: 'Dates, eligibility and patterns' },
         ],
       },
       {
@@ -170,51 +164,49 @@ const MENUS: NavMenu[] = [
       {
         title: 'Practise',
         items: [
-          { to: '/exams/practice', label: 'Mock tests & practice questions', icon: 'target' },
+          { to: '/exams/practice', label: 'Mock tests & practice', icon: 'target' },
           { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz', icon: 'sun', hint: 'Ten questions, new every day' },
           { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous year papers', icon: 'file', hint: 'Official papers, linked' },
           { to: '/exams/practice/progress', label: 'My progress', icon: 'chart' },
-          { to: '/exams/leaderboard', label: 'Leaderboard', icon: 'trophy', hint: 'All India, by state, exam and subject' },
-          { to: '/exams/challenges', label: 'Challenges', icon: 'flag', hint: 'Scheduled tests with their own rankings' },
-          { to: '/exams/achievements', label: 'My achievements', icon: 'star' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Rankings', icon: 'trophy', match: ['/rankings'],
-    sections: RANKING_MENU,
-  },
-  {
-    label: 'Admissions', icon: 'calendar', match: ['/admissions'],
-    sections: [
-      {
-        title: 'Admissions',
-        items: [
-          { to: '/admissions/guide', label: 'Admission guide', icon: 'book' },
-          { to: '/admissions/guide#process', label: 'Admission process', icon: 'list' },
-          { to: '/admissions/guide#eligibility', label: 'Admission eligibility', icon: 'check' },
-          { to: '/admissions', label: 'Important dates', icon: 'calendar', hint: 'Open and upcoming deadlines' },
-          { to: '/admissions/guide#documents', label: 'Documents required', icon: 'file' },
-          { to: '/admissions/notifications', label: 'Admission notifications', icon: 'bolt' },
+          { to: '/exams/leaderboard', label: 'Leaderboard & challenges', icon: 'trophy', hint: 'All India, by state and exam' },
         ],
       },
     ],
   },
 ];
 
-/** Whether the current address belongs to a menu (for highlighting it). */
-function menuIsActive(menu: NavMenu, pathname: string) {
-  return menu.match.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+function useEntries() {
+  const sections = useApi(() => rankingService.sections(), []);
+  return useMemo(() => ENTRIES.map((e) => (isMenu(e)
+    ? { ...e, sections: e.sections.map((s) => ({ ...s, items: availableItems(s.items, sections.data) })) }
+    : e)), [sections.data]);
 }
+
+/** The pillar the current address belongs to: the longest matching path wins (boarding rankings light up Boarding). */
+export function activeLabel(entries: { label: string; match: string[] }[], pathname: string): string | null {
+  let best: { label: string; length: number } | null = null;
+  for (const e of entries) {
+    for (const p of e.match) {
+      if ((pathname === p || pathname.startsWith(`${p}/`)) && (!best || p.length > best.length)) best = { label: e.label, length: p.length };
+    }
+  }
+  return best?.label ?? null;
+}
+
+/** The pillars' labels and paths, for tests. */
+export const NAV_PILLARS = ENTRIES.map((e) => ({ label: e.label, match: e.match }));
+
+const topLink = (active: boolean) => `flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-semibold transition 2xl:px-3.5 ${
+  active ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`;
 
 /** Desktop: a button per menu opening a panel on hover or click; arrow keys move between items, Escape closes. */
 export function DesktopNav() {
   const [open, setOpen] = useState<string | null>(null);
-  const menus = useMenus();
+  const entries = useEntries();
   const location = useLocation();
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<number>();
+  const current = activeLabel(ENTRIES, location.pathname);
 
   useEffect(() => setOpen(null), [location.pathname, location.search, location.hash]);
   useEffect(() => {
@@ -229,25 +221,15 @@ export function DesktopNav() {
   const hoverClose = () => { closeTimer.current = window.setTimeout(() => setOpen(null), 160); };
 
   return (
-    <nav ref={navRef} aria-label="Main" className="hidden min-w-0 items-center gap-0.5 xl:flex">
-      <NavLink to="/" end
-        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
-        Home
-      </NavLink>
-      {menus.map((m, i) => (
-        <Dropdown key={m.label} menu={m} align={i === 0 ? 'left' : i === menus.length - 1 ? 'right' : 'center'}
-          open={open === m.label} active={menuIsActive(m, location.pathname)}
-          onOpen={() => setOpen(m.label)} onClose={() => setOpen(null)} onToggle={() => setOpen(open === m.label ? null : m.label)}
-          onHover={() => hoverOpen(m.label)} onLeave={hoverClose} />
-      ))}
-      <NavLink to="/compare"
-        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
-        Compare Schools
-      </NavLink>
-      <NavLink to="/blog"
-        className={({ isActive }) => `whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${isActive ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
-        Blogs
-      </NavLink>
+    <nav ref={navRef} aria-label="Main" className="hidden min-w-0 items-center gap-1 xl:flex">
+      {entries.map((e, i) => (isMenu(e) ? (
+        <Dropdown key={e.label} menu={e} align={i === 0 ? 'left' : i === entries.length - 1 ? 'right' : 'center'}
+          open={open === e.label} active={current === e.label}
+          onOpen={() => setOpen(e.label)} onClose={() => setOpen(null)} onToggle={() => setOpen(open === e.label ? null : e.label)}
+          onHover={() => hoverOpen(e.label)} onLeave={hoverClose} />
+      ) : (
+        <NavLink key={e.label} to={e.to} className={() => topLink(current === e.label)}>{e.label}</NavLink>
+      )))}
     </nav>
   );
 }
@@ -289,8 +271,7 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
     <div className="relative" onMouseEnter={onHover} onMouseLeave={onLeave}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) onClose(); }}>
       <button ref={buttonRef} type="button" aria-expanded={open} aria-controls={panelId} onClick={onToggle} onKeyDown={onButtonKey}
-        className={`flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition 2xl:px-3 ${
-          active || open ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
+        className={topLink(active || open)}>
         {menu.label}
         <Icon name="chevronDown" className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -329,28 +310,34 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
 /** Mobile and tablet: each menu is an accordion section; the current section starts open. */
 export function MobileNav() {
   const location = useLocation();
-  const menus = useMenus();
-  const [open, setOpen] = useState<string | null>(() => MENUS.find((m) => menuIsActive(m, location.pathname))?.label ?? null);
+  const entries = useEntries();
+  const current = activeLabel(ENTRIES, location.pathname);
+  const [open, setOpen] = useState<string | null>(current);
+  const iconBox = 'flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700';
   return (
     <div className="divide-y divide-slate-100">
-      <Link to="/" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="home" className="h-4 w-4" /></span>
-        Home
-      </Link>
-      {menus.map((m) => {
-        const expanded = open === m.label;
-        const id = `mnav-${m.label.replace(/\s+/g, '-').toLowerCase()}`;
+      {entries.map((e) => {
+        if (!isMenu(e)) {
+          return (
+            <Link key={e.label} to={e.to} className={`flex items-center gap-3 px-3 py-3 text-base font-semibold ${current === e.label ? 'text-brand-700' : 'text-ink'}`}>
+              <span className={iconBox}><Icon name={e.icon} className="h-4 w-4" /></span>
+              {e.label}
+            </Link>
+          );
+        }
+        const expanded = open === e.label;
+        const id = `mnav-${e.label.replace(/\W+/g, '-').toLowerCase()}`;
         return (
-          <div key={m.label}>
-            <button type="button" aria-expanded={expanded} aria-controls={id} onClick={() => setOpen(expanded ? null : m.label)}
-              className={`flex w-full items-center gap-3 px-3 py-3 text-left text-base font-semibold ${menuIsActive(m, location.pathname) ? 'text-brand-700' : 'text-ink'}`}>
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name={m.icon} className="h-4 w-4" /></span>
-              <span className="flex-1">{m.label}</span>
+          <div key={e.label}>
+            <button type="button" aria-expanded={expanded} aria-controls={id} onClick={() => setOpen(expanded ? null : e.label)}
+              className={`flex w-full items-center gap-3 px-3 py-3 text-left text-base font-semibold ${current === e.label ? 'text-brand-700' : 'text-ink'}`}>
+              <span className={iconBox}><Icon name={e.icon} className="h-4 w-4" /></span>
+              <span className="flex-1">{e.label}</span>
               <Icon name="chevronDown" className={`h-5 w-5 text-slate-500 transition-transform ${expanded ? 'rotate-180' : ''}`} />
             </button>
             <div id={id} hidden={!expanded} className="pb-3">
-              {m.sections.map((s) => (
-                <div key={s.title ?? m.label} className="mt-1">
+              {e.sections.map((s) => (
+                <div key={s.title ?? e.label} className="mt-1">
                   {s.title && <p className="px-3 pt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>}
                   <ul className="grid gap-0.5 sm:grid-cols-2">
                     {s.items.map((item) => (
@@ -367,14 +354,6 @@ export function MobileNav() {
           </div>
         );
       })}
-      <Link to="/compare" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="scale" className="h-4 w-4" /></span>
-        Compare schools
-      </Link>
-      <Link to="/blog" className="flex items-center gap-3 px-3 py-3 text-base font-semibold text-ink">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="book" className="h-4 w-4" /></span>
-        Blogs
-      </Link>
     </div>
   );
 }

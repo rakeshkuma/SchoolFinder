@@ -10,7 +10,8 @@ import { savedSchools, useLocalList } from '../../hooks/usePersonal';
 import { AccountMenu, MobileAccountLinks } from './AccountMenu';
 import { Icon } from '../common/Icon';
 import { CompareBar } from '../school/CompareBar';
-import { CONTACT_EMAIL, CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER } from '../../content/site';
+import { CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER } from '../../content/site';
+import { ContactLink } from '../common/ContactLink';
 
 const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
   {
@@ -173,10 +174,14 @@ export function Layout() {
           </Link>
           <DesktopNav />
           <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-            <Link to="/saved" className="btn-ghost relative hidden h-10 rounded-full px-2.5 sm:inline-flex" aria-label={`Saved schools (${savedCount})`} title="Saved schools">
+            {/* The shortlist: schools saved with the heart on any card or profile, kept in this browser. */}
+            <Link to="/saved" aria-label={`My shortlist: ${savedCount} ${savedCount === 1 ? 'school' : 'schools'}`} title="My shortlist"
+              className={`relative inline-flex h-10 items-center gap-2 rounded-full px-2.5 text-sm font-semibold transition 2xl:px-3.5 ${
+                savedCount > 0 ? 'bg-rose-50 text-rose-700 hover:bg-rose-100' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'}`}>
               <Icon name="heart" className="h-5 w-5" />
+              <span className="hidden 2xl:inline">Shortlist</span>
               {savedCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-accent-400 px-1 text-center text-[10px] font-bold leading-[18px] text-ink">
+                <span className="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-rose-600 px-1 text-center text-[10px] font-bold leading-[18px] text-white 2xl:static 2xl:leading-5">
                   {savedCount}
                 </span>
               )}
@@ -235,7 +240,9 @@ export function Layout() {
             <p className="font-display text-sm font-semibold text-white">Creator</p>
             <p className="mt-4 text-slate-300">Created by {CREATOR_NAME}</p>
             <p className="mt-2 leading-relaxed text-slate-400">{CREATOR_INSTITUTE}</p>
-            <p className="mt-2 text-slate-400">Email: <a href={`mailto:${CONTACT_EMAIL}`} className="break-all text-slate-300 underline-offset-2 hover:text-white hover:underline">{CONTACT_EMAIL}</a></p>
+            <p className="mt-2 text-slate-400">
+              <ContactLink formLabel="Contact us" className="break-all text-slate-300 underline-offset-2 hover:text-white hover:underline" />
+            </p>
           </div>
         </div>
         <div className="border-t border-white/10">
@@ -250,8 +257,6 @@ export function Layout() {
               {consentNeeded() && (
                 <button type="button" onClick={resetConsent} className="hover:text-white">Cookie settings</button>
               )}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a>
-              <Link to="/admin" className="hover:text-white">Administrator login</Link>
               <span>Map data © OpenStreetMap contributors</span>
             </div>
           </div>

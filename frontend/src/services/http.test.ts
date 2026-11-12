@@ -28,7 +28,7 @@ describe('http client', () => {
     expect(calls).toHaveLength(3);
   });
 
-  it('gives up after two retries with a friendly message', async () => {
+  it('gives up after four retries (about 10 seconds) with a friendly message', async () => {
     vi.useFakeTimers();
     const { adapter, calls } = transport(503);
     const result = http.get('/stats', { adapter }).catch((e: unknown) => e);
@@ -37,7 +37,7 @@ describe('http client', () => {
     expect(error).toBeInstanceOf(ApiError);
     expect(error.status).toBe(503);
     expect(error.message).toBe(statusMessage(503));
-    expect(calls).toHaveLength(3);
+    expect(calls).toHaveLength(5);
   });
 
   it('never repeats a write', async () => {

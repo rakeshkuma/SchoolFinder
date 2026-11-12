@@ -122,6 +122,8 @@ sudo rm -rf /var/www/schooldhundo.old
 if [ -d /var/www/schooldhundo ]; then sudo mv /var/www/schooldhundo /var/www/schooldhundo.old; fi
 sudo mv /var/www/schooldhundo.new /var/www/schooldhundo
 sudo install -d /etc/nginx/snippets
+# Where nginx keeps the last good copy of public API answers (see proxy_cache_path in nginx.conf).
+sudo install -d -o www-data -g www-data -m 700 /var/cache/schooldhundo-api
 sudo cp "$UPLOAD/security-headers.conf" /etc/nginx/snippets/security-headers.conf
 sed -e 's#listen 80;#listen 127.0.0.1:8081;#' \
     -e 's#http://backend:8080#http://127.0.0.1:8080#g' \

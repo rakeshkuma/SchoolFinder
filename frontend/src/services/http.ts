@@ -70,7 +70,9 @@ export function setUnauthorizedListener(listener: UnauthorizedListener | null) {
 
 /** Temporary failures worth retrying: no response at all, or a gateway/unavailable answer. */
 const RETRYABLE_STATUS = new Set([502, 503, 504]);
-const RETRY_DELAYS_MS = [700, 2000];
+// About 10 seconds in all: long enough to ride out a brief restart or network blip, short enough not to leave a page
+// waiting when the server is really down.
+const RETRY_DELAYS_MS = [700, 2000, 3500, 4000];
 
 type RetriableConfig = InternalAxiosRequestConfig & { retryCount?: number };
 

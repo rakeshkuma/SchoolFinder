@@ -5,6 +5,7 @@ import { AsyncContent } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { CONTACT_EMAIL, CREATOR_INSTITUTE, CREATOR_NAME, DISCLAIMER, INFORMATION_KINDS } from '../content/site';
+import { ContactLink } from '../components/common/ContactLink';
 import { referenceService } from '../services/publicApi';
 
 export function AboutPage() {
@@ -33,7 +34,7 @@ export function AboutPage() {
         <section className="not-prose my-6 rounded-2xl border border-slate-200 bg-white p-5" aria-labelledby="creator-heading">
           <h2 id="creator-heading" className="font-display text-lg font-bold text-ink">Website created by {CREATOR_NAME}</h2>
           <p className="mt-1 text-slate-700">{CREATOR_INSTITUTE}</p>
-          <p className="mt-1 text-slate-700">Contact: <a href={`mailto:${CONTACT_EMAIL}`} className="link break-all">{CONTACT_EMAIL}</a></p>
+          <p className="mt-1 text-slate-700">Contact: <ContactLink /></p>
         </section>
         <h2>Our data principles</h2>
         <ul>
@@ -145,7 +146,7 @@ export function PrivacyPage() {
         <h2>Removal requests and questions</h2>
         <p>
           To ask for a review to be removed or corrected, or with any question about your information,{' '}
-          <Link to="/contact" className="link">contact us</Link> or email <a href={`mailto:${CONTACT_EMAIL}`} className="link break-all">{CONTACT_EMAIL}</a>.
+          <Link to="/contact" className="link">contact us</Link>{CONTACT_EMAIL && <> or email <ContactLink /></>}.
         </p>
         <p className="text-sm text-slate-500">Last updated: 10 November 2026.</p>
       </div>
@@ -278,7 +279,7 @@ export function CorrectionsPolicyPage() {
         </ul>
         <h2>Reviews</h2>
         <p>To ask for a review to be removed or corrected, <Link to="/contact" className="link">contact us</Link> with the school and the review.</p>
-        <p>Questions: <a href={`mailto:${CONTACT_EMAIL}`} className="link break-all">{CONTACT_EMAIL}</a>.</p>
+        <p>Questions: write to us through <ContactLink />.</p>
       </div>
     </>
   );
@@ -319,7 +320,7 @@ export function DataDeletionPage() {
           <li><strong>Analytics:</strong> choose “Cookie settings” at the bottom of any page and decline.</li>
         </ul>
         <p>
-          If you cannot sign in, or want help, email <a href={`mailto:${CONTACT_EMAIL}`} className="link break-all">{CONTACT_EMAIL}</a> from the
+          If you cannot sign in, or want help, write to us through <ContactLink />, giving the email
           address on your account. See also the <Link to="/privacy" className="link">Privacy Policy</Link>.
         </p>
       </div>

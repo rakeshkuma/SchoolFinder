@@ -1,5 +1,10 @@
-/** The site's creator and contact details, as supplied by the creator. Nothing here may be added to or guessed. */
-export const CONTACT_EMAIL = 'rakeshsingh.iiita@gmail.com';
+/**
+ * The site's public email address. Only an address on the site's own domain (e.g. contact@schooldhundo.in, once email
+ * routing for the domain is set up) belongs here; while it is null, pages point to the contact form instead. Messages
+ * sent through the form reach the private inbox set on the server (CONTACT_INBOX), which is never shown.
+ */
+export const CONTACT_EMAIL: string | null = null;
+/** The creator, as supplied by the creator. Nothing here may be added to or guessed. */
 export const CREATOR_NAME = 'Rakesh Kumar';
 export const CREATOR_INSTITUTE = 'Indian Institute of Information Technology, Allahabad';
 

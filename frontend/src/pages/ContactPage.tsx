@@ -54,8 +54,8 @@ export function ContactPage() {
     } catch (err) {
       setState('idle');
       setError(err instanceof ApiError
-        ? (err.status === 429 ? 'Too many messages from this connection. Please try again later, or email us.' : err.message)
-        : `Your message could not be sent. Please try again, or email ${CONTACT_EMAIL}.`);
+        ? (err.status === 429 ? 'Too many messages from this connection. Please try again later.' : err.message)
+        : `Your message could not be sent. Please try again in a few minutes${CONTACT_EMAIL ? `, or email ${CONTACT_EMAIL}` : ''}.`);
     }
   };
 
@@ -115,12 +115,14 @@ export function ContactPage() {
           )}
         </section>
         <aside className="space-y-4">
-          <section className="card p-5" aria-labelledby="contact-email-heading">
-            <h2 id="contact-email-heading" className="font-display text-lg font-bold text-ink">Email</h2>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="link mt-2 inline-flex items-center gap-2 break-all text-sm">
-              <Icon name="mail" className="h-4 w-4 shrink-0" /> {CONTACT_EMAIL}
-            </a>
-          </section>
+          {CONTACT_EMAIL && (
+            <section className="card p-5" aria-labelledby="contact-email-heading">
+              <h2 id="contact-email-heading" className="font-display text-lg font-bold text-ink">Email</h2>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="link mt-2 inline-flex items-center gap-2 break-all text-sm">
+                <Icon name="mail" className="h-4 w-4 shrink-0" /> {CONTACT_EMAIL}
+              </a>
+            </section>
+          )}
           <section className="card p-5 text-sm text-slate-700" aria-labelledby="contact-school-heading">
             <h2 id="contact-school-heading" className="font-display text-lg font-bold text-ink">Schools</h2>
             <p className="mt-2">

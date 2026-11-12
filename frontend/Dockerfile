@@ -12,5 +12,7 @@ RUN npm run build
 FROM nginx:1.30.6-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY security-headers.conf /etc/nginx/snippets/security-headers.conf
+# Where nginx keeps the last good copy of public API answers (see proxy_cache_path in nginx.conf).
+RUN mkdir -p /var/cache/schooldhundo-api && chown nginx:nginx /var/cache/schooldhundo-api
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80

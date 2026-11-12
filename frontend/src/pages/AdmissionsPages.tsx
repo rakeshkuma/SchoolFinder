@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AdmissionStatusBadge } from '../components/common/Badges';
+import { AdmissionStatusBadge, TrustBadge } from '../components/common/Badges';
 import { MoreFilters } from '../components/common/FilterSheet';
 import { PageHeader } from '../components/common/PageHeader';
 import { Pagination } from '../components/common/Pagination';
@@ -59,7 +59,10 @@ export function AdmissionsPage() {
                             {a.className} · {a.academicYear} · {admissionCategoryLabel[a.category]} · {formatDate(a.applicationStartDate)} → {formatDate(a.applicationEndDate)}
                           </p>
                         </div>
-                        <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
+                        <div className="flex flex-wrap items-center gap-2">
+                          <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
+                          <TrustBadge status={a.verificationStatus} verifiedOn={a.lastVerifiedDate} updatedOn={a.updatedAt} hasSource={!!a.sourceUrl} />
+                        </div>
                       </li>
                     );
                   })}
