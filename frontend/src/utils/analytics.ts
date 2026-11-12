@@ -28,6 +28,8 @@ export type AnalyticsEvent =
   | 'school_search'
   | 'school_profile_view'
   | 'school_comparison'
+  | 'generate_lead'
+  | 'school_claim'
   | 'exam_page_view'
   | 'quiz_start'
   | 'quiz_complete'

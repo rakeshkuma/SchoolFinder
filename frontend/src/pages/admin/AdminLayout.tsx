@@ -11,6 +11,7 @@ const LINKS = [
   { to: '/admin/documents', label: 'Documents (PDF / OCR)' },
   { to: '/admin/duplicates', label: 'Possible duplicates' },
   { to: '/admin/submissions', label: 'Suggested updates' },
+  { to: '/admin/enquiries', label: 'Admission enquiries' },
   { to: '/admin/contact', label: 'Contact messages' },
   { to: '/admin/blog', label: 'Blog' },
   { to: '/admin/exams', label: 'Entrance exams' },

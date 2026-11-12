@@ -208,7 +208,8 @@ export function FilterPanel({
               </select>
             </FilterField>
           )}
-          {show('stage') && (
+          {/* Class (in the bar) answers the same question; shown only when a link already filters by stage. */}
+          {show('stage') && value.stage !== undefined && (
             <FilterField label="Stage" htmlFor="mf-stage">
               <select id="mf-stage" className="input" value={value.stage ?? ''} onChange={(e) => set('stage', e.target.value as SchoolStage)}>
                 <option value="">Any stage</option>
@@ -230,10 +231,13 @@ export function FilterPanel({
               {(Object.keys(admissionStatusLabel) as AdmissionStatus[]).map((s) => <option key={s} value={s}>{admissionStatusLabel[s]}</option>)}
             </select>
           </FilterField>
+          {/* The search box above already finds schools by PIN; shown only when a link already filters by PIN. */}
+          {value.pinCode !== undefined && (
           <FilterField label="PIN code" htmlFor="mf-pin">
             <input id="mf-pin" className="input" inputMode="numeric" maxLength={6} placeholder="6-digit PIN" value={value.pinCode ?? ''}
               onChange={(e) => set('pinCode', e.target.value.replace(/\D/g, ''))} />
           </FilterField>
+          )}
           <label className="flex items-center gap-2 text-sm text-slate-700">
             <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-brand-600" checked={value.hasTransport === true}
               onChange={(e) => set('hasTransport', e.target.checked ? true : '')} />

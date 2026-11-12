@@ -169,6 +169,10 @@ public class SeoHeadService {
                     + "presents published rankings and writes its own practice questions, and how paid content is kept apart."),
             page("/corrections-policy", "Corrections policy", "How to report a mistake in a school listing, ranking or "
                     + "practice question on SchoolDhundo, and how corrections are checked and shown."),
+            page("/advertise", "Advertise with SchoolDhundo", "Featured school listings, admission enquiries, managed "
+                    + "profiles and sponsored placements for schools and education brands, always clearly labelled. Rankings are never for sale."),
+            page("/claim-school", "Claim your school profile", "School staff can claim their SchoolDhundo profile to "
+                    + "publish official fees, admission notices, photos and contact details, checked by our editors. Free."),
             page("/data-deletion", "Account and data deletion", "How to delete your SchoolDhundo account, leaderboard "
                     + "entry or other information, what is removed and what is kept."),
             page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
@@ -314,7 +318,7 @@ public class SeoHeadService {
         if (!p.equals("/") && !APP_SECTIONS.contains(p.substring(1).split("/", 2)[0])) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
-        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? website(baseUrl) : null);
+        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? List.of(website(baseUrl), organization(baseUrl)) : null);
     }
 
     /**
@@ -675,6 +679,19 @@ public class SeoHeadService {
     }
 
     /** The home page's structured data: the site and its school search. */
+    /** Who runs the site: name, address, logo and how to reach it (the contact page; no personal address is published). */
+    private static Map<String, Object> organization(String baseUrl) {
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "Organization");
+        data.put("name", SITE);
+        data.put("url", baseUrl + "/");
+        data.put("logo", baseUrl + "/favicon.svg");
+        data.put("description", "Independent school discovery and entrance exam preparation platform for India.");
+        data.put("contactPoint", Map.of("@type", "ContactPoint", "contactType", "customer support", "url", baseUrl + "/contact"));
+        return data;
+    }
+
     private static Map<String, Object> website(String baseUrl) {
         Map<String, Object> search = new LinkedHashMap<>();
         search.put("@type", "SearchAction");

@@ -214,6 +214,10 @@ export const adminService = {
   contactMessages: (status: 'OPEN' | 'HANDLED', page = 0, size = 20) =>
     http.get<PageResponse<ContactMessage>>('/admin/contact-messages', { params: { status, page, size } }).then((r) => r.data),
   contactHandled: (id: number) => http.post<ContactMessage>(`/admin/contact-messages/${id}/handled`).then((r) => r.data),
+  enquiries: (status: EnquiryStatus, page = 0, size = 20) =>
+    http.get<PageResponse<AdmissionEnquiry>>('/admin/enquiries', { params: { status, page, size } }).then((r) => r.data),
+  enquiryStatus: (id: number, status: EnquiryStatus, note?: string) =>
+    http.post<AdmissionEnquiry>(`/admin/enquiries/${id}/status`, { status, note }).then((r) => r.data),
   challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
   createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
   updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
@@ -329,4 +333,25 @@ export interface ModeratedParticipant {
   points: number;
   attempts: number;
   flagged: number;
+}
+
+export type EnquiryStatus = 'NEW' | 'FORWARDED' | 'CLOSED';
+
+/** A parent's admission enquiry as staff see it; contact details are null once closed. */
+export interface AdmissionEnquiry {
+  id: number;
+  schoolId: number;
+  schoolName: string | null;
+  schoolSlug: string | null;
+  parentName: string | null;
+  phone: string | null;
+  email: string | null;
+  classCode: string;
+  academicYear: string | null;
+  message: string | null;
+  status: EnquiryStatus;
+  staffNote: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+  handledBy: string | null;
 }

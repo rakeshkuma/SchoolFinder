@@ -42,7 +42,7 @@ public class SitemapController {
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
-            "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion",
+            "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion", "/advertise", "/claim-school",
             "/network/jawahar-navodaya-vidyalaya", "/network/sainik-school", "/network/eklavya-model-residential-school",
             "/network/rashtriya-military-school", "/network/kendriya-vidyalaya");
     private static final MediaType XML = MediaType.parseMediaType("application/xml;charset=UTF-8");

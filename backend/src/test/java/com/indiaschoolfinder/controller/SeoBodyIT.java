@@ -61,6 +61,9 @@ class SeoBodyIT extends AbstractIntegrationTest {
         String state = fetch("/api/v1/seo/body/states/uttarakhand");
         assertThat(state).contains("<h1>Schools in Uttarakhand</h1>").contains("Fixture Doon Valley School");
 
+        assertThat(fetch("/api/v1/seo/head/")).contains("\"@type\":\"WebSite\"").contains("\"@type\":\"Organization\"")
+                .contains("\"url\":\"http://localhost/contact\"");
+
         String home = fetch("/api/v1/seo/body/");
         assertThat(home).contains("<h1>Find the Right School. Build a Brighter Future.</h1>")
                 .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"");

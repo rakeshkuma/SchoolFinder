@@ -70,6 +70,9 @@ const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').the
 const PlaceRedirect = lazy(() => import('./pages/PlaceRedirect').then((m) => ({ default: m.PlaceRedirect })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
 const AboutPage = page(info, 'AboutPage');
+const business = () => import('./pages/BusinessPages');
+const AdvertisePage = page(business, 'AdvertisePage');
+const ClaimSchoolPage = page(business, 'ClaimSchoolPage');
 const ContactPage = page(() => import('./pages/ContactPage'), 'ContactPage');
 const PrivacyPage = page(info, 'PrivacyPage');
 const TermsPage = page(info, 'TermsPage');
@@ -106,6 +109,7 @@ const AdminPracticePage = lazy(() => import('./pages/admin/AdminPracticePage').t
 const AdminChallengesPage = lazy(() => import('./pages/admin/AdminChallengesPage').then((m) => ({ default: m.AdminChallengesPage })));
 const AdminModerationPage = lazy(() => import('./pages/admin/AdminModerationPage').then((m) => ({ default: m.AdminModerationPage })));
 const AdminContactPage = lazy(() => import('./pages/admin/AdminContactPage').then((m) => ({ default: m.AdminContactPage })));
+const AdminEnquiriesPage = lazy(() => import('./pages/admin/AdminEnquiriesPage').then((m) => ({ default: m.AdminEnquiriesPage })));
 const AdminBlogPage = lazy(() => import('./pages/admin/AdminBlogPage').then((m) => ({ default: m.AdminBlogPage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
 
@@ -215,6 +219,8 @@ export default function App() {
               <Route path="stages/:stage" element={<StagePage />} />
               <Route path="reviews" element={<ReviewsPage />} />
               <Route path="about" element={<AboutPage />} />
+              <Route path="advertise" element={<AdvertisePage />} />
+              <Route path="claim-school" element={<ClaimSchoolPage />} />
               <Route path="contact" element={<ContactPage />} />
               <Route path="suggest" element={<SuggestUpdatePage />} />
               <Route path="find" element={<FindSchoolPage />} />
@@ -251,6 +257,7 @@ export default function App() {
                 <Route path="challenges" element={<AdminChallengesPage />} />
                 <Route path="moderation" element={<AdminModerationPage />} />
                 <Route path="contact" element={<AdminContactPage />} />
+                <Route path="enquiries" element={<AdminEnquiriesPage />} />
                 <Route path="blog" element={<AdminBlogPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />

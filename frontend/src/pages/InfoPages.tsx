@@ -117,6 +117,12 @@ export function PrivacyPage() {
           <li><strong>Why:</strong> to read and answer your message. Staff read messages in the admin area, and they may also be sent to the site’s email inbox.</li>
           <li><strong>How long:</strong> your name and email are deleted when your message has been dealt with. The rest of the message is kept as a record, so please don’t include personal details in it.</li>
         </ul>
+        <h2 id="enquiries">Admission enquiries (optional)</h2>
+        <ul>
+          <li><strong>What we keep:</strong> your name, mobile number, email address if you give one, the class and year you ask about, your question, and the time you agreed to share it.</li>
+          <li><strong>Why:</strong> to pass your enquiry to the one school you chose, as you agree on the form. Staff read enquiries in the admin area and may receive them in the site’s email inbox. We never sell your details, and we never share them with any other school or company.</li>
+          <li><strong>How long:</strong> your name, number, email and question are deleted when the enquiry is closed. A record without them (school, class and date) is kept to count demand. To withdraw an enquiry earlier, <Link to="/contact" className="link">contact us</Link>.</li>
+        </ul>
         <h2 id="analytics">Cookies and analytics</h2>
         <ul>
           <li><strong>Needed cookies:</strong> signed-in members get the session cookie described above, and forms use a security (CSRF) cookie. These are needed for the site to work and are not used for tracking.</li>
@@ -134,6 +140,7 @@ export function PrivacyPage() {
         <ul>
           <li>Account details: until you delete the account. Email links expire as described above and are cleared after a week.</li>
           <li>Contact messages and suggestions: your name and email are deleted once the message has been dealt with.</li>
+          <li>Admission enquiries: your name, number, email and question are deleted when the enquiry is closed.</li>
           <li>Backups: the database is backed up every night and each backup is kept for seven days, so deleted information disappears from backups within about a week.</li>
           <li>A record that an account was deleted, without your name or email, is kept in our administration log.</li>
         </ul>
@@ -148,7 +155,7 @@ export function PrivacyPage() {
           To ask for a review to be removed or corrected, or with any question about your information,{' '}
           <Link to="/contact" className="link">contact us</Link>{CONTACT_EMAIL && <> or email <ContactLink /></>}.
         </p>
-        <p className="text-sm text-slate-500">Last updated: 10 November 2026.</p>
+        <p className="text-sm text-slate-500">Last updated: 13 November 2026.</p>
       </div>
     </>
   );

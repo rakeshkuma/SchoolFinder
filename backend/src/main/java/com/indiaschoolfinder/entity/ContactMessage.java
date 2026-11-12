@@ -24,7 +24,7 @@ import java.time.Instant;
 @EntityListeners(AuditingEntityListener.class)
 public class ContactMessage {
 
-    public enum Topic { FEEDBACK, CORRECTION, LISTING, RANKING, TECHNICAL }
+    public enum Topic { FEEDBACK, CORRECTION, LISTING, RANKING, TECHNICAL, CLAIM, ADVERTISING }
 
     public enum Status { OPEN, HANDLED }
 
