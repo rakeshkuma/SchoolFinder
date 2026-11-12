@@ -223,12 +223,15 @@ public class SeoHeadService {
     private final BlogService blogService;
     private final BestPlacesService bestPlacesService;
     private final PremierDirectoryService premierDirectory;
+    private final SchoolFaqService faqService;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
                           ExamService examService, ObjectMapper objectMapper,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
-                          BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory) {
+                          BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
+                          SchoolFaqService faqService) {
+        this.faqService = faqService;
         this.premierDirectory = premierDirectory;
         this.blogService = blogService;
         this.bestPlacesService = bestPlacesService;
@@ -445,7 +448,12 @@ public class SeoHeadService {
         if (s.latitude() != null && s.longitude() != null) {
             data.put("geo", Map.of("@type", "GeoCoordinates", "latitude", s.latitude(), "longitude", s.longitude()));
         }
-        return tags(title, description.toString(), url, image, false, List.of(data, schoolBreadcrumbs(s, url, baseUrl)));
+        List<Map<String, Object>> graph = new java.util.ArrayList<>(List.of(data, schoolBreadcrumbs(s, url, baseUrl)));
+        Map<String, Object> faq = faqPage(faqService.faqs(s));
+        if (faq != null) {
+            graph.add(faq);
+        }
+        return tags(title, description.toString(), url, image, false, graph);
     }
 
     /** Schools › state › district › school: the profile page's breadcrumb (its locality link is a filter, not a page). */
@@ -464,6 +472,21 @@ public class SeoHeadService {
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
         data.put("itemListElement", items);
+        return data;
+    }
+
+    /** FAQPage data for the questions the profile page shows under "Quick answers"; null when there are none. */
+    static Map<String, Object> faqPage(List<SchoolFaqService.Faq> faqs) {
+        if (faqs.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "FAQPage");
+        data.put("mainEntity", faqs.stream().map(f -> Map.of(
+                "@type", "Question",
+                "name", f.question(),
+                "acceptedAnswer", Map.of("@type", "Answer", "text", f.answer()))).toList());
         return data;
     }
 

@@ -54,10 +54,12 @@ public class SchoolController {
     private final ReviewService reviewService;
     private final SchoolFactService factService;
     private final UpdateSubmissionService submissionService;
+    private final com.indiaschoolfinder.service.SchoolFaqService faqService;
 
     public SchoolController(SchoolService schoolService, FeeService feeService, AdmissionService admissionService,
                             RankingService rankingService, ReviewService reviewService, SchoolFactService factService,
-                            UpdateSubmissionService submissionService) {
+                            UpdateSubmissionService submissionService, com.indiaschoolfinder.service.SchoolFaqService faqService) {
+        this.faqService = faqService;
         this.factService = factService;
         this.submissionService = submissionService;
         this.schoolService = schoolService;
@@ -135,6 +137,12 @@ public class SchoolController {
     @GetMapping("/{id}/admissions")
     public List<AdmissionDto> admissions(@PathVariable Long id) {
         return admissionService.bySchool(id);
+    }
+
+    @Operation(summary = "Common questions about the school, answered only from its recorded facts (also sent as FAQPage data)")
+    @GetMapping("/{id}/faqs")
+    public List<com.indiaschoolfinder.service.SchoolFaqService.Faq> faqs(@PathVariable Long id) {
+        return faqService.faqs(schoolService.getActiveById(id));
     }
 
     @GetMapping("/{id}/facilities")

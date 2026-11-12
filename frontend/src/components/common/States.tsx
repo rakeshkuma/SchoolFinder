@@ -79,14 +79,17 @@ export function AsyncContent<T>({
   loading,
   isEmpty,
   empty,
+  fallback,
 }: {
   state: { data: T | null; loading: boolean; error: ApiError | null; reload: () => void };
   children: (data: T) => ReactNode;
   loading?: ReactNode;
   isEmpty?: (data: T) => boolean;
   empty?: ReactNode;
+  /** Shown instead of the error message, for sections a page can do without (the home page's lists). */
+  fallback?: ReactNode;
 }) {
-  if (state.error) return <ErrorState error={state.error} onRetry={state.reload} />;
+  if (state.error) return fallback !== undefined ? <>{fallback}</> : <ErrorState error={state.error} onRetry={state.reload} />;
   if (state.loading && state.data === null) return <>{loading ?? <Spinner />}</>;
   if (state.data === null) return null;
   if (isEmpty?.(state.data)) return <>{empty ?? <EmptyState title="Nothing to show yet." />}</>;

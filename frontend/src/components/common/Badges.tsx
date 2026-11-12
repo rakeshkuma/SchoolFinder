@@ -34,6 +34,31 @@ export function VerificationBadge({ status, date }: { status: VerificationStatus
   );
 }
 
+/**
+ * When a fee or admission fact was last confirmed, in words a parent trusts: verified by an editor on a date; or, before
+ * that, taken from the official document linked beside it and when it was last updated from it.
+ */
+export function TrustBadge({ status, verifiedOn, updatedOn, hasSource, kind = 'notice' }: {
+  status: VerificationStatus; verifiedOn?: string | null; updatedOn?: string | null; hasSource: boolean; kind?: 'notice' | 'schedule';
+}) {
+  if (status === 'VERIFIED') {
+    return (
+      <span className="chip bg-emerald-50 text-emerald-700" title="Checked by an editor against the official source">
+        ✓ Verified{verifiedOn ? ` ${formatDate(verifiedOn)}` : ''}
+      </span>
+    );
+  }
+  if (status === 'UNVERIFIED' && hasSource) {
+    const what = kind === 'schedule' ? 'Official fee schedule' : 'Official notice';
+    return (
+      <span className="chip bg-sky-50 text-sky-800" title={`Taken from the ${what.toLowerCase()} linked here. An editor has not re-checked it yet.`}>
+        {what}{updatedOn ? ` · updated ${formatDate(updatedOn.slice(0, 10))}` : ''}
+      </span>
+    );
+  }
+  return <VerificationBadge status={status} date={verifiedOn} />;
+}
+
 export function ProvisionalBadge() {
   return (
     <span className="chip bg-violet-50 text-violet-700" title="Based on incomplete evidence; no rank position is given">

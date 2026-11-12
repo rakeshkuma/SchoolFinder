@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, VerificationBadge } from '../components/common/Badges';
+import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, TrustBadge, VerificationBadge } from '../components/common/Badges';
 import { BoardingTab } from '../components/school/BoardingTab';
 import { Pagination } from '../components/common/Pagination';
 import { AsyncContent, EmptyState, ErrorState, Spinner } from '../components/common/States';
@@ -177,9 +177,14 @@ export function SchoolDetailPage() {
   );
 }
 
-/** Common questions about this school, answered only from its own record (see schoolFaqs). */
+/**
+ * Common questions about this school, answered only from its own record. The list comes from the server, which sends
+ * the same questions to search engines as FAQPage data; if it cannot be loaded, the browser builds them from the profile.
+ */
 function SchoolFaq({ school: s }: { school: SchoolDetail }) {
-  const faqs = useMemo(() => schoolFaqs(s), [s]);
+  const remote = useApi(() => schoolService.faqs(s.id), [s.id]);
+  const local = useMemo(() => schoolFaqs(s), [s]);
+  const faqs = remote.data ?? (remote.error ? local : []);
   if (faqs.length === 0) return null;
   return (
     <section className="mt-10" aria-labelledby="faq-h">
@@ -455,7 +460,7 @@ export function AdmissionCard({ admission: a, showSchool = false }: { admission:
         </div>
         <div className="flex items-center gap-2">
           <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
-          <VerificationBadge status={a.verificationStatus} date={a.lastVerifiedDate} />
+          <TrustBadge status={a.verificationStatus} verifiedOn={a.lastVerifiedDate} updatedOn={a.updatedAt} hasSource={!!a.sourceUrl} />
         </div>
       </div>
       {a.statusOverridden && a.statusOverrideReason && <p className="mt-2 text-xs text-slate-500">* {a.statusOverrideReason}</p>}

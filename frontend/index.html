@@ -48,7 +48,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased">
-    <div id="root"></div>
+    <!-- The page's main content as plain HTML from the backend (/api/v1/seo/body/<path>, see nginx.conf), so search engines
+         and visitors see it before the app starts; the app replaces it on load. Empty for private pages. -->
+    <div id="root"><!--# include virtual="/__seo_body$request_uri" --></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

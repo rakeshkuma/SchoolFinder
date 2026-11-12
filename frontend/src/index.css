@@ -121,6 +121,75 @@
   .no-scrollbar {
     scrollbar-width: none;
   }
+
+  /* Server-rendered page content (SeoBodyService) shown until the app starts and replaces it. Its markup comes from the
+     backend, so it is styled here with its own small set of classes rather than utility classes. */
+  .prerender .pr-wrap {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .prerender .pr-header {
+    @apply sticky top-0 z-40 border-b border-slate-200 bg-white;
+  }
+  .prerender .pr-bar {
+    @apply flex h-[68px] items-center justify-between gap-4;
+  }
+  .prerender .pr-brand {
+    @apply flex items-center gap-2.5 font-display text-base font-extrabold tracking-tight text-ink;
+  }
+  .prerender .pr-brand img {
+    @apply h-9 w-9;
+  }
+  .prerender .pr-nav {
+    @apply hidden items-center gap-5 text-sm font-semibold text-slate-600 xl:flex;
+  }
+  .prerender .pr-main {
+    @apply py-10;
+  }
+  .prerender h1 {
+    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl;
+  }
+  .prerender h2 {
+    @apply mt-10 font-display text-xl font-bold text-ink;
+  }
+  .prerender .pr-lead {
+    @apply mt-3 max-w-3xl text-lg leading-relaxed text-slate-600;
+  }
+  .prerender .pr-crumbs {
+    @apply mb-3 text-sm text-slate-500;
+  }
+  .prerender .pr-crumbs a,
+  .prerender .pr-grid a,
+  .prerender .pr-list a {
+    @apply font-semibold text-brand-700 hover:underline;
+  }
+  .prerender .pr-grid {
+    @apply mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm lg:grid-cols-4;
+  }
+  .prerender .pr-grid span,
+  .prerender .pr-list span {
+    @apply text-slate-500;
+  }
+  .prerender .pr-list {
+    @apply mt-4 grid gap-2 text-sm sm:grid-cols-2;
+  }
+  .prerender .pr-facts {
+    @apply mt-6 grid gap-4 sm:grid-cols-3;
+  }
+  .prerender .pr-facts dt {
+    @apply text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .prerender .pr-facts dd {
+    @apply mt-0.5 break-words font-semibold text-ink;
+  }
+  .prerender .pr-faq {
+    @apply mt-4 max-w-3xl space-y-4;
+  }
+  .prerender .pr-faq dt {
+    @apply font-semibold text-ink;
+  }
+  .prerender .pr-faq dd {
+    @apply mt-1 text-slate-600;
+  }
 }
 
 /* Printing (comparison, study plan): the page's own content only, on white, without the site chrome. */

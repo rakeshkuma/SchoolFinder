@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AdmissionStatusBadge } from '../components/common/Badges';
+import { AdmissionStatusBadge, TrustBadge } from '../components/common/Badges';
 import { Icon, type IconName } from '../components/common/Icon';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
 import { SchoolCard } from '../components/school/SchoolCard';
@@ -59,8 +59,6 @@ const PREP_GROUPS: { title: string; icon: IconName; links: PrepLink[] }[] = [
   {
     title: 'School exam preparation', icon: 'book', links: [
       { to: '/exams/practice/class10-maths-1', label: 'Class 10 Mathematics' },
-      { label: 'Class 10 English', note: 'Not available yet' },
-      { label: 'Class 10 Hindi', note: 'Not available yet' },
       { to: '/exams/practice/class12-maths-1', label: 'Class 12 Mathematics' },
       { to: '/exams/practice/class12-physics-1', label: 'Class 12 Physics' },
       { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation' },
@@ -107,17 +105,17 @@ export function HomePage() {
   useDocumentTitle(undefined);
   const navigate = useNavigate();
   const feeChart = useInView<HTMLDivElement>();
-  const stats = useApi(() => referenceService.stats(), []);
+  const stats = useApi(() => referenceService.stats(), [], true, 'home.stats');
   // A bounded sample for the fee chart: the best-documented schools, which are the ones with published fees.
   // Only schools with a published fee feed the fee chart (6 of 19,000+ today), so ask for just those.
-  const schools = useApi(() => schoolService.search({ sortBy: 'recommended', hasFee: true, size: 100 }), []);
-  const upcoming = useApi(() => admissionService.upcoming(0, 6), []);
-  const featured = useApi(() => schoolService.featured(undefined, 8), []);
-  const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 3 }), []);
-  const ranked = useApi(() => rankingService.top(5), []);
-  const published = useApi(() => rankingService.external({ publisher: 'IIRF', size: 5 }), []);
-  const bank = useApi(() => practiceService.bank(), []);
-  const states = useApi(() => locationService.states(), []);
+  const schools = useApi(() => schoolService.search({ sortBy: 'recommended', hasFee: true, size: 100 }), [], true, 'home.fees');
+  const upcoming = useApi(() => admissionService.upcoming(0, 6), [], true, 'home.admissions');
+  const featured = useApi(() => schoolService.featured(undefined, 8), [], true, 'home.featured');
+  const boarding = useApi(() => schoolService.search({ boarding: true, sortBy: 'recommended', size: 3 }), [], true, 'home.boarding');
+  const ranked = useApi(() => rankingService.top(5), [], true, 'home.ranked');
+  const published = useApi(() => rankingService.external({ publisher: 'IIRF', size: 5 }), [], true, 'home.published');
+  const bank = useApi(() => practiceService.bank(), [], true, 'home.bank');
+  const states = useApi(() => locationService.states(), [], true, 'home.states');
   const cities = useApi(() => locationService.citiesAcrossIndia(), []);
   const recent = useLocalList(recentSchools);
 
@@ -145,17 +143,27 @@ export function HomePage() {
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-white">
-        <div className="container-page grid grid-cols-1 items-center gap-10 py-12 lg:grid-cols-[1.1fr_1fr] lg:py-16">
+      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-brand-50/70 via-white to-white">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-100/50 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-accent-100/40 blur-3xl" aria-hidden />
+        <div className="container-page relative grid grid-cols-1 items-center gap-10 py-12 lg:grid-cols-[1.1fr_1fr] lg:py-16">
           <div className="animate-fade-up min-w-0">
-            <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl">
-              Find the Right School. Build a Brighter Future.
+            <p className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1 text-xs font-semibold text-brand-700 shadow-card">
+              <Icon name="sparkle" className="h-3.5 w-3.5" /> India’s free school finder for parents
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl">
+              Find the Right School. <span className="text-brand-700">Build a Brighter Future.</span>
             </h1>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-600">
               Discover, compare and explore thousands of schools across India. Get school rankings, admission information, boarding
               school details and exam preparation resources in one place.
             </p>
             <div className="mt-6"><SchoolSearchForm onSearch={onSearch} withBoard={false} submitLabel="Search" idPrefix="home" single /></div>
+            <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600" aria-label="Why parents use SchoolDhundo">
+              {['Official sources linked', 'Free mock tests', 'No sign-in needed'].map((t) => (
+                <li key={t} className="flex items-center gap-1.5"><Icon name="check" className="h-4 w-4 text-emerald-600" /> {t}</li>
+              ))}
+            </ul>
             <div className="mt-4 flex flex-wrap gap-3">
               <Link to="/schools" className="btn-primary">Explore Schools</Link>
               <Link to="/rankings" className="btn-secondary">Explore Rankings</Link>
@@ -249,7 +257,7 @@ export function HomePage() {
           action={<Link to="/schools" className="btn-secondary">View all schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
         <div className="mt-6">
           <AsyncContent state={featured} loading={<SkeletonCards count={4} />} isEmpty={(d) => d.length === 0}
-            empty={<EmptyState title="No featured schools yet." />}>
+            empty={<BrowseLinks />} fallback={<BrowseLinks />}>
             {(rows) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{rows.slice(0, 4).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
           </AsyncContent>
         </div>
@@ -257,9 +265,10 @@ export function HomePage() {
 
       <Section eyebrow="Rankings" title="Explore India's Top-Ranked Schools" id="rankings"
         action={<Link to="/rankings" className="btn-primary">Explore All Rankings <Icon name="arrowRight" className="h-4 w-4" /></Link>}>
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <div className={`grid grid-cols-1 gap-6 ${source ? 'lg:grid-cols-[1.2fr_1fr]' : ''}`}>
+          {/* Shown only when a published ranking has verified entries; otherwise the score card has the row to itself. */}
+          {source && (
           <section className="card p-5" aria-labelledby="published-ranking-heading">
-            {source ? (
               <>
                 <p className="eyebrow">{source.rankingYear} · Published by {source.publisherCode}</p>
                 <h3 id="published-ranking-heading" className="mt-1 font-display text-lg font-bold text-ink">{source.rankingName}</h3>
@@ -282,15 +291,15 @@ export function HomePage() {
                   {' · '}<Link to="/rankings" className="link">Full table</Link>
                 </p>
               </>
-            ) : <p id="published-ranking-heading" className="text-sm text-slate-600">No published ranking has been verified yet.</p>}
           </section>
+          )}
           <section className="card flex flex-col p-5" aria-labelledby="own-ranking-heading">
             <h3 id="own-ranking-heading" className="font-display text-lg font-bold text-ink">SchoolDhundo score</h3>
             <p className="mt-1 text-sm text-slate-600">
               Our own score from source-linked evidence, kept apart from published rankings. Only verified evidence earns a rank, and it is
               not an official government ranking.
             </p>
-            <AsyncContent state={ranked} isEmpty={(d) => d.length === 0}
+            <AsyncContent state={ranked} isEmpty={(d) => d.length === 0} fallback={null}
               empty={<p className="mt-3 text-sm text-slate-600">No school has enough verified evidence for a rank yet.</p>}>
               {(rows) => (
                 <ol className="mt-3 divide-y divide-slate-100">
@@ -367,7 +376,7 @@ export function HomePage() {
           action={<Link to="/boarding" className="btn-secondary">All boarding schools <Icon name="arrowRight" className="h-4 w-4" /></Link>} />
         <div className="mt-6">
           <AsyncContent state={boarding} loading={<SkeletonCards count={3} />} isEmpty={(d) => d.content.length === 0}
-            empty={<EmptyState title="No boarding schools listed yet." />}>
+            empty={<BrowseLinks boarding />} fallback={<BrowseLinks boarding />}>
             {(page) => <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{page.content.slice(0, 3).map((s) => <SchoolCard key={s.id} school={s} />)}</div>}
           </AsyncContent>
         </div>
@@ -391,6 +400,7 @@ export function HomePage() {
                   <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
                 </div>
                 <p className="mt-1 text-sm text-slate-600">{a.className} · {a.academicYear} · {admissionCategoryLabel[a.category]}</p>
+                <div className="mt-2"><TrustBadge status={a.verificationStatus} verifiedOn={a.lastVerifiedDate} updatedOn={a.updatedAt} hasSource={!!a.sourceUrl} /></div>
                 <div className="mt-4 flex items-end justify-between border-t border-slate-100 pt-4">
                   <div>
                     <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">Applications close</p>
@@ -458,6 +468,36 @@ export function HomePage() {
         </div>
       </Section>
     </>
+  );
+}
+
+const BROWSE: { to: string; label: string; icon: IconName }[] = [
+  { to: '/states', label: 'Schools by state', icon: 'map' },
+  { to: '/cities', label: 'Schools by city', icon: 'building' },
+  { to: '/boards/CBSE', label: 'CBSE schools', icon: 'book' },
+  { to: '/nearby', label: 'Schools near me', icon: 'pin' },
+];
+const BROWSE_BOARDING: { to: string; label: string; icon: IconName }[] = [
+  { to: '/boarding/government', label: 'Government boarding', icon: 'shield' },
+  { to: '/boarding/private', label: 'Private boarding', icon: 'building' },
+  { to: '/network/jawahar-navodaya-vidyalaya', label: 'Navodaya Vidyalayas', icon: 'graduation' },
+  { to: '/boarding?system=SAINIK#directory', label: 'Sainik Schools', icon: 'flag' },
+];
+
+/** Ways in to the directory, shown where a list of schools could not be loaded, so the section is never a dead end. */
+function BrowseLinks({ boarding = false }: { boarding?: boolean }) {
+  return (
+    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {(boarding ? BROWSE_BOARDING : BROWSE).map((l) => (
+        <li key={l.to}>
+          <Link to={l.to} className="card card-hover flex items-center gap-3 p-4 font-semibold text-ink">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700"><Icon name={l.icon} className="h-5 w-5" /></span>
+            {l.label}
+            <Icon name="arrowRight" className="ml-auto h-4 w-4 text-slate-400" />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 

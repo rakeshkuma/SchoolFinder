@@ -41,7 +41,8 @@ export function SchoolCard({ school }: { school: SchoolSummary }) {
   return (
     <article className="card card-hover group flex flex-col overflow-hidden">
       <Link to={`/schools/${school.slug}`} className="block" tabIndex={-1} aria-hidden>
-        <SchoolImage src={school.coverImageUrl} name={school.name} credit={school.coverImageCredit} illustrative={school.coverImageIllustrative}>
+        <SchoolImage src={school.coverImageUrl} name={school.name} caption={school.city ?? school.districtName ?? school.stateName}
+          credit={school.coverImageCredit} illustrative={school.coverImageIllustrative}>
         {school.logoUrl && (
           <img src={school.logoUrl} alt="" loading="lazy" className="absolute bottom-3 left-3 h-12 w-12 rounded-xl bg-white object-contain p-1 shadow-md" />
         )}

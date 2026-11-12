@@ -87,6 +87,8 @@ export const schoolService = {
   fees: (id: number) => http.get<Fee[]>(`/schools/${id}/fees`).then((r) => r.data),
   admissions: (id: number) => http.get<Admission[]>(`/schools/${id}/admissions`).then((r) => r.data),
   facilities: (id: number) => http.get<Facility[]>(`/schools/${id}/facilities`).then((r) => r.data),
+  /** Common questions answered from the school's record; the same list is sent to search engines as FAQPage data. */
+  faqs: (id: number) => http.get<{ question: string; answer: string }[]>(`/schools/${id}/faqs`).then((r) => r.data),
   images: (id: number) => http.get<SchoolImage[]>(`/schools/${id}/images`).then((r) => r.data),
   factSources: (id: number) => http.get<FactSource[]>(`/schools/${id}/fact-sources`).then((r) => r.data),
   suggestUpdate: (id: number, body: UpdateSubmissionRequest) =>
