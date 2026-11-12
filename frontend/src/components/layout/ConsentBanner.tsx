@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { analyticsConfigured, setConsent, storedConsent } from '../../utils/analytics';
+import { consentNeeded, setConsent, storedConsent } from '../../utils/analytics';
 
 /** True once the visitor has accepted analytics (and, when configured, ads); updates when the choice changes. */
 export function useConsentGranted(): boolean {
@@ -14,7 +14,7 @@ export function useConsentGranted(): boolean {
 }
 
 /**
- * Asks once whether Google Analytics may be used. Shown only when analytics is configured for this build and the
+ * Asks once whether Google Analytics may be used. Shown only when a Google tag (Tag Manager or GA4) is on this page and the
  * visitor has not chosen yet; both buttons are equally prominent, and declining keeps the whole site working.
  */
 export function ConsentBanner() {
@@ -24,7 +24,7 @@ export function ConsentBanner() {
     window.addEventListener('sd-consent-change', update);
     return () => window.removeEventListener('sd-consent-change', update);
   }, []);
-  if (!analyticsConfigured() || choice) return null;
+  if (!consentNeeded() || choice) return null;
   return (
     <div role="region" aria-label="Cookie choice" className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 shadow-lift backdrop-blur">
       <div className="container-page flex flex-col gap-3 py-3 text-sm text-slate-700 sm:flex-row sm:items-center sm:justify-between">

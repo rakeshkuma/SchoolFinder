@@ -3,7 +3,7 @@ import { Spinner } from '../common/States';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { DesktopNav, MobileNav } from './MainNav';
 import { ConsentBanner } from './ConsentBanner';
-import { analyticsConfigured, initAnalytics, resetConsent, track, trackPageView } from '../../utils/analytics';
+import { consentNeeded, initAnalytics, resetConsent, track, trackPageView } from '../../utils/analytics';
 import { useMember } from '../../hooks/useMember';
 import { usePracticeSync } from '../../hooks/usePracticeProgress';
 import { savedSchools, useLocalList } from '../../hooks/usePersonal';
@@ -247,7 +247,7 @@ export function Layout() {
               <Link to="/terms" className="hover:text-white">Terms and Conditions</Link>
               <Link to="/disclaimer" className="hover:text-white">Disclaimer</Link>
               <Link to="/data-deletion" className="hover:text-white">Delete Your Data</Link>
-              {analyticsConfigured() && (
+              {consentNeeded() && (
                 <button type="button" onClick={resetConsent} className="hover:text-white">Cookie settings</button>
               )}
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white">{CONTACT_EMAIL}</a>

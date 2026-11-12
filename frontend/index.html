@@ -2,6 +2,32 @@
 <html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
+    <!-- Consent Mode defaults (Google's consent guide): must run before Google Tag Manager. Analytics and ads stay
+         denied until the visitor clicks Accept in the cookie banner (src/utils/analytics.ts sends the update); a
+         choice made on an earlier visit is restored here. The script's SHA-256 is allowed in security-headers.conf,
+         so any edit to it needs a new hash there. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500,
+      });
+      try {
+        if (localStorage.getItem('sd-consent-analytics') === 'granted') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      } catch (e) {}
+    </script>
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+    </script>
+    <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Page-specific title, description, canonical URL and structured data: nginx includes them from the backend
          (/api/v1/seo/head/<path>, see nginx.conf). The block below is the fallback if that request fails; in
