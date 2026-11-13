@@ -233,13 +233,9 @@ export default function App() {
               <Route path="corrections-policy" element={<CorrectionsPolicyPage />} />
               <Route path="data-deletion" element={<DataDeletionPage />} />
               <Route path="signin" element={<SignInPage />} />
-              <Route path="register" element={<Navigate to="/signin" replace />} />
               <Route path="blog" element={<BlogListPage />} />
               <Route path="blog/:slug" element={<BlogPostPage />} />
               <Route path="blog/category/:slug" element={<BlogCategoryPage />} />
-              <Route path="verify-email" element={<Navigate to="/signin" replace />} />
-              <Route path="forgot-password" element={<Navigate to="/signin" replace />} />
-              <Route path="reset-password" element={<Navigate to="/signin" replace />} />
               <Route path="account" element={<AccountPage />} />
               <Route path="disclaimer" element={<DisclaimerPage />} />
               <Route path="admin/login" element={<AdminLoginPage />} />
