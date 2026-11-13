@@ -34,6 +34,8 @@ const TYPE = {
   EMRS: ['GOVERNMENT', '', 'EKLAVYA_MODEL_RESIDENTIAL_SCHOOL'],
   // Sainik Schools Society schools; boarding profiles come only from boarding-profiles.json, school by school.
   SAINIK: ['GOVERNMENT', '', 'SAINIK_SCHOOL'],
+  // Sambhota Tibetan Schools Society and the Central Schools for Tibetans: funded by the Ministry of Education.
+  STSS: ['GOVERNMENT', 'CENTRAL_GOVERNMENT', ''],
 };
 
 const LEVEL = {
@@ -214,7 +216,7 @@ for (const r of everyRecord.values()) {
   (stillSame[key] ??= []).push(r['Affiliation Number'] ?? r.aff);
 }
 const unresolved = Object.values(stillSame).filter((v) => v.length > 1);
-if (unresolved.length) console.warn(`${unresolved.length} name(s) still shared after adding the district, e.g. affiliations ${unresolved.slice(0, 3).map((v) => v.join('/')).join(', ')}`);
+if (unresolved.length) console.warn(`${unresolved.length} name(s) still shared after adding the district: affiliations ${unresolved.map((v) => v.join('/')).join(', ')}`);
 for (const r of records) {
   const stateName = (r.State ?? '').trim().toUpperCase();
   const state = STATE[stateName];
