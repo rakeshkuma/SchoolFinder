@@ -1,0 +1,28 @@
+{
+  "_comment": "Clean-ups that go with the 2026-11 SARAS expansion, keyed by CBSE affiliation number so they apply to any database (local or live). deactivate: lapsed second listings of a school CBSE lists twice (the listing with the current affiliation period is kept). renames: schools whose name repeated in their district, now named by a place from their own address (saras-name-overrides.json). merge: a curated profile (no affiliation number) and the board-list twin the import created; the twin's affiliation number moves to the curated record and the twin is deleted (LocalMergeDuplicates locally; expansion-2026-11-live.sql on the live database). Applied locally on 2026-11-13.",
+  "deactivate": [
+    { "affiliation": "2220369", "kept": "2220370" },
+    { "affiliation": "3330392", "kept": "3330383" },
+    { "affiliation": "430592", "kept": "430594" },
+    { "affiliation": "430241", "kept": "430294" },
+    { "affiliation": "430209", "kept": "430254" },
+    { "affiliation": "1520371", "kept": "1520374" },
+    { "affiliation": "3520286", "kept": "3520279" },
+    { "affiliation": "3520290", "kept": "3520278" },
+    { "affiliation": "3520288", "kept": "3520262" },
+    { "affiliation": "3520289", "kept": "3520280" },
+    { "affiliation": "3520292", "kept": "3520281" },
+    { "affiliation": "3730008", "kept": "730047" }
+  ],
+  "renames": ["330018", "330066", "330027", "330101", "700031", "900010", "900020", "1000051", "1100027", "1100038",
+    "1700030", "1900006", "1900022", "1900028", "2762027", "2762033", "2762058", "2762078", "2768011", "2768028"],
+  "merge": [
+    { "keepName": "Scindia Kanya Vidyalaya", "affiliation": "1030005" },
+    { "keepName": "The Emerald Heights International School", "affiliation": "1030042" },
+    { "keepName": "Chettinad Vidyashram", "affiliation": "1930137" },
+    { "keepName": "Chinmaya International Residential School", "affiliation": "1930154" },
+    { "keepName": "Jain International Residential School", "affiliation": "830070" },
+    { "keepName": "Vidya Devi Jindal School", "affiliation": "530042" },
+    { "keepName": "Eklavya Model Residential School, Mathasoola", "affiliation": "1720266" }
+  ]
+}
