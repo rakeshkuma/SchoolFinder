@@ -216,7 +216,31 @@ for (const r of everyRecord.values()) {
   (stillSame[key] ??= []).push(r['Affiliation Number'] ?? r.aff);
 }
 const unresolved = Object.values(stillSame).filter((v) => v.length > 1);
-if (unresolved.length) console.warn(`${unresolved.length} name(s) still shared after adding the district: affiliations ${unresolved.map((v) => v.join('/')).join(', ')}`);
+// Names chosen by hand for schools that still share a name (saras-name-overrides.json), and the second listing of a
+// school CBSE lists twice (same address and PIN, or a pair named in that file): only the listing whose affiliation
+// period ends later is imported.
+const OVERRIDES_FILE = require('path').join(__dirname, 'saras-name-overrides.json');
+const overrides = fs.existsSync(OVERRIDES_FILE) ? JSON.parse(fs.readFileSync(OVERRIDES_FILE, 'utf8')) : { names: {}, duplicates: [] };
+const periodEnd = (r) => (r['Affiliation Period'] ?? '').match(/To\s*:\s*(\d{2})\/(\d{2})\/(\d{4})/)?.slice(1).reverse().join('') ?? '';
+const addressKey = (r) => `${r['Pin Code'] ?? ''}|${(r['Postal Address'] ?? '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12)}`;
+const skipDuplicate = new Set();
+const byAff = (aff) => everyRecord.get(String(aff)) ?? [...everyRecord.values()].find((r) => (r['Affiliation Number'] ?? r.aff) === String(aff));
+const clusters = unresolved.flatMap((group) => {
+  const byAddress = {};
+  for (const aff of group) {
+    const r = byAff(aff);
+    if (r) (byAddress[addressKey(r)] ??= []).push(aff);
+  }
+  return Object.values(byAddress).filter((c) => c.length > 1);
+}).concat(overrides.duplicates ?? []);
+for (const cluster of clusters) {
+  const kept = [...cluster].sort((a, b) => periodEnd(byAff(b)).localeCompare(periodEnd(byAff(a))) || Number(b) - Number(a))[0];
+  for (const aff of cluster) if (aff !== kept) skipDuplicate.add(String(aff));
+}
+const stillUnresolved = unresolved.map((g) => g.filter((aff) => !skipDuplicate.has(String(aff)) && !overrides.names?.[aff])).filter((g) => g.length > 1);
+if (skipDuplicate.size) console.warn(`${skipDuplicate.size} duplicate listing(s) skipped (same school, two affiliation numbers): ${[...skipDuplicate].join(', ')}`);
+if (stillUnresolved.length) console.warn(`${stillUnresolved.length} name(s) still shared, given their PIN code: affiliations ${stillUnresolved.map((v) => v.join('/')).join(', ')}`);
+const pinSuffixed = new Set(stillUnresolved.flat().map(String));
 for (const r of records) {
   const stateName = (r.State ?? '').trim().toUpperCase();
   const state = STATE[stateName];
@@ -229,16 +253,24 @@ for (const r of records) {
   const official = officialName(r);
   if (!official) continue;
   const district = r.District ? title(r.District.trim()) : '';
-  const name = displayName(r, clashes(r));
+  const affNo = String(r['Affiliation Number'] ?? r.aff);
+  if (skipDuplicate.has(affNo)) continue;
+  const name = overrides.names?.[affNo]
+    ?? (pinSuffixed.has(affNo) ? `${displayName(r, true)} (PIN ${r['Pin Code']})` : displayName(r, clashes(r)));
   const pin = /^[1-9]\d{5}$/.test(r['Pin Code'] ?? '') ? r['Pin Code'] : '';
   const year = /^(18|19|20)\d{2}$/.test(r['Year of Foundation'] ?? '') ? r['Year of Foundation'] : '';
-  let website = (r.Website ?? '').trim();
+  // SARAS escapes "+" and "&" as HTML entities; a second "#" from "&#x2B;" would make java.net.URI reject the address.
+  let website = (r.Website ?? '').trim().replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/&amp;/g, '&');
   if (website && !/^https?:\/\//i.test(website)) website = `http://${website}`;
+  website = website.replace(/^(https?):\/\/([^/?#]+)/i, (_, s, h) => `${s.toLowerCase()}://${h.toLowerCase()}`);
   try {
     const u = new URL(website);
     // Same rule as the backend's HttpUrlValidator (java.net.URI): a hostname of letters, digits, dots and hyphens.
     // Every dot-separated label must be non-empty ("www..school.in" is rejected by java.net.URI).
-    if (!/^https?:$/.test(u.protocol) || !/^([a-z0-9-]+\.)+[a-z]{2,}$/i.test(u.hostname) || /[\s,@]/.test(website)) website = ''; // "@": an email given as the website
+    if (!/^https?:$/.test(u.protocol) || !/^([a-z0-9-]+\.)+[a-z]{2,}$/i.test(u.hostname) || /[\s,@]/.test(website)
+        || (website.match(/#/g) ?? []).length > 1) website = ''; // "@": an email given as the website
+    // A search page or a social-network post is not the school's website.
+    if (/(^|\.)(google|facebook|instagram|youtube|twitter|x)\.com$/i.test(u.hostname) && !/^sites\.google\.com$/i.test(u.hostname)) website = '';
   } catch {
     website = '';
   }
