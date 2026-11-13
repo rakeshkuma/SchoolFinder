@@ -1,0 +1,1591 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-sector-47",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-47 CHANDIGARH\", PIN 160031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-sect-31",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-31 CHANDIGARH\", PIN 160030."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-air-force-station-high-ground",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION HIGH GROUND CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-chandigarh",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"3 B R D A F S CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-o-c-f-sector-29-b",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"O C F SECTOR 29-B CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-k-area-zirakpur-via-aerodrome",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2600006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"'K' AREA ZIRAKPUR VIA AERODROME CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-sect-25-w",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2640001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 25 (W) CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 7 CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-sr-sec-school-2",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 8B CHANDIGARH\", PIN 160018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-3",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 10 A CHANDIGARH\", PIN 160010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sector-11a",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 11A CHANDIGARH\", PIN 160011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-sector-15c",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-15C CHANDIGARH\", PIN 160016."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-4",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 16 CHANDIGARH\", PIN 160016."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-sr-sec-school-3",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-18 C CHANDIGARH\", PIN 160018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sect-19d",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-19D CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-5",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-19C CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-sector-20-d",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-20 D CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-sr-sec-school-4",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-20B CHANDIGARH\", PIN 160021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-6",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-21 A CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-7",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-20 D CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-8",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-22A CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-22C CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-9",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-23 A CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-sr-sec-school-5",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-23A CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-10",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 27C CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sect-28c",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-28C CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-3",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-41 A CHANDIGARH PIN NO. 160036\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 32-C CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-11",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-35 D CHANDIGARH\", PIN 160035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-12",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-37B CHANDIGARH\", PIN 160010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-dadu-majra-colony-sector-38-w",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DADU MAJRA COLONY SECTOR 38 W CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-sector-45-a",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 45-A CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-manimajra-town",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANIMAJRA TOWN CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-high-school-malaya",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALAYA CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-hallomajra",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HALLOMAJRA CHANDIGARH\", PIN 160002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-4",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANI MAJRA CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-high-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V & P O BADHERI SECTOR 41 CHANDIGARH\", PIN 160009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-sector-26-t-m",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-26 T M CHANDIGARH\", PIN 160026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-karsan-ramdarbar-colony-phase-ii",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARSAN RAMDARBAR COLONY PHASE II CHANDIGARH\", PIN 160031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-5",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-36D CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-13",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW BUILDING SECT 37 C CHANDIGARH\", PIN 160031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sect-29-b",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-29-B CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sect-35d",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-35D CHANDIGARH\", PIN 160035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-14",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-47 D CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-senior-secondary-school-behlana-chandigarh",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHLANA CHANDIGARH\", PIN 160105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-6",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-37D CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 28 D CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-8",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-34-C CHANDIGARH\", PIN 160031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-17",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 33D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-12",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-29A CHANDIGARH\", PIN 160029."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sector-40a",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-40A CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-mauli-colony",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAULI COLONY P O MANIMAJRA CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sect-32-d",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620068",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT -32 D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-18",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANIMAJRA CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-kaimbwala",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAIMBWALA, CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-karsan",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARSAN CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-14",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 26 B D COLONY CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-raipur-khurd",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIPUR KHURD CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-19",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARANGPUR UT CHANDIGARH\", PIN 160014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-20",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT-56, CHANDIGARH\", PIN 160014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-24 CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIKAS NAGAR, MAULI JAGRAN, CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-high-school-3",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 38 (WEST), U.T. CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-maloya-colony",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALOYA COLONY. CHANDIGARH\", PIN 160014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "institute-f-the-blind",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 26, CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-high-school-4",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECT 52, CHANDIGARH\", PIN 160061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-21",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC-45 C, CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-indira-colony-manimajra-chandigarh",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INDIRA COLONY, MANIMAJARA, CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-sr-sec-school-lahore",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-8 C CHANDIGARH\", PIN 160008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-rc-i-maloya",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620252",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALOYA, CHANDIGARH\", PIN 160025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gmhs48d",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 48D, SECTOR 48D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "goverment-model-high-school-mauli-jagran-chandigarh",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620255",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE GURUDWARA, CHANDIGARH\", PIN 160102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-high-school-5",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2620256",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVT. MIDDLE SCHOOL, SECTOR 46 D, CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-khalsa-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-30B CHANDIGARH\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-new-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-18B CHANDIGARH\", PIN 160026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sacred-heart-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-26 CHANDIGARH\", PIN 160026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivalik-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-41B CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-36 D CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-guru-gobind-singh-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-35B CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "moti-ram-arya-sr-sec-model-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-27A CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-model-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-15A CHANDIGARH\", PIN 160016."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishu-niketan-model-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-22D CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ishwar-singh-dev-samaj-sr-sec",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SCHOOL SECTOR-21C CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-annes-convent-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-32 C CHANDIGARH\", PIN 160030."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-mangal-high-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-21C CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "carmel-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 9B CHANDIGARH\", PIN 160009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vedic-girls-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANIMAJRA CHANDIGARH\", PIN 160101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bal-niketan-model-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-37A CHANDIGARH\", PIN 160023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ajit-karam-singh-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 41 B CHANDIGARH\", PIN 160008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhavan-s-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 27 B MADHYA MARG CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivek-high-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-38B CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 8-C CHANDIGARH\", PIN 160008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-college",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 10-D CHANDIGARH\", PIN 160011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mehr-chand-mahajan-d-a-v-college-for",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WOMEN SECTOR-36 A CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-tribune-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-29D CHANDIGARH 160020\", PIN 160020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-guru-harkrishan-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 40-C CHANDIGARH\", PIN 160040."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pandit-mohan-lal-sanatan-dharama-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 32 C CHANDIGARH\", PIN 160031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-dayanand-adarsh-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 22A CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-soldier-international-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 28-B CHANDIGARH\", PIN 160002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-guru-harkrishan-model-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-38 D CHANDIGARH\", PIN 160014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peter-s-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 37-B, CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kailash-bahl-d-a-v-centenary-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 7 B CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chandigarh-baptist-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 45-D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-aurobindo-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC 27-A CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-high-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 44-D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-carmel-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 47-B CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "stepping-stones-sec-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 37-D CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saupin-s-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO 14 SECTOR 32 A CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-teg-bahadur-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 15 C CHANDIGARH\", PIN 160022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishu-niketan-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC 43 A CHANDIGARH\", PIN 160043."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-banyan-tree-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 48B, CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divya-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR - 44 D, CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-kabir-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-26, CHANDIGARH\", PIN 160019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashiana-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-46 A CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-guru-gobind-singh-public-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-35B CHANDIGARH-160035\", PIN 160035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 44-B, CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ankur-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANJAB UNIVERSITY CAMPUS SECTOR-14 CHANDIGARH\", PIN 160014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kids-r-kids-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 42-C, CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630250",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-39D, CHANDIGARH, DAV PUBLIC SCHOOL,SEC-39D,SHIV MANDIR , DAV PUBLIC SCHOOL, SEC-39D, CHANDIGARH\", PIN 160036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "northridge-international-school",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2630251",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-46/A, CHANDIGARH, NEAR COMMUNITY CENTRE\", PIN 160047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-chandigarh",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2680001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"12-WING AIR FORCE STATION CHANDIGARH\", PIN 160003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-3",
+   "facts": {
+    "city": {
+     "name": "Chandigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2680002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 31-D CHANDIGARH\", PIN 160047."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,733 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-tadong-gangtok",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1800001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TADONG GANGTOK EAST SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-nhpc-singtam",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1800002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NHPC SINGTAM EAST SIKKIM\", PIN 737134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-pakyong",
+   "facts": {
+    "city": {
+     "name": "Pakyong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1840004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. PAKYONG, EAST SIKKIM\", PIN 737106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sir-t-n-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANGTOK EAST SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "paljor-namgyal-girls-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANGTOK EAST SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-west-point-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANGTOK, EAST SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-govt-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANGTOK SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-pelling",
+   "facts": {
+    "city": {
+     "name": "Gyalshing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PELLING GYALSHING WEST SIKKIM\", PIN 737113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-heegyathang-dt-mangan",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HEEGYATHANG DT- MANGAN NORTH SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-song-via-singtam",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SONG VIA- SINGTAM EAST SIKKIM\", PIN 737133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-temi-via-singtam",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEMI VIA- SINGTAM SOUTH SIKKIM\", PIN 737134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-namchi",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMCHI SOUTH SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-dikling-pakyong",
+   "facts": {
+    "city": {
+     "name": "Pakyong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIKLING PAKYONG EAST SIKKIM\", PIN 737106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-mangan-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANGAN NORTH SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-smc-rangpo",
+   "facts": {
+    "city": {
+     "name": "Rangpo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SMC RANGPO EAST SIKKIM\", PIN 737132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-girls-senior-secondary-school-deorali",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEORALI GANGTOK SIKKIM\", PIN 737135."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-assam-lingzey-gangtok",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASSAM LINGZEY GANGTOK EAST SIKKIM\", PIN 737135."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-senior-secondary-school-yangang",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YANGANG VIA- SINGTAM SOUTH SIKKIM\", PIN 737134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-bal-krishna-kasaju-government-senior-secondary-school-namthang",
+   "facts": {
+    "city": {
+     "name": "Rangpo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMTHANG VIA- RANGPO SOUTH SIKKIM\", PIN 737137."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-girls-sr-sec-school-namchi",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMCHI SOUTH SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-chungthang-dt-mangan",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHUNGTHANG DT- MANGAN NORTH SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ntl-govt-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VOK VIA- NAMCHI SOUTH SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-lingdok-via-gangtok",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LINGDOK VIA- GANGTOK SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-ranka-dhajey-gangtok",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANKA DHAJEY GANGTOK EAST SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tathangchen-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TATHANGCHEN PO- RAJBHAWAN GANGTOK SIKKIM\", PIN 737103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-singhik-via-mangan",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SINGHIK VIA- MANGAN NORTH SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "khy-de-khang-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KYI-DE-KHANG PO- GANGTOK SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "north-sikkim-academy",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PENTOK HILL MANGAN SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-light-academy",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVT SEC SCHOOL NAMCHI SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tendong-educational-institute",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO NAMCHI SOUTH SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-senior-secondary-school-sichey",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SICHEY PO GANGTOK EAST SIKKIM\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-sirwani-singtam",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SIRWANI PO SINGTAM EAST SIKKIM\", PIN 737134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-dale-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ICAR COMPLEX PO TADANG GANGTOK SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-lower-syari-sec-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820140",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TADONG GANGTOK EAST SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-tingley",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TINGLEY, P.O. BERBING, NAMCHI, SOUTH SIKKIM\", PIN 737121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-kamrang",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAMRANG, P.O. NAMCHI, DISTT. SOUTH SIKKIM\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-lingcheg",
+   "facts": {
+    "city": {
+     "name": "Singtam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820160",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LINGCHEG, P.O. SINGTAM BAZAR, EAST SIKKIM\", PIN 737122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-melli-aching",
+   "facts": {
+    "city": {
+     "name": "Gyalshing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MELLI ACHING P.O., VIA GYALSHING, WEST SIKKIM\", PIN 737113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-phong",
+   "facts": {
+    "city": {
+     "name": "Rangpo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHONG, PO RAMTHANG, VIA RANGPO, SOUTH SIKKIM\", PIN 737132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-labdang",
+   "facts": {
+    "city": {
+     "name": "Gyalshing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820187",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LABDANG, PO TASHIDING, DIST, GYALSHING, WEST SIKKIM\", PIN 737113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-sopakha",
+   "facts": {
+    "city": {
+     "name": "Gyalshing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820192",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOPAKHA, BUSTY, PO UTTAREY, DIST-GYALSHING, WEST SIKKIM\", PIN 737113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-bering",
+   "facts": {
+    "city": {
+     "name": "Pakyong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820219",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O PAKYONG PS PAKYONG EAST SIKKIM\", PIN 737106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-chanatar-rangpo",
+   "facts": {
+    "city": {
+     "name": "Rangpo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820221",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVERNMENT SECONDARY SCHOOL CHANATAR RANGPO EAST SIKKIM\", PIN 737132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-s-school-4",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820227",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAKSHEP, MANGAN DISTRICT, SIKKIM, PAKSHEP, MANGAN DISTRICT, SIKKIM, PAKSHEP, MANGAN DISTRICT, SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-12",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820228",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FIFTH MILE LUMSEY, NEAR SOCIAL WELFARE OFFICE, GANGTOK\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ark-academy",
+   "facts": {
+    "city": {
+     "name": "Pakyong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820229",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UPPER NAMCHEYBONG, PAKYONG, PAKYONG DISTRICT, SIKKIM\", PIN 737106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-girls-secondary-school-mangan",
+   "facts": {
+    "city": {
+     "name": "Mangan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820350",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANGAN, NORTH SIKKIM\", PIN 737116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-upper-burtuk",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820351",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST SIKKIM, GANGTOK\", PIN 737101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lumsey-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820352",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TADONG, GANGTOK , EAST SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-parkha",
+   "facts": {
+    "city": {
+     "name": "Pakyong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LINKEY, PAKYONG\", PIN 737106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-rongneck",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820355",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DECHENLING, CHANDMARI, BHUSUK ROAD, GANGTOK\", PIN 737103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-pamphok-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820356",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER PAMPHOK, NAMTHANG, NAMCHI DIST, NA, NA\", PIN 737126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lower-rayong-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Namchi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1820358",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER RAYONG, TINKITAM, NAMCHI DISTRICT\", PIN 737139."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bahai-s-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1830001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TADONG GANGTOK SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-school",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1830002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TADONG GANGTOK SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-22",
+   "facts": {
+    "city": {
+     "name": "Gangtok",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1880001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LIBING POST TADONG GANGTOK SIKKIM\", PIN 737102."
+     }
+    }
+   }
+  }
+ ]
+}

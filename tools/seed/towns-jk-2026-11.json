@@ -1,0 +1,2124 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-goal-market",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR GOAL MARKET, GANDHI NAGAR JAMMU JAMMU & KASHMIR\", PIN 180004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-cantt-and-kashmir",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMMU CANTT JAMMU & KASHMIR\", PIN 180003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-i-srinagar",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BADAMI BAGH CANTT SRINAGAR JAMMU & KASHMIR\", PIN 190004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-air-force-station-new-air-pt",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION NEW AIR PT SRINAGAR JAMMU & KASHMIR\", PIN 190007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-chinar-cinema-garhi",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR CHINAR CINEMA P.O GARHI UDHAMPUR JAMMU & KASHMIR\", PIN 182121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-salal-h-e-project-jyotipuram",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SALAL H E PROJECT JYOTIPURAM UDHAMPUR DISTT JAMMU & KASHMIR\", PIN 182312."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bantalab-c-r-p-f-campus-and-kashmir",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANTALAB C R P F CAMPUS JAMMU JAMMU & KASHMIR\", PIN 181123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-1-akhnoor",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNOOR, DISTT JAMMU, JAMMU & KASHMIR\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-nagrota",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGROTA, DISTT JAMMU, JAMMU & KASHMIR\", PIN 181221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-lakhanpur",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAKHANPUR DISTT KATHUA JAMMU & KASHMIR\", PIN 184152."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bsf-campus-rajouri",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B S F CAMPUS RAJOURI JAMMU & KASHMIR\", PIN 185131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-dul-hasti-project-jammu",
+   "facts": {
+    "city": {
+     "name": "Kishtwar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DUL-HASTI PROJECT KISHTWAR JAMMU DISTT., JAMMU & KASHMIR\", PIN 182204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-miran-sahib",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIRAN SAHIB JAMMU DISTT, JAMMU & KASHMIR\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-2-dhar-road-roan",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHAR ROAD P.O.ROAN UDHAMPUR JAMMU & KASHMIR\", PIN 182126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-2-akhnoor",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNOOR JAMMU & KASHMIR\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-damana-lale-de-bagh-sangrampur-and",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAMANA LALE DE BAGH P.O. VILLAGE SANGRAMPUR TEH. & DISTT.- JAMMU, JAMMU & KASHMIR\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-afs",
+   "facts": {
+    "city": {
+     "name": "Pulwama",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AFS, AWANTIPUR, C/O 56 APO, DISTT PULWAMA, J&K\", PIN 192122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-jindrah-kanyalaya",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JINDRAH P.O. KANYALAYA DISTT. JAMMU, JAMMU & KASHMIR\", PIN 180003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kaluchak-at-sunjuwan",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALUCHAK AT SUNJUWAN, JAMMU P O. SAINIK COLONY JAMMU & KASHMIR\", PIN 180010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-iii-bsf-campus-pantha-chowk",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF CAMPUS PANTHA CHOWK P O SRINAGAR JAMMU & KASHMIR\", PIN 191101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-nhpc-gingal-uri-mohra",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NHPC GINGAL (URI) PO MOHRA BARAMULLA JAMMU & KASHMIR\", PIN 193122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kathua",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JANGLOTE ROAD,NEAR ARMY CANTT AREA, KATHUA\", PIN 184104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-brakpara",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRAKPARA ANANTNAG JAMMU & KASHMIR\", PIN 192101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bhadarwah",
+   "facts": {
+    "city": {
+     "name": "Doda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHADARWAH, DISTT DODA, J&K\", PIN 182221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-chenani-at-kud-j-and-k",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHENANI AT KUD DISTT UDHAMPUR J&K\", PIN 182141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-hira-nagar-rawi-tawi-complex-hira-nagar-j-and-k",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIRA NAGAR RAWI TAWI COMPLEX HIRA NAGAR DISTT KATHUA J&K\", PIN 184142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-b-s-f-campus",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B.S.F. CAMPUS, SUNDERBANI, DISTT RAJOURI, J & K\", PIN 185153."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-jodhpur-doda",
+   "facts": {
+    "city": {
+     "name": "Doda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JODHPUR, DODA\", PIN 182202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-aglar",
+   "facts": {
+    "city": {
+     "name": "Pulwama",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AGLAR PULWAMA JAMMU & KASHMIR\", PIN 192305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-shahkote-pringal-uri-tehvri",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHAHKOTE PO PRINGAL (TEH URI) BARAMULLA DISTT TEHVRI JAMMU & KASHMIR\", PIN 193122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-rakh-jaganoo",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAKH JAGANOO DISTT UDHAMPUR JAMMU & KASHMIR\", PIN 182124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-kotranka",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTRANKA DISTT RAJOURI JAMMU & KASHMIR\", PIN 185136."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-arnora-ghat",
+   "facts": {
+    "city": {
+     "name": "Doda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARNORA (GHAT) DISTT DODA JAMMU & KASHMIR\", PIN 182202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-khanpora",
+   "facts": {
+    "city": {
+     "name": "Budgam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHANPORA DISTT BUDGAM JAMMU & KASHMIR\", PIN 191111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-basohli",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BASOHLI DISTT. KATHUA JAMMU & KASHMIR\", PIN 184201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-surankot",
+   "facts": {
+    "city": {
+     "name": "Poonch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURANKOT DISTT. POONCH JAMMU & KASHMIR\", PIN 185121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-aishmuqam",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AISHMUQAM DISTT ANANTNAG JAMMU & KASHMIR\", PIN 192129."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-lalab-putushai",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LALAB PUTUSHAI KUPWARA JAMMU & KASHMIR\", PIN 193223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-vpo-gharota",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO GHAROTA, DISTT JAMMU, J&K-181122\", PIN 181122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-mirhama",
+   "facts": {
+    "city": {
+     "name": "Kulgam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIRHAMA, DISTT. KULGAM, J & K\", PIN 192231."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-mari",
+   "facts": {
+    "city": {
+     "name": "Reasi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARI, DISTT. REASI, J & K\", PIN 182311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-nardi-bala-akhno",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARDI BALA, AKHNO, JAMMU-II, JAMMU & KASHMIR-181201 AKHNO,JAMMU & KASHMIR ,JAMMU,181201\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-kishtwar",
+   "facts": {
+    "city": {
+     "name": "Kishtwar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAVODAYA VIDYALAYA, N.H.P.C COLONY SHALIMAR, CITY & DISTT. KISHTWAR (J&K)-182204\", PIN 182204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-bandipora",
+   "facts": {
+    "city": {
+     "name": "Bandipora",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MADAR BANDIPORA, MADAR BANDIPORA\", PIN 193502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-good-will-school-aragam",
+   "facts": {
+    "city": {
+     "name": "Bandipora",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARAGAM BANDIPORA, DISTT. BANDIPORA, JAMMU AND KASHMIR(193502)\", PIN 193502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-kangan",
+   "facts": {
+    "city": {
+     "name": "Ganderbal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANGAN, KANGAN, GANDERBAL\", PIN 191202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hamid-chara-army-goodwill-school-chandigam",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANDIGAM, LOLAB, KUPWARA\", PIN 193223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-baramulla",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZIRAN, TANGMARG, BARAMULLA\", PIN 193402."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-krusan",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOLAB, KUPWARA, KASHMIR\", PIN 193223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-mazbugh-sopore",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAZBUGH, SOPORE, BARAMULLA\", PIN 193201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalya",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/700018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARAMULLA JAMMU & KASHMIR C/O STN COMMAND 19 ARTY C/O 56 APO\", PIN 193101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-6",
+   "facts": {
+    "city": {
+     "name": "Bandipora",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/720052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAWER, GUREZ, BANDIPORA\", PIN 193503."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-salia-anantnag",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/720053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE -SALIA, POST OFFICE - SEER HAMDAN, TEHSIL- ANANTNAG EAST, MATTAN\", PIN 192129."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-gurdhanbala-rajouri",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/720054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURDHANBALA, RAJOURI, JAMMU AND KASHMIR\", PIN 185131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-bhera-mendhar",
+   "facts": {
+    "city": {
+     "name": "Poonch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/720055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHRA MENDHAR POONCH, BHERA MENDHAR DISTT POONCH, BHERA MENDHAR DISTT POONCH\", PIN 185211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cantt-board-public-school",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/720057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SONWAR, BADAMIBAGH CANTONMENT, SRINAGAR\", PIN 190001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-3",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGROTA JAMMU JAMMU & KASHMIR\", PIN 181221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharaja-harisingh-agricultural-collegiate-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGBANI P O DUMANA JAMMU TAWI JAMMU & KASHMIR\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-6",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGROTA - JAMMUR JAMMU & KASHMIR\", PIN 181221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharaja-harisingh-d-a-v-centanary-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNO JAMMU & KASHMIR\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-k-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUNJWANI JAMMU JAMMU & KASHMIR\", PIN 180010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EXTN. SAINIK COLONY JAMMU JAMMU & KASHMIR\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHARAJA HARI SINGH MARG JAMMU JAMMU & KASHMIR\", PIN 180001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-c-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNOOR ROAD JAMMU JAMMU & KASHMIR\", PIN 181205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "presentation-convent-high-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANDHI NAGAR, JAMMU, JAMMU & KASHMIR\", PIN 180004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ATHWAJAN BYE PASS CHOWK SRINAGAR JAMMU & KASHMIR\", PIN 190004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-o-s-hermann-gmeiner-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOLE GUJRAL TALAB TILLO JAMMU JAMMU & KASHMIR\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-convent-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HATLI MORH INDUSTRIAL ESTATE PO KATHUA JAMMU & KASHMIR\", PIN 184102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATHUA W NO 14 OPP C T M JAMMU J & K\", PIN 184101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jodha-mal-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANNI HIMMAT, JAMMU BYE PASS ROAD JAMMU (J&K)\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "heritage-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOWADI NAGA SECTOR D SAINIK COLONY JAMMU J & K\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sh-guru-gang-devji-model-school",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUNDER BANI SHIVKASI RAJOURI J & K\", PIN 185153."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-c-international-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNOOR ROAD PALOURA JAMMU J & K\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.MURADPUR, DISTT RAJOURI, JAMMU & KASHMIR\", PIN 185131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-anantnag",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-1A, SANGAM BIJBEHARA ANANTNAG (J&K)\", PIN 192124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jp-world-school-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-1A, CHANNI, DISTT. JAMMU, JAMMU & KASHMIR\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-s-heritage-scholars-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR BARWAL MORH ( NATIONAL HIGHWAY NH-1A ) , KATHUA , JAMMU & KASHMIR\", PIN 184143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. NAGBANI PANCHAYAT GHAR, GAJANSOO, MARH ROAD JAMMU\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kc-gurukul-public-school-paloura-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KC GURUKUL PUBLIC SCHOOL HO 1B.C. ROAD JAMMU\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shaurya-international-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JEEVAN NAGAR ROAD,BABLIANA,P.O:-GADIGARH,JAMMU(J&K)\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-budgam",
+   "facts": {
+    "city": {
+     "name": "Budgam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHEIKHPURA - 191111, TEHSIL AND DISTRICT BUDGAM\", PIN 191111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-kathua",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJ BAGH EDUCATIONAL TRUST- KATHUA\", PIN 184143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-udhampur",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UDHAMPUR NEW BYE PASS ROAD, RATHIAN, UDHAMPUR -182101\", PIN 182101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sai-international-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL JANGI CHACK PO HIRANAGAR, KATHUA, J&K\", PIN 184142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kartar-public-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-1A, BARNOTI, DISTT KATHUA, JAMMU & KASHMIR\", PIN 184341."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jammu-sanskriti-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ISMAILPUR KOTHEY, NEAR SEHORA, JAMMU\", PIN 181132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURHA BRAHAMNA, ANKHNOOR JAMMU & KASHMIR\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-calliope-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DOOMI JAMMU- AKHNO HIGHWAY JAMMU\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brahmrishi-bawra-shanti-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DINA NAGAR , DHAR ROAD, UDHAMPUR, J&K\", PIN 182101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DELINA, BARAMULLA\", PIN 193103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhartiya-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VED MANDIR AMBHALLA JAMMU\", PIN 180005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rich-harvest-school",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARI BRAHMANA,, SAMBA, JAMMU ,\", PIN 181133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "minto-circle-englishmedium-high-school",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALLUCHI BAGH, NEAR KHADI MILL, SRINAGAR\", PIN 190001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indian-public-school-kidzee-national-highway-kathua",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR NATIONAL HIGHWAY, KATHUA\", PIN 184104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "springdales-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER BARNAI, RAJOURI LINES, AKHNOOR ROAD JAMMU\", PIN 181205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-school-srinagar",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOKARSAR HMT,SRINAGAR\", PIN 190012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-collegiate-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMMU - LAKHANPUR, LACHHIPUR MORE, KATHUA J&K\", PIN 184104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jammu-sanskriti-school-kathua",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-1A,BEHIND BHARAT COLLEGE OF EDUCATION, HATLI MORH,KATHUA\", PIN 184102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vishwa-bharati-public-hr-sec-school-akalpur-morh-udheywalla-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VISHWA BHARATI PUBLIC HR. SEC. SCHOOL AKALPUR MORH, UDHEYWALLA, JAMMU\", PIN 181205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-k-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. LACCHIPUR, BARWAL MORH, KATHUA\", PIN 184104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "galaxy-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730088",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC: E (EXTN.), SAINIK COLONY, JAMMU\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LIONS CLUB LANE, HATLI MORH, KATHUA,JAMMU & KASHMIR-184102\", PIN 184102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "regional-research-laboratory-high-school-canal-road-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RRL HIGH SCHOOL,CANAL ROAD JAMMU\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tiny-scholars-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOGATE MORH JAWAHAR NAGAR TEHSIL AND DISTRICT KATHUA JAMMU AND KASHMIR\", PIN 184104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-and-k-police-public-school-miran-sahib-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIRAN SAHIB, JAMMU JAMMU & KASHMIR , 181101\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-nagbani-jammu-west",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHARANI BAGH, RAKH NAGBANI, JAMMU- (WEST), JAMMU & KASHMIR\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TARORE BRIDGE, NATIONAL HIGHWAY, DISTT. SAMBA\", PIN 181133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "minerva-public-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NATIONAL HIGHWAY BARNOTI(VILLAGE BUDHI) KATHUA\", PIN 184342."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MATADOR STAND , SUNJWAN, JAMMU\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srijan-international-school-jammu",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIRPUR, NEAR IMPERIAL RESORT , THE-BARI-BRAHMANA , DIST- SAMBA\", PIN 181133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sai-school-of-education",
+   "facts": {
+    "city": {
+     "name": "Poonch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POWER HOUSE WARD NO.08 POONCH\", PIN 185101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-pathseekers-international-school",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O SSP BHUPINDER SINGH , THE PATHSEEKERS INTERNATIONAL SCHOOL WARD NO. 1 , RAMGARH SAMBA 9419191319\", PIN 181141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ayesha-ali-academy",
+   "facts": {
+    "city": {
+     "name": "Kulgam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AYESHA ALI ACADEMY, KANIPORA, KULGAM\", PIN 192231."
+     }
+    }
+   }
+  },
+  {
+   "slug": "unique-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730110",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P/O GADI GARH, JAMMU\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhartiya-vidya-mandir-high-school-hiranagar",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT. KATHUA, J&K\", PIN 184142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peter-s-high-school-b-c-road-jammu",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730113",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMMU CITY, BUS STAND\", PIN 180016."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montessori-city-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR INCOME TAX OFFICE, KATHUA\", PIN 184101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "christ-school-degwar",
+   "facts": {
+    "city": {
+     "name": "Poonch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POONCH, HAVELI\", PIN 185101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shubh-international-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BUS STAND , AKHNOOR, JAMMU\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "christ-school-rajouri",
+   "facts": {
+    "city": {
+     "name": "Rajouri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BATHUNI PO, RAJOURI\", PIN 185131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sgsd-international-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMMU, JAMMU AND KASHMIR\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-4",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND NAGAR, BOHRI, JAMMU\", PIN 180002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birla-open-minds-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ON NATIONAL HIGHWAY , ROAD ADJACENT TO HOKERSAR , LAWAYPORA SRINAGAR\", PIN 190017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gd-goenka-public-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730122",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURHA BRAHMANA, AKHNOOR, JAMMU\", PIN 181201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-light-convent-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAI ROAD, DABLEHAR, R S PURA JAMMU\", PIN 181111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lawrence-public-high-school",
+   "facts": {
+    "city": {
+     "name": "Reasi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR BUS STAND, TRINTHA,REASI, NEAR BUS STAND TRINTHA, REASI\", PIN 182311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-internatioal-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730125",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHADWAL, NEAR POLICE STATION, KATHUA\", PIN 184144."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHAT COLONY SINGHPORA, PATTAN BARAMULLA, KASHMIR\", PIN 193121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-valley-educational-institute",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ELLAHI BAGH BUCHPORA , SRINAGAR , 190006\", PIN 190006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-baramulla",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANGRAMA, SOPORE, BARAMULLA\", PIN 193202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-asian-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHINDE KALAN, MIRAN SAHIB, JAMMU\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-khanabal",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAK BUNGALOW, KHANABAL, ANANTNAG\", PIN 192101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arise-international-academy",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHACK MUJGUND, NEAR J&K BANK, SRINAGAR\", PIN 190017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shemford-futuristic-school-kupwara",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NYARI, KRALPORA, TEHSIL KRALPORA, DISTRICT KUPWARA\", PIN 193224."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birla-international-school",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730134",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATTAL BRAHMANA, TEHSIL HIRANAGAR, DISTRICT KATHUA\", PIN 184142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school-ghou-manhasan",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO. 1 GHOU MANHASAN , NEAR BPCL PETROL PUMP - 181206, GHOU MANHASAN JAMMU\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Bandipora",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANDIPORA KASHMIR, BANDIPORA KASHMIR, BANDIPORA KASHMIR\", PIN 193502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "neel-kamal-high-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730137",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER THATHER CHOWK, NEAR AMBA FILLING STATION, BANTALAB, DIST.- JAMMU, ZONE- BHALWAL\", PIN 181123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-delhi-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Shopian",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGBAL SHOPIAN , NAGBAL SHOPIAN , NAGBAL SHOPIAN KASHMIR\", PIN 192303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-convent-high-school",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730139",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SMAILPUR, BARI BRAHMANA, DIST SAMBA\", PIN 181133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srm-welkin-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Baramulla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOPORE BARAMULLA KASHMIR, NEAR DAK BANGLOW, OPPOSITE SUB DISTRICT HOSPITAL SOPORE\", PIN 193201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sapphire-roots-and-wings-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730143",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARSA DABBAR , BISHNAH, JAMMU\", PIN 181132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-anantnag",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730144",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAILWAY ROAD, HARNAG, ANANTNAG\", PIN 192101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "international-daily-rising-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730200",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOWADI, SAINIK COLONY, JAMMU\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730202",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PURKHOO CAMP, DOMANA, JAMMU\", PIN 181206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-chountiwari-machil",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOUNTIWARI, MACHIL, KUPWARA\", PIN 193222."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-budkot",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/770055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BUDKOT, HANDWARA, KUPWARA\", PIN 193221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-7",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. P T C UDHAMPUR JAMMU & KASHMIR\", PIN 182104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-8",
+   "facts": {
+    "city": {
+     "name": "Srinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B B CANTT SRINAGAR JAMMU & KASHMIR\", PIN 190004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-9",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAINIK COLONY RATNUCHAK P.O. JAMMU JAMMU & KASHMIR\", PIN 180011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION P O SATWARI JAMMU CANTT JAMMU JAMMU & KASHMIR\", PIN 180003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-10",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP WAR MEMORIAL HALL SATWARI NEAR PEER BABA JAMMU CANTT JAMMU & KASHMIR\", PIN 180003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-11",
+   "facts": {
+    "city": {
+     "name": "Kathua",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JANGLOT PO DISTT. KATHUA JAMMU & KASHMIR\", PIN 184101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-12",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALUCHAK P O GANGYAL JAMMU JAMMU & KASHMIR\", PIN 180010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-13",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AKHNOOR JAMMU & KASHMIR\", PIN 180010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-14",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAMANA (MUTHI) JAMMU J & K\", PIN 181205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-15",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARALIA MIRAN SAHIB JAMMU & KASHMIR\", PIN 181101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-17",
+   "facts": {
+    "city": {
+     "name": "Samba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B D BARI TEHSIL SAMBA DISTT JAMMU JAMMU & KASHMIR\", PIN 181133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-18",
+   "facts": {
+    "city": {
+     "name": "Udhampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHAR ROAD UDHAMPUR JAMMU & KASHMIR\", PIN 182102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-19",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAKHMUTHI JAMMU JAMMU & KASHMIR\", PIN 181202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-public-school-pahalgam",
+   "facts": {
+    "city": {
+     "name": "Anantnag",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P/O BATAKOTE VIA SEER KANILY GUND ANANTNAG\", PIN 192129."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-wayne",
+   "facts": {
+    "city": {
+     "name": "Kupwara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO-HALMATPA, KUPWARA, JAMMU & KASHMIR-193222\", PIN 193222."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-f-sr-sec-school-2",
+   "facts": {
+    "city": {
+     "name": "Jammu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALAURA CAMP JAMMU JAMMU & KASHMIR\", PIN 181124."
+     }
+    }
+   }
+  }
+ ]
+}

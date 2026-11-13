@@ -1,0 +1,577 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-i-aberdeen-bazar-port-blair-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2500001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ABERDEEN BAZAR PORT BLAIR A & N ISLANDS\", PIN 744101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-raksha-vihar-minnie-bay-port-blair-a-and-n",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2500002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAKSHA VIHAR MINNIE BAY PORT BLAIR A & N ISLANDS\", PIN 744103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-arong-car-a-and-n-islands-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Car Nicobar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2540001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARONG CAR NICOBAR PO NICOBAR DISTT A & N ISLANDS 744301 A & N ISLANDS\", PIN 744301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-panchawati-rangat-north-and-middle-andaman-a",
+   "facts": {
+    "city": {
+     "name": "Rangat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2540002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANCHAWATI RANGAT P.O DISTT NORTH & MIDDLE ANDAMAN A & N ISLANDS\", PIN 744205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-mayabunder-north-andaman-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Mayabunder",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAYABUNDER NORTH ANDAMAN A & N ISLANDS\", PIN 744204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-secondary-school-diglipur-nth-andaman-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIGLIPUR NTH ANDAMAN A & N ISLANDS\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-rangat",
+   "facts": {
+    "city": {
+     "name": "Rangat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANGAT MIDDLE ANDAMAN MIDDLE ANDAMAN\", PIN 744205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-sr-sec-school-ramkrishnapur-little-andaman",
+   "facts": {
+    "city": {
+     "name": "Hut Bay",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMKRISHNAPUR POST VIA HUTBAY LITTLE ANDAMAN A & N ISLANDS\", PIN 744207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-gsss-campbell-bay",
+   "facts": {
+    "city": {
+     "name": "Campbell Bay",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CAMPBELL BAY GREAT NICOBAR A & N ISLANDS\", PIN 744302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-secondary-school-pahalgaon-togapur-via-mayabunder-middle",
+   "facts": {
+    "city": {
+     "name": "Mayabunder",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAHALGAON P O TOGAPUR VIA MAYABUNDER MIDDLE ANDAMAN A & N ISLANDS\", PIN 744204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-secondary-school-swarajgram-diglipur-north-andaman-a-and-n",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SWARAJGRAM POST DIGLIPUR NORTH ANDAMAN A & N ISLANDS\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-vijay-nagar-campbell-bay-great-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Campbell Bay",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIJAY NAGAR CAMPBELL BAY GREAT NICOBAR A & N ISLANDS\", PIN 744302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-secondary-school-bathubasti-garacharama-via-port-blair-a-and-n",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BATHUBASTI POST GARACHARAMA POST VIA PORT BLAIR SOUTH ANDAMAN A & N ISLANDS\", PIN 744101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-bengali-teressa-island-via-aberdeen-bazar",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BENGALI TERESSA ISLAND VIA ABERDEEN BAZAR PORT BLAIR A & N ISLANDS\", PIN 744104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-chainpur-pudumadurai-mayabunder-via-middle",
+   "facts": {
+    "city": {
+     "name": "Mayabunder",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHAINPUR P.O PUDUMADURAI MAYABUNDER VIA MIDDLE ANDAMAN A & N ISLANDS\", PIN 744204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-kakana-car-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Car Nicobar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAKANA CAR NICOBAR A & N ISLANDS\", PIN 744301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-gandhi-nagar-campbell-bay-great-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Campbell Bay",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANDHI NAGAR CAMPBELL BAY GREAT NICOBAR A & N ISLANDS\", PIN 744302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-vivekanandapur-via-hutbay-little-andaman-a",
+   "facts": {
+    "city": {
+     "name": "Hut Bay",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEKANANDAPUR VIA HUTBAY LITTLE ANDAMAN A & N ISLANDS\", PIN 744207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-secondary-school-tusnabad-port-blair-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TUSNABAD PORT BLAIR SOUTH ANDAMAN A & N ISLANDS\", PIN 744103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-mohanpura-port-blair-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHANPURA PORT BLAIR A & N ISLANDS\", PIN 744101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-paschim-sagar-diglipur-north-andaman-a-and-n",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASCHIM SAGAR DIGLIPUR NORTH ANDAMAN A & N ISLANDS\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-keralapuram-diglipur-aerial-bay-nth-andaman-a",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KERALAPURAM DIGLIPUR AERIAL BAY PO NTH ANDAMAN A & N ISLANDS\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-kaushalya-nagar-rangat-middle-andaman",
+   "facts": {
+    "city": {
+     "name": "Rangat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAUSHALYA NAGAR RANGAT MIDDLE ANDAMAN\", PIN 744205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-webi-mayabunder-north-andaman-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Mayabunder",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WEBI MAYABUNDER P.O NORTH ANDAMAN A & N ISLANDS\", PIN 744204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-karmatang-no-10-mayabunder-a-and-n-islands",
+   "facts": {
+    "city": {
+     "name": "Mayabunder",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARMATANG NO 10 MAYABUNDER P.O A & N ISLANDS\", PIN 744204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-durgapur-diglipur-nth-andaman-island",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DURGAPUR DIGLIPUR NTH ANDAMAN ANDAMAN & NICOBAR ISLAND\", PIN 744206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-senior-secondary-school-subashgram",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUBHASHGRAM DIGLIPUR NORTH ANDAMAN A & N ISLANDS\", PIN 744206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-sr-sec-school-2",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SITA NAGAR, DIGLIPUR, NTH & MIDDLE ANDAMAN\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-madheepur",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MADHEEPUR, DIGLIPUR, NORTH ANDAMAN\", PIN 744206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-decondary-school",
+   "facts": {
+    "city": {
+     "name": "Car Nicobar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2520094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAMALOO, CAR NICOBAR, DISTT NICOBAR, A & N ISLAND\", PIN 744301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "carmel-sec-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHOENIX BAY HADDO POST PORT BLAIR A & N ISLANDS\", PIN 744102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmala-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HADDO POST PORT BLAIR A & N ISLANDS\", PIN 744102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAMBA LINE POST BOX NO.501 JUNGLIGHAT P.O PORT BLAIR A & N ISLANDS\", PIN 744103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kamaraj-eng-med-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"Brookshabad, Chakkar Gaon Post, Sri Vijaya Puram, South Adaman\", PIN 744112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ummat-public-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHATMA GANDHI ROAD MIDDLE POINT ABERDEEN BAZAR PORT BLAIR (A&N ISLAND)\", PIN 744101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahatma-gandhi-international-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BROOKSHABAD POST BOX 474 JANGLIGHAT PORT BLAIR-474\", PIN 744107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ST. MARYS SCHOOL BATHUBASTI P.O GARACHARMA PORT BLAIR SOUTH ANDAMAN PIN-744105\", PIN 744105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-2",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.B.NO.-501, JUNGLI GHAT POST,PORT BLAIR ANDAMAN & NICOBAR ISLAND\", PIN 744104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "khalsa-public-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURUDWARA DR.DIWAN SINGH COMPLEX, PORT BLAIR. ANDAMAN\", PIN 744101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "invent-public-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INVENT PUBLIC SCHOOL, SIPPIGHAT VILLAGE, PORT BLAIR, SOUTH ANDAMAN\", PIN 744105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bharatiya-vidya-bhavan-mondal-public-school",
+   "facts": {
+    "city": {
+     "name": "Diglipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE: MADHUPUR POST: DIGLIPUR NORTH ANDAMAN\", PIN 744202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ananda-marga-school",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2530150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PORT BLAIR, SOUTH ANDAMAN\", PIN 744103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2570051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRICHGUNJ, SRI VIJAYA PURAM, ANDAMAN AND NICOBAR ISLANDS\", PIN 744103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navy-children-school-2",
+   "facts": {
+    "city": {
+     "name": "Sri Vijaya Puram",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2580001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINNIE BAY PORT BLAIR PO JUNGLIGHAT ANDAMAN & NICOBAR ISLANDS\", PIN 744103."
+     }
+    }
+   }
+  }
+ ]
+}

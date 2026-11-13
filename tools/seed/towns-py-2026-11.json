@@ -1,0 +1,1526 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-no-1-jipmer-campus-605-006",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2900001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JIPMER CAMPUS PUDUCHERRY 605 006\", PIN 605006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-pondicherry-university-campus-kalapet",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2900002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PONDICHERRY UNIVERSITY CAMPUS KALAPET, PUDUCHERRY-605014\", PIN 605014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-agraharam-street",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2900004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AGRAHARAM STREET, KOVIL PATHU, DISTT. KARAIKAL, PUDUCHERRY\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-mathur-road-peria-kalapet-pondicherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2940001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MATHUR ROAD PERIA KALAPET PONDICHERRY\", PIN 605014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-pandakkal-pondicherry",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2940003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHE PANDAKKAL PO PONDICHERRY\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kamala-nehru-government-girls-high-school-yanam",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BUSSY STREET YANAM, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chevalier-sellane-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALAPET, PUDUCHERRY\", PIN 605014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-karikalampakkam",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARIKALAMPAKKAM, PUDUCHERRY\", PIN 605007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahatma-gandhi-government-boys-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"M G G BOYS HIGH SCHOOL, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTTUCHERRY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-nkc-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KURUSUKUPPAM, PONDICHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THIRUVANDARKOIL, PUDUCHERRY\", PIN 605102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nethaji-subash-chandra-bose-govt-girls-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THALATHERU, KARAIKAL\", PIN 609605."
+     }
+    }
+   }
+  },
+  {
+   "slug": "datchanamurthy-govt-high-school-vambakeerapalayam",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VAMBAKEERAPALAYAM, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "c-e-bharathan-government-higher-secondary-school-mahe",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR COLLEGE GROUND MAHE, 673310\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-kanuvapet",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANUVAPET , VILLIANUR, PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-nonankuppam-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NONANKUPPAM, PUDUCHERRY\", PIN 605007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawaharlal-nehru-govt-higher-secondary-school-mahe",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR POLICE STATION MAHE, MAHE\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-rajiv-gandhi-government-english-medium-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YANAM, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-higher-secondary-school-thirumalairayanpattinam-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THIRUMALAIRAYANPATTINAM, KARAIKAL,\", PIN 609606."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-madagadipetpalayam",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALLINELIYANUR POST, PUDUCHERRY\", PIN 605107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-dharmapuri-puducherry-605009",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE TO SRIRAM THIRUMANILAYAM, PUDUCHERRY - 605009\", PIN 605009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-i-k-kumaran-government-higher-secondary-school-pandakkal",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANDAKKAL POST, MAHE\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pandit-jawahar-lal-nehru-govt-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YANAM, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-kodathur",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUTRAMPET POST, PUDUCHERRY\", PIN 605501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-government-boys-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTAIMEDU,VILLIANUR,PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-maraimalai-adigal-govt-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EMBALAM, PUDUCHERRY\", PIN 605106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "thiruvalluvar-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-b-r-ambedkar-government-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FARAMPETA, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "annai-sivagami-govt-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, -\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "venkata-subba-reddiar-government-girls-higher-secondary-school-maducarai",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MADUCARAI, PUDUCHERRY\", PIN 605105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-thiruvettakudy",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THIRUVETTAKUDY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawaharlal-nehru-govt-higher-secondary-school-nedungadu",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEDUNGADU, KARAIKAL\", PIN 609603."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-varichikudy",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VARICHIKUDY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "v-o-chidambaranar-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARATHIYAR ROAD, KOTTUCHERRY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govindasamy-pillai-government-high-school-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARATHIYAR ROAD, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "murugathal-aachi-govt-girls-higher-secondary-school-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VEERASAMYNAICKAR STREET, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-neravy",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NERAVY, KARAIKAL\", PIN 609604."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ilango-adigal-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUTHARAYARPALAYAM, PUDUCHERRY\", PIN 605009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "thanthai-periyar-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARIYANKUPPAM, PUDUCHERRY\", PIN 605007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-perunthalaivar-kamarajar-government-high-school-gueriampeta-yanam",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YANAM, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kannagi-govt-girls-higher-secondary-school-villianur",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLIANUR, PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hussainia-government-high-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NERAVY, KARAIKAL\", PIN 609604."
+     }
+    }
+   }
+  },
+  {
+   "slug": "thiruvalluvar-govt-higher-secondary-school-ambagarathur",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBAGARATHUR, KARAIKAL\", PIN 609601."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-k-r-narayanan-government-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DARIYALATIPPA, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mtvs-ghs",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REDDIARPALAYAM, PUDUCHERRY\", PIN 605010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "thamizh-thendral-thiru-vi-ka-govt-high-school-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAVARIRAYALU STREET, , PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ansari-duraisami-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THONDAMANATHAM PUDUCHERRY 605502, THONDAMANATHAM PUDUCHERRY 605502\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "veeramamunivar-govt-boys-high-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kamaraj-government-high-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920107",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POOVAM, KOTTUCHERRY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-uruvaiyar",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"URUVAIYAR, PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-k-s-p-v-r-n-government-high-school",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANAKALAPETA, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kasthurba-gandhi-govt-high-school",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920110",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO NALUTHARA, MAHE\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-v-p-ghss-sedarapet-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEDARAPET, PUDUCHERRY\", PIN 605111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "annai-teresa-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARAIKAL, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "annai-saradha-devi-govt-high-school-vadhanur",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VADHANUR, PUDUCHERRY\", PIN 605501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kanniamigu-quaide-milleth-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SULTHANPET, PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "v-n-purushothaman-government-higher-secondary-school-palloor",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALLOOR , MAHE\", PIN 673310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tkrghs-thengaithittu",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THENGAITHITTU., PUDUCHERRY.\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jeevanandam-govt-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARAMANIKUPPAM, PUDUCHERRY\", PIN 605005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-sinnatha-govt-girls-hss-muthialpet-pdy",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUTHIALPET, PUDUCHERRY\", PIN 605003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-ariyur",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARIYU, PUDUCHERRY, ARIYUR, PUDUCHERRY 605102\", PIN 605102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cheddilal-govt-high-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ABISHEGAPAKKAM, PUDUCHERRY\", PIN 605007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "theerar-sathyamurthy-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MURUNGAPAKKAM, PUDUCHERRY\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-kothapurinatham",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTHAPURINATHAM, PUDUCHERRY\", PIN 605102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "stpp-government-junior-college",
+   "facts": {
+    "city": {
+     "name": "Yanam",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YANAM, YANAM\", PIN 533464."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-thirubuvanai-puducherry-605107",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THIRUBUVANAI , PUDUCHERRY\", PIN 605107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kalaignar-karunanithi-government-higher-secondary-school-k-t-kuppam-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALITHEERTHALKUPPAM, PUDUCHERRY\", PIN 605107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "savarayalu-nayagar-govt-girls-high-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEEDARAJAPAYAR STREET, PONDICHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "perunthalaivar-kamaraj-govt-boys-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920143",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUTHILAPET, PUDUCHERRY\", PIN 605003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-oulgaret-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920144",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OULGARET, PUDUCHERRY\", PIN 605010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mayor-a-soundararengan-government-high-school-sethur",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SETHUR, KARAIKAL\", PIN 609601."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ghs-kothukulam-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920147",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MASTHAN PALLI STREET, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tvt-ghs-ariyankuppam",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920148",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARIYANKUPPAM,, PUDUCHERRY\", PIN 605007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-karayambuthur",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920149",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARAYAMBUTHUR, PUDUCHERRY\", PIN 605106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sekkizhar-govt-high-school-thattanchavady",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THATTANCHAVADY, PUDUCHERRY\", PIN 605009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "artchouna-soupraya-naikar-government-high-school-mudaliarpet",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUDALIARPET, PUDUCHERRY\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-pavendar-bharathidasan-government-higher-secondary-school-p-s-palayam-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALLINELIYANUR POST, PUDUCHERRY\", PIN 605107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-girls-high-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"T.R.PATTINAM, KARAIKAL\", PIN 609606."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arignar-anna-government-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KORAIKENI POST, PUDUCHERRY\", PIN 605501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "calve-college-government-boys-higher-secondary-school-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920159",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-thanthai-periyar-government-higher-secondary-school-kovilpathu-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920160",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP NEW BUS STAND , KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-vizhithiyur",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920161",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NERAVY, KARAIKAL\", PIN 609607."
+     }
+    }
+   }
+  },
+  {
+   "slug": "soucilabai-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920163",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ghs-sellipet",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"no 1 marriamman koil street sellipet puducherry 605502\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-kombakkam-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920167",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOMBAKKAM , PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indira-gandhi-government-high-school-katterikuppam",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920170",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATTERIKUPPAM, PUDUCHERRY\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vvrs-ghs-mettupalayam-puducherry",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920172",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SCHOOL SREET,, METTUPALAYAM, PUDUCHERRY\", PIN 605009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-usman-government-high-school-chalakkara",
+   "facts": {
+    "city": {
+     "name": "Mahe",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920173",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"USMAN GOVERNMENT HIGH SCHOOL CHALAKKARA, NEW MAHE PO\", PIN 673311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "subramania-bharathiar-government-girls-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920175",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY, PUDUCHERRY\", PIN 605001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmala-ranee-girls-hr-sec-school-karaikal",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2920178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"33, , NEHRU STREET, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-bidyashram",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PORIAIYUR, VILLIANUR, DISTT PONDICHERRY, PONDICHERRY-605110\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cauvery-public-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGORE MAIN ROAD, NERAVY, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-study",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"64-66, MATHUR ROAD, DISTT PONDICHERRY, PONDICHERRY-605014 KALAPET\", PIN 605014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "achariya-bala-siksha-mandir",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ACHARIYA COMMUNE, FISHING HARBOUR ROAD, THENGAITHITTU,PONDICHERRY\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "good-shepherd-english-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO.15, MELAKASAKUDY, NEDUNGADU COMMUNE, KARAIKAL.\", PIN 609603."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aathmalayaa-middle-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AATHMALAYAA NAGAR, SCHOOL ROAD, KEEZHZKASAKUDI, KARAIKAL - 609609.\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanandha-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOPALANKADAI ROAD, IYYANKUTTIPALAYAM, PUDUCHERRY.\", PIN 605009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vaasavi-international-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO:401 , M.G ROAD , MUTHIALPET , PUDUCHERRY - 03\", PIN 605003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanandha-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SELLAPERUMALPET, LAWSPET, PUDUCHERRY - 605 008.\", PIN 605008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-bharath-vidyaashram",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OSUDU LAKE, AGARAM, PUDUCHERRY.\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsh-concept-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GST NAGAR, NAICKAN KULATHU STREET, KOTTUCHERRY KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maruthi-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO:1, MARUTHI NAGAR, EDAYANCHAVADY ROAD, KARUVADIKUPPAM, LAWSPET, PUDUCHERRY - 08\", PIN 605008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-annai-raani-convent-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"11, CONVENT STREET, KATTERIKUPPAM, PUDUCHERRY\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amalorpavam-lourds-academy",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THIRUVALLUAR NAGAR, VILLIANUR ROAD, KOMBAKKAM, PUDUCHERRY - 605004.\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-academy-agalankannu-road",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AGALANKANNU ROAD, SELLUR VILLAGE,THIRUNALLAR, KARAIKAL - 609607.\", PIN 609607."
+     }
+    }
+   }
+  },
+  {
+   "slug": "balaji-siksha-mandir",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"METTU STREET, NETTAPAKKAM,PUDUCHERRY\", PIN 605106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "petit-seminaire-cbse-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DR. M.G.R. NAGAR, MOOLAKULAM, PUDUCHERRY - 605 010.\", PIN 605010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-patrick-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUDUCHERRY , PUDUCHERRY\", PIN 605005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srvs-national-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930088",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARMAPURAM, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-scholar-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLIANUR MAIN ROAD, KORKADU, PUDUCHERRY\", PIN 605110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oxford-international-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANNADIPET, THIRUKKANUR ROAD, PUDUCHERRY\", PIN 605501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mekana-international-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VINAYAKA MISSIONS MEDICAL COLLEGE ROAD , KEEZHKASAKUDY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "achariya-siksha-mandir-high-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO 14 MAIN ROAD, KEEZHAKASAKUDY, KARAIKAL\", PIN 609609."
+     }
+    }
+   }
+  },
+  {
+   "slug": "agni-vidya-kendra-high-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATTERIKUPPAM, PUDUCHERRY, PUDUCHERRY\", PIN 605502."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-bhavan-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Puducherry",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALAMURUGAN NAGAR, THENGAITHITTU, PUDUCHERRY\", PIN 605004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "karaikal-ammayar-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Karaikal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2930099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ELAIKARA STREET EAST, AMMAYAR SCHOOL LANE, KARAIKAL\", PIN 609602."
+     }
+    }
+   }
+  }
+ ]
+}

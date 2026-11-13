@@ -1,0 +1,5738 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-m-r-campus-shahi-bagh",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"M R CAMPUS SHAHI BAGH AHMEDABAD GUJARAT\", PIN 380004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-aerodrame-road-cantt",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AERODRAME ROAD AHMEDABAD CANTT GUJARAT\", PIN 380003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-i-harni-road-baroda",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARNI ROAD BARODA GUJARAT\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-i-air-force-station",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION JAMNAGAR GUJARAT\", PIN 361003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kalawad-road-box-73",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALAWAD ROAD POST BOX 73 RAJKOT GUJARAT\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-ichhanath-bus-stand",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ICHHANATH BUS STAND SURAT GUJARAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-s-p-university-colony-vallabh-vidyanagar",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S P UNIVERSITY COLONY VALLABH VIDYANAGAR ANAND DISTT GUJARAT\", PIN 388120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-colony-ankleshwar",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC COLONY ANKLESHWAR DISTT BHARUCH GUJARAT\", PIN 393010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-campus-mehsana",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC CAMPUS MEHSANA GUJARAT\", PIN 384002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-air-force-station-bhuj-kutch",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION BHUJ (KUTCH) GUJARAT\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-two-army-vadodara",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"E M E CAMPUS NEAR METRO HOSPITAL SAMA SAVLI ROAD BARODA GUJARAT\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-s-a-c-vastrapur-d-o-s-colony-iim-road-polytechnic",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VASTRAPUR D O S COLONY IIM ROAD POLYTECHNIC P.O. AHMEDABAD GUJARAT\", PIN 380015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-iii-afs-makarpura-baroda",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S MAKARPURA VADODARA GUJARAT\", PIN 390014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-infantry-lines",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INFANTRY LINES JAMNAGAR GUJARAT\", PIN 361005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-okha-port",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OKHA PORT DISTT JAMNAGAR GUJARAT\", PIN 361350."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-army-cantt-bhuj-kutch",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARMY CANTT BHUJ KUTCH GUJARAT\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-iii-af-ii-jamnagar",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F II UDYOG NAGAR 250 SU JAMNAGAR GUJARAT\", PIN 361004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-2-kribhco-nagar",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRIBHCO NAGAR SURAT GUJARAT\", PIN 394515."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bilkha-road-behind-adarsh-nvasi-shala",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BILKHA ROAD BEHIND ADARSH NVASI SHALA JUNAGADH GUJARAT\", PIN 362001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-railway-colony",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAILWAY COLONY, BHAVNAGAR PARA GUJARAT\", PIN 364003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-iffco-township-udaynagar-gandhidham-kutch",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IFFCO TOWNSHIP UDAYNAGAR GANDHIDHAM (KUTCH) GUJARAT\", PIN 370203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-railway-gandhidham",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAILWAY COLONY BEHIND HOTEL BANSAL GANDHIDHAM KUTCH GUJARAT\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ioc-colony-viramgam",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IOC COLONY VIRAMGAM AHMEDABAD GUJARAT\", PIN 382150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-new-railway-colony-sabarmati",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW RAILWAY COLONY SABARMATI AHMEDABAD GUJARAT\", PIN 380019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-porbandar",
+   "facts": {
+    "city": {
+     "name": "Porbandar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIRLA ROAD PORBANDAR GUJARAT\", PIN 360576."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-makarpura-road-baroda",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC MAKARPURA ROAD BARODA GUJARAT\", PIN 390009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-o-n-g-c-chandkheda-sabarmati",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"O N G C CHANDKHEDA SABARMATI AHMEDABAD, GUJARAT\", PIN 380005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-vijapur-road-stud-farm-mehtapura-himmatnagar",
+   "facts": {
+    "city": {
+     "name": "Himmatnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIJAPUR ROAD OPP STUD FARM MEHTAPURA HIMMATNAGAR, DISTT SABARKANTHA, GUJARAT\", PIN 383001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-4-o-n-g-c-nagar-new-magdello",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"O N G C NAGAR NEW MAGDELLO SURAT GUJARAT\", PIN 394518."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-air-force-station-samana",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S SAMANA DISTT JAMNAGAR GUJARAT\", PIN 360520."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-dwarka",
+   "facts": {
+    "city": {
+     "name": "Dwarka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHARDAPEETH COLLEGE CAMPUS, DWARKA, GUJRAT\", PIN 361335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-jetpur",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA JETPUR (PEDHLA) PEDHLA PORBANDAR HIGHWAY DISTT RAJKOT GUJARAT\", PIN 360370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-godhra",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PMSHRI KENDRIYA VIDYALAYA GODHRA, ABRAHAM PATEL NA MUWADA, NH-59 AHMEDABAD-INDORE\", PIN 389001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-airfoce-station",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIRFOCE STATION, DARJIPURA, VADODARA, GUJARAT\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-patan",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA PATAN, CHORMARPURA, TALUKA-SARASWATI, NEAR DINOSAUR PARK\", PIN 384265."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-roop-nagar-valia",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROOP NAGAR VALIA DISTT BHARUCH GUJARAT\", PIN 393133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-aliabada",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALIABADA DISTT JAMNAGAR GUJARAT\", PIN 361110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-n-h-8-b-dharampur-patiya-vanana",
+   "facts": {
+    "city": {
+     "name": "Porbandar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N H 8 B NEAR DHARAMPUR PATIYA VILL. VANANA DISTT PORBANDAR, GUJARAT\", PIN 360575."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-borkhadi-bus-stand-vyara",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORKHADI NEAR BUS STAND TALUKA VYARA DISTT SURAT GUJARAT\", PIN 394690."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-dhrangadhra",
+   "facts": {
+    "city": {
+     "name": "Surendranagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHRANGADHRA DISTT. SURENDRANAGAR GUJARAT\", PIN 363310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-at-and-taraghari-tal-padhadhari",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & P.O. TARAGHARI TAL - PADHADHARI RAJKOT GUJARAT\", PIN 360110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-dahod-panchmahal",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAHOD DISTT. PANCHMAHAL GUJARAT\", PIN 389151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-at-lanava-ta-chanasma",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT-LANAVA TA-CHANASMA DISTT.PATAN GUJARAT\", PIN 384229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-trapaj-gujrat",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TRAPAJ DISTT BHAVNAGAR GUJRAT\", PIN 364150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-at-and-sadhi",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & P.O. SADHI, SADAD ROAD, TEHSIL PADRA, DISTT. VADODARA GUJARAT\", PIN 391445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-vadnagar",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VADNAGAR, TA. VADNAGAR, DISTT. MEHSANA, GUJARAT - 384355\", PIN 384355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-jawahar-navodaya-vidyalaya-dwarka",
+   "facts": {
+    "city": {
+     "name": "Dwarka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAVODAYA VIDYALAYA DWARKA, AT DHATURIYA PO- BHADTHAR, TA. KALYANPUR\", PIN 361306."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-junagadh",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PM SHRI SCHOOLJAWAHAR NAVODAYA VIDYALAYA, AT. PO. KHADIYA, Tal. JUNAGADH DISTRICT JUNAGADH\", PIN 362263."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-vankal-surat",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TQ MANGROL, DIST SURAT\", PIN 394430."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-morbi",
+   "facts": {
+    "city": {
+     "name": "Morbi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/440152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIST - MORBI, GUJARAT, PIN - 363621\", PIN 363621."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-international-school-surendranagar",
+   "facts": {
+    "city": {
+     "name": "Surendranagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430695",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO 1988 FP NO 64, NEAR UMIYA 7 TOWNSHIP, SURENDRANAGAR\", PIN 363002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-kabir-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430696",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VASNA, ROAD, VADODARA\", PIN 390007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shannen-international-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430697",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CANAL ROAD OPP PANCHAM PARTY PLOT, NEW SAMA , VADODARA\", PIN 390024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "karnavati-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430698",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MADHAPAR MORBI BYPASS, OPP. ADB HOTEL, 150 FEET RING ROAD, RAJKOT-360001\", PIN 360001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "western-railway-school-en",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1180028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VALSAD, NEAR GYMKHANA GROUND, VALSAD, GUJARAT\", PIN 396001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kv-ins-valsura",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/400008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"I N S VALSURA JAMNAGAR GUJARAT\", PIN 361150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-gandhinagar",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE SCHOOL GANDHINAGAR, C/O HQ SWAC(U), AIR FORCE, AIR FORCE STATION, VAYU SHAKTI NAGAR\", PIN 382042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-jagana",
+   "facts": {
+    "city": {
+     "name": "Palanpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASHOKLAYLAND SHOWROOM OPPOSIT, PALANPUR MAHESANA HIGHWAY JAGANA\", PIN 385001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-wagalkhod",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420113",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT WAGALKHOD PO BHILOD TA VALIA BHARUCH, AT WAGALKHOD PO BHILOD TA VALIA BHARUCH\", PIN 393130."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-lukhadiya",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TA DHANPUR, DIST DAHOD\", PIN 389382."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-kharedi",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEGA GIDC KHAREDI VADLI POST KHAREDI, TA DIST DAHOD\", PIN 389151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-zalod",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT-PO-MIRAKHEDI, TA-ZALOD , DIST-DAHOD\", PIN 389160."
+     }
+    }
+   }
+  },
+  {
+   "slug": "emrs-umarpada",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO BILWAN, TA - UMARPADA, DIST - SURAT\", PIN 394445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-limkheda",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT- LUKHADIYA, PO- NALU, TA- DHANPUR, DISTRICT-DAHOD\", PIN 389382."
+     }
+    }
+   }
+  },
+  {
+   "slug": "emrs-mahuva",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IN THE CAMPUS OF EMRS UMARPADA, AT & PO BILWAN,TA UMARPADA, DIST SURAT, GUJARAT, PIN 394445\", PIN 394445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavaya-model-residential-school-fatepura",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/420135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT.POST MIRAKHEDI TA.ZALOD DIST. DAHOD, AT.POST HINDOLIYA TA.FATEPURA DIST.DAHOD, EMRS FATEPURA, DIST. DAHOD GUJRAT.\", PIN 389151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prakash-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SANDESH PRESS BODAKDEV AHMEDABAD GUJARAT\", PIN 380054."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bharatiya-vidya-bhavan-s-v-m-public-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEEN RASTA MAKARPURA ROAD BARODA GUJARAT\", PIN 390009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navrachana-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JYOTI COLONY SAMA ROAD BARODA GUJARAT\", PIN 390008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birlasagar-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Porbandar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIRLA SAGAR COLONY PORBANDAR GUJARAT\", PIN 360576."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vallabh-ashram-s-m-g-m-amin-and-v-n-savani-school",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N H NO 8 KILLA PARDI VALSAD DISTT GUJARAT\", PIN 396125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sdccl-public-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O DIGVIJAYGRAM VIA JAMNAGAR GUJARAT\", PIN 361140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atomic-energy-central-school-2",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O KAKRAPAR ATOMIC POWER PROJECT P O ANUMALA (VIA VYARA) SURAT DISTT GUJARAT\", PIN 394651."
+     }
+    }
+   }
+  },
+  {
+   "slug": "smt-sandraben-shroff-gnyan-dham-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G I D C VAPI DISTT VALSAD GUJARAT\", PIN 396195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anandalaya",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N.D.D.BOARD CAMPUS ANAND KHEDA GUJARAT\", PIN 388001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-kendra-gyan-mandir-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N H NO.8 KANDARI TEL KARJAN DISTT. BARODA GUJARAT\", PIN 391210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rachana-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHAHIBAG AHMEDABAD GUJARAT\", PIN 380004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nanji-kalidas-d-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G.S.C.L. SIDDHIGRAM VERAVAL, JUNAGARH DISTRICT, GUJARAT\", PIN 362276."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharaja-agrasan-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEM NAGAR OPP. GURUKUL AHMEDABAD GUJARAT\", PIN 380052."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dalmia-public-school",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANJAY NAGAR COLONY SATRAPADA VERAVAL. DISTT JUNAGARH, GUJARAT\", PIN 362275."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chanderbala-modi-academy",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.B. NO. 181 G.I.D.C. VILL KONDH ANKLESHWAR DISTT BHARUCH GUJARAT\", PIN 393002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-high-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP JAI PARKASH SOCIETY NIZAMPURA BARODA GUJARAT\", PIN 390002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "central-english-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAM RAJYA NAGAR ODHAR AHMEDABAD GUJARAT\", PIN 382415."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-i-b-patel-angel-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORSAD JITUDIYA ROAD ANAND GUJARAT\", PIN 388345."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-birla-public-school-kovayata-rajula-kovaya",
+   "facts": {
+    "city": {
+     "name": "Amreli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOVAYATA RAJULA KOVAYA DISTT AMRELI GUJARAT\", PIN 365544."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-child-school",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMIPURA PB NUMBER 11 GIDC MEHSANA AHMEDABAD GUJARAT\", PIN 384002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kokilaben-dhirubhai-ambani-reliance-foundation-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC-11 RELIANCE GREENS MOTIKHAVDI DIGVIJAY GRAM PO JAMNAGAR GUJARAT\", PIN 361140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-bopal-nr-bopal-ambli-rly-crossing",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOPAL NR. BOPAL AMBLI RLY CROSSING AHMEDABAD GUJARAT\", PIN 380058."
+     }
+    }
+   }
+  },
+  {
+   "slug": "white-house-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"&quot;GOKULA NAGAR&quot; HARIPAR BHUJ- KUTCH GUJARAT\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURUKUL ROAD AT & P O CHALA VAPI GUJARAT\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-aditya-birla-public-school-dahej",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAHEJ DISTT BHARUCH GUJARAT\", PIN 392130."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shreeya-devi-bhagirath-rathi-maheshwari-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND RUNDHNATH MAHADEO MANDIR DUMAS ROAD SURAT, GUJARAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bal-bharati-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NTPC JHANOR GANDHAR PO URJA NAGAR DISTT BHARUCH GUJARAT\", PIN 392215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "smt-champakali-kheruka-gyanjoti-high-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO GOVALI TEH JHAGODIA DISTT BHARUCH GUJARAT\", PIN 393001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-jain-modern-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VESU CHAR RAASTA U M ROAD SURAT GUJARAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swaminarayan-vidyapith",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR PRAMUKH SWAMI MEDICAL COLLEGE ANAND SOJITRA ROAD AT KARAMSAD GUJARAT\", PIN 388325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shrimati-maniba-chunilal-patel-sanskar-vidya-bhavan",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NILKANTH MAHADEV ROAD ZODESHWAR, DISTT BHARUCH GUJARAT\", PIN 392011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gujarat-public-school-brg-estate-kalali-at-ladara-rly-crossing-old",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRG ESTATE NEAR KALALI AT LADARA RLY CROSSING OPP OLD PADRA ROAD VADODARA GUJARAT\", PIN 390012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-tramspek-vadsar-road-kalali",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TRAMSPEK VADSAR ROAD KALALI VADODARA GUJARAT\", PIN 390092."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-haripar-survey-behind-nir-bunglows-kalawad",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARIPAR SURVEY BEHIND NIR BUNGLOWS KALAWAD ROAD RAJKOT GUJARAT\", PIN 360007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-g-m-shiroiya-english-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHAPRA ROAD NAVSARI GUJARAT\", PIN 396445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "agarwal-vidya-vihar-vesu-abhwa-road-drive-in-theatre-vesu-e",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VESU ABHWA ROAD NEAR DRIVE IN THEATRE VESU (E) SURAT GUJARAT\", PIN 394007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOPARLI ROAD CHARWADA VIA VAPI DISTT VALSAD GUJARAT\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-vidyaveli-gyan-kendra-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UMBERGAON DISTT VALSAD GUJARAT\", PIN 396171."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-day-school-satyadev-chemicals-vasna-bhaili-road",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SATYADEV CHEMICALS VASNA-BHAILI ROAD VADODARA GUJARAT\", PIN 390018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lancers-army-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LONDON HOUSE DUMAS ROAD VESU PATIYA SURAT GUJARAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "american-school-of-baroda",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP SAYAJIPURA AJWA NIMETA ROAD VADODARA GUJARAT\", PIN 390019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-vallabh-ashram-s-mcm-kothari-international-girls-residential-school",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KILLAPARDI DISTT VALSAD GUJARAT\", PIN 396125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-international-school",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARAMPUR ROAD ABRAMA DISTT VALSAD GUJARAT\", PIN 396001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-ramkrishna-hari-ram-krishna-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHRI SWAMINARAYAN MISSION NEAR VALAK PATIYA SURAT-KAMRAJ ROAD,SURAT,GUJARAT\", PIN 395006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "matliwala-public-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARUCH GUJARAT\", PIN 392001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajashree-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BAMALLA, JHAGADIA, BHARUCH GUJARAT\", PIN 393120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radiant-english-academy-65-rajhans-cinema-nr-reliance-tower-piplod",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"65 OPP RAJHANS CINEMA NR RELIANCE TOWER PIPLOD SURAT GUJARAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "om-shanti-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARDAR BAUG SHANALA ROAD MORBI RAJKOT GUJARAT\", PIN 363641."
+     }
+    }
+   }
+  },
+  {
+   "slug": "p-p-savani-chaitanya-vidya",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANKUL MATA VARACHHA ABRAHAMA ROAD SURAT GUJARAT\", PIN 394105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manav-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO RANIPURA TAL JHAGADIA DISTT BHARUCH GUJARAT\", PIN 393110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O BOX 129 RAVAPUR GHUNDA ROAD MORBI, RAJKOT, GUJARAT\", PIN 363641."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vrajbhoomi-international-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR BAL AMUL N H NO 8 MOGAR ANAND GUJARAT\", PIN 388340."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-swami-narayan-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR NAYAN DEEP SOCIETY NEW RANDER RD B/H SUDAMA HOTEL ADAJAN SURAT GUJARAT\", PIN 395009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atmiya-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST KOLI BHARTHANA TALUKO KANREJ DISTT SURAT GUJARAT\", PIN 394180."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vatsalya-international-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND CHOKDI DHAMRAJ ROAD BORSAD PO ANAND GUJARAT\", PIN 388540."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhartiya-vidya-bhavan-s",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GIPCL ACADEMY DISTT SURAT GUJARAT\", PIN 394110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-kutch-bhuj-gandhidham",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430090",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUTCH BHUJ GANDHIDHAM GUJARAT\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nalanda-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MORBI RAJKOT HIGHWAY NEAR AJANDA QUARTZ VIRPAR MORBI GUJARAT\", PIN 363641."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gajera-international-school-amrdi-road-katargam",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMRDI ROAD KATARGAM SURAT GUJARAT\", PIN 395004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fellowship-mission-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILVASSA ROAD DUNGRA PO VAPI, VALSAD GUJARAT\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-school-godi-road",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GODI ROAD, DISTT & TEHSIL DAHOD,\", PIN 389151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarvanaman-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ATMIYADHAM, DISTT BHARUCH, GUJARAT\", PIN 392011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navrachana-international-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VASNA, BHAYALI, VADODARA, GUJARAT\", PIN 391410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-day-school-harni-road",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARNI ROAD, VADODARA\", PIN 390018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-aditya-birla-public-school-opposite-bajrang-society",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE BAJRANG SOCIETY, NR. 80 FT. ROAD, VERAVAL, DISTT JUNAGARH, GUJARAT\", PIN 362266."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jay-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL : CHHAPRA, KALAVAD ROAD,RAJKOT, GUJARAT\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sathya-sai-vidyaniketan",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR.TATA SSL,N.H.NO.8 GANESHWAD SISODRA, DISTT NAVSARI, GUJARAT\", PIN 396450."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhakt-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAKROLIA, KHANDIVAV, TAL: JAMBUGHODA, DISTT PANCHMAHAL (GODHRA), GUJARAT\", PIN 389390."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amrita-vidyalayam-3",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO.83 NEAR REVAMANI HALL JANATA NAGAR ROAD GHATLODIA, DISTT AHMEDABAD, GUJARAT\", PIN 380061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ambe-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. SUNCITY, DARBAR CHOWKDI ROAD, DISTT VADODARA (BARODA), GUJARAT\", PIN 390010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "naimisharanya-school",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SIDSAR ROAD, DISTT. BHAVNAGAR, GUJRAT\", PIN 364001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "silver-bells-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430107",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHANTINAGAR, KALVIBID BHAVNAGAR, GUJARAT\", PIN 364002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amity-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAYEH BY PASS ROAD, BHARUCH, GUJARAT\", PIN 392001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-patel-primary-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430110",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"COLLEGE CAMPUS , CHIKHLI ROAD , BILIMORA, DISTT NAVSARI, GUJARAT\", PIN 396321."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholar-english-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R.S. NO. 104, GAVIER, SURAT-DUMAS ROAD,\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIA SEVASI GOTRI, OFF EFFLUENT CHANNEL ROAD, AMPAD, VADODARA, GUJARAT\", PIN 391101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-vashishtha-vidhyalaya",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430113",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO. VAV VILLAGE, N.H.HIGHWAY NO. 48, TALUKA KAMREJ, DISTT. SURAT, GUJARAT\", PIN 394326."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nand-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHICHDA RING ROAD, NEAR SHRINATH PETROL PUMP, JAMNAGAR, GUJARAT\", PIN 361008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-shreeji-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO. VALOTI, GANDEVI - BILIMORA RD., TA. GANDEVI, DI. NAVSARI\", PIN 396380."
+     }
+    }
+   }
+  },
+  {
+   "slug": "public-school-kharod",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NATIONAL HIGHWAY#8, OPP KHAROD VILLAGE, TA:ANKLESHWAR DIST: BHARUCH.\", PIN 394115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zen-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IIND, MILESTONE, VIDYANAGAR, VADTAL ROAD, ANAND\", PIN 388001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "laxmi-international-school-sarigam",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAXMI VIDYAPEETH, P. B. NO. 15, SARIGAM P. O., VALSAD, GUJARAT - 396155\", PIN 396155."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sattva-vikas-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SINDHU BHUVAN, THALTEJ, AHMEDABAD\", PIN 380059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "l-p-savani-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2, NEAR SOMESHWARA ENCLAVE, U. M. ROAD, VESU, SURAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-motnath-temple",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MOTNATH TEMPLE, HARNI-VIROD ROAD, HARNI, VADODARA\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "udgam-school-for-children",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP: SARDAR PATEL INSTITUTE, THALTEJ TEKRA, AHMEDABAD - 380054\", PIN 380054."
+     }
+    }
+   }
+  },
+  {
+   "slug": "om-landmark-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOTACHILODA GANDHINAGAR\", PIN 382355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shannen-school-shannen-kids",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHANNEN KIDS, NR.,L&T CIRCLE, VIP ROAD, KARELIBAUG,VADODARA\", PIN 390018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-l-g-haria-multipurpose-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430134",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARIA PARK,SILVASSA ROAD,DUNGRA,VIA-VAPI-396 195\", PIN 396195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-veluk",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE VELUK, NARTHAN PATIA, DANDI-JAHANGIRABAD ROAD, SURAT.\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-goodwill-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHREE SWAMINARAYAN GOODWILL SCHOOL; LINK ROAD; DAHEJ BYPASS; BHARUCH;GUJARAT\", PIN 392001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vedant-international-school-jaykrishna-society",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430137",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAYKRISHNA SOCIETY, NEAR ISANPUR CIVIC CENTRE, ISANPUR, AHMEDABAD-382443\", PIN 382443."
+     }
+    }
+   }
+  },
+  {
+   "slug": "n-g-international-school",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430139",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR.ESSAR PETROL PUMP,MANAV ASHRAM CIRCLE, VISNAGAR LINK ROAD, MEHSANA-384001\", PIN 384001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibgyor-high-international-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430141",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. BANCO PRODUCTS, BHAILI STATION,VADODARA\", PIN 391410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oxford-english-school",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HASA PUR BUS STAND,PATAN, POST-PATAN, DISTRICT- PATAN\", PIN 384265."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shayona-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430144",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHAYONA STUDY CAMPUS, SHAYONA CITY, GHATLODIA, DISTT. AHMEDABAD, GUJARAT-380061\", PIN 380061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "smt-bhadraben-butala-kalrav-academy-for-national-education",
+   "facts": {
+    "city": {
+     "name": "Modasa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430148",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O SHRI R.S.PATEL BHAVAN, KALRAV SHISHUVIKAS KENDRA, MALPUR ROAD, MODASA\", PIN 383315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tata-chem-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MITHAPUR, DWARKA, DISTT. JAMNAGAR, GUJARAT-361345\", PIN 361345."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aadharshila-school-2",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR. PANCHESHWAR MAHADEV, AHMEDABAD- HIMMATNAGAR N.H NO. 8, VALAD GANDHINAGAR-382355\", PIN 382355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kidzee-high-school",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430153",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 35/2,GANDHIDHAM TALUKA PANCHAYAT ROAD,ANTARJAL VILLAGE, ADIPUR,GANDHIDHAM-KUTCH\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibrant-international-academy-masma",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MASMA, SURAT-OLPAD LINK ROAD\", PIN 394540."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jbdiamonds-and-karp-impex-vidya-sankul",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP.DIAMOND NAGAR, B/H THAKORDWAR FARM, SURAT- KAMREJ ROAD, LASKANA,\", PIN 395006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapovan-international-school",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AHEMDABAD MAHESANA HIGHWAY, B/H SAFFRONY COLLEGE, DHOLASAN ROAD\", PIN 384002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-asiatic-school-ahmedabad",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430157",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHANTI ASIATIC SCHOOL, OPP, VRAJ GARDENS, OFF 200 FT RING ROAD, SHELA, BOPAL, AHMEDABAD- 380058\", PIN 380058."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-ravishankar-vidya-mandir-survey-no-309-1",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO.309/1,VILLAGE ABHWA, NR.TALAV,VESU ABHWA ROAD,SURAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-ravishankar-vidya-mandir-sri-sri-ravishankar-marg",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430161",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SRI SRI RAVISHANKAR MARG, NR. ARPAN NAGAR, B/H, SANGAM GREEN BUNGALOWS, BAKROL-388315. ANAND.\", PIN 388001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapovan-sanskardham-vidhyalaya-eng-med",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N.H.NO.8,AT.DHARAGIRI, PO.KABILPE, NAVSARI - 396 424.\", PIN 396424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-international-gunatit-vidyadham",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JUNA VALSAD ROAD, SAMROLI, TA; CHIKHLI, DIST. NAVSARI\", PIN 396521."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430166",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WISDOM VALLY CAMPUS RCC CANAL ROAD NEAR ANUVRAT DWAR OFF NEW CITY LIGHT ROAD, BHARTHANA VESU SURAT\", PIN 395017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-narayana-central-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430167",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP: ISRO, SAC, NEAR : RAMDEVNAGAR, AHMEDABAD -15\", PIN 380015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-niketan-school",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430168",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEHSANA, MEHSANA UNJHA HIGHWAY, MOTI DAU VILLAGE, DIST. MEHSANA\", PIN 384121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-niketan-badodara-dascroi-ahmedabad-guj",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND NIKETAN, OPP. BHAKTIDHAM TEMPLE, JASHODANAGAR HIGHWAY, AHMEDABAD.\", PIN 382435."
+     }
+    }
+   }
+  },
+  {
+   "slug": "alchemy-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430171",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"31 / A, AT. & PO LADVI, TALUKA : KAMREJ DIST. SURAT\", PIN 394325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "firdaus-amrut-centre-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430174",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"15 - CANTONMENT, SHAHIBAUG, AHMEDABAD - 3\", PIN 380003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul-gyanbag-international-school",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJKOT HIGHWAY, NR. GYANBAG CIRCLE, JUNAGADH\", PIN 362003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-international-school-ahmedabad",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430183",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO.F.P. 3 & 6. T.P.S. NO: 84B, OFF PRAHLADNAGAR CORPORATE ROAD, AHEAD OF VODAFONE CORPORATE HOUSE, ADJ. ADANI VIDYA MANDIR, MAKARBA, AHMEDABAD\", PIN 380051."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amarchand-singhvi-international-school",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430184",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAREKH PARISAR, WARD 7 A, GANDHIDHAM KUTCH-BHUJ\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-radhagovind-vidyamandir-ninat",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430185",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT&PO-NINAT VIA-SARBHON TA-BARDOLI DI-SURAT PIN-394350\", PIN 394350."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baroda-public-school-maret-green-valley",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430186",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARET GREEN VALLEY, ANKHI-RAMNATH ROAD, POR, VADODARA TALUKA, VADODARA DISTRICT.\", PIN 391243."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapti-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430187",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO 456-457 VILLAGE NARTHAN RANDER-DANDI ROAD TALUKA OLPAD SURAT\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-laxminarayan-vidya-prathishthan",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430189",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT POST: DESHALPAR TALUKA: BHUJ DISTRICT:KUTCH\", PIN 370040."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-r-international-school-3",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430190",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARVEL, DHARAMPUR, VALSAD\", PIN 396050."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cygnus-world-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430191",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOTNATH MAHADEV ROAD,HARNI, VADODARA, GUJARAT-390022\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-auro-english-school",
+   "facts": {
+    "city": {
+     "name": "Gondal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430192",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO.BOX NO 1, GUNDALA ROAD, GONDAL.\", PIN 360311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chaitanya-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430193",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"181, VILLAGE LEKAWADA, GANDHINAGAR.\", PIN 382042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-krishna-international-school-gunjan-chharwada-road",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430194",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GUNJAN CHHARWADA ROAD, VAPI, PARDI,VALSAD, GUJARAT\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ssp-international-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430195",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT-PO: NAVLI, TA & DI: ANAND 388355\", PIN 388355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zydus-school-for-excellence",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430196",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 766 & 767 , NEAR VILLAGE GODHAVI, AHMEDABAD 382115\", PIN 382115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmala-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430197",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DR. HEDGEWAR ROAD, RAJKOT - 360007\", PIN 360007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lions-international-academy",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430198",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO H 3223 + 3224/1,GARDEN CITY ROAD, GIDC, ANKLESHWAR, BHARUCH, GUJRAT, 393002\", PIN 393002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajbai-premjibhai-bhavani-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430199",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SATRAWALA UMA VIDYAPITH, ON NH-8, PO. MANKANA, SURAT, GUJARAT-394325\", PIN 394325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "genius-educational-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430200",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANIA-CHALTHAN ROAD, MOHNI, SURAT\", PIN 394210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "i-d-p-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430201",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. MOTERA VILLAGE TAL. DASKOI, AHMEDABAD\", PIN 380005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-ghanshyam-academy",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430204",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KERA ROAD,NARANPAR, TAL. BHUJ, DIST. KUTCH.\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-ashish-world-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430207",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INSIDE STERLING CITY ,BOPAL, DISTT AHMEDABAD, GUJARAT\", PIN 380058."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shreevallabh-sanskar-dhams-smt-shobhaben-pratapbhai-patel-day-boarding-school",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430208",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KILLA-PARDI VALSAD\", PIN 396125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-survey-no-44-1",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430209",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO.44/1,B/H MAHASAGAR PETROL PUMP, JUNAGADH - RAJKOT HIGHWAY , SUKHPUR VILLAGE\", PIN 362310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-international-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430211",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARAI GAM ROAD,SARDAR PATEL RING ROAD,AT.POST- VALAD, GANDHINAGAR\", PIN 382355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baselios-public-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430212",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"13/35, JAWAHAR NAGAR REFINERY TOWNSHIP VADODARA-391320\", PIN 391320."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-simada",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430216",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SIMADA, NR.POLICE CHOKI, PUNAKUMBHARIYA CANAL ROAD, SURAT\", PIN 395010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hanumant-high-school",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430219",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TALGARJARDA, MAHAUVA, GANPATI TEMPLE MAHUVA BHAVNAGAR BYPASS NATIONAL HIGHWAY\", PIN 364290."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430220",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R S NO. 64/1 PAIKI, GANGESHWAR MAHADEV TEMPLE ROAD, MADHAPAR, BHUJ-KUTCH\", PIN 370020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kenalily-school-for-children",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430226",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIA THALTEJ HEBATPUR VILLAGE, AHMEDABAD\", PIN 380059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhaval-straed-world-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430227",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JETPUR SOMNATH HIGHWAY RING ROAD, TATKAL HANUMAN CHOWK, PEDHLA JETPUR, DISTT RAJKOT\", PIN 360370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-parshwanath-park-2",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430229",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PARSHWANATH PARK-2,SURVEY NO. 119, OPP. ASHIRWAD CLUB RESORT, RAJKOT-JAMNAGAR BYPASS, NAGHEDI\", PIN 361006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rmg-maheshwari-english-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430233",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO. 220, VILLAGE - LADVI, NR. KADODARA, TA. KAMREJ, SURAT\", PIN 394325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430234",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJKOT- BHAVNAGAR HIGHWAY, NEAR TRAMBA, KALIPAT, DISTT. RAJKOT, GUJARAT-360020\", PIN 360020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "veer-new-look-central-school",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430235",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BESIDE HDFC BANK, GODHRA ROAD, HALOL PANCHMAHAL\", PIN 389350."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divya-brahmlok-global-academy",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430237",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SHIV - PARAS, BHUJ - MANDVI HIGHWAT, SHUKHPAR\", PIN 370040."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-l-kakadia-national-school",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430239",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARDAR PATEL EDUCATIONAL INSTITUTE, KALVIBID, BHAVNAGAR.\", PIN 364002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-raj-rajeshwari-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430242",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANESHNAGAR, NEAR BHARTI VILLA GARDEN TOWNSHIP, CHHARWADA, VAPI\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-vertej-sitra-road",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430243",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VERTEJ - SITRA ROAD, VERTEJ, BHAVNAGAR.\", PIN 364060."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibrant-international-academy-j-p-patel-high-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430244",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR J.P. PATEL HIGH SCHOOL, KAMREJ, DIST. SURAT, GUJARAT.\", PIN 394180."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rinku-international-school-of-excellence",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430249",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO 108, CANAL ROAD, OFF SURAT KADODARA HWY.\", PIN 394150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-sunshine-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430251",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO.127, MOTA MAHUVA, BEHIND RANGOLI PARK, KALAWAD ROAD, RAJKOT\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-radiant-world-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO. 421-427, OLPAD-DANDI ROAD, NEW NARTHAN TOWN, TA: OLPAD, DIST:SURAT, GUJARAT.\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-survey-no-44-1-2",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430254",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO.44/1,B/H MAHASAGAR PETROL PUMP, JUNAGADH - RAJKOT HIGHWAY , SUKHPUR VILLAGE\", PIN 362310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul-international-school-morbi",
+   "facts": {
+    "city": {
+     "name": "Morbi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430256",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. DHARAMPUR VILLAGE MORBI-MALIYA BYPASS, MORBI.\", PIN 363642."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-mindcrest-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430258",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO 369,VILLAGE-NARTHAN, SURAT DANDI ROAD.\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-paguthan-aldar-road",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430261",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAGUTHAN-ALDAR ROAD, OPP. CLP INDIA, ALDAR, BHARUCH\", PIN 392015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "euro-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO. 283, VILL: KOSMADA, KAMREJ, SURAT, PUNA-KUMBHARIYA CANAL ROAD,\", PIN 394180."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-discovery-school-radhe-shyam-party-plot",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430263",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR RADHE SHYAM PARTY PLOT, HARNI-VIROD RD, HARNI, VADODARA - 390022\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-world-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430264",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. VRINDALAYA RESIDENCY, ABHILASHA CROSS ROAD, TOWARDS CHHANI SAMA CANAL ROAD, VADODARA\", PIN 391740."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prarthana-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430267",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KURALI KARJAN VADODARA\", PIN 391240."
+     }
+    }
+   }
+  },
+  {
+   "slug": "grin-apple-public-school",
+   "facts": {
+    "city": {
+     "name": "Himmatnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430268",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DOLAT VILLAS PALACE, MAHAVIRNAGAR, HIMMATNAGAR\", PIN 383001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-vapi",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430270",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE-TUKWADA, OPP- MRC COMAPNY, NEAR NH-08,VIA VAPI\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dayanand-arya-vedic-public-school",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430271",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO 1 WARD NO 6/A BEHIND RAMBAUG HOSPITAL ADIPUR GANDHIDHAM\", PIN 370205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fatima-convent-public-school-cbse",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430272",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MERUBAG, GHOGHA ROAD BHAVNAGAR\", PIN 364001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-english-medium-school-ramvadi",
+   "facts": {
+    "city": {
+     "name": "Valsad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430273",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMVADI,VALSAD ROAD,DHARAMPUR TA.DHARAMPUR DIST.VALSAD\", PIN 396050."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibrant-international-academy-valetva-dabhou-road",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430278",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VALETVA DABHOU ROAD, AT & PO.CHANGA, TA. PETLAD, DIST. ANAND\", PIN 388421."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gokul-global-school",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430280",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOKUL EDUCATIONAL CAMPUS, OPP. I.O.C., NR. SUJANPUR PATIA, STATE HIGHWAY-41, SIDHPUR-384151, DIST-PATAN, GUJARAT, INDIA\", PIN 384151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apollo-international-school-nirman-high-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430281",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"139, NIRMAN HIGH SCHOOL, B/H. YOGESHWAR NAGAR, OPP. DHARNIDHAR DERASAR, VASNA, AHMEDABAD.\", PIN 380007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "samarpan-gnyan-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430282",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR RATA GRAM PANCHAYAT, RATA SALVAV ROAD, VIA VAPI\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-jamnagar",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430283",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 99, VILLAGE VASAI, RELIANCE JAMNAGAR, HIGHWAY\", PIN 361006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-p-vasani-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430285",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SUYOG-99, OPP.SHYAM KUTIR BUNGALOWS,B/H.RADHEYSHYAM RESIDENCY, OFF. NIKOL-NARODA ROAD,NAVA NARODA, AHMEDABAD (GUJARAT)\", PIN 382345."
+     }
+    }
+   }
+  },
+  {
+   "slug": "v-s-g-international-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430287",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & POST- DHARAGIRI,N.H.NO.-8,GRID, KABILPORE, NAVSARI\", PIN 396424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "savvy-international-school-plot-no-659-660",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430288",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO. 659/660, WARD NO. 12 / C, LILASHAH NAGAR, GANDHIDHAM, ( KUTCH )\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zebar-school-for-children",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430292",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZIS ROAD,B/H COPPER STONE BUILDING ,THALTEJ SHILAJ ROAD,THALTEJ ,AHMEDABAD.\", PIN 380059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-jain-yuvak-mandal-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430298",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR OLD RAILWAY CROSSING, SILVASSA ROAD, VAPI - EAST.\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-indian-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430300",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GLOBAL INDIAN INTERNATIONAL SCHOOL, GODREJ GARDEN CITY, PO – JAGATPUR, S.G. HIGHWAY. AHMEDABAD, GUJARAT.\", PIN 382470."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jay-ambe-international-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430301",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR NARAYANKUNJ VIHAR SOCIETY, NARMADA NAGAR, BHOLAV, BHARUCH.\", PIN 392015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-cmi-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430305",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MERU BAUG, GHOGHA ROAD, BHAVNAGAR\", PIN 364001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vasishtha-genesis-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430307",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. & POST. -BABEN, OPPOSITE AVADH LIFE STYLE, BARDOLI, DISTRICT -SURAT\", PIN 394601."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shantadevi-sitaram-mundra-maheshwari-public-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430310",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO.147 CANAL ROAD VILLAGE LADVI SURAT\", PIN 394325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lakshaya-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430314",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. APPLEWOODS TOWNSHIP,SHANTIPURA CROSS ROAD, SARDAR PATEL RING ROAD, SARKHEJ, AHMEDABAD\", PIN 380058."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-discovery-school-ampad",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430315",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO. 112, VILLAGE AMPAD, SEVASI BHIMPURA CORSS ROAD, VADODARA\", PIN 391101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-vidhyapeeth",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430317",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. FARENI, TA. DHORAJI, DIST. RAJKOT\", PIN 360370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-k-g-dholakiya-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430318",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"K. G. DHOLAKIYA SCHOOL, NEAR BALAJI HALL, 150 RING ROAD, MAVDI, RAJKOT\", PIN 360004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aavishkar-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430319",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR. VADSAR CANAL, OGNAJ CIRCLE, S.P. RING ROAD, SANTEJ, TA. KALOL, DIST. GANDHINAGAR\", PIN 382721."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430320",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VADATAL ROAD, TAQ & DIST. ANAND, PO. BAKAROL-VALLABH VIDYANAGAR PIN 388315, GUJARAT, INDIA\", PIN 388315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dholakiya-international-school",
+   "facts": {
+    "city": {
+     "name": "Gondal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430321",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR. RAMANATHDHAM TEMPLE, UMBALA ROAD, GONDAL\", PIN 360311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-vastral",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430322",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FP NO.781/1, CHANDRAWATI FARM, NR. RAF CAMP, VASTRAL RING ROAD, VASTRAL, AHMEDABAD\", PIN 382418."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-gurukrupa-vidhya-sankul",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430323",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"65/2, NR. MONARCH WORK SHOP, B/H GAYATRI SOCIETY, UDHNA, SURAT\", PIN 394210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radhika-educare-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430324",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR JMC WATER TANK, MAHAPRABHUJI BETHAK ROAD, JAMNAGAR\", PIN 361001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-global-school",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430325",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR KHAMDHROL CHOWKDI, BYPASS ROAD, JUNAGADH\", PIN 362001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-international-school-g-s-t-crossing-ranip",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430327",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR G.S.T.CROSSING RANIP AHMEDABAD\", PIN 382480."
+     }
+    }
+   }
+  },
+  {
+   "slug": "academic-heights-public-school-survey-no-248",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430329",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 248, VILLAGE-SHINAY,TALUKA GANDHIDHAM,DISTT. KUTCH,GUJARAT-370201\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-world-school-vapi",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430331",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MOHAN GAON PHATAK, BEFORE KARAMVELI, MOTI DAMAN ROAD, NAHULI VAPI\", PIN 396105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-green-farm-english-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430334",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJKOT-BHAVNAGAR HIGHWAY, OPP. 66 KV GEB, AT. KASTURBADHAM (TRAMBA), TA./DIST. RAJKOT (GUJARAT)\", PIN 360020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-niketan-sughad",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430335",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIRPORT-GANDHINAGAR ROAD,RAJASTHAN HOSPITAL CIRCLE,SP RING ROAD,B/H SANDESH FARM, SUGADH VILLAGE,GANDHINAGAR\", PIN 382424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cosmos-castle-international-school-green-campus",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430336",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GREEN CAMPUS, SURVEY NO. 684, GODHAVI, BOPAL, AHMEDABAD\", PIN 382110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "p-v-lakhani-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430339",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.V.LAKHANI ENGLISH MEDIUM SCHOOL, LUSVADA, SARIBUJRANG, PO. AMALSAD, TA. GANDEVI, DIST. NAVSARI\", PIN 396310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-niketan-bhadaj",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430341",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR AHMEDABAD DENTAL COLLEGE, BHADAJ, RANCHHODPURA ROAD, SANTEJM T.A.KALOL, DIST.GANDHINAGAR\", PIN 380060."
+     }
+    }
+   }
+  },
+  {
+   "slug": "khyati-world-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430344",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHILAJ-RANCHARDA ROAD,] NEAR NANDOLI BUS STAND, NANDOLI, AHMEDABAD, GUJARAT -382115\", PIN 382115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prarthana-global-school",
+   "facts": {
+    "city": {
+     "name": "Modasa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430345",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST MADAPURKAMPA,A MODASA, DIST ARVALLI GUJARAT-383315\", PIN 383315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-p-modi-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430346",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT POST VASAI, JAMNAGAR-KHAMBHALIYA HIGHWAY, TAL. JAMNAGAR, DIST. JAMNAGAR\", PIN 361006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kalorex-future-school-vadadla-and-114-p",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430349",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"52, VADADLA & 114/P, CHAVAJ, BHARUCH\", PIN 392001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rangoli-international-school-gandhinagar",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430351",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ON GANHINAGAR CHILODA HIGHWAY, BESIDES BSF CAMPUS, ALAMPUR VILLAGE, GANDHINAGAR\", PIN 382042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-vidyalay",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD 10A, DC-2, GURUKUL ROAD, GANDHIDHAM\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-atmiya-shishu-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430354",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"&quot;YOGIDHAM GURUKUL&quot;, KALAWAD ROAD, RAJKOT\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "takshashila-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430355",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO. KUNVARDA, NEAR KIM RIVER BRIDGE, KOSAMBA-KIM ROAD,KOSAMBA,SURAT, GUJARAT.\", PIN 394120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arya-kanya-gurukul-english-medium",
+   "facts": {
+    "city": {
+     "name": "Porbandar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430356",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANAGED BY ARYAKANYA VIDYALAYA TRUST ARYA KANYA GURUKUL TAPOBHUMI, JUBILEE PORBANDAR GUJRAT -360575\", PIN 360575."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ssgm-school-english-medium",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430358",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"490/24, BHUJ-NAKHTRANA HIGHWAY AT POST: MANKUVA, DISTT. BHUJ, GUJARAT-370030\", PIN 370030."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-satya-sai-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430369",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMAR VILAS COMPLEX, PALACE ROAD, JAMNAGAR\", PIN 361008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskaar-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430370",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANSKAAR INTERNATIONAL SCHOOL CAMPUS,NEAR MAYUR GREENS,BEHIND PATEL PARK,RANJIT SAGAR ROAD,JAMNAGAR-361005\", PIN 361005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vishwa-bharti-girls-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430371",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. POST MORTHANA, SIMADI-KOSMADI ROAD, TA. KAMREJ, DIS-SURAT\", PIN 394325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-dham-international-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430373",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO B7,B13/14 B/H RAJMOTI COMPLEX 1 CHARWADA ROAD VAPI GUJARAT PIN- 396191\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-radiant-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430374",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UGAT CANAL, BHESAN ROAD, JAHANGIRABAD, SURAT, GUJARAT -395009\", PIN 395009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430378",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PATAN -UNJHA HIGHWAY NR MRK HEALTH CARE\", PIN 384265."
+     }
+    }
+   }
+  },
+  {
+   "slug": "his-holiness-fariduddin-motamiyan-chishty-public-school-hhfmc-public-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430379",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO.58,OPP.VALAN HOSPITAL, PALEJ-VALAN ROAD, AT&POST-MAKAN TA. KARJAN, DIST. VADODARA\", PIN 392220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-world-school-maneja",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430380",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANEJA ROAD, NEAR MAKARPURA RAILWAY STATION, BEHIND SIEMENS CO. MANEJA, VADODARA\", PIN 390013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-mehsana",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430381",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DPS MEHSANA, KHERPUR ROAD\", PIN 382715."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-global-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430383",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW ERA GLOBAL SCHOOL, SURVERY N0 396(13) OFF RAVAPAR GHUNDA ROAD OFF MORBI RAJKOT HIGHWAY, VIRPAR, MORBI\", PIN 363640."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibrant-waves-international-academy-gyantirth-campus",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430386",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GYANTIRTH CAMPUS, OPP. BARODA CENTRAL CO-OP BANK, BAJWA REFIENRY ROAD, BAJWA\", PIN 391310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-g-k-bharad-vidhyamandir",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430387",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. KASTURBADHAM (TRAMABA), TA. RAJKOT\", PIN 360020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-survey-no-303-1-shinay-gandhidham-mundra-road",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430394",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO 303/1 SHINAY VILLAGE GANDHIDHAM MUNDRA ROAD\", PIN 370205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arpit-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430397",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJKOT MORBI HIGHWAY,\", PIN 363650."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tanna-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Gondal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430401",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GUNDALA ROAD, GONDAL\", PIN 360311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-porbandar",
+   "facts": {
+    "city": {
+     "name": "Porbandar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430402",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND SANDIPANI ASHRAM, PORBANDAR\", PIN 360577."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajkot-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430403",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B/H SHREE RAMJI MANDIR, MORBI ROAD, RATANPAR, RAJKOT\", PIN 360001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-sardar-patel-primary-school",
+   "facts": {
+    "city": {
+     "name": "Surendranagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430404",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANDIPANI SHAIKSHANIK SANKUL, GIRIRAJ PATH, NEAR GIRIRAJ DHAM, SURENDRANAGAR, GUJARAT PIN CODE - 363002\", PIN 363002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-h-b-kapadia-new-high-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430405",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. TIRTH NAGAR VIBHAGI, MEMNAGAR, AHMEDABAD\", PIN 380053."
+     }
+    }
+   }
+  },
+  {
+   "slug": "t-m-patel-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430410",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO. 188, TP SCHEME NO. 1, RATNASAGAR SOCIETY, PIPLOD VESU ROAD, SURAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430411",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP.POLICE STATION NI SAME,SANAND TA:SANAND DIST:AHMEDABAD\", PIN 382110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gangotri-international-school",
+   "facts": {
+    "city": {
+     "name": "Gondal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430412",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. JAMVADI, GONDAL-JETPUR NH-27, GONDAL\", PIN 360311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-academy-2",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430413",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SR. NO.134P/16, OPP. VINAYAK PARTY PLOT, B/H CHRIST COLLAGE, AT VILLAGE VEJAGAM, DIST. RAJKOT (GUJARAT)\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gajera-international-school-utran-power-house",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430415",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UTRAN POWER HOUSE,UTRAN SURAT\", PIN 394107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-niketan-bharuch-campus",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430417",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SR. NO. 184/B, NEAR CHAVAJ CHOWKDI, CHAVAJ PAGUTHAN ROAD, DISTRICT BHARUCH.\", PIN 392015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "countryside-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430420",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT&POST : MALGAMA, NR. BHESAN RAILWAY CROSSING,OPP. SEGVACHHAMA BUS STOP, CIS - BARBODAN ROAD, SURAT-394540\", PIN 394540."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gujarat-public-international-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430421",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LBG CAMPUS BESIDE SUZLON COMPANY AT. & PO. PIPALIYA, TA. WAGHODIA DIST. VADODARA\", PIN 391760."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhagwan-mahavir-international-school-surat",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430422",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SR.NO 149 NEAR VIP ROAD, BEHIND SHYAM MANDIR, VESU-BHARTHANA,SURAT\", PIN 395017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-godhra-dahod-national-highway-and-xd",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430423",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GODHRA-DAHOD NATIONAL HIGHWAY P.O PARAVADI\", PIN 389120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ratnadeep-international-school",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430424",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJMAHAL ROAD,NEAR BHARAT PETROLEUM, DEVGADH BARIA, DIST. DAHOD, GUJARAT\", PIN 389380."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shaishav-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430425",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOTRI - SEVASI ROAD SEVASI VADODARA\", PIN 390021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atmiya-vidyalay",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430426",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BESIDE ATMIYADHAM, NR. AVADHOOT RAILWAY CROSSING, MANJALPUR, VADODARA - 390011, GUJARAT\", PIN 390011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rangoli-international-school",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430427",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMBA CAMPUS, OPP. NAGALPUR COLLEGE, MEHSANA\", PIN 384002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ananda-global-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430432",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR. VASTRAOUR RAILWAY STATION, VEJALPUR, AHMEDABAD NR. VASTRAPUR RAILWAY STATION, VEJALPUR\", PIN 380051."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-surat",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430433",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO.218,SURAT DANDI ROAD,VILLAGE:VELUK, NARTHAN PATIYA, TALUKA: OLPAD, DISTRICT: SURAT-395005 GUJARAT INDIA\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "deep-darshan-vidhya-sankul",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430435",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & PO: DELADAVA, TA: CHORYASI, DIST: SURAT.\", PIN 394210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ankur-school-2",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430438",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FATEHPURA PALDI AHMEDABAD PIN 380007\", PIN 380007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rmps-international-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430442",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"350/1,N.H.N.8,AT:ANDADA, ANKLESHWAR, DIST: BHARUCH\", PIN 393010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-6",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430445",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO. 224, RAIPUR, NARODA - DEHGAM ROAD, T/D : GANDHINAGAR, AHMEDABAD - 382330, GUJARAT\", PIN 382330."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amicus-international-school-khatamba-waghodia-roa",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430446",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"218-B,KHATAMBA WAGHODIA ROA, VADODARA,\", PIN 390019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-jamnagar",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430448",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R.S. NO. 1404/P-1/P-2, NEAR BHAGWANJI KACHRA EDUCATION COMPLEX, AHED OF OSHWAL CIRCLE, INDIRA MARG, JAMNAGAR\", PIN 361004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "l-p-savani-vidhyabhavan",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430449",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B-2 SUNCITY ROW HOUSE, PAL ADAJAN ROAD, ADAJAN -SURAT\", PIN 395009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430450",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & POST DANTEJ, CHHAPRA ROAD, TA. JALALPURE, DIST. NAVSARI\", PIN 396445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "smt-k-n-patel-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430451",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SMT K N PATEL INTERNATIONAL SCHOOL, VODAFONE TOWER LANE, OPP. AGASTYA PARTY LAUNGE GOTA, AHMEDABAD\", PIN 382481."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-s-jhunjhunwala-international-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430452",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE SENTOSA HOME CITY, VAPI-SILVASSA ROAD, NEAR HARIA PARK, P:O-DUNGRA, VAPI\", PIN 396195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sahajanand-international-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430453",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND -SOJITRA ROAD, SOJITRA, DIST: ANAND\", PIN 388460."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-suman-nirmal-minda-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430455",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT.VILLAGE: HATHIPURA, TA : DETROJ - RAMPURA, DIST : AHMEDABAD.\", PIN 382120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jay-jalaram-school",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430457",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GODHRA-DAHOD HIGHWAY CHOKDI, AT. PARAVADI, DAHOD ROAD - 389 001\", PIN 389001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sunrise-global-school-2",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430458",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO. 4, WARD 9/A, NR. DNV COLLEGE, GANDHIDHAM\", PIN 370201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atmiya-green-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430460",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANIBA CAMPUS, NH NO 8, NR. CABLE BRIDGE, ZADESHWAR, BHARUCH\", PIN 392011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharaja-agrasen-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430461",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NO : 467, VILLAGE NARTHAN,JAHANGIRPURA - DANDI ROAD,TALUKA : OLPAD,DIST:SURAT, (GUJARAT) PINCODE : 395005\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "christ-school-prem-mandir-campus",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430463",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PREM MANDIR CAMPUS,P.B NO.1501,KALAWAD ROAD,RAJKOT (GUJARAT) PIN 360005\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tripada-english-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430464",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"K.K NAGAR ROAD, , NEAR MADHUVRUND WATER TANK, MADHUVRUND SOCIETY, GHATLODIA, AHMEDABAD, GUJARAT\", PIN 380061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-valley-school-for-children",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430466",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEKAWADA - DHARAMPUR ROAD, AT & POST : LEKAWADA, TALUKA AND DIST. : GANDHINAGAR\", PIN 382042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-m-goriya-international-school",
+   "facts": {
+    "city": {
+     "name": "Dwarka",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430467",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND AHIR KANYA CHATRALAYAY, DWARKA - KHAMBALIYA HIGHWAY\", PIN 361305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "girnar-public-school",
+   "facts": {
+    "city": {
+     "name": "Junagadh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430468",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"&quot;PUSHPAKUNJ&quot;, COLLEGE ROAD, NEAR MOTI BAUGH, OPPOSITE GIRNAR HEIGHTS, JUNAGADH, 362001, GUJARAT\", PIN 362001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyanmanjari-primary-school",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430469",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT. MALIYA, TA.MAHUVA, DIST.BHAVNAGAR\", PIN 364290."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-discovery-school-halol",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430470",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO: 737/1, DAVDA-KANJARI 2 ROAD, GODHRA HALOL BYPASS, HALOL\", PIN 389350."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430472",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAJAI, NEAR AVKAR HOTEL, RAJKOT - MORBI HIGHWAY, MORBI. GUJARAT\", PIN 363641."
+     }
+    }
+   }
+  },
+  {
+   "slug": "som-lalit-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430474",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HINDU COLONY OPP. SADHANA COLONY NR.SARDAR PATEL STADIUM, NAVRANGPURA, AHMEDABAD.\", PIN 380009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vip-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430478",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MINI NARMADA CANAL, VILLAGE PARDHOL, TA,- DASKROI, AHMEDABAD\", PIN 382330."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishumandir-international-school",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430480",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VERAVAL-JUNAGADH ROAD, BEHIND CHHATRODA WIRELESS STATION, DARI ROAD, VERAVAL\", PIN 362266."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lokpriya-providentia-international-school",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430481",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO 1, NEW JAMNAGAR, OPP. SWAMINARAYAN TEMPLE, AIRPORT ROAD, JAMNAGAR 361006\", PIN 361006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vibgyor-high",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430485",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B/H TGB HOTEL, DUMMAS ROAD, MAGDALLA, SURAT -395007\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "genius-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430486",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. COSMOPLEX CINEMA, KALAWAD ROAD, MOTA MAVA, RAJKOT -360005\", PIN 360005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-revenue-survey-no-484",
+   "facts": {
+    "city": {
+     "name": "Himmatnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430487",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REVENUE SURVEY NO. 484, PALKI BERNA VILLAGE, NEAR SHIVAY BUNGLOW, BRAHMAKUMARI CIRCLE,BERNA ROAD, HIMMATNAGAR\", PIN 383001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-international-school-mehsana",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430490",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEHSANA GUJARAT\", PIN 384002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "somnath-international-school",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430491",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KODINAR - VERAVAL HIGWAY NEAR KODINAR BYPASS\", PIN 362720."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-j-international-school-anand",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430492",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BESIDES S K CINEMA ANAND-LAMBHVEL ROAD LAMBHVEL ANAND\", PIN 387310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-swaminarayan-english-school",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430495",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SWAMINARAYAN GURUKUL KODAY PUL. MANDVI BHUJ HIGHWAY .\", PIN 370465."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nanduba-english-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430496",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GATE NO 3, D.C. PATEL NAVNIRMAN EDUCATIONAL CAMPUS, NEW CITY LIGHT ROAD, BHARTHANA (VASU) SURAT - 395017, GUJARAT\", PIN 395017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baps-swaminarayan-vidyamandir-secondary-girls-residential-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430498",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CITY PULSE CINEMA LANE, KOBA GANDHINAGAR HIGHWAY, RANDESAN ROAD, RANDESAN, GANDHINAGAR\", PIN 382007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarvamangal-g-m-bilakhia-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Amreli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430499",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAVARKUNDLA JESAR ROAD AT.VANDA, TA.SAVARKUNDLA, DIST.AMRELI-364525\", PIN 364525."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-professor-academy-kevadra",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430501",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KESHOD - VERAVAL NATIONAL HIGHWAY BYPASS.\", PIN 362227."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ananya-vidyalaya-kumkum-residency",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430503",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. KUMKUM RESIDENCY, B/H SHYAM BUNGLOWS, CHANDKHEDA (NEW ZUNDAL), TA. DIST. GANDHINAGAR\", PIN 382421."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apollo-international-school-anand-vihar-flat",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430544",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. ANAND VIHAR FLAT, TRAGAD, AHMEDABAD\", PIN 382470."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apollo-international-school-marrygold-circle",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430545",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MARRYGOLD CIRCLE,, GHUMA DASKROI, AHMEDABAD\", PIN 380059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "a-e-s-a-g-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430546",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAVRANGPURA, AHMEDABAD\", PIN 380009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-school-5",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430547",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALAWAD ROAD, RAJKOT\", PIN 360001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-pranlal-chhaganlal-goda-desai-english-school",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430548",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JUNAGADH ROAD JETPUR 360370, DIST RAJKOT(SAURASHTRA) GUJARAT\", PIN 360370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-ganga-english-medium-high-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430550",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHIRI, VAPI\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-kabir-high-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430555",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAVRANGPURA, AHMEDABAD\", PIN 380009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-vapi",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430556",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOPARLI AMBHETI MAIN ROAD, , VILLAGE- KOPARLI, TAL-VAPI.\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "a-b-school",
+   "facts": {
+    "city": {
+     "name": "Navsari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430557",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHAPARA - MOGAR ROAD , NAVSARI\", PIN 396463."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswat-international-academy",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430558",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR. GRAM PANCHAYAT,KOPARLI ROAD,, RATA VAPI,TA.PARDI,DIST. VALSAD\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tlc-gurukul",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430559",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR KALYANESHWAR TEMPLE, VILLAGE GADA, KUKMA HIGHWAY BHUJ\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "crystal-international-school-dhoraji",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430561",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHORAJI, DIST RAJKOT\", PIN 360410."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-veraval",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430564",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOMNATH HIGHWAY ROAD, VERAVAL. 362266\", PIN 362266."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lotus-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430568",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JODHPUR GAM CROSS ROAD, AHMEDABAD-380015\", PIN 380015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navrachana-vidyani-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430570",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAMA ROAD, SAMA VADODARA\", PIN 390008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sumant-jethabhai-patel-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430572",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SANTRAM TEMPLE, AT. KARAMSAD, TA. ANAND, DIST. ANAND\", PIN 388325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-life-international-school",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430573",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GIDC ELECTRONICS ESTATE, SECTOR 25 GANDHINAGAR\", PIN 382024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-ravishankar-vidya-mandir-mandav-road",
+   "facts": {
+    "city": {
+     "name": "Dahod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430574",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANDAV ROAD, DAHOD\", PIN 389151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dar-al-arqam-public-school",
+   "facts": {
+    "city": {
+     "name": "Himmatnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430575",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & POST PANPUR (SAVGADH), TA. HIMMATNAGAR DIST. SABARKANTHA\", PIN 383220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baps-swaminarayan-vidyamandir-2",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430578",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B/H, IOC PETROL PUMP, KOBA -GANDHINAGAR, GANDHINAGAR HIGHWAY ROAD, RAYSAN VILLAGE, GUJARAT - 382007\", PIN 382007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "h3-world-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430581",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUB PLOT 2 & 3, FP NO. 54, TP. NO. 233, TRAGAD, NEAR DUTT PARISAR, TRAGAD GAM RD, AHMEDABAD, GUJARAT\", PIN 382470."
+     }
+    }
+   }
+  },
+  {
+   "slug": "smart-kids",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430583",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO 357/P BECHARAJI ROAD, PALAVASANA, MAHESANA\", PIN 384003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "united-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430584",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FP-45/2, NEAR SOMNATHNAGAR, VASTRAL RTO TO SURYAM GREEN ROAD, VASTRAL,AHMEDABAD\", PIN 382418."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-ldr-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430585",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. MAHER HOMES, VIP ROAD, SOUTH BOPAL, AHMEDABAD\", PIN 380058."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rang-international-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430586",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SKY CITY BUNGALOWS, HANSOT ROAD, , ANKLESHWAR, DIST. BHARUCH, GUJARAT\", PIN 393001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidhyalay",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430587",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASHWANIKUMAR ROAD, SURAT, SURAT\", PIN 395008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ambe-school-harni",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430589",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARNI, , B/H RHYTHM HOSPITAL, , SAMA - HARNI ROAD, VADODARA, GUJARAT, IN\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "crystal-school",
+   "facts": {
+    "city": {
+     "name": "Veraval",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430590",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR CHOKSI COLLEGE, , RAJENDRA BHUVAN ROAD, , VERAVAL\", PIN 362265."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapovan-vatsalyadham-school-english-medium",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430592",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMIYAPUR, POST-SUGHAD, DIST-GANDHINAGAR\", PIN 382424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "riverdale-academy-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430593",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ADAJAN, SURAT, SURAT\", PIN 395009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tapovan-vatsalyadham-school-english-medium-2",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430594",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMIYAPUR, POST-SUGHAD, DIST-GANDHINAGAR\", PIN 382424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shannen-school-suncity-campus",
+   "facts": {
+    "city": {
+     "name": "Godhra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430597",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUNCITY CAMPUS, OLD JYOTI COMPOUND, HALOL GODHRA ROAD, HALOL\", PIN 389350."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-saraswati-vidhyalay",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430601",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO-219, SECTOR 3 B, GANDHINAGAR\", PIN 382006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bmcb-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430602",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CITY SQUARE TOWNSHIP , IN FRONT OF ANCHOR FACTORY, LAKHAND, TA-BHUJ, DIT-KUTCH\", PIN 370105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirman-high-school-havmor-parlour",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430604",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. HAVMOR PARLOUR, SHETH C. G. ROAD, PANCHWATI, AHMEDABAD\", PIN 380006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pathashala",
+   "facts": {
+    "city": {
+     "name": "Bhavnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430607",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 255 P1, NR. SHANIDEV TEMPLE,, B/H SHREE RAM CAR SHOWROOM, , MAHUVA, DIST. BHAVNAGAR\", PIN 364290."
+     }
+    }
+   }
+  },
+  {
+   "slug": "l-p-savani-riverside-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430608",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"L.P. SAVANI ROAD, VED DABHOLI ROAD, SURAT\", PIN 395004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "svp-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430610",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE LAKE VIEW GARDEN, PIPLOD, SURAT\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-international-school-ta-karannagar",
+   "facts": {
+    "city": {
+     "name": "Mehsana",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430611",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TA- KARANNAGAR, TA-KADI, DIST-MAHESANA\", PIN 382715."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-school-of-science",
+   "facts": {
+    "city": {
+     "name": "Palanpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430612",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND SADHIMATA TEMPLE, GATHAMAN ROAD, PALANPUR DIST. BANASKANTHA\", PIN 385001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vande-mataram-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430616",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT-RAYAM, TA-BARDOLI, DIST-SURAT\", PIN 394355."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atharv-public-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430619",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO 145/95, VALRAM VATIKA, CHANOD VAPI\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidyamandir-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Palanpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430621",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SHAKTINAGAR 2, PARNKUTIR CAMPUS, PALANPUR\", PIN 385001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baroda-public-school-sumandeep-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430622",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SUMANDEEP VIDYAPEETH, PIPALIYA TA WAGHODIA, DIST VADODARA\", PIN 391760."
+     }
+    }
+   }
+  },
+  {
+   "slug": "phoenix-international-school-sairang-height",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430623",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. SAIRANG HEIGHT, NEAR UNITED WAY GAR, ATLADARA, VADODARA, VADODARA\", PIN 390012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amrutam-international-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430624",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. ROYAL ARCADE,NR. MARUTI SHINE,, NEW SAHIBAUG NANA CHILODA (NARODA), AHMEDABAD\", PIN 382330."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ved-international-school-nr-prasang-party-plot",
+   "facts": {
+    "city": {
+     "name": "Gandhinagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430626",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NR PRASANG PARTY PLOT, OPP- AASHKA HOSPITAL, SARGASAN , GANDHINAGAR\", PIN 382421."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-bharti-high-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430627",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUMBHARWAD , VAPI, TAL. PARDI, DIST. VALSAD\", PIN 396191."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pioneer-international-school",
+   "facts": {
+    "city": {
+     "name": "Patan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430628",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANASMA HIGHWAY, VILLAGE GOLAPUR, DIST. PATAN\", PIN 384277."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radiant-english-academy-umra-mahadev-temple-nr-umra-ovara",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430629",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UMRA OPP. MAHADEV TEMPLE NR. UMRA OVARA, UMRA SURAT, SURAT CORPO, SURAT CORPORATION\", PIN 395007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyanmudra-innovative-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430630",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"87/B/2, OPP. SILVER STONE VILLA,, NEAR RAILWAY CROSSING,, NARTHAN DANDI ROAD, SURAT - 395005\", PIN 395005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sandipani-podar-learn-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430635",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRAHMIN FALIA, LAVACHHA, TALUKA VAPI\", PIN 396193."
+     }
+    }
+   }
+  },
+  {
+   "slug": "atharv-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430639",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. DINDOLI POLICE STATION, BEHIND D-MART, DINDOLI, SURAT\", PIN 394210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-madhusudan-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430640",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DELADVAGAM, BLOCK NO-94, DELADVAGAM, BH. AMBAJI MATA MANDIR, SHEDHAV ROAD, DELADVAGAM, DINDOLI, SURAT, CHORYASI\", PIN 394210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-diamond-city",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430641",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NATIONAL HIGHWAY 48,, NEXT TO CHOKHI DHANI RESTAURANT,, CHALTHAN, SURAT - 394305\", PIN 394305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rungta-vidya-bhavan",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430645",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ROTARY CLUB, STATION ROAD , BHARUCH\", PIN 392001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "p-p-savani-radiant-english-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430648",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP SMVS SWAMINARAYAN MANDIR, DABHOLI ROAD, SINGANPORE, KATARGAM, SURAT\", PIN 395004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sadguru-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430649",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUR. NO./BLOCK NO.82,, FP-15,TP-25,HANUMANPURA,, WAGHODIA, VADODARA\", PIN 390019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aark-international-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430650",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SHYAM ICON, BHAYALI-SEVASI ROAD, SEVASI,VADODARA\", PIN 391101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-kailash-manas-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430652",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHESTAN-JIAV ROAD, BHESTAN, SURAT.\", PIN 395023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-vashishth-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430653",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KIM KATHODARA, BLOCK NO 167 PAIKI 1, MOJE KIM KATHODARA, TA OLPAD, DI. SURAT, OLPAD, SURAT\", PIN 394185."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apollo-international-school-oxygen-park",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430658",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR OXYGEN PARK, NEW SCIENCE CITY, AHMEDABAD\", PIN 380060."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ryan-international-school-olpad-road",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430659",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLPAD ROAD, VILLAGE MASMA,, TALUKA OLPAD,, MASMA, SURAT\", PIN 394540."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-school-chanod",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430660",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANOD, SHRI DINESH DEVSHI MANDHU CAMPUS, CHANOD COLONY, GIDC, VAPI\", PIN 396195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-green-leaf-resort",
+   "facts": {
+    "city": {
+     "name": "Rajkot",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430661",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP- GREEN LEAF RESORT, GHANTESHWAR, JAMANGAR ROAD, OPP SRP CAMP RAJKOT 360006\", PIN 360006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aryam-educational-academy",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430662",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOLAV-MULAD, KIM VADOLI ROAD, TA-OLPAD, DIST. SURAT 394110\", PIN 394110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ankur-international-school-ashirvad-flora",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430666",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. ASHIRVAD FLORA, NEW MANINAGAR, AHMEDABAD\", PIN 382449."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jyoti-dham-school",
+   "facts": {
+    "city": {
+     "name": "Vapi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430668",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILVASSA ROAD,, VAPI, VALSAD\", PIN 396195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gd-goenka-international-school-survey-no-29-and-30",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430669",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 29 & 30 , VILLAGE ANTARJAL, TALUKA GANDHIDHAM\", PIN 370205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prk-international-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430671",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2/1933, MAJURA GATE, C/O. SMT. DIPIKA & DR. HASMUKHLAL VANKAW, SURAT GUJARAT\", PIN 395002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ankur-international-school-opposite-agarwal-hall-sardar-patel-chowk",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430672",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE AGARWAL HALL SARDAR PATEL CHOWK, KRISHNANAGAR, AHMEDABAD\", PIN 382346."
+     }
+    }
+   }
+  },
+  {
+   "slug": "yagnik-vidhyalaya",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430674",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE PANCHAM PITAMBARA,, NEAR SUEZ PLANT,, CHHANI-SAMA CANAL ROAD, VADODARA\", PIN 391740."
+     }
+    }
+   }
+  },
+  {
+   "slug": "phoenix-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430675",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR UNITED WAY GARBA GROUND, ATLADARA-KALALI ROAD, KALALI, VADODARA\", PIN 390012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ideal-school",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430676",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMBUVA BRIDGE, N. H. NO. 48, MAKARPURA ROAD, VADODARA\", PIN 390014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "agasti-international-school",
+   "facts": {
+    "city": {
+     "name": "Bharuch",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430678",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIVA ROAD, ANKLESHWAR, DIST. BHARUCH\", PIN 393001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sat-krishna-school",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430683",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DASIANA, AT SKH RESIDENCY BLOCK NO.1007, NEAR 121 FEET HANUMANJI IDOL,VIRAMGAM,, GUJARAT,VIRAMGAM AHMEDABAD\", PIN 382150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-new-tulip-international-school-boriavi-road",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430687",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND-BORIAVI ROAD, BORIAVI, ANAND\", PIN 387310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Gandhidham",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430689",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO 144 & 144-P2, GANDHIDHAM-MUNDRA ROAD,, MATHAK\", PIN 370205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-world-school",
+   "facts": {
+    "city": {
+     "name": "Surat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430691",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"T.P. 84, F.P. NO-163, OPP. RIO LUXURIA, KANKUBA CIRCLE, NEW RING ROAD, MOTA VARACHHA, SURAT\", PIN 394101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "phoenix-international-school-harni",
+   "facts": {
+    "city": {
+     "name": "Vadodara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430693",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARNI, BEHIND SUBHAM ELITE, HARNI CANAL ROAD, HARNI, VADODARA, VADODARA CORPORATION\", PIN 390022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "knowledge-kids-school",
+   "facts": {
+    "city": {
+     "name": "Anand",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/430694",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KNOWLEDGE CAMPUS, BAKROL-VADTAL ROAD, BAKROL, ANAND\", PIN 388315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-7",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALACHADI JAMNAGAR GUJARAT\", PIN 361230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-jamnagar",
+   "facts": {
+    "city": {
+     "name": "Jamnagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S JAMNAGAR GUJARAT\", PIN 361003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-shahibagh-c-o-11-inf-div-c-o-56-apo-cantt",
+   "facts": {
+    "city": {
+     "name": "Ahmedabad",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHAHIBAGH C/O 11 INF.DIV C/O 56 APO AHMEDABAD CANTT. GUJARAT\", PIN 380003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-dhrangadhra",
+   "facts": {
+    "city": {
+     "name": "Surendranagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHRANGADHRA DISTT. SURENDRANAGAR GUJARAT\", PIN 363310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-bhuj-kutch-military-stn",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHUJ (KUTCH) MILITARY STN. GUJARAT\", PIN 370001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-air-force-station-2",
+   "facts": {
+    "city": {
+     "name": "Bhuj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/480007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION, KHAVDA ROAD BHUJ KUTCH,GUJARAT,\", PIN 370001."
+     }
+    }
+   }
+  }
+ ]
+}
