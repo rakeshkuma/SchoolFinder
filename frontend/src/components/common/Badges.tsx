@@ -24,7 +24,13 @@ const verificationStyles: Record<VerificationStatus, string> = {
   DISPUTED: 'bg-red-50 text-red-700',
 };
 
-export function VerificationBadge({ status, date }: { status: VerificationStatus; date?: string | null }) {
+/**
+ * A record's verification status. Visitors see only positive or cautionary states (verified, outdated, disputed); a
+ * record not yet checked by an editor shows nothing, since its source is linked beside it. Admin screens pass `admin`
+ * to see every state.
+ */
+export function VerificationBadge({ status, date, admin = false }: { status: VerificationStatus; date?: string | null; admin?: boolean }) {
+  if (status === 'UNVERIFIED' && !admin) return null;
   const title = status === 'VERIFIED' && date ? `Verified on ${formatDate(date)}` : verificationLabel[status];
   return (
     <span className={`chip ${verificationStyles[status]}`} title={title}>

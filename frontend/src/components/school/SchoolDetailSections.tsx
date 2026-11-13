@@ -120,7 +120,7 @@ export function SourcesTab({ school: s }: { school: SchoolDetail }) {
                   <span className={`chip ${r.kind === 'Official' ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-700'}`}>{r.kind}</span>
                 </td>
                 <td className="p-3 text-slate-600">{r.retrieved ? formatDate(r.retrieved) : '—'}</td>
-                <td className="p-3">{r.status ? <VerificationBadge status={r.status} date={r.verified ?? null} /> : '—'}</td>
+                <td className="p-3">{r.status && r.status !== 'UNVERIFIED' ? <VerificationBadge status={r.status} date={r.verified ?? null} /> : '—'}</td>
               </tr>
             ))}
           </tbody>
