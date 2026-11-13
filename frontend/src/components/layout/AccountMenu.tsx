@@ -39,8 +39,8 @@ export function AccountMenu() {
   if (status === 'signedOut' || !account) {
     const here = `${location.pathname}${location.search}`;
     const next = here.startsWith('/signin') ? '/' : here;
-    if (!config) return <span className="inline-block h-9 w-9" aria-hidden />;
-    if (!config.googleSignInEnabled) return <Link to="/signin" className="text-sm font-semibold text-brand-700 hover:underline">Sign in</Link>;
+    // Sign in with Google is the only way in; the button shows once the server confirms Google is configured.
+    if (!config?.googleSignInEnabled) return <span className="inline-block h-9 w-9" aria-hidden />;
     return <GoogleButton next={next} compact />;
   }
 
