@@ -106,7 +106,9 @@ for (const [code, towns] of Object.entries(WANTED)) {
     m.set(d, (m.get(d) ?? 0) + 1);
     districtsAtPin.set(pin, m);
   }
-  const dominantDistrict = (pin) => [...(districtsAtPin.get(pin) ?? [])].sort((a, b) => b[1] - a[1])[0]?.[0] ?? '';
+  // Districts were renamed in some states (Andhra Pradesh, 2022), so older and newer records at one PIN name different
+  // districts; the town's district only has to appear among them.
+  const districtAgrees = (t, pin) => [...(districtsAtPin.get(pin) ?? [])].some(([d]) => t.regexes.some((re) => re.test(d)));
   const isDistrictName = (t) => [...districtNames].some((d) => t.regexes.some((re) => re.test(d)));
   for (const r of recs) {
     const aff = r['Affiliation Number'];
@@ -140,7 +142,7 @@ for (const [code, towns] of Object.entries(WANTED)) {
   for (const [town, byPin] of counts) {
     const t = ordered.find((x) => x.name === town);
     const strong = [...byPin].filter(([pin, cell]) => cell.n >= 2 && commonPrefix(pin)
-      && !(isDistrictName(t) && !t.regexes.some((re) => re.test(dominantDistrict(pin)))));
+      && !(isDistrictName(t) && !districtAgrees(t, pin)));
     const strongTotal = strong.reduce((s, [, cell]) => s + cell.n, 0);
     const byPrefix = new Map();
     for (const [pin, cell] of strong) byPrefix.set(pin.slice(0, 3), (byPrefix.get(pin.slice(0, 3)) ?? 0) + cell.n);
@@ -149,9 +151,11 @@ for (const [code, towns] of Object.entries(WANTED)) {
     const strongPrefixes = new Set(strong.map(([pin]) => pin.slice(0, 3)));
     for (const [pin, cell] of byPin) {
       if (!commonPrefix(pin) || !nearCore(pin)) continue;
-      if (isDistrictName(t) && !t.regexes.some((re) => re.test(dominantDistrict(pin)))) continue;
+      if (isDistrictName(t) && !districtAgrees(t, pin)) continue;
       const confirmed = cell.n >= 2;
-      const vouched = cell.n === 1 && cell.district >= 1 && (strongPrefixes.size === 0 || strongPrefixes.has(pin.slice(0, 3)));
+      // One school is enough when SARAS also lists the town as its district, or when the town already has confirmed
+      // PINs in the same postal prefix (the school names the town; its neighbours with that prefix are confirmed).
+      const vouched = cell.n === 1 && (cell.district >= 1 || strongPrefixes.has(pin.slice(0, 3)));
       if (confirmed || vouched) {
         const prev = claims.get(pin);
         if (!prev || prev.n < cell.n) claims.set(pin, { town, n: cell.n });
