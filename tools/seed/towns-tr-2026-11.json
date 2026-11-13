@@ -1,0 +1,1019 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kunjaban-agartala",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUNJABAN AGARTALA TRIPURA\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-base-complex-agartala",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC BASE COMPLEX AGARTALA TRIPURA\", PIN 799014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kailashahar",
+   "facts": {
+    "city": {
+     "name": "Kailashahar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAILASHAHAR NORTH TRIPURA\", PIN 799277."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-jawahar-nagar",
+   "facts": {
+    "city": {
+     "name": "Ambassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAGAR, AMBASSA, DHALAI, TRIPURA\", PIN 799289."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-gc-crpf",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GC CRPF, ADARANI, SALBAGAN, AGARTALA, TRIPURA (W), TRIPURA\", PIN 799012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bsf-teliamura",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF TELIAMURA, KHASIAMANGAL, BSF CAMPUS, DISTT. KHOWAI, TRIPURA\", PIN 799205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bsf-gokul-nagar",
+   "facts": {
+    "city": {
+     "name": "Bishalgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2000100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHQ BSF GOKUL NAGAR,GATE NO. 2, NEAR ADDL. DISTRICT JUDGE OFFICE, GOKUL NAGAR BISHALGARH\", PIN 799102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-ramachandraghat-khowai",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2040001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMACHANDRAGHAT KHOWAI WEST TRIPURA\", PIN 799207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-kakraban-udaipur",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2040002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- KAKRABAN UDAIPUR SOUTH TRIPURA\", PIN 799105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-and-kherengjuri",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2040004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & PO KHERENGJURI, DHARMANAGAR, NORTH TRIPURA, TRIPURA-799262\", PIN 799262."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-rajnagar",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJNAGAR, PO RAJNAGAR, KHOWAI, DISTT. TRIPURA\", PIN 799207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindi-higher-sec-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ABHOY NAGAR, KUNJAN AGARTALA, TRIPURA\", PIN 799005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhagat-singh-eng-med-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR HIGH COURT BUILDING, AGARTALA\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ambassa-english-medium-model-school",
+   "facts": {
+    "city": {
+     "name": "Ambassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBASSA, NEAR ITI COLLEGE\", PIN 799289."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bodhjung-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020162",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST P.S, P.O AGARTALA\", PIN 799001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharani-tulsibati-girls-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O- AGARTALA, SADAR\", PIN 799001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narsingarh-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIMANGARH, AGARTALA\", PIN 799015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "baidyanath-majumder-smriti-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Kailashahar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020168",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.-SONAMUKHI, KAILASHAHAR\", PIN 799280."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tilabazar-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Kailashahar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TILABAZAR, KAILASHAHAR, UNAKOTI\", PIN 799281."
+     }
+    }
+   }
+  },
+  {
+   "slug": "umakanta-academy-igm-hospital",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020183",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR IGM HOSPITAL, P.O- AGARTALA\", PIN 799001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kulai-class-xii-school",
+   "facts": {
+    "city": {
+     "name": "Ambassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020185",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KULAI, AMBASSA\", PIN 799204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ganganagar-eng-med-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Ambassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020186",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBASSA, DHALAI TRIPURA\", PIN 799289."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kirit-bikram-institution",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020192",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RADHAKISHOREPUR, UDAIPUR\", PIN 799120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "surjyamaninagar-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Bishalgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020198",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AGARTALA BISHALGARH ROAD, P.O.- TRIPURA UNIVERSITY COMPLEX\", PIN 799022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "acharya-prafulla-chandra-roy-smriti-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020199",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NCC, AGARTALA TRIPURA WEST\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "champaknagar-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020201",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JIRANIA, NEAR ASSAM AGARTALA ROAD\", PIN 799045."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bir-bikram-institution",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020204",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO DHARMANAGR, PS DHARMANAGAR\", PIN 799250."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nayapara-english-medium-h-s-2-stage-school",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020205",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARMANAGAR, NORTH TRIPURA\", PIN 799250."
+     }
+    }
+   }
+  },
+  {
+   "slug": "melaghar-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Sonamura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020207",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR NETAJI CORNER, SUB-DIV - SONAMURA\", PIN 799115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srinagar-hs-school",
+   "facts": {
+    "city": {
+     "name": "Sabroom",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020208",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANUBAZAR, SABROOM\", PIN 799143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "barpathari-hs-school",
+   "facts": {
+    "city": {
+     "name": "Belonia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020211",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELONIA, SOUTH TRIPURA\", PIN 799155."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chandrapur-colony-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020213",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UDAIPUR, TRIPURA\", PIN 799013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manu-bankul-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Sabroom",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020214",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. - BISHNUPUR, P.S - SABROOM\", PIN 799143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hrishyamukh-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Belonia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020215",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HRISHYAMUKH R D BLOCK, BELONIA\", PIN 799156."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajnagar-colony-hs-school",
+   "facts": {
+    "city": {
+     "name": "Belonia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020217",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELONIA, , SOUTH TRIPURA\", PIN 799150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhagini-nivedita-english-medium-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020218",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR VIBEK SANGHA, UDAIPUR\", PIN 799120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "padmapur-h-s-2-stage-school",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020219",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARMANAGAR, NEAR SATSANGA ASHRAM\", PIN 799250."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maiganga-sukanta-class-xii-school",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020223",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHOWAI TRIPURA, NEAR MAIGANGA GRAM PANCHAYET\", PIN 799205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-paharpur-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Sonamura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020225",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOUTH PAHARPUR, SONAMURA\", PIN 799131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tulashikhar-rajnagar-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020230",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. RAJNAGAR, KHOWAI, PIN 799207\", PIN 799207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brajendra-kishore-institution",
+   "facts": {
+    "city": {
+     "name": "Belonia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020231",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELONIA, SOUTH TRIPURA\", PIN 799155."
+     }
+    }
+   }
+  },
+  {
+   "slug": "garjee-bazar-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020234",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PURBA GARJEECHARA, UDAIPUR\", PIN 799125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "matai-hs-school",
+   "facts": {
+    "city": {
+     "name": "Belonia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020237",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELONIA, SOUTH TRIPURA\", PIN 799155."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pitra-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020238",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PITRA,UDAIPUR,GOMATI,TRIPURA, PITRA,UDAIPUR,GOMATI,TRIPURA\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bamanchara-english-medium-hs-school",
+   "facts": {
+    "city": {
+     "name": "Ambassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020239",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAMALPUR, AMBASSA\", PIN 799286."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srirampur-sm-hs-school",
+   "facts": {
+    "city": {
+     "name": "Kailashahar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020244",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAILASHAHAR, NEAR TEHSIL OFFICE\", PIN 799277."
+     }
+    }
+   }
+  },
+  {
+   "slug": "huplongcherra-tea-estate-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020247",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARMANAGAR, NORTH TRIPIURA\", PIN 799254."
+     }
+    }
+   }
+  },
+  {
+   "slug": "madhupur-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Bishalgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020248",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BISHALGARH, SEPAHIJALA\", PIN 799102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "belabar-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020250",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- S.D. MISSION, AGARTALA, TRIPURA (WEST)\", PIN 799003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hariananda-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UDAIPUR, GOMATI TRIPURA\", PIN 799120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "durlavnarayan-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Sonamura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020254",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PS-SONAMURA, , PIN-799115\", PIN 799115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-b-r-ambedkar-vidya-bhaban",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020256",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AGARTALA, NEAR SHIB MANDIR\", PIN 799004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-killa",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020257",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUBDIVISION- UDAIPUR, , LANDMARK- NEAR KILLA BAZAR\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-mungiakami",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020261",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL- AKHRABARI, PO- AKHRABARI, PS- KHOWAI\", PIN 799207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-padmabil",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL- AKHRABARI, PO- AKHRABARI, PS- KHOWAI, BLOCK- PADMABIL RD BLOCK\", PIN 799207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-rupaichari",
+   "facts": {
+    "city": {
+     "name": "Sabroom",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2020263",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST LUDHUA , NEAR LUDHUA TEA FACTORY, SABROOM\", PIN 799145."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhavans-tripura-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARSINGARH PO BIMANGARH AGARTALA TRIPURA\", PIN 799015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pranavananda-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANCHAN PALLI BADHARGHAT PO NTPC WEST TRIPURA AGARTALA\", PIN 799014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-via-kunjaban-agartala",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIA KUNJABAN AGARTALA, DISTT WEST TRIPURA, TRIPURA-799006\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-dhajanagar-gokulpur-udaipur",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHAJANAGAR GOKULPUR UDAIPUR TRIPURA SOUTH TRIPURA\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "auxilium-girls-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIA KUNJABAN BANKUMARI AGARTALA 799006\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "garia-academy-model",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GARIA HATHAI, ATHARABLA, P.O: MANIKYA, P.S: KILLA, SUB-DIVISION: UDAIPUR, DISTRICT: SOUTH TRIPURA, PIN: 799114\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhamma-dipa-school",
+   "facts": {
+    "city": {
+     "name": "Sabroom",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BISHNUPUR, MANU BANKUL, SABROOM, SOUTH TRIPURA\", PIN 799143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-ravishankar-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.AGARTALA AIRPORT VILLAGE-DIGHALIA, PATUNAGAR PANCHYET\", PIN 799009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-dhananjoy-das-kathia-baba-mission-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"10,JAIL ROAD,MATH CHOWMUHANI,P.O DHALESHWAR,AGARTALA,TRIPURA(WEST) PIN:-799007,INDIA\", PIN 799007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brilliant-stars-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST DHAJANAGAR, GOKULPUR, UDAIPUR, GOMATI\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-agartala-international-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANMARI EAST PRIYA TILLA AGARTALA\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-johns-high-school",
+   "facts": {
+    "city": {
+     "name": "Udaipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIO, RAIYA BARI (PO), KILLA (PS), UDAIPUR, GOMATI TRIPURA.\", PIN 799114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-baijalbari",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAIJALBARI, KHOWAI RAMCHANDRAGHAT\", PIN 799201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "siksha-bhavan-montessori-school",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MISSION ROAD DHARMANAGAR NORTH TRIPURA\", PIN 799250."
+     }
+    }
+   }
+  },
+  {
+   "slug": "notre-dame-holy-cross-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHARPARA, NORTH PULINPUR, TELIAMURA, KHOWAI TRIPURA\", PIN 799205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ananda-marga-school-2",
+   "facts": {
+    "city": {
+     "name": "Bishalgarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BISHALGARH\", PIN 799102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-de-sales-school",
+   "facts": {
+    "city": {
+     "name": "Sabroom",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SINDUKPATHAR; PO- SINDUKPATHAR;SABROOM; PIN-799143\", PIN 799143."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bethany-school",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLD AGARTALA, TRIPURA\", PIN 799008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pranavananda-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Dharmanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HURUA, DHARMANAGAR\", PIN 799253."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ananda-marga-high-school",
+   "facts": {
+    "city": {
+     "name": "Khowai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2030155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TELIAMURA , TELIAMURA , KHOWAI\", PIN 799205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-11-assam-rifles-c-o-99-apo-assam-rifles",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2080002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"11 ASSAM RIFLES C/O 99 APO ASSAM RIFLES COMPLEX AGARTALA TRIPURA\", PIN 799006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-21",
+   "facts": {
+    "city": {
+     "name": "Agartala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2080004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O STATION HEAD QUARTER, ARMY MILETARY STATION, ONC TILLA, LICHU, VAGAN, AGARTALA, TRIPURA\", PIN 799010."
+     }
+    }
+   }
+  }
+ ]
+}

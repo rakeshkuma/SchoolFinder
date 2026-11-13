@@ -1,0 +1,4321 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-jakhoo-hills-shimla",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAKHOO HILLS SHIMLA HIMACHAL PRADESH\", PIN 171002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-yol",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YOL CANTT KANGRA HIMACHAL PRADESH\", PIN 176052."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-holta-camp-palampur",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOLTA CAMP PALAMPUR , DISTT KANGRA, HIMACHAL PRADESH\", PIN 176001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-subathu",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"14 GTC SUBATHU SOLAN DISTT HIMACHAL PRADESH\", PIN 173206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-dharamsala-cantt",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARAMSALA CANTT KANGRA DISTT HIMACHAL PRADESH\", PIN 176216."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bakloh-cantt",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAKLOH CANTT, DISTT CHAMBA, HIMACHAL PRADESH\", PIN 176301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-banikhet",
+   "facts": {
+    "city": {
+     "name": "Dalhousie",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DALHOUSIE AT BANIKHET DISTT CHAMBA HIMACHAL PRADESH\", PIN 176303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-hamirpur",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAMIRPUR HIMACHAL PRADESH\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-a-f-s-kasauli",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S KASAULI, DISTT SOLAN HIMACHAL PRADESH\", PIN 173204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bhanala-shahpur",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHANALA (SHAHPUR) DISTT. KANGRA HIMACHAL PRADESH\", PIN 176206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-khaliar-jawahar-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHALIAR JAWAHAR NAGAR DISTT. MANDI HIMACHAL PRADESH\", PIN 175001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-jutogh-cantt",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JUTOGH CANTT SHIMLA HIMACHAL PRADESH\", PIN 171008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-chamera-nhpc-khairi",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHAMERA NHPC KHAIRI CHAMBA HIMACHAL PRADESH\", PIN 176325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-alhilal-cantt",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALHILAL CANTT, P O TARAGARH DISTT KANGRA HIMACHAL PRADESH\", PIN 176081."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-itbp-sarahan",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ITBP SARAHAN SHIMLA DISTT HIMACHAL PRADESH HIMACHAL PRADESH\", PIN 172034."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-naleti-dehra",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NALETI TEH. DEHRA, DISTT. KANGRA HIMACHAL PRADESH\", PIN 177104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-nadaun",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NADAUN DISTT HAMIRPUR HIMACHAL PRADESH\", PIN 177033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-reckong-peo-kinnur",
+   "facts": {
+    "city": {
+     "name": "Reckong Peo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RECKONG PEO DISTT KINNUR HIMACHAL PRADESH\", PIN 172107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-no-2-nhpc-chamera-karian-hardaspura",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NHPC CHAMERA KARIAN PO HARDASPURA DISTT CHAMBA HIMACHAL PRADESH\", PIN 176310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-nhpc-phep-sainj",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NHPC (PHEP) SAINJ KULLU HIMACHAL PRADESH\", PIN 175134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-keylong-lahaul-and-spiti",
+   "facts": {
+    "city": {
+     "name": "Keylong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KEYLONG. DISTT. LAHAUL & SPITI, HIMACHAL PRADESH\", PIN 175132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bangana",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/600023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANGANA, DISTT. UNA, HIMACHAL PRADESH\", PIN 174307."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-pekhubela",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PEKHUBELA DISTT UNA HIMACHAL PRADESH\", PIN 174808."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-theog",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THEOG DISTT SHIMLA HIMACHAL PRADESH\", PIN 171201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-pandoh",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANDOH MANDI DISTT HIMACHAL PRADESH\", PIN 175124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-nahan-sirmour",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHAN DISTT SIRMOUR HIMACHAL PRADESH\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-sarol",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAROL DISTT CHAMBA HIMACHAL PRADESH\", PIN 176310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-paprola",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAPROLA DISTT KANGRA HIMACHAL PRADESH\", PIN 176115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-rekong-peo",
+   "facts": {
+    "city": {
+     "name": "Reckong Peo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REKONG PEO DISTT KINNAUR HIMACHAL PRADESH\", PIN 172107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-dungrin",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DUNGRIN DISTT HAMIRPUR HIMACHAL PRADESH\", PIN 176045."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-kothipura",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTHIPURA DISTT BILASPUR HIMACHAL PRADESH\", PIN 174001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-kunihar-jubla",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.KUNIHAR JUBLA DISTT. SOLAN HIMACHAL PRADESH\", PIN 173207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-bandrol",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/640012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANDROL, DIST KULLU, HIMACHAL PRADESH\", PIN 175128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-pangi",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KILLAR TEHSIL PANGI DISTRICT CHAMBA (HP)\", PIN 176323."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-bharmour",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO - KHANI, TEHSIL -BHARMOUR DISTRICT - CHAMBA (HP)\", PIN 176309."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-bsl-sr-sec-school-pandoh",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANDOH, DISTT MANDI\", PIN 175124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-bsl-sr-sec-school-sunder-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUNDER NAGAR, DISTT MANDI\", PIN 174402."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-bsl-sr-sec-school-slapper",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SLAPPER, DISTT MANDI\", PIN 174402."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-shaheed-capt-mridul-sharma-gsss-boys-hamirpur",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620250",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO HAMIRPUR, TEHSIL HAMIRPUR, DISTT HAMIRPUR\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-bhawarna",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620251",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BHAWARNA , POST OFFICE BHAWARNA, TEHSIL PALAMPUR\", PIN 176083."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-sihunta",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE SIHUNTA, TEHSIL SIHUNTA, DISTRICT CHAMBA\", PIN 176207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-gmsss-sunni",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620255",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NUMBER -03, P.O.-SUNNI,, TEHSIL-SUNNI, DISTT-SHIMLA\", PIN 171301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-sarkaghat",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620258",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST OFFICE SARKAGHAT, TEHSIL SARKAGHAT, MANDI\", PIN 175024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gsss-karot",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620261",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO - KAROT, TEHSIL - SUJANPUR, DISTT. HAMIRPUR\", PIN 176108."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dsm-gsss-bara",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO BARA , TEHSIL NADAUN, DISTRICT HAMIRPUR\", PIN 177044."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-girls-senior-secondary-school-portmore-shimla-h-p",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620265",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PORTMORE EAST SHIMLA-1, PORTMORE EAST SHIMLA-1, PORTMORE EAST SHIMLA-1\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-boys-senior-secondary-school-paonta-sahib",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620266",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO 4, TARUWALA, PAONTA SAHIB\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-utkrisht-senior-secondary-school-haroli",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620267",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST OFFICE HAROLI, TEHSIL HAROLI, DISTRICT UNA\", PIN 177220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-girls-senior-secondary-school-mandi",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620268",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAMKHETAR BAZAAR, POST OFFICE MANDI, TEHSIL SADAR\", PIN 175001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-boys-senior-secondary-school-rohru",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620270",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO 6 GANGTOLI , ROHRU, SHIMLA\", PIN 171207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-girls-senior-secondary-school-joginder-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620276",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVERNMENT MODEL(GIRLS) SENIOR SECONDARY, JOGINDERNAGAR PO & TEHSIL JOGINDER NAGAR, DISTT MANDI PINCODE 175015\", PIN 175015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-girls-senior-secondary-school-sunder-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620278",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO SUNDER NAGAR, TEHSIL SUNDER NAGAR DISTT. MANDI, NEAR JAWAHAR PARK SUNDER NAGAR\", PIN 175002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-goverenment-girls-utkrisht-senior-secondary-school-theog",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620281",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE THEOG , NEAR NEW BUS STAND THEOG, TEHSIL THEOG DISRTICT SHIMLA\", PIN 171201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-manali",
+   "facts": {
+    "city": {
+     "name": "Manali",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620282",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR LADY WILLINDON HOSPITAL MANALI, POST OFFICE MANALI , DISTRICT KULLU\", PIN 175131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-utkrisht-senior-secondary-school-baldeyan",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620284",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVERNMENT UTKRISHT SENIOR SECONDARY , SCHOOL , BALDEYAN , SHIMLA PINCODE 171015\", PIN 171015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-girls-senior-secondary-school-chamba",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620287",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHALLA - CHOUNTRA, TEHSIL- CHAMBA, CHAMBA\", PIN 176310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-utkrisht-senior-secondary-school-keylong",
+   "facts": {
+    "city": {
+     "name": "Keylong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620291",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE KEYLONG, TEHSIL LAHAUL, DISTRICT LAHAUL AND SPITI\", PIN 175132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-ghanahatti",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620292",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE GHANAHATTI(PADECH), TEHSIL SHIMLA, DISTRICT SHIMLA-171014\", PIN 171014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-senior-secondary-school-kihar",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620294",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KIHAR , TEH SALOONI, DISTT. CHAMBA\", PIN 176320."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-nagrota-surian",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620296",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO NAGROTA SURIAN, TEHSIL NAGROTA SURIAN, DISTRICT KANGRA\", PIN 176027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-ma-gsss-bilaspur",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620297",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROURA SECTOR 2 BILASPUR, BILASPUR, BILASPUR\", PIN 174001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gsss-palampur",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620300",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAM CHOWK ,WARD NO. 12, PO PALAMPUR, TEHSIL PALAMPUR\", PIN 176061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "veer-chakra-shaheed-shyam-singh-bhikhta-govt-sen-sec-school-nerwa",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620301",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO NERWA DISTT SHIMLA H.P, DISTT SHIMLA H.P, DISTT SHIMLA H.P\", PIN 171210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-tissa",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620302",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO BHANJRARU , TEHSIL CHURAH , DISTRICT CHAMBA\", PIN 176316."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-boys-senior-secondary-school-shimla-01-lalpani",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620306",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELOW DEPARTMENT OF SCHOOL EDUCATION, LALPANI, SHIMLA\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-senior-secondary-school-kandbari",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620307",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O KAMLEHAR, TEHSIL PALAMPUR, PALAMPUR\", PIN 176061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-new-kangra",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620309",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MC KANGRA, PO KANGRA, TEHSIL KANGRA\", PIN 176001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-amb",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620314",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO AMB, TEHSIL AMB, DISTRICT UNA\", PIN 177203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shaheed-subedar-sanjiv-kumar-gsss-hatwar",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620315",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST OFFICE HATWAR DISTT. BILASPUR HP, GHUMARWIN, BILASPUR\", PIN 174028."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-boys-senior-secondary-school-nalagarh",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620316",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO. 1 TEHSIL NALAGARH , DISTRICT SOLAN, HIMACHAL PRADESH\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-gsss-reckong-peo",
+   "facts": {
+    "city": {
+     "name": "Reckong Peo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620319",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE RECKONG PEO, TEHSIL KALPA, DISTRICT KINNAUR\", PIN 172107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sjm-gsss-sohari",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620320",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOHARI, TEHSIL DHATWAL, DISTT HAMIRPUR\", PIN 174311."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-panarsa",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620321",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PM SHRI GOVERNMENT SECONDARY SCHOOL, PANARSA DISTT MANDI, HP PINCODE 175121\", PIN 175121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-boys-senior-secondary-school-una",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620322",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MC OFFICE, UNA, DISTT UNA\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gsss-jukhala",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620326",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO JUKHALA, TEH SADAR , DISTT BILASPUR\", PIN 174033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-girls-senior-secondary-school-dharamshala",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620327",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PM SHRI GOVERNMENT (GIRLS) SENIOR , SECONDARY SCHOOL DHARAMSHALA , DISTT KANGRA PINCODE 176215\", PIN 176215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gmsss-mamligh",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620328",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO MAMLIGH, TEHSIL KANDAGHAT, DISTT SOLAN\", PIN 173222."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-jawali",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620329",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL JAWALI, DISTRICT KANGRA, HIMACHAL PRADESH\", PIN 176023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-boys-senior-secondary-school-solan",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620332",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TANK RAOD , WARD NO. 9, TEHSIL SOLAN\", PIN 173212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-girls-senior-secondary-school-kullu",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620336",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE SULTANPUR, POST OFFICE SULTANPUR, TEHSIL KULLU\", PIN 175101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gusss-chhota-shimla",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620338",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SDA COMPLEX, KASUMPTI , SHIMLA, SHIMLA, SHIMLA\", PIN 171009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-girls-senior-secondary-school-uchagaon-kunihar",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620339",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE UNCHAGAON PO KUNIHAR , TEHSIL ARKI DISTT SOLAN, HP\", PIN 173207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-girls-senior-secondary-school-nahan",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620341",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO NAHAN, OPPOSITE POST OFFICE, TEHSIL NAHAN\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-model-senior-secondary-school-dehra",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620342",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO DEHRA, TEHSIL DEHRA, DISTRICT KANGRA\", PIN 177101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-senior-secondary-school-bharoli-kohala",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620347",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO KOHALA, TEHSIL JAWALAMUKHI, DISTRICT KANGRA\", PIN 176036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-bhareri",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO BHARERI , TEHSIL BHORANJ, DISTRICT HAMIRPUR (HP)\", PIN 177024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-utkrisht-senior-secondary-school-deha-balson",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620357",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO DEHA , SUB TEHSIL DEHA, DISTRICT SHIMLA\", PIN 171220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-govt-senior-secondary-school-kupvi",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620366",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KUPVI DISTT SHIMLA HIMACHAL PRADESH , VPO KUPVI DISTT SHIMLA HIMACHAL PRADESH , VPO KUPVI DISTT SHIMLA HIMACHAL PRADESH\", PIN 171217."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-senior-secondary-school-baroh",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620367",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO-BAROH, TEH-BAROH, KANGRA\", PIN 176054."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-jblk-gusss-kumarsain",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620368",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KUMARSAIN, TEHSIL KUMARSAIN, DISTT SHIMLA\", PIN 172029."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-dhundan",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620369",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO DHUNDAN, TEHSIL ARKI, DISTRICT SOLAN\", PIN 173235."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-badaran",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620371",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BADARAN POST OFFICE JHALLAN, TEHSIL NADAUN, DISTRICT HAMIRPUR\", PIN 177301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-utkrishat-senior-secondary-school-jhakri",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620373",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO JHAKRI TEHSIL RAMPUR BUSHAHR, DISTRICT SHIMLA, HIMACHAL PRADESH\", PIN 172201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-shoghi",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620374",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO SHOGHI, TEHSIL SHIMLA, SHIMLA\", PIN 171219."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gsss-kakira",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620377",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KAKIRA , TEH BHATTIYAT , DISTT CHAMBA\", PIN 176313."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-government-senior-secondary-school-chauntra",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620382",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO CHAUNTRA, TEHSIL JOGINDER NAGAR, MANDI\", PIN 175032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-kotla",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620384",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KOTLA, TEHSIL JAWALI, DISTRICT KANGRA\", PIN 176205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-model-senior-secondary-school-amboya",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620392",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL AMBOYA, POST OFFICE - RAJPUR, TEHSIL - PAONTA SAHIB\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cm-excellence-government-senior-secondary-school-panjgain",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/620397",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE & POST OFFICE PANJGAIN , TEHSIL SADAR, DISTT BILASPUR\", PIN 174012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dalhousie-public-school",
+   "facts": {
+    "city": {
+     "name": "Dalhousie",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DALHOUSIE HIMACHAL PRADESH\", PIN 176304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-bsps-surangani",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURANGANI CHAMBA DISTT HIMACHAL PRADESH\", PIN 176317."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-l-govt-sr-sec-modal-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSL PROJECT SUNDAR NAGAR, TOWNSHIP, DISTT. MANDI, HIMACHAL PRADESH\", PIN 174402."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tibetan-children-s-village-school-dharamsala-cantt",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARAMSALA CANTT KANGRA DISTT HIMACHAL PRADESH\", PIN 176216."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-luke-s-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOLAN HIMACHAL PRADESH\", PIN 173212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lawrence-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANAWAR KASAULI SOLAN DISTT HIMACHAL PRADESH\", PIN 173202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-high-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUNDER NAGAR MANDI DISTT HIMACHAL PRADESH\", PIN 174401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-acc-gagal-cement-works-barmana",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ACC GAGAL CEMENT WORKS BARMANA BILASPUR DISTT HIMACHAL PRADESH\", PIN 174013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-nahan-sirmour",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHAN SIRMOUR DISTT HIMACHAL PRADESH\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tibetans-chidren-s-village-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHUNYARA ROAD LOWER DHARAMSALA HIMACHAL PRADESH\", PIN 176215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-palampur",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALAMPUR DISTT.KANGRA HIMACHAL PRADESH\", PIN 176061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-sirmour-public-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAONTA SAHIB, DISTT SIRMOUR, HIMACHAL PRADESH\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-mission-public-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAONTA SAHIB, DISTT SIRMOUR, HIMACHAL PRADESH\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-centenary-public-school-jawahar-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAGAR MANDI HIMACHAL PRADESH\", PIN 175001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANGRA HIMACHAL PRADESH\", PIN 176001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dalhousie-hill-top-school",
+   "facts": {
+    "city": {
+     "name": "Dalhousie",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UPPER BAKROTA DALHOUSIE , DISTT CHAMBA, HIMACHAL PRADESH\", PIN 176304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-centenary-public-school-affiliated-subject-to-outcome-of-w-p-c-7043-of-2018",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UNA HIMACHAL PRADESH\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dayanand-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THE MALL SHIMLA HIMACHAL PRADESH\", PIN 171003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "i-b-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARWANA YOL CAMP, DHARMSHALA, DISTT KANGRA HIMACHAL PRADESH\", PIN 176052."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-phase-ii-sector-iv",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHASE II SECTOR IV NEW SHIMLA HIMACHAL PRADESH\", PIN 171009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mehr-chand-mahajan-d-a-v-senior-secondary-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGHNI NURPUR DISTT. KANGRA HIMACHAL PRADESH\", PIN 176202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sambhota-tibetan-school-bhuppar-paonta-sahib-sirmour",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHUPPAR P.O. PAONTA SAHIB DISTT. SIRMOUR HIMACHAL PRADESH\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-partap-gali",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PARTAP GALI HAMIRPUR HIMACHAL PRADESH\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-sr-sec-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEHRA GOPIPUR DISTT KANGRA HIMACHAL PRADESH\", PIN 177101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chinmaya-vidyalaya-2",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DR Y S PARMAR UNIV.OF HORTI & FORESTRY NAUNI SOLAN HIMACHAL PRADESH\", PIN 173230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-r-a-d-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BY PASS ROAD SOLAN HIMACHAL PRADESH\", PIN 173213."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pinegrove-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KASAULI ROAD DHARAMPUR DISTT:- SOLAN HIMACHAL PRADESH\", PIN 173209."
+     }
+    }
+   }
+  },
+  {
+   "slug": "laureate-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRANCE PETH BHARARI SHIMLA HIMACHAL PRADESH\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-sjvn-public-school-duttnagar",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DUTTNAGAR, RAMPUR DISTT SHIMLA, HIMACHAL PRADESH-172001\", PIN 172001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-devi-chand-d-a-v-public-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHAL DISTT KULLU HIMACHAL PRADESH\", PIN 175126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-rehan-nurpur",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REHAN DISTT KANGRA TEH NURPUR HIMACHAL PRADESH\", PIN 176022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-n-j-p-c-jhakri-rampur-bushar",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N J P C JHAKRI RAMPUR BUSHAR DISTT. SHIMLA HIMACHAL PRADESH\", PIN 172201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-bilaspur",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BILASPUR HIMACHAL PRADESH\", PIN 174001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "padamshree-n-n-mohan-geeta-adarsh-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THODO GROUND SOLAN HIMACHAL PRADESH\", PIN 173212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhagirathi-dass-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHARAMSHALA DISTT. KANGRA HIMACHAL PRADESH\", PIN 176215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aadhunik-public-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SIDHBARI DHARAMSHALA HIMACHAL PRADESH\", PIN 176057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eicher-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALKA SHIMLA ROAD SECTOR-6 PARWANOO, DISTT SOLAN, HIMACHAL PRADESH\", PIN 173220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-ambota-dt",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBOTA DT.UNA HIMACHAL PRADESH\", PIN 177205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-alampur-the-jaisinghpur",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALAMPUR THE. JAISINGHPUR DISTT. KANGRA, HIMACHAL PRADESH\", PIN 176082."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-senior-secondary-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAKKAR BAZAR SHIMLA, HIMACHAL PRADESH\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-sharma-d-a-v-centenary-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUMARHATTI DISTT. SOLAN HIMACHAL PRADESH\", PIN 173229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hill-grove-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHEETAL KUNJ ESTATE BRANCH PO KAMLA NAGAR SANJAULI SHIMLA, HIMACHAL PRADESH\", PIN 171006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarvhitkari-shiksha-niketan",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUMARHATTI SOLAN BYE-PASS DISTT.SOLAN HIMACHAL PRADESH\", PIN 173229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-k-t-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GIRI HILLS K T S P O BOX 25 SOLAN HIMACHAL PRADESH\", PIN 173212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pine-grove-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUTHAR ROAD SUBATHU DISTT SOLAN HIMACHAL PRADESH\", PIN 173206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sos-tibetan-children-s-village-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOPALPUR VILLAGE DARATI PO CHACHIAN DISTT KANGRA HIMACHAL PRADESH\", PIN 176059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-hadimba-road-manali",
+   "facts": {
+    "city": {
+     "name": "Manali",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HADIMBA ROAD MANALI KULLU HIMACHAL PRADESH\", PIN 175131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-l-central-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAMROG SHAMTI DISTT SOLAN HIMACHAL PRADESH\", PIN 173212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chapslee-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ELYSIUM HILL SHIMLA HIMACHAL PRADESH\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-public-school-bus-stop-gpo-road-dalhousie",
+   "facts": {
+    "city": {
+     "name": "Dalhousie",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BUS STOP GPO ROAD DALHOUSIE HIMACHAL PRADESH\", PIN 176304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-i-a-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INDUSTRIAL AREA MEHATPUR DISTT UNA HIMACHAL PRADESH\", PIN 174315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-sector-1-parwanoo",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 1 PARWANOO, DISTT SOLAN, HIMACHAL PRADESH\", PIN 173220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-greoh-kango-ka-gehra-sarkghat",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GREOH PO KANGO KA GEHRA SARKGHAT MANDI HIMACHAL PRADESH\", PIN 175024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-centenary-public-school-rekong-peo",
+   "facts": {
+    "city": {
+     "name": "Reckong Peo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REKONG PEO DISTT KINNAUR HIMACHAL PRADESH\", PIN 172107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-centenary-public-school-kotkhai",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT KOTKHAI SHIMLA HIMACHAL PRADESH\", PIN 171002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-valley-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PT SHIVANAND RAMAUL COMPLEX F EDUCATION & CULTURE BHATTANWALI PAONTA SAHIB, DISTT SIRMOUR, HIMACHAL PRADESH\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tibetan-children-s-village-school-suja-matroo-himachal-pradeshhp",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUJA PO MATROO DISTT MANDI HIMACHAL PRADESHHP\", PIN 175032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-valley-public-school",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PEERTHAN NALAGARH DISTT SOLAN HIMACHAL PRADESH\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montessorie-cambridge-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MONTESSORIE CAMBRIDGE SCHOOL, RAJA-KA-BAGH NEAR JASSUR TEH NURPUR DISTT. KANGRA HIMACHAL PRADESH\", PIN 176201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-centenary-public-school-chopal",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOPAL DISTT SHIMLA HIMACHAL PRADESH\", PIN 171211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidya-mandir-3",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIM RASHMI PARISAR VIKAS NAGAR SHIMLA HIMACHAL PRADESH\", PIN 171009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "alpine-public-school-chowkiwala-nalagarh",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOWKIWALA NALAGARH DISTT SOLAN HIMACHAL PRADESH\", PIN 174107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ghumarwin",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GHUMARWIN DISTT BILASPUR HIMACHAL PRADESH\", PIN 174021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jeori-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & PO JEORI TEHSIL RAMPUR DISTT SHIMLA HIMACHAL PRADESH\", PIN 172101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-aurobindo-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAI RAOD BADDI DISTT SOLAN HIMACHAL PRADESH\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sambhota-tibetan-high-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630090",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PARGANOU PO BHUNTAR DISTT KULLU HIMACHAL PRADESH\", PIN 175125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "noorpur-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NURPUR DISTT KANGRA HIMACHAL PRADESH\", PIN 176202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-nagrota-surian-jawali",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGROTA SURIAN TEH JAWALI DISTT KANGRA HIMACHAL PRADESH\", PIN 176027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-kumarsain-and-kumarsain",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUMARSAIN TEH & PO KUMARSAIN DISTT SHIMLA HIMACHAL PRADESH\", PIN 172029."
+     }
+    }
+   }
+  },
+  {
+   "slug": "parmar-international-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAILASH NAGAR BANEHRA TEH AMB DISTT UNA HIMACHAL PRADESH\", PIN 177213."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-saraswati-nagar-sawra-hatkoti-jubbal",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARASWATI NAGAR SAWRA PO HATKOTI TEH JUBBAL DISTT SHIMLA HIMACHAL PRADESH\", PIN 171206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-kuthar-gagal-bharmoti-naduan",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KUTHAR GAGAL PO BHARMOTI TEH NADUAN DISTT HAMIRPUR HIMACHAL PRADESH\", PIN 177033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "railbow-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGROTA BAGWAN TEH & DISTT KANGRA HIMACHAL PRADESH\", PIN 176047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "comet-mensa-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEHRI PO KHUTHANDEL VIA REHAN TEH NURPUR DISTT KANGRA HIMACHAL PRADESH\", PIN 176022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "doon-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CCI LIMITED RAJBAN, PAONTA SAHIB, DISTT SIRMOUR, HIMACHAL PRADESH\", PIN 173028."
+     }
+    }
+   }
+  },
+  {
+   "slug": "la-montessori-school-kelheli-bajaura",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL KELHELI PO BAJAURA DISTT KULLU, HIMACHAL PRADESH\", PIN 175125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rose-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V & PO SULIALI TEH NURPUR DISTT KANGRA, HIMACHAL PRADESH\", PIN 176211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "galaxy-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAILWAY ROAD NAGROTA SURIAN TEHSIL JAWALI DISTT KANGRA HP\", PIN 176027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "archangel-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROOP PALACE RAGHUNATHPUR KULLU HIMACHAL PRADESH\", PIN 175101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-public-school-jagaat-khana-manjohli-nalagarh",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630107",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAGAAT KHANA PO MANJOHLI TEH NALAGARH DISTT SOLAN, HIMACHAL PRADESH\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-c-b-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 3 NEW SHIMLA HIMACHAL PRADESH\", PIN 171009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "genius-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NERCHOWK DISTT MANDI HIMACHAL PRADESH\", PIN 175008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-heart-public-school",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630110",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHAN SIRMOUR SHIMLA ROAD NAHAN, DISTT SIRMOUR, HIMACHAL PRADESH\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rudra-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630113",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. & P.O. BASAL DISTT UNA HIMACHAL PRADESH\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAILASH NAGAR NAKROH AMB UNA HIMACHAL PRADESH\", PIN 177213."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tibetan-children-s-village-school-lower-chantra-joginder-nagar",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER CHANTRA JOGINDER NAGAR MANDI HIMACHAL PRADESH\", PIN 175032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholar-s-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V & P.O. GHURKARI, DISTT. KANGRA, HIMACHAL PRADESH\", PIN 176001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "durga-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAROG BYE PASS P.O. BAROG RAILWAY STATION SOLAN (HP) 173211\", PIN 173211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vashist-public-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & P.O. BEHDALA TEH & DISTT UNA\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sambhota-tibetan-school-chauntra-joginder-nagar-h-p",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHAUNTRA DISTT. JOGINDER NAGAR MANDI (H.P.)\", PIN 175032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-field-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O. CHAHRI NAGROTA BAGWAN, DISTT KANGRA, HIMACHAL PRADESH\", PIN 176047."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hamirpur-public-school",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630122",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO. 10 RAM NAGAR, HAMIRPUR, HIMACHAL PRADESH\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-mohalla-hardaspura",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHALLA HARDASPURA, DISTT. CHAMBA, HIMACHAL PRADESH\", PIN 176310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST SADWAN TEHSIL NURPUR, DISTT KANGRA HIMACHAL PRADESH PIN CODE 176202\", PIN 176202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anuradha-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630125",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO. MARANDA, TEH PALAMPUR, DISST. KANGRA (HIMACHAL PRADESH)\", PIN 176102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivalik-international-convent-school-dehra",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630126",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEHRA, DIST KANGRA, HIMACHAL PRADESH\", PIN 177105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-international-school-bypass-road",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BYPASS ROAD SOLAN, HP\", PIN 173213."
+     }
+    }
+   }
+  },
+  {
+   "slug": "neugal-public-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O. BINDERABAN, TEH. PALAMPUR, DISTT KANGRA, HIMACHAL PRADESH\", PIN 176061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shaheed-msm-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAKOLI, TEHSIL FATEHPUR, DISTT. KANGRA, HIMACHAL PRADESH\", PIN 176021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-tiara",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O TIARA TEH & DISTT KANGRA, HIMACHAL PRADESH\", PIN 176214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-land-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANDORI ROAD, SURAJPUR, DAMTAL, TEHSIL INDORA, DISTT. KANGRA (HIMACHAL PRADESH)\", PIN 176403."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-shivalik-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO- JUBERHATTI, SHIMLA, HIMACHAL PRADESH\", PIN 171013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-edward-s-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630134",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MISINGTON, DISTT. SHIMLA, HIMACHAL PRADESH\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "spring-dale-convent-school-jawali-at-paloura",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. PALOURA, P.O. DARKATI, TEH. JAWALI, DISTT. KANGRA (H.P.)\", PIN 176023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-residential-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOT, P.O. CHUNAHAN, SADAR, DISTT. MANDI\", PIN 175001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aadharshila-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UPPAR PUNNER ROAD (VIA BHAWARNA), TEH- PALAMPUR, DISTT KANGRA, HP-176102\", PIN 176102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "viveka-foundations",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630139",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND PO MANSIMBAL TEHSIL PALAMPUR DISTT KANGRA HIMACHAL PRADESH\", PIN 176083."
+     }
+    }
+   }
+  },
+  {
+   "slug": "h-p-university-model-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630141",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUMMERHILL SHIMLA - 5 H.P.\", PIN 171005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "parmarth-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANDI ROAD, KANGRA, TEH. BAIJNATH, HIMACHAL PRADESH\", PIN 176125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "t-r-d-a-v-public-sr-sec-school-kangoo",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630144",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. KANGOO TEH. NADAUN DISTT. HAMIRPUR(H.P.) 177040\", PIN 177040."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-sen-sec-school-bharoli",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL JAWALAMUKHI DISTT. KANGRA (H.P.)\", PIN 176036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-angels-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630147",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O SHAMSHI TEH.& DISTT. KULLU H.P INDIA\", PIN 175126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "florence-convent-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE GODHON THARI, P.O. SUBATHU, DISTT. SOLAN, H.P.-173206\", PIN 173206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sacred-heart-convent",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FLEUR - DE- LYS, DHALLI, SHIMLA\", PIN 171012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sathya-sai-school-anand-vilas",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAND VILAS POST OFFICE BEOLIA, SHIMLA 171009\", PIN 171013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-school-mohal",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630153",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH 21, MOHAL KULLU\", PIN 175126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vijay-memorial-sr-sec-school-indora",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INDORA, DISTT. KANGRA (H.P.)\", PIN 176401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indus-global-school-2",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE JARLI, PO DUDAR, GAGAL ROAD, SADAR MANDI,\", PIN 175001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rockfd-day-boarding-public-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BHAROLIAN KHURD, RAKKAR, UNA (H.P.)\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-phoenix-school-of-integrated-learning",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630161",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BEHNA POST OFFICE BEHNA TEHSIL BALH DISTT MANDI HIMACHAL PRADESH PIN 175006\", PIN 175006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "la-montessori-school-dunkhra-jari",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630162",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. DUNKHRA P.O. JARI TEH. & DISTT.KULLU\", PIN 175125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "spring-dale-school-2",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL.BHEDU MAHADEV(MARHOON) TEH .PALAMPUR\", PIN 176092."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angel-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOUGAN, PURANA BAZAR SUNDER NAGAR MANDI\", PIN 174004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-divine-international-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630166",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O- GHAI GHAT ,VILL -KURAR, DISTT - SOLAN (H.P)\", PIN 173229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ddm-international-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630167",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GONDPUR BANEHRA(UPPER) TEHSIL AMB DISTT UNA (H.P)-177213\", PIN 177213."
+     }
+    }
+   }
+  },
+  {
+   "slug": "princeton-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHASE - III, SECTOR - 5, NEW SHIMLA\", PIN 171009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhauladhar-nirmla-devi-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630170",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. CHALALI TEH DEHRA DISTT KANGRA (H.P.) 177103\", PIN 177103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-birla-public-school-baga-utcl-township",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630172",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE SARAINGHAT DHAR TATOH, PO DHAR-TATOH, TEHSIL SADAR, DISTRICT BILASPUR, HIMACHAL PRADESH\", PIN 174001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lotus-international-convent-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630173",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAKKAR, TEH. RAKKAR, DISTT. KANGRA, H.P.\", PIN 177043."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivalik-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630175",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O. GANGATH , TEHSIL NURPUR, DIST. KANGRA\", PIN 176204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "him-academy-public-school-vikas-nagar",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P. O. DARUHI, TEH. & DISTT. HAMIRPUR (HP) PIN-177001\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-paradise-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630180",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"H.B. COLONY SANJAULI(SHIMLA)\", PIN 171006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-v-international-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630181",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V&PO DHUSARA; TEH.: AMB; DIST.: UNA; HP\", PIN 174302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pmr-international-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630182",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO - RAPOH MISRAN DISTT - UNA (HP)\", PIN 177210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "roots-country-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630183",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST OFFICE BAGHI TEHSIL KOTKHAI DISTRICT SHIMLA\", PIN 171225."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-c-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630184",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO- PANDOGA UPARLA, UNA DISTT. UNA HIMANCHAL PRADESH\", PIN 177027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lawrence-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630187",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RELHU ROAD.SHAHPUR DISTT KANGRA\", PIN 176206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "partap-world-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630193",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE CHANOUR, INDORA, DIST. KANGRA, HIMACHAL PRADESH\", PIN 176401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shimla-presidency-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630194",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARI DEVI, GHANAHATTI, SHIMLA-11\", PIN 171011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-5",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630195",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHIMLA HILLS, BAKHALAG, ARKI SOLAN\", PIN 173208."
+     }
+    }
+   }
+  },
+  {
+   "slug": "navjyoti-century-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630196",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KHARUNI, MANPURA, BADDI, SOLAN,\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sacred-soul-cambridge-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630197",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. ROAD P. O. PANJHARA TEH. NURPUR DISTT. KANGRA H.P.\", PIN 176051."
+     }
+    }
+   }
+  },
+  {
+   "slug": "him-gurukul-international-school",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630198",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL BHALAT PO HARSOUR TEH BARSAR HAMIRPUR HIMACHAL PRADESH\", PIN 174305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhartiya-model-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630199",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO PADHAR (DALAH)MANDI HIMACHAL PRADESH\", PIN 175012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-wisdom-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630200",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOTRI VILLAGE MAJRA PAONTA SAHIB SIRMOUR HP\", PIN 173021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angels-convent-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630201",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR GOVT. COLLEGE DEHRI, P.O. KHER, VPO. KUTKANA, TEH. NURPUR, DISTT. KANGRA\", PIN 176202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pine-grove-international-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630202",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHEERA PALAMPUR KANGRA HP\", PIN 176101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amravati-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630204",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMRAVATI APARTMENTS ADJ H.B.C. PH-III,BADDI DISTT SOLAN (H.P.)\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chail-public-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630205",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAOGROWN (CHAIL CHOWK) TEH., CHACHYOT, DISTT. MANDI H.P.\", PIN 175028."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saraswati-vidya-mandir-high-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630206",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O- CHINTPURNI, TEH -AMB, DISTT- UNA.\", PIN 177110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "himalayan-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630208",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FATEHPUR KANGRA HP\", PIN 176053."
+     }
+    }
+   }
+  },
+  {
+   "slug": "achievers-hub-public-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630210",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHAL JHIKLI DAR, MAUZA KHANIARA, DHARAMSHALA\", PIN 176057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "woods-park-sainik-school-hamirpur-at-bani",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630211",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAMIRPUR AT BANI PO. BANI TEHSIL BARSAR DISTT. HAMIRPUR (H.P.)-174304\", PIN 174304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-convent-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630214",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O-CHUDHRER,LOWER SUNHET,TEHSIL-DEHRA,KANGRA(H.P.)-177101\", PIN 177101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "trinity-international-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630216",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. FAGU, TEH. THEOG, DISTT. SHIMLA\", PIN 171209."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-scholars-public-school-harar",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630228",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.MUHAL TEH. DEBRA DISTT.KANGRA\", PIN 177117."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angels-public-model-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630230",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO KHANNI TEHSIL NURPUR DISTT KANGRA HIMACHAL PRADESH\", PIN 176201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ivy-international-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630232",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IVY CITY, P.O. - KAMLA NAGAR (BHATTAKUFAR), SANJAULI, SHIMLA.\", PIN 171006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-svn-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630236",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BADORGHATI PO KUNIHAR TEHSIL ARKI DISTRICT SOLAN\", PIN 173207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-gyan-dham-public-school",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630237",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL RAKH GHANSOT PO & TEHSIL NALAGARH DISTT SOLAN HP\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lawrence-public-school-guler",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630239",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O. GULER TEHSIL DEHRA DIST. KANGRA\", PIN 176033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-s-wisdom-world-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630240",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SH 25 AMB ROAD UNA\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-school-pathankot-mandi-highway-palampur",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630241",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PATHANKOT MANDI HIGHWAY PALAMPUR\", PIN 176061."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiv-shakti-convent-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630242",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KASAROO PO BADHAGHAT TEHSIL GHUMARWIN DISTT. BILASPUR H.P.\", PIN 174029."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhojia-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630243",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE: BHUD TEH. BADDI DISTT: SOLAN (H.P.)\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "de-montreal-convent-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630244",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O BARI.TEHSIL NURPUR,DISTRICT KANGRA\", PIN 176051."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-lawrenceville-international-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630245",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL THANDOL PO PAHRA TEH PALAMPUR DISTT KANGRA\", PIN 176087."
+     }
+    }
+   }
+  },
+  {
+   "slug": "crayons-world-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630249",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR RAILWAY CROSSING, PANDOL ROAD BAIJNATH,TEHSIL- BAIJNATH, DISTT-KANGRA, HP, 176125\", PIN 176125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-global-school-2",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630251",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE CHULLA P.O. BAIRGHATT TEH. PALAMPUR DISTT KANGRA\", PIN 176073."
+     }
+    }
+   }
+  },
+  {
+   "slug": "iflex-international-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DHANETAR P.O. CHAUNTRA, TEHSIL JOGINDERNAGAR, DISTT MANDI (H.P.)\", PIN 175032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-dhagwar-dharamshala",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630254",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE PASSU, PO DHAGWAR, TEH. DHARAMSHALA, DIST. KANGRA (HP)\", PIN 176057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chamba-millennium-public-school",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630255",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE LABAKANA, PO SARUL, DISTT CHAMBA, HIMACHAL PRADESH\", PIN 176314."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mkm-public-school-bhadroya",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630256",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR CHAKKI BRIDGE, NH-48, BHADROYA, TEHSIL - NURPUR, KANGRA (HP )\", PIN 176403."
+     }
+    }
+   }
+  },
+  {
+   "slug": "diamond-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630257",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"V.P.O.:- PATTA, TEH.:- BHORANJ, DISTT.:- HAMIRPUR (H.P.) 176041\", PIN 176041."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ved-dhara-global-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630259",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL : DHANOT, PO : ADHWANI, TEHSIL : JWALAMUKHI, DISTT. : KANGRA, HIMACHAL PRADESH - 176036\", PIN 176036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholars-unified",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630260",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SCHOLARS UNIFIED VILLAGE ARNIALA POST OFFICE KOTLA KALAN TEH. & DISTT. UNA (HP)\", PIN 174303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "iit-mandi-campus-school",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NORTH CAMPUS, IIT MANDI, SALGI (KAMAND), MANDI -175 005, HIMACHAL PRADESH, INDIA\", PIN 175005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gayatri-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630263",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VED NAGAR JAREHR P.O.SUAN,TEHSIL JAISINGHPUR,DISTT.KANGRA,H.P.\", PIN 176094."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pradesh-public-international-school-of-sciences",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630264",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL AND PO BANI TEHSIL BARSAR DISTT HAMIRPUR\", PIN 174304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shaheed-bhagat-singh-memorial-public-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630265",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO SOHARI, TEHSIL BANGANA, DISTT. UNA (HIMACHAL PRADESH)\", PIN 177039."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sps-international",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630266",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL.ANANT NAGAR,TATHAR P.O. NABAHI TEH.SARKAGHAT DISTT.MANDI H.P.\", PIN 175024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bal-bharati-public-school-solan",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630268",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GLADY DHANK,P.O-OACHGHAT, TEHSIL & DISTT -SOLAN\", PIN 173223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vedanta-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630269",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE CHANDPUR, TEHSIL HAROLI, DISTRICT UNA, HIMACHAL PRADESH, 177220\", PIN 177220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-school-lunapani-mandi",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630270",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CAMBRIDGE INTERNATIONAL SCHOOL, LUNAPANI,TEHSIL BALH,DISTT MANDI,H.P\", PIN 175021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jaypee-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630271",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAIPRAKASH SEWA SANSTHAN PARISAR VILLAGE AND POST OFFICE SAMIRPUR TEHSIL TAUNIDEVI DISTRICT HAMIRPUR HIMACHAL PRADESH-177601\", PIN 177601."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhauladhar-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630272",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL MAJOTU P.O BAROTIWAL TEH BADDI DISTT SOLAN\", PIN 174103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630273",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE-KOTLA, KANDAGHAT-CHAIL ROAD,P.O.-& TEHSIL-KANDAGHAT, DISTRICT-SOLAN, H.P.\", PIN 173215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-vinayaka-public-school",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630276",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO LADRAUR TEHSIL BHORANJ DISTT HAMIRPUR\", PIN 176043."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brd-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630277",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRD PUBLIC SCHOOL, KALUJHANDA,TEHSIL BADDI DISTT. SOLAN H.P\", PIN 174103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "miska-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630278",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - TAKAUTA BHATTAN, PO DUNGRI, TEHSIL BHORANJ DISTT HAMIRPUR (H.P.)\", PIN 176045."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-apple-public-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630281",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"# 84 TO 86 VILLAGE BILLANWALI, BASANTI BAGH, BADDI, DISTT SOLAN\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "silicon-model-school-alampur",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630282",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO ALAMPUR DISTT KANGRA\", PIN 176082."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shining-star-global-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630283",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST SAI TEHSIL THURAL DISTT KANGRA HIMACHAL PRADESH\", PIN 176107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "raj-luxmi-samvid-gurukulam-sainik-school",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630284",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAMVID GURUKULAM SCHOOL, VILLAGE BARIAN, TEHSIL NALAGARH, DIST SOLAN\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chander-nahan-meadows-educational-institute",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630285",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK ROHRU DISTT SHIMLA, HIMACHAL PRADESH\", PIN 171207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "solan-public-school-solan",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630331",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. RAILWAY STATION BAROG, SOLAN\", PIN 173211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-sr-sec-school-parol",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630332",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT HAMIRPUR , HIMACHAL PRADESH\", PIN 177501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ntpc-township-jamthal",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630335",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL- SADAR, DISTT BILASPUR\", PIN 174036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-rose-orchid-world-school",
+   "facts": {
+    "city": {
+     "name": "Paonta Sahib",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630336",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHIVA COLONY, TARUWALA, PAONTA SAHIB, SHIVA COLONY, TARUWALA, PAONTA SAHIB\", PIN 173025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ner-chowk",
+   "facts": {
+    "city": {
+     "name": "Mandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630337",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL BALH, DISTT. MANDI\", PIN 175027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-millennium-international-school-ladwara",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630338",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL SHAHPUR DISTT. KANGRA, HP\", PIN 176208."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-vale-the-world-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630339",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR DOMINOS, SAPROON, TEHSIL SOLAN, DISTRICT SOLAN\", PIN 173211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "a-b-m-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Palampur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630342",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL PALAMPUR, DISTT KANGRA\", PIN 176102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-bir-s-international-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630344",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR CIPLA, BADDI, DISTT. SOLAN, HIMACHAL PRADESH\", PIN 173205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "seven-star-international-school-bhota",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630346",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEH HAMIRPUR , DISTT HAMIRPUR HP\", PIN 176041."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rising-star-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Chamba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630347",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO SARU, TEHSIL & DISTT. CHAMBA\", PIN 176314."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-centenary-public-school-gajeri-theog",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630349",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTRICT SHIMLA, HIMACHAL PRADESH\", PIN 171201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-d-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630350",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. DUGHA, TEH. HAMIRPUR\", PIN 177001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholars-stairs-school",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO CHALET TEHSIL GHANARI DISTT. UNA HIM, UNA, HIMACHAL\", PIN 177204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "stanford-world-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630358",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL GARH SUKKER, PO SUKKER, DHARAMSHALA\", PIN 176057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-kangra",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630359",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE TIARA TEHSIL AND, DISTRICT KANGRA BHALOON, KANGRA, HIMACHAL PRADESH 176214\", PIN 176214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-senior-secondary-school-lathiani",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630361",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE AND POST OFFICE LATHIANI, TEHSIL BANGANA , DISTRICT UNA\", PIN 174308."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-sr-sec-public-school-manai",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630364",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & PO MANAI, TEH HARCHAKIAN, DISTT KANGRA\", PIN 176210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sai-ram-international-school",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630365",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE MANGUWAL, PO RAJPURA, TEHSIL NALAGARH\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-international-school-vpo-dhusara",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630367",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO DHUSARA, TEHSIL AMB, DISTT UNA\", PIN 174302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maxx-world-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630369",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO BAJAURA, TEHSIL BHUNTAR, DISTRICT KULLU\", PIN 175125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dunsston-public-school-takarla",
+   "facts": {
+    "city": {
+     "name": "Una",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630371",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO TAKARLA TEH AMB DISTT UNA\", PIN 177211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dcm-land-of-gods-school",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630372",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BAHWAN PO BAKHALAG, TEHSIL ARKI, DISTRICT SOLAN\", PIN 173208."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kohana-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630373",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RIVERSIDE CAMPUS, SUNHET, DEHRA GOPIPUR, DIST KANGRA\", PIN 177104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-devbhoomi-adarash-vidyalya",
+   "facts": {
+    "city": {
+     "name": "Solan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630374",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE-KALYAN (NEAR KAINCHI MOD), P.O. SUBATHU TEH. KASAULI, DISTT. SOLAN HIMACHAL PRADESH 173206\", PIN 173206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "snower-valley-international-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630375",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - DAULA, POST OFFICE - BAJAURA, DISTT. - KULLU\", PIN 175125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mind-tree-school-nahan",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630376",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KHAJURNA, PO SHAMBHUWALA, TEHSIL NAHAN\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-katrain",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630379",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KATRAIN, POST OFFICE KATRAIN, TEHSIL KULLU\", PIN 175129."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brilliant-global-school",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630380",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"106, SHASTRI NAGAR , OPP SESSION HOUSE, KULLU\", PIN 175101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mewoen-tsuglag-petoen-school",
+   "facts": {
+    "city": {
+     "name": "Dharamshala",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630381",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THEHR MANJI KHAD, P.O. KHANYARA, DHARAMSALA\", PIN 176218."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-smart-school",
+   "facts": {
+    "city": {
+     "name": "Nalagarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630382",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW NALAGARH COLONY, NEAR CROSS ROAD HOTEL, NALAGARH\", PIN 174101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "himalayan-buddhist-cultural-school-2",
+   "facts": {
+    "city": {
+     "name": "Kullu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630383",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BATAHAR BIHAL, P.O. HARIPUR, DISTRICT KULLU (H.P.)\", PIN 175136."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kangra-international-school",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630385",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VPO SHAHPUR TEH SHAHPUR DISTT KANGRA , VPO SHAHPUR TEH SHAHPUR DISTT KANGRA, VPO SHAHPUR TEH SHAHPUR DISTT KANGRA\", PIN 176206."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arya-girls-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/630386",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOWER BAZAAR, NEAR D.C OFFICE, SHIMLA\", PIN 171001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-6",
+   "facts": {
+    "city": {
+     "name": "Hamirpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/680001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUJANPUR TIHRA HAMIRPUR DISTT HIMACHAL PRADESH\", PIN 176110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-nahan-sirmour",
+   "facts": {
+    "city": {
+     "name": "Nahan",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/680003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHAN DISTT. SIRMOUR HIMACHAL PRADESH\", PIN 173001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-yol-cantt",
+   "facts": {
+    "city": {
+     "name": "Kangra",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/680004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YOL CANTT. DISTT KANGRA HIMACHAL PRADESH\", PIN 176052."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rashtriya-military-school",
+   "facts": {
+    "city": {
+     "name": "Shimla",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/680005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHAIL SHIMLA HILLS HIMACHAL PRADESH\", PIN 173217."
+     }
+    }
+   }
+  }
+ ]
+}

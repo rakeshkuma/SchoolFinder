@@ -1,0 +1,772 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-lamphelpet-imphal",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAMPHELPET IMPHAL MANIPUR\", PIN 795004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-crpf-group-centre-langjing-imphal",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CRPF GROUP CENTRE LANGJING IMPHAL MANIPUR\", PIN 795113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-leimakhong-field-office-mantiri-pukhri-bpo",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEIMAKHONG FIELD POST OFFICE MANTIRI PUKHRI BPO KARAKHUL, IMPHAL MANIPUR\", PIN 795002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bsf-campus",
+   "facts": {
+    "city": {
+     "name": "Churachandpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF CAMPUS CHURACHANDPUR MANIPUR\", PIN 795128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-hr-sec-sechool-complex",
+   "facts": {
+    "city": {
+     "name": "Tamenglong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAMENGLONG, (TAMENGLONG HR. SEC. SECHOOL COMPLEX), TAMENGLONG, MANIPUR\", PIN 795141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-tnl-ground",
+   "facts": {
+    "city": {
+     "name": "Ukhrul",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR TNL GROUND, WINO BAZAAR, UKHRUL, MANIPUR-795142\", PIN 795142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-akampat",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1200008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHURAI LAMLONG BAZAR IMPHAL EAST\", PIN 795010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-sandumbe-achouba-kakching-dt",
+   "facts": {
+    "city": {
+     "name": "Kakching",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANDUMBE ACHOUBA KAKCHING DT- THOUBAL MANIPUR\", PIN 795103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-tuinom",
+   "facts": {
+    "city": {
+     "name": "Churachandpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHURACHANDPUR TUINOM MANIPUR\", PIN 795128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-liwa-khullen-sarai",
+   "facts": {
+    "city": {
+     "name": "Chandel",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LIWA KHULLEN SARAI CHANDEL MANIPUR\", PIN 795127."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-khumbong-via-langjing-imphal",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHUMBONG VIA- LANGJING IMPHAL MANIPUR\", PIN 795113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-yaralpat-porompat-bpo-moirang-kampu-imphal",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YARALPAT PO POROMPAT BPO MOIRANG KAMPU DISTT IMPHAL EAST MANIPUR\", PIN 795010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-yaralpat-porompat",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YARALPAT POROMPAT, TOP DUSARA, IMPHAL EAST\", PIN 795005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-gamnom-sapormeina",
+   "facts": {
+    "city": {
+     "name": "Kangpokpi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1220000",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GAMNOM SAPORMEINA PO. MOTBUNG KANGPOKPI DISTRICT, MANIPUR\", PIN 795107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-tamenglong",
+   "facts": {
+    "city": {
+     "name": "Tamenglong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1220001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FARMLAND, TAMENGLONG\", PIN 795141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manipur-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOIRENGEI MANTRIPUKHRI IMPHAL MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kanan-devi-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANGEI IMPHAL EAST MANIPUR\", PIN 795114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT IMPHAL, MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maria-montessori-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOIRENGEI MANTRI PUKHRI IMPHAL MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hundred-flowers-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOUBOK HOUBI PUKHAO ROAD BPO PANGEI IMPHAL MANIPUR\", PIN 795114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajkumari-sanatombi-devi-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAOTAL PO- PANGEI DT- IMPHAL MANIPUR\", PIN 795114."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nazreth-residential-school",
+   "facts": {
+    "city": {
+     "name": "Senapati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OKHRO-IKHRO MAO GATE DISTT. SENAPATI, MANIPUR\", PIN 795150."
+     }
+    }
+   }
+  },
+  {
+   "slug": "trinity-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAMENG LONG DISTT IMPHAL MANIPUR\", PIN 795741."
+     }
+    }
+   }
+  },
+  {
+   "slug": "north-point-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHABAM LAMKHAI MANTRI PUKHRI IMPHAL\", PIN 795002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mt-zion-english-school",
+   "facts": {
+    "city": {
+     "name": "Senapati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATHIKHO KARONG SENAPATI DISTT MANIPUR\", PIN 795007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhaktivedants-insitute-mission-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIRPORT ROAD SANGAIPROU IMPHAL MANIPUR\", PIN 795140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishu-nistha-niketan",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KWAKEITHEL MAYAIKOIBI IMPHAL MANIPUR CENTRAL, MANIPUR\", PIN 795004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-pauls-institute",
+   "facts": {
+    "city": {
+     "name": "Churachandpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW LAMKA (G) CHURACHANDPUR DISTRICT MANIPUR\", PIN 795006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "camps-english-academy",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAFAM LAMKHAI PO MANTRIPUKRI, DISTT IMPHAL MANIPUR\", PIN 795002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-madhumangol-memorial-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YAIRIPOK ROAD WANGKHEI, IMPHAL EAST MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-angle-s-english-school",
+   "facts": {
+    "city": {
+     "name": "Ukhrul",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TANGREI UKHRUL MANIPUR\", PIN 795142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saklim-christian-english-school",
+   "facts": {
+    "city": {
+     "name": "Senapati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATOMEI SENAPATI\", PIN 795106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-lodestar-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONGSAI VENG LAIPHAM KHUNORE, IMPHAL\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-eden-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WANG KHEI AYANGPALLI ROAD, DISTT IMPHAL, MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ideal-english-school",
+   "facts": {
+    "city": {
+     "name": "Kangpokpi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. MOTBUNG DIST: KANGPOKPI\", PIN 795107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifle-school",
+   "facts": {
+    "city": {
+     "name": "Senapati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"22, ASSAM RIFLES, C/O 99 APO, SENAPATI, MARAM, MANIPUR-795105\", PIN 795105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "grace-cottage-cultural-and-educational-development-foundation",
+   "facts": {
+    "city": {
+     "name": "Kakching",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAKCHING MAKHA LEIKAI WARD NO. 11\", PIN 795103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zenith-academy",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANGAIPROU, IMPHAL WEST, MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mega-manipur-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YARALPAT TINSEED ROAD, POROMPAT, IMPHAL EAST\", PIN 795010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sunshine-academy",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOIDANGPOK, IMPHAL WEST, LANGJING,\", PIN 795113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ruda-academy",
+   "facts": {
+    "city": {
+     "name": "Thoubal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THOUBAL WANGMATABA, WARD NO. 2, P.O. & P.S. THOUBAL, MANIPUR-795138\", PIN 795138."
+     }
+    }
+   }
+  },
+  {
+   "slug": "unacco-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONGMAN ZONE-III (WEST), IMPHAL EAST DISTRICT, MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-n-public-school",
+   "facts": {
+    "city": {
+     "name": "Kangpokpi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANGPOKPI ,SADAR HILLS, MANIPUR\", PIN 795129."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mannu-english-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW LAMBULANE, NEW CHECKON, IMPHAL,\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kindergarten-montessori-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAGOLBAND TAKYEL KOLOM LEIKAI, IMPHAL WEST - 1\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mt-everest-higher-secondary-school-senapati-manipur",
+   "facts": {
+    "city": {
+     "name": "Senapati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SENAPATI, TAPHOU PHYAMEI, MANIPUR\", PIN 795106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "city-montessori-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAMBOIKHONGANGKHONG IMPHAL\", PIN 795004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-mission-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"URIPOK BACHASPATI LEIKAI PO/PS/DIST.- IMPHAL WEST MANIPUR-795001\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "unacco-school-excellence-in-education",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEITRAM MAKHA LEIKAI, IMPHAL WEST, MANIPUR\", PIN 795140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shishu-nistha-niketan-2",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IMPHAL, EAST\", PIN 795005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bright-foundation-school",
+   "facts": {
+    "city": {
+     "name": "Thoubal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KSHETRILEIKAI , PO & PS THOUBAL\", PIN 795138."
+     }
+    }
+   }
+  },
+  {
+   "slug": "unacco-school-excellence-in-education-2",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANUNG, IMPHAL EAST, MANIPUR\", PIN 795010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "blue-star-academy",
+   "facts": {
+    "city": {
+     "name": "Churachandpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1230180",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAILAM VENG, NEW LAMKA, CHURACHANDPUR\", PIN 795006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodya-vidyalaya-jessami-ukhrul-ii-dist-manipur",
+   "facts": {
+    "city": {
+     "name": "Ukhrul",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1240010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UKHRUL II DIST, MANIPUR\", PIN 795142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-2",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1280001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IMPHAL P B NO 21 IMPHAL MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-riffles-public-school",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1280003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANTRIPUKHRI IMPHAL MANIPUR\", PIN 795001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-high-school-pallel",
+   "facts": {
+    "city": {
+     "name": "Chandel",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1280004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CARE OF HQ 26 SEC. ASSAM RIFLES, PALLEI DISTT. CHANDEL, MANIPUR- 795 135\", PIN 795135."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Imphal",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1280007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KEITHELMANBI, BPO NEW KEITHAL, MAMBI, PO LANGJING, IMPHAL, WEST MANIPUR\", PIN 795113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-jr-high-school",
+   "facts": {
+    "city": {
+     "name": "Kakching",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1280008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.S.- KAKCHING, DISTT. THOUBAL, MANIPUR\", PIN 795103."
+     }
+    }
+   }
+  }
+ ]
+}

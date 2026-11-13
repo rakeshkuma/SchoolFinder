@@ -53,11 +53,16 @@ public final class LocalMergeDuplicates {
                     String affiliation = pair.get("affiliation").asText();
                     Map<String, Object> keep = row(jdbc, keepId);
                     Map<String, Object> remove = row(jdbc, removeId);
+                    // A curated record may carry a placeholder ("1") instead of a real affiliation number, and may have
+                    // no PIN code yet; it then takes the PIN of the board-list record it absorbs.
+                    boolean keptHasNumber = keep != null && keep.get("affiliation_number") != null
+                            && String.valueOf(keep.get("affiliation_number")).matches("\\d{6,8}");
+                    boolean keptHasPin = keep != null && keep.get("pin_code") != null;
                     String problem = keep == null || remove == null ? "record missing"
-                            : keep.get("affiliation_number") != null ? "kept record already has an affiliation number"
+                            : keptHasNumber ? "kept record already has an affiliation number"
                             : !affiliation.equals(remove.get("affiliation_number")) ? "affiliation number differs"
                             : !Objects.equals(keep.get("state_code"), remove.get("state_code"))
-                                    || !Objects.equals(keep.get("pin_code"), remove.get("pin_code")) ? "place differs"
+                                    || (keptHasPin && !Objects.equals(keep.get("pin_code"), remove.get("pin_code"))) ? "place differs"
                             : null;
                     if (problem != null) {
                         System.out.printf("SKIP %d <= %d: %s%n", keepId, removeId, problem);
@@ -70,8 +75,9 @@ public final class LocalMergeDuplicates {
                         jdbc.update("DELETE FROM school WHERE id = ?", removeId);
                         jdbc.update("""
                                 UPDATE school SET affiliation_number = ?,
-                                       education_board_code = coalesce(education_board_code, ?) WHERE id = ?""",
-                                affiliation, remove.get("education_board_code"), keepId);
+                                       education_board_code = coalesce(education_board_code, ?),
+                                       pin_code = coalesce(pin_code, ?) WHERE id = ?""",
+                                affiliation, remove.get("education_board_code"), remove.get("pin_code"), keepId);
                     }
                     counts[0]++;
                 }
