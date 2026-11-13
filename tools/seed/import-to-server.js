@@ -91,9 +91,8 @@ function isFactsFile(file) {
 }
 
 /** Applies each school's sourced facts via PATCH /admin/schools/{id}/facts (unchanged facts are a no-op server-side). */
-async function importFacts(file, token) {
+async function importFacts(file) {
   const root = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^﻿/, ''));
-  const auth = { Authorization: `Bearer ${token}` };
   let applied = 0;
   let failed = 0;
   for (const school of root.schools) {
@@ -109,7 +108,7 @@ async function importFacts(file, token) {
     }
     const { id } = await found.json();
     const res = await fetch(`${apiBase}/admin/schools/${id}/facts`, {
-      method: 'PATCH', headers: { ...auth, 'Content-Type': 'application/json' }, body: JSON.stringify(school.facts),
+      method: 'PATCH', headers: { ...(await authHeader()), 'Content-Type': 'application/json' }, body: JSON.stringify(school.facts),
     });
     if (res.ok) applied++;
     else {
@@ -130,9 +129,8 @@ function isAdmissionsFile(file) {
 }
 
 /** Upserts each admission cycle via POST /admin/schools/{id}/admissions (same school, class, year and category = update). */
-async function importAdmissions(file, token) {
+async function importAdmissions(file) {
   const root = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^﻿/, ''));
-  const auth = { Authorization: `Bearer ${token}` };
   let applied = 0;
   let failed = 0;
   for (const school of root.schools) {
@@ -149,7 +147,7 @@ async function importAdmissions(file, token) {
         continue;
       }
       const res = await fetch(`${apiBase}/admin/schools/${id}/admissions`, {
-        method: 'POST', headers: { ...auth, 'Content-Type': 'application/json' }, body: JSON.stringify(cycle),
+        method: 'POST', headers: { ...(await authHeader()), 'Content-Type': 'application/json' }, body: JSON.stringify(cycle),
       });
       if (res.ok) applied++;
       else {
@@ -164,9 +162,8 @@ async function importAdmissions(file, token) {
 }
 
 /** Registers each image unless the school already has one with the same URL (safe to re-run). */
-async function importImages(file, token) {
+async function importImages(file) {
   const root = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^﻿/, ''));
-  const auth = { Authorization: `Bearer ${token}` };
   let added = 0;
   let skipped = 0;
   let failed = 0;
@@ -178,7 +175,7 @@ async function importImages(file, token) {
       continue;
     }
     const { id } = await found.json();
-    const listed = await fetch(`${apiBase}/admin/schools/${id}/images`, { headers: auth });
+    const listed = await fetch(`${apiBase}/admin/schools/${id}/images`, { headers: await authHeader() });
     const existing = new Set((listed.ok ? await listed.json() : []).map((i) => i.url));
     for (const image of school.images) {
       if (existing.has(image.url)) {
@@ -190,7 +187,7 @@ async function importImages(file, token) {
         continue;
       }
       const res = await fetch(`${apiBase}/admin/schools/${id}/images`, {
-        method: 'POST', headers: { ...auth, 'Content-Type': 'application/json' }, body: JSON.stringify(image),
+        method: 'POST', headers: { ...(await authHeader()), 'Content-Type': 'application/json' }, body: JSON.stringify(image),
       });
       if (res.ok) added++;
       else {
@@ -214,34 +211,36 @@ async function login() {
   return (await res.json()).accessToken;
 }
 
+// Access tokens last 15 minutes, and a facts or admissions file can run longer than that (one request per school), so
+// every request asks for the header here and the token is renewed well before it expires.
+let session = null;
+async function authHeader() {
+  if (!session || Date.now() - session.issuedAt > 10 * 60 * 1000) session = { token: await login(), issuedAt: Date.now() };
+  return { Authorization: `Bearer ${session.token}` };
+}
+
 (async () => {
-  let token = await login();
-  let issuedAt = Date.now();
+  await authHeader(); // fail fast on a wrong password
   const totals = { created: 0, updated: 0, errors: 0 };
   for (const file of files) {
     if (isImageFile(file)) {
-      await importImages(file, token);
+      await importImages(file);
       continue;
     }
     if (isFactsFile(file)) {
-      await importFacts(file, token);
+      await importFacts(file);
       continue;
     }
     if (isAdmissionsFile(file)) {
-      await importAdmissions(file, token);
+      await importAdmissions(file);
       continue;
     }
     for (const part of parts(file)) {
-      // Access tokens last 15 minutes; renew well before that.
-      if (Date.now() - issuedAt > 10 * 60 * 1000) {
-        token = await login();
-        issuedAt = Date.now();
-      }
       const form = new FormData();
       form.append('file', new Blob([part.body], { type: part.type === 'json' ? 'application/json' : 'text/csv' }),
         `part.${part.type}`);
       const url = `${apiBase}/admin/import/${part.type}?mode=${mode}&updateExisting=${update}`;
-      const res = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: form });
+      const res = await fetch(url, { method: 'POST', headers: await authHeader(), body: form });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) {
         console.error(`${part.name}: HTTP ${res.status} ${body.message ?? ''}`);
