@@ -73,6 +73,9 @@ const ALIASES = {
   'Sri Vijaya Puram': ['PORT BLAIR', 'PORTBLAIR'],
 };
 
+/** Where the site already uses another name for a wanted town (build-town-facts.js's hand-checked lists), keep that one. */
+const STORED_NAME = { JH: { Bokaro: 'Bokaro Steel City' }, BR: { Dehri: 'Dehri-on-Sone' } };
+
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s*').replace(/-/g, '[\\s-]*');
 const wordsFor = (town) => [town.toUpperCase(), ...(ALIASES[town] ?? [])].map((w) => `\\b${escape(w)}\\b`);
 const decode = (s) => (s ?? '').replace(/&#xD;&#xA;/g, ' ').replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/&amp;/g, '&');
@@ -160,7 +163,7 @@ for (const [code, towns] of Object.entries(WANTED)) {
     const pins = [...claims].filter(([, c]) => c.town === t.name).map(([pin]) => pin).sort();
     if (pins.length === 0) { report.push(`${code} ${t.name}: no PIN found`); continue; }
     const n = pins.reduce((s, p) => s + counts.get(t.name).get(p).n, 0);
-    list.push({ name: t.name, pins, words: t.words, schools: n });
+    list.push({ name: STORED_NAME[code]?.[t.name] ?? t.name, pins, words: t.words, schools: n });
   }
   result[code] = list;
 }
