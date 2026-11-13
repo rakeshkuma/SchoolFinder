@@ -39,7 +39,7 @@ export function AboutPage() {
         <h2>Our data principles</h2>
         <ul>
           <li>We never invent information. Anything not published by an official source is shown as “Not available”.</li>
-          <li>Records are marked “Pending verification” until an administrator checks them against the cited source.</li>
+          <li>Every record links to its source. Once an editor has checked it against that source, it is marked “Verified” with the date.</li>
           <li>Fees and admission dates are kept per academic year, so history is preserved.</li>
           <li>Photos are used only from official sources or with a clear licence, with credit shown.</li>
           <li>Our ranking is our own, published methodology — not an official government ranking.</li>
@@ -233,7 +233,7 @@ export function EditorialPolicyPage() {
         <ul>
           <li>School facts come from official and public sources: education boards (for example the CBSE affiliation directory, SARAS), government bodies, and schools’ own websites and notices. Each profile links to its source and shows when it was retrieved.</li>
           <li>We never invent information. A fact no official source publishes is shown as “Not available”, not guessed.</li>
-          <li>Records stay marked “Pending verification” until an administrator has checked them against the cited source.</li>
+          <li>Every record links to its source. Once an editor has checked it against that source, it is marked “Verified” with the date.</li>
           <li>Fees and admission dates are kept per academic year and linked to the notice they come from.</li>
           <li>Photos are used only from official sources or under a clear licence, with credit shown next to each image.</li>
         </ul>

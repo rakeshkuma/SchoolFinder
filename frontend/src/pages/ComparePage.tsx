@@ -217,7 +217,8 @@ export function ComparePage() {
         },
         { label: 'Student–teacher ratio', ...plain((s) => (s.studentTeacherRatio ? `${s.studentTeacherRatio} : 1` : NOT_AVAILABLE)) },
         { label: 'Parent rating', render: (s) => <Stars rating={s.averageRating} />, text: (s) => String(s.averageRating) },
-        { label: 'Verification', render: (s) => <VerificationBadge status={s.verificationStatus} date={s.lastVerifiedDate} />, text: (s) => s.verificationStatus },
+        { label: 'Verification', render: (s) => (s.verificationStatus === 'UNVERIFIED' ? '—' : <VerificationBadge status={s.verificationStatus} date={s.lastVerifiedDate} />),
+          text: (s) => (s.verificationStatus === 'VERIFIED' ? `Verified${s.lastVerifiedDate ? ` ${s.lastVerifiedDate}` : ''}` : s.verificationStatus === 'UNVERIFIED' ? '—' : s.verificationStatus) },
       ],
     },
     {

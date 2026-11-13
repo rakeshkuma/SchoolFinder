@@ -280,7 +280,7 @@ export function AdminExternalRankingsPage() {
                       <span className="block text-xs text-slate-500">retrieved {e.retrievedDate} · <SourceLink url={e.sourceUrl} label="open page" /></span></td>
                     <td className="pr-2">{e.sponsored ? <span className="chip bg-amber-50 text-amber-900">Sponsored</span> : e.rankPosition ? `#${e.rankPosition}` : e.scoreText}
                       {e.notes && <span className="block text-xs text-slate-500">{e.notes}</span>}</td>
-                    <td className="pr-2"><VerificationBadge status={e.verificationStatus} date={e.lastVerifiedDate} /></td>
+                    <td className="pr-2"><VerificationBadge status={e.verificationStatus} date={e.lastVerifiedDate} admin /></td>
                     <td className="space-x-1 whitespace-nowrap text-xs">
                       {e.verificationStatus !== 'VERIFIED' && <button type="button" className="btn-primary px-2 py-1 text-xs" onClick={() => decide(e.id, 'VERIFIED')} title="The entry matches the publisher's page">Verify</button>}
                       {e.verificationStatus !== 'DISPUTED' && <button type="button" className="btn-secondary px-2 py-1 text-xs" onClick={() => decide(e.id, 'DISPUTED')}>Dispute</button>}

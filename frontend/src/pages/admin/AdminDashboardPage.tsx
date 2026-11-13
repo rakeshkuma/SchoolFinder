@@ -55,7 +55,7 @@ export function AdminDashboardPage() {
             {[
               ['Active schools', r.activeSchools, ''],
               ['Verified', r.verifiedSchools, 'text-emerald-700'],
-              ['Pending verification', r.unverifiedSchools, 'text-amber-700'],
+              ['Not yet verified', r.unverifiedSchools, 'text-amber-700'],
               ['Stale verifications', r.staleVerifications, 'text-orange-700'],
               ['Missing coordinates', r.missingCoordinates, ''],
               ['No phone or email', r.missingContactDetails, ''],

@@ -170,7 +170,7 @@ export const admissionCategoryLabel: Record<AdmissionCategory, string> = {
 
 export const verificationLabel: Record<VerificationStatus, string> = {
   VERIFIED: 'Verified',
-  UNVERIFIED: 'Pending verification',
+  UNVERIFIED: 'Not yet verified',
   OUTDATED: 'Outdated',
   DISPUTED: 'Disputed',
 };
