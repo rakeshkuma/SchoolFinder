@@ -68,6 +68,6 @@ INSERT INTO renames VALUES
 UPDATE school s SET name = r.new_name FROM renames r
 WHERE s.affiliation_number = r.affiliation AND s.name = r.old_name;
 
-SELECT affiliation, name FROM school WHERE affiliation_number IN (SELECT affiliation FROM renames) ORDER BY 1;  -- review
+SELECT affiliation_number, name FROM school WHERE affiliation_number IN (SELECT affiliation FROM renames) ORDER BY 1;  -- review
 
 COMMIT;
