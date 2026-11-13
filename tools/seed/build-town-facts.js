@@ -5,7 +5,16 @@
 // (only records of that state are used; apiBase resolves affiliation numbers to slugs)
 const fs = require('fs');
 const [input, apiBase, out, stateCode = 'BR'] = process.argv.slice(2);
-const STATE_NAMES = { BR: 'BIHAR', JH: 'JHARKHAND', UP: 'UTTAR PRADESH', DL: 'DELHI', HR: 'HARYANA' };
+/** SARAS state names for each code (two former union territories share DH today). */
+const STATE_NAMES = {
+  AN: ['ANDAMAN & NICOBAR'], AP: ['ANDHRA PRADESH'], AR: ['ARUNACHAL PRADESH'], AS: ['ASSAM'], BR: ['BIHAR'], CH: ['CHANDIGARH'],
+  CG: ['CHATTISGARH', 'CHHATTISGARH'], DH: ['DADAR & NAGAR HAVELI', 'DADRA & NAGAR HAVELI', 'DAMAN & DIU'], DL: ['DELHI'], GA: ['GOA'],
+  GJ: ['GUJARAT'], HR: ['HARYANA'], HP: ['HIMACHAL PRADESH'], JK: ['JAMMU & KASHMIR'], JH: ['JHARKHAND'], KA: ['KARNATAKA'],
+  KL: ['KERALA'], LA: ['LADAKH'], LD: ['LAKSHADWEEP'], MP: ['MADHYA PRADESH'], MH: ['MAHARASHTRA'], MN: ['MANIPUR'], ML: ['MEGHALAYA'],
+  MZ: ['MIZORAM'], NL: ['NAGALAND'], OD: ['ODISHA', 'ORISSA'], PY: ['PUDUCHERRY', 'PONDICHERRY'], PB: ['PUNJAB'], RJ: ['RAJASTHAN'],
+  SK: ['SIKKIM'], TN: ['TAMILNADU', 'TAMIL NADU'], TS: ['TELANGANA'], TR: ['TRIPURA'], UP: ['UTTAR PRADESH'], UK: ['UTTARAKHAND'],
+  WB: ['WEST BENGAL'],
+};
 
 // Town → PIN codes of its post offices and the words its addresses use. Checked against India Post PINs in the data
 // (2026-10-30); extend with care, one town at a time.
@@ -128,7 +137,12 @@ const TOWNS_BY_STATE = { BR: [
   { name: 'Ballabgarh', pins: ['121004'], words: [/(?<!(TEH|NEAR)\W{0,3})\bBALLABH?GARH\b/] },
   { name: 'Faridabad', pins: [/^1210\d\d$/], words: [/\bFARIDABAD\b/] },
 ] };
-const TOWNS = TOWNS_BY_STATE[stateCode] ?? [];
+// Hand-checked towns above come first; towns derived from the addresses themselves (derive-towns.js) follow.
+const DERIVED = fs.existsSync(require('path').join(__dirname, 'towns-derived.json'))
+  ? (JSON.parse(fs.readFileSync(require('path').join(__dirname, 'towns-derived.json'), 'utf8')).states[stateCode] ?? [])
+    .map((t) => ({ name: t.name, pins: t.pins, words: t.words.map((w) => new RegExp(w)) }))
+  : [];
+const TOWNS = [...(TOWNS_BY_STATE[stateCode] ?? []), ...DERIVED];
 
 // SARAS escapes some characters as HTML entities (&#x2B; for "+"); decode them as the site does when it stores a name.
 const decode = (s) => s.replace(/&#xD;&#xA;/g, ' ')
@@ -137,7 +151,7 @@ const decode = (s) => s.replace(/&#xD;&#xA;/g, ' ')
 (async () => {
   const seen = new Set();
   const recs = input.split(',').flatMap((f) => fs.readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l)))
-    .filter((r) => (r.State ?? '').trim().toUpperCase() === STATE_NAMES[stateCode])
+    .filter((r) => (STATE_NAMES[stateCode] ?? []).includes((r.State ?? '').trim().toUpperCase()))
     .filter((r) => !seen.has(r['Affiliation Number']) && seen.add(r['Affiliation Number']));
   const schools = [];
   const skipped = { noTown: 0, notFound: 0 };

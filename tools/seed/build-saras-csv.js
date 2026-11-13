@@ -135,6 +135,20 @@ function delhiPlace(address, pinCode) {
   return { city: 'Delhi', locality };
 }
 
+// Other states: the town from towns-derived.json (derive-towns.js), set only where the PIN code and the address agree,
+// the same rule as build-town-facts.js. States whose towns were checked by hand (build-town-facts.js's own lists) are
+// left blank here, so a re-import never overwrites a hand-checked town; their extra towns come through that tool.
+const HAND_CHECKED_STATES = new Set(['BR', 'JH', 'UP', 'HR', 'DL']);
+const TOWNS_FILE = require('path').join(__dirname, 'towns-derived.json');
+const DERIVED_TOWNS = fs.existsSync(TOWNS_FILE) ? JSON.parse(fs.readFileSync(TOWNS_FILE, 'utf8')).states : {};
+for (const list of Object.values(DERIVED_TOWNS)) for (const t of list) t.regexes = t.words.map((w) => new RegExp(w));
+function derivedPlace(state, address, pinCode) {
+  if (HAND_CHECKED_STATES.has(state)) return { city: '', locality: '' };
+  const a = (address ?? '').replace(/&#xD;&#xA;/g, ' ').replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).toUpperCase();
+  const town = (DERIVED_TOWNS[state] ?? []).find((t) => t.pins.includes(pinCode ?? '') && t.regexes.some((re) => re.test(a)));
+  return { city: town?.name ?? '', locality: '' };
+}
+
 const header = ['name', 'school_type', 'management', 'network', 'affiliation_number', 'board_code', 'address_line',
   'district', 'state_code', 'pin_code', 'website_url', 'established_year', 'principal_name', 'managing_body', 'description', 'source_url',
   'source_retrieved_date', 'gender_type', ...BOARDING_COLUMNS, 'city', 'locality'];
@@ -236,7 +250,7 @@ for (const r of records) {
   const overlay = boardingData.cbse?.[r['Affiliation Number']] ?? boardingData.cbse?.[r.aff];
   const network = overlay?.network ?? type[2];
   const profile = overlay ?? boardingData.systems?.[network] ?? {};
-  const place = state === 'DL' ? delhiPlace(r['Postal Address'], overlay?.pin_code ?? pin) : { city: '', locality: '' };
+  const place = state === 'DL' ? delhiPlace(r['Postal Address'], overlay?.pin_code ?? pin) : derivedPlace(state, r['Postal Address'], overlay?.pin_code ?? pin);
   rows.push([(overlay?.name ?? name).slice(0, 200), type[0], type[1], network, r['Affiliation Number'], 'CBSE',
     title(r['Postal Address'] ?? '').slice(0, 400), district, state, overlay?.pin_code ?? pin, website, year,
     title((r['Name of Principal/ Head of Institution'] ?? '').trim()).slice(0, 150),

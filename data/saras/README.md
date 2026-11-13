@@ -14,6 +14,15 @@ publishes it; `*-affs.txt` are the affiliation numbers that were requested.
 | `bihar.jsonl` | Bihar, complete with `central.jsonl` (fetched 2026-10-30/31 from the Bihar state list, SARAS state id 3) |
 | `delhi.jsonl` | Delhi, all 2,255 schools on the Delhi state list (SARAS state id 27, fetched 2026-10-31) |
 | `haryana-ncr.jsonl` | Haryana's Delhi-NCR districts, Gurugram and Faridabad: 499 schools (from state id 5, 2026-10-31) |
+| `expansion-2026-11-a.jsonl` | Andhra Pradesh, Karnataka, Kerala and Tamil Nadu: every school on those state lists not already in a file above (2026-11-13) |
+| `expansion-2026-11-b.jsonl` | Haryana (rest of the state), Madhya Pradesh, Rajasthan, Uttarakhand, and the few new schools in Assam, Chhattisgarh, Gujarat, Himachal Pradesh, J&K, Manipur and West Bengal (2026-11-13) |
+| `expansion-2026-11-c.jsonl` | Maharashtra, Odisha, Punjab and Telangana (2026-11-13) |
+
+The three `expansion-2026-11-*` files complete the directory: every state list was compared with the files above and only
+the missing schools fetched (`saras-state.js`-style list requests, then `saras-details-bulk.js`; Node needs
+`--use-system-ca` because the SARAS certificate chain is incomplete). Towns for these states come from
+`tools/seed/towns-derived.json` (built by `tools/seed/derive-towns.js` from the addresses themselves, for the towns in
+`tools/seed/towns-wanted.json`) and are set by `build-saras-csv.js` at import time.
 
 Convert to import files (split into files of at most 4,500 rows):
 
