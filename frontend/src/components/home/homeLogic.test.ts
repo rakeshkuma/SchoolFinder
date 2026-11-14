@@ -105,3 +105,13 @@ describe('featured schools', () => {
     expect(picked.map((s) => s.id)).toEqual([3, 6, 1, 5]);
   });
 });
+
+describe('hero school count', () => {
+  it('rounds down to the thousand so it is never more than the real count', async () => {
+    const { roundedCount } = await import('./HomeHero');
+    expect(roundedCount(33060)).toBe('33,000+');
+    expect(roundedCount(33999)).toBe('33,000+');
+    expect(roundedCount(105432)).toBe('1,05,000+');
+    expect(roundedCount(999)).toBe('999');
+  });
+});

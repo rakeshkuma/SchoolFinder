@@ -14,6 +14,15 @@ interface Stat { to: string; icon: IconName; tone: string; title: string; sub: s
 export const HERO_SIZES = '(min-width: 1024px) 48vw, calc(100vw - 32px)';
 
 /**
+ * A count for the hero, rounded down to the thousand so it stays true as schools are added ("33,000+" for 33,060).
+ * Under a thousand it is shown exactly. The link's label keeps the exact number for screen readers.
+ */
+export function roundedCount(n: number): string {
+  if (n < 1000) return n.toLocaleString('en-IN');
+  return `${(Math.floor(n / 1000) * 1000).toLocaleString('en-IN')}+`;
+}
+
+/**
  * The home page's opening: the promise, the school search (with the same suggestions as the directory) and four ways
  * in. Counts appear only once the server has answered; until then each stat says what it opens, never a made-up number.
  */
@@ -29,7 +38,7 @@ export function HomeHero({ schools, practiceSets }: { schools: number | null; pr
   const stats: Stat[] = [
     {
       to: '/schools', icon: 'institution', tone: 'bg-royal-50 text-royal-600',
-      title: schools ? schools.toLocaleString('en-IN') : 'Schools', sub: schools ? 'Schools listed' : 'Across India',
+      title: schools ? roundedCount(schools) : 'Schools', sub: schools ? 'Schools listed' : 'Across India',
       label: schools ? `${schools.toLocaleString('en-IN')} schools listed: search them` : 'Search schools across India',
     },
     { to: '/rankings', icon: 'trophy', tone: 'bg-amber-50 text-amber-500', title: 'Rankings', sub: 'Top schools', label: 'Rankings: top schools' },
@@ -95,10 +104,6 @@ export function HomeHero({ schools, practiceSets }: { schools: number | null; pr
           <HomePhoto id="hero-students" priority alt="Smiling schoolchildren in uniform on a green school campus" sizes={HERO_SIZES}
             className="aspect-[16/10] w-full object-cover object-[50%_40%] sm:aspect-[16/8] lg:aspect-auto lg:h-full" />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent" />
-          <p className="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl bg-white/90 px-3 py-2 text-[13px] font-semibold text-navy shadow-lg backdrop-blur sm:bottom-5 sm:left-5 lg:bottom-8 lg:left-[16%]">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><Icon name="shield" className="h-4 w-4" /></span>
-            Official sources linked
-          </p>
         </div>
       </div>
     </section>
