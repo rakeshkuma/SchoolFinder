@@ -40,6 +40,14 @@ public class SeoBodyService {
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
     private static final Pattern STATE = Pattern.compile("^/states/([a-z0-9-]+)(?:/([a-z0-9-]+))?/?$");
     private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
+    private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
+    private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
+    /** Fixed pages under /exams that are not an exam. */
+    private static final Set<String> EXAM_PAGES = Set.of("practice", "finder", "calendar", "syllabus", "resources",
+            "leaderboard", "achievements", "challenges", "guide");
+    private static final java.time.ZoneId INDIA = java.time.ZoneId.of("Asia/Kolkata");
+    private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH);
     private static final Pattern TITLE = Pattern.compile("<title>(.*?)</title>", Pattern.DOTALL);
     private static final Pattern DESCRIPTION = Pattern.compile("<meta name=\"description\" content=\"(.*?)\"", Pattern.DOTALL);
     private static final int LIST_SIZE = 40;
@@ -58,10 +66,17 @@ public class SeoBodyService {
     private final UpdateFeedService updateFeed;
     private final RankingCatalogService rankings;
     private final PremierDirectoryService directory;
+    private final BlogService blogService;
+    private final ExamService examService;
+    private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSets;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
-                          PremierDirectoryService directory) {
+                          PremierDirectoryService directory, BlogService blogService, ExamService examService,
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSets) {
+        this.blogService = blogService;
+        this.examService = examService;
+        this.practiceSets = practiceSets;
         this.seoHeadService = seoHeadService;
         this.schoolService = schoolService;
         this.locationService = locationService;
@@ -100,6 +115,12 @@ public class SeoBodyService {
                 main = city(m.group(1), m.group(2), heading, description);
             } else if ((m = STATE.matcher(p)).matches()) {
                 main = state(m.group(1), m.group(2), heading, description);
+            } else if ((m = BLOG_POST.matcher(p)).matches()) {
+                main = blogPost(blogService.published(m.group(1)));
+            } else if ((m = EXAM_GUIDE.matcher(p)).matches()) {
+                main = exam(examService.get(m.group(1)), heading, description, false);
+            } else if ((m = EXAM.matcher(p)).matches() && !EXAM_PAGES.contains(m.group(1))) {
+                main = exam(examService.get(m.group(1)), heading, description, SeoHeadService.PREP_PAGES.contains(m.group(1)));
             } else {
                 main = "<h1>" + heading + "</h1>" + (description == null ? "" : "<p class=\"pr-lead\">" + description + "</p>");
             }
@@ -159,6 +180,7 @@ public class SeoBodyService {
                 .append(link("/fees", "School fee calculator"))
                 .append(link("/exams/jnvst", "JNVST Class 6 preparation"))
                 .append(link("/exams/aissee", "AISSEE Sainik School preparation"))
+                .append(link("/exams/netarhat", "Netarhat entrance preparation"))
                 .append(link("/exams/practice", "Mock tests and daily quiz"))
                 .append(link("/blog", "Guides for parents"))
                 .append("</ul>");
@@ -286,7 +308,28 @@ public class SeoBodyService {
             }
             h.append("</dl>");
         }
+        otherSchools(h, s);
         return h.toString();
+    }
+
+    /**
+     * The profile's "other schools" links, chosen as the app chooses them (SchoolDetailPage): within 5 km when the school is
+     * mapped, else in the same town, PIN code or district. Six at most.
+     */
+    private void otherSchools(StringBuilder h, SchoolDetailDto s) {
+        List<SchoolSummaryDto> others;
+        String heading;
+        if (s.latitude() != null && s.longitude() != null) {
+            others = schoolService.nearby(s.latitude(), s.longitude(), 5, 6, s.id());
+            heading = "Other schools within 5 km";
+        } else if (s.city() != null || s.pinCode() != null || s.district() != null) {
+            others = schoolService.search(criteria(s.stateCode(), s.city() == null && s.pinCode() == null ? s.district().slug() : null,
+                    s.city(), s.city() == null ? s.pinCode() : null, 7)).content();
+            heading = "Other schools in " + (s.city() != null ? s.city() : s.pinCode() != null ? "PIN code " + s.pinCode() : s.district().name() + " district");
+        } else {
+            return;
+        }
+        schoolList(h, heading, others.stream().filter(o -> !o.id().equals(s.id())).limit(6).toList());
     }
 
     private String state(String stateSlug, String districtSlug, String heading, String description) {
@@ -335,13 +378,173 @@ public class SeoBodyService {
         return h.toString();
     }
 
+    /** A published article in full: byline and dates, the body, its questions and its sources, as the app shows them. */
+    private String blogPost(com.indiaschoolfinder.entity.BlogPost post) {
+        StringBuilder h = new StringBuilder();
+        var category = post.getCategory();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › <a href=\"/blog\">Blog</a> › <a href=\"/blog/category/")
+                .append(category.slug()).append("\">").append(esc(category.label())).append("</a></nav>");
+        h.append("<article><h1>").append(esc(post.getTitle())).append("</h1>");
+        java.time.LocalDate published = post.getPublishedAt().atZone(INDIA).toLocalDate();
+        java.time.LocalDate updated = post.getUpdatedAt().atZone(INDIA).toLocalDate();
+        h.append("<p class=\"pr-meta\">By ").append(esc(post.getAuthorName())).append(" · Published <time datetime=\"").append(published)
+                .append("\">").append(published.format(DAY)).append("</time>");
+        if (updated.isAfter(published)) {
+            h.append(" · Updated <time datetime=\"").append(updated).append("\">").append(updated.format(DAY)).append("</time>");
+        }
+        h.append("</p>");
+        h.append("<p class=\"pr-lead\">").append(esc(post.getExcerpt())).append("</p>");
+        h.append(com.indiaschoolfinder.util.BlogBodyHtml.render(post.getBody()));
+        if (!post.getFaqs().isEmpty()) {
+            h.append("<h2>Frequently asked questions</h2><dl class=\"pr-faq\">");
+            for (var f : post.getFaqs()) {
+                h.append("<dt>").append(esc(f.getQuestion())).append("</dt><dd>").append(esc(f.getAnswer())).append("</dd>");
+            }
+            h.append("</dl>");
+        }
+        if (!post.getSources().isEmpty()) {
+            h.append("<h2>Sources</h2><ul class=\"pr-list\">");
+            for (var s : post.getSources()) {
+                h.append("<li><a href=\"").append(esc(s.getUrl())).append("\" rel=\"noopener\">").append(esc(s.getTitle())).append("</a>");
+                if (s.getCheckedOn() != null) {
+                    h.append(" <span>checked ").append(s.getCheckedOn().format(DAY)).append("</span>");
+                }
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
+        return h.append("</article>").toString();
+    }
+
+    /**
+     * An entrance exam. Its guide (/exams/{slug}, or /exams/{slug}/guide where the exam has a preparation page) gets the
+     * full guide: summary, dates, pattern, eligibility, syllabus, selection, questions and official papers. A preparation
+     * page gets what that page shows: dates, pattern, the practice and mock tests, and official links.
+     */
+    private String exam(com.indiaschoolfinder.dto.exam.ExamDetailDto d, String heading, String description, boolean prep) {
+        var e = d.exam();
+        var c = d.content();
+        boolean hasPrepPage = SeoHeadService.PREP_PAGES.contains(e.slug());
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › <a href=\"/exams\">Exams</a>");
+        if (!prep && hasPrepPage) {
+            h.append(" › <a href=\"/exams/").append(e.slug()).append("\">").append(esc(e.shortName())).append("</a>");
+        }
+        h.append("</nav><h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        if (prep) {
+            practiceSets(h, e.slug());
+            h.append("<p><a href=\"/exams/").append(e.slug()).append("/guide\">").append(esc(e.shortName()))
+                    .append(": eligibility, dates, syllabus and official papers</a></p>");
+        } else {
+            if (e.summary() != null) h.append("<p>").append(esc(e.summary())).append("</p>");
+            h.append("<dl class=\"pr-facts\">");
+            fact(h, "Conducted by", e.conductingAuthority());
+            fact(h, "Entry class", c.entryClassText());
+            fact(h, "For", c.forSchools());
+            fact(h, "Application fee", Boolean.TRUE.equals(e.applicationFree()) ? "Free" : c.fee());
+            fact(h, "Languages", c.languages());
+            h.append("</dl>");
+        }
+        examDates(h, e.currentDates());
+        for (var block : c.pattern()) {
+            h.append("<h2>").append(esc(block.title())).append("</h2><table><thead><tr><th>Section</th><th>Questions</th><th>Marks</th>")
+                    .append("<th>Time</th></tr></thead><tbody>");
+            for (var s : block.sections()) {
+                h.append("<tr><td>").append(esc(s.name())).append("</td><td>").append(s.questions() == null ? "–" : s.questions())
+                        .append("</td><td>").append(s.marks() == null ? "–" : s.marks()).append("</td><td>")
+                        .append(s.duration() == null ? "–" : esc(s.duration())).append("</td></tr>");
+            }
+            h.append("</tbody></table>");
+            list(h, null, block.notes());
+        }
+        if (!prep) {
+            list(h, "Eligibility", c.eligibility());
+            if (!c.syllabus().isEmpty()) {
+                h.append("<h2>Syllabus</h2>");
+                for (var area : c.syllabus()) {
+                    list(h, null, area.topics(), area.area());
+                }
+            }
+            list(h, "Selection", c.selection());
+            if (c.faq() != null && !c.faq().isEmpty()) {
+                h.append("<h2>Frequently asked questions</h2><dl class=\"pr-faq\">");
+                c.faq().forEach(f -> h.append("<dt>").append(esc(f.question())).append("</dt><dd>").append(esc(f.answer())).append("</dd>"));
+                h.append("</dl>");
+            }
+            if (!c.papers().isEmpty()) {
+                h.append("<h2>Official papers</h2><ul class=\"pr-list\">");
+                c.papers().forEach(p -> h.append("<li><a href=\"").append(esc(p.url())).append("\" rel=\"noopener\">").append(esc(p.title()))
+                        .append("</a> <span>").append(esc(p.year())).append(" · ").append(esc(p.kind())).append("</span></li>"));
+                h.append("</ul>");
+                if (c.papersNote() != null) h.append("<p>").append(esc(c.papersNote())).append("</p>");
+            }
+        }
+        h.append("<h2>Official links</h2><ul class=\"pr-list\">");
+        c.officialLinks().forEach(l -> h.append("<li><a href=\"").append(esc(l.url())).append("\" rel=\"noopener\">").append(esc(l.label())).append("</a></li>"));
+        h.append("</ul>");
+        if (!prep && hasPrepPage) {
+            h.append("<p><a href=\"/exams/").append(e.slug()).append("\">").append(esc(e.shortName()))
+                    .append(" practice questions, mock tests and study plan</a></p>");
+        }
+        return h.toString();
+    }
+
+    /** The exam's published practice sets, mock tests first, linked by title (the questions themselves are not loaded). */
+    private void practiceSets(StringBuilder h, String exam) {
+        List<Object[]> sets = practiceSets.findPublishedOutlineByExam(exam);
+        for (var kind : List.of(com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK, com.indiaschoolfinder.entity.PracticeSet.Kind.QUIZ)) {
+            List<Object[]> own = sets.stream().filter(s -> s[2] == kind).toList();
+            if (own.isEmpty()) continue;
+            h.append("<h2>").append(kind == com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK ? "Full mock tests" : "Practice quizzes")
+                    .append("</h2><ul class=\"pr-list\">");
+            for (Object[] s : own) {
+                h.append("<li><a href=\"/exams/practice/").append(s[0]).append("\">").append(esc((String) s[1])).append("</a>");
+                if (s[3] != null) h.append(" <span>").append(s[3]).append(" min</span>");
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
+    }
+
+    private static void examDates(StringBuilder h, List<com.indiaschoolfinder.dto.exam.ExamDateDto> dates) {
+        if (dates == null || dates.isEmpty()) return;
+        h.append("<h2>Important dates</h2><ul class=\"pr-list\">");
+        for (var d : dates) {
+            DateTimeFormatter f = d.precision() == com.indiaschoolfinder.enums.DatePrecision.MONTH ? MONTH : DAY;
+            h.append("<li>").append(esc(d.label())).append(": <span>").append(d.startsOn().format(f));
+            if (d.endsOn() != null && !d.endsOn().equals(d.startsOn())) h.append(" to ").append(d.endsOn().format(f));
+            if (!d.confirmed()) h.append(" (not confirmed yet)");
+            h.append("</span></li>");
+        }
+        h.append("</ul>");
+    }
+
+    private static void list(StringBuilder h, String heading, List<String> items) {
+        list(h, heading, items, null);
+    }
+
+    private static void list(StringBuilder h, String heading, List<String> items, String subheading) {
+        if (items == null || items.isEmpty()) return;
+        if (heading != null) h.append("<h2>").append(esc(heading)).append("</h2>");
+        if (subheading != null) h.append("<h3>").append(esc(subheading)).append("</h3>");
+        h.append("<ul>");
+        items.forEach(i -> h.append("<li>").append(esc(i)).append("</li>"));
+        h.append("</ul>");
+    }
+
     private void schools(StringBuilder h, SchoolSearchCriteria criteria, String heading) {
-        PageResponse<SchoolSummaryDto> page = schoolService.search(criteria);
-        if (page.content().isEmpty()) {
+        schoolList(h, heading, schoolService.search(criteria).content());
+    }
+
+    private static void schoolList(StringBuilder h, String heading, List<SchoolSummaryDto> schools) {
+        if (schools.isEmpty()) {
             return;
         }
         h.append("<h2>").append(esc(heading)).append("</h2><ul class=\"pr-list\">");
-        for (SchoolSummaryDto s : page.content()) {
+        for (SchoolSummaryDto s : schools) {
             Set<String> about = new LinkedHashSet<>();
             if (s.boardCode() != null) {
                 about.add("CISCE".equals(s.boardCode()) ? "ICSE/ISC" : s.boardCode());
@@ -362,9 +565,13 @@ public class SeoBodyService {
 
     /** The best-documented schools first, as the app's directory lists them. */
     private static SchoolSearchCriteria criteria(String state, String district, String city) {
-        return new SchoolSearchCriteria(null, null, null, state, district, city, null, null, null, null, null, null, null,
+        return criteria(state, district, city, null, LIST_SIZE);
+    }
+
+    private static SchoolSearchCriteria criteria(String state, String district, String city, String pinCode, int size) {
+        return new SchoolSearchCriteria(null, null, null, state, district, city, pinCode, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, "recommended", null, 0, LIST_SIZE);
+                null, "recommended", null, 0, size);
     }
 
     private static void fact(StringBuilder h, String label, String value) {

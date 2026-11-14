@@ -56,10 +56,10 @@ public class SeoHeadService {
     private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
-    /** The eligibility and dates guide of an exam that has its own preparation page (JNVST). */
+    /** The eligibility and dates guide of an exam that has its own preparation page (JNVST, AISSEE, Netarhat). */
     private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
     /** Exams whose /exams/{slug} is a preparation dashboard, with the guide at /exams/{slug}/guide. */
-    private static final java.util.Set<String> PREP_PAGES = java.util.Set.of("jnvst", "aissee");
+    public static final java.util.Set<String> PREP_PAGES = java.util.Set.of("jnvst", "aissee", "netarhat");
     private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
@@ -231,14 +231,21 @@ public class SeoHeadService {
     private final BestPlacesService bestPlacesService;
     private final PremierDirectoryService premierDirectory;
     private final SchoolFaqService faqService;
+    private final FeeService feeService;
+    private final AdmissionService admissionService;
+    private final com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
                           ExamService examService, ObjectMapper objectMapper,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
                           BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
-                          SchoolFaqService faqService) {
+                          SchoolFaqService faqService, FeeService feeService, AdmissionService admissionService,
+                          com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository) {
         this.faqService = faqService;
+        this.feeService = feeService;
+        this.admissionService = admissionService;
+        this.facilityRepository = facilityRepository;
         this.premierDirectory = premierDirectory;
         this.blogService = blogService;
         this.bestPlacesService = bestPlacesService;
@@ -427,8 +434,12 @@ public class SeoHeadService {
         }
         String place = String.join(", ", placeParts);
         String town = s.city() != null ? s.city() : s.district() != null ? s.district().name() : s.stateName();
-        String title = s.name() + (town != null && !s.name().contains(town) ? ", " + town : "") + " | " + SITE;
         String board = s.board() == null ? null : "CISCE".equals(s.board().code()) ? "ICSE/ISC" : s.board().code();
+        boolean fees = !feeService.feeHistory(s.id()).isEmpty();
+        boolean admissions = !admissionService.bySchool(s.id()).isEmpty();
+        boolean facilities = !facilityRepository.findBySchoolIdOrderByCategoryAscNameAsc(s.id()).isEmpty();
+        String title = s.name() + (town != null && !s.name().contains(town) ? ", " + town : "")
+                + schoolTitleTopic(fees, admissions, board) + " | " + SITE;
         String classes = s.classesOffered().isEmpty() ? null : s.classesOffered().size() == 1
                 ? s.classesOffered().get(0).name()
                 : s.classesOffered().get(0).name() + " to " + s.classesOffered().get(s.classesOffered().size() - 1).name();
@@ -443,7 +454,7 @@ public class SeoHeadService {
         } else if (classes != null) {
             description.append(" Classes ").append(classes).append('.');
         }
-        description.append(" Official fees, admissions, facilities and sources on ").append(SITE).append('.');
+        description.append(' ').append(schoolDescriptionTail(s, fees, admissions, facilities));
 
         String url = baseUrl + "/schools/" + s.slug();
         String image = schoolService.images(s.id()).stream()
@@ -477,6 +488,33 @@ public class SeoHeadService {
             graph.add(faq);
         }
         return tags(title, description.toString(), url, image, false, graph);
+    }
+
+    /**
+     * What the title promises, from what the profile holds: fees and admissions only when they are recorded, else the
+     * board. Nothing is promised that the page does not show.
+     */
+    static String schoolTitleTopic(boolean fees, boolean admissions, String board) {
+        if (fees && admissions) return ": Fees, Admissions & Details";
+        if (fees) return ": Fees & Details";
+        if (admissions) return ": Admissions & Details";
+        return board != null ? ": " + board + " School Details" : "";
+    }
+
+    /** The description's last sentence: the kinds of facts this profile actually has, never "fees" when there are none. */
+    static String schoolDescriptionTail(SchoolDetailDto s, boolean fees, boolean admissions, boolean facilities) {
+        List<String> parts = new java.util.ArrayList<>();
+        if (fees) parts.add("fees");
+        if (admissions) parts.add("admission dates");
+        if (facilities) parts.add("facilities");
+        if (s.affiliationNumber() != null && !s.affiliationNumber().isBlank()) parts.add("affiliation number");
+        if (s.websiteUrl() != null || s.phone() != null || s.email() != null) parts.add("contact details");
+        if (parts.isEmpty()) {
+            return "School details with official sources on " + SITE + ".";
+        }
+        String list = parts.size() == 1 ? parts.get(0)
+                : String.join(", ", parts.subList(0, parts.size() - 1)) + " and " + parts.get(parts.size() - 1);
+        return "See " + list + ", with official sources, on " + SITE + ".";
     }
 
     /** Schools › state › district › school: the profile page's breadcrumb (its locality link is a filter, not a page). */
@@ -513,6 +551,16 @@ public class SeoHeadService {
         return data;
     }
 
+    /** A BreadcrumbList from its items, in order. */
+    @SafeVarargs
+    private static Map<String, Object> crumbs(Map<String, Object>... items) {
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", List.of(items));
+        return data;
+    }
+
     private static Map<String, Object> listItem(int position, String name, String url) {
         Map<String, Object> item = new LinkedHashMap<>();
         item.put("@type", "ListItem");
@@ -529,18 +577,22 @@ public class SeoHeadService {
         }
         if (districtSlug == null) {
             String title = "Schools in " + state.name() + " | " + SITE;
-            String description = "%,d schools in %s, by district, with board, classes, fees and admissions linked to "
-                    .formatted(state.schoolCount(), state.name()) + "official sources.";
-            return tags(title, description, baseUrl + "/states/" + state.slug(), null, state.schoolCount() == 0, null);
+            String description = "%,d schools in %s, by district, with board and classes, and fees and admission dates where "
+                    .formatted(state.schoolCount(), state.name()) + "published, each linked to its official source.";
+            String url = baseUrl + "/states/" + state.slug();
+            return tags(title, description, url, null, state.schoolCount() == 0,
+                    crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), url)));
         }
         DistrictDto district = locationService.districts(state.code()).stream()
                 .filter(d -> d.slug().equals(districtSlug)).findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("District", districtSlug));
         String title = "Schools in " + district.name() + ", " + state.name() + " | " + SITE;
-        String description = "%,d schools in %s district, %s, with board, classes, fees and admissions linked to "
-                .formatted(district.schoolCount(), district.name(), state.name()) + "official sources.";
-        return tags(title, description, baseUrl + "/states/" + state.slug() + "/" + district.slug(), null,
-                district.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
+        String description = "%,d schools in %s district, %s, with board and classes, and fees and admission dates where "
+                .formatted(district.schoolCount(), district.name(), state.name()) + "published, each linked to its official source.";
+        String url = baseUrl + "/states/" + state.slug() + "/" + district.slug();
+        return tags(title, description, url, null, district.schoolCount() < MIN_SCHOOLS_TO_INDEX,
+                crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
+                        listItem(3, district.name(), url)));
     }
 
     private String city(String stateSlug, String citySlug, String baseUrl) {
@@ -552,18 +604,20 @@ public class SeoHeadService {
                 .filter(c -> c.slug().equals(citySlug)).findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
         String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
-        String description = "%,d schools in %s, %s, with board, classes, fees and admissions linked to "
-                .formatted(city.schoolCount(), city.name(), state.name()) + "official sources.";
-        return tags(title, description, baseUrl + "/states/" + state.slug() + "/city/" + city.slug(), null,
-                city.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
+        String description = "%,d schools in %s, %s, with board and classes, and fees and admission dates where "
+                .formatted(city.schoolCount(), city.name(), state.name()) + "published, each linked to its official source.";
+        String url = baseUrl + "/states/" + state.slug() + "/city/" + city.slug();
+        return tags(title, description, url, null, city.schoolCount() < MIN_SCHOOLS_TO_INDEX,
+                crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
+                        listItem(3, city.name(), url)));
     }
 
     private String board(String code, String baseUrl) {
         var board = boardRepository.findByCodeIgnoreCase(code).orElseThrow(() -> new ResourceNotFoundException("Board", code));
         String label = "CISCE".equals(board.getCode()) ? "ICSE/ISC (CISCE)" : board.getCode();
         String title = label + " schools in India | " + SITE;
-        String description = "Schools affiliated to " + board.getName() + ", with classes, fees and admissions linked to "
-                + "official sources.";
+        String description = "Schools affiliated to " + board.getName() + ", with classes, and fees and admission dates where "
+                + "published, each linked to its official source.";
         // The site links board pages by their upper-case code (/boards/CBSE), so that is the canonical address.
         return tags(title, description, baseUrl + "/boards/" + board.getCode(), null, false, null);
     }
@@ -592,20 +646,34 @@ public class SeoHeadService {
         return tags(title, description.toString(), url, null, false, data);
     }
 
-    /** A Class VI preparation dashboard (JNVST, AISSEE): practice, mock tests and the study plan. */
+    /** A Class VI preparation dashboard (JNVST, AISSEE, Netarhat): practice, mock tests and the study plan. */
     private String prepPage(ExamDetailDto detail, String baseUrl) {
         ExamSummaryDto e = detail.exam();
-        boolean aissee = "aissee".equals(e.slug());
-        String title = aissee
-                ? "AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan"
-                : "JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan";
-        String description = (aissee
-                ? "Free AISSEE Class 6 (Sainik School) preparation in English and Hindi: original practice questions for "
-                + "Mathematics, Intelligence, General Knowledge and Language, full 125-question mock tests, a study plan and "
-                + "progress tracking."
-                : "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
-                + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
-                + "progress tracking.") + (e.examDate() == null ? "" : (aissee ? " Entrance exam: " : " Selection test: ") + DAY.format(e.examDate()) + ".");
+        String title, description, dateLabel;
+        switch (e.slug()) {
+            case "aissee" -> {
+                title = "AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan";
+                description = "Free AISSEE Class 6 (Sainik School) preparation in English and Hindi: original practice questions for "
+                        + "Mathematics, Intelligence, General Knowledge and Language, full 125-question mock tests, a study plan and "
+                        + "progress tracking.";
+                dateLabel = " Entrance exam: ";
+            }
+            case "netarhat" -> {
+                title = "Netarhat Entrance Exam Preparation 2026-27 – Free Mock Tests, Practice Questions and Study Plan";
+                description = "Free Netarhat Vidyalaya Class 6 entrance preparation in Hindi and English: original practice questions "
+                        + "for Mental Ability, Hindi, Mathematics, Science and Social Studies, full 100-question Paper 1 mock tests, "
+                        + "Paper 2 writing tips, a study plan and progress tracking.";
+                dateLabel = " Entrance exam: ";
+            }
+            default -> {
+                title = "JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan";
+                description = "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
+                        + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
+                        + "progress tracking.";
+                dateLabel = " Selection test: ";
+            }
+        }
+        if (e.examDate() != null) description += dateLabel + DAY.format(e.examDate()) + ".";
         String url = baseUrl + "/exams/" + e.slug();
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");

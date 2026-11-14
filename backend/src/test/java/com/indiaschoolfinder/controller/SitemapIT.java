@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class SitemapIT extends AbstractIntegrationTest {
@@ -29,24 +30,42 @@ class SitemapIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/robots.txt"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Disallow: /admin")))
+                // The public API stays crawlable so pages render for search engines; private parts are not.
+                .andExpect(content().string(not(containsString("Disallow: /api/\n"))))
+                .andExpect(content().string(containsString("Disallow: /api/v1/admin/")))
+                .andExpect(content().string(containsString("Disallow: /api/v1/account")))
                 .andExpect(content().string(containsString("Sitemap: http://localhost/sitemap.xml")));
+        // API answers are never indexed themselves, errors included.
+        mockMvc.perform(get("/api/v1/schools")).andExpect(header().string("X-Robots-Tag", "noindex"));
+        mockMvc.perform(get("/api/v1/schools/slug/no-such-school")).andExpect(status().isNotFound())
+                .andExpect(header().string("X-Robots-Tag", "noindex"));
+        mockMvc.perform(get("/robots.txt")).andExpect(header().doesNotExist("X-Robots-Tag"));
 
         mockMvc.perform(get("/sitemap.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<loc>http://localhost/sitemaps/pages.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>http://localhost/sitemaps/places.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>http://localhost/sitemaps/exams.xml</loc>")))
+                .andExpect(content().string(containsString("<loc>http://localhost/sitemaps/blog.xml</loc>")))
                 .andExpect(content().string(containsString("<loc>http://localhost/sitemaps/schools-1.xml</loc>")));
 
         mockMvc.perform(get("/sitemaps/pages.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<loc>http://localhost/schools</loc>")))
+                // Board pages only for boards that have schools.
+                .andExpect(content().string(containsString("<loc>http://localhost/boards/CBSE</loc>")))
+                .andExpect(content().string(not(containsString("/boards/IB<"))))
+                .andExpect(content().string(not(containsString("/states/bihar<"))));
+
+        mockMvc.perform(get("/sitemaps/places.xml"))
+                .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<loc>http://localhost/states/bihar</loc>")))
                 .andExpect(content().string(containsString("<loc>http://localhost/states/bihar/patna</loc>")))
                 // A district with a single school is not a page worth indexing yet.
                 .andExpect(content().string(not(containsString("/states/bihar/buxar<"))))
-                .andExpect(content().string(not(containsString("/states/uttar-pradesh<"))))
-                // Board pages only for boards that have schools.
-                .andExpect(content().string(containsString("<loc>http://localhost/boards/CBSE</loc>")))
-                .andExpect(content().string(not(containsString("/boards/IB<"))));
+                .andExpect(content().string(not(containsString("/states/uttar-pradesh<"))));
+        mockMvc.perform(get("/sitemaps/blog.xml")).andExpect(status().isOk())
+                .andExpect(content().string(containsString("<urlset")));
 
         mockMvc.perform(get("/sitemaps/schools-1.xml"))
                 .andExpect(status().isOk())
