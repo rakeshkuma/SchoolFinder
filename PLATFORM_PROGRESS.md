@@ -121,7 +121,7 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Home page refreshes the feed every 15 minutes (also the open tab) and keeps the last cards on failure; says "Official sources checked daily at 6:00 AM IST · last checked …"; `/updates` gains "Past updates" | Done |
 | First live check (start-up catch-up, 14 Nov 2026, 9:36 pm IST): 39 new notices, 14 published and 25 waiting for review (22 of them from Rashtriya Military Schools, which prints no dates); CBSE blocked (403); next scheduled check 6:00 AM IST | Checked |
 
-## 11. Rankings page redesign and IIRF audit (built 14 November 2026; not deployed)
+## 11. Rankings page redesign and IIRF audit (live 14 November 2026 as 55c9b10)
 
 | Item | Status |
 | --- | --- |
