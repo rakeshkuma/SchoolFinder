@@ -69,6 +69,10 @@ export const adminService = {
     http
       .put<SchoolDetail>(`/admin/schools/${id}`, body, { headers: { 'If-Match': `"${version}"` } })
       .then((r) => r.data),
+  /** An editor's checked UDISE+ code and Know Your School link for one school (nulls clear them). */
+  setUdise: (id: number, body: { udiseCode: string | null; profileUrl: string | null; checked: boolean }) =>
+    http.put<{ schoolId: number; udiseCode: string | null; profileUrl: string | null; verifiedOn: string | null; matchStatus: string | null }>(
+      `/admin/schools/${id}/udise`, body).then((r) => r.data),
   setStatus: (id: number, active: boolean, reason: string) =>
     http.patch<SchoolDetail>(`/admin/schools/${id}/status`, { active, reason }).then((r) => r.data),
   upsertFee: (id: number, body: FeeRequest) => http.post<Fee>(`/admin/schools/${id}/fees`, body).then((r) => r.data),

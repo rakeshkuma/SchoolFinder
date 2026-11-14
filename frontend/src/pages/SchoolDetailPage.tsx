@@ -39,6 +39,7 @@ import { SchoolOrStateNotFound } from './PlaceRedirect';
 import { AD_SLOTS, AdSlot } from '../components/common/AdSlot';
 import { track } from '../utils/analytics';
 import { schoolFaqs } from '../utils/schoolFaq';
+import { UdiseCard } from '../components/school/UdiseCard';
 import { EnquiryButton } from '../components/school/EnquiryForm';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
@@ -363,6 +364,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
   const unknown = facts.filter(([, v]) => v === null || v === '').map(([label]) => label);
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
+      <div className="min-w-0 space-y-6">
       <section className="card p-6">
         {s.description && <p className="mb-4 leading-relaxed text-slate-700">{s.description}</p>}
         <dl className="divide-y divide-slate-100">
@@ -383,6 +385,8 @@ function Overview({ school: s }: { school: SchoolDetail }) {
           </div>
         )}
       </section>
+      <UdiseCard school={s} />
+      </div>
       <aside className="space-y-4">
         <RankingSummary schoolId={s.id} />
         <section className="card p-5">

@@ -89,6 +89,53 @@ export function VerifyPanel({ school, onChange }: { school: SchoolDetail; onChan
   );
 }
 
+/**
+ * The school's UDISE+ code and Know Your School link, entered only after opening the portal (its search has a captcha,
+ * so this is done by hand) and checking that the page shows this school. A link is never made up from the code.
+ */
+export function UdisePanel({ school, onChange }: { school: SchoolDetail; onChange: () => void }) {
+  const [code, setCode] = useState(school.udiseCode ?? '');
+  const [url, setUrl] = useState(school.udiseProfileUrl ?? '');
+  const [checked, setChecked] = useState(false);
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const save = async (clear = false) => {
+    try {
+      await adminService.setUdise(school.id, clear ? { udiseCode: null, profileUrl: null, checked: false }
+        : { udiseCode: code.trim() || null, profileUrl: url.trim() || null, checked });
+      setMsg({ ok: true, text: clear ? 'UDISE+ details removed.' : 'Saved: the profile now shows these details.' });
+      setChecked(false);
+      onChange();
+    } catch (e) {
+      setMsg({ ok: false, text: (e as Error).message });
+    }
+  };
+  return (
+    <Panel title="UDISE+ (Know Your School)">
+      <p className="text-sm text-slate-600">
+        Open <a className="link" href="https://kys.udiseplus.gov.in/" target="_blank" rel="noopener noreferrer">kys.udiseplus.gov.in</a>,
+        find this school by state, district and name, check that the page shows <strong>{school.name}</strong>, then copy the code and the
+        page address here. Without a link, the public profile offers the portal’s search.
+        {school.udiseVerifiedOn && <> Last checked {school.udiseVerifiedOn}.</>}
+      </p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-[180px_1fr]">
+        <label className="block text-sm"><span className="label">UDISE+ code (11 digits)</span>
+          <input className="input" inputMode="numeric" maxLength={11} value={code} onChange={(e) => setCode(e.target.value)} /></label>
+        <label className="block text-sm"><span className="label">Know Your School page address</span>
+          <input className="input" placeholder="https://kys.udiseplus.gov.in/#/schooldetail/…/…" value={url} onChange={(e) => setUrl(e.target.value)} /></label>
+      </div>
+      <label className="mt-3 flex items-start gap-2 text-sm">
+        <input type="checkbox" className="mt-0.5" checked={checked} onChange={(e) => setChecked(e.target.checked)} />
+        <span>I opened this page on the portal and it shows this school (name, district and address agree).</span>
+      </label>
+      <div className="mt-3 flex flex-wrap items-center gap-3">
+        <button type="button" className="btn-primary" disabled={!checked || (!code.trim() && !url.trim())} onClick={() => void save()}>Save checked details</button>
+        {(school.udiseCode || school.udiseProfileUrl) && <button type="button" className="btn-secondary" onClick={() => void save(true)}>Remove</button>}
+        <Feedback msg={msg} />
+      </div>
+    </Panel>
+  );
+}
+
 export function StatusPanel({ school, onChange }: { school: SchoolDetail; onChange: (s: SchoolDetail) => void }) {
   const [reason, setReason] = useState('');
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);

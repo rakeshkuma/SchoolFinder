@@ -306,6 +306,11 @@ export interface SchoolDetail {
   boarding: BoardingProfile | null;
   /** Highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated. */
   affiliatedUpTo: string | null;
+  /** A Know Your School (UDISE+) page an editor checked shows this school; null: the portal search is offered. */
+  udiseProfileUrl?: string | null;
+  udiseVerifiedOn?: string | null;
+  /** VERIFIED_MATCH, PENDING_REVIEW, NOT_MATCHED or null (never checked). */
+  udiseMatchStatus?: string | null;
 }
 
 export interface SchoolSearchParams {
