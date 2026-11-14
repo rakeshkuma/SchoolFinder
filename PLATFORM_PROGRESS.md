@@ -74,7 +74,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 4. In GA4, mark `generate_lead` as a key event.
 5. AdSense: apply, then switch on the prepared slots.
 
-## 8. Homepage redesign from the reference image (14 November 2026; not committed or deployed yet)
+## 8. Homepage redesign from the reference image (live 14 November 2026 as c925e9a)
 
 | Item | Status |
 | --- | --- |
