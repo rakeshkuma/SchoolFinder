@@ -40,7 +40,7 @@ public class SitemapController {
 
     static final int SCHOOLS_PER_FILE = 40_000;
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
-            "/admissions", "/admissions/guide", "/admissions/notifications", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
+            "/admissions", "/admissions/guide", "/admissions/notifications", "/updates", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion", "/advertise", "/claim-school",
             "/network/jawahar-navodaya-vidyalaya", "/network/sainik-school", "/network/eklavya-model-residential-school",

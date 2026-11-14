@@ -65,8 +65,9 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 .contains("\"url\":\"http://localhost/contact\"");
 
         String home = fetch("/api/v1/seo/body/");
-        assertThat(home).contains("<h1>Find the Right School. Build a Brighter Future.</h1>")
-                .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"");
+        assertThat(home).contains("<h1>Find the Right School for Your Child</h1>")
+                .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"")
+                .contains("href=\"/updates\">Notifications</a>").contains("href=\"/rankings\">Rankings</a>");
 
         assertThat(fetch("/api/v1/seo/body/about")).contains("<h1>About SchoolDhundo</h1>");
         assertThat(fetch("/api/v1/seo/body/saved")).isEmpty();

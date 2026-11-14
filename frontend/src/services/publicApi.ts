@@ -485,3 +485,42 @@ export const referenceService = {
   /** Points behind the directory's "recommended" order (documentation completeness, not quality). */
   orderRules: () => cached('orderRules', () => http.get<{ points: number; fact: string }[]>('/directory/order-rules').then((r) => r.data)),
 };
+
+export type UpdateCategory = 'ADMISSION' | 'EXAM' | 'PREP' | 'JOB';
+/** Worked out by the server from the item's dates on every request (closing within 14 days, published within 7, ...). */
+export type UpdateBadge = 'CLOSING_SOON' | 'NEW' | 'OPEN' | 'UPDATED' | 'UPCOMING';
+export type UpdateOrigin = 'EXAM_NOTICE' | 'ADMISSIONS' | 'PRACTICE' | 'EDITORIAL';
+
+/**
+ * One item of the school and exam updates feed: exam notices and dates, open admissions and new practice sets as they
+ * are recorded, plus notices an editor has published with their official source. Nothing is scraped or invented.
+ */
+export interface UpdateItem {
+  id: string;
+  category: UpdateCategory;
+  title: string;
+  summary: string;
+  imageUrl: string | null;
+  publishedOn: string;
+  updatedAt: string | null;
+  /** The date that matters: the last date to apply, or the exam date (see eventLabel). */
+  eventDate: string | null;
+  eventLabel: string | null;
+  deadline: boolean;
+  badge: UpdateBadge | null;
+  /** The official notice; null only for SchoolDhundo's own practice sets. */
+  sourceUrl: string | null;
+  sourceName: string | null;
+  /** The page on this site to open; null for an editorial update that opens its source instead. */
+  linkPath: string | null;
+  actionLabel: string | null;
+  verified: boolean;
+  origin: UpdateOrigin;
+  /** An exam slug, "admissions", or null: used to pick a picture. */
+  topic: string | null;
+}
+
+export const updateService = {
+  list: (params: { category?: UpdateCategory; page?: number; size?: number }) =>
+    http.get<PageResponse<UpdateItem>>('/updates', { params: cleanParams(params) }).then((r) => r.data),
+};

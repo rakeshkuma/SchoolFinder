@@ -1,6 +1,7 @@
 import { cleanParams, http } from './http';
 import type { ChallengeDifficulty, ChallengeKind, ChallengeRelease, ChallengeSummary } from './challengeApi';
 import type { PracticeCategory } from '../types/api';
+import type { UpdateCategory } from './publicApi';
 import type {
   Admission,
   AdminPracticeSet,
@@ -218,6 +219,13 @@ export const adminService = {
     http.get<PageResponse<AdmissionEnquiry>>('/admin/enquiries', { params: { status, page, size } }).then((r) => r.data),
   enquiryStatus: (id: number, status: EnquiryStatus, note?: string) =>
     http.post<AdmissionEnquiry>(`/admin/enquiries/${id}/status`, { status, note }).then((r) => r.data),
+  /** Editorial school and exam updates: saved as drafts, shown in the public feed only once published. */
+  updates: (status: SiteUpdateStatus, page = 0, size = 20) =>
+    http.get<PageResponse<SiteUpdateRow>>('/admin/updates', { params: { status, page, size } }).then((r) => r.data),
+  createUpdate: (body: SiteUpdateRequest) => http.post<SiteUpdateRow>('/admin/updates', body).then((r) => r.data),
+  saveUpdate: (id: number, body: SiteUpdateRequest) => http.put<SiteUpdateRow>(`/admin/updates/${id}`, body).then((r) => r.data),
+  publishUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/publish`).then((r) => r.data),
+  archiveUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/archive`).then((r) => r.data),
   challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
   createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
   updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
@@ -354,4 +362,35 @@ export interface AdmissionEnquiry {
   createdAt: string;
   updatedAt: string | null;
   handledBy: string | null;
+}
+
+export type SiteUpdateStatus = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
+
+/** An editorial update as an editor writes it. Every category except PREP needs an official source URL. */
+export interface SiteUpdateRequest {
+  category: UpdateCategory;
+  title: string;
+  summary: string;
+  imageUrl: string | null;
+  publishedOn: string;
+  eventDate: string | null;
+  eventLabel: string | null;
+  deadline: boolean;
+  sourceUrl: string | null;
+  sourceName: string | null;
+  /** A page on this site, such as /exams/aissee; never another site. */
+  linkPath: string | null;
+  actionLabel: string | null;
+  verificationStatus: VerificationStatus | null;
+  expiresOn: string | null;
+  priority: number;
+}
+
+export interface SiteUpdateRow extends SiteUpdateRequest {
+  id: number;
+  status: SiteUpdateStatus;
+  createdAt: string;
+  updatedAt: string | null;
+  createdBy: string | null;
+  updatedBy: string | null;
 }
