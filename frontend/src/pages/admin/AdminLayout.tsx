@@ -14,6 +14,7 @@ const LINKS = [
   { to: '/admin/enquiries', label: 'Admission enquiries' },
   { to: '/admin/contact', label: 'Contact messages' },
   { to: '/admin/blog', label: 'Blog' },
+  { to: '/admin/updates', label: 'School & exam updates' },
   { to: '/admin/exams', label: 'Entrance exams' },
   { to: '/admin/practice', label: 'Practice questions' },
   { to: '/admin/challenges', label: 'Challenges' },

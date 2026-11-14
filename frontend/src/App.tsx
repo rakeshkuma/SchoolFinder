@@ -69,6 +69,7 @@ const RankingPlaceRedirect = page(rankingPages, 'RankingPlaceRedirect');
 const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').then((m) => ({ default: m.BoardingLandingPage })));
 const PlaceRedirect = lazy(() => import('./pages/PlaceRedirect').then((m) => ({ default: m.PlaceRedirect })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
+const UpdatesPage = page(() => import('./pages/UpdatesPage'), 'UpdatesPage');
 const AboutPage = page(info, 'AboutPage');
 const business = () => import('./pages/BusinessPages');
 const AdvertisePage = page(business, 'AdvertisePage');
@@ -112,6 +113,7 @@ const AdminContactPage = lazy(() => import('./pages/admin/AdminContactPage').the
 const AdminEnquiriesPage = lazy(() => import('./pages/admin/AdminEnquiriesPage').then((m) => ({ default: m.AdminEnquiriesPage })));
 const AdminBlogPage = lazy(() => import('./pages/admin/AdminBlogPage').then((m) => ({ default: m.AdminBlogPage })));
 const AdminAuditPage = lazy(() => import('./pages/admin/AdminOperationsPages').then((m) => ({ default: m.AdminAuditPage })));
+const AdminUpdatesPage = lazy(() => import('./pages/admin/AdminUpdatesPage').then((m) => ({ default: m.AdminUpdatesPage })));
 
 /** /exam-preparation/... is another name for /exams/...: the rest of the address and its query are kept. */
 /** The old page of published rankings: its contents now live on the main ranking pages. */
@@ -218,6 +220,7 @@ export default function App() {
               <Route path="type/:type/:kind" element={<SchoolTypePage />} />
               <Route path="stages/:stage" element={<StagePage />} />
               <Route path="reviews" element={<ReviewsPage />} />
+              <Route path="updates" element={<UpdatesPage />} />
               <Route path="about" element={<AboutPage />} />
               <Route path="advertise" element={<AdvertisePage />} />
               <Route path="claim-school" element={<ClaimSchoolPage />} />
@@ -255,6 +258,7 @@ export default function App() {
                 <Route path="contact" element={<AdminContactPage />} />
                 <Route path="enquiries" element={<AdminEnquiriesPage />} />
                 <Route path="blog" element={<AdminBlogPage />} />
+                <Route path="updates" element={<AdminUpdatesPage />} />
                 <Route path="reviews" element={<AdminReviewsPage />} />
                 <Route path="rankings" element={<AdminRankingPage />} />
                 <Route path="external-rankings" element={<AdminExternalRankingsPage />} />

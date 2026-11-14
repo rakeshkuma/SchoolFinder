@@ -5,7 +5,7 @@ import { track } from '../../utils/analytics';
 /**
  * "Sign in with Google" in Google's blue style: the coloured G on a white square, white text on blue. Shown only when
  * the server reports a configured Google client. A plain link: the server redirects to Google and back, so no Google
- * script runs on this site. `compact` is the header size.
+ * script runs on this site. `compact` is the header size: "Sign in" where the header is full (phones, and beside the desktop menus below 1536px).
  */
 export function GoogleButton({ next, remember = false, label = 'Sign in with Google', compact = false }: {
   next: string; remember?: boolean; label?: string; compact?: boolean;
@@ -25,7 +25,7 @@ export function GoogleButton({ next, remember = false, label = 'Sign in with Goo
         </svg>
       </span>
       {compact
-        ? <span><span className="sm:hidden">Sign in</span><span className="hidden sm:inline">{label}</span></span>
+        ? <span><span className="sm:hidden xl:inline 2xl:hidden">Sign in</span><span className="hidden sm:inline xl:hidden 2xl:inline">{label}</span></span>
         : <span className="flex-1 text-center">{label}</span>}
     </a>
   );

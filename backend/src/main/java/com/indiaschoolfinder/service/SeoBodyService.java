@@ -38,10 +38,10 @@ public class SeoBodyService {
     private static final Pattern DESCRIPTION = Pattern.compile("<meta name=\"description\" content=\"(.*?)\"", Pattern.DOTALL);
     private static final int LIST_SIZE = 40;
 
-    /** The five sections of the site, as in the app's main navigation. */
+    /** The site's sections, as in the app's main navigation. */
     private static final String[][] PILLARS = {
-            {"/schools", "Find Schools"}, {"/boarding", "Boarding Schools"}, {"/compare", "Compare"},
-            {"/admissions", "Admissions &amp; Fees"}, {"/exams", "Exam Prep"},
+            {"/schools", "Schools"}, {"/rankings", "Rankings"}, {"/admissions", "Admissions"}, {"/exams", "Exam Prep"},
+            {"/updates", "Notifications"}, {"/compare", "Compare"}, {"/blog", "Blog"},
     };
 
     private final SeoHeadService seoHeadService;
@@ -101,7 +101,8 @@ public class SeoBodyService {
         StringBuilder h = new StringBuilder();
         h.append("<div class=\"prerender\" data-prerender>");
         h.append("<header class=\"pr-header\"><div class=\"pr-wrap pr-bar\"><a href=\"/\" class=\"pr-brand\">")
-                .append("<img src=\"/favicon.svg\" alt=\"\" width=\"36\" height=\"36\" />SchoolDhundo</a><nav class=\"pr-nav\" aria-label=\"Main\">");
+                .append("<img src=\"/favicon.svg\" alt=\"\" width=\"36\" height=\"36\" />School<span>Dhundo</span></a>")
+                .append("<nav class=\"pr-nav\" aria-label=\"Main\">");
         for (String[] pillar : PILLARS) {
             h.append("<a href=\"").append(pillar[0]).append("\">").append(pillar[1]).append("</a>");
         }
@@ -113,9 +114,9 @@ public class SeoBodyService {
 
     private String home() {
         StringBuilder h = new StringBuilder();
-        h.append("<h1>Find the Right School. Build a Brighter Future.</h1>");
-        h.append("<p class=\"pr-lead\">Discover, compare and explore thousands of schools across India. Get school rankings, ")
-                .append("admission information, boarding school details and exam preparation resources in one place.</p>");
+        h.append("<h1>Find the Right School for Your Child</h1>");
+        h.append("<p class=\"pr-lead\">Discover, compare and prepare for the best schools across India — from admissions and ")
+                .append("rankings to exam updates, preparation and more, all in one place.</p>");
         List<StateDto> states = locationService.states().stream().filter(s -> s.schoolCount() > 0)
                 .sorted(Comparator.comparing(StateDto::schoolCount).reversed()).toList();
         if (!states.isEmpty()) {
@@ -130,6 +131,7 @@ public class SeoBodyService {
                 .append(link("/boarding", "Boarding schools in India"))
                 .append(link("/rankings", "India's top schools"))
                 .append(link("/admissions", "Open admissions and deadlines"))
+                .append(link("/updates", "Latest school and exam updates"))
                 .append(link("/fees", "School fee calculator"))
                 .append(link("/exams/jnvst", "JNVST Class 6 preparation"))
                 .append(link("/exams/aissee", "AISSEE Sainik School preparation"))

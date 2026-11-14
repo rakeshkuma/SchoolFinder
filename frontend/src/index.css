@@ -34,6 +34,23 @@
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+  /* The home page and the site header and footer use the wider frame. */
+  .container-wide {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8;
+  }
+  /* The home hero's photo panel: its left side is a gentle curve. */
+  .hero-arc {
+    clip-path: ellipse(100% 125% at 100% 50%);
+  }
+  /* The search box inside the hero's white bar: the bar draws the frame and the focus ring. */
+  .hero-search .input {
+    @apply border-transparent text-base shadow-none focus:border-transparent focus:ring-0;
+  }
+  /* The live updates ticker fades out at both ends. */
+  .ticker-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+  }
   .card {
     @apply rounded-2xl border border-slate-200/80 bg-white shadow-card;
   }
@@ -138,6 +155,9 @@
   }
   .prerender .pr-brand img {
     @apply h-9 w-9;
+  }
+  .prerender .pr-brand span {
+    @apply text-flame-600;
   }
   .prerender .pr-nav {
     @apply hidden items-center gap-5 text-sm font-semibold text-slate-600 xl:flex;

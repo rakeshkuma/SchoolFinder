@@ -32,6 +32,32 @@ export default {
           DEFAULT: '#0b1324',
           soft: '#1b2540',
         },
+        // Home page and site chrome: deep navy headings and footer, royal blue actions, flame orange highlights.
+        // White text needs royal-600 or darker and flame-700 (4.5:1); flame-600 is for large text and decoration only.
+        navy: {
+          DEFAULT: '#0f2557',
+          800: '#132e69',
+          900: '#0b1d45',
+          950: '#081634',
+        },
+        royal: {
+          50: '#eef5ff',
+          100: '#dbe8ff',
+          200: '#bcd5ff',
+          500: '#1a6ff0',
+          600: '#0b5cd5',
+          700: '#0a4fb8',
+          800: '#0c418f',
+        },
+        flame: {
+          50: '#fff4ec',
+          100: '#ffe5d2',
+          400: '#ff8a3d',
+          500: '#ff6b1a',
+          600: '#e8590c',
+          700: '#c2410c',
+          800: '#9a3412',
+        },
         // Light enough that slate-500 secondary text keeps a 4.5:1 contrast ratio (WCAG AA).
         canvas: '#f8fafc',
       },
@@ -57,10 +83,21 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        // The live updates ticker: the list is drawn twice, so moving it by half its width loops without a jump.
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'live-dot': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.35' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.5s ease-out both',
         'fade-down': 'fade-down 0.15s ease-out both',
+        marquee: 'marquee var(--marquee-duration, 60s) linear infinite',
+        'live-dot': 'live-dot 1.6s ease-in-out infinite',
       },
     },
   },

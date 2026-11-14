@@ -84,7 +84,7 @@ public class SeoHeadService {
      */
     static final Set<String> APP_SECTIONS = Set.of("schools", "states", "cities", "network", "saved", "rankings",
             "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "boarding-schools", "exams",
-            "exam-preparation", "boards",
+            "exam-preparation", "boards", "updates",
             "type", "stages", "reviews", "about", "contact", "suggest", "find", "privacy", "privacy-policy", "terms",
             "terms-of-service", "terms-and-conditions", "disclaimer", "editorial-policy", "corrections-policy",
             "data-deletion", "signin", "register", "blog", "verify-email", "forgot-password", "reset-password", "account",
@@ -153,6 +153,8 @@ public class SeoHeadService {
             page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
                     + "admission works in India: the steps, age rules for Class I, reserved seats under the RTE Act, "
                     + "documents commonly asked for and what to check about hostels."),
+            page("/updates", "Latest school & exam updates", "Latest official notices for AISSEE, JNVST, Netarhat and other school "
+                    + "entrance exams, open school admissions and their last dates, and new practice sets, each linked to its source."),
             page("/admissions/notifications", "Latest school admission notifications", "School admission cycles "
                     + "recently added or updated from official notices, by state, class, category and status."),
             page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
