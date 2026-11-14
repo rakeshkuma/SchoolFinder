@@ -54,6 +54,9 @@ export default defineConfig({
   },
   build: {
     sourcemap: false,
+    // Font files are always separate files: the Content-Security-Policy allows fonts only from this site (font-src
+    // 'self'), so a small font subset inlined as a data: URL would be blocked. Other small assets keep Vite's default.
+    assetsInlineLimit: (file: string) => (/\.woff2?$/.test(file) ? false : undefined),
     rollupOptions: {
       output: {
         // Separate long-lived vendor chunks so app changes don't invalidate cached libraries.
