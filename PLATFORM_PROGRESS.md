@@ -106,7 +106,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Measured on a production build (cold cache): layout shift 0.34 → 0.001 (loading placeholder now a full screen; sign-in slot keeps its width); phone LCP (4× CPU, 4G) about 3.9 s → 1.6 s; desktop LCP about 1.4 s | Done |
 | Signed-out visitors get 401 from `/api/v1/account/me`; that is how the app learns nobody is signed in, not an error | Checked, unchanged |
 
-## 10. Daily official-notification check (built 14 November 2026; not deployed)
+## 10. Daily official-notification check (live 14 November 2026 as 3940405)
 
 Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md).
 
@@ -119,3 +119,4 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Published automatically only from an approved source with a date printed by the source and a link on its own hosts; otherwise waits for review with the reason; undated notices cannot be published until an editor confirms the date; summaries are one templated sentence, never copied text | Done |
 | Public: `/api/v1/updates` (unchanged), `/api/v1/updates/past` (expired, badge EXPIRED), `/api/v1/updates/sync-status` (last and next check only). Staff: review queue, sync status, run history with per-source results; "Check now" for ADMIN only, with a 10-minute cool-down | Done |
 | Home page refreshes the feed every 15 minutes (also the open tab) and keeps the last cards on failure; says "Official sources checked daily at 6:00 AM IST · last checked …"; `/updates` gains "Past updates" | Done |
+| First live check (start-up catch-up, 14 Nov 2026, 9:36 pm IST): 39 new notices, 14 published and 25 waiting for review (22 of them from Rashtriya Military Schools, which prints no dates); CBSE blocked (403); next scheduled check 6:00 AM IST | Checked |
