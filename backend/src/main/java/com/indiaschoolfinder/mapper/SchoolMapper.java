@@ -94,7 +94,8 @@ public class SchoolMapper {
                 s.getLogoUrl(), s.getAverageRating(), s.getReviewCount(), s.getSourceUrl(),
                 s.getSourceRetrievedDate(), s.getVerificationStatus(), s.getLastVerifiedDate(),
                 s.isActive(), s.getVersion(), s.getUpdatedAt(), boarding == null ? null : toBoardingDto(boarding),
-                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()));
+                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()),
+                com.indiaschoolfinder.util.UdiseLinks.safeProfileUrl(s.getUdiseProfileUrl()), s.getUdiseVerifiedOn(), s.getUdiseMatchStatus());
     }
 
     /**

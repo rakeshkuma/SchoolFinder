@@ -93,6 +93,16 @@ public class School extends AuditableEntity {
     @Column(length = 11)
     private String udiseCode;
 
+    /** A Know Your School page an editor checked shows this school; null otherwise (the portal's search is offered). */
+    @Column(length = 120)
+    private String udiseProfileUrl;
+
+    private LocalDate udiseVerifiedOn;
+
+    /** VERIFIED_MATCH, PENDING_REVIEW or NOT_MATCHED (see UdiseLinks); null when never checked. */
+    @Column(length = 16)
+    private String udiseMatchStatus;
+
     /** Board affiliation / school number as published by the board. */
     @Column(length = 30)
     private String affiliationNumber;

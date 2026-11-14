@@ -135,3 +135,16 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Wikimedia Commons now refuses 640px thumbnails: four stored photos (Lawrence School Lovedale, RIMC, Sherwood, Woodstock) fail wherever they are shown with their stored address; the rankings page requests standard widths | Found; fixed on /rankings only |
 | 15 freely licensed Commons photos checked by eye for premier schools that had none (`data/images/premier-school-photos-2026-11.json`, `tools/apply-school-photos.mjs`); applied locally, not on the live site | Ready to apply |
 | Server-rendered /rankings now carries the published top 20 with links, the source line and the category links; new title and description | Done |
+
+## 12. UDISE+ links on school profiles (built 15 November 2026; not deployed)
+
+Details: [UDISE_INTEGRATION_GUIDE.md](UDISE_INTEGRATION_GUIDE.md).
+
+| Item | Status |
+| --- | --- |
+| Read-only live audit: 33,072 schools (33,060 active), 0 with a UDISE+ code, 0 official UDISE+ addresses; codes are not in CBSE's SARAS records | Done |
+| Portal checked: its links are `/#/schooldetail/{its school id}/{year id}` from its own search (captcha), so direct links are never built from a code | Done |
+| "Official UDISE+ School Information" card in each profile's Overview: checked link → "View Official UDISE+ Details" (new tab, code, date); otherwise "Find This School on UDISE+" with the code to copy, or the school's name and place | Done |
+| V45: three nullable columns on `school` (profile link, checked date, match status) with a CHECK allowing only https kys.udiseplus.gov.in school-detail pages; no row changed, no index added | Done |
+| Admin: per-school panel to save a checked code and link (`PUT /admin/schools/{id}/udise`); ADMIN-only dry-run/apply matcher for an official list (`POST /admin/import/udise`), same state + PIN + names, unambiguous only, batched and repeatable | Done |
+| Bulk codes: no lawful bulk source reachable (Data Sharing Portal needs a formal request; secondary sources say the 11-digit code is no longer shared; OpenCity refuses automated access) | Owner to obtain a list |

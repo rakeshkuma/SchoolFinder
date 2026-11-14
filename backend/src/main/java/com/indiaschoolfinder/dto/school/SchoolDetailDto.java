@@ -62,7 +62,12 @@ public record SchoolDetailDto(
         /* null when the school has no boarding profile */
         BoardingProfileDto boarding,
         /* highest class the board affiliates the school for ("Class XII"), from its official record; null if unstated */
-        String affiliatedUpTo) {
+        String affiliatedUpTo,
+        /* a Know Your School (UDISE+) page checked by an editor to show this school; null: offer the portal search */
+        String udiseProfileUrl,
+        LocalDate udiseVerifiedOn,
+        /* VERIFIED_MATCH, PENDING_REVIEW, NOT_MATCHED or null */
+        String udiseMatchStatus) {
 
     public record DistrictRef(String name, String slug) {
     }
