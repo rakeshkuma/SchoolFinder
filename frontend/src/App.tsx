@@ -41,6 +41,7 @@ const ExamsPage = page(() => import('./pages/ExamPages'), 'ExamsPage');
 const ExamGuidePage = page(() => import('./pages/ExamPages'), 'ExamGuidePage');
 const JnvstPrepPage = page(() => import('./pages/JnvstPrepPage'), 'JnvstPrepPage');
 const AisseePrepPage = page(() => import('./pages/AisseePrepPage'), 'AisseePrepPage');
+const NetarhatPrepPage = page(() => import('./pages/NetarhatPrepPage'), 'NetarhatPrepPage');
 const ExamFinderPage = page(() => import('./pages/ExamToolsPages'), 'ExamFinderPage');
 const ExamCalendarPage = page(() => import('./pages/ExamToolsPages'), 'ExamCalendarPage');
 const ExamClassPage = page(() => import('./pages/ExamHubPages'), 'ExamClassPage');
@@ -213,6 +214,7 @@ export default function App() {
               <Route path="exams/practice/:slug" element={<PracticeTestPage />} />
               <Route path="exams/jnvst" element={<JnvstPrepPage />} />
               <Route path="exams/aissee" element={<AisseePrepPage />} />
+              <Route path="exams/netarhat" element={<NetarhatPrepPage />} />
               <Route path="exams/:slug/guide" element={<ExamGuidePage />} />
               <Route path="exams/:slug" element={<ExamGuidePage />} />
               <Route path="boards/:code" element={<BoardPage />} />

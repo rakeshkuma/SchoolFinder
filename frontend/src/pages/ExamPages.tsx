@@ -30,7 +30,7 @@ import { NotFoundPage } from './InfoPages';
 const PAGE_SIZE = 12;
 
 /** Exams whose /exams/{slug} is a preparation dashboard; their guide is at /exams/{slug}/guide. */
-const PREP_PAGES: Record<string, string> = { jnvst: 'JNVST Class 6 preparation', aissee: 'AISSEE Class 6 preparation' };
+const PREP_PAGES: Record<string, string> = { jnvst: 'JNVST Class 6 preparation', aissee: 'AISSEE Class 6 preparation', netarhat: 'Netarhat entrance preparation' };
 
 const HERO_CHIP = 'chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 transition hover:bg-white/20';
 const HERO_ACTION = 'btn w-full justify-start bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/20';

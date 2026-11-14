@@ -135,7 +135,7 @@ const ENTRIES: NavEntry[] = [
         items: [
           { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation', hint: 'Class 6 mock tests and study plan' },
           { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag', hint: 'Class 6 mock tests and study plan' },
-          { to: '/exams/netarhat', label: 'Netarhat entrance exam', icon: 'graduation', hint: 'Netarhat Awasiya Vidyalaya, Class VI' },
+          { to: '/exams/netarhat', label: 'Netarhat entrance exam', icon: 'graduation', hint: 'Class 6 mock tests and study plan' },
           { to: '/exams', label: 'All entrance exams', icon: 'calendar', hint: 'Dates, eligibility and patterns' },
         ],
       },

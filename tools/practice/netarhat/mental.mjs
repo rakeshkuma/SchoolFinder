@@ -21,6 +21,8 @@ const ODD = [
   [['Frog', 'Snake', 'Lizard', 'Crocodile'], ['मेंढक', 'साँप', 'छिपकली', 'मगरमच्छ'], 'Snake, lizard and crocodile are reptiles; the frog is an amphibian.', 'साँप, छिपकली और मगरमच्छ सरीसृप हैं; मेंढक उभयचर है।', 0],
   [['Tabla', 'Sitar', 'Veena', 'Sarangi'], ['तबला', 'सितार', 'वीणा', 'सारंगी'], 'Sitar, veena and sarangi are string instruments; the tabla is a drum.', 'सितार, वीणा और सारंगी तार वाले वाद्य हैं; तबला ताल वाद्य है।', 0],
   [['Bus', 'Train', 'Aeroplane', 'Truck'], ['बस', 'रेलगाड़ी', 'हवाई जहाज़', 'ट्रक'], 'Bus, train and truck travel on land; the aeroplane flies.', 'बस, रेलगाड़ी और ट्रक ज़मीन पर चलते हैं; हवाई जहाज़ उड़ता है।', 2],
+  // Added for the full mock tests (quizzes use rows 0–8 only, so these never change a quiz).
+  [['Rose', 'Lotus', 'Marigold', 'Mango'], ['गुलाब', 'कमल', 'गेंदा', 'आम'], 'Rose, lotus and marigold are flowers; the mango is a fruit.', 'गुलाब, कमल और गेंदा फूल हैं; आम फल है।', 3],
 ];
 
 // [A, B, C, answer, wrong×3] in English and Hindi, reason
@@ -35,6 +37,10 @@ const ANALOGY = [
   [['Tailor', 'Needle', 'Farmer', 'Plough', 'Field', 'Crop', 'Rain'], ['दर्ज़ी', 'सुई', 'किसान', 'हल', 'खेत', 'फसल', 'वर्षा'], 'A tailor\'s tool is a needle; a farmer\'s tool is a plough.', 'दर्ज़ी का औज़ार सुई; किसान का औज़ार हल।'],
   [['Fish', 'Water', 'Camel', 'Desert', 'Hump', 'Saddle', 'Milk'], ['मछली', 'पानी', 'ऊँट', 'रेगिस्तान', 'कूबड़', 'काठी', 'दूध'], 'Fish are suited to water; camels are suited to the desert.', 'मछली पानी में रहती है; ऊँट रेगिस्तान में।'],
   [['Hand', 'Glove', 'Foot', 'Shoe', 'Toe', 'Walk', 'Leg'], ['हाथ', 'दस्ताना', 'पैर', 'जूता', 'अँगूठा', 'चलना', 'टाँग'], 'A glove is worn on the hand; a shoe on the foot.', 'दस्ताना हाथ में; जूता पैर में पहनते हैं।'],
+  // Added for the full mock tests (quizzes use rows 0–8 only).
+  [['Book', 'Read', 'Song', 'Sing', 'Dance', 'Paper', 'Write'], ['पुस्तक', 'पढ़ना', 'गीत', 'गाना', 'नाचना', 'काग़ज़', 'लिखना'], 'A book is read; a song is sung.', 'पुस्तक पढ़ी जाती है; गीत गाया जाता है।'],
+  [['Hot', 'Cold', 'Up', 'Down', 'High', 'Top', 'Sky'], ['गरम', 'ठंडा', 'ऊपर', 'नीचे', 'ऊँचा', 'चोटी', 'आकाश'], 'Hot is the opposite of cold; up is the opposite of down.', 'गरम का उल्टा ठंडा; ऊपर का उल्टा नीचे।'],
+  [['Bee', 'Hive', 'Horse', 'Stable', 'Saddle', 'Grass', 'Field'], ['मधुमक्खी', 'छत्ता', 'घोड़ा', 'अस्तबल', 'काठी', 'घास', 'खेत'], 'A bee lives in a hive; a horse lives in a stable.', 'मधुमक्खी छत्ते में रहती है; घोड़ा अस्तबल में।'],
 ];
 
 // relation puzzles: [EN prompt, HI prompt, answer EN, answer HI, wrong EN×3, wrong HI×3, explanation EN, HI]
@@ -44,9 +50,12 @@ const RELATIONS = [
   ['Amit\'s father is Sunil. Sunil\'s father is Harish. How is Harish related to Amit?', 'अमित के पिता सुनील हैं। सुनील के पिता हरीश हैं। हरीश का अमित से क्या संबंध है?', 'Grandfather', 'दादा', ['Father', 'Uncle', 'Brother'], ['पिता', 'चाचा', 'भाई'], 'The father\'s father is the grandfather.', 'पिता के पिता दादा होते हैं।'],
   ['Neha is the sister of Arun. Arun is the father of Kiran. How is Neha related to Kiran?', 'नेहा, अरुण की बहन है। अरुण, किरण के पिता हैं। नेहा का किरण से क्या संबंध है?', 'Aunt (father\'s sister)', 'बुआ', ['Mother', 'Sister', 'Grandmother'], ['माँ', 'बहन', 'दादी'], 'The father\'s sister is the aunt (बुआ).', 'पिता की बहन बुआ होती है।'],
   ['Pointing to a boy, Asha says, "He is the only son of my mother." How is the boy related to Asha?', 'एक लड़के की ओर इशारा करते हुए आशा कहती है, "यह मेरी माँ का इकलौता पुत्र है।" लड़के का आशा से क्या संबंध है?', 'Brother', 'भाई', ['Son', 'Father', 'Cousin'], ['पुत्र', 'पिता', 'चचेरा भाई'], 'Asha is a girl, so her mother\'s only son is her brother.', 'आशा लड़की है, इसलिए उसकी माँ का इकलौता पुत्र उसका भाई है।'],
+  // Added for the full mock tests (quizzes use rows 0–4 only).
+  ['Raju is the brother of Kavita. Kavita is the mother of Sonu. How is Raju related to Sonu?', 'राजू, कविता का भाई है। कविता, सोनू की माँ है। राजू का सोनू से क्या संबंध है?', 'Maternal uncle', 'मामा', ['Father', 'Brother', 'Grandfather'], ['पिता', 'भाई', 'दादा'], 'Raju is the brother of Sonu\'s mother, so he is Sonu\'s maternal uncle (मामा).', 'राजू, सोनू की माँ का भाई है, इसलिए वह सोनू का मामा है।'],
+  ['Anil\'s mother is Sarla. Sarla\'s mother is Kamla. How is Kamla related to Anil?', 'अनिल की माँ सरला हैं। सरला की माँ कमला हैं। कमला का अनिल से क्या संबंध है?', 'Grandmother (mother\'s mother)', 'नानी', ['Mother', 'Aunt', 'Sister'], ['माँ', 'मौसी', 'बहन'], 'The mother\'s mother is the grandmother (नानी).', 'माँ की माँ नानी होती हैं।'],
 ];
 
-const GENERATORS = [
+export const GENERATORS = [
   (r) => { // arithmetic series
     const a = int(r, 3, 30), d = int(r, 3, 13), xs = [0, 1, 2, 3, 4].map((k) => a + k * d), n = a + 5 * d;
     return { topic: 'Number series', difficulty: 'EASY', correct: n, wrong: [n + 1, n - d + 1, n + d, n - 2],
