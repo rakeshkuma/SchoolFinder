@@ -10,7 +10,7 @@ const roman = (n) => [[100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], 
 
 const NAMES = [['Ravi', 'रवि'], ['Sita', 'सीता'], ['Aman', 'अमन'], ['Priya', 'प्रिया'], ['Birsa', 'बिरसा'], ['Meena', 'मीना'], ['Salim', 'सलीम'], ['Anita', 'अनिता']];
 
-const GENERATORS = [
+export const GENERATORS = [
   // 1. Place value
   (r) => {
     const n = int(r, 1_00_000, 9_99_999);

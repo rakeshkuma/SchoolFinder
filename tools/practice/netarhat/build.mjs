@@ -2,10 +2,11 @@
 // subject of Paper 1 (Mental Ability, Hindi, Mathematics, Science, Social Studies) at Class 5 level — and writes them
 // into practice.json. Usage: node build.mjs <path/to/practice.json>. Re-running replaces these sets, never duplicates.
 import { readFileSync, writeFileSync } from 'node:fs';
-import { check, fixed, rng, shuffleFixed } from './core.mjs';
+import { check, fixed, int, mcq, rng, shuffleFixed } from './core.mjs';
 import { hindiSet } from './hindi.mjs';
-import { mathsSet } from './maths.mjs';
-import { mentalSet } from './mental.mjs';
+import { GENERATORS as MATHS, mathsSet } from './maths.mjs';
+import { GENERATORS as MENTAL, mentalSet } from './mental.mjs';
+import { SCIENCE_MOCK, SOCIAL_MOCK, hindiMockSet } from './mock.mjs';
 import { SCIENCE } from './science.mjs';
 import { SOCIAL } from './social.mjs';
 
@@ -52,14 +53,75 @@ for (const s of SUBJECTS) {
       title: `Netarhat Paper 1 practice: ${s.name} ${n} (${s.hindiName})`,
       description: `20 original multiple-choice questions on ${s.about}, at the Class 5 level of the Netarhat entrance test`
         + `${s.key === 'hindi' ? '' : ', in English and Hindi'}. Paper 1 has 20 one-mark questions in each of five subjects in 2½ hours, so 30 minutes`
-        + ' is a fair pace. Written by India School Finder; these are not official questions, and the subjective Paper 2 is not covered here.',
+        + ' is a fair pace. Written by SchoolDhundo; these are not official questions, and the subjective Paper 2 is not covered here.',
       durationMinutes: 30, displayOrder: s.order + n, published: true, reviewedOn: REVIEWED, content,
     });
   }
 }
 
-const ids = new Set(sets.map((s) => s.slug));
-data.sets = [...data.sets.filter((s) => !ids.has(s.slug)), ...sets];
+// Two full Paper 1 mock tests: 100 questions in the order of the 2026-27 advertisement (Mental Ability, Hindi,
+// Mathematics, Science, Social Studies; 20 each, 1 mark, no negative marking), 2½ hours. Every question is new: the
+// rule-based subjects skip anything already in a quiz (`seen`), and Hindi, Science and Social Studies come from
+// mock.mjs. A separate seed keeps the quizzes above exactly as they were.
+const rm = rng(20261207);
+const fresh = (make) => {
+  for (let i = 0; i < 400; i++) {
+    let q;
+    try { q = make(); } catch { continue; } // an unlucky draw without three distinct distractors
+    const key = `${q.prompt}|${[...q.options].sort().join('|')}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      return q;
+    }
+  }
+  throw new Error('mock: could not find a new question');
+};
+// The quizzes have used every square series that the Number series rule makes (2² to 10²), so mocks start at 7².
+const bigSquares = () => {
+  const s = int(rm, 7, 10), xs = [0, 1, 2, 3].map((i) => (s + i) ** 2), n = (s + 4) ** 2;
+  return { topic: 'Number series', difficulty: 'MEDIUM', correct: n, wrong: [n - 1, n + 2, xs[3] + (xs[3] - xs[2]), (s + 4) * 2],
+    en: [`What comes next? ${xs.join(', ')}, ?`, `These are squares: ${xs.map((x, i) => `${s + i}²`).join(', ')}; next is ${s + 4}² = ${n}.`],
+    hi: [`आगे क्या आएगा? ${xs.join(', ')}, ?`, `ये वर्ग संख्याएँ हैं: ${xs.map((x, i) => `${s + i}²`).join(', ')}; अगली ${s + 4}² = ${n}।`] };
+};
+const mockMental = (setNo) => MENTAL.map((g, i) => fresh(() => {
+  const x = i === 3 ? bigSquares() : g(rm, setNo);
+  const hiFmt = x.hiMap ? (v) => x.hiMap[v] ?? String(v) : undefined;
+  return mcq(rm, { id: 'x', section: 'Mental Ability', topic: x.topic, difficulty: x.difficulty, prompt: x.en[0], correct: x.correct,
+    wrong: x.wrong, explanation: x.en[1], hi: { prompt: x.hi[0], explanation: x.hi[1], fmt: hiFmt } });
+}));
+const mockMaths = () => MATHS.map((g) => fresh(() => {
+  const x = g(rm);
+  return mcq(rm, { id: 'x', section: 'Mathematics', topic: x.topic, difficulty: x.difficulty, prompt: x.en[0], correct: x.correct,
+    wrong: x.wrong, explanation: x.en[1], fmt: x.fmt, hi: { prompt: x.hi[0], explanation: x.hi[1], fmt: x.hiFmt ?? x.fmt } });
+}));
+const mockRows = (rows, section, k) => rows.filter((_, i) => i % 2 === k).map((row) => {
+  const [topic, difficulty, en, enOpts, hi, hiOpts, answer, enWhy, hiWhy] = row;
+  return shuffleFixed(rm, fixed({ id: 'x', section, topic, difficulty, prompt: en, options: enOpts, answer, explanation: enWhy,
+    hi: { prompt: hi, options: hiOpts, explanation: hiWhy } }));
+});
+for (const n of [1, 2]) {
+  const hindi = hindiMockSet(rm, n - 1);
+  const parts = [mockMental(5 + n), hindi.questions, mockMaths(), mockRows(SCIENCE_MOCK, 'Science', n - 1), mockRows(SOCIAL_MOCK, 'Social Studies', n - 1)];
+  parts.forEach((p, i) => { if (p.length !== 20) throw new Error(`mock ${n}, part ${i + 1}: ${p.length} questions`); });
+  const questions = parts.flat().map((q, i) => check({ ...q, id: `q${i + 1}` }));
+  sets.push({
+    slug: `netarhat-paper1-mock-${n}`, examSlug: 'netarhat', category: 'ENTRANCE', kind: 'MOCK', level: 'Class V',
+    title: `Netarhat Paper 1 full mock test ${n} (पूर्ण मॉक टेस्ट ${n})`,
+    description: 'A full-length practice paper in the Paper 1 pattern of the 2026-27 advertisement: 100 objective questions, 1 mark each,'
+      + ' in 2½ hours — Mental Ability 1–20, Hindi 21–40, Mathematics 41–60, Science 61–80 and Social Studies 81–100. No marks are taken'
+      + ' off for wrong answers. Hindi is in Hindi; the other subjects can be read in English or Hindi. Paper 1 is qualifying; the written'
+      + ' Paper 2 is not covered here. Written by SchoolDhundo for practice; these are not official or previous-year questions.',
+    durationMinutes: 150, marksPerQuestion: 1, negativeMarks: 0, displayOrder: 290 + n, published: true, reviewedOn: '2026-11-15',
+    content: { questions, passages: hindi.passages },
+  });
+}
+
+// Sets keep their place in the file (a small diff); new ones go after the last Netarhat set.
+const bySlug = new Map(sets.map((s) => [s.slug, s]));
+const kept = data.sets.map((s) => bySlug.get(s.slug) ?? s);
+const added = sets.filter((s) => !data.sets.some((x) => x.slug === s.slug));
+const last = kept.findLastIndex((s) => s.examSlug === 'netarhat');
+data.sets = last < 0 ? [...kept, ...added] : [...kept.slice(0, last + 1), ...added, ...kept.slice(last + 1)];
 writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 const total = sets.reduce((n, s) => n + s.content.questions.length, 0);
 console.log(`${sets.length} Netarhat sets, ${total} questions; practice.json now has ${data.sets.length} sets`);

@@ -15722,6 +15722,4662 @@
       }
     },
     {
+      "slug": "netarhat-paper1-mock-1",
+      "examSlug": "netarhat",
+      "category": "ENTRANCE",
+      "kind": "MOCK",
+      "level": "Class V",
+      "title": "Netarhat Paper 1 full mock test 1 (पूर्ण मॉक टेस्ट 1)",
+      "description": "A full-length practice paper in the Paper 1 pattern of the 2026-27 advertisement: 100 objective questions, 1 mark each, in 2½ hours — Mental Ability 1–20, Hindi 21–40, Mathematics 41–60, Science 61–80 and Social Studies 81–100. No marks are taken off for wrong answers. Hindi is in Hindi; the other subjects can be read in English or Hindi. Paper 1 is qualifying; the written Paper 2 is not covered here. Written by SchoolDhundo for practice; these are not official or previous-year questions.",
+      "durationMinutes": 150,
+      "marksPerQuestion": 1,
+      "negativeMarks": 0,
+      "displayOrder": 291,
+      "published": true,
+      "reviewedOn": "2026-11-15",
+      "content": {
+        "questions": [
+          {
+            "id": "q1",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "EASY",
+            "prompt": "What comes next? 17, 23, 29, 35, 41, ?",
+            "options": [
+              "48",
+              "47",
+              "42",
+              "53"
+            ],
+            "answer": 1,
+            "explanation": "Each number is 6 more than the one before: 41 + 6 = 47.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 17, 23, 29, 35, 41, ?",
+              "options": [
+                "48",
+                "47",
+                "42",
+                "53"
+              ],
+              "explanation": "हर संख्या पिछली से 6 अधिक है: 41 + 6 = 47।"
+            }
+          },
+          {
+            "id": "q2",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "EASY",
+            "prompt": "What comes next? 5, 15, 45, 135, ?",
+            "options": [
+              "400",
+              "405",
+              "138",
+              "408"
+            ],
+            "answer": 1,
+            "explanation": "Each number is 3 times the one before: 135 × 3 = 405.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 5, 15, 45, 135, ?",
+              "options": [
+                "400",
+                "405",
+                "138",
+                "408"
+              ],
+              "explanation": "हर संख्या पिछली की 3 गुनी है: 135 × 3 = 405।"
+            }
+          },
+          {
+            "id": "q3",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? 10, 11, 13, 16, 20, ?",
+            "options": [
+              "25",
+              "24",
+              "26",
+              "28"
+            ],
+            "answer": 0,
+            "explanation": "The differences are 1, 2, 3, 4, growing by 1; the next difference is 5: 20 + 5 = 25.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 10, 11, 13, 16, 20, ?",
+              "options": [
+                "25",
+                "24",
+                "26",
+                "28"
+              ],
+              "explanation": "अंतर 1, 2, 3, 4 हैं, जो 1-1 बढ़ते हैं; अगला अंतर 5: 20 + 5 = 25।"
+            }
+          },
+          {
+            "id": "q4",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? 49, 64, 81, 100, ?",
+            "options": [
+              "120",
+              "121",
+              "123",
+              "119"
+            ],
+            "answer": 1,
+            "explanation": "These are squares: 7², 8², 9², 10²; next is 11² = 121.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 49, 64, 81, 100, ?",
+              "options": [
+                "120",
+                "121",
+                "123",
+                "119"
+              ],
+              "explanation": "ये वर्ग संख्याएँ हैं: 7², 8², 9², 10²; अगली 11² = 121।"
+            }
+          },
+          {
+            "id": "q5",
+            "section": "Mental Ability",
+            "topic": "Letter series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? F, I, L, O, ?",
+            "options": [
+              "R",
+              "Q",
+              "S",
+              "P"
+            ],
+            "answer": 0,
+            "explanation": "Each letter is 3 places after the one before (skip 2): O → R.",
+            "hi": {
+              "prompt": "आगे कौन-सा अक्षर आएगा? F, I, L, O, ?",
+              "options": [
+                "R",
+                "Q",
+                "S",
+                "P"
+              ],
+              "explanation": "हर अक्षर पिछले से 3 स्थान आगे है (2 छोड़कर): O → R।"
+            }
+          },
+          {
+            "id": "q6",
+            "section": "Mental Ability",
+            "topic": "Coding-decoding",
+            "difficulty": "MEDIUM",
+            "prompt": "If MILK is written as LHKJ, how is ROSE written in the same code?",
+            "options": [
+              "SPTF",
+              "QNRD",
+              "PMQC",
+              "DRNQ"
+            ],
+            "answer": 1,
+            "explanation": "Each letter moves 1 place back in the alphabet, so ROSE becomes QNRD.",
+            "hi": {
+              "prompt": "यदि किसी कूट भाषा में MILK को LHKJ लिखा जाता है, तो उसी कूट में ROSE को कैसे लिखा जाएगा?",
+              "options": [
+                "SPTF",
+                "QNRD",
+                "PMQC",
+                "DRNQ"
+              ],
+              "explanation": "हर अक्षर वर्णमाला में 1 स्थान पीछे खिसकता है, इसलिए ROSE = QNRD।"
+            }
+          },
+          {
+            "id": "q7",
+            "section": "Mental Ability",
+            "topic": "Coding-decoding",
+            "difficulty": "MEDIUM",
+            "prompt": "If A = 1, B = 2, C = 3 and so on up to Z = 26, what is the total value of the letters of HEN?",
+            "options": [
+              "27",
+              "28",
+              "25",
+              "30"
+            ],
+            "answer": 0,
+            "explanation": "H = 8, E = 5, N = 14; total = 27.",
+            "hi": {
+              "prompt": "यदि A = 1, B = 2, C = 3 … Z = 26 हो, तो HEN के अक्षरों के मानों का योग क्या होगा?",
+              "options": [
+                "27",
+                "28",
+                "25",
+                "30"
+              ],
+              "explanation": "H = 8, E = 5, N = 14; योग = 27।"
+            }
+          },
+          {
+            "id": "q8",
+            "section": "Mental Ability",
+            "topic": "Odd one out",
+            "difficulty": "MEDIUM",
+            "prompt": "Which number is different from the others?",
+            "options": [
+              "12",
+              "27",
+              "39",
+              "34"
+            ],
+            "answer": 3,
+            "explanation": "12, 27, 39 are all multiples of 3; 34 is not.",
+            "hi": {
+              "prompt": "कौन-सी संख्या बाक़ियों से भिन्न है?",
+              "options": [
+                "12",
+                "27",
+                "39",
+                "34"
+              ],
+              "explanation": "12, 27, 39 सभी 3 के गुणज हैं; 34 नहीं है।"
+            }
+          },
+          {
+            "id": "q9",
+            "section": "Mental Ability",
+            "topic": "Odd one out",
+            "difficulty": "EASY",
+            "prompt": "Which one is different from the others?",
+            "options": [
+              "Sitar",
+              "Veena",
+              "Tabla",
+              "Sarangi"
+            ],
+            "answer": 2,
+            "explanation": "Sitar, veena and sarangi are string instruments; the tabla is a drum.",
+            "hi": {
+              "prompt": "इनमें से कौन-सा बाक़ियों से भिन्न है?",
+              "options": [
+                "सितार",
+                "वीणा",
+                "तबला",
+                "सारंगी"
+              ],
+              "explanation": "सितार, वीणा और सारंगी तार वाले वाद्य हैं; तबला ताल वाद्य है।"
+            }
+          },
+          {
+            "id": "q10",
+            "section": "Mental Ability",
+            "topic": "Analogy",
+            "difficulty": "EASY",
+            "prompt": "Book is to Read as Song is to ?",
+            "options": [
+              "Sing",
+              "Dance",
+              "Paper",
+              "Write"
+            ],
+            "answer": 0,
+            "explanation": "A book is read; a song is sung.",
+            "hi": {
+              "prompt": "पुस्तक : पढ़ना :: गीत : ?",
+              "options": [
+                "गाना",
+                "नाचना",
+                "काग़ज़",
+                "लिखना"
+              ],
+              "explanation": "पुस्तक पढ़ी जाती है; गीत गाया जाता है।"
+            }
+          },
+          {
+            "id": "q11",
+            "section": "Mental Ability",
+            "topic": "Analogy",
+            "difficulty": "MEDIUM",
+            "prompt": "2 : 8 :: 5 : ?",
+            "options": [
+              "125",
+              "126",
+              "120",
+              "10"
+            ],
+            "answer": 0,
+            "explanation": "The second number is the number × itself × itself: 2 → 8, so 5 → 125.",
+            "hi": {
+              "prompt": "2 : 8 :: 5 : ?",
+              "options": [
+                "125",
+                "126",
+                "120",
+                "10"
+              ],
+              "explanation": "दूसरी संख्या, पहली का संख्या का घन है: 2 → 8, इसलिए 5 → 125।"
+            }
+          },
+          {
+            "id": "q12",
+            "section": "Mental Ability",
+            "topic": "Direction sense",
+            "difficulty": "MEDIUM",
+            "prompt": "Raju faces North. He turns right, walks a little, then turns right. Which direction is he facing now?",
+            "options": [
+              "North",
+              "East",
+              "South",
+              "West"
+            ],
+            "answer": 2,
+            "explanation": "North → turn right → East → turn right → South.",
+            "hi": {
+              "prompt": "राजू का मुँह उत्तर की ओर है। वह दाएँ मुड़ता है, थोड़ा चलता है, फिर दाएँ मुड़ता है। अब उसका मुँह किस दिशा में है?",
+              "options": [
+                "उत्तर",
+                "पूर्व",
+                "दक्षिण",
+                "पश्चिम"
+              ],
+              "explanation": "उत्तर → दाएँ मुड़ा → पूर्व → दाएँ मुड़ा → दक्षिण।"
+            }
+          },
+          {
+            "id": "q13",
+            "section": "Mental Ability",
+            "topic": "Ranking",
+            "difficulty": "MEDIUM",
+            "prompt": "In a row of children, Mohan is 13th from the front and 15th from the back. How many children are in the row?",
+            "options": [
+              "28",
+              "26",
+              "27",
+              "29"
+            ],
+            "answer": 2,
+            "explanation": "13 + 15 − 1 = 27 (Mohan is counted twice, so subtract 1).",
+            "hi": {
+              "prompt": "बच्चों की एक पंक्ति में मोहन आगे से 13वाँ और पीछे से 15वाँ है। पंक्ति में कुल कितने बच्चे हैं?",
+              "options": [
+                "28",
+                "26",
+                "27",
+                "29"
+              ],
+              "explanation": "13 + 15 − 1 = 27 (मोहन दो बार गिना गया है, इसलिए 1 घटाएँ)।"
+            }
+          },
+          {
+            "id": "q14",
+            "section": "Mental Ability",
+            "topic": "Calendar",
+            "difficulty": "MEDIUM",
+            "prompt": "Today is Sunday. What day of the week will it be 15 days from today?",
+            "options": [
+              "Tuesday",
+              "Sunday",
+              "Wednesday",
+              "Monday"
+            ],
+            "answer": 3,
+            "explanation": "Days repeat every 7. 15 ÷ 7 leaves remainder 1, so count 1 day on from Sunday: Monday.",
+            "hi": {
+              "prompt": "आज रविवार है। आज से 15 दिन बाद सप्ताह का कौन-सा दिन होगा?",
+              "options": [
+                "मंगलवार",
+                "रविवार",
+                "बुधवार",
+                "सोमवार"
+              ],
+              "explanation": "दिन हर 7 पर दोहराते हैं। 15 ÷ 7 का शेषफल 1 है, इसलिए रविवार से 1 दिन आगे गिनें: सोमवार।"
+            }
+          },
+          {
+            "id": "q15",
+            "section": "Mental Ability",
+            "topic": "Age problems",
+            "difficulty": "MEDIUM",
+            "prompt": "A father is 28 years older than his son. The son is 8 years old now. How old will the father be after 4 years?",
+            "options": [
+              "36",
+              "48",
+              "40",
+              "12"
+            ],
+            "answer": 2,
+            "explanation": "Father now = 8 + 28 = 36; after 4 years: 36 + 4 = 40.",
+            "hi": {
+              "prompt": "एक पिता अपने पुत्र से 28 वर्ष बड़े हैं। पुत्र अभी 8 वर्ष का है। 4 वर्ष बाद पिता की आयु कितनी होगी?",
+              "options": [
+                "36",
+                "48",
+                "40",
+                "12"
+              ],
+              "explanation": "पिता की अभी की आयु = 8 + 28 = 36; 4 वर्ष बाद: 36 + 4 = 40।"
+            }
+          },
+          {
+            "id": "q16",
+            "section": "Mental Ability",
+            "topic": "Missing number",
+            "difficulty": "MEDIUM",
+            "prompt": "Find the missing number: (5, 4) → 20; (6, 3) → 18; (4, 6) → ?",
+            "options": [
+              "25",
+              "24",
+              "10",
+              "22"
+            ],
+            "answer": 1,
+            "explanation": "The result is the product of the two numbers: 4 × 6 = 24.",
+            "hi": {
+              "prompt": "लुप्त संख्या ज्ञात करें: (5, 4) → 20; (6, 3) → 18; (4, 6) → ?",
+              "options": [
+                "25",
+                "24",
+                "10",
+                "22"
+              ],
+              "explanation": "परिणाम दोनों संख्याओं का गुणनफल है: 4 × 6 = 24।"
+            }
+          },
+          {
+            "id": "q17",
+            "section": "Mental Ability",
+            "topic": "Alphabet test",
+            "difficulty": "MEDIUM",
+            "prompt": "In the English alphabet, which letter is 4 places to the right of the 10th letter from the left?",
+            "options": [
+              "M",
+              "O",
+              "K",
+              "N"
+            ],
+            "answer": 3,
+            "explanation": "The 10th letter is J; 4 places to its right is the 14th letter, N.",
+            "hi": {
+              "prompt": "अंग्रेज़ी वर्णमाला में बाएँ से 10वें अक्षर के 4 स्थान दाईं ओर कौन-सा अक्षर है?",
+              "options": [
+                "M",
+                "O",
+                "K",
+                "N"
+              ],
+              "explanation": "10वाँ अक्षर J है; उससे 4 स्थान दाईं ओर 14वाँ अक्षर N है।"
+            }
+          },
+          {
+            "id": "q18",
+            "section": "Mental Ability",
+            "topic": "Blood relations",
+            "difficulty": "MEDIUM",
+            "prompt": "Raju is the brother of Kavita. Kavita is the mother of Sonu. How is Raju related to Sonu?",
+            "options": [
+              "Father",
+              "Brother",
+              "Maternal uncle",
+              "Grandfather"
+            ],
+            "answer": 2,
+            "explanation": "Raju is the brother of Sonu's mother, so he is Sonu's maternal uncle (मामा).",
+            "hi": {
+              "prompt": "राजू, कविता का भाई है। कविता, सोनू की माँ है। राजू का सोनू से क्या संबंध है?",
+              "options": [
+                "पिता",
+                "भाई",
+                "मामा",
+                "दादा"
+              ],
+              "explanation": "राजू, सोनू की माँ का भाई है, इसलिए वह सोनू का मामा है।"
+            }
+          },
+          {
+            "id": "q19",
+            "section": "Mental Ability",
+            "topic": "Counting",
+            "difficulty": "MEDIUM",
+            "prompt": "How many numbers from 1 to 100 can be divided exactly by 9?",
+            "options": [
+              "12",
+              "10",
+              "11",
+              "14"
+            ],
+            "answer": 2,
+            "explanation": "100 ÷ 9 = 11 remainder 1, so there are 11 multiples of 9 (9, 18, … 99).",
+            "hi": {
+              "prompt": "1 से 100 तक की कितनी संख्याएँ 9 से पूरी-पूरी विभाजित होती हैं?",
+              "options": [
+                "12",
+                "10",
+                "11",
+                "14"
+              ],
+              "explanation": "100 ÷ 9 = 11, शेष 1; अतः 9 के 11 गुणज हैं (9, 18, … 99)।"
+            }
+          },
+          {
+            "id": "q20",
+            "section": "Mental Ability",
+            "topic": "Dictionary order",
+            "difficulty": "MEDIUM",
+            "prompt": "If these words are arranged in dictionary order, which word comes third? Bread, Break, Branch, Bridge",
+            "options": [
+              "Break",
+              "Bread",
+              "Branch",
+              "Bridge"
+            ],
+            "answer": 0,
+            "explanation": "In dictionary order: Branch, Bread, Break, Bridge. The third word is Break.",
+            "hi": {
+              "prompt": "यदि इन अंग्रेज़ी शब्दों को शब्दकोश के क्रम में लगाया जाए, तो तीसरा शब्द कौन-सा होगा? Bread, Break, Branch, Bridge",
+              "options": [
+                "Break",
+                "Bread",
+                "Branch",
+                "Bridge"
+              ],
+              "explanation": "शब्दकोश क्रम: Branch, Bread, Break, Bridge। तीसरा शब्द Break है।"
+            }
+          },
+          {
+            "id": "q21",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"कमल\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "पंकज",
+              "नृप",
+              "सागर",
+              "देह"
+            ],
+            "answer": 0,
+            "explanation": "\"कमल\" का पर्यायवाची \"पंकज\" है।"
+          },
+          {
+            "id": "q22",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"राजा\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "देह",
+              "विद्युत",
+              "दुग्ध",
+              "नृप"
+            ],
+            "answer": 3,
+            "explanation": "\"राजा\" का पर्यायवाची \"नृप\" है।"
+          },
+          {
+            "id": "q23",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"समुद्र\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "दुग्ध",
+              "अश्व",
+              "गज",
+              "सागर"
+            ],
+            "answer": 3,
+            "explanation": "\"समुद्र\" का पर्यायवाची \"सागर\" है।"
+          },
+          {
+            "id": "q24",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"शरीर\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "गज",
+              "वन",
+              "देह",
+              "मुँह"
+            ],
+            "answer": 2,
+            "explanation": "\"शरीर\" का पर्यायवाची \"देह\" है।"
+          },
+          {
+            "id": "q25",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"उचित\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "अनुचित",
+              "दोष",
+              "अपमान",
+              "गरम"
+            ],
+            "answer": 0,
+            "explanation": "\"उचित\" का विलोम (उल्टा अर्थ) \"अनुचित\" है।"
+          },
+          {
+            "id": "q26",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"गुण\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "कड़वा",
+              "पुराना",
+              "दूर",
+              "दोष"
+            ],
+            "answer": 3,
+            "explanation": "\"गुण\" का विलोम (उल्टा अर्थ) \"दोष\" है।"
+          },
+          {
+            "id": "q27",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"सम्मान\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "हार",
+              "अपमान",
+              "छोटा",
+              "निर्धन"
+            ],
+            "answer": 1,
+            "explanation": "\"सम्मान\" का विलोम (उल्टा अर्थ) \"अपमान\" है।"
+          },
+          {
+            "id": "q28",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"ठंडा\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "अनुचित",
+              "गरम",
+              "दोष",
+              "अपमान"
+            ],
+            "answer": 1,
+            "explanation": "\"ठंडा\" का विलोम (उल्टा अर्थ) \"गरम\" है।"
+          },
+          {
+            "id": "q29",
+            "section": "Hindi",
+            "topic": "वचन",
+            "difficulty": "MEDIUM",
+            "prompt": "\"बच्चा\" का बहुवचन रूप क्या है?",
+            "options": [
+              "बच्चाएँ",
+              "बच्चें",
+              "बच्चाओ",
+              "बच्चे"
+            ],
+            "answer": 3,
+            "explanation": "\"बच्चा\" का बहुवचन \"बच्चे\" है।"
+          },
+          {
+            "id": "q30",
+            "section": "Hindi",
+            "topic": "वचन",
+            "difficulty": "MEDIUM",
+            "prompt": "\"तारा\" का बहुवचन रूप क्या है?",
+            "options": [
+              "तारे",
+              "ताराएँ",
+              "तारें",
+              "तारियाँ"
+            ],
+            "answer": 0,
+            "explanation": "\"तारा\" का बहुवचन \"तारे\" है।"
+          },
+          {
+            "id": "q31",
+            "section": "Hindi",
+            "topic": "लिंग",
+            "difficulty": "EASY",
+            "prompt": "\"बकरा\" का स्त्रीलिंग रूप क्या है?",
+            "options": [
+              "बकरी",
+              "बकरिन",
+              "बकरानी",
+              "बकराइन"
+            ],
+            "answer": 0,
+            "explanation": "\"बकरा\" (पुल्लिंग) का स्त्रीलिंग \"बकरी\" है।"
+          },
+          {
+            "id": "q32",
+            "section": "Hindi",
+            "topic": "लिंग",
+            "difficulty": "EASY",
+            "prompt": "\"दादा\" का स्त्रीलिंग रूप क्या है?",
+            "options": [
+              "दादी",
+              "दादिन",
+              "दादानी",
+              "दादाइन"
+            ],
+            "answer": 0,
+            "explanation": "\"दादा\" (पुल्लिंग) का स्त्रीलिंग \"दादी\" है।"
+          },
+          {
+            "id": "q33",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"आग बबूला होना\" का अर्थ क्या है?",
+            "options": [
+              "आग जलाना",
+              "बहुत क्रोधित होना",
+              "बबूल का पेड़ लगाना",
+              "बहुत ठंडा होना"
+            ],
+            "answer": 1,
+            "explanation": "\"आग बबूला होना\" का अर्थ है \"बहुत क्रोधित होना\"।"
+          },
+          {
+            "id": "q34",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"नाक में दम करना\" का अर्थ क्या है?",
+            "options": [
+              "बहुत परेशान करना",
+              "नाक साफ़ करना",
+              "साँस रोकना",
+              "ज़ुकाम होना"
+            ],
+            "answer": 0,
+            "explanation": "\"नाक में दम करना\" का अर्थ है \"बहुत परेशान करना\"।"
+          },
+          {
+            "id": "q35",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"हाथ बँटाना\" का अर्थ क्या है?",
+            "options": [
+              "हाथ काटना",
+              "बँटवारा करना",
+              "ताली बजाना",
+              "काम में सहायता करना"
+            ],
+            "answer": 3,
+            "explanation": "\"हाथ बँटाना\" का अर्थ है \"काम में सहायता करना\"।"
+          },
+          {
+            "id": "q36",
+            "section": "Hindi",
+            "topic": "वाक्यांश के लिए एक शब्द",
+            "difficulty": "MEDIUM",
+            "prompt": "\"जो बहुत बोलता हो\" — इसके लिए एक शब्द क्या है?",
+            "options": [
+              "मितभाषी",
+              "वाचाल",
+              "श्रोता",
+              "लेखक"
+            ],
+            "answer": 1,
+            "explanation": "\"जो बहुत बोलता हो\" के लिए एक शब्द \"वाचाल\" है।"
+          },
+          {
+            "id": "q37",
+            "section": "Hindi",
+            "topic": "वाक्यांश के लिए एक शब्द",
+            "difficulty": "MEDIUM",
+            "prompt": "\"जिसका कोई आकार न हो\" — इसके लिए एक शब्द क्या है?",
+            "options": [
+              "साकार",
+              "अपार",
+              "निराकार",
+              "अनंत"
+            ],
+            "answer": 2,
+            "explanation": "\"जिसका कोई आकार न हो\" के लिए एक शब्द \"निराकार\" है।"
+          },
+          {
+            "id": "q38",
+            "section": "Hindi",
+            "topic": "वर्तनी",
+            "difficulty": "MEDIUM",
+            "prompt": "सही वर्तनी वाला शब्द चुनिए।",
+            "options": [
+              "परिक्षा",
+              "परीक्षा",
+              "परिच्छा",
+              "परीकशा"
+            ],
+            "answer": 1,
+            "explanation": "शुद्ध रूप \"परीक्षा\" है।"
+          },
+          {
+            "id": "q39",
+            "section": "Hindi",
+            "topic": "अपठित गद्यांश",
+            "difficulty": "EASY",
+            "prompt": "पेड़ों की जड़ें क्या करती हैं?",
+            "options": [
+              "हवा को गंदा करती हैं",
+              "मिट्टी को बाँधकर रखती हैं",
+              "वर्षा रोकती हैं",
+              "बाढ़ लाती हैं"
+            ],
+            "answer": 1,
+            "explanation": "गद्यांश में लिखा है: \"पेड़ों की जड़ें मिट्टी को बाँधकर रखती हैं।\"",
+            "passageId": "nh-m1"
+          },
+          {
+            "id": "q40",
+            "section": "Hindi",
+            "topic": "अपठित गद्यांश",
+            "difficulty": "EASY",
+            "prompt": "गद्यांश हमें क्या करने की सलाह देता है?",
+            "options": [
+              "पुराने पेड़ काटना",
+              "हर वर्ष एक पेड़ लगाना और उसकी देखभाल करना",
+              "केवल फल खाना",
+              "बाढ़ के पानी में खेलना"
+            ],
+            "answer": 1,
+            "explanation": "अंतिम वाक्य में यही सलाह दी गई है।",
+            "passageId": "nh-m1"
+          },
+          {
+            "id": "q41",
+            "section": "Mathematics",
+            "topic": "Place value",
+            "difficulty": "EASY",
+            "prompt": "What is the place value of the digit 7 in 8,14,972? (Take the 7 in the tens place.)",
+            "options": [
+              "7",
+              "70",
+              "700",
+              "7,000"
+            ],
+            "answer": 1,
+            "explanation": "The 7 is in the tens place, so its value is 7 × 10 = 70.",
+            "hi": {
+              "prompt": "8,14,972 में दहाई के स्थान पर स्थित अंक 7 का स्थानीय मान क्या है?",
+              "options": [
+                "7",
+                "70",
+                "700",
+                "7,000"
+              ],
+              "explanation": "7 दहाई के स्थान पर है, इसलिए उसका स्थानीय मान 7 × 10 = 70 है।"
+            }
+          },
+          {
+            "id": "q42",
+            "section": "Mathematics",
+            "topic": "Addition",
+            "difficulty": "EASY",
+            "prompt": "38,788 + 38,818 = ?",
+            "options": [
+              "76,606",
+              "77,606",
+              "77,616",
+              "77,506"
+            ],
+            "answer": 1,
+            "explanation": "Add place by place, carrying where needed: 38,788 + 38,818 = 77,606.",
+            "hi": {
+              "prompt": "38,788 + 38,818 = ?",
+              "options": [
+                "76,606",
+                "77,606",
+                "77,616",
+                "77,506"
+              ],
+              "explanation": "स्थान के अनुसार जोड़ें और हासिल आगे ले जाएँ: 38,788 + 38,818 = 77,606।"
+            }
+          },
+          {
+            "id": "q43",
+            "section": "Mathematics",
+            "topic": "Subtraction",
+            "difficulty": "MEDIUM",
+            "prompt": "95,679 − 10,341 = ?",
+            "options": [
+              "86,338",
+              "85,328",
+              "85,438",
+              "85,338"
+            ],
+            "answer": 3,
+            "explanation": "95,679 − 10,341 = 85,338. Check: 85,338 + 10,341 = 95,679.",
+            "hi": {
+              "prompt": "95,679 − 10,341 = ?",
+              "options": [
+                "86,338",
+                "85,328",
+                "85,438",
+                "85,338"
+              ],
+              "explanation": "95,679 − 10,341 = 85,338। जाँच: 85,338 + 10,341 = 95,679।"
+            }
+          },
+          {
+            "id": "q44",
+            "section": "Mathematics",
+            "topic": "Multiplication",
+            "difficulty": "MEDIUM",
+            "prompt": "215 × 12 = ?",
+            "options": [
+              "2,795",
+              "2,365",
+              "645",
+              "2,580"
+            ],
+            "answer": 3,
+            "explanation": "215 × 12 = 215 × 10 + 215 × 2 = 2,150 + 430 = 2,580.",
+            "hi": {
+              "prompt": "215 × 12 = ?",
+              "options": [
+                "2,795",
+                "2,365",
+                "645",
+                "2,580"
+              ],
+              "explanation": "215 × 12 = 215 × 10 + 215 × 2 = 2,150 + 430 = 2,580।"
+            }
+          },
+          {
+            "id": "q45",
+            "section": "Mathematics",
+            "topic": "Division",
+            "difficulty": "MEDIUM",
+            "prompt": "When 321 is divided by 7, what are the quotient and the remainder?",
+            "options": [
+              "46, 6",
+              "45, 5",
+              "44, 6",
+              "45, 6"
+            ],
+            "answer": 3,
+            "explanation": "7 × 45 = 315, and 321 − 315 = 6. Quotient 45, remainder 6.",
+            "hi": {
+              "prompt": "321 को 7 से भाग देने पर भागफल और शेषफल क्या होंगे?",
+              "options": [
+                "46, 6",
+                "45, 5",
+                "44, 6",
+                "45, 6"
+              ],
+              "explanation": "7 × 45 = 315, और 321 − 315 = 6। भागफल 45, शेषफल 6।"
+            }
+          },
+          {
+            "id": "q46",
+            "section": "Mathematics",
+            "topic": "LCM",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the LCM (lowest common multiple) of 12 and 20?",
+            "options": [
+              "240",
+              "4",
+              "60",
+              "120"
+            ],
+            "answer": 2,
+            "explanation": "The smallest number that both 12 and 20 divide exactly is 60.",
+            "hi": {
+              "prompt": "12 और 20 का ल.स. (लघुत्तम समापवर्त्य) क्या है?",
+              "options": [
+                "240",
+                "4",
+                "60",
+                "120"
+              ],
+              "explanation": "वह सबसे छोटी संख्या जिसे 12 और 20 दोनों पूरा-पूरा विभाजित करते हैं, 60 है।"
+            }
+          },
+          {
+            "id": "q47",
+            "section": "Mathematics",
+            "topic": "HCF",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the HCF (highest common factor) of 28 and 12?",
+            "options": [
+              "8",
+              "2",
+              "4",
+              "84"
+            ],
+            "answer": 2,
+            "explanation": "28 = 4 × 7 and 12 = 4 × 3; 7 and 3 have no common factor except 1, so the HCF is 4.",
+            "hi": {
+              "prompt": "28 और 12 का म.स. (महत्तम समापवर्तक) क्या है?",
+              "options": [
+                "8",
+                "2",
+                "4",
+                "84"
+              ],
+              "explanation": "28 = 4 × 7 और 12 = 4 × 3; 7 और 3 का 1 के अलावा कोई उभयनिष्ठ गुणनखंड नहीं है, इसलिए म.स. 4 है।"
+            }
+          },
+          {
+            "id": "q48",
+            "section": "Mathematics",
+            "topic": "Fractions",
+            "difficulty": "EASY",
+            "prompt": "What is 2/5 of 165?",
+            "options": [
+              "33",
+              "66",
+              "99",
+              "10"
+            ],
+            "answer": 1,
+            "explanation": "1/5 of 165 is 33, so 2/5 of 165 is 2 × 33 = 66.",
+            "hi": {
+              "prompt": "165 का 2/5 कितना है?",
+              "options": [
+                "33",
+                "66",
+                "99",
+                "10"
+              ],
+              "explanation": "165 का 1/5 = 33, इसलिए 2/5 = 2 × 33 = 66।"
+            }
+          },
+          {
+            "id": "q49",
+            "section": "Mathematics",
+            "topic": "Fractions",
+            "difficulty": "EASY",
+            "prompt": "2/13 + 3/13 = ?",
+            "options": [
+              "5/13",
+              "5/26",
+              "6/13",
+              "1/13"
+            ],
+            "answer": 0,
+            "explanation": "The denominators are the same, so add the numerators: (2 + 3)/13 = 5/13.",
+            "hi": {
+              "prompt": "2/13 + 3/13 = ?",
+              "options": [
+                "5/13",
+                "5/26",
+                "6/13",
+                "1/13"
+              ],
+              "explanation": "हर समान हैं, इसलिए अंश जोड़ें: (2 + 3)/13 = 5/13।"
+            }
+          },
+          {
+            "id": "q50",
+            "section": "Mathematics",
+            "topic": "Decimals",
+            "difficulty": "MEDIUM",
+            "prompt": "8.39 + 7.4 = ?",
+            "options": [
+              "15.79",
+              "9.13",
+              "16.79",
+              "15.69"
+            ],
+            "answer": 0,
+            "explanation": "Line up the decimal points: 8.39 + 7.40 = 15.79.",
+            "hi": {
+              "prompt": "8.39 + 7.4 = ?",
+              "options": [
+                "15.79",
+                "9.13",
+                "16.79",
+                "15.69"
+              ],
+              "explanation": "दशमलव बिंदु एक सीध में रखें: 8.39 + 7.40 = 15.79।"
+            }
+          },
+          {
+            "id": "q51",
+            "section": "Mathematics",
+            "topic": "Perimeter",
+            "difficulty": "EASY",
+            "prompt": "A rectangular garden is 39 m long and 20 m wide. How much fencing is needed to go round it once?",
+            "options": [
+              "59 m",
+              "780 m",
+              "118 m",
+              "120 m"
+            ],
+            "answer": 2,
+            "explanation": "Perimeter = 2 × (length + breadth) = 2 × (39 + 20) = 118 m.",
+            "hi": {
+              "prompt": "एक आयताकार बगीचा 39 मी लंबा और 20 मी चौड़ा है। इसके चारों ओर एक बार बाड़ लगाने के लिए कितनी बाड़ चाहिए?",
+              "options": [
+                "59 मी",
+                "780 मी",
+                "118 मी",
+                "120 मी"
+              ],
+              "explanation": "परिमाप = 2 × (लंबाई + चौड़ाई) = 2 × (39 + 20) = 118 मी।"
+            }
+          },
+          {
+            "id": "q52",
+            "section": "Mathematics",
+            "topic": "Area",
+            "difficulty": "EASY",
+            "prompt": "What is the area of a square of side 8 cm?",
+            "options": [
+              "32 sq cm",
+              "16 sq cm",
+              "72 sq cm",
+              "64 sq cm"
+            ],
+            "answer": 3,
+            "explanation": "Area of a square = side × side = 8 × 8 = 64 sq cm. (32 cm would be its perimeter.)",
+            "hi": {
+              "prompt": "8 सेमी भुजा वाले वर्ग का क्षेत्रफल क्या है?",
+              "options": [
+                "32 वर्ग सेमी",
+                "16 वर्ग सेमी",
+                "72 वर्ग सेमी",
+                "64 वर्ग सेमी"
+              ],
+              "explanation": "वर्ग का क्षेत्रफल = भुजा × भुजा = 8 × 8 = 64 वर्ग सेमी। (32 सेमी उसका परिमाप होगा।)"
+            }
+          },
+          {
+            "id": "q53",
+            "section": "Mathematics",
+            "topic": "Time",
+            "difficulty": "MEDIUM",
+            "prompt": "Sita's train left at 7:10 a.m. and the journey took 3 hours 27 minutes. When did it arrive?",
+            "options": [
+              "11:37 a.m.",
+              "10:07 a.m.",
+              "9:37 a.m.",
+              "10:37 a.m."
+            ],
+            "answer": 3,
+            "explanation": "7:10 a.m. + 3 h 27 min = 10:37 a.m..",
+            "hi": {
+              "prompt": "सीता की रेलगाड़ी 7:10 a.m. पर चली और यात्रा में 3 घंटे 27 मिनट लगे। वह कब पहुँची?",
+              "options": [
+                "11:37 पूर्वाह्न",
+                "10:07 पूर्वाह्न",
+                "9:37 पूर्वाह्न",
+                "10:37 पूर्वाह्न"
+              ],
+              "explanation": "7:10 a.m. + 3 घंटे 27 मिनट = 10:37 a.m.।"
+            }
+          },
+          {
+            "id": "q54",
+            "section": "Mathematics",
+            "topic": "Money",
+            "difficulty": "MEDIUM",
+            "prompt": "Birsa buys 5 notebooks at ₹45 each and pays with ₹300. How much change should Birsa get?",
+            "options": [
+              "₹225",
+              "₹75",
+              "₹120",
+              "₹65"
+            ],
+            "answer": 1,
+            "explanation": "Cost = 5 × ₹45 = ₹225. Change = ₹300 − ₹225 = ₹75.",
+            "hi": {
+              "prompt": "बिरसा ने ₹45 प्रति कॉपी की दर से 5 कॉपियाँ खरीदीं और दुकानदार को ₹300 दिए। उसे कितने रुपये वापस मिलने चाहिए?",
+              "options": [
+                "₹225",
+                "₹75",
+                "₹120",
+                "₹65"
+              ],
+              "explanation": "कुल मूल्य = 5 × ₹45 = ₹225। वापसी = ₹300 − ₹225 = ₹75।"
+            }
+          },
+          {
+            "id": "q55",
+            "section": "Mathematics",
+            "topic": "Measurement",
+            "difficulty": "EASY",
+            "prompt": "6 km 350 m = how many m?",
+            "options": [
+              "6,350 m",
+              "950 m",
+              "356 m",
+              "9,500 m"
+            ],
+            "answer": 0,
+            "explanation": "1 km = 1,000 m, so 6 km = 6,000 m; add 350: 6,350 m.",
+            "hi": {
+              "prompt": "6 किमी 350 मी = कितने मी?",
+              "options": [
+                "6,350 मी",
+                "950 मी",
+                "356 मी",
+                "9,500 मी"
+              ],
+              "explanation": "1 किमी = 1,000 मी, इसलिए 6 किमी = 6,000 मी; 350 जोड़ने पर 6,350 मी।"
+            }
+          },
+          {
+            "id": "q56",
+            "section": "Mathematics",
+            "topic": "Roman numerals",
+            "difficulty": "EASY",
+            "prompt": "What number does LXXVII stand for?",
+            "options": [
+              "77",
+              "87",
+              "76",
+              "81"
+            ],
+            "answer": 0,
+            "explanation": "LXXVII = 77. (X = 10, V = 5, I = 1, L = 50, and a smaller numeral before a larger one is subtracted.)",
+            "hi": {
+              "prompt": "रोमन संख्या LXXVII किस संख्या को दर्शाती है?",
+              "options": [
+                "77",
+                "87",
+                "76",
+                "81"
+              ],
+              "explanation": "LXXVII = 77। (X = 10, V = 5, I = 1, L = 50; बड़े अंक से पहले लिखा छोटा अंक घटाया जाता है।)"
+            }
+          },
+          {
+            "id": "q57",
+            "section": "Mathematics",
+            "topic": "Average",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the average of 17, 26, 17?",
+            "options": [
+              "60",
+              "21",
+              "20",
+              "22"
+            ],
+            "answer": 2,
+            "explanation": "Sum = 60; divide by 3 numbers: 60 ÷ 3 = 20.",
+            "hi": {
+              "prompt": "17, 26, 17 का औसत क्या है?",
+              "options": [
+                "60",
+                "21",
+                "20",
+                "22"
+              ],
+              "explanation": "योग = 60; 3 संख्याओं से भाग देने पर 60 ÷ 3 = 20।"
+            }
+          },
+          {
+            "id": "q58",
+            "section": "Mathematics",
+            "topic": "Word problems",
+            "difficulty": "EASY",
+            "prompt": "140 mangoes are shared equally among 7 children. How many mangoes does each child get?",
+            "options": [
+              "20",
+              "21",
+              "133",
+              "7"
+            ],
+            "answer": 0,
+            "explanation": "140 ÷ 7 = 20.",
+            "hi": {
+              "prompt": "140 आम 7 बच्चों में बराबर-बराबर बाँटे जाते हैं। प्रत्येक बच्चे को कितने आम मिलेंगे?",
+              "options": [
+                "20",
+                "21",
+                "133",
+                "7"
+              ],
+              "explanation": "140 ÷ 7 = 20।"
+            }
+          },
+          {
+            "id": "q59",
+            "section": "Mathematics",
+            "topic": "Prime numbers",
+            "difficulty": "MEDIUM",
+            "prompt": "How many prime numbers are there between 80 and 90?",
+            "options": [
+              "3",
+              "4",
+              "2",
+              "1"
+            ],
+            "answer": 2,
+            "explanation": "The primes between 80 and 90 are 83, 89: 2 in all.",
+            "hi": {
+              "prompt": "80 और 90 के बीच कितनी अभाज्य संख्याएँ हैं?",
+              "options": [
+                "3",
+                "4",
+                "2",
+                "1"
+              ],
+              "explanation": "80 और 90 के बीच की अभाज्य संख्याएँ 83, 89 हैं: कुल 2।"
+            }
+          },
+          {
+            "id": "q60",
+            "section": "Mathematics",
+            "topic": "Rounding",
+            "difficulty": "EASY",
+            "prompt": "Round 9,051 to the nearest hundred.",
+            "options": [
+              "9,100",
+              "9,000",
+              "9,050",
+              "9,300"
+            ],
+            "answer": 0,
+            "explanation": "Look at the tens digit (5): 5 or more, so round up. 9,051 → 9,100.",
+            "hi": {
+              "prompt": "9,051 को निकटतम सैकड़े तक पूर्णांकित करें।",
+              "options": [
+                "9,100",
+                "9,000",
+                "9,050",
+                "9,300"
+              ],
+              "explanation": "दहाई का अंक (5) 5 या अधिक है, इसलिए ऊपर पूर्णांकित करें: 9,051 → 9,100।"
+            }
+          },
+          {
+            "id": "q61",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "EASY",
+            "prompt": "Which part of a plant holds it firmly in the soil?",
+            "options": [
+              "Leaf",
+              "Flower",
+              "Fruit",
+              "Root"
+            ],
+            "answer": 3,
+            "explanation": "Roots anchor the plant in the soil and also absorb water.",
+            "hi": {
+              "prompt": "पौधे का कौन-सा भाग उसे मिट्टी में मज़बूती से पकड़े रहता है?",
+              "options": [
+                "पत्ती",
+                "फूल",
+                "फल",
+                "जड़"
+              ],
+              "explanation": "जड़ें पौधे को मिट्टी में जमाए रखती हैं और पानी भी सोखती हैं।"
+            }
+          },
+          {
+            "id": "q62",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "EASY",
+            "prompt": "In which part of a flower are pollen grains made?",
+            "options": [
+              "Root",
+              "Leaf",
+              "Stamen",
+              "Bark"
+            ],
+            "answer": 2,
+            "explanation": "Pollen grains are made in the anther of the stamen, the male part of the flower.",
+            "hi": {
+              "prompt": "फूल के किस भाग में परागकण बनते हैं?",
+              "options": [
+                "जड़",
+                "पत्ती",
+                "पुंकेसर",
+                "छाल"
+              ],
+              "explanation": "परागकण पुंकेसर के परागकोश में बनते हैं, जो फूल का नर भाग है।"
+            }
+          },
+          {
+            "id": "q63",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "MEDIUM",
+            "prompt": "Big plants that live for many years and have a hard, woody trunk are called:",
+            "options": [
+              "Trees",
+              "Herbs",
+              "Creepers",
+              "Grasses"
+            ],
+            "answer": 0,
+            "explanation": "Trees are tall plants with a thick, woody trunk.",
+            "hi": {
+              "prompt": "कई वर्षों तक जीवित रहने वाले, कठोर लकड़ी के तने वाले बड़े पौधे क्या कहलाते हैं?",
+              "options": [
+                "वृक्ष",
+                "शाक",
+                "लताएँ",
+                "घास"
+              ],
+              "explanation": "वृक्ष मोटे, लकड़ी वाले तने के ऊँचे पौधे होते हैं।"
+            }
+          },
+          {
+            "id": "q64",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "EASY",
+            "prompt": "Which animal gives us wool?",
+            "options": [
+              "Cow",
+              "Horse",
+              "Sheep",
+              "Hen"
+            ],
+            "answer": 2,
+            "explanation": "Wool comes from the fleece (hair) of sheep.",
+            "hi": {
+              "prompt": "हमें ऊन कौन-सा जानवर देता है?",
+              "options": [
+                "गाय",
+                "घोड़ा",
+                "भेड़",
+                "मुर्गी"
+              ],
+              "explanation": "ऊन भेड़ के बालों से मिलता है।"
+            }
+          },
+          {
+            "id": "q65",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "EASY",
+            "prompt": "Which of these animals eats only the flesh of other animals?",
+            "options": [
+              "Cow",
+              "Lion",
+              "Deer",
+              "Rabbit"
+            ],
+            "answer": 1,
+            "explanation": "The lion is a carnivore. Cows, deer and rabbits are herbivores.",
+            "hi": {
+              "prompt": "इनमें से कौन-सा जानवर केवल दूसरे जानवरों का मांस खाता है?",
+              "options": [
+                "गाय",
+                "शेर",
+                "हिरण",
+                "खरगोश"
+              ],
+              "explanation": "शेर मांसाहारी है। गाय, हिरण और खरगोश शाकाहारी हैं।"
+            }
+          },
+          {
+            "id": "q66",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "MEDIUM",
+            "prompt": "Whales and dolphins live in water, but they breathe air with their:",
+            "options": [
+              "Gills",
+              "Skin",
+              "Feathers",
+              "Lungs"
+            ],
+            "answer": 3,
+            "explanation": "Whales and dolphins are mammals; they come to the surface to breathe air with lungs.",
+            "hi": {
+              "prompt": "व्हेल और डॉल्फ़िन पानी में रहती हैं, पर वे किससे हवा में साँस लेती हैं?",
+              "options": [
+                "गलफड़ों से",
+                "त्वचा से",
+                "पंखों से",
+                "फेफड़ों से"
+              ],
+              "explanation": "व्हेल और डॉल्फ़िन स्तनधारी हैं; वे सतह पर आकर फेफड़ों से हवा में साँस लेती हैं।"
+            }
+          },
+          {
+            "id": "q67",
+            "section": "Science",
+            "topic": "Human body",
+            "difficulty": "EASY",
+            "prompt": "Which organ helps us to think and remember?",
+            "options": [
+              "Heart",
+              "Lungs",
+              "Stomach",
+              "Brain"
+            ],
+            "answer": 3,
+            "explanation": "The brain controls thinking, memory and the working of the body.",
+            "hi": {
+              "prompt": "कौन-सा अंग हमें सोचने और याद रखने में मदद करता है?",
+              "options": [
+                "हृदय",
+                "फेफड़े",
+                "आमाशय",
+                "मस्तिष्क"
+              ],
+              "explanation": "मस्तिष्क सोचने, याद रखने और शरीर के कामों को नियंत्रित करता है।"
+            }
+          },
+          {
+            "id": "q68",
+            "section": "Science",
+            "topic": "Human body",
+            "difficulty": "EASY",
+            "prompt": "The framework of bones in our body is called the:",
+            "options": [
+              "Muscle",
+              "Skin",
+              "Skeleton",
+              "Nerve"
+            ],
+            "answer": 2,
+            "explanation": "The skeleton gives the body its shape and protects organs.",
+            "hi": {
+              "prompt": "हमारे शरीर में हड्डियों के ढाँचे को क्या कहते हैं?",
+              "options": [
+                "मांसपेशी",
+                "त्वचा",
+                "कंकाल",
+                "तंत्रिका"
+              ],
+              "explanation": "कंकाल शरीर को आकार देता है और अंगों की रक्षा करता है।"
+            }
+          },
+          {
+            "id": "q69",
+            "section": "Science",
+            "topic": "Health",
+            "difficulty": "EASY",
+            "prompt": "Which disease spreads by drinking dirty water?",
+            "options": [
+              "Night blindness",
+              "Cholera",
+              "Goitre",
+              "Scurvy"
+            ],
+            "answer": 1,
+            "explanation": "Cholera spreads through dirty water. The others are caused by a lack of nutrients.",
+            "hi": {
+              "prompt": "गंदा पानी पीने से कौन-सा रोग फैलता है?",
+              "options": [
+                "रतौंधी",
+                "हैज़ा",
+                "घेंघा",
+                "स्कर्वी"
+              ],
+              "explanation": "हैज़ा गंदे पानी से फैलता है। बाक़ी रोग पोषक तत्वों की कमी से होते हैं।"
+            }
+          },
+          {
+            "id": "q70",
+            "section": "Science",
+            "topic": "Health",
+            "difficulty": "EASY",
+            "prompt": "Which food is rich in carbohydrates and gives us energy?",
+            "options": [
+              "Fish",
+              "Egg",
+              "Paneer",
+              "Rice"
+            ],
+            "answer": 3,
+            "explanation": "Rice is mostly starch, a carbohydrate. Fish, egg and paneer are rich in protein.",
+            "hi": {
+              "prompt": "कौन-सा भोजन कार्बोहाइड्रेट से भरपूर है और हमें ऊर्जा देता है?",
+              "options": [
+                "मछली",
+                "अंडा",
+                "पनीर",
+                "चावल"
+              ],
+              "explanation": "चावल में अधिकतर मंड (कार्बोहाइड्रेट) होता है। मछली, अंडा और पनीर प्रोटीन से भरपूर हैं।"
+            }
+          },
+          {
+            "id": "q71",
+            "section": "Science",
+            "topic": "Matter",
+            "difficulty": "EASY",
+            "prompt": "Which of these is a gas?",
+            "options": [
+              "Steam",
+              "Ice",
+              "Wood",
+              "Milk"
+            ],
+            "answer": 0,
+            "explanation": "Steam is water in the form of a gas. Ice and wood are solids; milk is a liquid.",
+            "hi": {
+              "prompt": "इनमें से कौन-सी गैस है?",
+              "options": [
+                "भाप",
+                "बर्फ़",
+                "लकड़ी",
+                "दूध"
+              ],
+              "explanation": "भाप गैस के रूप में पानी है। बर्फ़ और लकड़ी ठोस हैं; दूध द्रव है।"
+            }
+          },
+          {
+            "id": "q72",
+            "section": "Science",
+            "topic": "Matter",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these does NOT dissolve in water?",
+            "options": [
+              "Sand",
+              "Sugar",
+              "Salt",
+              "Glucose"
+            ],
+            "answer": 0,
+            "explanation": "Sand settles at the bottom; sugar, salt and glucose dissolve.",
+            "hi": {
+              "prompt": "इनमें से कौन-सा पानी में नहीं घुलता?",
+              "options": [
+                "रेत",
+                "चीनी",
+                "नमक",
+                "ग्लूकोज़"
+              ],
+              "explanation": "रेत नीचे बैठ जाती है; चीनी, नमक और ग्लूकोज़ घुल जाते हैं।"
+            }
+          },
+          {
+            "id": "q73",
+            "section": "Science",
+            "topic": "Force and energy",
+            "difficulty": "EASY",
+            "prompt": "A push or a pull on an object is called a:",
+            "options": [
+              "Shadow",
+              "Sound",
+              "Force",
+              "Colour"
+            ],
+            "answer": 2,
+            "explanation": "A force is a push or a pull; it can move, stop or change the shape of an object.",
+            "hi": {
+              "prompt": "किसी वस्तु को धकेलना या खींचना क्या कहलाता है?",
+              "options": [
+                "छाया",
+                "ध्वनि",
+                "बल",
+                "रंग"
+              ],
+              "explanation": "धक्का या खिंचाव बल है; यह वस्तु को चला, रोक या उसका आकार बदल सकता है।"
+            }
+          },
+          {
+            "id": "q74",
+            "section": "Science",
+            "topic": "Force and energy",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these changes electrical energy into light?",
+            "options": [
+              "Electric fan",
+              "Battery",
+              "Electric bulb",
+              "Water pump"
+            ],
+            "answer": 2,
+            "explanation": "A bulb gives light. A fan and a pump turn electricity into motion; a battery stores energy.",
+            "hi": {
+              "prompt": "इनमें से कौन विद्युत ऊर्जा को प्रकाश में बदलता है?",
+              "options": [
+                "बिजली का पंखा",
+                "बैटरी",
+                "बिजली का बल्ब",
+                "पानी का पंप"
+              ],
+              "explanation": "बल्ब प्रकाश देता है। पंखा और पंप बिजली को गति में बदलते हैं; बैटरी ऊर्जा संचित करती है।"
+            }
+          },
+          {
+            "id": "q75",
+            "section": "Science",
+            "topic": "Light",
+            "difficulty": "EASY",
+            "prompt": "Light travels in:",
+            "options": [
+              "Circles",
+              "Straight lines",
+              "Zigzag lines only",
+              "Curved lines only"
+            ],
+            "answer": 1,
+            "explanation": "Light travels in straight lines, which is why shadows form.",
+            "hi": {
+              "prompt": "प्रकाश किस प्रकार चलता है?",
+              "options": [
+                "वृत्तों में",
+                "सीधी रेखाओं में",
+                "केवल टेढ़ी-मेढ़ी रेखाओं में",
+                "केवल वक्र रेखाओं में"
+              ],
+              "explanation": "प्रकाश सीधी रेखाओं में चलता है, इसी कारण छाया बनती है।"
+            }
+          },
+          {
+            "id": "q76",
+            "section": "Science",
+            "topic": "Light",
+            "difficulty": "MEDIUM",
+            "prompt": "We see our image in a mirror because the mirror:",
+            "options": [
+              "Reflects light",
+              "Absorbs all light",
+              "Makes its own light",
+              "Stops light from moving"
+            ],
+            "answer": 0,
+            "explanation": "A smooth, shiny mirror sends light back (reflection), forming an image.",
+            "hi": {
+              "prompt": "हमें दर्पण में अपना प्रतिबिंब क्यों दिखता है? क्योंकि दर्पण:",
+              "options": [
+                "प्रकाश को परावर्तित करता है",
+                "सारा प्रकाश सोख लेता है",
+                "स्वयं प्रकाश बनाता है",
+                "प्रकाश को रोक देता है"
+              ],
+              "explanation": "चिकना, चमकीला दर्पण प्रकाश को वापस लौटाता है (परावर्तन), जिससे प्रतिबिंब बनता है।"
+            }
+          },
+          {
+            "id": "q77",
+            "section": "Science",
+            "topic": "Sound",
+            "difficulty": "EASY",
+            "prompt": "A loud, unpleasant sound is called:",
+            "options": [
+              "Music",
+              "Echo",
+              "Noise",
+              "Song"
+            ],
+            "answer": 2,
+            "explanation": "Unwanted loud sound is noise; too much of it causes noise pollution.",
+            "hi": {
+              "prompt": "तेज़ और अप्रिय ध्वनि को क्या कहते हैं?",
+              "options": [
+                "संगीत",
+                "प्रतिध्वनि",
+                "शोर",
+                "गीत"
+              ],
+              "explanation": "अनचाही तेज़ ध्वनि शोर है; बहुत अधिक शोर ध्वनि प्रदूषण है।"
+            }
+          },
+          {
+            "id": "q78",
+            "section": "Science",
+            "topic": "Earth and space",
+            "difficulty": "MEDIUM",
+            "prompt": "About how long does the Moon take to go once round the Earth?",
+            "options": [
+              "About a month",
+              "One day",
+              "One year",
+              "One week"
+            ],
+            "answer": 0,
+            "explanation": "The Moon goes round the Earth in about 27 days, and its phases repeat in about 29½ days: roughly a month.",
+            "hi": {
+              "prompt": "चंद्रमा पृथ्वी का एक चक्कर लगाने में लगभग कितना समय लेता है?",
+              "options": [
+                "लगभग एक महीना",
+                "एक दिन",
+                "एक वर्ष",
+                "एक सप्ताह"
+              ],
+              "explanation": "चंद्रमा लगभग 27 दिनों में पृथ्वी का चक्कर लगाता है और उसकी कलाएँ लगभग 29½ दिनों में दोहराती हैं: लगभग एक महीना।"
+            }
+          },
+          {
+            "id": "q79",
+            "section": "Science",
+            "topic": "Earth and space",
+            "difficulty": "MEDIUM",
+            "prompt": "Which planet is often called the Earth's twin because it is nearly the same size?",
+            "options": [
+              "Venus",
+              "Mars",
+              "Saturn",
+              "Mercury"
+            ],
+            "answer": 0,
+            "explanation": "Venus is close to the Earth in size and mass.",
+            "hi": {
+              "prompt": "लगभग समान आकार के कारण किस ग्रह को पृथ्वी की जुड़वाँ बहन कहा जाता है?",
+              "options": [
+                "शुक्र",
+                "मंगल",
+                "शनि",
+                "बुध"
+              ],
+              "explanation": "शुक्र आकार और द्रव्यमान में पृथ्वी के लगभग बराबर है।"
+            }
+          },
+          {
+            "id": "q80",
+            "section": "Science",
+            "topic": "Environment",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these makes river water dirty?",
+            "options": [
+              "Throwing garbage into the river",
+              "Planting trees on its banks",
+              "Rainwater harvesting",
+              "Boiling drinking water"
+            ],
+            "answer": 0,
+            "explanation": "Garbage and waste thrown into rivers cause water pollution.",
+            "hi": {
+              "prompt": "इनमें से किससे नदी का पानी गंदा होता है?",
+              "options": [
+                "नदी में कचरा फेंकना",
+                "किनारों पर पेड़ लगाना",
+                "वर्षा जल संचयन",
+                "पीने का पानी उबालना"
+              ],
+              "explanation": "नदियों में फेंका गया कचरा जल प्रदूषण का कारण है।"
+            }
+          },
+          {
+            "id": "q81",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "Which is the highest hill of Jharkhand?",
+            "options": [
+              "Parasnath",
+              "Netarhat",
+              "Dalma",
+              "Rajmahal"
+            ],
+            "answer": 0,
+            "explanation": "Parasnath hill in Giridih district, about 1,365 m high, is the highest point of Jharkhand.",
+            "hi": {
+              "prompt": "झारखंड की सबसे ऊँची पहाड़ी कौन-सी है?",
+              "options": [
+                "पारसनाथ",
+                "नेतरहाट",
+                "दलमा",
+                "राजमहल"
+              ],
+              "explanation": "गिरिडीह ज़िले की पारसनाथ पहाड़ी (लगभग 1,365 मीटर) झारखंड का सबसे ऊँचा स्थान है।"
+            }
+          },
+          {
+            "id": "q82",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the state bird of Jharkhand?",
+            "options": [
+              "Peacock",
+              "Parrot",
+              "Sparrow",
+              "Koel"
+            ],
+            "answer": 3,
+            "explanation": "The Asian koel is the state bird of Jharkhand; the peacock is the national bird.",
+            "hi": {
+              "prompt": "झारखंड का राजकीय पक्षी कौन-सा है?",
+              "options": [
+                "मोर",
+                "तोता",
+                "गौरैया",
+                "कोयल"
+              ],
+              "explanation": "कोयल झारखंड का राजकीय पक्षी है; मोर राष्ट्रीय पक्षी है।"
+            }
+          },
+          {
+            "id": "q83",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "The Karma festival of Jharkhand is linked with the branch of which tree?",
+            "options": [
+              "Mango",
+              "Karam",
+              "Coconut",
+              "Pine"
+            ],
+            "answer": 1,
+            "explanation": "In Karma, a branch of the Karam tree is worshipped and people sing and dance around it.",
+            "hi": {
+              "prompt": "झारखंड का करमा पर्व किस पेड़ की डाली से जुड़ा है?",
+              "options": [
+                "आम",
+                "करम",
+                "नारियल",
+                "चीड़"
+              ],
+              "explanation": "करमा में करम पेड़ की डाली की पूजा होती है और लोग उसके चारों ओर गाते-नाचते हैं।"
+            }
+          },
+          {
+            "id": "q84",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "Which city is the sub-capital (second capital) of Jharkhand?",
+            "options": [
+              "Dhanbad",
+              "Bokaro",
+              "Hazaribagh",
+              "Dumka"
+            ],
+            "answer": 3,
+            "explanation": "Ranchi is the capital and Dumka, in Santhal Pargana, is the sub-capital.",
+            "hi": {
+              "prompt": "झारखंड की उपराजधानी कौन-सा शहर है?",
+              "options": [
+                "धनबाद",
+                "बोकारो",
+                "हज़ारीबाग",
+                "दुमका"
+              ],
+              "explanation": "राँची राजधानी है और संथाल परगना का दुमका उपराजधानी है।"
+            }
+          },
+          {
+            "id": "q85",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "EASY",
+            "prompt": "Which is the smallest state of India by area?",
+            "options": [
+              "Sikkim",
+              "Tripura",
+              "Kerala",
+              "Goa"
+            ],
+            "answer": 3,
+            "explanation": "Goa is the smallest state by area; Rajasthan is the largest.",
+            "hi": {
+              "prompt": "क्षेत्रफल में भारत का सबसे छोटा राज्य कौन-सा है?",
+              "options": [
+                "सिक्किम",
+                "त्रिपुरा",
+                "केरल",
+                "गोवा"
+              ],
+              "explanation": "क्षेत्रफल में गोवा सबसे छोटा राज्य है; राजस्थान सबसे बड़ा।"
+            }
+          },
+          {
+            "id": "q86",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "EASY",
+            "prompt": "Which state is called the \"land of five rivers\"?",
+            "options": [
+              "Bihar",
+              "Punjab",
+              "Kerala",
+              "Assam"
+            ],
+            "answer": 1,
+            "explanation": "\"Punjab\" means five waters (rivers).",
+            "hi": {
+              "prompt": "किस राज्य को \"पाँच नदियों की भूमि\" कहा जाता है?",
+              "options": [
+                "बिहार",
+                "पंजाब",
+                "केरल",
+                "असम"
+              ],
+              "explanation": "\"पंजाब\" का अर्थ है पाँच पानी (नदियाँ)।"
+            }
+          },
+          {
+            "id": "q87",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "MEDIUM",
+            "prompt": "Which state has the longest coastline in India?",
+            "options": [
+              "Gujarat",
+              "Goa",
+              "Kerala",
+              "West Bengal"
+            ],
+            "answer": 0,
+            "explanation": "Gujarat has the longest coastline of any Indian state.",
+            "hi": {
+              "prompt": "भारत में सबसे लंबी तटरेखा किस राज्य की है?",
+              "options": [
+                "गुजरात",
+                "गोवा",
+                "केरल",
+                "पश्चिम बंगाल"
+              ],
+              "explanation": "भारत के राज्यों में गुजरात की तटरेखा सबसे लंबी है।"
+            }
+          },
+          {
+            "id": "q88",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "MEDIUM",
+            "prompt": "Jute is grown mostly in which state?",
+            "options": [
+              "Rajasthan",
+              "Himachal Pradesh",
+              "West Bengal",
+              "Gujarat"
+            ],
+            "answer": 2,
+            "explanation": "Jute needs heat, heavy rain and river soil, found in West Bengal.",
+            "hi": {
+              "prompt": "जूट मुख्य रूप से किस राज्य में उगाया जाता है?",
+              "options": [
+                "राजस्थान",
+                "हिमाचल प्रदेश",
+                "पश्चिम बंगाल",
+                "गुजरात"
+              ],
+              "explanation": "जूट को गर्मी, अधिक वर्षा और नदी की उपजाऊ मिट्टी चाहिए, जो पश्चिम बंगाल में है।"
+            }
+          },
+          {
+            "id": "q89",
+            "section": "Social Studies",
+            "topic": "Maps and globe",
+            "difficulty": "MEDIUM",
+            "prompt": "On a map, what the symbols mean is explained in the:",
+            "options": [
+              "Key (legend)",
+              "Scale",
+              "Title",
+              "Margin"
+            ],
+            "answer": 0,
+            "explanation": "The key, or legend, lists each symbol and what it stands for.",
+            "hi": {
+              "prompt": "मानचित्र पर चिह्नों का अर्थ कहाँ समझाया जाता है?",
+              "options": [
+                "संकेत-सूची (कुंजी)",
+                "पैमाना",
+                "शीर्षक",
+                "हाशिया"
+              ],
+              "explanation": "संकेत-सूची (कुंजी) में हर चिह्न और उसका अर्थ दिया होता है।"
+            }
+          },
+          {
+            "id": "q90",
+            "section": "Social Studies",
+            "topic": "Maps and globe",
+            "difficulty": "EASY",
+            "prompt": "The imaginary line on which the Earth spins, joining the North and South Poles, is its:",
+            "options": [
+              "Equator",
+              "Orbit",
+              "Horizon",
+              "Axis"
+            ],
+            "answer": 3,
+            "explanation": "The Earth spins on its axis, which passes through both poles.",
+            "hi": {
+              "prompt": "उत्तरी और दक्षिणी ध्रुव को जोड़ने वाली वह काल्पनिक रेखा, जिस पर पृथ्वी घूमती है, क्या कहलाती है?",
+              "options": [
+                "विषुवत रेखा",
+                "कक्षा",
+                "क्षितिज",
+                "अक्ष (धुरी)"
+              ],
+              "explanation": "पृथ्वी अपने अक्ष पर घूमती है, जो दोनों ध्रुवों से होकर जाता है।"
+            }
+          },
+          {
+            "id": "q91",
+            "section": "Social Studies",
+            "topic": "Maps and globe",
+            "difficulty": "EASY",
+            "prompt": "How many main (cardinal) directions are there?",
+            "options": [
+              "Four",
+              "Two",
+              "Six",
+              "Ten"
+            ],
+            "answer": 0,
+            "explanation": "North, south, east and west are the four main directions.",
+            "hi": {
+              "prompt": "मुख्य दिशाएँ कितनी होती हैं?",
+              "options": [
+                "चार",
+                "दो",
+                "छह",
+                "दस"
+              ],
+              "explanation": "उत्तर, दक्षिण, पूर्व और पश्चिम चार मुख्य दिशाएँ हैं।"
+            }
+          },
+          {
+            "id": "q92",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "MEDIUM",
+            "prompt": "Who wrote the Arthashastra?",
+            "options": [
+              "Chanakya (Kautilya)",
+              "Kalidasa",
+              "Tulsidas",
+              "Valmiki"
+            ],
+            "answer": 0,
+            "explanation": "Chanakya, adviser to Chandragupta Maurya, wrote the Arthashastra on running a state.",
+            "hi": {
+              "prompt": "अर्थशास्त्र की रचना किसने की?",
+              "options": [
+                "चाणक्य (कौटिल्य)",
+                "कालिदास",
+                "तुलसीदास",
+                "वाल्मीकि"
+              ],
+              "explanation": "चंद्रगुप्त मौर्य के सलाहकार चाणक्य ने राज्य चलाने पर अर्थशास्त्र लिखा।"
+            }
+          },
+          {
+            "id": "q93",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "MEDIUM",
+            "prompt": "Who said, \"Swaraj is my birthright and I shall have it\"?",
+            "options": [
+              "Mahatma Gandhi",
+              "Bal Gangadhar Tilak",
+              "Jawaharlal Nehru",
+              "Sardar Patel"
+            ],
+            "answer": 1,
+            "explanation": "Lokmanya Bal Gangadhar Tilak gave this famous call for self-rule.",
+            "hi": {
+              "prompt": "\"स्वराज मेरा जन्मसिद्ध अधिकार है और मैं इसे लेकर रहूँगा\", यह किसने कहा?",
+              "options": [
+                "महात्मा गांधी",
+                "बाल गंगाधर तिलक",
+                "जवाहरलाल नेहरू",
+                "सरदार पटेल"
+              ],
+              "explanation": "लोकमान्य बाल गंगाधर तिलक ने स्वराज का यह प्रसिद्ध नारा दिया।"
+            }
+          },
+          {
+            "id": "q94",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "EASY",
+            "prompt": "Who was the first woman Prime Minister of India?",
+            "options": [
+              "Sarojini Naidu",
+              "Pratibha Patil",
+              "Sucheta Kripalani",
+              "Indira Gandhi"
+            ],
+            "answer": 3,
+            "explanation": "Indira Gandhi became Prime Minister in 1966.",
+            "hi": {
+              "prompt": "भारत की पहली महिला प्रधानमंत्री कौन थीं?",
+              "options": [
+                "सरोजिनी नायडू",
+                "प्रतिभा पाटिल",
+                "सुचेता कृपलानी",
+                "इंदिरा गांधी"
+              ],
+              "explanation": "इंदिरा गांधी 1966 में प्रधानमंत्री बनीं।"
+            }
+          },
+          {
+            "id": "q95",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "MEDIUM",
+            "prompt": "Who is the head of the Republic of India?",
+            "options": [
+              "The Prime Minister",
+              "The Chief Justice",
+              "The Speaker",
+              "The President"
+            ],
+            "answer": 3,
+            "explanation": "The President is the head of the country; the Prime Minister heads the government.",
+            "hi": {
+              "prompt": "भारत गणराज्य का प्रमुख कौन होता है?",
+              "options": [
+                "प्रधानमंत्री",
+                "मुख्य न्यायाधीश",
+                "लोकसभा अध्यक्ष",
+                "राष्ट्रपति"
+              ],
+              "explanation": "राष्ट्रपति देश के प्रमुख हैं; प्रधानमंत्री सरकार के प्रमुख हैं।"
+            }
+          },
+          {
+            "id": "q96",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "EASY",
+            "prompt": "The Governor is the head of a:",
+            "options": [
+              "Village",
+              "State",
+              "Country",
+              "School"
+            ],
+            "answer": 1,
+            "explanation": "Each state has a Governor; the Chief Minister leads the state government.",
+            "hi": {
+              "prompt": "राज्यपाल किसका प्रमुख होता है?",
+              "options": [
+                "गाँव का",
+                "राज्य का",
+                "देश का",
+                "विद्यालय का"
+              ],
+              "explanation": "हर राज्य का एक राज्यपाल होता है; मुख्यमंत्री राज्य सरकार का नेतृत्व करते हैं।"
+            }
+          },
+          {
+            "id": "q97",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "MEDIUM",
+            "prompt": "The meeting of all the adult voters of a village panchayat is called the:",
+            "options": [
+              "Lok Sabha",
+              "Gram Sabha",
+              "Rajya Sabha",
+              "Vidhan Sabha"
+            ],
+            "answer": 1,
+            "explanation": "The Gram Sabha discusses the work of the panchayat.",
+            "hi": {
+              "prompt": "ग्राम पंचायत के सभी वयस्क मतदाताओं की सभा क्या कहलाती है?",
+              "options": [
+                "लोकसभा",
+                "ग्राम सभा",
+                "राज्यसभा",
+                "विधानसभा"
+              ],
+              "explanation": "ग्राम सभा पंचायत के कामों पर चर्चा करती है।"
+            }
+          },
+          {
+            "id": "q98",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "EASY",
+            "prompt": "What is India's national tree?",
+            "options": [
+              "Banyan",
+              "Mango",
+              "Neem",
+              "Peepal"
+            ],
+            "answer": 0,
+            "explanation": "The banyan is the national tree; the mango is the national fruit.",
+            "hi": {
+              "prompt": "भारत का राष्ट्रीय वृक्ष कौन-सा है?",
+              "options": [
+                "बरगद",
+                "आम",
+                "नीम",
+                "पीपल"
+              ],
+              "explanation": "बरगद राष्ट्रीय वृक्ष है; आम राष्ट्रीय फल है।"
+            }
+          },
+          {
+            "id": "q99",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "MEDIUM",
+            "prompt": "Bihu is a festival of which state?",
+            "options": [
+              "Punjab",
+              "Gujarat",
+              "Kerala",
+              "Assam"
+            ],
+            "answer": 3,
+            "explanation": "Bihu marks the seasons of farming in Assam.",
+            "hi": {
+              "prompt": "बिहू किस राज्य का पर्व है?",
+              "options": [
+                "पंजाब",
+                "गुजरात",
+                "केरल",
+                "असम"
+              ],
+              "explanation": "बिहू असम में खेती के मौसमों का पर्व है।"
+            }
+          },
+          {
+            "id": "q100",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "MEDIUM",
+            "prompt": "Which city is called the \"Silicon Valley of India\" for its computer industry?",
+            "options": [
+              "Jaipur",
+              "Patna",
+              "Bengaluru",
+              "Shimla"
+            ],
+            "answer": 2,
+            "explanation": "Bengaluru is India's main centre of computer and software companies.",
+            "hi": {
+              "prompt": "कंप्यूटर उद्योग के कारण किस शहर को \"भारत की सिलिकॉन वैली\" कहा जाता है?",
+              "options": [
+                "जयपुर",
+                "पटना",
+                "बेंगलुरु",
+                "शिमला"
+              ],
+              "explanation": "बेंगलुरु भारत में कंप्यूटर और सॉफ़्टवेयर कंपनियों का मुख्य केंद्र है।"
+            }
+          }
+        ],
+        "passages": [
+          {
+            "id": "nh-m1",
+            "title": "पेड़ों का महत्त्व",
+            "text": "पेड़ हमें छाया, फल और लकड़ी देते हैं। वे हवा को शुद्ध करते हैं और वर्षा लाने में सहायता करते हैं। पेड़ों की जड़ें मिट्टी को बाँधकर रखती हैं, जिससे बाढ़ के समय मिट्टी बहती नहीं। इसलिए हमें हर वर्ष कम-से-कम एक पेड़ अवश्य लगाना चाहिए और उसकी देखभाल करनी चाहिए।"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "netarhat-paper1-mock-2",
+      "examSlug": "netarhat",
+      "category": "ENTRANCE",
+      "kind": "MOCK",
+      "level": "Class V",
+      "title": "Netarhat Paper 1 full mock test 2 (पूर्ण मॉक टेस्ट 2)",
+      "description": "A full-length practice paper in the Paper 1 pattern of the 2026-27 advertisement: 100 objective questions, 1 mark each, in 2½ hours — Mental Ability 1–20, Hindi 21–40, Mathematics 41–60, Science 61–80 and Social Studies 81–100. No marks are taken off for wrong answers. Hindi is in Hindi; the other subjects can be read in English or Hindi. Paper 1 is qualifying; the written Paper 2 is not covered here. Written by SchoolDhundo for practice; these are not official or previous-year questions.",
+      "durationMinutes": 150,
+      "marksPerQuestion": 1,
+      "negativeMarks": 0,
+      "displayOrder": 292,
+      "published": true,
+      "reviewedOn": "2026-11-15",
+      "content": {
+        "questions": [
+          {
+            "id": "q1",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "EASY",
+            "prompt": "What comes next? 25, 36, 47, 58, 69, ?",
+            "options": [
+              "81",
+              "80",
+              "70",
+              "91"
+            ],
+            "answer": 1,
+            "explanation": "Each number is 11 more than the one before: 69 + 11 = 80.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 25, 36, 47, 58, 69, ?",
+              "options": [
+                "81",
+                "80",
+                "70",
+                "91"
+              ],
+              "explanation": "हर संख्या पिछली से 11 अधिक है: 69 + 11 = 80।"
+            }
+          },
+          {
+            "id": "q2",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "EASY",
+            "prompt": "What comes next? 4, 8, 16, 32, ?",
+            "options": [
+              "60",
+              "34",
+              "64",
+              "66"
+            ],
+            "answer": 2,
+            "explanation": "Each number is 2 times the one before: 32 × 2 = 64.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 4, 8, 16, 32, ?",
+              "options": [
+                "60",
+                "34",
+                "64",
+                "66"
+              ],
+              "explanation": "हर संख्या पिछली की 2 गुनी है: 32 × 2 = 64।"
+            }
+          },
+          {
+            "id": "q3",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? 11, 14, 18, 23, 29, ?",
+            "options": [
+              "35",
+              "37",
+              "39",
+              "36"
+            ],
+            "answer": 3,
+            "explanation": "The differences are 3, 4, 5, 6, growing by 1; the next difference is 7: 29 + 7 = 36.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 11, 14, 18, 23, 29, ?",
+              "options": [
+                "35",
+                "37",
+                "39",
+                "36"
+              ],
+              "explanation": "अंतर 3, 4, 5, 6 हैं, जो 1-1 बढ़ते हैं; अगला अंतर 7: 29 + 7 = 36।"
+            }
+          },
+          {
+            "id": "q4",
+            "section": "Mental Ability",
+            "topic": "Number series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? 100, 121, 144, 169, ?",
+            "options": [
+              "195",
+              "198",
+              "194",
+              "196"
+            ],
+            "answer": 3,
+            "explanation": "These are squares: 10², 11², 12², 13²; next is 14² = 196.",
+            "hi": {
+              "prompt": "आगे क्या आएगा? 100, 121, 144, 169, ?",
+              "options": [
+                "195",
+                "198",
+                "194",
+                "196"
+              ],
+              "explanation": "ये वर्ग संख्याएँ हैं: 10², 11², 12², 13²; अगली 14² = 196।"
+            }
+          },
+          {
+            "id": "q5",
+            "section": "Mental Ability",
+            "topic": "Letter series",
+            "difficulty": "MEDIUM",
+            "prompt": "What comes next? D, F, H, J, ?",
+            "options": [
+              "K",
+              "L",
+              "M",
+              "J"
+            ],
+            "answer": 1,
+            "explanation": "Each letter is 2 places after the one before (skip 1): J → L.",
+            "hi": {
+              "prompt": "आगे कौन-सा अक्षर आएगा? D, F, H, J, ?",
+              "options": [
+                "K",
+                "L",
+                "M",
+                "J"
+              ],
+              "explanation": "हर अक्षर पिछले से 2 स्थान आगे है (1 छोड़कर): J → L।"
+            }
+          },
+          {
+            "id": "q6",
+            "section": "Mental Ability",
+            "topic": "Coding-decoding",
+            "difficulty": "MEDIUM",
+            "prompt": "If GOLD is written as HPME, how is SHIP written in the same code?",
+            "options": [
+              "RGHO",
+              "TIJQ",
+              "UJKR",
+              "QJIT"
+            ],
+            "answer": 1,
+            "explanation": "Each letter moves 1 place forward in the alphabet, so SHIP becomes TIJQ.",
+            "hi": {
+              "prompt": "यदि किसी कूट भाषा में GOLD को HPME लिखा जाता है, तो उसी कूट में SHIP को कैसे लिखा जाएगा?",
+              "options": [
+                "RGHO",
+                "TIJQ",
+                "UJKR",
+                "QJIT"
+              ],
+              "explanation": "हर अक्षर वर्णमाला में 1 स्थान आगे खिसकता है, इसलिए SHIP = TIJQ।"
+            }
+          },
+          {
+            "id": "q7",
+            "section": "Mental Ability",
+            "topic": "Coding-decoding",
+            "difficulty": "MEDIUM",
+            "prompt": "If A = 1, B = 2, C = 3 and so on up to Z = 26, what is the total value of the letters of DOG?",
+            "options": [
+              "27",
+              "26",
+              "24",
+              "29"
+            ],
+            "answer": 1,
+            "explanation": "D = 4, O = 15, G = 7; total = 26.",
+            "hi": {
+              "prompt": "यदि A = 1, B = 2, C = 3 … Z = 26 हो, तो DOG के अक्षरों के मानों का योग क्या होगा?",
+              "options": [
+                "27",
+                "26",
+                "24",
+                "29"
+              ],
+              "explanation": "D = 4, O = 15, G = 7; योग = 26।"
+            }
+          },
+          {
+            "id": "q8",
+            "section": "Mental Ability",
+            "topic": "Odd one out",
+            "difficulty": "MEDIUM",
+            "prompt": "Which number is different from the others?",
+            "options": [
+              "34",
+              "6",
+              "21",
+              "39"
+            ],
+            "answer": 0,
+            "explanation": "6, 21, 39 are all multiples of 3; 34 is not.",
+            "hi": {
+              "prompt": "कौन-सी संख्या बाक़ियों से भिन्न है?",
+              "options": [
+                "34",
+                "6",
+                "21",
+                "39"
+              ],
+              "explanation": "6, 21, 39 सभी 3 के गुणज हैं; 34 नहीं है।"
+            }
+          },
+          {
+            "id": "q9",
+            "section": "Mental Ability",
+            "topic": "Odd one out",
+            "difficulty": "EASY",
+            "prompt": "Which one is different from the others?",
+            "options": [
+              "Mango",
+              "Rose",
+              "Lotus",
+              "Marigold"
+            ],
+            "answer": 0,
+            "explanation": "Rose, lotus and marigold are flowers; the mango is a fruit.",
+            "hi": {
+              "prompt": "इनमें से कौन-सा बाक़ियों से भिन्न है?",
+              "options": [
+                "आम",
+                "गुलाब",
+                "कमल",
+                "गेंदा"
+              ],
+              "explanation": "गुलाब, कमल और गेंदा फूल हैं; आम फल है।"
+            }
+          },
+          {
+            "id": "q10",
+            "section": "Mental Ability",
+            "topic": "Analogy",
+            "difficulty": "EASY",
+            "prompt": "Bee is to Hive as Horse is to ?",
+            "options": [
+              "Saddle",
+              "Grass",
+              "Stable",
+              "Field"
+            ],
+            "answer": 2,
+            "explanation": "A bee lives in a hive; a horse lives in a stable.",
+            "hi": {
+              "prompt": "मधुमक्खी : छत्ता :: घोड़ा : ?",
+              "options": [
+                "काठी",
+                "घास",
+                "अस्तबल",
+                "खेत"
+              ],
+              "explanation": "मधुमक्खी छत्ते में रहती है; घोड़ा अस्तबल में।"
+            }
+          },
+          {
+            "id": "q11",
+            "section": "Mental Ability",
+            "topic": "Analogy",
+            "difficulty": "MEDIUM",
+            "prompt": "4 : 64 :: 5 : ?",
+            "options": [
+              "126",
+              "125",
+              "120",
+              "10"
+            ],
+            "answer": 1,
+            "explanation": "The second number is the number × itself × itself: 4 → 64, so 5 → 125.",
+            "hi": {
+              "prompt": "4 : 64 :: 5 : ?",
+              "options": [
+                "126",
+                "125",
+                "120",
+                "10"
+              ],
+              "explanation": "दूसरी संख्या, पहली का संख्या का घन है: 4 → 64, इसलिए 5 → 125।"
+            }
+          },
+          {
+            "id": "q12",
+            "section": "Mental Ability",
+            "topic": "Direction sense",
+            "difficulty": "MEDIUM",
+            "prompt": "Raju faces East. He turns left, walks a little, then turns right. Which direction is he facing now?",
+            "options": [
+              "North",
+              "South",
+              "East",
+              "West"
+            ],
+            "answer": 2,
+            "explanation": "East → turn left → North → turn right → East.",
+            "hi": {
+              "prompt": "राजू का मुँह पूर्व की ओर है। वह बाएँ मुड़ता है, थोड़ा चलता है, फिर दाएँ मुड़ता है। अब उसका मुँह किस दिशा में है?",
+              "options": [
+                "उत्तर",
+                "दक्षिण",
+                "पूर्व",
+                "पश्चिम"
+              ],
+              "explanation": "पूर्व → बाएँ मुड़ा → उत्तर → दाएँ मुड़ा → पूर्व।"
+            }
+          },
+          {
+            "id": "q13",
+            "section": "Mental Ability",
+            "topic": "Ranking",
+            "difficulty": "MEDIUM",
+            "prompt": "In a row of children, Mohan is 10th from the front and 13th from the back. How many children are in the row?",
+            "options": [
+              "23",
+              "22",
+              "21",
+              "24"
+            ],
+            "answer": 1,
+            "explanation": "10 + 13 − 1 = 22 (Mohan is counted twice, so subtract 1).",
+            "hi": {
+              "prompt": "बच्चों की एक पंक्ति में मोहन आगे से 10वाँ और पीछे से 13वाँ है। पंक्ति में कुल कितने बच्चे हैं?",
+              "options": [
+                "23",
+                "22",
+                "21",
+                "24"
+              ],
+              "explanation": "10 + 13 − 1 = 22 (मोहन दो बार गिना गया है, इसलिए 1 घटाएँ)।"
+            }
+          },
+          {
+            "id": "q14",
+            "section": "Mental Ability",
+            "topic": "Calendar",
+            "difficulty": "MEDIUM",
+            "prompt": "Today is Sunday. What day of the week will it be 18 days from today?",
+            "options": [
+              "Friday",
+              "Thursday",
+              "Wednesday",
+              "Saturday"
+            ],
+            "answer": 1,
+            "explanation": "Days repeat every 7. 18 ÷ 7 leaves remainder 4, so count 4 days on from Sunday: Thursday.",
+            "hi": {
+              "prompt": "आज रविवार है। आज से 18 दिन बाद सप्ताह का कौन-सा दिन होगा?",
+              "options": [
+                "शुक्रवार",
+                "गुरुवार",
+                "बुधवार",
+                "शनिवार"
+              ],
+              "explanation": "दिन हर 7 पर दोहराते हैं। 18 ÷ 7 का शेषफल 4 है, इसलिए रविवार से 4 दिन आगे गिनें: गुरुवार।"
+            }
+          },
+          {
+            "id": "q15",
+            "section": "Mental Ability",
+            "topic": "Age problems",
+            "difficulty": "MEDIUM",
+            "prompt": "A father is 31 years older than his son. The son is 9 years old now. How old will the father be after 7 years?",
+            "options": [
+              "47",
+              "40",
+              "56",
+              "16"
+            ],
+            "answer": 0,
+            "explanation": "Father now = 9 + 31 = 40; after 7 years: 40 + 7 = 47.",
+            "hi": {
+              "prompt": "एक पिता अपने पुत्र से 31 वर्ष बड़े हैं। पुत्र अभी 9 वर्ष का है। 7 वर्ष बाद पिता की आयु कितनी होगी?",
+              "options": [
+                "47",
+                "40",
+                "56",
+                "16"
+              ],
+              "explanation": "पिता की अभी की आयु = 9 + 31 = 40; 7 वर्ष बाद: 40 + 7 = 47।"
+            }
+          },
+          {
+            "id": "q16",
+            "section": "Mental Ability",
+            "topic": "Missing number",
+            "difficulty": "MEDIUM",
+            "prompt": "Find the missing number: (4, 2) → 6; (5, 6) → 11; (4, 8) → ?",
+            "options": [
+              "13",
+              "32",
+              "12",
+              "10"
+            ],
+            "answer": 2,
+            "explanation": "The result is the sum of the two numbers: 4 + 8 = 12.",
+            "hi": {
+              "prompt": "लुप्त संख्या ज्ञात करें: (4, 2) → 6; (5, 6) → 11; (4, 8) → ?",
+              "options": [
+                "13",
+                "32",
+                "12",
+                "10"
+              ],
+              "explanation": "परिणाम दोनों संख्याओं का योग है: 4 + 8 = 12।"
+            }
+          },
+          {
+            "id": "q17",
+            "section": "Mental Ability",
+            "topic": "Alphabet test",
+            "difficulty": "MEDIUM",
+            "prompt": "In the English alphabet, which letter is 6 places to the right of the 11th letter from the left?",
+            "options": [
+              "P",
+              "Q",
+              "R",
+              "L"
+            ],
+            "answer": 1,
+            "explanation": "The 11th letter is K; 6 places to its right is the 17th letter, Q.",
+            "hi": {
+              "prompt": "अंग्रेज़ी वर्णमाला में बाएँ से 11वें अक्षर के 6 स्थान दाईं ओर कौन-सा अक्षर है?",
+              "options": [
+                "P",
+                "Q",
+                "R",
+                "L"
+              ],
+              "explanation": "11वाँ अक्षर K है; उससे 6 स्थान दाईं ओर 17वाँ अक्षर Q है।"
+            }
+          },
+          {
+            "id": "q18",
+            "section": "Mental Ability",
+            "topic": "Blood relations",
+            "difficulty": "MEDIUM",
+            "prompt": "Anil's mother is Sarla. Sarla's mother is Kamla. How is Kamla related to Anil?",
+            "options": [
+              "Mother",
+              "Aunt",
+              "Grandmother (mother's mother)",
+              "Sister"
+            ],
+            "answer": 2,
+            "explanation": "The mother's mother is the grandmother (नानी).",
+            "hi": {
+              "prompt": "अनिल की माँ सरला हैं। सरला की माँ कमला हैं। कमला का अनिल से क्या संबंध है?",
+              "options": [
+                "माँ",
+                "मौसी",
+                "नानी",
+                "बहन"
+              ],
+              "explanation": "माँ की माँ नानी होती हैं।"
+            }
+          },
+          {
+            "id": "q19",
+            "section": "Mental Ability",
+            "topic": "Counting",
+            "difficulty": "MEDIUM",
+            "prompt": "How many numbers from 1 to 80 can be divided exactly by 6?",
+            "options": [
+              "13",
+              "14",
+              "12",
+              "16"
+            ],
+            "answer": 0,
+            "explanation": "80 ÷ 6 = 13 remainder 2, so there are 13 multiples of 6 (6, 12, … 78).",
+            "hi": {
+              "prompt": "1 से 80 तक की कितनी संख्याएँ 6 से पूरी-पूरी विभाजित होती हैं?",
+              "options": [
+                "13",
+                "14",
+                "12",
+                "16"
+              ],
+              "explanation": "80 ÷ 6 = 13, शेष 2; अतः 6 के 13 गुणज हैं (6, 12, … 78)।"
+            }
+          },
+          {
+            "id": "q20",
+            "section": "Mental Ability",
+            "topic": "Dictionary order",
+            "difficulty": "MEDIUM",
+            "prompt": "If these words are arranged in dictionary order, which word comes first? Mango, Market, Marble, Mask",
+            "options": [
+              "Market",
+              "Marble",
+              "Mango",
+              "Mask"
+            ],
+            "answer": 2,
+            "explanation": "In dictionary order: Mango, Marble, Market, Mask. The first word is Mango.",
+            "hi": {
+              "prompt": "यदि इन अंग्रेज़ी शब्दों को शब्दकोश के क्रम में लगाया जाए, तो पहला शब्द कौन-सा होगा? Mango, Market, Marble, Mask",
+              "options": [
+                "Market",
+                "Marble",
+                "Mango",
+                "Mask"
+              ],
+              "explanation": "शब्दकोश क्रम: Mango, Marble, Market, Mask। पहला शब्द Mango है।"
+            }
+          },
+          {
+            "id": "q21",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"बिजली\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "विद्युत",
+              "देह",
+              "दुग्ध",
+              "अश्व"
+            ],
+            "answer": 0,
+            "explanation": "\"बिजली\" का पर्यायवाची \"विद्युत\" है।"
+          },
+          {
+            "id": "q22",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"दूध\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "अश्व",
+              "गज",
+              "दुग्ध",
+              "वन"
+            ],
+            "answer": 2,
+            "explanation": "\"दूध\" का पर्यायवाची \"दुग्ध\" है।"
+          },
+          {
+            "id": "q23",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"घोड़ा\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "वन",
+              "मुँह",
+              "अश्व",
+              "पंकज"
+            ],
+            "answer": 2,
+            "explanation": "\"घोड़ा\" का पर्यायवाची \"अश्व\" है।"
+          },
+          {
+            "id": "q24",
+            "section": "Hindi",
+            "topic": "पर्यायवाची",
+            "difficulty": "EASY",
+            "prompt": "\"हाथी\" का पर्यायवाची शब्द कौन-सा है?",
+            "options": [
+              "पंकज",
+              "नृप",
+              "गज",
+              "सागर"
+            ],
+            "answer": 2,
+            "explanation": "\"हाथी\" का पर्यायवाची \"गज\" है।"
+          },
+          {
+            "id": "q25",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"मीठा\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "दूर",
+              "हार",
+              "छोटा",
+              "कड़वा"
+            ],
+            "answer": 3,
+            "explanation": "\"मीठा\" का विलोम (उल्टा अर्थ) \"कड़वा\" है।"
+          },
+          {
+            "id": "q26",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"नया\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "निर्धन",
+              "अनुचित",
+              "दोष",
+              "पुराना"
+            ],
+            "answer": 3,
+            "explanation": "\"नया\" का विलोम (उल्टा अर्थ) \"पुराना\" है।"
+          },
+          {
+            "id": "q27",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"पास\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "अपमान",
+              "गरम",
+              "दूर",
+              "कड़वा"
+            ],
+            "answer": 2,
+            "explanation": "\"पास\" का विलोम (उल्टा अर्थ) \"दूर\" है।"
+          },
+          {
+            "id": "q28",
+            "section": "Hindi",
+            "topic": "विलोम शब्द",
+            "difficulty": "EASY",
+            "prompt": "\"जीत\" का विलोम शब्द कौन-सा है?",
+            "options": [
+              "पुराना",
+              "हार",
+              "दूर",
+              "छोटा"
+            ],
+            "answer": 1,
+            "explanation": "\"जीत\" का विलोम (उल्टा अर्थ) \"हार\" है।"
+          },
+          {
+            "id": "q29",
+            "section": "Hindi",
+            "topic": "वचन",
+            "difficulty": "MEDIUM",
+            "prompt": "\"रोटी\" का बहुवचन रूप क्या है?",
+            "options": [
+              "रोटियाँ",
+              "रोटीयाँ",
+              "रोटीएँ",
+              "रोटे"
+            ],
+            "answer": 0,
+            "explanation": "\"रोटी\" का बहुवचन \"रोटियाँ\" है।"
+          },
+          {
+            "id": "q30",
+            "section": "Hindi",
+            "topic": "वचन",
+            "difficulty": "MEDIUM",
+            "prompt": "\"सड़क\" का बहुवचन रूप क्या है?",
+            "options": [
+              "सड़के",
+              "सड़कियाँ",
+              "सड़कें",
+              "सड़काएँ"
+            ],
+            "answer": 2,
+            "explanation": "\"सड़क\" का बहुवचन \"सड़कें\" है।"
+          },
+          {
+            "id": "q31",
+            "section": "Hindi",
+            "topic": "लिंग",
+            "difficulty": "EASY",
+            "prompt": "\"सेवक\" का स्त्रीलिंग रूप क्या है?",
+            "options": [
+              "सेवकी",
+              "सेविका",
+              "सेवकनी",
+              "सेविकी"
+            ],
+            "answer": 1,
+            "explanation": "\"सेवक\" (पुल्लिंग) का स्त्रीलिंग \"सेविका\" है।"
+          },
+          {
+            "id": "q32",
+            "section": "Hindi",
+            "topic": "लिंग",
+            "difficulty": "EASY",
+            "prompt": "\"मामा\" का स्त्रीलिंग रूप क्या है?",
+            "options": [
+              "मामिन",
+              "मामानी",
+              "मामी",
+              "मामाइन"
+            ],
+            "answer": 2,
+            "explanation": "\"मामा\" (पुल्लिंग) का स्त्रीलिंग \"मामी\" है।"
+          },
+          {
+            "id": "q33",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"गागर में सागर भरना\" का अर्थ क्या है?",
+            "options": [
+              "घड़े में पानी भरना",
+              "थोड़े शब्दों में बहुत कुछ कह देना",
+              "समुद्र में नहाना",
+              "बहुत अधिक बोलना"
+            ],
+            "answer": 1,
+            "explanation": "\"गागर में सागर भरना\" का अर्थ है \"थोड़े शब्दों में बहुत कुछ कह देना\"।"
+          },
+          {
+            "id": "q34",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"अंगूठा दिखाना\" का अर्थ क्या है?",
+            "options": [
+              "अंगूठा चूसना",
+              "साफ़ मना कर देना",
+              "चोट दिखाना",
+              "रास्ता बताना"
+            ],
+            "answer": 1,
+            "explanation": "\"अंगूठा दिखाना\" का अर्थ है \"साफ़ मना कर देना\"।"
+          },
+          {
+            "id": "q35",
+            "section": "Hindi",
+            "topic": "मुहावरे",
+            "difficulty": "MEDIUM",
+            "prompt": "मुहावरे \"आँखें चुराना\" का अर्थ क्या है?",
+            "options": [
+              "चोरी करना",
+              "आँखें बंद करके सोना",
+              "ध्यान से देखना",
+              "सामने आने से कतराना"
+            ],
+            "answer": 3,
+            "explanation": "\"आँखें चुराना\" का अर्थ है \"सामने आने से कतराना\"।"
+          },
+          {
+            "id": "q36",
+            "section": "Hindi",
+            "topic": "वाक्यांश के लिए एक शब्द",
+            "difficulty": "MEDIUM",
+            "prompt": "\"जो दिखाई न दे\" — इसके लिए एक शब्द क्या है?",
+            "options": [
+              "अद्भुत",
+              "अनुपम",
+              "अमर",
+              "अदृश्य"
+            ],
+            "answer": 3,
+            "explanation": "\"जो दिखाई न दे\" के लिए एक शब्द \"अदृश्य\" है।"
+          },
+          {
+            "id": "q37",
+            "section": "Hindi",
+            "topic": "वाक्यांश के लिए एक शब्द",
+            "difficulty": "MEDIUM",
+            "prompt": "\"जो आँखों के सामने हो\" — इसके लिए एक शब्द क्या है?",
+            "options": [
+              "परोक्ष",
+              "दूरस्थ",
+              "प्रत्यक्ष",
+              "अज्ञात"
+            ],
+            "answer": 2,
+            "explanation": "\"जो आँखों के सामने हो\" के लिए एक शब्द \"प्रत्यक्ष\" है।"
+          },
+          {
+            "id": "q38",
+            "section": "Hindi",
+            "topic": "वर्तनी",
+            "difficulty": "MEDIUM",
+            "prompt": "सही वर्तनी वाला शब्द चुनिए।",
+            "options": [
+              "अत्याधिक",
+              "अत्यधिक",
+              "अतयधिक",
+              "अत्यधीक"
+            ],
+            "answer": 1,
+            "explanation": "\"अति + अधिक\" से \"अत्यधिक\" बनता है।"
+          },
+          {
+            "id": "q39",
+            "section": "Hindi",
+            "topic": "अपठित गद्यांश",
+            "difficulty": "EASY",
+            "prompt": "झंडा किसने फहराया?",
+            "options": [
+              "बच्चों ने",
+              "गाँव के मुखिया ने",
+              "खेल शिक्षक ने",
+              "प्रधानाध्यापक जी ने"
+            ],
+            "answer": 3,
+            "explanation": "गद्यांश में लिखा है: \"प्रधानाध्यापक जी ने झंडा फहराया।\"",
+            "passageId": "nh-m2"
+          },
+          {
+            "id": "q40",
+            "section": "Hindi",
+            "topic": "अपठित गद्यांश",
+            "difficulty": "EASY",
+            "prompt": "कार्यक्रम के अंत में क्या हुआ?",
+            "options": [
+              "सभी को मिठाइयाँ बाँटी गईं",
+              "राष्ट्रगान गाया गया",
+              "झंडा फहराया गया",
+              "नाटक प्रस्तुत हुआ"
+            ],
+            "answer": 0,
+            "explanation": "अंतिम वाक्य: \"अंत में सभी को मिठाइयाँ बाँटी गईं।\"",
+            "passageId": "nh-m2"
+          },
+          {
+            "id": "q41",
+            "section": "Mathematics",
+            "topic": "Place value",
+            "difficulty": "EASY",
+            "prompt": "What is the place value of the digit 7 in 4,37,321? (Take the 7 in the thousands place.)",
+            "options": [
+              "700",
+              "70,000",
+              "7",
+              "7,000"
+            ],
+            "answer": 3,
+            "explanation": "The 7 is in the thousands place, so its value is 7 × 1,000 = 7,000.",
+            "hi": {
+              "prompt": "4,37,321 में हज़ार के स्थान पर स्थित अंक 7 का स्थानीय मान क्या है?",
+              "options": [
+                "700",
+                "70,000",
+                "7",
+                "7,000"
+              ],
+              "explanation": "7 हज़ार के स्थान पर है, इसलिए उसका स्थानीय मान 7 × 1,000 = 7,000 है।"
+            }
+          },
+          {
+            "id": "q42",
+            "section": "Mathematics",
+            "topic": "Addition",
+            "difficulty": "EASY",
+            "prompt": "58,814 + 11,084 = ?",
+            "options": [
+              "68,898",
+              "69,908",
+              "69,898",
+              "69,798"
+            ],
+            "answer": 2,
+            "explanation": "Add place by place, carrying where needed: 58,814 + 11,084 = 69,898.",
+            "hi": {
+              "prompt": "58,814 + 11,084 = ?",
+              "options": [
+                "68,898",
+                "69,908",
+                "69,898",
+                "69,798"
+              ],
+              "explanation": "स्थान के अनुसार जोड़ें और हासिल आगे ले जाएँ: 58,814 + 11,084 = 69,898।"
+            }
+          },
+          {
+            "id": "q43",
+            "section": "Mathematics",
+            "topic": "Subtraction",
+            "difficulty": "MEDIUM",
+            "prompt": "90,758 − 23,887 = ?",
+            "options": [
+              "67,871",
+              "66,861",
+              "66,971",
+              "66,871"
+            ],
+            "answer": 3,
+            "explanation": "90,758 − 23,887 = 66,871. Check: 66,871 + 23,887 = 90,758.",
+            "hi": {
+              "prompt": "90,758 − 23,887 = ?",
+              "options": [
+                "67,871",
+                "66,861",
+                "66,971",
+                "66,871"
+              ],
+              "explanation": "90,758 − 23,887 = 66,871। जाँच: 66,871 + 23,887 = 90,758।"
+            }
+          },
+          {
+            "id": "q44",
+            "section": "Mathematics",
+            "topic": "Multiplication",
+            "difficulty": "MEDIUM",
+            "prompt": "225 × 38 = ?",
+            "options": [
+              "8,550",
+              "8,775",
+              "8,325",
+              "2,475"
+            ],
+            "answer": 0,
+            "explanation": "225 × 38 = 225 × 30 + 225 × 8 = 6,750 + 1,800 = 8,550.",
+            "hi": {
+              "prompt": "225 × 38 = ?",
+              "options": [
+                "8,550",
+                "8,775",
+                "8,325",
+                "2,475"
+              ],
+              "explanation": "225 × 38 = 225 × 30 + 225 × 8 = 6,750 + 1,800 = 8,550।"
+            }
+          },
+          {
+            "id": "q45",
+            "section": "Mathematics",
+            "topic": "Division",
+            "difficulty": "MEDIUM",
+            "prompt": "When 384 is divided by 15, what are the quotient and the remainder?",
+            "options": [
+              "26, 9",
+              "25, 9",
+              "25, 10",
+              "24, 9"
+            ],
+            "answer": 1,
+            "explanation": "15 × 25 = 375, and 384 − 375 = 9. Quotient 25, remainder 9.",
+            "hi": {
+              "prompt": "384 को 15 से भाग देने पर भागफल और शेषफल क्या होंगे?",
+              "options": [
+                "26, 9",
+                "25, 9",
+                "25, 10",
+                "24, 9"
+              ],
+              "explanation": "15 × 25 = 375, और 384 − 375 = 9। भागफल 25, शेषफल 9।"
+            }
+          },
+          {
+            "id": "q46",
+            "section": "Mathematics",
+            "topic": "LCM",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the LCM (lowest common multiple) of 15 and 8?",
+            "options": [
+              "1",
+              "240",
+              "60",
+              "120"
+            ],
+            "answer": 3,
+            "explanation": "The smallest number that both 15 and 8 divide exactly is 120.",
+            "hi": {
+              "prompt": "15 और 8 का ल.स. (लघुत्तम समापवर्त्य) क्या है?",
+              "options": [
+                "1",
+                "240",
+                "60",
+                "120"
+              ],
+              "explanation": "वह सबसे छोटी संख्या जिसे 15 और 8 दोनों पूरा-पूरा विभाजित करते हैं, 120 है।"
+            }
+          },
+          {
+            "id": "q47",
+            "section": "Mathematics",
+            "topic": "HCF",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the HCF (highest common factor) of 12 and 20?",
+            "options": [
+              "8",
+              "2",
+              "4",
+              "60"
+            ],
+            "answer": 2,
+            "explanation": "12 = 4 × 3 and 20 = 4 × 5; 3 and 5 have no common factor except 1, so the HCF is 4.",
+            "hi": {
+              "prompt": "12 और 20 का म.स. (महत्तम समापवर्तक) क्या है?",
+              "options": [
+                "8",
+                "2",
+                "4",
+                "60"
+              ],
+              "explanation": "12 = 4 × 3 और 20 = 4 × 5; 3 और 5 का 1 के अलावा कोई उभयनिष्ठ गुणनखंड नहीं है, इसलिए म.स. 4 है।"
+            }
+          },
+          {
+            "id": "q48",
+            "section": "Mathematics",
+            "topic": "Fractions",
+            "difficulty": "EASY",
+            "prompt": "What is 3/5 of 130?",
+            "options": [
+              "26",
+              "78",
+              "104",
+              "52"
+            ],
+            "answer": 1,
+            "explanation": "1/5 of 130 is 26, so 3/5 of 130 is 3 × 26 = 78.",
+            "hi": {
+              "prompt": "130 का 3/5 कितना है?",
+              "options": [
+                "26",
+                "78",
+                "104",
+                "52"
+              ],
+              "explanation": "130 का 1/5 = 26, इसलिए 3/5 = 3 × 26 = 78।"
+            }
+          },
+          {
+            "id": "q49",
+            "section": "Mathematics",
+            "topic": "Fractions",
+            "difficulty": "EASY",
+            "prompt": "1/7 + 3/7 = ?",
+            "options": [
+              "4/14",
+              "3/7",
+              "4/7",
+              "5/7"
+            ],
+            "answer": 2,
+            "explanation": "The denominators are the same, so add the numerators: (1 + 3)/7 = 4/7.",
+            "hi": {
+              "prompt": "1/7 + 3/7 = ?",
+              "options": [
+                "4/14",
+                "3/7",
+                "4/7",
+                "5/7"
+              ],
+              "explanation": "हर समान हैं, इसलिए अंश जोड़ें: (1 + 3)/7 = 4/7।"
+            }
+          },
+          {
+            "id": "q50",
+            "section": "Mathematics",
+            "topic": "Decimals",
+            "difficulty": "MEDIUM",
+            "prompt": "3.19 + 8.3 = ?",
+            "options": [
+              "4.02",
+              "12.49",
+              "11.39",
+              "11.49"
+            ],
+            "answer": 3,
+            "explanation": "Line up the decimal points: 3.19 + 8.30 = 11.49.",
+            "hi": {
+              "prompt": "3.19 + 8.3 = ?",
+              "options": [
+                "4.02",
+                "12.49",
+                "11.39",
+                "11.49"
+              ],
+              "explanation": "दशमलव बिंदु एक सीध में रखें: 3.19 + 8.30 = 11.49।"
+            }
+          },
+          {
+            "id": "q51",
+            "section": "Mathematics",
+            "topic": "Perimeter",
+            "difficulty": "EASY",
+            "prompt": "A rectangular garden is 40 m long and 27 m wide. How much fencing is needed to go round it once?",
+            "options": [
+              "67 m",
+              "1080 m",
+              "136 m",
+              "134 m"
+            ],
+            "answer": 3,
+            "explanation": "Perimeter = 2 × (length + breadth) = 2 × (40 + 27) = 134 m.",
+            "hi": {
+              "prompt": "एक आयताकार बगीचा 40 मी लंबा और 27 मी चौड़ा है। इसके चारों ओर एक बार बाड़ लगाने के लिए कितनी बाड़ चाहिए?",
+              "options": [
+                "67 मी",
+                "1080 मी",
+                "136 मी",
+                "134 मी"
+              ],
+              "explanation": "परिमाप = 2 × (लंबाई + चौड़ाई) = 2 × (40 + 27) = 134 मी।"
+            }
+          },
+          {
+            "id": "q52",
+            "section": "Mathematics",
+            "topic": "Area",
+            "difficulty": "EASY",
+            "prompt": "What is the area of a square of side 21 cm?",
+            "options": [
+              "441 sq cm",
+              "84 sq cm",
+              "42 sq cm",
+              "462 sq cm"
+            ],
+            "answer": 0,
+            "explanation": "Area of a square = side × side = 21 × 21 = 441 sq cm. (84 cm would be its perimeter.)",
+            "hi": {
+              "prompt": "21 सेमी भुजा वाले वर्ग का क्षेत्रफल क्या है?",
+              "options": [
+                "441 वर्ग सेमी",
+                "84 वर्ग सेमी",
+                "42 वर्ग सेमी",
+                "462 वर्ग सेमी"
+              ],
+              "explanation": "वर्ग का क्षेत्रफल = भुजा × भुजा = 21 × 21 = 441 वर्ग सेमी। (84 सेमी उसका परिमाप होगा।)"
+            }
+          },
+          {
+            "id": "q53",
+            "section": "Mathematics",
+            "topic": "Time",
+            "difficulty": "MEDIUM",
+            "prompt": "Salim's train left at 8:20 a.m. and the journey took 1 hour 16 minutes. When did it arrive?",
+            "options": [
+              "10:36 a.m.",
+              "9:06 a.m.",
+              "9:36 a.m.",
+              "8:36 a.m."
+            ],
+            "answer": 2,
+            "explanation": "8:20 a.m. + 1 h 16 min = 9:36 a.m..",
+            "hi": {
+              "prompt": "सलीम की रेलगाड़ी 8:20 a.m. पर चली और यात्रा में 1 घंटे 16 मिनट लगे। वह कब पहुँची?",
+              "options": [
+                "10:36 पूर्वाह्न",
+                "9:06 पूर्वाह्न",
+                "9:36 पूर्वाह्न",
+                "8:36 पूर्वाह्न"
+              ],
+              "explanation": "8:20 a.m. + 1 घंटे 16 मिनट = 9:36 a.m.।"
+            }
+          },
+          {
+            "id": "q54",
+            "section": "Mathematics",
+            "topic": "Money",
+            "difficulty": "MEDIUM",
+            "prompt": "Salim buys 5 notebooks at ₹37 each and pays with ₹200. How much change should Salim get?",
+            "options": [
+              "₹185",
+              "₹52",
+              "₹5",
+              "₹15"
+            ],
+            "answer": 3,
+            "explanation": "Cost = 5 × ₹37 = ₹185. Change = ₹200 − ₹185 = ₹15.",
+            "hi": {
+              "prompt": "सलीम ने ₹37 प्रति कॉपी की दर से 5 कॉपियाँ खरीदीं और दुकानदार को ₹200 दिए। उसे कितने रुपये वापस मिलने चाहिए?",
+              "options": [
+                "₹185",
+                "₹52",
+                "₹5",
+                "₹15"
+              ],
+              "explanation": "कुल मूल्य = 5 × ₹37 = ₹185। वापसी = ₹200 − ₹185 = ₹15।"
+            }
+          },
+          {
+            "id": "q55",
+            "section": "Mathematics",
+            "topic": "Measurement",
+            "difficulty": "EASY",
+            "prompt": "8 l 450 ml = how many ml?",
+            "options": [
+              "1,250 ml",
+              "458 ml",
+              "8,450 ml",
+              "12,500 ml"
+            ],
+            "answer": 2,
+            "explanation": "1 l = 1,000 ml, so 8 l = 8,000 ml; add 450: 8,450 ml.",
+            "hi": {
+              "prompt": "8 ली 450 मिली = कितने मिली?",
+              "options": [
+                "1,250 मिली",
+                "458 मिली",
+                "8,450 मिली",
+                "12,500 मिली"
+              ],
+              "explanation": "1 ली = 1,000 मिली, इसलिए 8 ली = 8,000 मिली; 450 जोड़ने पर 8,450 मिली।"
+            }
+          },
+          {
+            "id": "q56",
+            "section": "Mathematics",
+            "topic": "Roman numerals",
+            "difficulty": "EASY",
+            "prompt": "What number does XXXIII stand for?",
+            "options": [
+              "43",
+              "33",
+              "32",
+              "37"
+            ],
+            "answer": 1,
+            "explanation": "XXXIII = 33. (X = 10, V = 5, I = 1, L = 50, and a smaller numeral before a larger one is subtracted.)",
+            "hi": {
+              "prompt": "रोमन संख्या XXXIII किस संख्या को दर्शाती है?",
+              "options": [
+                "43",
+                "33",
+                "32",
+                "37"
+              ],
+              "explanation": "XXXIII = 33। (X = 10, V = 5, I = 1, L = 50; बड़े अंक से पहले लिखा छोटा अंक घटाया जाता है।)"
+            }
+          },
+          {
+            "id": "q57",
+            "section": "Mathematics",
+            "topic": "Average",
+            "difficulty": "MEDIUM",
+            "prompt": "What is the average of 50, 60, 64?",
+            "options": [
+              "174",
+              "59",
+              "58",
+              "55"
+            ],
+            "answer": 2,
+            "explanation": "Sum = 174; divide by 3 numbers: 174 ÷ 3 = 58.",
+            "hi": {
+              "prompt": "50, 60, 64 का औसत क्या है?",
+              "options": [
+                "174",
+                "59",
+                "58",
+                "55"
+              ],
+              "explanation": "योग = 174; 3 संख्याओं से भाग देने पर 174 ÷ 3 = 58।"
+            }
+          },
+          {
+            "id": "q58",
+            "section": "Mathematics",
+            "topic": "Word problems",
+            "difficulty": "EASY",
+            "prompt": "200 mangoes are shared equally among 10 children. How many mangoes does each child get?",
+            "options": [
+              "21",
+              "190",
+              "20",
+              "10"
+            ],
+            "answer": 2,
+            "explanation": "200 ÷ 10 = 20.",
+            "hi": {
+              "prompt": "200 आम 10 बच्चों में बराबर-बराबर बाँटे जाते हैं। प्रत्येक बच्चे को कितने आम मिलेंगे?",
+              "options": [
+                "21",
+                "190",
+                "20",
+                "10"
+              ],
+              "explanation": "200 ÷ 10 = 20।"
+            }
+          },
+          {
+            "id": "q59",
+            "section": "Mathematics",
+            "topic": "Prime numbers",
+            "difficulty": "MEDIUM",
+            "prompt": "How many prime numbers are there between 10 and 20?",
+            "options": [
+              "5",
+              "4",
+              "6",
+              "3"
+            ],
+            "answer": 1,
+            "explanation": "The primes between 10 and 20 are 11, 13, 17, 19: 4 in all.",
+            "hi": {
+              "prompt": "10 और 20 के बीच कितनी अभाज्य संख्याएँ हैं?",
+              "options": [
+                "5",
+                "4",
+                "6",
+                "3"
+              ],
+              "explanation": "10 और 20 के बीच की अभाज्य संख्याएँ 11, 13, 17, 19 हैं: कुल 4।"
+            }
+          },
+          {
+            "id": "q60",
+            "section": "Mathematics",
+            "topic": "Rounding",
+            "difficulty": "EASY",
+            "prompt": "Round 8,587 to the nearest hundred.",
+            "options": [
+              "8,500",
+              "8,590",
+              "9,000",
+              "8,600"
+            ],
+            "answer": 3,
+            "explanation": "Look at the tens digit (8): 5 or more, so round up. 8,587 → 8,600.",
+            "hi": {
+              "prompt": "8,587 को निकटतम सैकड़े तक पूर्णांकित करें।",
+              "options": [
+                "8,500",
+                "8,590",
+                "9,000",
+                "8,600"
+              ],
+              "explanation": "दहाई का अंक (8) 5 या अधिक है, इसलिए ऊपर पूर्णांकित करें: 8,587 → 8,600।"
+            }
+          },
+          {
+            "id": "q61",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these is a root that we eat?",
+            "options": [
+              "Potato",
+              "Carrot",
+              "Onion",
+              "Cabbage"
+            ],
+            "answer": 1,
+            "explanation": "The carrot is a root. The potato is a stem, the onion is a bulb of fleshy leaves and cabbage is leaves.",
+            "hi": {
+              "prompt": "इनमें से कौन-सी खाई जाने वाली जड़ है?",
+              "options": [
+                "आलू",
+                "गाजर",
+                "प्याज़",
+                "पत्तागोभी"
+              ],
+              "explanation": "गाजर जड़ है। आलू तना है, प्याज़ गूदेदार पत्तियों का शल्ककंद है और पत्तागोभी पत्तियाँ है।"
+            }
+          },
+          {
+            "id": "q62",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "MEDIUM",
+            "prompt": "Which plant grows in water and has broad leaves that float?",
+            "options": [
+              "Cactus",
+              "Lotus",
+              "Babool",
+              "Pine"
+            ],
+            "answer": 1,
+            "explanation": "The lotus is an aquatic plant; its broad leaves float on the water.",
+            "hi": {
+              "prompt": "कौन-सा पौधा पानी में उगता है और उसकी चौड़ी पत्तियाँ तैरती हैं?",
+              "options": [
+                "नागफनी",
+                "कमल",
+                "बबूल",
+                "चीड़"
+              ],
+              "explanation": "कमल जलीय पौधा है; उसकी चौड़ी पत्तियाँ पानी पर तैरती हैं।"
+            }
+          },
+          {
+            "id": "q63",
+            "section": "Science",
+            "topic": "Plants",
+            "difficulty": "EASY",
+            "prompt": "Oil is taken from the seeds of which plant?",
+            "options": [
+              "Mustard",
+              "Spinach",
+              "Sugarcane",
+              "Potato"
+            ],
+            "answer": 0,
+            "explanation": "Mustard seeds are pressed to get mustard oil.",
+            "hi": {
+              "prompt": "किस पौधे के बीजों से तेल निकाला जाता है?",
+              "options": [
+                "सरसों",
+                "पालक",
+                "गन्ना",
+                "आलू"
+              ],
+              "explanation": "सरसों के बीजों को पेरकर सरसों का तेल निकाला जाता है।"
+            }
+          },
+          {
+            "id": "q64",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "MEDIUM",
+            "prompt": "Which animal catches insects with its long, sticky tongue?",
+            "options": [
+              "Cow",
+              "Goat",
+              "Rabbit",
+              "Frog"
+            ],
+            "answer": 3,
+            "explanation": "A frog flicks out its sticky tongue to catch insects; the others eat plants.",
+            "hi": {
+              "prompt": "कौन-सा जीव अपनी लंबी, चिपचिपी जीभ से कीड़े पकड़ता है?",
+              "options": [
+                "गाय",
+                "बकरी",
+                "खरगोश",
+                "मेंढक"
+              ],
+              "explanation": "मेंढक अपनी चिपचिपी जीभ से कीड़े पकड़ता है; बाक़ी जीव पौधे खाते हैं।"
+            }
+          },
+          {
+            "id": "q65",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "MEDIUM",
+            "prompt": "Which animal has no legs and moves by crawling?",
+            "options": [
+              "Snake",
+              "Horse",
+              "Kangaroo",
+              "Duck"
+            ],
+            "answer": 0,
+            "explanation": "A snake has no legs; it moves by bending its body and pushing against the ground.",
+            "hi": {
+              "prompt": "किस जीव के पैर नहीं होते और वह रेंगकर चलता है?",
+              "options": [
+                "साँप",
+                "घोड़ा",
+                "कंगारू",
+                "बत्तख"
+              ],
+              "explanation": "साँप के पैर नहीं होते; वह शरीर को मोड़कर और ज़मीन पर दबाव डालकर रेंगता है।"
+            }
+          },
+          {
+            "id": "q66",
+            "section": "Science",
+            "topic": "Animals",
+            "difficulty": "MEDIUM",
+            "prompt": "Which bird weaves a hanging nest out of grass?",
+            "options": [
+              "Crow",
+              "Pigeon",
+              "Peacock",
+              "Weaver bird"
+            ],
+            "answer": 3,
+            "explanation": "The weaver bird (baya) weaves a hanging nest from strips of grass.",
+            "hi": {
+              "prompt": "कौन-सा पक्षी घास बुनकर लटकता हुआ घोंसला बनाता है?",
+              "options": [
+                "कौआ",
+                "कबूतर",
+                "मोर",
+                "बया"
+              ],
+              "explanation": "बया पक्षी घास की पत्तियों से लटकता हुआ घोंसला बुनता है।"
+            }
+          },
+          {
+            "id": "q67",
+            "section": "Science",
+            "topic": "Human body",
+            "difficulty": "MEDIUM",
+            "prompt": "Which part of the blood carries oxygen around the body?",
+            "options": [
+              "Red blood cells",
+              "White blood cells",
+              "Platelets",
+              "Water in the blood"
+            ],
+            "answer": 0,
+            "explanation": "Red blood cells contain haemoglobin, which carries oxygen.",
+            "hi": {
+              "prompt": "रक्त का कौन-सा भाग पूरे शरीर में ऑक्सीजन पहुँचाता है?",
+              "options": [
+                "लाल रक्त कणिकाएँ",
+                "श्वेत रक्त कणिकाएँ",
+                "प्लेटलेट्स",
+                "रक्त में उपस्थित पानी"
+              ],
+              "explanation": "लाल रक्त कणिकाओं में हीमोग्लोबिन होता है, जो ऑक्सीजन ले जाता है।"
+            }
+          },
+          {
+            "id": "q68",
+            "section": "Science",
+            "topic": "Human body",
+            "difficulty": "MEDIUM",
+            "prompt": "Food goes from the mouth to the stomach through the:",
+            "options": [
+              "Food pipe (oesophagus)",
+              "Windpipe",
+              "Kidney",
+              "Lungs"
+            ],
+            "answer": 0,
+            "explanation": "The food pipe carries swallowed food to the stomach; the windpipe carries air.",
+            "hi": {
+              "prompt": "भोजन मुँह से आमाशय तक किससे होकर जाता है?",
+              "options": [
+                "भोजन नली (ग्रासनली)",
+                "श्वास नली",
+                "गुर्दा",
+                "फेफड़े"
+              ],
+              "explanation": "भोजन नली निगले गए भोजन को आमाशय तक ले जाती है; श्वास नली हवा ले जाती है।"
+            }
+          },
+          {
+            "id": "q69",
+            "section": "Science",
+            "topic": "Health",
+            "difficulty": "MEDIUM",
+            "prompt": "Weak and bent bones (rickets) in children are caused by a lack of:",
+            "options": [
+              "Vitamin A",
+              "Iodine",
+              "Vitamin C",
+              "Vitamin D"
+            ],
+            "answer": 3,
+            "explanation": "Vitamin D helps the body use calcium to build strong bones.",
+            "hi": {
+              "prompt": "बच्चों में कमज़ोर और टेढ़ी हड्डियाँ (रिकेट्स) किसकी कमी से होती हैं?",
+              "options": [
+                "विटामिन A",
+                "आयोडीन",
+                "विटामिन C",
+                "विटामिन D"
+              ],
+              "explanation": "विटामिन D शरीर को कैल्शियम का उपयोग करके मज़बूत हड्डियाँ बनाने में मदद करता है।"
+            }
+          },
+          {
+            "id": "q70",
+            "section": "Science",
+            "topic": "Health",
+            "difficulty": "MEDIUM",
+            "prompt": "Anaemia (too little blood) is caused by a lack of which mineral?",
+            "options": [
+              "Iodine",
+              "Calcium",
+              "Iron",
+              "Sodium"
+            ],
+            "answer": 2,
+            "explanation": "Iron is needed to make haemoglobin; green leafy vegetables and jaggery contain iron.",
+            "hi": {
+              "prompt": "रक्ताल्पता (एनीमिया) किस खनिज की कमी से होती है?",
+              "options": [
+                "आयोडीन",
+                "कैल्शियम",
+                "लोहा (आयरन)",
+                "सोडियम"
+              ],
+              "explanation": "हीमोग्लोबिन बनाने के लिए लोहा चाहिए; हरी पत्तेदार सब्ज़ियों और गुड़ में लोहा होता है।"
+            }
+          },
+          {
+            "id": "q71",
+            "section": "Science",
+            "topic": "Matter",
+            "difficulty": "MEDIUM",
+            "prompt": "A solid changing into a liquid on heating is called:",
+            "options": [
+              "Freezing",
+              "Melting",
+              "Condensation",
+              "Evaporation"
+            ],
+            "answer": 1,
+            "explanation": "Ice melting into water is an example of melting.",
+            "hi": {
+              "prompt": "गरम करने पर ठोस का द्रव में बदलना क्या कहलाता है?",
+              "options": [
+                "जमना",
+                "पिघलना",
+                "संघनन",
+                "वाष्पन"
+              ],
+              "explanation": "बर्फ़ का पिघलकर पानी बनना पिघलने का उदाहरण है।"
+            }
+          },
+          {
+            "id": "q72",
+            "section": "Science",
+            "topic": "Matter",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these is a man-made material?",
+            "options": [
+              "Wood",
+              "Stone",
+              "Plastic",
+              "Wool"
+            ],
+            "answer": 2,
+            "explanation": "Plastic is made in factories; wood, stone and wool come from nature.",
+            "hi": {
+              "prompt": "इनमें से कौन-सा पदार्थ मनुष्य द्वारा बनाया गया है?",
+              "options": [
+                "लकड़ी",
+                "पत्थर",
+                "प्लास्टिक",
+                "ऊन"
+              ],
+              "explanation": "प्लास्टिक कारख़ानों में बनता है; लकड़ी, पत्थर और ऊन प्रकृति से मिलते हैं।"
+            }
+          },
+          {
+            "id": "q73",
+            "section": "Science",
+            "topic": "Force and energy",
+            "difficulty": "MEDIUM",
+            "prompt": "A see-saw in a park is an example of a:",
+            "options": [
+              "Pulley",
+              "Lever",
+              "Screw",
+              "Wedge"
+            ],
+            "answer": 1,
+            "explanation": "A see-saw is a bar that turns on a fixed point in the middle, which is a lever.",
+            "hi": {
+              "prompt": "पार्क का सी-सॉ (ढेंकुली झूला) किसका उदाहरण है?",
+              "options": [
+                "घिरनी",
+                "उत्तोलक (लीवर)",
+                "पेंच",
+                "फान"
+              ],
+              "explanation": "सी-सॉ बीच के एक स्थिर बिंदु पर घूमने वाली छड़ है, यानी उत्तोलक।"
+            }
+          },
+          {
+            "id": "q74",
+            "section": "Science",
+            "topic": "Force and energy",
+            "difficulty": "EASY",
+            "prompt": "The energy of moving air is used to run:",
+            "options": [
+              "Solar cookers",
+              "Candles",
+              "Coal stoves",
+              "Windmills"
+            ],
+            "answer": 3,
+            "explanation": "Windmills use wind energy, for example to make electricity or pump water.",
+            "hi": {
+              "prompt": "बहती हवा की ऊर्जा से क्या चलाया जाता है?",
+              "options": [
+                "सौर कुकर",
+                "मोमबत्ती",
+                "कोयले का चूल्हा",
+                "पवनचक्की"
+              ],
+              "explanation": "पवनचक्की पवन ऊर्जा से चलती है, जैसे बिजली बनाने या पानी खींचने के लिए।"
+            }
+          },
+          {
+            "id": "q75",
+            "section": "Science",
+            "topic": "Light",
+            "difficulty": "MEDIUM",
+            "prompt": "An object through which light cannot pass at all is called:",
+            "options": [
+              "Transparent",
+              "Translucent",
+              "Shiny",
+              "Opaque"
+            ],
+            "answer": 3,
+            "explanation": "Wood and stone are opaque. Glass is transparent; butter paper is translucent.",
+            "hi": {
+              "prompt": "जिस वस्तु से प्रकाश बिल्कुल पार न जा सके, उसे क्या कहते हैं?",
+              "options": [
+                "पारदर्शी",
+                "पारभासी",
+                "चमकीली",
+                "अपारदर्शी"
+              ],
+              "explanation": "लकड़ी और पत्थर अपारदर्शी हैं। काँच पारदर्शी है; बटर पेपर पारभासी है।"
+            }
+          },
+          {
+            "id": "q76",
+            "section": "Science",
+            "topic": "Sound",
+            "difficulty": "MEDIUM",
+            "prompt": "Sound travels fastest through:",
+            "options": [
+              "An iron rod",
+              "Water",
+              "Air",
+              "Empty space"
+            ],
+            "answer": 0,
+            "explanation": "Sound is fastest in solids, slower in liquids, slower still in air, and cannot travel in empty space.",
+            "hi": {
+              "prompt": "ध्वनि सबसे तेज़ किसमें चलती है?",
+              "options": [
+                "लोहे की छड़ में",
+                "पानी में",
+                "हवा में",
+                "ख़ाली स्थान (निर्वात) में"
+              ],
+              "explanation": "ध्वनि ठोस में सबसे तेज़, द्रव में धीमी, हवा में और धीमी चलती है, और निर्वात में नहीं चल सकती।"
+            }
+          },
+          {
+            "id": "q77",
+            "section": "Science",
+            "topic": "Earth and space",
+            "difficulty": "EASY",
+            "prompt": "How long does the Earth take to spin once on its axis?",
+            "options": [
+              "About 365 days",
+              "About 30 days",
+              "About 7 days",
+              "About 24 hours"
+            ],
+            "answer": 3,
+            "explanation": "One spin takes about 24 hours and gives us one day and one night.",
+            "hi": {
+              "prompt": "पृथ्वी अपनी धुरी पर एक बार घूमने में कितना समय लेती है?",
+              "options": [
+                "लगभग 365 दिन",
+                "लगभग 30 दिन",
+                "लगभग 7 दिन",
+                "लगभग 24 घंटे"
+              ],
+              "explanation": "एक चक्कर में लगभग 24 घंटे लगते हैं, जिससे एक दिन और एक रात होती है।"
+            }
+          },
+          {
+            "id": "q78",
+            "section": "Science",
+            "topic": "Earth and space",
+            "difficulty": "EASY",
+            "prompt": "Which planet is third from the Sun?",
+            "options": [
+              "Mars",
+              "Venus",
+              "Earth",
+              "Jupiter"
+            ],
+            "answer": 2,
+            "explanation": "The order is Mercury, Venus, Earth, Mars …",
+            "hi": {
+              "prompt": "सूर्य से तीसरा ग्रह कौन-सा है?",
+              "options": [
+                "मंगल",
+                "शुक्र",
+                "पृथ्वी",
+                "बृहस्पति"
+              ],
+              "explanation": "क्रम है: बुध, शुक्र, पृथ्वी, मंगल …"
+            }
+          },
+          {
+            "id": "q79",
+            "section": "Science",
+            "topic": "Environment",
+            "difficulty": "EASY",
+            "prompt": "World Environment Day is celebrated every year on:",
+            "options": [
+              "22 April",
+              "5 June",
+              "1 May",
+              "14 November"
+            ],
+            "answer": 1,
+            "explanation": "World Environment Day is on 5 June (22 April is Earth Day).",
+            "hi": {
+              "prompt": "विश्व पर्यावरण दिवस हर वर्ष कब मनाया जाता है?",
+              "options": [
+                "22 अप्रैल",
+                "5 जून",
+                "1 मई",
+                "14 नवंबर"
+              ],
+              "explanation": "विश्व पर्यावरण दिवस 5 जून को है (22 अप्रैल पृथ्वी दिवस है)।"
+            }
+          },
+          {
+            "id": "q80",
+            "section": "Science",
+            "topic": "Water and weather",
+            "difficulty": "MEDIUM",
+            "prompt": "Which instrument measures the amount of rain?",
+            "options": [
+              "Thermometer",
+              "Compass",
+              "Stethoscope",
+              "Rain gauge"
+            ],
+            "answer": 3,
+            "explanation": "A rain gauge collects rain and shows how many millimetres fell.",
+            "hi": {
+              "prompt": "वर्षा की मात्रा किस यंत्र से मापी जाती है?",
+              "options": [
+                "थर्मामीटर",
+                "कम्पास",
+                "स्टेथोस्कोप",
+                "वर्षामापी"
+              ],
+              "explanation": "वर्षामापी वर्षा का पानी इकट्ठा करके बताता है कि कितने मिलीमीटर वर्षा हुई।"
+            }
+          },
+          {
+            "id": "q81",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "Dassam Falls is near which city?",
+            "options": [
+              "Dumka",
+              "Deoghar",
+              "Ranchi",
+              "Giridih"
+            ],
+            "answer": 2,
+            "explanation": "Dassam Falls is in Ranchi district, on the Kanchi river.",
+            "hi": {
+              "prompt": "दशम जलप्रपात किस शहर के पास है?",
+              "options": [
+                "दुमका",
+                "देवघर",
+                "राँची",
+                "गिरिडीह"
+              ],
+              "explanation": "दशम जलप्रपात राँची ज़िले में काँची नदी पर है।"
+            }
+          },
+          {
+            "id": "q82",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "Which river flows past Jamshedpur?",
+            "options": [
+              "Yamuna",
+              "Godavari",
+              "Narmada",
+              "Subarnarekha"
+            ],
+            "answer": 3,
+            "explanation": "The Subarnarekha and its tributary the Kharkai meet at Jamshedpur.",
+            "hi": {
+              "prompt": "जमशेदपुर के पास से कौन-सी नदी बहती है?",
+              "options": [
+                "यमुना",
+                "गोदावरी",
+                "नर्मदा",
+                "स्वर्णरेखा"
+              ],
+              "explanation": "स्वर्णरेखा और उसकी सहायक खरकई नदी जमशेदपुर में मिलती हैं।"
+            }
+          },
+          {
+            "id": "q83",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "Sohrai, a festival of Jharkhand, is mainly linked with:",
+            "options": [
+              "Snowfall",
+              "Cattle and the harvest",
+              "Sea fishing",
+              "Desert camels"
+            ],
+            "answer": 1,
+            "explanation": "Sohrai honours cattle after the harvest; houses are decorated with Sohrai wall paintings.",
+            "hi": {
+              "prompt": "झारखंड का सोहराय पर्व मुख्य रूप से किससे जुड़ा है?",
+              "options": [
+                "बर्फ़बारी",
+                "पशुधन और फ़सल",
+                "समुद्री मछली पकड़ना",
+                "रेगिस्तानी ऊँट"
+              ],
+              "explanation": "सोहराय फ़सल के बाद पशुधन के सम्मान में मनाया जाता है; घरों पर सोहराय चित्रकला बनाई जाती है।"
+            }
+          },
+          {
+            "id": "q84",
+            "section": "Social Studies",
+            "topic": "Jharkhand",
+            "difficulty": "MEDIUM",
+            "prompt": "How many divisions (pramandal) does Jharkhand have?",
+            "options": [
+              "3",
+              "5",
+              "8",
+              "24"
+            ],
+            "answer": 1,
+            "explanation": "North Chotanagpur, South Chotanagpur, Kolhan, Palamu and Santhal Pargana. Jharkhand has 24 districts.",
+            "hi": {
+              "prompt": "झारखंड में कितने प्रमंडल हैं?",
+              "options": [
+                "3",
+                "5",
+                "8",
+                "24"
+              ],
+              "explanation": "उत्तरी छोटानागपुर, दक्षिणी छोटानागपुर, कोल्हान, पलामू और संथाल परगना। झारखंड में 24 ज़िले हैं।"
+            }
+          },
+          {
+            "id": "q85",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "MEDIUM",
+            "prompt": "Which of these rivers flows west into the Arabian Sea?",
+            "options": [
+              "Narmada",
+              "Ganga",
+              "Godavari",
+              "Krishna"
+            ],
+            "answer": 0,
+            "explanation": "The Narmada flows west to the Arabian Sea; the others flow east to the Bay of Bengal.",
+            "hi": {
+              "prompt": "इनमें से कौन-सी नदी पश्चिम की ओर बहकर अरब सागर में गिरती है?",
+              "options": [
+                "नर्मदा",
+                "गंगा",
+                "गोदावरी",
+                "कृष्णा"
+              ],
+              "explanation": "नर्मदा पश्चिम की ओर अरब सागर में गिरती है; बाक़ी पूर्व की ओर बंगाल की खाड़ी में।"
+            }
+          },
+          {
+            "id": "q86",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "MEDIUM",
+            "prompt": "Chilika, a large lake near the sea, is in which state?",
+            "options": [
+              "Rajasthan",
+              "Punjab",
+              "Haryana",
+              "Odisha"
+            ],
+            "answer": 3,
+            "explanation": "Chilika is a large lagoon on the coast of Odisha.",
+            "hi": {
+              "prompt": "समुद्र के पास स्थित बड़ी चिल्का झील किस राज्य में है?",
+              "options": [
+                "राजस्थान",
+                "पंजाब",
+                "हरियाणा",
+                "ओडिशा"
+              ],
+              "explanation": "चिल्का ओडिशा के तट पर एक बड़ी लैगून झील है।"
+            }
+          },
+          {
+            "id": "q87",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "MEDIUM",
+            "prompt": "Which is the main winter (rabi) crop of Punjab and Haryana?",
+            "options": [
+              "Tea",
+              "Coffee",
+              "Jute",
+              "Wheat"
+            ],
+            "answer": 3,
+            "explanation": "Wheat is sown in winter and harvested in spring.",
+            "hi": {
+              "prompt": "पंजाब और हरियाणा की मुख्य रबी (जाड़े की) फ़सल कौन-सी है?",
+              "options": [
+                "चाय",
+                "कॉफ़ी",
+                "जूट",
+                "गेहूँ"
+              ],
+              "explanation": "गेहूँ जाड़े में बोया और वसंत में काटा जाता है।"
+            }
+          },
+          {
+            "id": "q88",
+            "section": "Social Studies",
+            "topic": "India: geography",
+            "difficulty": "EASY",
+            "prompt": "The Andaman and Nicobar Islands lie in the:",
+            "options": [
+              "Arabian Sea",
+              "Red Sea",
+              "Pacific Ocean",
+              "Bay of Bengal"
+            ],
+            "answer": 3,
+            "explanation": "They are in the Bay of Bengal; Lakshadweep is in the Arabian Sea.",
+            "hi": {
+              "prompt": "अंडमान और निकोबार द्वीपसमूह कहाँ स्थित हैं?",
+              "options": [
+                "अरब सागर में",
+                "लाल सागर में",
+                "प्रशांत महासागर में",
+                "बंगाल की खाड़ी में"
+              ],
+              "explanation": "ये बंगाल की खाड़ी में हैं; लक्षद्वीप अरब सागर में है।"
+            }
+          },
+          {
+            "id": "q89",
+            "section": "Social Studies",
+            "topic": "Maps and globe",
+            "difficulty": "MEDIUM",
+            "prompt": "Lines on a globe that run from the North Pole to the South Pole are called:",
+            "options": [
+              "Latitudes",
+              "The Equator",
+              "Longitudes",
+              "Tropics"
+            ],
+            "answer": 2,
+            "explanation": "Longitudes (meridians) join the poles; latitudes run east–west.",
+            "hi": {
+              "prompt": "ग्लोब पर उत्तरी ध्रुव से दक्षिणी ध्रुव तक जाने वाली रेखाएँ क्या कहलाती हैं?",
+              "options": [
+                "अक्षांश रेखाएँ",
+                "विषुवत रेखा",
+                "देशांतर रेखाएँ",
+                "कर्क-मकर रेखाएँ"
+              ],
+              "explanation": "देशांतर रेखाएँ ध्रुवों को जोड़ती हैं; अक्षांश रेखाएँ पूर्व–पश्चिम चलती हैं।"
+            }
+          },
+          {
+            "id": "q90",
+            "section": "Social Studies",
+            "topic": "Maps and globe",
+            "difficulty": "MEDIUM",
+            "prompt": "If you face the rising sun in the morning, your back is towards the:",
+            "options": [
+              "North",
+              "South",
+              "West",
+              "East"
+            ],
+            "answer": 2,
+            "explanation": "The sun rises in the east, so your back faces the west.",
+            "hi": {
+              "prompt": "यदि सुबह आप उगते सूरज की ओर मुँह करके खड़े हों, तो आपकी पीठ किस दिशा में होगी?",
+              "options": [
+                "उत्तर",
+                "दक्षिण",
+                "पश्चिम",
+                "पूर्व"
+              ],
+              "explanation": "सूर्य पूर्व में उगता है, इसलिए पीठ पश्चिम की ओर होगी।"
+            }
+          },
+          {
+            "id": "q91",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "MEDIUM",
+            "prompt": "Who founded the Maurya Empire?",
+            "options": [
+              "Chandragupta Maurya",
+              "Ashoka",
+              "Akbar",
+              "Harshavardhana"
+            ],
+            "answer": 0,
+            "explanation": "Chandragupta Maurya founded the empire; Ashoka was his grandson.",
+            "hi": {
+              "prompt": "मौर्य साम्राज्य की स्थापना किसने की?",
+              "options": [
+                "चंद्रगुप्त मौर्य",
+                "अशोक",
+                "अकबर",
+                "हर्षवर्धन"
+              ],
+              "explanation": "चंद्रगुप्त मौर्य ने साम्राज्य की स्थापना की; अशोक उनके पोते थे।"
+            }
+          },
+          {
+            "id": "q92",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "EASY",
+            "prompt": "Who was the first Mughal emperor of India?",
+            "options": [
+              "Akbar",
+              "Babur",
+              "Humayun",
+              "Aurangzeb"
+            ],
+            "answer": 1,
+            "explanation": "Babur founded Mughal rule after the first battle of Panipat in 1526.",
+            "hi": {
+              "prompt": "भारत का पहला मुग़ल बादशाह कौन था?",
+              "options": [
+                "अकबर",
+                "बाबर",
+                "हुमायूँ",
+                "औरंगज़ेब"
+              ],
+              "explanation": "बाबर ने 1526 में पानीपत की पहली लड़ाई के बाद मुग़ल शासन की नींव रखी।"
+            }
+          },
+          {
+            "id": "q93",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "MEDIUM",
+            "prompt": "Mahatma Gandhi's Champaran Satyagraha (1917) took place in present-day:",
+            "options": [
+              "Gujarat",
+              "Bihar",
+              "Punjab",
+              "Kerala"
+            ],
+            "answer": 1,
+            "explanation": "Champaran is in Bihar; Gandhiji supported indigo farmers there.",
+            "hi": {
+              "prompt": "महात्मा गांधी का चंपारण सत्याग्रह (1917) आज के किस राज्य में हुआ?",
+              "options": [
+                "गुजरात",
+                "बिहार",
+                "पंजाब",
+                "केरल"
+              ],
+              "explanation": "चंपारण बिहार में है; वहाँ गांधीजी ने नील किसानों का साथ दिया।"
+            }
+          },
+          {
+            "id": "q94",
+            "section": "Social Studies",
+            "topic": "History",
+            "difficulty": "MEDIUM",
+            "prompt": "Sarojini Naidu, poet and freedom fighter, is known as the:",
+            "options": [
+              "Iron Man of India",
+              "Father of the Nation",
+              "Nightingale of India",
+              "Missile Man of India"
+            ],
+            "answer": 2,
+            "explanation": "Her poems earned her the name \"Nightingale of India\" (भारत कोकिला).",
+            "hi": {
+              "prompt": "कवयित्री और स्वतंत्रता सेनानी सरोजिनी नायडू किस नाम से जानी जाती हैं?",
+              "options": [
+                "लौह पुरुष",
+                "राष्ट्रपिता",
+                "भारत कोकिला",
+                "मिसाइल मैन"
+              ],
+              "explanation": "अपनी कविताओं के कारण उन्हें \"भारत कोकिला\" कहा गया।"
+            }
+          },
+          {
+            "id": "q95",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "MEDIUM",
+            "prompt": "Members of the Lok Sabha are chosen by:",
+            "options": [
+              "The people, in elections",
+              "The President alone",
+              "The judges",
+              "The Chief Ministers"
+            ],
+            "answer": 0,
+            "explanation": "Voters elect Lok Sabha members, usually every five years.",
+            "hi": {
+              "prompt": "लोकसभा के सदस्य कौन चुनता है?",
+              "options": [
+                "जनता, चुनाव द्वारा",
+                "केवल राष्ट्रपति",
+                "न्यायाधीश",
+                "मुख्यमंत्री"
+              ],
+              "explanation": "मतदाता लोकसभा सदस्यों को चुनते हैं, सामान्यतः हर पाँच वर्ष में।"
+            }
+          },
+          {
+            "id": "q96",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "MEDIUM",
+            "prompt": "In Jharkhand, the officer at the head of a district's administration is the:",
+            "options": [
+              "Deputy Commissioner",
+              "Mukhiya",
+              "Governor",
+              "Mayor"
+            ],
+            "answer": 0,
+            "explanation": "The Deputy Commissioner (in some states called the District Collector) runs the district.",
+            "hi": {
+              "prompt": "झारखंड में किसी ज़िले के प्रशासन का प्रमुख अधिकारी कौन होता है?",
+              "options": [
+                "उपायुक्त (डिप्टी कमिश्नर)",
+                "मुखिया",
+                "राज्यपाल",
+                "महापौर"
+              ],
+              "explanation": "उपायुक्त (कुछ राज्यों में ज़िलाधिकारी या कलेक्टर) ज़िले का प्रशासन चलाते हैं।"
+            }
+          },
+          {
+            "id": "q97",
+            "section": "Social Studies",
+            "topic": "Our government",
+            "difficulty": "MEDIUM",
+            "prompt": "Laws for a state are made by its:",
+            "options": [
+              "Vidhan Sabha (Legislative Assembly)",
+              "Gram Sabha",
+              "Supreme Court",
+              "Municipal ward"
+            ],
+            "answer": 0,
+            "explanation": "The elected Vidhan Sabha makes the state's laws; Parliament makes laws for the country.",
+            "hi": {
+              "prompt": "किसी राज्य के लिए क़ानून कौन बनाता है?",
+              "options": [
+                "विधानसभा",
+                "ग्राम सभा",
+                "सर्वोच्च न्यायालय",
+                "नगर वार्ड"
+              ],
+              "explanation": "चुनी हुई विधानसभा राज्य के क़ानून बनाती है; संसद देश के क़ानून बनाती है।"
+            }
+          },
+          {
+            "id": "q98",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "EASY",
+            "prompt": "What is India's national fruit?",
+            "options": [
+              "Banana",
+              "Mango",
+              "Apple",
+              "Guava"
+            ],
+            "answer": 1,
+            "explanation": "The mango is India's national fruit.",
+            "hi": {
+              "prompt": "भारत का राष्ट्रीय फल कौन-सा है?",
+              "options": [
+                "केला",
+                "आम",
+                "सेब",
+                "अमरूद"
+              ],
+              "explanation": "आम भारत का राष्ट्रीय फल है।"
+            }
+          },
+          {
+            "id": "q99",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "MEDIUM",
+            "prompt": "Bharatanatyam is a classical dance from:",
+            "options": [
+              "Punjab",
+              "Assam",
+              "Manipur",
+              "Tamil Nadu"
+            ],
+            "answer": 3,
+            "explanation": "Bharatanatyam comes from Tamil Nadu; Manipuri comes from Manipur and Sattriya from Assam.",
+            "hi": {
+              "prompt": "भरतनाट्यम किस राज्य का शास्त्रीय नृत्य है?",
+              "options": [
+                "पंजाब",
+                "असम",
+                "मणिपुर",
+                "तमिलनाडु"
+              ],
+              "explanation": "भरतनाट्यम तमिलनाडु का है; मणिपुरी मणिपुर का और सत्रीया असम का नृत्य है।"
+            }
+          },
+          {
+            "id": "q100",
+            "section": "Social Studies",
+            "topic": "Our country",
+            "difficulty": "MEDIUM",
+            "prompt": "About how long does it take to sing the full national anthem?",
+            "options": [
+              "5 minutes",
+              "10 seconds",
+              "52 seconds",
+              "15 minutes"
+            ],
+            "answer": 2,
+            "explanation": "The full version of \"Jana Gana Mana\" takes about 52 seconds.",
+            "hi": {
+              "prompt": "पूरा राष्ट्रगान गाने में लगभग कितना समय लगता है?",
+              "options": [
+                "5 मिनट",
+                "10 सेकंड",
+                "52 सेकंड",
+                "15 मिनट"
+              ],
+              "explanation": "\"जन गण मन\" का पूरा रूप गाने में लगभग 52 सेकंड लगते हैं।"
+            }
+          }
+        ],
+        "passages": [
+          {
+            "id": "nh-m2",
+            "title": "विद्यालय में स्वतंत्रता दिवस",
+            "text": "पंद्रह अगस्त को हमारे विद्यालय में स्वतंत्रता दिवस धूमधाम से मनाया गया। सुबह प्रधानाध्यापक जी ने झंडा फहराया और सबने मिलकर राष्ट्रगान गाया। इसके बाद बच्चों ने देशभक्ति के गीत गाए और एक नाटक प्रस्तुत किया। अंत में सभी को मिठाइयाँ बाँटी गईं।"
+          }
+        ]
+      }
+    },
+    {
       "slug": "jnvst-mock-1",
       "examSlug": "jnvst",
       "category": "ENTRANCE",

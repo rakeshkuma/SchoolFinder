@@ -60,7 +60,7 @@ public class UpdateFeedService {
     static final int PAST_DAYS = 90;
     /** Exams with their own preparation page on this site. */
     private static final Set<String> PREP_EXAMS = Set.of("jnvst", "aissee", "netarhat");
-    private static final Set<String> DASHBOARD_EXAMS = Set.of("jnvst", "aissee");
+    private static final Set<String> DASHBOARD_EXAMS = Set.of("jnvst", "aissee", "netarhat");
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     private static final ZoneId INDIA = ZoneId.of("Asia/Kolkata");
 
