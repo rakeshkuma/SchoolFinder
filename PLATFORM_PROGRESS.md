@@ -90,7 +90,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Phones: categories two per row; rankings, exam prep and featured schools in swipeable rows; no horizontal overflow at 360/390/768/1024/1440 | Done |
 | Removed with the old homepage: fee chart component, `useInView`, the single-box search mode | Done |
 
-## 9. Homepage refinement (14 November 2026; built and checked locally, not committed or deployed)
+## 9. Homepage refinement (live 14 November 2026 as 283ae12)
 
 | Item | Status |
 | --- | --- |
