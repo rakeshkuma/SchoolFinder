@@ -12,7 +12,7 @@ const school = (o: Partial<SchoolSummary> = {}): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: null, websiteUrl: null, boardingType: null,
   residentialSystem: null, entranceExam: null, entryClasses: null, boardingSummary: null, boardingVerificationStatus: null,
   classesFrom: null, classesTo: null, facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null,
-  coverImageIllustrative: false, ...o,
+  coverImageIllustrative: false, affiliatedUpTo: null, ...o,
 });
 
 describe('classRange', () => {
@@ -31,7 +31,7 @@ describe('SchoolCard', () => {
     view = render(<SchoolCard school={school()} />);
     const text = view.container.textContent ?? '';
     expect(text).toContain('Not available'); // classes
-    expect(text).toContain('not yet editor-verified');
+    expect(text).not.toContain('editor-verified'); // unverified schools carry no note on cards
     expect(text).not.toContain('Website');
     expect(text).not.toContain('Facilities');
     expect(view.container.querySelector('img')).toBeNull();
@@ -51,7 +51,16 @@ describe('SchoolCard', () => {
     expect(view.container.querySelector('a[href="https://school.example.org"]')?.getAttribute('rel')).toContain('noopener');
     expect(view.container.querySelector('a[href="https://school.example.org/admissions"]')).not.toBeNull();
     expect(view.container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
-    expect(text).toContain('© Example / CC BY-SA 4.0');
+    // The credit is not drawn over the photo; it is the image's tooltip (and shown in full on the profile).
+    expect(text).not.toContain('Example / CC BY-SA 4.0');
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example / CC BY-SA 4.0');
+  });
+
+  it('shows the highest affiliated class when the class list is not published', () => {
+    view = render(<SchoolCard school={school({ affiliatedUpTo: 'Class XII' })} />);
+    const text = view.container.textContent ?? '';
+    expect(text).toContain('Up to Class XII');
+    expect(text).not.toContain('Not available');
   });
 
   it('labels an illustration without a copyright mark', () => {

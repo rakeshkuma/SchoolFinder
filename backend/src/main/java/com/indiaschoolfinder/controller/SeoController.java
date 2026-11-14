@@ -24,12 +24,16 @@ import java.util.concurrent.TimeUnit;
 public class SeoController {
 
     static final String PREFIX = "/api/v1/seo/head";
+    static final String BODY_PREFIX = "/api/v1/seo/body";
     private static final MediaType HTML = MediaType.parseMediaType("text/html;charset=UTF-8");
 
     private final SeoHeadService seoHeadService;
+    private final com.indiaschoolfinder.service.SeoBodyService seoBodyService;
     private final AppProperties properties;
 
-    public SeoController(SeoHeadService seoHeadService, AppProperties properties) {
+    public SeoController(SeoHeadService seoHeadService, com.indiaschoolfinder.service.SeoBodyService seoBodyService,
+                         AppProperties properties) {
+        this.seoBodyService = seoBodyService;
         this.seoHeadService = seoHeadService;
         this.properties = properties;
     }
@@ -38,6 +42,15 @@ public class SeoController {
     public ResponseEntity<String> head(HttpServletRequest request) {
         String path = request.getRequestURI().substring(request.getContextPath().length() + PREFIX.length());
         String body = seoHeadService.head(path.isEmpty() ? "/" : path, SitemapController.baseUrl(properties, request));
+        return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
+                .contentType(HTML).body(body);
+    }
+
+    /** The page's main content as plain HTML for the app's root element (empty for private or unknown pages). */
+    @GetMapping(BODY_PREFIX + "/**")
+    public ResponseEntity<String> body(HttpServletRequest request) {
+        String path = request.getRequestURI().substring(request.getContextPath().length() + BODY_PREFIX.length());
+        String body = seoBodyService.body(path.isEmpty() ? "/" : path, SitemapController.baseUrl(properties, request));
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
                 .contentType(HTML).body(body);
     }

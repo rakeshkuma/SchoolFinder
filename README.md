@@ -1,11 +1,11 @@
-# India School Finder
+# SchoolDhundo
 
 **Discover Schools. Compare Fees. Prepare for Success.**
 
 A full-stack school discovery platform for all 28 states and 8 union territories of India: search, compare and
 evaluate schools with **source-linked** fees, admissions, facilities, locations and a transparent, evidence-based
 ranking. (Formerly *Delhi School Finder*; the code, packages, artifacts and default database names now use
-India School Finder too. The first migration's header comment keeps the old name because applied migrations must not
+SchoolDhundo too. The first migration's header comment keeps the old name because applied migrations must not
 change.)
 
 ## Roadmap status
@@ -203,7 +203,7 @@ Web: http://localhost:3000 · API: http://localhost:8080 · Swagger UI: http://l
 
 ### Option B — without Docker (embedded PostgreSQL)
 
-Requires only Java 25 and Node 18+.
+Requires only Java 25 and Node 22.12+ (Node 24 recommended).
 
 ```bash
 cd backend
@@ -327,7 +327,7 @@ Visitor tools (no account, nothing sent to the server):
   weight in 5-minute blocks that add up exactly. Labelled as guidance; printable (`utils/studyPlan.ts`, tested).
 - `/exams/practice` — topic quizzes and timed mock tests (`practice_set`, migration V17, catalogue
   `seed/practice.json`, loaded into an empty database and updated through **Admin → Entrance exams → Import practice
-  JSON**). Every question is original and labelled "India School Finder Practice Questions"; none is copied from
+  JSON**). Every question is original and labelled "SchoolDhundo Practice Questions"; none is copied from
   official or commercial papers. Sets are served **without answers**; `POST /practice-sets/{slug}/score` checks an
   attempt on the server and returns answers and explanations (rate limited, nothing stored). The player has question
   navigation, mark-for-review, a timer that submits automatically at zero, section-wise results, a review filter and

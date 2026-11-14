@@ -57,6 +57,23 @@ class RecommendedOrderIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void locationOrderGoesByStateDistrictAndTownNameWithUnknownPlacesLast() throws Exception {
+        createSchool(school("Alpha Delhi School", Map.of("city", "New Delhi")));
+        createSchool(school("Beta Sasaram School", Map.of("stateCode", "BR", "district", "Rohtas", "city", "Sasaram")));
+        createSchool(school("Gamma Dinara School", Map.of("stateCode", "BR", "district", "Rohtas", "city", "Dinara")));
+        createSchool(school("Delta Rohtas School", Map.of("stateCode", "BR", "district", "Rohtas")));
+        createSchool(school("Epsilon Ara School", Map.of("stateCode", "BR", "district", "Bhojpur", "city", "Ara")));
+
+        // Bihar before Delhi (state names, not codes); Bhojpur before Rohtas; Dinara before Sasaram; no town last.
+        mockMvc.perform(get("/api/v1/schools/search").param("sortBy", "location"))
+                .andExpect(jsonPath("$.content[0].name").value("Epsilon Ara School"))
+                .andExpect(jsonPath("$.content[1].name").value("Gamma Dinara School"))
+                .andExpect(jsonPath("$.content[2].name").value("Beta Sasaram School"))
+                .andExpect(jsonPath("$.content[3].name").value("Delta Rohtas School"))
+                .andExpect(jsonPath("$.content[4].name").value("Alpha Delhi School"));
+    }
+
+    @Test
     void statesTakeTurnsWithinAScoreTierWithoutRepeatsAcrossPages() throws Exception {
         createSchool(school("Alpha Delhi School", Map.of()));
         createSchool(school("Beta Delhi School", Map.of()));

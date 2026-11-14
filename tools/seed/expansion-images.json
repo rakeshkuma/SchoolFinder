@@ -1,0 +1,365 @@
+{
+  "_comment": "Openly licensed campus photos from Wikimedia Commons for schools added in the 2026-10-31 expansion, reviewed by eye on 2026-10-31: each shows the named school's buildings, gate or grounds (no people, event or logo images) and was matched to one profile by the place in its Commons description and the profile's address. Licence, author and description were read from the Commons API. Load with LocalImageImport or import-to-server.js.",
+  "schools": [
+    {
+      "slug": "b-l-indo-anglian-public-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/B.L._Indo_Anglian_Public_School.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/B.L._Indo_Anglian_Public_School.jpg/960px-B.L._Indo_Anglian_Public_School.jpg",
+          "caption": "B.L. Indo, Rampur Tola, Dhanhara, NH-98, Aurangabad, Bihar (2013)",
+          "altText": "Campus of B.L. Indo Anglian Public School, Aurangabad",
+          "credit": "Amresh.blindo / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Amresh.blindo, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:B.L._Indo_Anglian_Public_School.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "b-l-indo-anglian-public-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/B.L._Indo_Anglian_Public_School_-_View_II.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/B.L._Indo_Anglian_Public_School_-_View_II.jpg/960px-B.L._Indo_Anglian_Public_School_-_View_II.jpg",
+          "caption": "Nurturing Children with quality and value. (2013)",
+          "altText": "Campus of B.L. Indo Anglian Public School, Aurangabad",
+          "credit": "Amresh.blindo / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Amresh.blindo, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:B.L._Indo_Anglian_Public_School_-_View_II.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "b-l-indo-anglian-public-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/B.L._Indo_Anglian_Public_School%2C_Karma_Rd.%2C_Block_II.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/B.L._Indo_Anglian_Public_School%2C_Karma_Rd.%2C_Block_II.jpg/960px-B.L._Indo_Anglian_Public_School%2C_Karma_Rd.%2C_Block_II.jpg",
+          "caption": "Nurturing Children with quality and value. (2013)",
+          "altText": "Campus of B.L. Indo Anglian Public School, Aurangabad",
+          "credit": "Amresh.blindo / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Amresh.blindo, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:B.L._Indo_Anglian_Public_School,_Karma_Rd.,_Block_II.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sir-syed-memorial-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Sir_syed_memorial_school_main_gate.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Sir_syed_memorial_school_main_gate.jpg",
+          "caption": "sir syed memorial school karma bhadeya gaya bihar (2011)",
+          "altText": "Campus of Sir Syed Memorial School, Gaya",
+          "credit": "Kamalyas / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Kamalyas, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_syed_memorial_school_main_gate.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sir-syed-memorial-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Sir_syed_memorial_school_view_from_NH2.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Sir_syed_memorial_school_view_from_NH2.jpg/960px-Sir_syed_memorial_school_view_from_NH2.jpg",
+          "caption": "sir syed memorial school view from sher shah suri marg (2011)",
+          "altText": "Campus of Sir Syed Memorial School, Gaya",
+          "credit": "Kamalyas / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Kamalyas, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_syed_memorial_school_view_from_NH2.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sir-syed-memorial-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Sir_Syed_Memorial_School_Senior_Wing.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Sir_Syed_Memorial_School_Senior_Wing.jpg/960px-Sir_Syed_Memorial_School_Senior_Wing.jpg",
+          "caption": "Sir Syed Memorial School Senior Wing (2016)",
+          "altText": "Campus of Sir Syed Memorial School, Gaya",
+          "credit": "Kamalyas / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Kamalyas, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sir_Syed_Memorial_School_Senior_Wing.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "mahatma-hansraj-modern-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Main_building_after_major_renovation.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Main_building_after_major_renovation.jpg/960px-Main_building_after_major_renovation.jpg",
+          "caption": "Main building of Mahatma Hansraj Modern School after major renovation inaugurated from new session starting March 2016 (2016)",
+          "altText": "Campus of Mahatma Hansraj Modern School, Jhansi",
+          "credit": "Alanands3 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Alanands3, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Main_building_after_major_renovation.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sainik-school-jhansi",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/SSJH.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/SSJH.jpg",
+          "caption": "Sainik School Jhansi (2021)",
+          "altText": "Campus of Sainik School Jhansi",
+          "credit": "Qwerty`123ab / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Qwerty`123ab, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:SSJH.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "sainik-school-jhansi",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sainik_School_Jhansi.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sainik_School_Jhansi.jpg",
+          "caption": "Administrative Block (2021)",
+          "altText": "Campus of Sainik School Jhansi",
+          "credit": "Qwerty`123ab / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Qwerty`123ab, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sainik_School_Jhansi.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "st-john-vianney-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/SchoolBuilding002.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/SchoolBuilding002.jpg",
+          "caption": "School building of Saint John Vianney School Rampur (2021)",
+          "altText": "Campus of St. John Vianney School, Tanda",
+          "credit": "Abhay12253 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Abhay12253, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:SchoolBuilding002.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "st-john-vianney-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Panaromic_View_St_John_Vianney_School.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Panaromic_View_St_John_Vianney_School.jpg/960px-Panaromic_View_St_John_Vianney_School.jpg",
+          "caption": "Panaromic View St John Vianney School (2022)",
+          "altText": "Campus of St. John Vianney School, Tanda",
+          "credit": "Abhay12253 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Abhay12253, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panaromic_View_St_John_Vianney_School.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "baldwin-academy",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Baldwin_Academy_Building.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Baldwin_Academy_Building.jpg/960px-Baldwin_Academy_Building.jpg",
+          "caption": "This is a photograph of Baldwin Academy, Patna (2019)",
+          "altText": "Campus of Baldwin Academy, Patna",
+          "credit": "Piyushraj25 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Piyushraj25, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baldwin_Academy_Building.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "baldwin-academy",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Baldwin_Academy_Campus.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Baldwin_Academy_Campus.jpg/960px-Baldwin_Academy_Campus.jpg",
+          "caption": "Baldwin Academy Campus (2019)",
+          "altText": "Campus of Baldwin Academy, Patna",
+          "credit": "Piyushraj25 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Piyushraj25, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baldwin_Academy_Campus.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "baldwin-academy",
+      "images": [
+        {
+          "imageType": "SPORTS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Baldwin_Academy_Sports.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Baldwin_Academy_Sports.jpg/960px-Baldwin_Academy_Sports.jpg",
+          "caption": "Baldwin Academy Sports area (2021)",
+          "altText": "Campus of Baldwin Academy, Patna",
+          "credit": "Piyushraj25 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Piyushraj25, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baldwin_Academy_Sports.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "st-michael-s-high-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/St_Michaels_High_School.JPG",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/St_Michaels_High_School.JPG",
+          "caption": "St. Michael's High School in Patna, India (2006)",
+          "altText": "Campus of St. Michael's High School, Patna",
+          "credit": "Tanksingh at English Wikipedia / Wikimedia Commons",
+          "license": "Public domain",
+          "attributionText": null,
+          "permissionStatus": "PUBLIC_DOMAIN",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_Michaels_High_School.JPG",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "ramakrishna-mission-vidyapith",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ramakrishna_Mission_Vidyapith%2C_Deoghar.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Ramakrishna_Mission_Vidyapith%2C_Deoghar.jpg/960px-Ramakrishna_Mission_Vidyapith%2C_Deoghar.jpg",
+          "caption": "Ramakrishna Mission Vidyapith, Deoghar (2019)",
+          "altText": "Campus of Ramakrishna Mission Vidyapith, Deoghar",
+          "credit": "Gourabdas2128 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Gourabdas2128, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ramakrishna_Mission_Vidyapith,_Deoghar.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "ramakrishna-mission-vidyapith",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/The_Secondary_School_Building.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/The_Secondary_School_Building.jpg/960px-The_Secondary_School_Building.jpg",
+          "caption": "The Secondary School Building (2019)",
+          "altText": "Campus of Ramakrishna Mission Vidyapith, Deoghar",
+          "credit": "Gourabdas2128 / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Gourabdas2128, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Secondary_School_Building.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "bal-vidya-mandir-seni-sec-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/BVM_Campus.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/BVM_Campus.jpg",
+          "caption": "The Campus of Bal Vidya Mandir, Lucknow (2007)",
+          "altText": "Campus of Bal Vidya Mandir, Lucknow",
+          "credit": "Shivam Jain Kakadia / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Shivam Jain Kakadia, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:BVM_Campus.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "bal-vidya-mandir-seni-sec-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/The_campus_of_Bal_Vidya_Mandir%2C_Lucknow.jpg",
+          "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/The_campus_of_Bal_Vidya_Mandir%2C_Lucknow.jpg",
+          "caption": "The Campus of Bal Vidya Mandir, Lucknow (2006)",
+          "altText": "Campus of Bal Vidya Mandir, Lucknow",
+          "credit": "Shivam Jain Kakadia / Wikimedia Commons",
+          "license": "CC BY-SA 3.0",
+          "attributionText": "Shivam Jain Kakadia, CC BY-SA 3.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_campus_of_Bal_Vidya_Mandir,_Lucknow.jpg",
+          "sortOrder": 0
+        }
+      ]
+    },
+    {
+      "slug": "faridabad-model-school",
+      "images": [
+        {
+          "imageType": "CAMPUS",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/FMS.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/FMS.jpg/960px-FMS.jpg",
+          "caption": "Faridabad Model (2016)",
+          "altText": "Campus of Faridabad Model School",
+          "credit": "Capankajsmilyo / Wikimedia Commons",
+          "license": "CC BY-SA 4.0",
+          "attributionText": "Capankajsmilyo, CC BY-SA 4.0, via Wikimedia Commons",
+          "permissionStatus": "OPEN_LICENCE",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:FMS.jpg",
+          "sortOrder": 0
+        }
+      ]
+    }
+  ]
+}

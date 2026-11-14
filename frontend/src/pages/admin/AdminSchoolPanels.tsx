@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { AdmissionStatusBadge, VerificationBadge } from '../../components/common/Badges';
 import { useApi } from '../../hooks/useApi';
 import { adminService } from '../../services/adminApi';
@@ -20,8 +21,8 @@ import type {
   VerificationStatus,
   VerifyRequest,
 } from '../../types/api';
-import { admissionCategoryLabel, admissionStatusLabel, facilityCategoryLabel, formatDate, formatMoney, verificationLabel } from '../../utils/format';
-import { applyServerErrors, blankToNull, currentAcademicYear, optionalNumber } from './formUtils';
+import { admissionCategoryLabel, admissionStatusLabel, facilityCategoryLabel, formatDate, formatMoney, imageTypeLabel, verificationLabel } from '../../utils/format';
+import { applyServerErrors, blankToNull, currentAcademicYear, optionalNumber, permissionLabel } from './formUtils';
 
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -125,7 +126,7 @@ export function FeePanel({ schoolId }: { schoolId: number }) {
   const submit = handleSubmit(async (v) => {
     try {
       await adminService.upsertFee(schoolId, blankToNull(v as unknown as Record<string, unknown>) as unknown as FeeRequest);
-      setMsg({ ok: true, text: 'Fee schedule saved (pending verification).' });
+      setMsg({ ok: true, text: 'Fee schedule saved (not yet verified).' });
       setNonce((n) => n + 1);
     } catch (e) {
       setMsg({ ok: false, text: applyServerErrors(e, setError) });
@@ -163,7 +164,7 @@ export function FeePanel({ schoolId }: { schoolId: number }) {
       </form>
       <ul className="mt-4 space-y-1 text-xs text-slate-600">
         {(fees.data ?? []).map((f) => (
-          <li key={f.id} className="flex flex-wrap items-center gap-2">#{f.id} · {f.className} {f.academicYear} · annual {formatMoney(f.recurringAnnualOfficial)} <VerificationBadge status={f.verificationStatus} /></li>
+          <li key={f.id} className="flex flex-wrap items-center gap-2">#{f.id} · {f.className} {f.academicYear} · annual {formatMoney(f.recurringAnnualOfficial)} <VerificationBadge status={f.verificationStatus} admin /></li>
         ))}
       </ul>
     </Panel>
@@ -193,7 +194,7 @@ export function AdmissionPanel({ schoolId }: { schoolId: number }) {
     };
     try {
       await adminService.upsertAdmission(schoolId, body);
-      setMsg({ ok: true, text: 'Admission cycle saved (pending verification).' });
+      setMsg({ ok: true, text: 'Admission cycle saved (not yet verified).' });
       setNonce((n) => n + 1);
     } catch (e) {
       setMsg({ ok: false, text: applyServerErrors(e, setError) });
@@ -237,7 +238,7 @@ export function AdmissionPanel({ schoolId }: { schoolId: number }) {
       </form>
       <ul className="mt-4 space-y-1 text-xs text-slate-600">
         {(list.data ?? []).map((a) => (
-          <li key={a.id} className="flex flex-wrap items-center gap-2">#{a.id} · {a.className} {a.academicYear} {admissionCategoryLabel[a.category]} <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} /> <VerificationBadge status={a.verificationStatus} /></li>
+          <li key={a.id} className="flex flex-wrap items-center gap-2">#{a.id} · {a.className} {a.academicYear} {admissionCategoryLabel[a.category]} <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} /> <VerificationBadge status={a.verificationStatus} admin /></li>
         ))}
       </ul>
     </Panel>
@@ -276,16 +277,6 @@ export function FacilityPanel({ schoolId }: { schoolId: number }) {
   );
 }
 
-const permissionLabel: Record<ImagePermission, string> = {
-  PUBLIC_DOMAIN: 'Public domain / CC0',
-  OPEN_LICENCE: 'Open licence (CC BY, CC BY-SA …)',
-  WRITTEN_PERMISSION: 'Written permission from the school',
-  PURCHASED_LICENCE: 'Purchased stock licence',
-  OWN_WORK: 'Our own work / generated illustration',
-  PENDING: 'Pending — store but do not publish',
-  REVOKED: 'Revoked — do not publish',
-};
-
 export function ImagePanel({ schoolId }: { schoolId: number }) {
   const [nonce, setNonce] = useState(0);
   const list = useApi(() => adminService.images(schoolId), [schoolId, nonce]);
@@ -299,7 +290,7 @@ export function ImagePanel({ schoolId }: { schoolId: number }) {
     try {
       if (file) await adminService.uploadImage(schoolId, file, { ...v, url: 'https://upload.pending' });
       else await adminService.registerImage(schoolId, v);
-      setMsg({ ok: true, text: v.permissionStatus === 'PENDING' ? 'Image stored; it stays hidden until permission is confirmed.' : 'Image added (pending verification).' });
+      setMsg({ ok: true, text: v.permissionStatus === 'PENDING' ? 'Image stored; it stays hidden until permission is confirmed.' : 'Image added (not yet verified).' });
       setNonce((n) => n + 1);
     } catch (e) {
       setMsg({ ok: false, text: applyServerErrors(e, setError) });
@@ -314,10 +305,11 @@ export function ImagePanel({ schoolId }: { schoolId: number }) {
       <p className="mb-3 text-xs text-slate-500">
         Only official photos or photos with a clear licence/permission. Editing, cropping or filtering a copyrighted image does not make it usable.
         Upload uses Cloudinary when configured; otherwise register the official image URL.
+        <Link className="link ml-1" to={`/admin/images?school=${schoolId}`}>Find, approve and order photos →</Link>
       </p>
       <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2" noValidate>
         <select className="input" aria-label="Image type" {...register('imageType')}>
-          {(['LOGO', 'CAMPUS', 'CLASSROOM', 'LABORATORY', 'LIBRARY', 'SPORTS', 'EVENT', 'OTHER'] as ImageType[]).map((t) => <option key={t} value={t}>{t}</option>)}
+          {(Object.keys(imageTypeLabel) as ImageType[]).map((t) => <option key={t} value={t}>{imageTypeLabel[t]}</option>)}
         </select>
         <input type="file" accept="image/jpeg,image/png,image/webp" className="text-sm" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
         {!file && <input className="input sm:col-span-2" placeholder="Image URL (if not uploading)" {...register('url', { validate: (v) => !!file || !!v || 'Provide a URL or a file' })} />}
@@ -389,7 +381,7 @@ export function EvidencePanel({ schoolId }: { schoolId: number }) {
       </form>
       <ul className="mt-4 space-y-1 text-xs text-slate-600">
         {(scores.data ?? []).map((s) => (
-          <li key={s.id} className="flex flex-wrap items-center gap-2">#{s.id} · {s.criterionCode} {s.academicYear}: {s.normalizedScore}/100 <VerificationBadge status={s.verificationStatus} /></li>
+          <li key={s.id} className="flex flex-wrap items-center gap-2">#{s.id} · {s.criterionCode} {s.academicYear}: {s.normalizedScore}/100 <VerificationBadge status={s.verificationStatus} admin /></li>
         ))}
       </ul>
     </Panel>

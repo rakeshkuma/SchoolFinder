@@ -1,0 +1,2332 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-itanagar",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ITANAGAR, NAHARLAGUN ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-tezu-dt",
+   "facts": {
+    "city": {
+     "name": "Tezu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEZU DT- LOHIT ARUNACHAL PRADESH\", PIN 792001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-pasighat",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASIGHAT ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-tawang",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-roing-lower",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROING DISTT LOWER DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-along",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALONG OLD SSB YOJI YORA ALONG DISTT WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-khonsa",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONSA DISTT TIRAP ARUNACHAL PRADESH\", PIN 786630."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-upper-colony",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UPPER COLONY, MIAO, DISTT. CHANGLANG, ARUNACHAL PRADESH\", PIN 792122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-longding",
+   "facts": {
+    "city": {
+     "name": "Longding",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TISSA ROAD, NEAR HIGHER SECONDARY CAMPUS,LONGDING,A.P.\", PIN 792131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-daporijo",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR GOVT HIGHER SECONDARY SCHOOL, DAPORIJO\", PIN 791022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-namsai",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINISTER MARKET, NAMSAI P O\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-lepajaring-daporijo-dt",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEPAJARING PO- DAPORIJO DT- UPPER SUBANSIRI ARUNACHAL PRADESH\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-seppa-dt",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEPPA DT- EAST KAMENG ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-khapho",
+   "facts": {
+    "city": {
+     "name": "Longding",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAPHO,BRANCH PO TISSA, DISTT. LONGDING, ARUNACHAL PRADESH\", PIN 792131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-roing-dt",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROING DT- DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-bordumsa",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO BORDUMSA DISTT CHANGLANG ARUNACHAL PRADESH\", PIN 792056."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-kombo-aalo",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOMBO PO AALO, WEST SIANG DISTT. ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-pasighat",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASIGHAT, P.O GTC., PASIGHAT, EAST SIANG-791102\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-hawai",
+   "facts": {
+    "city": {
+     "name": "Hawai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. HAWAI, VIA HAYULIANG, DISTT ANJAW ARUNACHAL PRADESH\", PIN 792102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-tirap",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2240150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONSA TOWN, TIRAP\", PIN 792130."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kenderiya-vidyalaya-ziro",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2200016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KV ZIRO MANIPOLYANG NEAR POWER GRID\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-govt-hr-sec-school-pasighat-dt",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVT HR SEC SCHOOL PASIGHAT DT- EAST SIANG ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-tezu-dt",
+   "facts": {
+    "city": {
+     "name": "Tezu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEZU DT- LOHIT ARUNACHAL PRADESH\", PIN 792001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dani-kunia-govt-higher-secondary-school-ziro",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZIRO DT- LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-bomdila-dt",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOMDILA DT- WEST KAMENG ARUNACHAL PRADESH\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-changlang",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANGLANG DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALONG DT- WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-khonsa-dt",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONSA DT- TIRAP ARUNACHAL PRADESH\", PIN 786629."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-jairampur-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAIRAMPUR DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-namsai-dt",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMSAI DT- LOHIT ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-roing-dt",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROING DT- DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-daporijo-dt",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAPORIJO DT- UPPER SUBANSIRI ARUNACHAL PRADESH\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-doimukh-via-naharlagun-dt",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DOIMUKH VIA- NAHARLAGUN DT - PAPUM PARE ARUNACHAL PRADESH\", PIN 791112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-tawang",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAWANG DT- TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-chowkham-via-namsai-dt",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOWKHAM VIA- NAMSAI DT - LOHIT ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-seppa-dt",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEPPA DT- EAST KAMENG ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-yingkiong-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YINGKIONG VIA- ALONG DT - UPPER SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-nampong-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMPONG DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-nyapin-via-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NYAPIN VIA- ZIRO DT - LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-mahadevpur-via-namsai-dt",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHADEVPUR VIA- NAMSAI DT- LOHIT ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-miao-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIAO DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-rumgong-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RUMGONG VIA- ALONG DT - WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-kamba-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAMBA VIA- ALONG DT - WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-yazali-via-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YAZALI VIA- ZIRO DT- LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-bordumsa-via-tinsukia-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORDUMSA VIA- TINSUKIA DT - CHANGLANG ARUNACHAL PRADESH\", PIN 792056."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-bilat-via-pasighat-dt",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BILAT VIA- PASIGHAT DT - EAST SIANG ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-itanagar-dt",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ITANAGAR DT- PAPUM PARE ARUNACHAL PRADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-balek-via-pasighat-dt",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALEK VIA- PASIGHAT DT - EAST SIANG ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-rupa-via-bomdila-dt",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RUPA VIA- BOMDILA DT - WEST KAMENG ARUNACHAL PRADESH\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-koloriang-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOLORIANG ZIRO DT- LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-bolong-roing-dt",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOLONG ROING DT- DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-ering-memorial-govt-sec-school",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASIGHAT ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-boleng-via-pasighat-dt",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOLENG VIA- PASIGHAT DT - EAST SIANG ARUNACHAL PRADESH\", PIN 791101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-raga-via-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAGA VIA- ZIRO DT - LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-kharsang-via-miao-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARSANG VIA- MIAO DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "byabang-heri-government-higher-secondary-school-palin",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALIN VIA- ZIRO DT - LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-sille-via-pasighat-dt",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILLE VIA- PASIGHAT DT- EAST SIANG ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-hija-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIJA PO- ZIRO DT- LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-lumla-dt",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUMLA DT- TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-nafra-via-bomdila-dt",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAFRA VIA- BOMDILA DT- WEST KAMENG ARUNACHAL PRADESH\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-pessing-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PESSING ALONG DT- WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-boa-simla-via-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOA SIMLA VIA- ZIRO DT - LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-kaying-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAYING VIA- ALONG DT - WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "boum-kakir-mission-school-boleng-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOLENG VIA- ALONG DT - EAST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-mariyang-via-yingkiong-dt",
+   "facts": {
+    "city": {
+     "name": "Yingkiong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARIYANG VIA- YINGKIONG DT - UPPER SIANG ARUNACHAL PRADESH\", PIN 791002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-lhou-dt",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LHOU DT- TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-sompoi-diyun-via-miao-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOMPOI PO- DIYUN VIA- MIAO DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-sec-school-jengging-via-yingkiong",
+   "facts": {
+    "city": {
+     "name": "Yingkiong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JENGGING VIA- YINGKIONG ARUNACHAL PRADESH\", PIN 791002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-bameng-via-seppa-dt",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAMENG VIA- SEPPA DT - EAST KAMENG ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-naharlagun-dt",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHARLAGUN DT- PAPUM PARE ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-town-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHONSA DT- TIRAP ARUNACHAL PRADESH\", PIN 786630."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-ligu-daporijo-dt",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LIGU PO- DAPORIJO DT- UPPER SUBANSIRI ARUNACHAL PRADESH\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-maro-daporijo-dt",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARO DAPORIJO DT- UPPER SUBANSIRI ARUNACHAL PRADESH\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-deed-via-ziro-dt",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEED VIA- ZIRO DT - CHANGLANG ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-nehru-memorial-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALONG DT- WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-shool",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CYANGTAJO VIA- SEPPA DT - EAST KAMENG ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-manmon-via-namsai-dt",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANMON VIA- NAMSAI DT - LOHIT ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-manhofai-namsai-dt",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANHOFAI NAMSAI DT- LOHIT ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-innao-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INNAO DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-nikte-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NIKTE ALONG DT- WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-jang-dt",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JANG DT- TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-koronu-via-roing-dt",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KORONU VIA- ROING DT - DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-loiliang-via-tezu-dt",
+   "facts": {
+    "city": {
+     "name": "Tezu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOILIANG VIA- TEZU DT - LOHIT ARUNACHAL PRADESH\", PIN 792001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-shergaon-via-bomdila-dt",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHERGAON VIA- BOMDILA DT - WEST KAMENG ARUNACHAL PRADESH\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-bomba-at-and-lenbardung-dt",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOMBA AT & PO- LENBARDUNG DT- TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-tezu-dt",
+   "facts": {
+    "city": {
+     "name": "Tezu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEZU DT- LOHIT ARUNACHAL PRADESH\", PIN 792001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-sec-school-hawai",
+   "facts": {
+    "city": {
+     "name": "Hawai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO HAWAI, PS KHUPA VIA- HAYULIANG DT - ANJAW ARUNACHAL PRADESH\", PIN 792102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ngilyang-grayu-govt-secondary-school-tajang",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAJANG VIA- ZIRO DT - LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-arunodaya-r-k-mission-itanagar-papumpare",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220134",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARUNODAYA P O R K MISSION ITANAGAR DISTT PAPUMPARE ARUNACHAL PRADESH\", PIN 791113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-meka-lower-roing",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEKA DISTT LOWER DIBANG VALLEY PO ROING ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shanti-deva-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220148",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UPPAER GONPA BOMDILA, WEST KEMAENG DISTT. ARUNACHAL PRADESH\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-lumdung",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220149",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUMDUNG, EAST KAMENG DISTT. SEPPA, ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-yagrung",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YAGRUNG, EAST SIANG DISTT., PASIGHAT, ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-bana",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANA, P.O. SEPPA, EAST KAMENG DISTT., CIRCLE: RICHUKHRANG, ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-pakoti",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAKOTI, EAST KAMENG DISTT. PO & SEPPA, CIRCLE SEPPA, ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-gandhi-sec-school",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASIGHAT, EAST SIANG DISTRICT. ARUNACHAL PRADESH, PASIGHAT\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-seru",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220167",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SERU, P.O./DISTT. TAWANG, ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-town-sec-school",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAWANG ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-namsai",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220173",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMSAI, PO & PS NAMSAI, DIST. LOHIT, ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gove-sec-school",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220175",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PACHIN, PO/PS NAHARLAGUN, DIST PAPUMPARE, NAHARLAGU, ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-new-seppa",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW SEPPA, PO SEPPA, EAST KAMENG DIST. ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-jia",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220177",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-JIA, PO/PS- ROING, DIST. LOWER DIWANG VALLEY, STATE ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hr-sec-school-pongchau",
+   "facts": {
+    "city": {
+     "name": "Longding",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PONGCHAU, PO/PS PONGCHAU, DIST. LONGDING, ARUNACHAL PRADESH\", PIN 792131."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-abali",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220182",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ABALI, PO- IDULI, VIA-ROING, DIST. LOWER DIBANG VALLEY, ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-roing",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220195",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O HEADMASTER GSS ROING\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manjushree-vidyapith-school",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220351",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAWANG, TAWANG\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-kakaling",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220354",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR APST BUS STATION BOMDILA, KAKALING AREA\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-secondary-school-yachuli",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220355",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PS - YACHULI, BLOCK - ZIRO-II\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-gtc-pasighat",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220357",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASIGHAT, EAST SIANG DISTRICT\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-bana",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220360",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW SOPUNG, BANA CAMP, SEPPA BLOCK, EAST KAMENG\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-secondary-school-pakam",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220361",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAKAM, AALO, PO AALO, PS AALO\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-vkv-namsai",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220363",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOSPITAL ROAD, PO -NAMSAI, NAMSAI\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kasturba-gandhi-balika-vidyalaya-kasik",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220366",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - KASIK, PO - NAMSAI, PS - NAMSAI\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kasturba-gandhi-balika-vidyalaya-kangteng",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220367",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANGTENG, TAWANG, ARUNACHAL PRADESH\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-khela",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2220368",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHELA VILLAGE, KHONSA DIST. TIRAP, KHELA VILLAGE, KHONSA DIST. TIRAP, KHELA VILLAGE, KHONSA DIST. TIRAP 792130\", PIN 792130."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-mission-school-vivek-nagar-via-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEK NAGAR VIA- ALONG DT - WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-sarada-mission-girls-sch",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GIRLS SCHOOL KHONSA DT- TIRAP ARUNACHAL PRADESH\", PIN 786630."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-jairampur-dt",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAIRAMPUR DT- CHANGLANG ARUNACHAL PRADESH\", PIN 792121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-tafrogam-via-tezu-dt",
+   "facts": {
+    "city": {
+     "name": "Tezu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAFROGAM VIA- TEZU DT - LOHIT ARUNACHAL PRADESH\", PIN 792001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "abotani-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PACHIM COLONY NAHARLAGUN ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-along-dt",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALONG DT- WEST SIANG ARUNACHAL PRADESH\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kingcup-public-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NITI VIHAR ROAD BANK TINALI ITANAGAR ARUNACHAL PRADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-roing-dt",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ROING DT- DIBANG VALLEY ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oju-mission-school",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAPPU GIRI NAHARLAGUN ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-box-no-136-itanagar",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O BOX NO 136 POST ITANAGAR DISTRICT ARUNACHAL PRADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indira-academy",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A SECTOR HELIPAD ROAD NAHARLAGUN ARUNACHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "frontier-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZIRO DISTT LOWER SUBANSIRI ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-2",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST BOX NO 153 ITANAGAR ARUNACHAL PRADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "royal-international-school",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST BOX 258 NAHARLAGUN DISTT PAPUM PARE AURANCHAL PRADESH\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nime-ashram-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O OLD ZIRO DISTT LOWER SUBANSIRI ZIRO ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-s-school-5",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEPPA\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-school-2",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALIZI, VIA SEPPA, WEST KAMENG\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "good-shepherd-public-school",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAPUHAPPA P.O . NAHARLAGUN ITANAGAR ARUNACHAL PRADESH PIN.791110\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-n-k-public-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"E,SECTOR,ITANAGAR,ARUNACHALPRADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pine-dale-public-school",
+   "facts": {
+    "city": {
+     "name": "Bomdila",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAKALING - BOMDILA P.O & P.S - BOMDILA WEST KAMENG DISTRICT ARUNACHAL PRADESH 790001\", PIN 790001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-13",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.B. 135 JULLY ROAD. PAPUMPARE DISTRICT, ITANAGAR - 791111. ARUNACHAL PARADESH\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "padi-lailang-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT- ZIRO, POST- ZIRO, DIST- LOWER SUBANSIRI\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "intaya-public-school",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT- EZENGO, POST ROING, DISTRICT- DIBANG VALLEY\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-school-2",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"&quot;P&quot; SECTOR, P.O. 210 NYOKUM LAPANG, PAPUM PARE ( DT) ITANAGAR 791111\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "garden-dew-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO/PS-ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zenith-child-school",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT + POST- NAMSAI\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "si-donyi-public-school",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. DAPORIJO, TRANSPORT COLONY\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "siang-model-school",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT- PASDIGHAT POST- PASIGHAT DIST.- EAST SIANG ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tawang-public-school",
+   "facts": {
+    "city": {
+     "name": "Tawang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEMBERDUNG P.O-TAWANG DIST-TAWANG(A.P) PIN-790104\", PIN 790104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-school-3",
+   "facts": {
+    "city": {
+     "name": "Changlang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMPONG, DISTT CHANGLANG, ARUNACHAL PRADESH\", PIN 792123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahabodhi-school",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JYOTIPUR VILLAGE, P.O. DIYUN, VIA- NAMSAI\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-de-sales-school-3",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIKING, PASIGHAT, ARUNACHAL PRADESH\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "exalt-foundation-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230068",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HILL TOP, ESS-SECTOR, NEAR DIDI HOUSE, DOORDARSHAN COLONY, ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-thomas-school-2",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PB NO 255 NAHARLAGUN\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-josephs-school",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAYING, AALO,WEST SIANG (DIST), ARUNACHAL PRADESH PIN: 791001\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "siyom-valley-school-pessing-aalo",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SIYOM VALLEY SCHOOL , PESSING - AALO, WEST SAING DISIRICT , ARUNACHAL PRADESH-791001\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "divine-word-school",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST ROING LOWER DIBANG VALLEY DISTRICT ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ziro-valley-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE LEMPIA PO/PS ZIRO\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "greenview-school",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230077",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMSAI, LOHIT\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-international-school",
+   "facts": {
+    "city": {
+     "name": "Aalo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOGDO, AALO,WEST SIANG,791001\", PIN 791001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "model-english-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G EXTENSION, ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "blue-pine-residential-english-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAPOLI P B NO.7 PO, ZIRO, LOWER SUBANSIRI DT., ARUNACHAL PRADESH.\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "green-valley-school",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GTC, TEBO VILLAGE, PASIGHAT, EAST SIANG DISTRICT, AP\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "love-dale-residential-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PB NO 28, HAPOLI PO, ZIRO, LOWER SUBANSIRI DIST, ARUNACHAL PRADESH\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-public-school",
+   "facts": {
+    "city": {
+     "name": "Daporijo",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAPORIJO\", PIN 791122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-central-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230090",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEK VIHAR, CAPITAL COMPLEX, DIST- PAPUMPARE, PS-ITANAGAR, ARUNCHAL PRADESH-7911135\", PIN 791113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "donyi-polo-vidya-niketan-pasighat",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO PS PASIGHAT\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "him-international-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JOLLANG(III),DAATH VILLAGE, ITANAGAR-791113, ARUNACHAL PRADESH\", PIN 791113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "angun-asir-academy",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TULAP, P.O/P.S- PASIGHAT\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "daii-apung-public-school-seppa",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEBO COLONY, SEPPA, EAST KAMENG DISTT, (AR.P)\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-star-school-papunalah",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAHARLAGUN\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anakum-academy",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANAKUM ACADEMY PO- ROING, PIN- 792110, PS- ROING, DISTRICT: LOWER DIBANG VALLEY, STATE: ARUNACHAL PRADESH\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "j-p-public-school-itanagar",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JP PUBLIC SCHOOL,A-SECTOR, POWER HOUSE, NEAR RAJ BHAWAN, ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-alphonsa-public-school",
+   "facts": {
+    "city": {
+     "name": "Naharlagun",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MODEL VILLAGE, KANKARNALLA, PO NAHARLAGUN, DIST. PAPUM PARE\", PIN 791110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-residential-public-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEK VIHAR PO RK MISSION 791113 NEAR DN GOVT COLLEGE ITANAGAR\", PIN 791113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-pauls-school",
+   "facts": {
+    "city": {
+     "name": "Namsai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ST.PAULS SCHOOL DHONEKHONA- NAMSAI DIST ARUNACHAL PRADESH\", PIN 792103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bumer-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Ziro",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KEILYA, OLD ZIRO\", PIN 791120."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nichiphu-children-s-foundation-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HILLTOP, ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eleazar-english-school",
+   "facts": {
+    "city": {
+     "name": "Itanagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230155",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALL INDIA RADIO COLONY, ITANAGAR\", PIN 791111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-valley-school-roing",
+   "facts": {
+    "city": {
+     "name": "Roing",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YIBUK,, ROING, LOWER DIBANG VALLEY\", PIN 792110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-thomas-school-pasighat",
+   "facts": {
+    "city": {
+     "name": "Pasighat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230159",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIRBUK, PASIGHAT, EAST SIANG DISTRICT\", PIN 791102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-mission-vidyapeeth-lumdung",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230161",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMAKRISHNA MISSION ROAD, VILLAGE - LUMDUNG, P.O. SEPPA\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kameng-presidium-school",
+   "facts": {
+    "city": {
+     "name": "Seppa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230162",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WESSANG, NEW SEPPA, EAST KAMENG DISTRICT, ARUNACHAL PRADESH\", PIN 790102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-khonsa",
+   "facts": {
+    "city": {
+     "name": "Khonsa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2230164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASSAM RIFLES CAMP, KHONSA, TIRAP, ARUNANCHAL PRADESH\", PIN 792130."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,1383 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-leh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3700001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH (LADAKH)\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-nubra-diskit",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3700003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NUBRA (DISKIT) DISTT LEH(LADAKH)\", PIN 194401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-leh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-sankoo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/740013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL V P O SANKOO TEH &DISTT KARGIL\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-trespone",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, TRESPONE\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-drass",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTRICT KARGIL, UT LADAKH\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-shargole",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHAQMA, SHARGOLE, KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-thasgam-drass",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL , DRASS\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-garkone",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GARKONE KARGIL LADAKH, GARKONE KARGIL LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-girls-higher-secondary-school-kargil",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR DISTRICT HOSPITAL KARGIL, NEAR DISTRICT HOSPITAL KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-lalung",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LALUNG KARGIL, LALUNG KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "goverment-high-school-mushkoo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUSHKOO DRASS KARGIL LADAKH, MUSHKOO DRASS KARGIL LADAKH\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-barsoo-kargil",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANKOO KARGIL , BARSOO KARGIL\", PIN 194301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-goma-kargil",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720064",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, LADAKH\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-hardass",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARDASS KARGIL, HARDASS KARGIL LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondry-school-choskore",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720066",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, LADAKH\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-high-school-pashkum",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720068",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASHKUM, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-poyen",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, KARGIL LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-youkma-kharboo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YOUKMA KHARBOO CHIKTAN KARGIL, YOUKMA KHARBOO CHIKTAN KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-tambis",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAMBIS TSG KARGIL, TAMBIS TSG KARGIL\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-shimsha-kharboo-drass",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL-DRASS, DISTRICT -KARGIL\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-karkit-budgam",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARKIT BUDGAM, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-sapi",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-chulichan",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL KARGIL, LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-chanigound",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANIGOUND, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-youljuk",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAISURU KARGIL, KARGIL LADAKH PIN 194301\", PIN 194301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-bodhkharboo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHIKTAN KARGIL, UT LADAKH KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-kaksar",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "higher-secondary-school-chiktan",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, LADAKH\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-pandrass",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DRASS, KARGIL LADAKH\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "high-school-thasgam-sankoo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANKOO, KARGIL\", PIN 194301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-ashrm-higher-secondary-school-sankoo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720088",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THANGDUMBUR SANKOO, KARGIL\", PIN 194301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-lankerchy",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LANKERCHY SANKOO KARGIL, LANKERCHY SANKOO KARGIL\", PIN 194301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-high-school-gmpore",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720090",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL-SANKOO, KARGIL\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-lotsum",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL SHARGOLE, KARGIL LADAKH\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-minjee",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR NH-301, KARGIL\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-tacha",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOTSUM, KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-saliskote",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIR THANG SALISKOTE , SALISKOTE KARGIL\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-akchamal",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARGIL, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-hs-hagnis",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAGNIS CHIKTAN KARGIL, HAGNIS CHIKTAN KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-khachey",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK- SHARGOLE, KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-biama",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIAMA PURTIKCHEY TAISURU KARGIL, BIAMA PURTIKCHEY TAISURU KARGIL\", PIN 194403."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-boys-higher-secondary-school-kargil",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAROO KARGIL LADAKH, BAROO KARGIL LADAKH\", PIN 194105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-silmoo",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK SODH, TEHSIL KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-high-school-lankore",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LANKORE KARGIL LADAKH, LANKORE KARGIL LADAKH\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-padum-zanskar",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PADUM ZANSKAR KARGIL, PADUM ZANSKAR KARGIL\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-mulbek",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MULBEK SHARGOLE KARGIL, MULBEK SHARGOLE KARGIL\", PIN 194109."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-zangla",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZANSKAR, KARGIL\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-secondary-school-phay",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARSHA, ZANSKAR\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-thangsoo",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUNGNAKH, ZANSKAR\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-chuchot-gongma",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH, INDIA\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-tungri",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KARSHA, ZANSKAR 194302\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-icher",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUNGNAK, ZANSKAR\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-karsha",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PADUM, ZANSKAR\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-bogdang-nubra",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH , INDIA\", PIN 194401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-igoo",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARU, LEH\", PIN 194201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-skurbuchan",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK KHALTSI, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-lekir",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720125",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEKIR LEH LADAKH, LEKIR LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-girls-higher-secondary-school-leh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720126",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN MARKET LEH NEAR DISTT. LIBRARY, MAIN MARKET LEH NEAR DISTT. LIBRARY\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-shara",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK AND TEHSIL KHARU, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-boys-higher-secondary-school-leh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ALL INDIA RADIO STATION LEH, NEAR JIO OFFICE LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-stok",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STOK, LEH LADAKH, STOK, LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-leh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-leh-2",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH, INDIA\", PIN 194201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-matho",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BPO MATHO, PO LEH DISTRICT LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-lamayuru",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720136",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK KHALTSI, LEH LADAKH\", PIN 194106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-satho",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720137",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SATHO KARGYAM, DIRBUK- CHANGTHANG LEH, SATHO KARGYAM, DIRBUK- CHANGTHANG LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-housing-colony-leh-ladakh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN MARKET, HOUSING COLONY LEH LADAKH, OPP. COMMUNITY HALL, HOUSING COLONY\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-tangtse",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720140",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH, INDIA\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-domkhar-gongma",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHALTSI , LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-partapur",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NUBRA, LEH LADAKH\", PIN 194401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-thiksay",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720147",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-basgo",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIGH SCHOOL BASGO , LEH, LADAKH, HIGH SCHOOL BASGO LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-anlay",
+   "facts": {
+    "city": {
+     "name": "Nyoma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANLAY, B.P.O NYOMA\", PIN 194404."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-phyang",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHYANG, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-hemisshukpachan",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720153",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK SASPOL, LEH LADAKH\", PIN 194106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govit-higher-secondary-school-nyoma",
+   "facts": {
+    "city": {
+     "name": "Nyoma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK NYOMA, LEH LADAKH\", PIN 194404."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-senior-secondary-school-tyakshi",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720157",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NUBRA, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-chushul",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720163",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DURBUK, LEH, LADAKH 194101, DURBUK, LEH, LADAKH 194101\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-turtuk-nubra",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NUBRA, LEH LADAKH\", PIN 194401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-chuchot-yokma",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720166",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-wanla",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720167",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, UT LADAKH\", PIN 194106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "high-school-kharnakling",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720168",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, UT LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "high-school-tia",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH, UT LADAKH\", PIN 194106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-hunder",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720171",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH , LADAKH\", PIN 194401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-pashkum",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720172",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PASHKUM, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-model-middle-school-biathang",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIATHANG , SHILIKCHEY, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-chokiyal",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOKIYAL, DRASS, KARGIL\", PIN 194102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-khawous",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3720180",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAWOUS, TAISURU, KARGIL\", PIN 194303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ladakh-public-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST BOX 62 HPO LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahabodhi-residential-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BOX NO. 22, LEH -LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ladakh-rigjung-public-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CP.O. BOX NO. 81, LEH, LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-6",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANALI ROAD, CHOGLAMSAR, NEAR ITBP, LEH LADAKH-194101\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "islamia-public-school-leh-ladakh",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "druk-padma-karpo-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE SHEY, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jamyang-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MURTSE COLONY, LEH LADAKH, OPP. TO NATIONAL INSTITUTE OF SOWA RIGPA\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-millennium-children-s-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAMBUCHAN, NEAR AGLING, LEH , LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-n-national-public-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SABOOTHANG, UNION TERRITORY, LEH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "marpaling-lamdon-model-school",
+   "facts": {
+    "city": {
+     "name": "Zanskar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3730105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STONGDAY, ZANSKAR, LADAKH\", PIN 194302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-harka-bahadur",
+   "facts": {
+    "city": {
+     "name": "Kargil",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3770051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARDASS, KARGIL\", PIN 194103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-goodwill-school-2",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3770053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARU LEH LEDAKH, KHARU LEH LEDAKH\", PIN 194201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-tibetan-sos-childrens-village-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O CHOGLAMSAR LEH LADAKH\", PIN 194104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lamdon-model-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "moravian-mission-school",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MORAVIAN CHURCH CAMPUS, PO BOX-7, LEH-194101, LADAKH\", PIN 194101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ladakh-rigjung-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/730047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CP.O. BOX NO. 81, LEH, LADAKH, JAMMU & KASHMIR\", PIN 194104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-20",
+   "facts": {
+    "city": {
+     "name": "Leh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/780018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEH C/O LADAKH SCOUTS PHYANG VILLANG LEH LADAKH\", PIN 194101."
+     }
+    }
+   }
+  }
+ ]
+}

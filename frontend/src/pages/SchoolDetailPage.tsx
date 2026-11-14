@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, VerificationBadge } from '../components/common/Badges';
+import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, TrustBadge, VerificationBadge } from '../components/common/Badges';
 import { BoardingTab } from '../components/school/BoardingTab';
 import { Pagination } from '../components/common/Pagination';
 import { AsyncContent, EmptyState, ErrorState, Spinner } from '../components/common/States';
@@ -19,7 +19,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, type SchoolRef } from '../hooks/usePersonal';
 import { ApiError } from '../services/http';
 import { schoolService } from '../services/publicApi';
-import type { Admission, FacilityCategory, ReviewRequest, SchoolDetail, SchoolImage } from '../types/api';
+import type { Admission, ExternalRanking, FacilityCategory, ReviewRequest, SchoolDetail, SchoolImage } from '../types/api';
 import {
   admissionCategoryLabel,
   directionsUrl,
@@ -35,7 +35,11 @@ import {
   placeLine,
   schoolTypeLabel,
 } from '../utils/format';
-import { NotFoundPage } from './InfoPages';
+import { SchoolOrStateNotFound } from './PlaceRedirect';
+import { AD_SLOTS, AdSlot } from '../components/common/AdSlot';
+import { track } from '../utils/analytics';
+import { schoolFaqs } from '../utils/schoolFaq';
+import { EnquiryButton } from '../components/school/EnquiryForm';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -52,7 +56,9 @@ export function SchoolDetailPage() {
   useSchoolSeo(school.data);
   const loaded = school.data;
   useEffect(() => {
-    if (loaded) recentSchools.add(toRef(loaded));
+    if (!loaded) return;
+    recentSchools.add(toRef(loaded));
+    track('school_profile_view', { school_slug: loaded.slug, state: loaded.stateCode, board: loaded.board?.code });
   }, [loaded]);
   const [copied, setCopied] = useState(false);
   // The main photo (first non-logo image cleared for publication) is shown in the header.
@@ -62,7 +68,8 @@ export function SchoolDetailPage() {
   useEffect(() => setPhotoFailed(false), [loaded?.id]);
   const photo = photoFailed ? undefined : images.data?.find((i) => i.imageType !== 'LOGO');
 
-  if (school.error?.status === 404) return <NotFoundPage />;
+  // /schools/bihar is a state rather than a school: SchoolOrStateNotFound sends it to the state page, or shows 404.
+  if (school.error?.status === 404) return <SchoolOrStateNotFound slug={slug} />;
   if (school.error) return <div className="container-page py-10"><ErrorState error={school.error} onRetry={school.reload} /></div>;
   if (!school.data) return <Spinner label="Loading school…" />;
 
@@ -102,7 +109,7 @@ export function SchoolDetailPage() {
                 <Link to={`/schools?state=${s.stateCode}&locality=${encodeURIComponent(s.locality)}`} className="hover:text-white">{s.locality}</Link></>
             )}
           </nav>
-          <div className={`mt-5 grid gap-6 ${photo ? 'lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start' : ''}`}>
+          <div className={`mt-5 grid grid-cols-1 gap-6 ${photo ? 'lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start' : ''}`}>
           <div className="flex min-w-0 flex-wrap items-start gap-5">
             {s.logoUrl ? (
               <img src={s.logoUrl} alt={`${s.name} logo`} className="h-20 w-20 rounded-2xl bg-white object-contain p-2 shadow-lift" />
@@ -142,7 +149,11 @@ export function SchoolDetailPage() {
           <KeyFacts school={s} onTab={setTab} />
         </div>
       </header>
-      <div className="container-page py-6">
+      <StickyActions school={s} onAdmissions={() => {
+        setTab('admissions');
+        document.getElementById('school-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }} />
+      <div id="school-tabs" className="container-page scroll-mt-32 py-6">
         <Tabs
           active={tab}
           onChange={setTab}
@@ -150,7 +161,7 @@ export function SchoolDetailPage() {
             { id: 'overview', label: 'Overview', content: <Overview school={s} /> },
             ...(s.boarding ? [{ id: 'boarding', label: 'Boarding', content: <BoardingTab boarding={s.boarding} /> }] : []),
             { id: 'photos', label: 'Gallery', content: <PhotosTab schoolId={s.id} /> },
-            { id: 'admissions', label: 'Admissions', content: <AdmissionsTab schoolId={s.id} portal={s.admissionPortalUrl} inDelhi={s.stateCode === 'DL'} /> },
+            { id: 'admissions', label: 'Admissions', content: <><EnquiryCard school={s} /><AdmissionsTab schoolId={s.id} portal={s.admissionPortalUrl} inDelhi={s.stateCode === 'DL'} /></> },
             { id: 'fees', label: 'Fees', content: <FeesTab schoolId={s.id} inDelhi={s.stateCode === 'DL'} /> },
             { id: 'classes', label: 'Classes & curriculum', content: <ClassesTab school={s} /> },
             { id: 'facilities', label: 'Facilities', content: <FacilitiesTab school={s} /> },
@@ -160,8 +171,75 @@ export function SchoolDetailPage() {
             { id: 'sources', label: 'Sources', content: <SourcesTab school={s} /> },
           ]}
         />
+        <AdSlot slot={AD_SLOTS.schoolProfile} />
+        <SchoolFaq school={s} />
+        <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
+          <Icon name="building" className="h-4 w-4 text-slate-500" />
+          Work at {s.name}? Keep its fees, admission notices and photos up to date.
+          <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} className="link font-semibold">Claim this profile</Link>
+        </p>
       </div>
     </>
+  );
+}
+
+/**
+ * Common questions about this school, answered only from its own record. The list comes from the server, which sends
+ * the same questions to search engines as FAQPage data; if it cannot be loaded, the browser builds them from the profile.
+ */
+function SchoolFaq({ school: s }: { school: SchoolDetail }) {
+  const remote = useApi(() => schoolService.faqs(s.id), [s.id]);
+  const local = useMemo(() => schoolFaqs(s), [s]);
+  const faqs = remote.data ?? (remote.error ? local : []);
+  if (faqs.length === 0) return null;
+  return (
+    <section className="mt-10" aria-labelledby="faq-h">
+      <h2 id="faq-h" className="font-display text-xl font-bold text-ink">Questions about {s.name}</h2>
+      <p className="mt-1 text-sm text-slate-500">Answered from the sources listed on this profile. Confirm important details with the school.</p>
+      <div className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
+        {faqs.map((f) => (
+          <details key={f.question} className="group p-4">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink">
+              {f.question}
+              <Icon name="chevronDown" className="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180" />
+            </summary>
+            <p className="mt-2 break-words text-sm leading-relaxed text-slate-700">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/**
+ * The main actions, kept in reach under the site header while reading the profile. "Contact" uses the school's own
+ * published phone, e-mail or website — whichever exists — and is left out when none is published.
+ */
+function StickyActions({ school: s, onAdmissions }: { school: SchoolDetail; onAdmissions: () => void }) {
+  const phone = s.phone?.split(',')[0].trim();
+  const contact = phone ? { href: `tel:${phone.replace(/[^\d+]/g, '')}`, label: 'Call school', icon: 'phone' as const, external: false }
+    : s.email ? { href: `mailto:${s.email}`, label: 'Email school', icon: 'mail' as const, external: false }
+      : s.websiteUrl ? { href: s.websiteUrl, label: 'Contact school', icon: 'external' as const, external: true } : null;
+  return (
+    <div className="sticky top-[68px] z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="container-page flex items-center gap-3 overflow-x-auto py-2.5">
+        <p className="hidden min-w-0 flex-1 truncate font-display font-bold text-ink md:block">{s.name}</p>
+        <div className="flex shrink-0 items-center gap-2">
+          <CompareButton id={s.id} name={s.name} slug={s.slug} />
+          <SaveButton school={toRef(s)} withLabel />
+          {contact && (
+            <a href={contact.href} {...(contact.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="btn-secondary whitespace-nowrap rounded-full px-3 py-1.5 text-sm">
+              <Icon name={contact.icon} className="h-4 w-4" /> {contact.label}
+            </a>
+          )}
+          <button type="button" onClick={onAdmissions} className="btn-secondary whitespace-nowrap rounded-full px-3 py-1.5 text-sm">
+            <Icon name="calendar" className="h-4 w-4" /> Admission details
+          </button>
+          <EnquiryButton school={s} />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -181,10 +259,12 @@ function HeaderPhoto({ photo, name, onGallery, onFail }: {
 }) {
   return (
     <figure className="min-w-0">
-      <button type="button" onClick={onGallery} className="group block w-full overflow-hidden rounded-2xl shadow-lift ring-1 ring-white/20"
+      <button type="button" onClick={onGallery} className="group block w-full"
         aria-label={`Open the photo gallery of ${name}`}>
-        <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText || `Campus of ${name}`} onError={onFail}
-          className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+        <span className="school-image rounded-2xl shadow-lift ring-1 ring-white/20">
+          <img src={photo.thumbnailUrl ?? photo.url} alt={photo.altText || `Campus of ${name}`} onError={onFail}
+            className="transition duration-500 group-hover:scale-[1.03]" />
+        </span>
       </button>
       <figcaption className="mt-2 text-[11px] leading-snug text-slate-400">
         {photo.illustrative ? 'Illustration, not a photo of this school' : (
@@ -207,7 +287,7 @@ function KeyFacts({ school: s, onTab }: { school: SchoolDetail; onTab: (id: stri
   const open = (admissions.data ?? []).find((a) => a.status === 'OPEN') ?? (admissions.data ?? []).find((a) => a.status === 'UPCOMING');
   const classes = s.classesOffered.length
     ? `${s.classesOffered[0].name.replace('Class ', '')} – ${s.classesOffered[s.classesOffered.length - 1].name.replace('Class ', '')}`
-    : null;
+    : s.affiliatedUpTo ? `Up to ${s.affiliatedUpTo.replace('Class ', '')}` : null;
 
   const items: { label: string; value: string | null; hint?: string; tab?: string; highlight?: boolean }[] = [
     { label: 'Annual fee from', value: feeFrom === null ? null : feeFrom === 0 ? 'Free' : formatMoneyCompact(feeFrom), hint: latestYear, tab: 'fees' },
@@ -256,6 +336,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
   const yesNo = (v: boolean | null) => (v === null ? null : formatYesNo(v));
   // [label, value]; null = not published by any source yet.
   const facts: [string, string | null][] = [
+    ['School category', schoolTypeLabel[s.schoolType]],
     ['Management', s.management ? managementLabel[s.management] : null],
     ['Run by (trust / society)', s.managingBody],
     ['Principal / head', s.principalName],
@@ -266,20 +347,22 @@ function Overview({ school: s }: { school: SchoolDetail }) {
     ['State / UT', s.stateName],
     ['Classes offered', s.classesOffered.length
       ? `${s.classesOffered[0].name} to ${s.classesOffered[s.classesOffered.length - 1].name} (${s.classesOffered.length} levels listed)`
-      : null],
+      : s.affiliatedUpTo
+        ? `Up to ${s.affiliatedUpTo}, as affiliated by ${s.board?.code ?? 'the board'} (the lowest class is not published)`
+        : null],
     ['Medium of instruction', s.mediumOfInstruction],
-    ['Co-education', s.genderType ? genderLabel[s.genderType] : null],
+    ['Gender', s.genderType ? genderLabel[s.genderType] : null],
     ['Established', s.establishedYear !== null ? String(s.establishedYear) : null],
     ['School timings', s.schoolTimings],
     ['Student–teacher ratio', s.studentTeacherRatio ? `${s.studentTeacherRatio} : 1` : null],
     ['Transport', yesNo(s.hasTransport)],
-    ['Hostel / boarding', yesNo(s.hasHostel)],
+    ['Day or boarding', s.hasHostel === null ? null : s.hasHostel ? 'Boarding (hostel available)' : 'Day school'],
     ['Accessibility', s.accessibilityFeatures],
   ];
   const known = facts.filter(([, v]) => v !== null && v !== '');
   const unknown = facts.filter(([, v]) => v === null || v === '').map(([label]) => label);
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
       <section className="card p-6">
         {s.description && <p className="mb-4 leading-relaxed text-slate-700">{s.description}</p>}
         <dl className="divide-y divide-slate-100">
@@ -301,6 +384,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
         )}
       </section>
       <aside className="space-y-4">
+        <RankingSummary schoolId={s.id} />
         <section className="card p-5">
           <h2 className="font-semibold">Contact</h2>
           <p className="mt-1 text-xs text-slate-500">Publicly listed by the school.</p>
@@ -319,7 +403,7 @@ function Overview({ school: s }: { school: SchoolDetail }) {
           </p>
           <div className="mt-2"><SourceLink url={s.sourceUrl} /></div>
           <p className="mt-3 text-xs text-slate-500">
-            India School Finder is independent; listing a school does not mean the school endorses this site.
+            SchoolDhundo is independent; listing a school does not mean the school endorses this site.
           </p>
           <Link to={`/suggest?school=${encodeURIComponent(s.slug)}&topic=CORRECTION`} className="btn-secondary mt-3 w-full text-xs">
             <Icon name="info" className="h-4 w-4" /> Report incorrect information
@@ -327,6 +411,19 @@ function Overview({ school: s }: { school: SchoolDetail }) {
         </section>
       </aside>
     </div>
+  );
+}
+
+/** The way to ask the school a question, at the top of the admissions tab. */
+function EnquiryCard({ school: s }: { school: SchoolDetail }) {
+  return (
+    <section className="mb-5 flex flex-col items-start justify-between gap-3 rounded-2xl border border-brand-100 bg-brand-50/60 p-5 sm:flex-row sm:items-center">
+      <div>
+        <h3 className="font-display font-bold text-ink">Have a question about admission?</h3>
+        <p className="mt-1 text-sm text-slate-600">Send your query about seats, eligibility, fees or hostel. We pass it to the school with your consent.</p>
+      </div>
+      <EnquiryButton school={s} className="btn-primary shrink-0" />
+    </section>
   );
 }
 
@@ -383,7 +480,7 @@ export function AdmissionCard({ admission: a, showSchool = false }: { admission:
         </div>
         <div className="flex items-center gap-2">
           <AdmissionStatusBadge status={a.status} overridden={a.statusOverridden} />
-          <VerificationBadge status={a.verificationStatus} date={a.lastVerifiedDate} />
+          <TrustBadge status={a.verificationStatus} verifiedOn={a.lastVerifiedDate} updatedOn={a.updatedAt} hasSource={!!a.sourceUrl} />
         </div>
       </div>
       {a.statusOverridden && a.statusOverrideReason && <p className="mt-2 text-xs text-slate-500">* {a.statusOverrideReason}</p>}
@@ -437,7 +534,7 @@ function FeesTab({ schoolId, inDelhi }: { schoolId: number; inDelhi: boolean }) 
         const chip = (active: boolean) =>
           `chip px-3 py-1.5 text-sm ring-1 ring-inset transition ${active ? 'bg-brand-600 text-white ring-brand-600' : 'bg-white text-slate-700 ring-slate-200 hover:ring-brand-300'}`;
         return (
-          <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
             <div className="space-y-4">
               <div className="card space-y-4 p-5">
                 <div className="flex flex-wrap items-center gap-2">
@@ -548,10 +645,23 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
     </section>
   );
   if (!hasCoords) {
+    const address = [s.addressLine, s.city, s.district?.name, s.stateName, s.pinCode].filter(Boolean).join(', ');
     return (
       <div className="space-y-6">
         {contact}
-        <EmptyState title="Map location not available yet.">We only plot schools whose coordinates have been confirmed.</EmptyState>
+        <EmptyState title="Map location not available yet.">
+          We only plot schools whose coordinates have been confirmed.
+          {s.addressLine && (
+            <span className="mt-3 block">
+              <a className="btn-secondary text-sm" target="_blank" rel="noopener noreferrer"
+                href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(address)}`}>
+                Look up the postal address on OpenStreetMap ↗
+              </a>
+              <span className="mt-1 block text-xs text-slate-500">A search for the address, not a confirmed position.</span>
+            </span>
+          )}
+        </EmptyState>
+        <SchoolsInSamePlace school={s} />
       </div>
     );
   }
@@ -575,6 +685,80 @@ function LocationTab({ school: s }: { school: SchoolDetail }) {
   );
 }
 
+/**
+ * Nearby schools for a profile without coordinates: the same town, else the same PIN code, else the same district, as
+ * the source records them. Distances are never guessed.
+ */
+function SchoolsInSamePlace({ school: s }: { school: SchoolDetail }) {
+  const place = s.city ? { city: s.city, label: s.city }
+    : s.pinCode ? { pinCode: s.pinCode, label: `PIN code ${s.pinCode}` }
+      : s.district ? { district: s.district.slug, label: `${s.district.name} district` } : null;
+  const state = useApi(
+    () => schoolService.search({ state: s.stateCode, city: place?.city, pinCode: place?.pinCode, district: place?.district, size: 7 }),
+    [s.id],
+    place !== null,
+  );
+  if (!place) return null;
+  return (
+    <section>
+      <h2 className="text-lg font-semibold">Other schools in {place.label}</h2>
+      <div className="mt-3">
+        <AsyncContent state={state} isEmpty={(d) => d.content.every((n) => n.id === s.id)}
+          empty={<EmptyState title={`No other schools listed in ${place.label} yet.`} />}>
+          {(page) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {page.content.filter((n) => n.id !== s.id).slice(0, 6).map((n) => <SchoolCard key={n.id} school={n} />)}
+            </div>
+          )}
+        </AsyncContent>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Ranking information at a glance: our evidence-based status and any published ranking verified by an editor. A school
+ * missing from published rankings says "Not listed" — never an estimated position.
+ */
+function RankingSummary({ schoolId }: { schoolId: number }) {
+  const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
+  const r = state.data;
+  if (!r) return null;
+  // The API returns verified entries only; paid or featured listings are not rankings.
+  const published = r.externalRankings.filter((e) => !e.sponsored);
+  return (
+    <section className="card p-5 text-sm">
+      <h2 className="font-semibold">Rankings</h2>
+      <p className="mt-2 text-slate-700">
+        <span className="text-slate-500">SchoolDhundo score: </span>
+        {r.siteRanking?.rankPosition ? `Rank #${r.siteRanking.rankPosition} in India (${r.siteRanking.totalScore.toFixed(1)}/100)`
+          : r.siteRanking ? `Provisional (${r.siteRanking.totalScore.toFixed(1)}/100, not enough verified evidence for a rank)`
+            : 'Not yet ranked'}
+      </p>
+      <p className="mt-2 text-slate-500">Published rankings:</p>
+      {published.length === 0 ? <p className="text-slate-700">Not listed in any published ranking we have verified.</p> : (
+        <ul className="mt-1 space-y-1">
+          {published.map((e) => (
+            <li key={e.id} className="text-slate-700">
+              <strong className="text-ink">{rankLabel(e)}</strong> · {e.publisher} {e.rankingName} {e.rankingYear}
+              {(e.category || e.region) && <span className="text-slate-500"> · {[e.category, e.region].filter(Boolean).join(' · ')}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+      <Link to="?tab=ranking" className="link mt-2 inline-block">Ranking details and sources →</Link>
+    </section>
+  );
+}
+
+/** National, state and city ranks are shown under their own names; a rating is not a rank. */
+export function rankLabel(e: Pick<ExternalRanking, 'nationalRank' | 'stateRank' | 'cityRank' | 'rating' | 'rankPosition' | 'scoreText'>): string {
+  const parts = [e.nationalRank != null && `National #${e.nationalRank}`, e.stateRank != null && `State #${e.stateRank}`, e.cityRank != null && `City #${e.cityRank}`].filter(Boolean);
+  if (parts.length > 0) return parts.join(', ');
+  if (e.rating) return `${e.rating.charAt(0)}${e.rating.slice(1).toLowerCase()} rating`;
+  return e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'Listed';
+}
+
 function RankingTab({ schoolId }: { schoolId: number }) {
   const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
   return (
@@ -582,7 +766,7 @@ function RankingTab({ schoolId }: { schoolId: number }) {
       {(r) => (
         <div className="space-y-6">
           <section className="card p-6">
-            <h2 className="font-semibold">India School Finder score</h2>
+            <h2 className="font-semibold">SchoolDhundo score</h2>
             {r.siteRanking ? (
               <>
                 <div className="mt-3 flex flex-wrap items-baseline gap-4">
@@ -614,14 +798,19 @@ function RankingTab({ schoolId }: { schoolId: number }) {
           <section className="card p-6">
             <h2 className="font-semibold">Independently published rankings</h2>
             {r.externalRankings.length === 0 ? (
-              <p className="mt-2 text-sm text-slate-600">None recorded.</p>
+              <p className="mt-2 text-sm text-slate-600">
+                Not listed in any published ranking we have checked. <Link to="/rankings" className="link">See rankings</Link>
+              </p>
             ) : (
               <ul className="mt-3 divide-y divide-slate-100 text-sm">
                 {r.externalRankings.map((e) => (
                   <li key={e.id} className="py-2">
                     <span className="font-medium">{e.publisher}</span> — {e.rankingName} ({e.rankingYear})
-                    {e.category && `, ${e.category}`}: {e.rankPosition ? `#${e.rankPosition}` : e.scoreText ?? 'listed'}{' '}
-                    <SourceLink url={e.sourceUrl} />
+                    {e.category && `, ${e.category}`}{e.region && `, ${e.region}`}:{' '}
+                    {e.sponsored ? <span className="chip bg-amber-50 text-amber-900">Sponsored listing, not a ranking</span>
+                      : rankLabel(e)}
+                    {e.score != null && <span className="text-slate-600"> · score {e.score}{e.maxScore != null ? ` / ${e.maxScore}` : ''}</span>}
+                    {' '}<Link to="/rankings/methodology#sources" className="text-xs text-slate-500 underline">Source and method</Link>
                   </li>
                 ))}
               </ul>
@@ -637,7 +826,7 @@ function ReviewsTab({ schoolId }: { schoolId: number }) {
   const [page, setPage] = useState(0);
   const state = useApi(() => schoolService.reviews(schoolId, page), [schoolId, page]);
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
       <section>
         <AsyncContent state={state} isEmpty={(d) => d.content.length === 0}
           empty={<EmptyState title="No published reviews yet.">Be the first parent to share your experience.</EmptyState>}>
@@ -727,7 +916,7 @@ function ReviewForm({ schoolId }: { schoolId: number }) {
       </div>
       <label className="flex items-start gap-2 text-sm text-slate-700">
         <input type="checkbox" className="mt-1" {...register('consentGiven', { required: 'Consent is required to publish your review' })} />
-        I agree that this review may be published on India School Finder, and it reflects my own experience.
+        I agree that this review may be published on SchoolDhundo, and it reflects my own experience.
       </label>
       {errors.consentGiven && <p className="field-error">{errors.consentGiven.message}</p>}
       {result instanceof ApiError && <p className="field-error">{result.message}</p>}

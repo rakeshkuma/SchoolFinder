@@ -18,7 +18,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 
 /** A practice quiz or timed mock test written by this site, optionally tied to an exam guide by slug. */
 @Getter
@@ -29,6 +31,9 @@ import java.time.Instant;
 public class PracticeSet {
 
     public enum Kind { QUIZ, MOCK }
+
+    /** What the set prepares for: school subjects, school entrance tests, Olympiads or competitive exams. */
+    public enum Category { SCHOOL, ENTRANCE, OLYMPIAD, COMPETITIVE }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,8 +52,20 @@ public class PracticeSet {
     @Column(nullable = false, length = 10)
     private Kind kind;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Category category = Category.ENTRANCE;
+
     @Column(nullable = false, length = 100)
     private String level;
+
+    /** Marks for a correct answer. */
+    @Column(nullable = false, precision = 4, scale = 2)
+    private BigDecimal marksPerQuestion = BigDecimal.ONE;
+
+    /** Marks deducted for a wrong answer (never for a skipped one). */
+    @Column(nullable = false, precision = 4, scale = 2)
+    private BigDecimal negativeMarks = BigDecimal.ZERO;
 
     @Column(nullable = false, length = 1000)
     private String description;
@@ -65,6 +82,9 @@ public class PracticeSet {
 
     @Column(nullable = false)
     private boolean published;
+
+    /** When a reviewer last checked every question, answer and explanation. */
+    private LocalDate reviewedOn;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

@@ -69,7 +69,8 @@ public class SchoolMapper {
                 b == null ? null : b.getEntranceExam(), b == null ? null : b.getEntryClasses(),
                 b == null ? null : b.getSummary(), b == null ? null : b.getVerificationStatus(),
                 h.classesFrom(), h.classesTo(), h.facilityCategories(), s.getAdmissionPortalUrl(),
-                s.getSourceRetrievedDate(), cover != null && cover.isIllustrative());
+                s.getSourceRetrievedDate(), cover != null && cover.isIllustrative(),
+                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()));
     }
 
     public SchoolDetailDto toDetail(School s, EducationBoard board, State state, District district, SchoolBoarding boarding) {
@@ -92,7 +93,8 @@ public class SchoolMapper {
                 s.getEstablishedYear(), s.getHasTransport(), s.getHasHostel(), s.getAccessibilityFeatures(),
                 s.getLogoUrl(), s.getAverageRating(), s.getReviewCount(), s.getSourceUrl(),
                 s.getSourceRetrievedDate(), s.getVerificationStatus(), s.getLastVerifiedDate(),
-                s.isActive(), s.getVersion(), s.getUpdatedAt(), boarding == null ? null : toBoardingDto(boarding));
+                s.isActive(), s.getVersion(), s.getUpdatedAt(), boarding == null ? null : toBoardingDto(boarding),
+                com.indiaschoolfinder.util.AffiliationLevels.highestClass(s.getDescription()));
     }
 
     /**
@@ -141,11 +143,33 @@ public class SchoolMapper {
         return new EducationBoardDto(b.getCode(), b.getName(), b.getWebsiteUrl(), b.getDescription());
     }
 
+    /** The permission note can name the person who granted permission, so the public gallery leaves it out. */
+    public ImageDto toPublicImageDto(SchoolImage i) {
+        return toImageDto(i, false);
+    }
+
     public ImageDto toImageDto(SchoolImage i) {
+        return toImageDto(i, true);
+    }
+
+    private ImageDto toImageDto(SchoolImage i, boolean withPermissionNote) {
         return new ImageDto(i.getId(), i.getImageType(), i.getUrl(), i.getThumbnailUrl(), i.getCaption(), i.getAltText(),
                 i.getCredit(), i.getLicense(), i.getAttributionText(), i.getPermissionStatus(), i.isIllustrative(),
                 i.getSourceUrl(), i.getWidth(), i.getHeight(), i.getSortOrder(), i.getVerificationStatus(),
-                i.getLastVerifiedDate());
+                i.getLastVerifiedDate(), i.getAuthor(), i.getTitle(), hostOf(i.getSourceUrl()),
+                withPermissionNote ? i.getPermissionNote() : null,
+                i.getCreatedAt());
+    }
+
+    /** "https://commons.wikimedia.org/wiki/File:X.jpg" → "commons.wikimedia.org"; null when it cannot be read. */
+    static String hostOf(String url) {
+        if (url == null) return null;
+        try {
+            String host = java.net.URI.create(url.trim()).getHost();
+            return host == null ? null : host.replaceFirst("^www\\.", "");
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     public BoardingProfileDto toBoardingDto(SchoolBoarding b) {

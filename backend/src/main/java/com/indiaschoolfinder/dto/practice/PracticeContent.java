@@ -1,6 +1,8 @@
 package com.indiaschoolfinder.dto.practice;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -9,28 +11,59 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
-/** The questions of a practice set, with answers and explanations; stored as one JSON document. */
+/**
+ * The questions of a practice set, with answers and explanations; stored as one JSON document. {@code sectionMarks}
+ * (optional) gives the marks for a correct answer in a section when it differs from the set's marks per question, as in
+ * an exam that marks Mathematics higher than the other sections.
+ */
 public record PracticeContent(
         @NotNull List<@Valid Passage> passages,
-        @NotEmpty @Size(max = 200) List<@Valid @NotNull Question> questions) {
+        @NotEmpty @Size(max = 200) List<@Valid @NotNull Question> questions,
+        @Size(max = 10) Map<@NotBlank @Size(max = 60) String, @NotNull @DecimalMin("0.25") @DecimalMax("10") BigDecimal> sectionMarks) {
 
+    public PracticeContent(List<Passage> passages, List<Question> questions) {
+        this(passages, questions, null);
+    }
+
+    /** Marks for a correct answer to {@code q}: its section's marks when set, otherwise {@code setMarks}. */
+    public BigDecimal marksFor(Question q, BigDecimal setMarks) {
+        return sectionMarks == null ? setMarks : sectionMarks.getOrDefault(q.section(), setMarks);
+    }
+
+    /** {@code hi}, when present, is the Hindi text of the passage. */
     public record Passage(@NotBlank @Pattern(regexp = "[a-z0-9-]+") String id, @NotBlank @Size(max = 200) String title,
-                          @NotBlank @Size(max = 4000) String text) {
+                          @NotBlank @Size(max = 4000) String text, @Valid PassageText hi) {
+    }
+
+    public record PassageText(@NotBlank @Size(max = 200) String title, @NotBlank @Size(max = 4000) String text) {
+    }
+
+    /** A question in another language: the same options in the same order, so {@code answer} applies unchanged. */
+    public record QuestionText(@NotBlank @Size(max = 1000) String prompt,
+                               @NotNull @Size(min = 2, max = 5) List<@NotBlank @Size(max = 300) String> options,
+                               @NotBlank @Size(max = 1000) String explanation) {
     }
 
     /**
      * {@code answer} is the index (0-based) of the correct option. {@code passageId} links a question to a passage.
      * {@code figure} is an optional row of problem figures (drawn left to right, followed by "?" when the question asks
-     * for the next one); {@code optionFigures}, when present, has one figure per option.
+     * for the next one); {@code optionFigures}, when present, has one figure per option. {@code difficulty} is the
+     * reviewer's rating (EASY, MEDIUM or HARD) for the class the set is written for. {@code section} is the subject,
+     * {@code chapter} (optional) the textbook chapter and {@code topic} the skill within it. {@code hi} is the Hindi
+     * version, when one has been written and reviewed.
      */
     public record Question(@NotBlank @Pattern(regexp = "[a-z0-9-]+") String id, @NotBlank @Size(max = 60) String section,
                            @Size(max = 80) String topic, String passageId, @NotBlank @Size(max = 1000) String prompt,
                            @NotNull @Size(min = 2, max = 5) List<@NotBlank @Size(max = 300) String> options,
                            @NotNull @Min(0) @Max(4) Integer answer, @NotBlank @Size(max = 1000) String explanation,
                            @Size(max = 6) List<@Valid @NotNull Figure> figure, boolean figureAsksNext,
-                           @Size(max = 5) List<@Valid @NotNull Figure> optionFigures) {
+                           @Size(max = 5) List<@Valid @NotNull Figure> optionFigures,
+                           @Pattern(regexp = "EASY|MEDIUM|HARD") String difficulty,
+                           @Size(max = 80) String chapter, @Valid QuestionText hi) {
     }
 
     /**

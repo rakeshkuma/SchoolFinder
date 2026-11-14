@@ -34,6 +34,23 @@
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+  /* The home page and the site header and footer use the wider frame. */
+  .container-wide {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8;
+  }
+  /* The home hero's photo panel: its left side is a gentle curve. */
+  .hero-arc {
+    clip-path: ellipse(100% 125% at 100% 50%);
+  }
+  /* The search box inside the hero's white bar: the bar draws the frame and the focus ring. */
+  .hero-search .input {
+    @apply border-transparent text-base shadow-none focus:border-transparent focus:ring-0;
+  }
+  /* The live updates ticker fades out at both ends. */
+  .ticker-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent);
+  }
   .card {
     @apply rounded-2xl border border-slate-200/80 bg-white shadow-card;
   }
@@ -81,9 +98,6 @@
   .section-title {
     @apply font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl;
   }
-  .stat-value {
-    @apply font-display text-3xl font-bold tabular-nums tracking-tight;
-  }
   .prose-page p {
     @apply mb-4 leading-relaxed text-slate-700;
   }
@@ -100,6 +114,19 @@
   .prose-page .not-prose p {
     @apply mb-0;
   }
+  /* The frame for every school photograph. The picture is absolutely positioned on purpose: in normal flow its height
+     counts as the frame's minimum, which is how a tall photo used to stretch a 16:9 card. */
+  .school-image {
+    @apply relative block w-full overflow-hidden bg-slate-100;
+    aspect-ratio: 16 / 9;
+  }
+  .school-image > img {
+    @apply absolute inset-0 block h-full w-full object-cover object-center;
+  }
+  /* The gallery shows the whole photo, uncropped, in the same frame. */
+  .school-image--whole > img {
+    @apply object-contain;
+  }
   .bg-grid {
     background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
@@ -110,5 +137,98 @@
   }
   .no-scrollbar {
     scrollbar-width: none;
+  }
+
+  /* Server-rendered page content (SeoBodyService) shown until the app starts and replaces it. Its markup comes from the
+     backend, so it is styled here with its own small set of classes rather than utility classes. */
+  .prerender .pr-wrap {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .prerender .pr-header {
+    @apply sticky top-0 z-40 border-b border-slate-200 bg-white;
+  }
+  .prerender .pr-bar {
+    @apply flex h-[68px] items-center justify-between gap-4;
+  }
+  .prerender .pr-brand {
+    @apply flex items-center gap-2.5 font-display text-base font-extrabold tracking-tight text-ink;
+  }
+  .prerender .pr-brand img {
+    @apply h-9 w-9;
+  }
+  .prerender .pr-brand span {
+    @apply text-flame-600;
+  }
+  /* The home page's hero photo in the first paint, under the heading as in the app on phones. */
+  .prerender .pr-hero {
+    @apply mt-6 block aspect-[16/10] w-full max-w-2xl rounded-3xl object-cover;
+    object-position: 50% 40%;
+  }
+  .prerender .pr-nav {
+    @apply hidden items-center gap-5 text-sm font-semibold text-slate-600 xl:flex;
+  }
+  .prerender .pr-main {
+    @apply py-10;
+  }
+  .prerender h1 {
+    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl;
+  }
+  .prerender h2 {
+    @apply mt-10 font-display text-xl font-bold text-ink;
+  }
+  .prerender .pr-lead {
+    @apply mt-3 max-w-3xl text-lg leading-relaxed text-slate-600;
+  }
+  .prerender .pr-crumbs {
+    @apply mb-3 text-sm text-slate-500;
+  }
+  .prerender .pr-crumbs a,
+  .prerender .pr-grid a,
+  .prerender .pr-list a {
+    @apply font-semibold text-brand-700 hover:underline;
+  }
+  .prerender .pr-grid {
+    @apply mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm lg:grid-cols-4;
+  }
+  .prerender .pr-grid span,
+  .prerender .pr-list span {
+    @apply text-slate-500;
+  }
+  .prerender .pr-list {
+    @apply mt-4 grid gap-2 text-sm sm:grid-cols-2;
+  }
+  .prerender .pr-facts {
+    @apply mt-6 grid gap-4 sm:grid-cols-3;
+  }
+  .prerender .pr-facts dt {
+    @apply text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .prerender .pr-facts dd {
+    @apply mt-0.5 break-words font-semibold text-ink;
+  }
+  .prerender .pr-faq {
+    @apply mt-4 max-w-3xl space-y-4;
+  }
+  .prerender .pr-faq dt {
+    @apply font-semibold text-ink;
+  }
+  .prerender .pr-faq dd {
+    @apply mt-1 text-slate-600;
+  }
+}
+
+/* Printing (comparison, study plan): the page's own content only, on white, without the site chrome. */
+@media print {
+  [data-print="hide"] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  table {
+    page-break-inside: auto;
+  }
+  tr {
+    page-break-inside: avoid;
   }
 }

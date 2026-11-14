@@ -2,8 +2,10 @@ package com.indiaschoolfinder.service;
 
 import com.indiaschoolfinder.dto.exam.ExamDetailDto;
 import com.indiaschoolfinder.dto.exam.ExamSummaryDto;
+import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.DistrictDto;
 import com.indiaschoolfinder.dto.location.StateDto;
+import com.indiaschoolfinder.dto.ranking.PremierDirectoryDtos;
 import com.indiaschoolfinder.dto.school.ImageDto;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
 import com.indiaschoolfinder.enums.ExamKind;
@@ -37,22 +39,56 @@ import java.util.regex.Pattern;
 @Service
 public class SeoHeadService {
 
-    public static final String SITE = "India School Finder";
-    static final String DEFAULT_TITLE = "India School Finder — Discover Schools. Compare Fees. Prepare for Success.";
-    static final String DEFAULT_DESCRIPTION = "Discover schools across India, compare official fees and track admission "
-            + "deadlines — every fact linked to its official source.";
+    public static final String SITE = "SchoolDhundo";
+    /**
+     * A district or town page listing fewer schools than this would mostly repeat those schools' own pages, so it stays
+     * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
+     */
+    public static final int MIN_SCHOOLS_TO_INDEX = 3;
+    static final String DEFAULT_TITLE = "SchoolDhundo – Discover Schools, Rankings, Admissions & Exam Preparation";
+    static final String DEFAULT_DESCRIPTION = "Find schools across India, explore school rankings, compare boarding schools, "
+            + "understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources.";
 
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
+    /** /schools/{state}/{place}: a short address that hands over to the state, district or town page; not a page itself. */
+    private static final Pattern PLACE_SHORTCUT = Pattern.compile("^/schools/[a-z0-9-]+/[a-z0-9-]+/?$");
     private static final Pattern STATE = Pattern.compile("^/states/([a-z0-9-]+)(?:/([a-z0-9-]+))?/?$");
+    private static final Pattern CITY = Pattern.compile("^/states/([a-z0-9-]+)/city/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
+    /** The eligibility and dates guide of an exam that has its own preparation page (JNVST). */
+    private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
+    /** Exams whose /exams/{slug} is a preparation dashboard, with the guide at /exams/{slug}/guide. */
+    private static final java.util.Set<String> PREP_PAGES = java.util.Set.of("jnvst", "aissee");
     private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
+    /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
+    private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_CATEGORY = Pattern.compile("^/blog/category/([a-z0-9-]+)/?$");
+    private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
+    /** A view of the premier school directory, e.g. /rankings/girls-boarding-schools; fixed /rankings pages match first. */
+    private static final Pattern DIRECTORY = Pattern.compile("^/rankings/([a-z-]+-schools)/?$");
     private static final String[] ROMAN = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
     /** The Disallow lines of robots.txt (SitemapController), plus the update form, which is not content to index. */
     private static final Set<String> PRIVATE = Set.of("/admin", "/saved", "/suggest", "/account", "/signin", "/register",
-            "/verify-email", "/forgot-password", "/reset-password");
+            "/verify-email", "/forgot-password", "/reset-password",
+            // A student's own progress and results, and randomly drawn practice sittings, are not content to index.
+            "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session",
+            // Leaderboards list students' nicknames, which should not be searchable; achievements are a student's own.
+            "/exams/leaderboard", "/exams/achievements", "/exams/challenges");
+    /**
+     * First path segments the React app has routes for (frontend/src/App.tsx). Any other address shows the app's
+     * "page not found" page, so it is marked noindex instead of being offered as a copy of the home page.
+     */
+    static final Set<String> APP_SECTIONS = Set.of("schools", "states", "cities", "network", "saved", "rankings",
+            "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "boarding-schools", "exams",
+            "exam-preparation", "boards", "updates",
+            "type", "stages", "reviews", "about", "contact", "suggest", "find", "privacy", "privacy-policy", "terms",
+            "terms-of-service", "terms-and-conditions", "disclaimer", "editorial-policy", "corrections-policy",
+            "data-deletion", "signin", "register", "blog", "verify-email", "forgot-password", "reset-password", "account",
+            "admin");
     /** Static pages with their own title; the rest of the app uses the site defaults. */
     private static final Map<String, String[]> PAGES = Map.ofEntries(
             page("/find", "Find the right school for your child", "Choose your area, your child's class, "
@@ -63,8 +99,20 @@ public class SeoHeadService {
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
-            page("/rankings", "School rankings and methodology", "Evidence-based school scores from verified "
-                    + "data only, with the full methodology. Not an official government ranking."),
+            page("/rankings", "India's Top Schools & Boarding Schools Rankings", "Explore India's premier schools and boarding schools. "
+                    + "Compare CBSE, ICSE, IB and international schools by location, school type and other important details."),
+            page("/rankings/schools-by-state", "Premier and boarding schools by state", "India's premier and boarding schools grouped by "
+                    + "state, with board, boarding, gender and an approximate fee for each school."),
+            page("/rankings/schools-by-city", "Premier and boarding schools by city", "India's premier and boarding schools grouped by "
+                    + "city, from Dehradun and Mussoorie to Bengaluru, Mumbai and Delhi."),
+            page("/rankings/states", "State and city school rankings", "School rankings by state, city and district, for places with verified "
+                    + "published entries. State, city and national ranks are shown separately."),
+            page("/rankings/boards", "Board-wise school rankings", "Schools in published rankings by board. Where a publisher made no separate "
+                    + "board ranking, we say so and show each school's national rank."),
+            page("/rankings/government-boarding", "Government and boarding school rankings", "Government and boarding schools in published "
+                    + "rankings, with the rank each holds in the publisher's own list."),
+            page("/rankings/score", "SchoolDhundo evidence score", "Our own score from source-linked evidence, kept apart from published "
+                    + "rankings. Not an official government ranking."),
             page("/admissions", "School admissions calendar", "Upcoming and open school admission cycles, "
                     + "each linked to the school's official notice."),
             page("/fees", "School fee calculator", "Estimate first-year and annual school costs from "
@@ -72,23 +120,100 @@ public class SeoHeadService {
             page("/nearby", "Schools near you", "Find schools near any location in India on a map."),
             page("/boarding", "Boarding and residential schools", "Residential schools across India — "
                     + "Navodaya, Sainik, military and private boarding schools — with entry classes and exams."),
+            page("/boarding/india", "Boarding schools in India", "Every boarding and residential school we list in "
+                    + "India, by state, with sourced profiles, fees where published, admissions and entrance exams."),
+            page("/boarding/government", "Government boarding schools in India", "Jawahar Navodaya Vidyalayas, Sainik "
+                    + "Schools, Rashtriya Military Schools, RIMC and state residential schools, with entry classes and exams."),
+            page("/boarding/private", "Private boarding schools in India", "Privately managed boarding schools across "
+                    + "India with sourced profiles, published fees and admission details."),
+            page("/boarding/boys", "Boys' boarding schools in India", "Boarding schools whose official sources say "
+                    + "they admit boys only, with sourced profiles, fees and admissions."),
+            page("/boarding/girls", "Girls' boarding schools in India", "Boarding schools whose official sources say "
+                    + "they admit girls only, with sourced profiles, fees and admissions."),
+            page("/boarding/co-ed", "Co-educational boarding schools in India", "Boarding schools that admit boys and "
+                    + "girls, with sourced profiles, fees and admissions."),
+            page("/boarding/affordable", "Affordable boarding schools in India", "Boarding schools whose official "
+                    + "published annual fee is up to ₹1.5 lakh, and government residential schools with low or no fees."),
             page("/exams", "School entrance exams in India", "JNVST, AISSEE, RIMC, RMS CET and state entrance "
                     + "exams: eligibility, confirmed dates, exam pattern, syllabus and official papers, each linked to the "
                     + "conducting body's notice."),
             page("/exams/finder", "Which entrance exams can my child take?", "Answer up to four questions — class, "
                     + "state, school type, boarding — to see which school entrance exams may fit and why, with the "
                     + "eligibility rules to confirm in each official notice."),
-            page("/exams/practice", "Free practice tests for school entrance exams", "Original practice quizzes and "
-                    + "timed mock tests for JNVST, AISSEE and JNV Class IX entry, with answers explained — written by India "
-                    + "School Finder, not official questions."),
+            page("/exams/practice", "Free practice tests: school, entrance, Olympiad and competitive exams", "Original "
+                    + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
+                    + "aptitude, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
+                    + "not official questions."),
+            page("/blog", "Education insights for parents and students", "Original guides on school admissions, boarding and "
+                    + "government schools, entrance exams, boards and parenting in India, with official sources linked."),
+            page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on SchoolDhundo, their years, "
+                    + "how entries are verified, and how third-party rankings are presented."),
+            page("/cities", "Schools by city", "Cities across India where SchoolDhundo lists schools, with "
+                    + "the number listed in each."),
+            page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
+                    + "admission works in India: the steps, age rules for Class I, reserved seats under the RTE Act, "
+                    + "documents commonly asked for and what to check about hostels."),
+            page("/updates", "Latest school & exam updates", "Latest official notices for AISSEE, JNVST, Netarhat and other school "
+                    + "entrance exams, open school admissions and their last dates, and new practice sets, each linked to its source."),
+            page("/admissions/notifications", "Latest school admission notifications", "School admission cycles "
+                    + "recently added or updated from official notices, by state, class, category and status."),
+            page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
+                    + "students and alumni."),
+            page("/about", "About SchoolDhundo", "How SchoolDhundo lists schools, fees, admissions and "
+                    + "entrance exams from official sources, and how it writes its own practice questions."),
+            page("/contact", "Contact SchoolDhundo", "Get in touch about a school listing, a correction or "
+                    + "the practice questions."),
+            page("/privacy", "Privacy policy", "What SchoolDhundo stores about visitors and members, and why."),
+            page("/terms", "Terms of use", "The terms for using SchoolDhundo, its listings and its practice tests."),
+            page("/disclaimer", "Disclaimer", "School facts are taken from official sources and may change; always "
+                    + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
+            page("/editorial-policy", "Editorial policy", "How SchoolDhundo chooses sources, checks school information, "
+                    + "presents published rankings and writes its own practice questions, and how paid content is kept apart."),
+            page("/corrections-policy", "Corrections policy", "How to report a mistake in a school listing, ranking or "
+                    + "practice question on SchoolDhundo, and how corrections are checked and shown."),
+            page("/advertise", "Advertise with SchoolDhundo", "Featured school listings, admission enquiries, managed "
+                    + "profiles and sponsored placements for schools and education brands, always clearly labelled. Rankings are never for sale."),
+            page("/claim-school", "Claim your school profile", "School staff can claim their SchoolDhundo profile to "
+                    + "publish official fees, admission notices, photos and contact details, checked by our editors. Free."),
+            page("/data-deletion", "Account and data deletion", "How to delete your SchoolDhundo account, leaderboard "
+                    + "entry or other information, what is removed and what is kept."),
+            page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
+                    + "Kendriya Vidyalaya Sangathan, affiliated to CBSE, with locations and admission links."),
+            page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya schools", "Residential central "
+                    + "government schools run by Navodaya Vidyalaya Samiti; Class VI admission is through the JNVST."),
+            page("/network/sainik-school", "Sainik Schools in India", "Residential schools run by the Sainik Schools Society "
+                    + "under the Ministry of Defence; Class VI and IX admission is through AISSEE."),
+            page("/network/eklavya-model-residential-school", "Eklavya Model Residential Schools (EMRS)", "Residential schools "
+                    + "for Scheduled Tribe students under the Ministry of Tribal Affairs, with state-wise admission information."),
+            page("/network/rashtriya-military-school", "Rashtriya Military Schools", "Residential schools under the Ministry "
+                    + "of Defence; Class VI and IX admission is through the RMS CET."),
+            page("/type/government", "Government schools in India", "Schools run by central and state governments and "
+                    + "local bodies, with board, classes and admission information from official sources."),
+            page("/type/private-aided", "Private and aided schools in India", "Private unaided, government-aided and "
+                    + "international schools, with official fees where published."),
+            page("/type/private-aided/private", "Private schools in India", "Private unaided schools across India, "
+                    + "with official fees where published."),
+            page("/type/private-aided/aided", "Government-aided schools in India", "Schools that receive government "
+                    + "grants, across Indian states and union territories."),
+            page("/type/private-aided/international", "International schools in India", "International schools "
+                    + "across India, with boards, classes and official fees where published."),
+            page("/stages/nursery", "Pre-primary and nursery schools", "Schools that list pre-primary classes."),
+            page("/stages/primary", "Primary schools", "Schools that list at least one primary class."),
+            page("/stages/middle", "Middle schools", "Schools that list at least one middle-stage class."),
+            page("/stages/secondary", "Secondary schools", "Schools that list Class IX or X."),
+            page("/stages/senior-secondary", "Senior secondary schools", "Schools that list Class XI or XII."),
             page("/exams/syllabus", "Exam pattern and syllabus of school entrance exams", "Subjects, questions, marks, "
                     + "duration, format and language of JNVST, AISSEE, RIMC, JNV lateral entry and state entrance exams, from "
                     + "each conducting body's official notice."),
             page("/exams/calendar", "School entrance exam calendar", "Application deadlines, admit cards and exam dates "
-                    + "for JNVST, AISSEE, RIMC and other school entrance exams, month by month, from official notices."));
+                    + "for JNVST, AISSEE, RIMC and other school entrance exams, month by month, from official notices."),
+            page("/exams/resources", "Learning resources for school entrance exams", "Syllabus, exam pattern, preparation "
+                    + "plans, document checklists, FAQs and links to officially published papers and answer keys for JNVST, "
+                    + "AISSEE, RIMC, RMS CET and other school entrance exams."));
 
     /** Paths under /exams that are pages, not exam slugs; the exam import rejects them as slugs. */
-    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "class", "state");
+    public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state",
+            "leaderboard", "achievements", "challenges");
 
     private static Map.Entry<String, String[]> page(String path, String title, String description) {
         return Map.entry(path, new String[]{title, description});
@@ -99,12 +224,25 @@ public class SeoHeadService {
     private final EducationBoardRepository boardRepository;
     private final SchoolRepository schoolRepository;
     private final ExamService examService;
+    private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository;
     private final ObjectMapper objectMapper;
+    private final BlogService blogService;
+    private final BestPlacesService bestPlacesService;
+    private final PremierDirectoryService premierDirectory;
+    private final SchoolFaqService faqService;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
-                          ExamService examService, ObjectMapper objectMapper) {
+                          ExamService examService, ObjectMapper objectMapper,
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
+                          BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
+                          SchoolFaqService faqService) {
+        this.faqService = faqService;
+        this.premierDirectory = premierDirectory;
+        this.blogService = blogService;
+        this.bestPlacesService = bestPlacesService;
         this.examService = examService;
+        this.practiceSetRepository = practiceSetRepository;
         this.schoolService = schoolService;
         this.locationService = locationService;
         this.boardRepository = boardRepository;
@@ -135,13 +273,22 @@ public class SeoHeadService {
             if ((m = SCHOOL.matcher(p)).matches()) {
                 return school(schoolService.getActiveBySlug(m.group(1)), baseUrl);
             }
+            if (PLACE_SHORTCUT.matcher(p).matches()) {
+                return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+            }
             if ((m = STATE.matcher(p)).matches()) {
                 return state(m.group(1), m.group(2), baseUrl);
+            }
+            if ((m = CITY.matcher(p)).matches()) {
+                return city(m.group(1), m.group(2), baseUrl);
             }
             if ((m = BOARD.matcher(p)).matches()) {
                 return board(m.group(1), baseUrl);
             }
             if ((m = EXAM.matcher(p)).matches()) {
+                return PREP_PAGES.contains(m.group(1)) ? prepPage(examService.get(m.group(1)), baseUrl) : exam(examService.get(m.group(1)), baseUrl);
+            }
+            if ((m = EXAM_GUIDE.matcher(p)).matches()) {
                 return exam(examService.get(m.group(1)), baseUrl);
             }
             if ((m = EXAM_CLASS.matcher(p)).matches()) {
@@ -150,10 +297,124 @@ public class SeoHeadService {
             if ((m = EXAM_STATE.matcher(p)).matches()) {
                 return examState(m.group(1), baseUrl);
             }
+            if ((m = BEST_IN.matcher(p)).matches()) {
+                return bestPlace(m.group(1), baseUrl);
+            }
+            if ((m = DIRECTORY.matcher(p)).matches()) {
+                return directoryCategory(premierDirectory.category(m.group(1)), baseUrl);
+            }
+            if ((m = BLOG_CATEGORY.matcher(p)).matches()) {
+                return blogCategory(m.group(1), baseUrl);
+            }
+            if ((m = BLOG_POST.matcher(p)).matches()) {
+                return blogPost(blogService.published(m.group(1)), baseUrl);
+            }
+            if ((m = PRACTICE_SET.matcher(p)).matches()) {
+                String slug = m.group(1);
+                return practiceSet(practiceSetRepository.findBySlugAndPublishedTrue(slug)
+                        .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
+            }
         } catch (ResourceNotFoundException e) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
-        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, null);
+        if (!p.equals("/") && !APP_SECTIONS.contains(p.substring(1).split("/", 2)[0])) {
+            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+        }
+        if (p.equals("/")) {
+            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, baseUrl + "/", baseUrl + HOME_HERO_PREVIEW, false,
+                    List.of(website(baseUrl), organization(baseUrl))) + HOME_HERO_PRELOAD;
+        }
+        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, false, null);
+    }
+
+    /**
+     * The home page hero photograph (frontend/public/images/home; licensed, credited on the page). On wide screens it is
+     * the largest thing above the fold, so it is requested with the page instead of after the app starts. The srcset
+     * and sizes must stay the same as the hero's &lt;img&gt; (HomeHero.tsx), or the browser downloads it twice.
+     */
+    static final String HOME_HERO_PREVIEW = "/images/home/hero-students-1200.webp";
+    static final String HOME_HERO_PRELOAD = "<link rel=\"preload\" as=\"image\" media=\"(min-width: 1024px)\" fetchpriority=\"high\""
+            + " href=\"/images/home/hero-students-960.webp\""
+            + " imagesrcset=\"/images/home/hero-students-480.webp 480w, /images/home/hero-students-720.webp 720w,"
+            + " /images/home/hero-students-960.webp 960w, /images/home/hero-students-1200.webp 1200w, /images/home/hero-students-1600.webp 1600w\""
+            + " imagesizes=\"(min-width: 1024px) 48vw, calc(100vw - 32px)\" data-seo=\"server\" />\n";
+
+    /**
+     * An article: Article and BreadcrumbList structured data, og:type article with its dates, and a Twitter/X card. Only
+     * blog pages get these extra tags; every other page keeps the shared ones.
+     */
+    private String blogPost(com.indiaschoolfinder.entity.BlogPost post, String baseUrl) {
+        String url = baseUrl + "/blog/" + post.getSlug();
+        String title = post.getMetaTitle() != null ? post.getMetaTitle() : post.getTitle();
+        String description = post.getMetaDescription() != null ? post.getMetaDescription() : post.getExcerpt();
+        String image = post.getCoverImageUrl() == null ? null : post.getCoverImageUrl().startsWith("/") ? baseUrl + post.getCoverImageUrl() : post.getCoverImageUrl();
+        var category = post.getCategory();
+        Map<String, Object> article = new LinkedHashMap<>();
+        article.put("@type", "BlogPosting");
+        article.put("headline", post.getTitle());
+        article.put("description", description);
+        article.put("url", url);
+        article.put("mainEntityOfPage", url);
+        article.put("datePublished", post.getPublishedAt().toString());
+        article.put("dateModified", post.getUpdatedAt().toString());
+        article.put("articleSection", category.label());
+        if (post.getTags() != null) article.put("keywords", post.getTags());
+        article.put("author", Map.of("@type", "Person", "name", post.getAuthorName(), "url", baseUrl + "/about"));
+        article.put("publisher", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        if (image != null) article.put("image", image);
+        Map<String, Object> crumbs = new LinkedHashMap<>();
+        crumbs.put("@type", "BreadcrumbList");
+        crumbs.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Blog", "item", baseUrl + "/blog"),
+                Map.of("@type", "ListItem", "position", 3, "name", category.label(), "item", baseUrl + "/blog/category/" + category.slug()),
+                Map.of("@type", "ListItem", "position", 4, "name", post.getTitle(), "item", url)));
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@graph", java.util.List.of(article, crumbs));
+        String head = tags(title + " | " + SITE, description, url, image, false, data)
+                .replace(meta("property", "og:type", "website"), meta("property", "og:type", "article"));
+        StringBuilder extra = new StringBuilder();
+        extra.append(meta("property", "article:published_time", post.getPublishedAt().toString()));
+        extra.append(meta("property", "article:modified_time", post.getUpdatedAt().toString()));
+        extra.append(meta("property", "article:section", category.label()));
+        extra.append(meta("name", "twitter:card", image != null ? "summary_large_image" : "summary"));
+        extra.append(meta("name", "twitter:title", title));
+        extra.append(meta("name", "twitter:description", description));
+        if (image != null) extra.append(meta("name", "twitter:image", image));
+        return head + extra;
+    }
+
+    /** A blog category page exists only once the category has a published article; until then it is noindex. */
+    private String blogCategory(String slug, String baseUrl) {
+        var category = com.indiaschoolfinder.entity.BlogPost.Category.bySlug(slug)
+                .orElseThrow(() -> new ResourceNotFoundException("Blog category", slug));
+        long articles = blogService.categoryCounts().getOrDefault(category, 0L);
+        String url = baseUrl + "/blog/category/" + category.slug();
+        return tags(category.label() + ": articles for parents and students | " + SITE,
+                category.label() + " on the SchoolDhundo blog: original guides for Indian parents and students, with official sources linked.",
+                url, null, articles == 0, null);
+    }
+
+    /** Practice sets are original SchoolDhundo questions; the description says so, and the data is a free Quiz. */
+    private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
+        String url = baseUrl + "/exams/practice/" + set.getSlug();
+        // The first sentence says what the set covers; the note that the questions are our own is always kept.
+        String first = set.getDescription().split("(?<=\\.)\\s", 2)[0];
+        if (first.length() > 220) first = first.substring(0, 219) + "…";
+        String description = first + " Original practice questions by " + SITE + ", not official exam questions.";
+        boolean hindi = set.getContent().questions().stream().anyMatch(q -> q.hi() != null);
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "Quiz");
+        data.put("name", set.getTitle());
+        data.put("description", description);
+        data.put("url", url);
+        data.put("educationalLevel", set.getLevel());
+        data.put("inLanguage", hindi ? java.util.List.of("en", "hi") : java.util.List.of("en"));
+        data.put("isAccessibleForFree", true);
+        data.put("provider", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        return tags(set.getTitle() + " | " + SITE, description, url, null, false, data);
     }
 
     private String school(SchoolDetailDto s, String baseUrl) {
@@ -209,7 +470,55 @@ public class SeoHeadService {
         if (s.latitude() != null && s.longitude() != null) {
             data.put("geo", Map.of("@type", "GeoCoordinates", "latitude", s.latitude(), "longitude", s.longitude()));
         }
-        return tags(title, description.toString(), url, image, false, data);
+        List<Map<String, Object>> graph = new java.util.ArrayList<>(List.of(data, schoolBreadcrumbs(s, url, baseUrl)));
+        Map<String, Object> faq = faqPage(faqService.faqs(s));
+        if (faq != null) {
+            graph.add(faq);
+        }
+        return tags(title, description.toString(), url, image, false, graph);
+    }
+
+    /** Schools › state › district › school: the profile page's breadcrumb (its locality link is a filter, not a page). */
+    private static Map<String, Object> schoolBreadcrumbs(SchoolDetailDto s, String url, String baseUrl) {
+        List<Map<String, Object>> items = new java.util.ArrayList<>();
+        items.add(listItem(1, "Schools", baseUrl + "/schools"));
+        if (s.stateSlug() != null) {
+            String stateUrl = baseUrl + "/states/" + s.stateSlug();
+            items.add(listItem(2, s.stateName(), stateUrl));
+            if (s.district() != null) {
+                items.add(listItem(3, s.district().name(), stateUrl + "/" + s.district().slug()));
+            }
+        }
+        items.add(listItem(items.size() + 1, s.name(), url));
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", items);
+        return data;
+    }
+
+    /** FAQPage data for the questions the profile page shows under "Quick answers"; null when there are none. */
+    static Map<String, Object> faqPage(List<SchoolFaqService.Faq> faqs) {
+        if (faqs.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "FAQPage");
+        data.put("mainEntity", faqs.stream().map(f -> Map.of(
+                "@type", "Question",
+                "name", f.question(),
+                "acceptedAnswer", Map.of("@type", "Answer", "text", f.answer()))).toList());
+        return data;
+    }
+
+    private static Map<String, Object> listItem(int position, String name, String url) {
+        Map<String, Object> item = new LinkedHashMap<>();
+        item.put("@type", "ListItem");
+        item.put("position", position);
+        item.put("name", name);
+        item.put("item", url);
+        return item;
     }
 
     private String state(String stateSlug, String districtSlug, String baseUrl) {
@@ -230,7 +539,22 @@ public class SeoHeadService {
         String description = "%,d schools in %s district, %s, with board, classes, fees and admissions linked to "
                 .formatted(district.schoolCount(), district.name(), state.name()) + "official sources.";
         return tags(title, description, baseUrl + "/states/" + state.slug() + "/" + district.slug(), null,
-                district.schoolCount() == 0, null);
+                district.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
+    }
+
+    private String city(String stateSlug, String citySlug, String baseUrl) {
+        StateDto state = locationService.state(stateSlug);
+        if (!state.slug().equals(stateSlug)) {
+            throw new ResourceNotFoundException("State", stateSlug);
+        }
+        CityDto city = locationService.cities(state.code()).stream()
+                .filter(c -> c.slug().equals(citySlug)).findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
+        String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
+        String description = "%,d schools in %s, %s, with board, classes, fees and admissions linked to "
+                .formatted(city.schoolCount(), city.name(), state.name()) + "official sources.";
+        return tags(title, description, baseUrl + "/states/" + state.slug() + "/city/" + city.slug(), null,
+                city.schoolCount() < MIN_SCHOOLS_TO_INDEX, null);
     }
 
     private String board(String code, String baseUrl) {
@@ -256,7 +580,7 @@ public class SeoHeadService {
             description.append(' ').append(e.currentCycle()).append(" dates not announced yet.");
         }
         description.append(" Eligibility, pattern, syllabus and official papers.");
-        String url = baseUrl + "/exams/" + e.slug();
+        String url = baseUrl + "/exams/" + e.slug() + (PREP_PAGES.contains(e.slug()) ? "/guide" : "");
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
@@ -265,6 +589,76 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName(), "item", url)));
         return tags(title, description.toString(), url, null, false, data);
+    }
+
+    /** A Class VI preparation dashboard (JNVST, AISSEE): practice, mock tests and the study plan. */
+    private String prepPage(ExamDetailDto detail, String baseUrl) {
+        ExamSummaryDto e = detail.exam();
+        boolean aissee = "aissee".equals(e.slug());
+        String title = aissee
+                ? "AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan"
+                : "JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan";
+        String description = (aissee
+                ? "Free AISSEE Class 6 (Sainik School) preparation in English and Hindi: original practice questions for "
+                + "Mathematics, Intelligence, General Knowledge and Language, full 125-question mock tests, a study plan and "
+                + "progress tracking."
+                : "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
+                + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
+                + "progress tracking.") + (e.examDate() == null ? "" : (aissee ? " Entrance exam: " : " Selection test: ") + DAY.format(e.examDate()) + ".");
+        String url = baseUrl + "/exams/" + e.slug();
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
+                Map.of("@type", "ListItem", "position", 3, "name", e.shortName() + " preparation", "item", url)));
+        return tags(title, description, url, null, false, data);
+    }
+
+    /**
+     * "Best schools in {state or city}": the title carries the ranking year only when a published ranking covers the
+     * place; the description states the counts; places with too little behind them are noindex.
+     */
+    private String bestPlace(String slug, String baseUrl) {
+        BestPlacesService.Place p = bestPlacesService.place(slug);
+        String year = p.rankingSource() == null ? "" : " " + p.rankingSource().substring(p.rankingSource().lastIndexOf(' ') + 1);
+        String where = p.kind() == BestPlacesService.Kind.CITY ? p.name() + ", " + p.stateName() : p.name();
+        String title = "Best Schools in " + p.name() + year + ": Rankings and School Lists | " + SITE;
+        StringBuilder description = new StringBuilder("Best schools in ").append(where).append(": ");
+        if (p.ranked() > 0) {
+            description.append(p.ranked()).append(p.ranked() == 1 ? " school" : " schools").append(" ranked in ").append(p.rankingSource());
+            if (p.listed() > 0) description.append(" and ");
+        }
+        if (p.listed() > 0) description.append(p.listed()).append(" in SchoolDhundo's A-to-Z school lists");
+        if (p.ranked() == 0 && p.listed() == 0) description.append("no published ranking yet");
+        description.append(". Each rank is the publisher's own; compare schools and visit their official websites.");
+        String url = baseUrl + "/rankings/best-schools-in-" + p.slug();
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
+                Map.of("@type", "ListItem", "position", 3, "name", "Best schools in " + p.name(), "item", url)));
+        return tags(title, description.toString(), url, null, !p.indexable(), data);
+    }
+
+    /** A directory view: its own title and the number of schools in it; a view without schools is not a page. */
+    private String directoryCategory(PremierDirectoryDtos.Category c, String baseUrl) {
+        String url = baseUrl + "/rankings/" + c.slug();
+        String name = c.title().replace('’', '\'');
+        String title = name + (name.contains("India") ? ": " : " in India: ") + c.schools() + (c.schools() == 1 ? " School" : " Schools") + " | " + SITE;
+        String description = c.description().replace('’', '\'') + " Board, boarding, gender, classes and an approximate fee for each of the "
+                + c.schools() + " schools, with links to official websites.";
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "BreadcrumbList");
+        data.put("itemListElement", java.util.List.of(
+                Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
+                Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
+                Map.of("@type", "ListItem", "position", 3, "name", c.title().replace('’', '\''), "item", url)));
+        return tags(title, description, url, null, false, data);
     }
 
     /** Exams admitting to one class; classes without a published exam are not pages (noindex via not-found). */
@@ -302,8 +696,36 @@ public class SeoHeadService {
                 baseUrl + "/exams/state/" + state.slug(), null, own.isEmpty(), null);
     }
 
+    /** The home page's structured data: the site and its school search. */
+    /** Who runs the site: name, address, logo and how to reach it (the contact page; no personal address is published). */
+    private static Map<String, Object> organization(String baseUrl) {
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "Organization");
+        data.put("name", SITE);
+        data.put("url", baseUrl + "/");
+        data.put("logo", baseUrl + "/favicon.svg");
+        data.put("description", "Independent school discovery and entrance exam preparation platform for India.");
+        data.put("contactPoint", Map.of("@type", "ContactPoint", "contactType", "customer support", "url", baseUrl + "/contact"));
+        return data;
+    }
+
+    private static Map<String, Object> website(String baseUrl) {
+        Map<String, Object> search = new LinkedHashMap<>();
+        search.put("@type", "SearchAction");
+        search.put("target", baseUrl + "/schools?q={search_term_string}");
+        search.put("query-input", "required name=search_term_string");
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@context", "https://schema.org");
+        data.put("@type", "WebSite");
+        data.put("name", SITE);
+        data.put("url", baseUrl + "/");
+        data.put("potentialAction", search);
+        return data;
+    }
+
     private String tags(String title, String description, String canonical, String image, boolean noindex,
-                        Map<String, Object> jsonLd) {
+                        Object jsonLd) {
         StringBuilder h = new StringBuilder();
         h.append("<title>").append(html(title)).append("</title>\n");
         h.append(meta("name", "description", description));

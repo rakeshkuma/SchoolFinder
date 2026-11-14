@@ -2,8 +2,10 @@ package com.indiaschoolfinder.service.impl;
 
 import com.indiaschoolfinder.dto.school.BoardingProfileDto;
 import com.indiaschoolfinder.dto.school.BoardingProfileRequest;
+import com.indiaschoolfinder.dto.school.BoardingStatsDto;
 import com.indiaschoolfinder.entity.School;
 import com.indiaschoolfinder.entity.SchoolBoarding;
+import com.indiaschoolfinder.enums.GenderType;
 import com.indiaschoolfinder.enums.ResidentialSystem;
 import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
@@ -18,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -35,12 +36,6 @@ public class BoardingServiceImpl implements BoardingService {
         this.schoolRepository = schoolRepository;
         this.mapper = mapper;
         this.auditService = auditService;
-    }
-
-    @Override
-    public Optional<BoardingProfileDto> profile(Long schoolId) {
-        schoolRepository.findByIdAndActiveTrue(schoolId).orElseThrow(() -> new ResourceNotFoundException("School", schoolId));
-        return boardingRepository.findById(schoolId).map(mapper::toBoardingDto);
     }
 
     @Override
@@ -94,5 +89,23 @@ public class BoardingServiceImpl implements BoardingService {
             counts.put((ResidentialSystem) row[0], (Long) row[1]);
         }
         return counts;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public BoardingStatsDto stats() {
+        Map<String, Long> byState = new java.util.TreeMap<>();
+        long total = 0;
+        for (Object[] row : boardingRepository.countActiveByState()) {
+            byState.put((String) row[0], (Long) row[1]);
+            total += (Long) row[1];
+        }
+        Map<GenderType, Long> byGender = new EnumMap<>(GenderType.class);
+        long notStated = 0;
+        for (Object[] row : boardingRepository.countActiveByGender()) {
+            if (row[0] == null) notStated += (Long) row[1];
+            else byGender.put((GenderType) row[0], (Long) row[1]);
+        }
+        return new BoardingStatsDto(total, byState, byGender, notStated, countsBySystem());
     }
 }

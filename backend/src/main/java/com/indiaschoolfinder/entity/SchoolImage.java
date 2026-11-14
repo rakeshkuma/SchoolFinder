@@ -79,4 +79,12 @@ public class SchoolImage extends AuditableEntity {
     private VerificationStatus verificationStatus = VerificationStatus.UNVERIFIED;
 
     private LocalDate lastVerifiedDate;
+
+    /** The author or photographer as named at the source (the display credit may add the site, e.g. "via Wikimedia Commons"). */
+    @Column(length = 200)
+    private String author;
+
+    /** The image's title at the source, e.g. the Commons file name. */
+    @Column(length = 300)
+    private String title;
 }

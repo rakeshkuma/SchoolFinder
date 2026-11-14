@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
-const SITE = 'India School Finder';
+const SITE = 'SchoolDhundo';
 
 /** Sets the page title and, when given, the meta description (restored to the previous one on leaving). */
 export function useDocumentTitle(title: string | undefined, description?: string) {
   useEffect(() => {
-    document.title = title ? `${title} · ${SITE}` : `${SITE} — Discover Schools. Compare Fees. Prepare for Success.`;
+    document.title = title ? `${title} · ${SITE}` : `${SITE} – Discover Schools, Rankings, Admissions & Exam Preparation`;
   }, [title]);
   useEffect(() => {
     if (!description) return undefined;

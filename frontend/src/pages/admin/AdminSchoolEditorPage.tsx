@@ -115,7 +115,7 @@ export function AdminSchoolEditorPage() {
         </div>
         {school && (
           <div className="flex items-center gap-2">
-            <VerificationBadge status={school.verificationStatus} date={school.lastVerifiedDate} />
+            <VerificationBadge status={school.verificationStatus} date={school.lastVerifiedDate} admin />
             {!school.active && <span className="chip bg-red-50 text-red-700">Inactive</span>}
             {school.active && <Link to={`/schools/${school.slug}`} className="btn-secondary py-1.5 text-xs">View public page</Link>}
           </div>

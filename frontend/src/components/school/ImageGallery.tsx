@@ -20,8 +20,10 @@ export function ImageGallery({ images }: { images: SchoolImage[] }) {
   return (
     <div>
       <figure className="card relative overflow-hidden">
-        <img src={current.url} alt={current.altText} onError={() => hide(current.id)}
-          className="max-h-[480px] w-full bg-slate-100 object-contain" />
+        {/* The whole photo, uncropped, in a frame that stays the same size from one photo to the next. */}
+        <div className="school-image school-image--whole">
+          <img src={current.url} alt={current.altText} onError={() => hide(current.id)} />
+        </div>
         {current.illustrative && (
           <span className="absolute left-3 top-3 rounded bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900">
             Illustration, not a photo of this school
@@ -39,9 +41,8 @@ export function ImageGallery({ images }: { images: SchoolImage[] }) {
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {shown.map((img, i) => (
             <button key={img.id} type="button" onClick={() => setActive(i)} aria-label={`Show photo ${i + 1}`}
-              className={`h-16 w-24 flex-none overflow-hidden rounded-lg border-2 ${img.id === current.id ? 'border-brand-600' : 'border-transparent'}`}>
-              <img src={img.thumbnailUrl ?? img.url} alt="" loading="lazy" onError={() => hide(img.id)}
-                className="h-full w-full object-cover" />
+              className={`school-image w-28 flex-none rounded-lg border-2 ${img.id === current.id ? 'border-brand-600' : 'border-transparent'}`}>
+              <img src={img.thumbnailUrl ?? img.url} alt="" loading="lazy" onError={() => hide(img.id)} />
             </button>
           ))}
         </div>

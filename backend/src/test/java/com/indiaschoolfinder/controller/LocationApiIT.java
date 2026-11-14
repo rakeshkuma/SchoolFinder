@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,6 +41,19 @@ class LocationApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void referenceListsMayBeCachedBriefly() throws Exception {
+        // Fetched on every page load and rarely changed: browsers may keep them for five minutes. Everything else
+        // keeps Spring Security's no-store default.
+        for (String path : new String[]{"/api/v1/locations/states", "/api/v1/locations/cities/all", "/api/v1/boards",
+                "/api/v1/classes", "/api/v1/rankings/sections", "/api/v1/directory/order-rules"}) {
+            mockMvc.perform(get(path)).andExpect(status().isOk())
+                    .andExpect(header().string("Cache-Control", "max-age=300, public"));
+        }
+        mockMvc.perform(get("/api/v1/schools/search")).andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", containsString("no-store")));
+    }
+
+    @Test
     void schoolsAnywhereInIndiaGetStateAndDistrictReferences() throws Exception {
         long id = lucknowSchool("City Montessori Test School", "Lucknow", Map.of("udiseCode", "09270100101",
                 "management", "PRIVATE_UNAIDED", "affiliationNumber", "2130001"));
@@ -61,6 +75,13 @@ class LocationApiIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         mockMvc.perform(get("/api/v1/locations/cities").param("state", "uttar-pradesh"))
                 .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].slug").value("lucknow"))
+                .andExpect(jsonPath("$[0].schoolCount").value(2));
+        // Every city in India, with its state for the city page's address.
+        mockMvc.perform(get("/api/v1/locations/cities/all"))
+                .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].stateSlug").value("uttar-pradesh"))
+                .andExpect(jsonPath("$[0].stateName").value("Uttar Pradesh"))
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         // Creating a district is an audited administrative change.
         mockMvc.perform(get("/api/v1/admin/audit-log").header("Authorization", adminToken()))

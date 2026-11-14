@@ -1010,6 +1010,10 @@
             "url": "https://exams.nta.nic.in/sainik-school-society/"
           },
           {
+            "label": "AISSEE-2027 public notice (PDF)",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+          },
+          {
             "label": "AISSEE-2026 information bulletin (PDF)",
             "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
           },
@@ -1019,6 +1023,10 @@
           }
         ],
         "sources": [
+          {
+            "label": "NTA public notice, 3 Nov 2026 (AISSEE-2027 schedule)",
+            "url": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+          },
           {
             "label": "AISSEE-2026 information bulletin (PDF)",
             "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
@@ -1061,7 +1069,7 @@
         "examDay": null
       },
       "displayOrder": 20,
-      "lastVerifiedOn": "2026-10-25",
+      "lastVerifiedOn": "2026-11-12",
       "verificationStatus": "VERIFIED",
       "published": true,
       "dates": [
@@ -1108,6 +1116,83 @@
           "startsOn": "2026-02-27",
           "confirmed": true,
           "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20260227175656.pdf"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "APPLICATION_START",
+          "label": "Online applications open",
+          "startsOn": "2026-11-03",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "APPLICATION_END",
+          "label": "Last date to apply and pay the fee (11:50 p.m.)",
+          "startsOn": "2026-12-02",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": "2026-12-06",
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "LATE_APPLICATION_END",
+          "label": "Late applications with a ₹500 late fee",
+          "startsOn": "2026-12-03",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": "2026-12-09",
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "OTHER",
+          "label": "Correction in particulars",
+          "startsOn": "2026-12-07",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "OTHER",
+          "label": "Exam city announced",
+          "startsOn": "2027-01-11",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "ADMIT_CARD",
+          "label": "Admit cards on the NTA website",
+          "startsOn": "2027-01-25",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
+        },
+        {
+          "endsOn": null,
+          "precision": "DAY",
+          "note": null,
+          "cycle": "AISSEE-2027",
+          "kind": "EXAM",
+          "label": "Entrance examination (pen and paper; Class VI 150 minutes in 13 mediums, Class IX 180 minutes in English)",
+          "startsOn": "2027-01-31",
+          "confirmed": true,
+          "sourceUrl": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
         }
       ],
       "notices": [
@@ -1159,6 +1244,13 @@
           "title": "Inviting Online Application for All India Sainik Schools Entrance Examination (AISSEE)-2026",
           "publishedOn": "2025-10-10",
           "url": "https://nta.ac.in/Download/Notice/Notice_20251010181643.pdf"
+        },
+        {
+          "cycle": "AISSEE-2027",
+          "kind": "NOTIFICATION",
+          "title": "Inviting Online Application for All India Sainik Schools Entrance Examination (AISSEE) – 2027",
+          "publishedOn": "2026-11-03",
+          "url": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
         }
       ]
     },
@@ -1545,7 +1637,7 @@
           "150 candidates (1.5 × seats) are called for a physical and psychological test, including age verification by a medical board.",
           "Final 100 admitted on merit and reservation, after verification of all certificates."
         ],
-        "fee": "Application is free. The school is funded by the State Government; guardians pay a subsidised fee by income group (A–E).",
+        "fee": "Application is free. The 2026-27 advertisement describes the school's education as free and residential, while the school's fee page says the State Government meets its costs and guardians pay a subsidised fee by income group (A–E). Ask the school which applies to new admissions.",
         "preparation": [
           {
             "step": "Check domicile and age documents early",

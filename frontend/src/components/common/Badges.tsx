@@ -24,7 +24,13 @@ const verificationStyles: Record<VerificationStatus, string> = {
   DISPUTED: 'bg-red-50 text-red-700',
 };
 
-export function VerificationBadge({ status, date }: { status: VerificationStatus; date?: string | null }) {
+/**
+ * A record's verification status. Visitors see only positive or cautionary states (verified, outdated, disputed); a
+ * record not yet checked by an editor shows nothing, since its source is linked beside it. Admin screens pass `admin`
+ * to see every state.
+ */
+export function VerificationBadge({ status, date, admin = false }: { status: VerificationStatus; date?: string | null; admin?: boolean }) {
+  if (status === 'UNVERIFIED' && !admin) return null;
   const title = status === 'VERIFIED' && date ? `Verified on ${formatDate(date)}` : verificationLabel[status];
   return (
     <span className={`chip ${verificationStyles[status]}`} title={title}>
@@ -32,6 +38,31 @@ export function VerificationBadge({ status, date }: { status: VerificationStatus
       {verificationLabel[status]}
     </span>
   );
+}
+
+/**
+ * When a fee or admission fact was last confirmed, in words a parent trusts: verified by an editor on a date; or, before
+ * that, taken from the official document linked beside it and when it was last updated from it.
+ */
+export function TrustBadge({ status, verifiedOn, updatedOn, hasSource, kind = 'notice' }: {
+  status: VerificationStatus; verifiedOn?: string | null; updatedOn?: string | null; hasSource: boolean; kind?: 'notice' | 'schedule';
+}) {
+  if (status === 'VERIFIED') {
+    return (
+      <span className="chip bg-emerald-50 text-emerald-700" title="Checked by an editor against the official source">
+        ✓ Verified{verifiedOn ? ` ${formatDate(verifiedOn)}` : ''}
+      </span>
+    );
+  }
+  if (status === 'UNVERIFIED' && hasSource) {
+    const what = kind === 'schedule' ? 'Official fee schedule' : 'Official notice';
+    return (
+      <span className="chip bg-sky-50 text-sky-800" title={`Taken from the ${what.toLowerCase()} linked here. An editor has not re-checked it yet.`}>
+        {what}{updatedOn ? ` · updated ${formatDate(updatedOn.slice(0, 10))}` : ''}
+      </span>
+    );
+  }
+  return <VerificationBadge status={status} date={verifiedOn} />;
 }
 
 export function ProvisionalBadge() {
@@ -68,6 +99,18 @@ export function Stars({ rating, size = 'sm' }: { rating: number | null; size?: '
         <span className="text-slate-300">{'★'.repeat(5 - Math.ceil(rounded))}</span>
       </span>
       <span className="font-medium text-slate-700">{rating.toFixed(1)}</span>
+    </span>
+  );
+}
+
+/**
+ * The one label for anything paid: "Sponsored" on a promoted school or article, "Advertisement" on an ad unit. Paid
+ * placements always carry it, never sit inside rankings or school facts, and never change a rank or a fact.
+ */
+export function PaidLabel({ kind = 'Sponsored', className = '' }: { kind?: 'Sponsored' | 'Advertisement'; className?: string }) {
+  return (
+    <span className={`inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600 ring-1 ring-inset ring-slate-300 ${className}`}>
+      {kind}
     </span>
   );
 }

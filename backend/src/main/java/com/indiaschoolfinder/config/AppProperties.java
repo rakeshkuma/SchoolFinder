@@ -20,6 +20,8 @@ public class AppProperties {
     private String timezone = "Asia/Kolkata";
     /** Public https address of the site (PUBLIC_SITE_URL), used for absolute URLs in sitemaps; blank = request host. */
     private String publicSiteUrl = "";
+    /** Where contact form messages are also emailed, when email is configured. They are always saved for staff. */
+    private String contactInbox = "";
     private final Cors cors = new Cors();
     private final Jwt jwt = new Jwt();
     private final Ranking ranking = new Ranking();
@@ -31,6 +33,44 @@ public class AppProperties {
     private final Exams exams = new Exams();
     private final Account account = new Account();
     private final Mail mail = new Mail();
+    private final ImageDiscovery imageDiscovery = new ImageDiscovery();
+    private final Ocr ocr = new Ocr();
+
+    /**
+     * Optional OCR for scanned notices under document review. Off unless tesseractCommand is set (for example "tesseract",
+     * with the Hindi and English language data installed); without it, scans are flagged for the reviewer to transcribe.
+     */
+    @Getter
+    @Setter
+    public static class Ocr {
+        private String tesseractCommand = "";
+        private String languages = "hin+eng";
+        private Duration timeout = Duration.ofSeconds(60);
+        /** Pages beyond this are not rendered or read. */
+        private int maxPages = 30;
+
+        public boolean isConfigured() {
+            return tesseractCommand != null && !tesseractCommand.isBlank();
+        }
+    }
+
+    /**
+     * Searching Wikimedia Commons and Wikipedia for possible school photographs (admin only). Results are suggestions:
+     * nothing is stored until an administrator adds one, always as PENDING.
+     */
+    @Getter
+    @Setter
+    public static class ImageDiscovery {
+        private boolean enabled = true;
+        private String commonsApiUrl = "https://commons.wikimedia.org/w/api.php";
+        private String wikipediaApiUrl = "https://en.wikipedia.org/w/api.php";
+        /** Wikimedia asks API clients to identify themselves with a way to contact the operator. */
+        private String userAgent = "IndiaSchoolFinder/1.0 (school image licence review; https://github.com/rakeshkuma/SchoolFinder)";
+        private Duration connectTimeout = Duration.ofSeconds(5);
+        private Duration readTimeout = Duration.ofSeconds(10);
+        /** Width of the card thumbnail requested from Commons. */
+        private int thumbnailWidth = 640;
+    }
 
     @Getter
     @Setter
@@ -70,9 +110,9 @@ public class AppProperties {
         private int reviewsPerHour = 5;
         /** Suggested updates per client IP per hour. */
         private int updateSubmissionsPerHour = 10;
-        /** Sign-ups, verification resends and password-reset requests/uses per client IP per hour. */
-        private int accountEmailsPerHour = 10;
         private int publicWritesPerMinute = 60;
+        /** New guest leaderboard participants per address and hour (a classroom may share one address). */
+        private int participantJoinsPerHour = 60;
         private int suggestionsPerMinute = 120;
     }
 
@@ -128,14 +168,9 @@ public class AppProperties {
         private String linkBaseUrl = "";
         /** Version of the Terms of Service and Privacy Policy that new members accept. */
         private String termsVersion = "2026-10-27";
-        private Duration verificationTtl = Duration.ofHours(24);
-        private Duration resetTtl = Duration.ofMinutes(30);
-        /** Failed sign-ins in a row before the account is locked for {@link #lockDuration}. */
-        private int maxFailedLogins = 5;
-        private Duration lockDuration = Duration.ofMinutes(15);
         /** Session lifetime with "Keep me signed in"; otherwise the session ends after server.servlet.session.timeout. */
         private Duration rememberMe = Duration.ofDays(30);
-        /** Members without a password (Google sign-in) must have signed in this recently to delete their account. */
+        /** Members must have signed in with Google this recently to delete their account. */
         private Duration recentSignIn = Duration.ofMinutes(10);
         private final Google google = new Google();
 
@@ -173,7 +208,7 @@ public class AppProperties {
         /** Load the verified exam catalogue file when the exam table is empty (first start of a new database). */
         private boolean seedOnEmpty = true;
         private String seedLocation = "classpath:seed/exams.json";
-        /** India School Finder practice quizzes and mock tests, loaded with the exam catalogue. */
+        /** SchoolDhundo practice quizzes and mock tests, loaded with the exam catalogue. */
         private String practiceSeedLocation = "classpath:seed/practice.json";
         /** Exam records not re-checked against their official sources for longer than this are flagged for review. */
         private int staleAfterDays = 60;

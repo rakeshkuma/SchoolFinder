@@ -1,0 +1,4763 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-jamnipali-n-t-p-c-west-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAMNIPALI N T P C KORBA ( WEST ) CHHATTISGARH\", PIN 495450."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bailadila-iron-ore-project-deposit-no-14",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAILADILA IRON ORE PROJECT DEPOSIT NO. 14 KIRANDUL DANTEWADA DISTT CHHATTISGARH\", PIN 494556."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-w-r-s-colony-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"W R S COLONY RAIPUR CHHATTISGARH\", PIN 492008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-s-e-c-l-kusmunda-project-area-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S E C L KUSMUNDA PROJECT KORBA AREA POST KORBA CHHATTISGARH\", PIN 495454."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-s-e-rly-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S. E. RLY BILASPUR CHHATTISGARH\", PIN 495004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-behind-jail-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND DISTT JAIL DURG CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-ambikapur-raghavpuri-ajirma-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBIKAPUR (SURGUJA) DISTT. SURGUJA P.O. RAGHAVPURI AJIRMA CHHATTISGARH\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-b-m-y-charoda-bhilai-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHARODA DISTT. DURG BHILAI CHHATTISGARH\", PIN 490025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-haatkachoura-jagdalpur-dt-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAATKACHOURA JAGDALPUR DT. BASTAR CHHATTISGARH\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-mahasamund",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B T I ROAD MAHASAMUND CHHATTISGARH\", PIN 493445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-s-e-rly-new-colony-dongargarh-dt",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S E RLY NEW COLONY DONGARGARH DT. RAJNANDGAON CHHATTISGARH\", PIN 491445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-chandmari",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANDMARI, NEAR CIRCUIT HOUSE, RAIGARH CHHATTISGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-pt-din-dayal-upadhyay-nagar",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PT.DIN DAYAL UPADHYAY NAGAR,SEC.IV,RAIPUR CHATTISGARH\", PIN 492010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bailadila-at-at-and-south-bastar-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAILADILA AT DANTEWADA AT & PO DANTEWADA SOUTH BASTAR CHHATTISGARH\", PIN 494449."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-jashpur",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JASHPUR NAGAR, DISTT.- JASPUR, CHHATTISGARH\", PIN 496331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-old-b-t-i",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLD B.T.I., SHIV NAGAR, KANKER, CHHTISGARH\", PIN 494334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-dhamtari",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE MUJGAHAN, POST OFFICE LOHARSI DISTT DHAMTARI, CHHATTISGARH- 493 773\", PIN 493776."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-khairagarh",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PIPARIYA, KHAIRAGARH, DISTT. RAJNANDGAON, CHHATTISGARH\", PIN 491881."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-cisf",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CISF, 3RD RBN CAMPUS, UTAI, BHILAI, DISTT. DURG, CHHATTISGARH\", PIN 491107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-plot-no-378-3-pendri",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJNANDGAON, PLOT NO. 378/3 VILLAGE PENDRI, TEHSIL RAJNANDGAON, (NEAR ITI AND POLYTECHNIQUE COLLEGE), DISTRICT RAJNANDGAON, CHHATTISGARH- 491 441.\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-janjgir-champa",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA, MUNUND ROAD KHOKHRA, DIST JANJGIR-CHAMPA\", PIN 495668."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-narayanpur",
+   "facts": {
+    "city": {
+     "name": "Narayanpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA NARAYANPUR BAKHRUPARA NEAR BANS DEPOT EDUCATION HUB NARAYANPUR\", PIN 494661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kurud",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST METRIC GIRLS HOSTEL, BEHIND GOVTH.SC. SCHOOL MEGHA ROAD, KURUD, PHON NO.07705223845 DISTRICT- DHAMTARI, CHHATTISGARH 493663\", PIN 493663."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bijapur",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA BIJAPUR, FIRST FLOOR OF D.A.V. MUKHYAMANTRI PUBLIC SCHOOL, MANJHIGUDA BIJAPUR (C.G.) - 494444\", PIN 494444."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-saraipali",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O GOVT. GIRLS HIGHER SECONDARY SCHOOL, NEAR TEHSIL OFFICE, MAIN ROAD, SARAIPALI, DIST. MAHASAMUND C.G.\", PIN 493558."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-naya-raipur",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA NIGHT SHELTER BUILDING VILL.RAKHI,SECTOR-25,NAYA RAIPUR (C.G)\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-gc-crpf-bilaspur",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3300150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BILASPUR, BILASPUR\", PIN 495112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kondagaon",
+   "facts": {
+    "city": {
+     "name": "Kondagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320496",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA KONDAGAON , OLD JANPAD PRATHMIK SCHOOL , MAIN ROAD KONDAGAON 494226\", PIN 494226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-jawahar-navodaya-vidyalya-malhar",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAVODAYA VIDYALYA VILLAGE MALHAR DISTT. BILASPUR CHHATTISGARH-495551.\", PIN 495551."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-mana-camp-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O MANA CAMP DISTT RAIPUR CHHATTISGARH\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-borai-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORAI DISTT DURG CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-badhiyatola-dongargarh-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BADHIYATOLA DONGARGARH RAJNANDGAON CHHATTISGARH\", PIN 491445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-barsoor-bodh-ghat-colony-south-bastar",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARSOOR BODH GHAT COLONY SOUTH BASTAR DISTT. DANTEWADA CHHATTISGARH\", PIN 494441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-bhupdevpur-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHUPDEVPUR DISTT RAIGARH CHHATTISGARH\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-basdei-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BASDEI DISTT. SURAJPUR CHHATTISGARH\", PIN 497231."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-nh-06-saraipali-chhattisgarh",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH 06 SARAIPALI MAHASAMUND CHHATTISGARH\", PIN 493558."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-salora",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SALORA, POST DARRA BHATA, TH-KATGHORA, DISTT. KORBA, CHHATTISGARH\", PIN 495445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-chisda-pendri-via-birra-janjgir-champa",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHISDA POST PENDRI VIA BIRRA DISTT JANJGIR CHAMPA CHATTISGARH\", PIN 495661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jaawahar-navodaya-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KURUD DISTT DHAMTARI CHHATTISGARH\", PIN 493663."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-dhoridand",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE- DHORIDAND, POST-HARRADANDH VIA- KUNKURI, DISTT. JASHPUR, CHATTISGARH\", PIN 496225."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-govindpur",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVINDPUR, DISTT. KANKER, CHHATTISGARH\", PIN 494334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-udiyakalan",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UDIYAKALAN, DISTT. KABIRDHAM, CHHATTISGARH\", PIN 491995."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-sukma",
+   "facts": {
+    "city": {
+     "name": "Sukma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHINDGARH, DISTT. SUKMA\", PIN 494111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-bemetara-cg",
+   "facts": {
+    "city": {
+     "name": "Bemetara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAVODAYA VIDYALAYA BEMETARA, VILLAGE KHILORA, DISTRICT- BEMETARA (C.G.)\", PIN 491335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-balod-c-g",
+   "facts": {
+    "city": {
+     "name": "Balod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLD TOWN HALL, COLLECTORATE BUILDING, FOWWARA CHOWK, JAWAHAR NAVODAYA VIDYALYA BALOD, DISTT BALOD\", PIN 491226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-surguja",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAVODAYA VIDYALAYA, VILL- KHALIBA, AMBIKAPUR\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-lawan",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-LAWAN, TEH-BALODABAZAR, THANA-KASDOL\", PIN 493526."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-kondagaon",
+   "facts": {
+    "city": {
+     "name": "Kondagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3340050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIKASH NAGAR POST KONDAGAON\", PIN 494226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mds-international-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330573",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STREET NO.1, , V.V. VIHAR MOWA, RAIPUR\", PIN 492004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-dharamjaigarh",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320193",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO-1, DHARAMJAIGARH COLONY, POST-SHAHA PUR, DHARAMJAIGARH, DIST- RAIGARH (C.G) PIN-496 116\", PIN 497224."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-uller",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320198",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ULLER BLOCK, BHOPAL PATNAM DISTT, BIJAPUR, CHATTISGARH\", PIN 497101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-jabanga-edu-city",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320225",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JABANGA EDU CITY, POST, DANTEWADA, CHHATTISGARH\", PIN 494441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-kharmora",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320228",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARMORA, BLOCK & POST - KORBA, CHHATTISGARH\", PIN 495682."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-kumhari",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320249",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUMHARI, MARWAHI, DISTT. BILASPUR, CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-pali",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320250",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK. PALI, POST SAILA, DISTT KORBA, CHHATTISGARH\", PIN 495449."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-sarbha-ara",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARBHA ARA, GAURELLA, BILASPUR, CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-kurkai",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320259",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KURKAI, BLOCK PENDRA, BLOCK, BILASPUR, CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-mokhpal",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOKHPAL, BLOCK- KATEKALYAN, AT/POST- MOKHPAL, VIA- NAKULNAR, DIST. DANTEWADA, CHHATTISGARH\", PIN 494552."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-chhote-mudpar",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320276",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHOTE MUDPAR, POST-BHAINAPARA TEHSIL-KHARSIA, RAIGARH, CHATTISGARH\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residentail-school-sanna",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320285",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE & POST SANNA, BLOCK BAGICHA, DISTT. JASHPUR\", PIN 496336."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-pratappur",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320287",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EKLAVYA MODEL RESIDENTIAL SCHOOL PRATAPPUR DIST SURAJPUR 497223\", PIN 497223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-odgi",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320288",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EKLAVYA MODEL RESIDENTIAL SCHOOL ODGI, BLOCK ODGI DISTRICT SURAJPUR C.G 497231\", PIN 497231."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-bijapur",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320289",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EKLAVYA MODEL RESIDENTIAL SCHOOL BIJAPUR, POST-BIJAPUR, DIST.-BIJAPUR\", PIN 494444."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-bhairamgarh",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320292",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EKLAVYA MODEL RESIDENTIAL SCHOOL BHAIRAMGARH, POST+TEH.-BHAIRAMGARH, DIST.-BIJAPUR(C.G.) 494450\", PIN 494450."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-schook-dantewada",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320462",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HUDKO COLONY, DANTEWADA\", PIN 494449."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklvaya-model-residential-school-gholeng",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320463",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK- JASHPUR, DISTT.- JASHPUR\", PIN 496338."
+     }
+    }
+   }
+  },
+  {
+   "slug": "emrs-kansabel",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320464",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK- KANSABEL, DISTT.-JASHPUR\", PIN 496223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "joint-eklavya-model-residential-school-baysi",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320466",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL DHARAMJAIGARH, VIA RAIGARH\", PIN 496116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-atmanand-government-english-school-pali",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320475",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL - PALI, DISTRICT - KORBA (C.G.)\", PIN 495449."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-atmanand-govt-excellent-eng-med-school",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320476",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIST. SURAJPUR, CHHATTISHGARH\", PIN 497223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-atmanand-govt-english-school-hardibajar",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320477",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PALI BLOCK, KORBA\", PIN 495446."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-parwatipur",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320478",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK PREMNAGAR, DIST SURAJPUR C.G PIN CODE 497333\", PIN 497333."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-atmanand-government-english-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320479",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO-14, KORBA\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-adarsh-awasiy-vidyalay-bastanar",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320483",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AC COLLECTRATE OFFICE JAGDALPUR BASTAR, PRINCIPAL EKLAVYA ADARSH AWASIY VIDYALAY\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-mohla",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320488",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND JANPAD PANCHAYAT MOHLA, VILL& POST- MOHLA DIST- RAJNANDGAON\", PIN 491666."
+     }
+    }
+   }
+  },
+  {
+   "slug": "joint-eklavya-model-residential-school-petla-sitapur",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320489",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GHANGHRI, AMBIKAPUR\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-mainpur",
+   "facts": {
+    "city": {
+     "name": "Gariaband",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320491",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK MAINPUR, DISTRICT-GARIABAND\", PIN 493888."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gemrs-chharratangar",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320495",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK- GHARGHODA,, DIST.- RAIGARH,\", PIN 496111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-sahanpur-lundra",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320498",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CURRENTLY OPRATED VILL-GHANGHRI , BLOCK-AMBIKAPUR, DISTT-SURGUJA\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-lailunga",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3320499",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE HEERAPUR POST RAJPUR , TEHSIL LAILUNGA DISTRICT RAIGARH, STATE CHHATTISGARH\", PIN 496113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-g-m-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR VI BHILAI DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-p-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR X BHILAI NAGAR DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bailadila-iron-ore-project-s-sec-sch",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KIRANDUL DANTEWADA CHHATTISGARH\", PIN 494556."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-ispat-senior-secondary-public-school",
+   "facts": {
+    "city": {
+     "name": "Balod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJHARA MINES DIST BALOD, CHHATTISGARH\", PIN 491228."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmala-english-medium-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Balod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DALLI RAJHARA BALOD DISTT CHHATTISGARH\", PIN 491228."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-a-c-c-jamul",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A C C JAMUL DURG DISTT CHHATTISGARH\", PIN 490024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-risali-sector-bhilai-dt",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RISALI SECTOR BHILAI DT. DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-pragati-nagar-n-t-p-c-jamnipali",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST PRAGATI NAGAR N T P C JAMNIPALI KORBA CHHATTISGARH\", PIN 495680."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ambuja-vidya-peeth",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. & POST- RAWAN, DIST. BALODA BAZAR, BHATAPARA,\", PIN 493331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-vasant-vihar-secl-seepat-road",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VASANT VIHAR SECL SEEPAT ROAD BILASPUR CHHATTISGARH\", PIN 495006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-gevra-project-secl",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GEVRA PROJECT ( SECL ) DISTT. KORBA CHHATTISGARH\", PIN 495452."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sankara-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STREET 2 SECTOR X BHILAI DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-6",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECL P.O. KUSMUNDA KORBA DISTT: BILASPUR CHHATTISGARH\", PIN 495454."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tata-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TATA STEEL CEMENT DIVISION SONADIH P.O.RASEDA VIA BALODA BAZAR DISTT: RAIPUR CHHATTISGARH\", PIN 493332."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-ganga-educational-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARDAHA PO MANDHER RAIPUR CHHATTISGARH\", PIN 493111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "menndnite-eng-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHAMTARI RAIPUR CHHATTISGARH\", PIN 493773."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-nehru-nagar-bhilai",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEHRU NAGAR BHILAI DURG CHHATTISGARH\", PIN 490020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-aditya-birla-public-school-grasim-vihar-rawan",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRASIM VIHAR P.O.RAWAN BALODA BAZAR CHHATTISGARH\", PIN 493196."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-aditya-birla-public-school-hirmi-tahsil-simga",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIRMI TAHSIL SIMGA RAIPUR CHHATTISGARH\", PIN 493195."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-pub-school",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BACHELI DISTT DANTEWADA CHHATTISGARH\", PIN 494553."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radiant-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R D NAGAR(NIMORA) P.O. BENDRI RAIPUR CHHATTISGARH\", PIN 493661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-mangla",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. MANGLA BILASPUR CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-amdinagar-hudco-bhilai",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMDINAGAR HUDCO BHILAI DISTT DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LODHI PARA KAPA RAIPUR CHHATTISGARH\", PIN 492005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "yugantar-public-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRAM PARRI G E ROAD RAJNANDGAON CHHATTISGARH\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-alopi-nagar-tatibandh",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ALOPI NAGAR TATIBANDH RAIPUR CHHATTISGARH\", PIN 492099."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-harkewal-vidyapeeth-high-sch",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMNAKALA AMBIKAPUR SURGUJA CHHATTISGARH\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-secl-chhal",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECL CHHAL DISTT. RAIGARH CHHATTISGARH\", PIN 496665."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-p-sr-sec-school-no-2",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330035",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 6 BHILAI DURG CHHATTISGARH\", PIN 490001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ma-sarada-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STREET 4 SEC 9 BHILAI DISTT DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bsp-sr-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC VII BHILAI NAGAR DISTT DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "o-p-jindal-school-patrapali",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PB NO 16 KHARSIA ROAD RAIGARH CHHATTISGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bethany-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORSI DURG CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-convent-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOLY CROSS CONVENT SR. SEC. SCHOOL, PATPARIYA, AMBIKAPUR\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-shankaracharya-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAXMI NARAYAN MANDIR COMPLEX AMDI NAGAR HUDCO SECTOR VI BHILAI CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-vijaypur-deewanmuda-boirdadar",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIJAYPUR DEEWANMUDA BOIRDADAR RAIGARH CHHATTISGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-public-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO-26 RAMPUR, BEHIND LIC OFFICE ITI KORBA CHHATTISGARH\", PIN 495111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vishwadeep-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST BOX NO 15 DURG CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pranvananda-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIP ROAD PO DEVPURI RAIPUR CHHATTISGARH\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-junwani-road",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JUNWANI ROAD DURG CHATTISGARH\", PIN 490020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GURKUL NAGAR MAHARAJPUR KAWARDHA DISTT KABIRDHAM CHHATTISGARH\", PIN 491995."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mar-baselious-vidya-bhawan",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VAISHALI NAGAR PO SHANTI NAGAR BHILAI, DURG, CHHATTISGARH\", PIN 490002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurunanak-english-senior-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 6 BHILAI, DISTT DURG, CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-d-m-public-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BEHIND INDIRA STADIUM T P NAGAR KORBA CHHATTISGARH\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMERI ROAD BILASPUR CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "allons-public-school",
+   "facts": {
+    "city": {
+     "name": "Bemetara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL BIJABHAT BEMETARA DISTT BEMETARA CHHATTISGARH\", PIN 491335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-raipur-road-tifra",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BILASPUR RAIPUR ROAD TIFRA BILASPUR CHHATTISGARH\", PIN 495223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "carmel-primary-school-eng-medium",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBIKAPUR NAMANKALA DISTT SURGUJA CHHATTISGARH\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oriental-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MAHAMAYA TEMPLE AMBIKAPUR DISTT SURGUJA CHHATISGARH\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hasdeo-public-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MADANPUR GARH ROAD CHAMPA DISTT JANJGIR CHAMPA CHHATTISGARH\", PIN 495671."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kaager-valley-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP RAVI SHANKAR SHUKLA UNIVERSITY GYM, DOOMAR TALAB RAIPUR CHATTISGARH\", PIN 492010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-sargawan-road-saklo-ambikapur",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARGAWAN ROAD SAKLO AMBIKAPUR DISTT SURGUJA CHATTISGARH\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gandhi-memorial-hr-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO NANDINI DURG CHATTISGARH\", PIN 490036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lions-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CCI ROAD AKALTARA DIST- JANJGIR CHAMPA\", PIN 495552."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brillant-public-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MISSION HOSPITAL ROAD BILASPUR CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-jyoti-school",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GEEDAM ROAD RAJENDRA NAGAR WARD/DANTESWARI WARD, JAGDALPUR BASTER CHHATISGARH\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-semariya-baloda-bazar-road-chhatisgarh",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEMARIYA BALODA BAZAR ROAD RAIPUR CHHATISGARH\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "weidner-memorial-sr-sec-school-rajnandgaon",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAL BAGH DT RAJNANDGAON CHHATISGARH\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-krishnapuram",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRISHNAPURAM, DEOPURI-DUNDA, P.O. SEJBAHAR, DIST. RAIPUR, CHHATTISGARH\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-hearts-education-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CIVIL LINES, FINGESHWAR BADA, RAIPUR, CHATTISGARH\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bal-bharati-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NTPC, TEHSIL - SIPAT, DIST. BILASPUR\", PIN 495558."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BYRON BAZAR, DIST. RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-s-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JOSEPH'S TOWN, AMLIDHIHI, RAVIGRAM P.O., DISTT RAIPUR, CHHATTISGARH\", PIN 492006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chhattishgarh-pubilc-shcool",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"37,SARVODAYA COLONY,HEERA PUR,RAIPUR, CHHATTISGARH\", PIN 492099."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sharda-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330088",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR MASJID, RISALI SECTOR, BHILAI, DISTT. DURG , CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "neeraj-public-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR P.T.S.G.E.ROAD, DISTT RAJNANDGAON, CHHATTISGARH\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shakuntala-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMNAGAR BHILAI, DISTT DURG, CHHATTISGARH\", PIN 490023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-vikash-next-gen-school",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HALBA KACHORA, ADAWAL, JAGDALPUR, DISTT BASTAR, CHHATTISGARH\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-thomas-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PRAGATI NAGAR, SECL DIPKA, KORBA,CHATTISGRAH\", PIN 495452."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-city-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANSKAR CITY THAKURTOLA G.E. ROAD, DISTT RAJNANDGAON, CHHATTISGARH\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "o-p-jindal-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"URJANAGAR, TIHALIRAMPUR, POST- TAMNAR TEHSIL-GHARGHODA DIST.-RAIGARH, CHHATTISGARH\", PIN 496108."
+     }
+    }
+   }
+  },
+  {
+   "slug": "monnet-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330097",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MONNET MARG, MANDIR HASAUD, DISTT & TEH. RAIPUR, CHATTISGARH-492101\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-vikash-concept-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INDIAN SCHOOL, ATTARMUDA,RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maitri-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RISALI SECTOR, BHILAI, DURG, C.G.\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dronacharya-public-school-new-rajendra-nagar",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW RAJENDRA NAGAR RAIPUR, DHARSIVA\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-vincent-pallotti-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANGLA ROAD, P.B. NO. 18, BILASPUR, CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-michael-s-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMBHATA, RAIGARH P.O., DISTT RAIGARH CHHATTISGARH-496001\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-john-s-english-medium-school-kharsia",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARSIA, P.O. ANJOREPALI, RAIGARH, CHHATTISGARH\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-vincent-pallotti-school-2",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PODIBAHAR,RAVISHANKAR SHUKLA NAGAR, KORBA, CHHATTISGARH\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "national-convent-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330107",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHILAI - 3 , UMDA ROAD .P.O-BHILAI, DISTT DURG, CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "beacon-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KORBA, KATGHORA SHAKTI NAGAR, CHHATISGARH.\", PIN 495452."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-secl-korba",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JRC COMPLEX , SECL KORBA, DISTT KORBA, CHHATTISGARH\", PIN 495679."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guardian-and-guide-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330110",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHANUHARDERA, DISTT & TEH. RAIGARH, CHHATTISGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "daffodils-english-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOUSING BOARD COLONY,KOTA, RAIPUR DISTT, CHHATTISGARH\", PIN 492010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mother-s-pride-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAMHARIA PATAN, DURG\", PIN 491111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "scholars-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CIVIL LINES,RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hariram-gattani-memorial-jay-bharat-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT & POST: JANJGIR, DISTRICT: JANJGIR -CHAMPA, CHHATTISGARH\", PIN 495668."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsh-vidyalalya-adarsh-nagar-mowa-raipur-c-g",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330118",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ADARSH VIDYALAYA, MOWA,RAIPUR\", PIN 492007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-vivekananda-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO.16-NEW SHANTI VIHAR COLONY DANGANIA ,RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sachdeva-international-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHUSERA, RAIPUR(C.G.)\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330121",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PENSIONBADA. RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-era-progressive-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMPUR, BEHIND TEHSILOFFICE,KORBA,CHHATTISGARH\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-vaishali-nagar-police-chowki",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330124",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR VAISHALI NAGAR POLICE CHOWKI, SUNDER NAGAR, POST - SUPELA, BHILAI, DIST - DURG (C.G.)\", PIN 490023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-gram-banbhedi",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330126",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRAM - BANBHEDI, NAGPUR ROAD, N.H. 6, RAJNANDGAON\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-ispat-public-school-nandini",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NANDINI TOWNSHIP, NANDINI MINES AREA, DURG.\", PIN 490036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vishva-vedanta-school-behind-opel-show-room-kumhari-durg-c-g-pin-490044",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VISHVA VEDANTA SCHOOL BEHIND OPEL SHOW ROOM KUMHARI DURG(C.G.) PIN-490044\", PIN 490042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-public-school-orrisa-road",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330131",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ORRISA ROAD, GARUMARIA, BODATIKRA, RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-aditya-birla-public-school-baikunth",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.- BAIKUNTH, TEHSIL-TILDA, DISTT. RAIPUR-493116, CHHATISGARH\", PIN 493116."
+     }
+    }
+   }
+  },
+  {
+   "slug": "weidner-memorial-hr-sec-school-mahasamund",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WEIDNER MEMORIAL HR. SEC., SCHOOL, MAHASAMUND\", PIN 493445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jain-public-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEOPURI VILLAGE, RAIPUR,\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "milestone-academy",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330139",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MILESTONE ACADEMY, KHAPRI, DURG, CHHATTISGARH , PIN-491001\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vedic-international-school-patelpali-raigarh",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330142",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN ROAD , PATEL PALI,NH-216,RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-bilaspur",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330143",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRAM-KONI,NEAR GURU GHASI DAS UNIVERSITY, BILASPUR\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dashmesh-public-school-mg-road-ambikapur",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330145",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DASHMESH PUBLIC SCHOOL MANENDRAGARH ROAD PATPARIA AMBIKAPUR SURGUJA CHATTISGARH- 497001\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amresh-sharma-public-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BSI, DHANA, DURG (C.G.)\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jatan-devi-daga-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330147",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CIVIL LINES ,RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-the-gurukul",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330148",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAGDALPUR,KOLCHUR ROAD , VILLAGE - CHIDAIPADAR,BASTAR\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmal-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330149",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAL BAGH, JAGDALPUR, BASTAR.\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nirmala-higher-secondary-cbse-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOSABADI, DISTT.KORBA\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-h-memorial-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWAHAR NAGAR, INDUSTRIAL ESTATE, BHILAI-DURG\", PIN 490026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidhya-kunj-school",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST-LOHARSI,DIST-DHAMTARI\", PIN 493773."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-kotrapali",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330157",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE KOTRAPALI, JAMGAON ROAD, PO JURDA, RAIGARH,\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "m-g-m-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GAYATRI NAGAR, SHANKAR NAGAR P.O., RAIPUR (C.G.)\", PIN 492007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mona-modern-english-medium-school-road-sarangarh",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330161",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIGARH ROAD SARANGARH\", PIN 496445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "wisdom-academy",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330162",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAKHESHWAR WARD, SIHAWA ROAD, DHAMTARI\", PIN 493773."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-school-2",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330163",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJASEWAIYA KHURD, PITHORA P.O. 493551 MAHASAMUND DT. C.G.\", PIN 493551."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-ram-krishna-public-scool-kawardha",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE SINGANPURI POST KAWARDHA\", PIN 491995."
+     }
+    }
+   }
+  },
+  {
+   "slug": "academic-world-school",
+   "facts": {
+    "city": {
+     "name": "Bemetara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330168",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"&quot;VAKRANGEE&quot; NH-12A, VILLAGE-LOLESARA, BEMETARA, DISTT DURG (C.G.)\", PIN 491335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chavara-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kondagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330174",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KONDAGAON, DIST BASTAR, CHHATTISGARH\", PIN 494226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "milestone-public-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STATE HIGHWAY-5, RAJNANDGAON ROAD.\", PIN 491881."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-flower-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330177",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-2, DEENDAYAL UPADHAYAY NAGAR, RAIPUR\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-patricks-academy",
+   "facts": {
+    "city": {
+     "name": "Manendragarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ST.PATRICKS ACADEMY,VILL:-CHOUGHADA, MANENDRAGARH, DIST: KORIYA (C.G) 497442\", PIN 497442."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330181",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GHOLENG JASHPUR\", PIN 496338."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-high-school-sai-mangalam",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330182",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAI MANGALAM, PANDERIYA ROAD, MUNGELI BILASPUR CHATTISGARH\", PIN 495334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indus-world-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330183",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLANET CITY, VILL - MUJGAHAN, OLD DHAMTARI ROAD, RAIPUR (CG)\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiva-public-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330186",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DREAM CITY, UMDA ROAD, PATAN, BHILAI THREE, DURG\", PIN 490021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vicon-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330187",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHURKONI, TEKARI VILLAGE, NEAR VIDHAN SABHA, DISTT RAIPUR, CHHATTISGARH\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mayoor-school-3",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330189",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PRASADHANA , NEAR INTERNATIONAL CRICKET STADIUM, VILLEGE: UMARIYA, DIATRICT: RAIPUR, CHHATTISGARH\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dev-public-school",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330190",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BADHARKONA AT/PO-JASHPUR NAGAR\", PIN 496331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashoka-public-school-raipur-road-sarangah",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330191",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIPUR ROAD SARANGAH, RAIGARH\", PIN 496445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul-international-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330193",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR BERLA POLICE THANA DURG, BANSA,\", PIN 491332."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhilai-nair-samajam-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330194",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-8, BHILAI, DURG CHHATTISGARH\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-d-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330195",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINAKSHI NAGAR BORSI ROAD, DURG\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "heritage-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330198",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DURG BY PASS ROAD, HARI NAGAR\", PIN 490022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "abhyuday-school",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330199",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SARODHA CANAL ROAD, RAJNANDGAON ROAD, KAWARDHA DISTT, CHHATTISGARH\", PIN 491559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jain-public-school-korba",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330202",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAIN PUBLIC SCHOOL KORBA CHUNA BHATTI ROAD VILLAGE GODHI\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-english-medium-school-3",
+   "facts": {
+    "city": {
+     "name": "Dhamtari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330203",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RUDRI ROAD DHAMTARI\", PIN 493773."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-gujrati-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330204",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEC-4, DEVENDRA NAGAR, RAIPUR\", PIN 492004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-international",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330206",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR - 27,SLICE- I, NAYA RAIPUR\", PIN 492002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330207",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH 30,CANAL ROAD, MANA BASTI, RAIPUR\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-kawardha",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330208",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHARAJPUR KAWARDHA\", PIN 491995."
+     }
+    }
+   }
+  },
+  {
+   "slug": "davara-international-school-patewa",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330213",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL.+PO.- PATEWA, VIA- RAJIM, DISTT.- RAIPUR (C.G.)\", PIN 493885."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-delhi-public-school",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330214",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL- SAKALO, PRATAPUR ROAD , AMBIKAPUR DIST - SURGUJA\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nalanda-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330217",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KURUD, JAMUL DURG\", PIN 490024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-michaels-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330219",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOVINDPUR, KANKER DT. C.G 494334\", PIN 494334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lcit-public-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330224",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LCIT CHICHIRDA ROAD, BODARI NEAR HIGH COURT BILASPUR, C.G.\", PIN 495220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-sarona",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330227",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO. 70. SARONA, RAIPUR\", PIN 492010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhilai-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330229",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MARODA, BHILAI\", PIN 490001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peters-convent-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330230",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJNANDGAON,KHAIRGARH ROAD\", PIN 491445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sadhu-ram-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330232",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PRA PARISAR SURAJPUR DISTRICT SURAJPUR (CG)\", PIN 497229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "loyola-english-medium-school-kunkuri",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330233",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL/TOWN- KUNKURI, P.O. KUNKURI, TEHSIL- KUNKURI, DIST.- JASHPUR, CHHATTISGARH PIN- 496225\", PIN 496225."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adeshwar-public-school",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330234",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAMARGAON JAGDALPUR BASTAR C.G. 494001\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-rawatpura-sarkar-international-school-kumhari",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330235",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR POWER GRID, KUMHARI, DISTT - DURG (C.G.)\", PIN 490042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sun-rise-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330236",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT BISESARA, POST-DHOBGHATTI TEH-PANDARIYA, DIST-KAWARDHA (KABIRDHAM) (C.G.) 491559\", PIN 491559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jogpal-public-school-at-chidrapara",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330239",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT CHIDRAPARA, PATHALGAON DIST. JASHPUR CG 496118\", PIN 496118."
+     }
+    }
+   }
+  },
+  {
+   "slug": "neeraj-bajpayee-international-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330241",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRAM-BORI, KHAIRAGARH ROAD RAJNANDGAON , CHHATTISGARH\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-gurukul-international-school",
+   "facts": {
+    "city": {
+     "name": "Manendragarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330242",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N.H.43, VILLAGE LAI CAMPUS, AMBIKAPUR ROAD, MANENDRAGARH, DIST.-KOREA (C.G.) PIN CODE-497442\", PIN 497442."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivom-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330243",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANKRA, TEH.-PATAN, DISTT.-DURG, (C.G.)\", PIN 491111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bharat-mata-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330244",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARAT MATA SENIOR SECONDARY SCHOOL, TATIBANDH, RAIPUR. 492099\", PIN 492099."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-bahmanpali",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330249",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAHMANPALI, RAIGARH ROAD, KHARSIA, TEHSIL KHARSIA, DIST. RAIGARH\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-higher-secondary-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330253",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHANTINAGAR, SUPELA P.O., BHILAI, DURG DT, CG.\", PIN 490023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-rose-english-mediumschool",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330256",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P/0. PATHALGAON, DIST. JASHPUR (CHHATTISHGARH)\", PIN 496118."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-khopli-road",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330260",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHOPLI ROAD, WARD NO-14, UTAI-BHILAI, DISTRICT-DURG (CHHATTISGARH) 491107\", PIN 491107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "academic-brights-public-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330261",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - RAJGHATTA, KHARSIA, RAIGARH, CHHATTISGARH\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mm-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE:NAKATI, DHARAMPURA, NEAR SWAMI VIVEKANAND AIRPORT, RAIPUR, CHHATTISHGARH\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-rawatpura-sarkar-international-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330264",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHANELI, DHAMTARI ROAD, NH-43, RAIPUR, CHHATTISGARH - 492015\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-international-school-2",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330265",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL- BANARI, BILASPUR ROAD, DIST- JANJGIR-CHAMPA, CG PIN CODE:- 495668\", PIN 495668."
+     }
+    }
+   }
+  },
+  {
+   "slug": "alok-international-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330267",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHOBHA VATIKA, RAJGHATTA, PO-KHARSIA, DIST-RAIGARH(C.G.)\", PIN 496661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "academic-heights-public-school-tendudand",
+   "facts": {
+    "city": {
+     "name": "Manendragarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330270",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TENDUDAND, VIKASKHAND- MANENDRAGARH, DISTT- MANENDRAGARH-CHIRMIRI-BHARATPUR, CHATTISGARH\", PIN 497446."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jay-bharat-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330274",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT- BHILAI, PO- BALODA, DIST- JANJGIR-CHAMPA,CG.\", PIN 495559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ambition-public-school",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330277",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHUTPUR, PANDARIYA, DISTT-KAWARDHA (C.G.)\", PIN 491559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "north-eastern-public-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330279",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUNGELI ROAD, VILLAGE - JAROUNDHA, TAKHATPUR, DIST - BILASPUR\", PIN 495223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vichakshan-jain-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330280",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR KAIVALYA DHAM TEERTH, PO KUMHARI,DISTT DURG\", PIN 490042."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-kirandul",
+   "facts": {
+    "city": {
+     "name": "Dantewada",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330281",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAV PUBLIC SCHOOL, KIRANDUL, B.I.O.M., KIRANDUL COMPLEX, DIST - DANTEWADA\", PIN 494556."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-chnta-konta-hq-awapalli-blocfk-uso-gujarat",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330290",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHNTA KONTA HQ AWAPALLI BLOCFK USO DIST GUJARAT, BIJAPUR, CHATTISGARH\", PIN 497101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-kalamanjan",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330291",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALAMANJAN, ODGT, TEH & THANA, DISTT- SURAJPUR, MAIN ROAD, CHHATTISGARH\", PIN 497229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-deharguda-mainpur",
+   "facts": {
+    "city": {
+     "name": "Gariaband",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330297",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEHARGUDA BLOCK MAINPUR, POST. MAINPUR, DISTT. GARIABAND, CHATTISGARH\", PIN 493888."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-manjhi-gudd",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330301",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANJHI GUDD, BLOCK & DISTT, BIJAPUR, CHHATTISGARH\", PIN 494444."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-bagicha",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330305",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGICHA, DISTT- JASHPUR, CHHATISGARH\", PIN 496224."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-kansabel",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330307",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANSABEL, DISTT JASHPUR, CHHATTISGARH\", PIN 496224."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-tilishwa-and",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330313",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TILISHWA BLOCK & DISTT. SURAJPUR, CHHATTISGARH\", PIN 497229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-ponta",
+   "facts": {
+    "city": {
+     "name": "Sukma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330316",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PONTA, DISTT- SUKMA, CHHATTISGARH\", PIN 494111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-gondhi",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330317",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GONDHI, BILASPUR, CHHATTISGARH\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-melasnau",
+   "facts": {
+    "city": {
+     "name": "Bijapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330325",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MELASNAU, BLOCK & TEHSIL- BHAIRAMGARH, DISTT- BIJAPUR, CHHATTISGARH\", PIN 494228."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-murtonda",
+   "facts": {
+    "city": {
+     "name": "Sukma",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330330",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MURTONDA, SUKMA, DISTT., CHHATTISGARH\", PIN 494111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-tikuliya",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330333",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TIKULIYA, BLOCK. BHATAPARA, DISTT. BALODA BAZAR, CHHATTISGARH\", PIN 493332."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-dei-khurd",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330334",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEI KHURD, BLOCK, TAKHATPUR, DISTT. BILASPUR, CHHATTISGARH\", PIN 495330."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-chharchhed",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330336",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHARCHHED, TEHSIL. KASDOL, DISTT. BALODA BAZAR, CHHATTISGARH\", PIN 493332."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-birgaon",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330344",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIRGAON, (FULWARI)BLOCK & DISTT. MUNGELI, CHHATTISGARH\", PIN 495334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-mukhyamantri-public-school-jareli",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330345",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JARELI,(PENDRI), BLOCK, ATHARIA, DISTT. MUNGELI\", PIN 495334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-ispat-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR AYYAPPA TEMPLE, SECTOR-2, BHILAI DIST-DURG (CG)\", PIN 490001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-high-school-regd-office-chandin-chouk",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330354",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"REGD.OFFICE:CHANDIN CHOUK, JAGDALPUR BASTAR\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bharat-mata-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330356",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARAT MATA SR.SEC.SCHOOL, SECTOR 26, RAKHI, NAYA RAIPUR, C.G.\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "riverdale-world-school",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330357",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RWS ROAD, PITIYAZAR, MAHASAMUND\", PIN 493445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kent-international-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330358",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL JHEET BLOCK PATAN DIST DURG\", PIN 491111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "alpha-public-school",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330361",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPP. INDIAN OIL PETROL PUMP, RAIPUR ROAD, MUNGELI\", PIN 495334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mgm-public-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330363",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MGM PUBLIC SCHOOL STREET- 31 SHANTI NAGAR, BHILAI\", PIN 490026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "columbia-global-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330367",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE TEKARI, NEAR VIDHAN SABHA, RAIPUR (C.G.)\", PIN 493111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "leelas-public-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330368",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOTI PUR , TAH. PATAN ,DISTT.DURG (C.G)\", PIN 491111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "r-k-sarda-vidya-ashram",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330369",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R K SARDA VIDYA ASHRAM, OPPOSITE NEW POLICE STATION, MUJGAHAN, OLD DHAMTARI ROAD, VILLAGE - MUJGAHAN, POST - SEJBAHAR, DISTRICT - RAIPUR, STATE - CHHATTISGARH PIN CODE - 492 015\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-swaminarayan-gurukul-international-school-ntpc-lara-raigarh",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330372",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NTPC LARA TOWNSHIP PO-CHHAPORA TEHSIL:-PUSSORE DIST:RAIGARH(C.G)496440\", PIN 496440."
+     }
+    }
+   }
+  },
+  {
+   "slug": "msp-public-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330373",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MSP PUBLIC SCHOOL VILL - JUNADIH P.O. - JAMGAON DISTT- RAIGARH STATE- CHHATTISGARH PIN - 496001\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brilliant-public-school-stadium-road",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330374",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STADIUM ROAD, TULSI NAGAR SQUARE, KORBA\", PIN 495678."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maa-bharti-hr-sec-school-lormi-mungeli",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330375",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO 2 , JAWAHARLAL NEHRU WARD HARI VIHAR COLONEY , LORMI , MUNGELI\", PIN 495115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-tulsi",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330376",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRISHNA PUBLIC SCHOOL TULSI, NEAR CRPF CAMP, TULSI - BARADERA ROAD, TULSI, RAIPUR (C.G.)\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "theresian-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330380",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLD DHAMTARI ROAD, BORIYAKHURD, POST SUNDER NAGAR, RAIPUR\", PIN 492013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-jerome-miani-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330381",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAKELA -VILLAGE, AURDA - P.O., PUSSORE - BLOCK,RAIGARH - DISTRICT, PIN NO. 496100\", PIN 496100."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyanroshani-lok-kalyan-sanstha",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330382",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MUNUND ROAD KHOKHARA JANJGIR DIST JANJGIR CHAMPA CG PIN 495668\", PIN 495668."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-cross-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330385",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOLY CROSS SENIOR SECONDARY SCHOOL NEAR CHOUKSE ENG COLLAGE LALKHADHAN BILASPUR\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-the-rising-school-basna",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330386",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANSKAR THE RISING SCHOOL,PARASKOL,BASNA. DIST-MAHASAMUND\", PIN 493554."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dhaniram-memorial-public-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330388",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TUMAN ROAD BARPALI DISTRICT KORBA CHHATTISGARH\", PIN 495674."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sree-narayana-guru-vidya-bhavan-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330390",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STREET 29 SECTOR 4 BHILAI\", PIN 490001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chandroday-public-school",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330391",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGBAHARA ROAD,MAHASAMUND, DISTT:- MAHASAMUND,CHHATTISGARH ,PIN:- 493445\", PIN 493445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manka-public-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330393",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEHSIL ROAD, CHAMPA DIST-JANJGIR-CHAMPA CHATTISHGARH OIN-495671\", PIN 495671."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ahilya-international-school",
+   "facts": {
+    "city": {
+     "name": "Baloda Bazar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330394",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AHILYA INTERNATIONAL SCHOOL BALODA BAZAR VILLAGE-LAHOD\", PIN 493526."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-hari-public-school",
+   "facts": {
+    "city": {
+     "name": "Balod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330398",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT OTEBAND, DURG BALOD HIGHWAY, POST DAGANIYA, DISTRICT BALOD,491221,CHHATTISGARH\", PIN 491221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiva-public-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330400",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAITRI VIHAR, SUPELA, BHILAI\", PIN 490023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aaryan-public-school-champa-road",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330402",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KORBA, CHAMPA ROAD , URGA , KORBA\", PIN 495677."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-andrews-school-2",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330407",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DHAMNI POST CHAKARBHATA DISTT BILASPUR CHHATTISGARH\", PIN 495220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brilliant-public-school-seepat-road",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330408",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEEPAT ROAD, BAHATARAI, BILASPUR\", PIN 495006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jogpal-public-school-infront-of-sbi-bank",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330410",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INFRONT OF SBI BANK, TANGARGAON ROAD, KANSABEL, DISTT- JASHPUR CG 496223\", PIN 496223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivam-educational-academy",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330414",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"INDRAPRASTHA PHASE 2, RDA COLONY, RAIPURA, RAIPUR\", PIN 492013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsh-international-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330417",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A-4, SECTOR 30, NAYA RAIPUR\", PIN 492002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "savitri-bai-phule-educational-academy-saddu-raipur-cg",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330418",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAVIRTI BAI PHULE EDUCATIONAL ACADEMY SECTOR-5, HOUSING BOARD COLONY, SADDU, RAIPUR CG\", PIN 492014."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sanskar-vidhyapeeth",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330427",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE- KONARI BAHRDA ROAD POST-PISEGAON DISTRICT-DURG\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "unique-convent-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330428",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAIRBAR ROAD NEAR SHIV MANDIR AMBIKAPUR\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashoka-public-school-raipur-road",
+   "facts": {
+    "city": {
+     "name": "Kawardha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330429",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIPUR ROAD,VIIL.CHHIRAHA, POST- KAWARDHA,DISTT KABIRDHAM(KAWARDHA) CG\", PIN 491995."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-raipur",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330477",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIPUR, RAIPUR\", PIN 492099."
+     }
+    }
+   }
+  },
+  {
+   "slug": "achievers-international-school",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330478",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT. SURAJPUR, 497223\", PIN 497223."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-vidya-niketan-eng-med-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330479",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEVIGANJ ROAD , AMBIKAPUR\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-ring-road",
+   "facts": {
+    "city": {
+     "name": "Manendragarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330480",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RING ROAD, MANENDRAGARH\", PIN 497442."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-eugene-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330481",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAHSIL BILHA , DISTRICT BILASPUR\", PIN 495222."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-school-4",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330482",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CATHOLIC ASHRAM BOIRDADAR RAIGARH, CATHOLIC ASHRAM BOIRDADAR RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lotus-public-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330483",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JANJGIR, CHHATTISGARH\", PIN 495668."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amity-international-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330485",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 30, ATAL NAGAR, NAYA RAIPUR\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-jb-singh-memorial-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Rajnandgaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330486",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJNANDGAON, RAJNANDGAON\", PIN 491441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "paradise-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330487",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IMLIPARA, KANKER\", PIN 494334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "triloki-public-school",
+   "facts": {
+    "city": {
+     "name": "Korba",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330491",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATGHORA, KORBA\", PIN 495445."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cardinal-warriors",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330492",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW DHAMTARI ROAD, RAIPUR\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-shankara-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330493",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"URKURA ROAD BIRGAON RAIPUR CHHATTISGARH, URKURA ROAD BIRGAON RAIPUR CHHATTISGARH\", PIN 492003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivansh-international-school-kunra-dharsiwa",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330494",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUNRA DHARSIWA RAIPUR, ATAL AWAS KE PICHE KUNRA DHARSIWA RAIPUR\", PIN 493221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-john-s-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Gariaband",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330496",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHURA, GARIABAND\", PIN 493996."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mj-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330498",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOHKA, BHILAI\", PIN 490023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "arihant-academy",
+   "facts": {
+    "city": {
+     "name": "Balod",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330500",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHASRA NO. 842, 843/4, 843/5, AT VILL- BAGHMARA, TEHSIL- BALOD, DISTRICT- BALOD, CHHATTISGARH\", PIN 491226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-english-medium-school-pathalgaon",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330501",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PATHALGAON, DISTRICT JASHPUR\", PIN 496118."
+     }
+    }
+   }
+  },
+  {
+   "slug": "inspire-world-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330502",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK BILHA, BILASPUR\", PIN 495006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-new-india-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330504",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BELTUKRI , GANIYARI, DIST BILASPUR\", PIN 495112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "christel-house-india-learning-center",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330505",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAVA RAIPUR ATAL NAGAR, NEAR RAKHI SMART POLICE STATION\", PIN 492015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tagore-international-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330506",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAKRI, BILASPUR\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-marthoma-public-school",
+   "facts": {
+    "city": {
+     "name": "Janjgir",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330510",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JANJGIR, JANJGIR CHAMPA\", PIN 495554."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-and-moral-academic-public-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330512",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PARSADA, BILASPUR-RAIPUR ROAD, OPPOSITE MARUTI SUZUKI ARENA SHOWROOM, 1.5 KMS INSIDE\", PIN 495113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-s-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330514",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHANUPRATAPPUR, P.O. BHANUPRATAPPUR, KANKER\", PIN 494669."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mgm-model-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330515",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 17, NEAR MANTRALAYA & POLICE HEAD QUARTER, ATAL NAGAR NAYA RAIPUR\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shree-padmakshi-global-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330519",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN ROAD, NEAR OVER BRIDGE, USLAPUR, BILASPUR\", PIN 495001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "surya-smart-school",
+   "facts": {
+    "city": {
+     "name": "Jagdalpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330520",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAGDALPUR, DHARAMPURA, JAGDALPUR\", PIN 494001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-public-school-kutelabhata",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330521",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST-JEORA SIRSA, DIST-DURG, CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-nava-raipur",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330522",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-15, ATAL NAGAR, NAVA RAIPUR\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-rowghat-ispat-senior-secondary-public-school-antagarh",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330527",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR SEEMA FUELS KALGAON, ANTAGARH , DIST-KANKER, CG.\", PIN 494665."
+     }
+    }
+   }
+  },
+  {
+   "slug": "k-p-international-school-chattigirola",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330528",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT./POST- CHATTIGIROLA, TEH.- SARAIPALI, DIST.- MAHASAMUND\", PIN 493558."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aryan-world-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330529",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAIRPUR, RAIGARH, CHHATTISGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-ann-s-high-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330530",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHAL ROAD, GHARGHODA, DIST. - RAIGARH\", PIN 496111."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharshi-dayanand-arya-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330535",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR KALIBADI, SECTOR-06, BHILAI\", PIN 490006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramdarshan-public-school",
+   "facts": {
+    "city": {
+     "name": "Mahasamund",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330536",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SH-19, BAGBAHARA ROAD, JANGHORA, PITHORA, MAHASAMUND\", PIN 493551."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aadeshwar-academy-narayanpur",
+   "facts": {
+    "city": {
+     "name": "Narayanpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330537",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ITI ROAD, BANGLAPARA, NARAYANPUR\", PIN 494661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mother-s-pride-world-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330538",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO - 11, INFRONT OF CHAKARBHATA RAILWAY STATION , BODRI, BILASPUR\", PIN 495220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-joseph-convent-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Manendragarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330539",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TENDUDAND, NORTH JHAGRAKHAND, P.O. NORTH JHAGRAKHAND, MANENDRAGARH\", PIN 497446."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-janjgiri-bhilai-3",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330543",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. JANJGIRI BHILAI-3 , BHILAI, CHHATTISGARH\", PIN 490025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-sector-15-nava",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330547",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR-15 NAVA RAIPUR, PLOT NO.-EB/17A, ATAL NAGAR, NAYA RAIPUR\", PIN 492101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "raghav-public-school",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330548",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN ROAD KACHNA , NEAR AVINASH CHITWAN, RAIPUR (CG)\", PIN 492001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "academic-heights-public-school-dhusera",
+   "facts": {
+    "city": {
+     "name": "Raipur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330549",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DHUSERA, TEHSIL ABHANPUR, RAIPUR\", PIN 493661."
+     }
+    }
+   }
+  },
+  {
+   "slug": "krishna-vikash-techno-school",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330550",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DURG DHAMDHA ROAD, , GRAM - KHAPRI, INSIDE DEV SANSKRITI CAMPUS\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-alphonsa-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Kanker",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330551",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RATESARA, CHARAMA, DISTRICT KANKER, CHHATTISGARH\", PIN 494337."
+     }
+    }
+   }
+  },
+  {
+   "slug": "wisdom-the-global-world-school",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330552",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE JARAUNDHA, TAKHATPUR ROAD, BILASPUR\", PIN 495330."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jaycees-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Mungeli",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330554",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - CHATARKHAR , POST- NIRZAM, DISTRICT- MUNGELI\", PIN 495334."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-kharsa-no-241",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330557",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARSA NO.241,, JUNWANI,, TAL.DURG\", PIN 490020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-mamta-park-building-kashiram-chouk",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330558",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAMTA PARK BUILDING KASHIRAM CHOUK , GARHUMARIA ROAD, RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-e-techno-school-borsi",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330560",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO.190/5,190/6,190/7,, BORSI,, TAL.DURG\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-angel-public-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330562",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT/PO- TADOLA , BLOCK- PUSSORE, DIST.- RAIGARH\", PIN 496440."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-english-medium-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Jashpur Nagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330563",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHANTI BHAWAN, JASHPUR, DISTRICT JASHPUR\", PIN 496331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-khapri",
+   "facts": {
+    "city": {
+     "name": "Durg",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330565",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAPRI, DURG, CHHATTISGARH\", PIN 491001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Surajpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330566",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURAJPUR, GLOBAL PUBLIC SCHOOL SURAJPUR, SURAJPUR\", PIN 497229."
+     }
+    }
+   }
+  },
+  {
+   "slug": "uttam-international-school",
+   "facts": {
+    "city": {
+     "name": "Raigarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330569",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR KRISHI UPAJ MANDI, PATELPALI, RAIGARH\", PIN 496001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-s-public-school-5",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3330570",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE BAIMA SARKANDA, BILASPUR, CHHATTISGARH\", PIN 495006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-ambikapur",
+   "facts": {
+    "city": {
+     "name": "Ambikapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3380001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAINIK SCHOOL AMBIKAPUR; NEAR KANYA SHIKSHA PARISAR; BISHUNPUR ROAD\", PIN 497001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-east-central-railway-higher-secondary-school-no",
+   "facts": {
+    "city": {
+     "name": "Bilaspur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3380002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BUDHWARI BAZAR, BILASPUR, CHHATTISGARH-495004\", PIN 495004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-east-central-railway-mixed-higher-sec-school",
+   "facts": {
+    "city": {
+     "name": "Bhilai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3380003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BMY, ZONE-II, BMY CHARODA, BHILAI, DISTT. DURG, CHHATTISGARH\", PIN 490025."
+     }
+    }
+   }
+  }
+ ]
+}

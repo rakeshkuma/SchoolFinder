@@ -21,7 +21,4 @@ public interface SchoolReviewRepository extends JpaRepository<SchoolReview, Long
     /** [schoolId, avg(rating), count] for approved reviews. */
     @Query("select r.schoolId, avg(r.rating), count(r) from SchoolReview r where r.status = :status and r.schoolId = :schoolId group by r.schoolId")
     List<Object[]> aggregateForSchool(@Param("schoolId") Long schoolId, @Param("status") ReviewStatus status);
-
-    @Query("select r.schoolId, avg(r.rating), count(r) from SchoolReview r where r.status = :status group by r.schoolId")
-    List<Object[]> aggregateAll(@Param("status") ReviewStatus status);
 }

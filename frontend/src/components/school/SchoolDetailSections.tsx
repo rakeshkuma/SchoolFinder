@@ -12,7 +12,7 @@ const STAGES: SchoolStage[] = ['PRE_PRIMARY', 'PRIMARY', 'MIDDLE', 'SECONDARY', 
 export function ClassesTab({ school: s }: { school: SchoolDetail }) {
   const byStage = STAGES.map((stage) => ({ stage, classes: s.classesOffered.filter((c: SchoolClass) => c.stage === stage) }));
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
       <section className="card p-6">
         <h2 className="font-semibold">Classes offered</h2>
         {s.classesOffered.length === 0 ? (
@@ -120,7 +120,7 @@ export function SourcesTab({ school: s }: { school: SchoolDetail }) {
                   <span className={`chip ${r.kind === 'Official' ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-700'}`}>{r.kind}</span>
                 </td>
                 <td className="p-3 text-slate-600">{r.retrieved ? formatDate(r.retrieved) : '—'}</td>
-                <td className="p-3">{r.status ? <VerificationBadge status={r.status} date={r.verified ?? null} /> : '—'}</td>
+                <td className="p-3">{r.status && r.status !== 'UNVERIFIED' ? <VerificationBadge status={r.status} date={r.verified ?? null} /> : '—'}</td>
               </tr>
             ))}
           </tbody>
@@ -144,7 +144,7 @@ export function useSchoolSeo(s: SchoolDetail | null | undefined) {
     const description = [
       `${s.name}${place.length ? `, ${[...new Set(place)].join(', ')}` : ''}.`,
       s.board ? `${s.board.code === 'CISCE' ? 'ICSE/ISC' : s.board.code} school.` : '',
-      'Official fees, admissions, facilities and sources on India School Finder.',
+      'Official fees, admissions, facilities and sources on SchoolDhundo.',
     ].filter(Boolean).join(' ');
     const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const previous = meta?.content;

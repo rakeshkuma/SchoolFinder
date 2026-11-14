@@ -4,8 +4,6 @@ import com.indiaschoolfinder.dto.common.PageResponse;
 import com.indiaschoolfinder.dto.ranking.CriterionScoreDto;
 import com.indiaschoolfinder.dto.ranking.CriterionScoreRequest;
 import com.indiaschoolfinder.dto.ranking.CriterionWeightsRequest;
-import com.indiaschoolfinder.dto.ranking.ExternalRankingDto;
-import com.indiaschoolfinder.dto.ranking.ExternalRankingRequest;
 import com.indiaschoolfinder.dto.ranking.RankingMethodologyDto;
 import com.indiaschoolfinder.dto.ranking.SchoolRankingDetailDto;
 import com.indiaschoolfinder.dto.ranking.SchoolRankingDto;
@@ -15,7 +13,7 @@ import java.util.List;
 
 public interface RankingService {
 
-    String DISCLAIMER = "India School Finder rankings are independent assessments calculated by this website from "
+    String DISCLAIMER = "SchoolDhundo rankings are independent assessments calculated by this website from "
             + "verified, source-linked evidence using the published methodology. They are not an official ranking by the "
             + "Government of India, any state or union territory government, CBSE, CISCE, a state board or any other "
             + "authority, and do not imply endorsement by them. Results marked provisional are based on incomplete "
@@ -50,6 +48,4 @@ public interface RankingService {
     CriterionScoreDto upsertCriterionScore(Long schoolId, CriterionScoreRequest request);
 
     List<CriterionScoreDto> criterionScores(Long schoolId, String academicYear);
-
-    ExternalRankingDto addExternalRanking(Long schoolId, ExternalRankingRequest request);
 }

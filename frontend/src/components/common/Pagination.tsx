@@ -51,7 +51,7 @@ export function Pagination({
 }
 
 /** Zero-based page numbers with -1 marking an ellipsis. */
-export function visiblePages(page: number, total: number): number[] {
+function visiblePages(page: number, total: number): number[] {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i);
   const set = new Set([0, total - 1, page - 1, page, page + 1].filter((p) => p >= 0 && p < total));
   const sorted = [...set].sort((a, b) => a - b);

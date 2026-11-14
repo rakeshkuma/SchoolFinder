@@ -2,16 +2,42 @@
 <html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
+    <!-- Consent Mode defaults (Google's consent guide): must run before Google Tag Manager. Analytics and ads stay
+         denied until the visitor clicks Accept in the cookie banner (src/utils/analytics.ts sends the update); a
+         choice made on an earlier visit is restored here. The script's SHA-256 is allowed in security-headers.conf,
+         so any edit to it needs a new hash there. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500,
+      });
+      try {
+        if (localStorage.getItem('sd-consent-analytics') === 'granted') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      } catch (e) {}
+    </script>
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+    </script>
+    <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Page-specific title, description, canonical URL and structured data: nginx includes them from the backend
          (/api/v1/seo/head/<path>, see nginx.conf). The block below is the fallback if that request fails; in
          `npm run dev` a Vite plugin puts the fallback in place of the include. -->
     <!--# block name="seo_default" -->
-    <title>India School Finder — Discover Schools. Compare Fees. Prepare for Success.</title>
-    <meta name="description" content="Discover schools across India, compare official fees and track admission deadlines — every fact linked to its official source." />
-    <meta property="og:site_name" content="India School Finder" />
-    <meta property="og:title" content="India School Finder — Discover Schools. Compare Fees. Prepare for Success." />
-    <meta property="og:description" content="Source-linked school fees, admissions, facilities and locations across Indian states and union territories." />
+    <title>SchoolDhundo – Discover Schools, Rankings, Admissions &amp; Exam Preparation</title>
+    <meta name="description" content="Find schools across India, explore school rankings, compare boarding schools, understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources." />
+    <meta property="og:site_name" content="SchoolDhundo" />
+    <meta property="og:title" content="SchoolDhundo – Discover Schools, Rankings, Admissions &amp; Exam Preparation" />
+    <meta property="og:description" content="Find schools across India, explore school rankings, compare boarding schools, understand admissions and prepare for entrance exams." />
     <meta property="og:type" content="website" />
     <!--# endblock -->
     <!--# include virtual="/__seo$request_uri" stub="seo_default" -->
@@ -22,7 +48,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased">
-    <div id="root"></div>
+    <!-- The page's main content as plain HTML from the backend (/api/v1/seo/body/<path>, see nginx.conf), so search engines
+         and visitors see it before the app starts; the app replaces it on load. Empty for private pages. -->
+    <div id="root"><!--# include virtual="/__seo_body$request_uri" --></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

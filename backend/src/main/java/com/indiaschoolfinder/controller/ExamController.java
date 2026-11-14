@@ -3,6 +3,7 @@ package com.indiaschoolfinder.controller;
 import com.indiaschoolfinder.dto.common.PageResponse;
 import com.indiaschoolfinder.dto.exam.ExamDetailDto;
 import com.indiaschoolfinder.dto.exam.ExamNoticeDto;
+import com.indiaschoolfinder.dto.exam.ExamResourceDto;
 import com.indiaschoolfinder.dto.exam.ExamSummaryDto;
 import com.indiaschoolfinder.enums.ExamBoarding;
 import com.indiaschoolfinder.enums.ExamKind;
@@ -67,6 +68,14 @@ public class ExamController {
     @GetMapping("/notices")
     public List<ExamNoticeDto> notices(@RequestParam(defaultValue = "10") @Min(1) @Max(50) int limit) {
         return examService.notices(limit);
+    }
+
+    @Operation(summary = "Learning and official resources of every published exam",
+            description = "Official papers, answer keys and notices (linked at the conducting body) and this site's syllabus, "
+                    + "pattern, preparation, checklist and FAQ pages, each labelled official or not.")
+    @GetMapping("/resources")
+    public List<ExamResourceDto> resources() {
+        return examService.resources();
     }
 
     @Operation(summary = "Full exam profile: guide content, dates of every cycle and official notices")
