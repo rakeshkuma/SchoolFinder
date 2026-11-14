@@ -320,8 +320,24 @@ public class SeoHeadService {
         if (!p.equals("/") && !APP_SECTIONS.contains(p.substring(1).split("/", 2)[0])) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
-        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, p.equals("/") ? baseUrl + "/" : null, null, false, p.equals("/") ? List.of(website(baseUrl), organization(baseUrl)) : null);
+        if (p.equals("/")) {
+            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, baseUrl + "/", baseUrl + HOME_HERO_PREVIEW, false,
+                    List.of(website(baseUrl), organization(baseUrl))) + HOME_HERO_PRELOAD;
+        }
+        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, false, null);
     }
+
+    /**
+     * The home page hero photograph (frontend/public/images/home; licensed, credited on the page). On wide screens it is
+     * the largest thing above the fold, so it is requested with the page instead of after the app starts. The srcset
+     * and sizes must stay the same as the hero's &lt;img&gt; (HomeHero.tsx), or the browser downloads it twice.
+     */
+    static final String HOME_HERO_PREVIEW = "/images/home/hero-students-1200.webp";
+    static final String HOME_HERO_PRELOAD = "<link rel=\"preload\" as=\"image\" media=\"(min-width: 1024px)\" fetchpriority=\"high\""
+            + " href=\"/images/home/hero-students-960.webp\""
+            + " imagesrcset=\"/images/home/hero-students-480.webp 480w, /images/home/hero-students-720.webp 720w,"
+            + " /images/home/hero-students-960.webp 960w, /images/home/hero-students-1200.webp 1200w, /images/home/hero-students-1600.webp 1600w\""
+            + " imagesizes=\"(min-width: 1024px) 48vw, calc(100vw - 32px)\" data-seo=\"server\" />\n";
 
     /**
      * An article: Article and BreadcrumbList structured data, og:type article with its dates, and a Twitter/X card. Only

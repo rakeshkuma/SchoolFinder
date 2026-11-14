@@ -42,13 +42,13 @@ type NavEntry = NavMenu | NavLinkEntry;
 const isMenu = (e: NavEntry): e is NavMenu => 'sections' in e;
 
 /**
- * Four menus (schools, rankings, admissions, exam preparation) and three direct links (the updates feed, compare and
- * the blog). Every item opens a working page or a filtered view of one, and each destination appears under one menu.
+ * Four menus (schools, rankings, admissions, exam preparation) and one direct link (the updates feed). Compare sits under
+ * Schools and the blog under Admissions. Every item opens a working page, and each destination appears under one menu.
  */
 const ENTRIES: NavEntry[] = [
   {
     label: 'Schools', icon: 'institution',
-    match: ['/schools', '/find', '/states', '/cities', '/boards', '/type', '/stages', '/network', '/nearby', '/boarding'],
+    match: ['/schools', '/find', '/states', '/cities', '/boards', '/type', '/stages', '/network', '/nearby', '/boarding', '/compare'],
     sections: [
       {
         title: 'Find schools',
@@ -58,6 +58,7 @@ const ENTRIES: NavEntry[] = [
           { to: '/states', label: 'Schools by state', icon: 'map' },
           { to: '/cities', label: 'Schools by city', icon: 'building' },
           { to: '/nearby', label: 'Schools near me', icon: 'pin' },
+          { to: '/compare', label: 'Compare schools', icon: 'scale', hint: 'Fees and facilities side by side' },
         ],
       },
       {
@@ -105,7 +106,7 @@ const ENTRIES: NavEntry[] = [
     ],
   },
   {
-    label: 'Admissions', icon: 'calendar', match: ['/admissions', '/fees', '/saved'],
+    label: 'Admissions', icon: 'calendar', match: ['/admissions', '/fees', '/saved', '/blog'],
     sections: [
       {
         title: 'Admissions',
@@ -121,6 +122,7 @@ const ENTRIES: NavEntry[] = [
         items: [
           { to: '/fees', label: 'Fee calculator', icon: 'rupee', hint: 'From official fee schedules' },
           { to: '/saved', label: 'My shortlist', icon: 'heart', hint: 'Saved and recently viewed schools' },
+          { to: '/blog', label: 'Guides for parents', icon: 'file', hint: 'Admissions, boards and exams explained' },
         ],
       },
     ],
@@ -159,8 +161,6 @@ const ENTRIES: NavEntry[] = [
     ],
   },
   { label: 'Notifications', icon: 'bolt', to: '/updates', match: ['/updates'] },
-  { label: 'Compare', icon: 'scale', to: '/compare', match: ['/compare'] },
-  { label: 'Blog', icon: 'file', to: '/blog', match: ['/blog'] },
 ];
 
 function useEntries() {
@@ -184,7 +184,7 @@ export function activeLabel(entries: { label: string; match: string[] }[], pathn
 /** The menus' labels and paths, for tests. */
 export const NAV_PILLARS = ENTRIES.map((e) => ({ label: e.label, match: e.match }));
 
-const topLink = (active: boolean) => `flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[14px] font-semibold transition 2xl:px-3 2xl:text-[15px] ${
+const topLink = (active: boolean) => `flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 text-[15px] font-semibold transition ${
   active ? 'bg-royal-50 text-royal-700' : 'text-navy hover:bg-slate-100 hover:text-royal-700'}`;
 
 /** Desktop: a button per menu opening a panel on hover or click; arrow keys move between items, Escape closes. */
@@ -264,10 +264,10 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
         <Icon name="chevronDown" className={`h-4 w-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
       <div id={panelId} ref={panelRef} onKeyDown={onPanelKey} hidden={!open}
-        className={`absolute top-full z-50 mt-2 animate-fade-down rounded-2xl border border-slate-200 bg-white p-4 shadow-lift ${
+        className={`absolute top-full z-50 mt-2 animate-fade-down rounded-2xl border border-slate-200 bg-white p-3 shadow-lift ${
           align === 'left' ? 'left-0' : align === 'right' ? 'right-0' : 'left-1/2 -translate-x-1/2'} ${
-          menu.sections.length > 2 ? 'w-[760px]' : wide ? 'w-[560px]' : 'w-[300px]'}`}>
-        <div className={`grid gap-4 ${menu.sections.length > 2 ? 'grid-cols-3' : wide ? 'grid-cols-2' : 'grid-cols-1'}`}>
+          menu.sections.length > 2 ? 'w-[690px]' : wide ? 'w-[500px]' : 'w-[280px]'}`}>
+        <div className={`grid gap-3 ${menu.sections.length > 2 ? 'grid-cols-3' : wide ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {menu.sections.map((s) => (
             <div key={s.title ?? menu.label}>
               {s.title && <p className="px-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>}
@@ -275,7 +275,7 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
                 {s.items.map((item) => (
                   <li key={item.to + item.label}>
                     <Link to={item.to} data-nav-item onClick={onClose}
-                      className="group flex items-start gap-2.5 rounded-xl px-2 py-2 outline-none transition hover:bg-royal-50 focus-visible:bg-royal-50 focus-visible:ring-2 focus-visible:ring-royal-500">
+                      className="group flex items-start gap-2.5 rounded-xl px-2 py-1.5 outline-none transition hover:bg-royal-50 focus-visible:bg-royal-50 focus-visible:ring-2 focus-visible:ring-royal-500">
                       <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-royal-600 group-hover:text-white">
                         <Icon name={item.icon} className="h-4 w-4" />
                       </span>

@@ -36,15 +36,17 @@ export function badgeFor(item: Pick<UpdateItem, 'badge' | 'updatedAt'>, now = Da
 
 /** Exam notices show the exam's own school system; practice and other items a classroom picture. */
 const EXAM_IMAGES: Record<string, HomeImageId> = {
-  aissee: 'cadets', rimc: 'cadets-ceremony', 'rms-cet': 'cadets-ceremony', jnvst: 'jnv-rangareddy', 'jnv-class-9': 'jnv-rangareddy',
+  aissee: 'cadets-ceremony', rimc: 'cadets-ceremony', 'rms-cet': 'cadets-ceremony', jnvst: 'jnv-rangareddy', 'jnv-class-9': 'jnv-rangareddy',
   'jnv-class-11': 'jnv-rangareddy', netarhat: 'netarhat', 'kvs-admission': 'kv-hebbal',
 };
-const PREP_IMAGES: Record<string, HomeImageId> = { jnvst: 'studying' };
+const PREP_IMAGES: Record<string, HomeImageId> = { jnvst: 'reading', aissee: 'studying', netarhat: 'computer-lab' };
 /** Generic pictures only (no named school), so a notice never shows another school's building. */
 const CATEGORY_IMAGES: Record<UpdateCategory, HomeImageId[]> = {
-  ADMISSION: ['teacher-class', 'hero-students', 'studying'], EXAM: ['studying', 'teacher-class'], PREP: ['computer-lab', 'calculator'],
-  JOB: ['teacher-class'],
+  ADMISSION: ['classroom', 'teacher-class', 'hero-campus'], EXAM: ['studying', 'reading'], PREP: ['computer-lab', 'reading', 'studying', 'calculator'],
+  JOB: ['teacher-classroom', 'teacher-class'],
 };
+/** Used when a card's own choices are already on screen. */
+const SPARE_IMAGES: HomeImageId[] = ['classroom', 'studying', 'reading', 'computer-lab', 'teacher-class', 'teacher-classroom', 'calculator', 'hero-campus'];
 
 /** The same item always gets the same picture; neighbouring items of one kind usually get different ones. */
 function pick<T>(list: T[], key: string): T {
@@ -58,6 +60,22 @@ export function updateImage(item: Pick<UpdateItem, 'category' | 'topic'> & { id?
   if (item.category === 'EXAM' && EXAM_IMAGES[topic]) return EXAM_IMAGES[topic];
   if (item.category === 'PREP' && PREP_IMAGES[topic]) return PREP_IMAGES[topic];
   return pick(CATEGORY_IMAGES[item.category], item.id ?? topic);
+}
+
+/**
+ * Pictures for a set of cards shown together: each keeps its own choice (the exam's school system, or one for its kind)
+ * unless that picture is already used above it; then the next unused one of its kind, then any unused generic one.
+ */
+export function assignUpdateImages(items: (Pick<UpdateItem, 'category' | 'topic'> & { id: string })[]): Map<string, HomeImageId> {
+  const used = new Set<HomeImageId>();
+  const out = new Map<string, HomeImageId>();
+  for (const item of items) {
+    const choices = [updateImage(item), ...CATEGORY_IMAGES[item.category], ...SPARE_IMAGES];
+    const image = choices.find((c) => !used.has(c)) ?? choices[0];
+    used.add(image);
+    out.set(item.id, image);
+  }
+  return out;
 }
 
 /** The ticker's small icon: closing deadlines warn, new exam notices are hot, practice sets refresh. */

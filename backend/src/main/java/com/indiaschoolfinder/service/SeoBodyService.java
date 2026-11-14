@@ -7,15 +7,18 @@ import com.indiaschoolfinder.dto.location.StateDto;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
 import com.indiaschoolfinder.dto.school.SchoolSearchCriteria;
 import com.indiaschoolfinder.dto.school.SchoolSummaryDto;
+import com.indiaschoolfinder.dto.update.UpdateDtos;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,24 +40,27 @@ public class SeoBodyService {
     private static final Pattern TITLE = Pattern.compile("<title>(.*?)</title>", Pattern.DOTALL);
     private static final Pattern DESCRIPTION = Pattern.compile("<meta name=\"description\" content=\"(.*?)\"", Pattern.DOTALL);
     private static final int LIST_SIZE = 40;
+    private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
 
     /** The site's sections, as in the app's main navigation. */
     private static final String[][] PILLARS = {
             {"/schools", "Schools"}, {"/rankings", "Rankings"}, {"/admissions", "Admissions"}, {"/exams", "Exam Prep"},
-            {"/updates", "Notifications"}, {"/compare", "Compare"}, {"/blog", "Blog"},
+            {"/updates", "Notifications"},
     };
 
     private final SeoHeadService seoHeadService;
     private final SchoolService schoolService;
     private final LocationService locationService;
     private final SchoolFaqService faqService;
+    private final UpdateFeedService updateFeed;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
-                          SchoolFaqService faqService) {
+                          SchoolFaqService faqService, UpdateFeedService updateFeed) {
         this.seoHeadService = seoHeadService;
         this.schoolService = schoolService;
         this.locationService = locationService;
         this.faqService = faqService;
+        this.updateFeed = updateFeed;
     }
 
     /** @param path the page path as requested (any query string is ignored) */
@@ -117,6 +123,14 @@ public class SeoBodyService {
         h.append("<h1>Find the Right School for Your Child</h1>");
         h.append("<p class=\"pr-lead\">Discover, compare and prepare for the best schools across India — from admissions and ")
                 .append("rankings to exam updates, preparation and more, all in one place.</p>");
+        // The hero photograph is in the first paint, before the app starts (the page's largest element on phones). Same
+        // files and sizes as the app's hero (HomeHero.tsx), so it is downloaded once.
+        h.append("<img class=\"pr-hero\" src=\"/images/home/hero-students-960.webp\"")
+                .append(" srcset=\"/images/home/hero-students-480.webp 480w, /images/home/hero-students-720.webp 720w,")
+                .append(" /images/home/hero-students-960.webp 960w, /images/home/hero-students-1200.webp 1200w, /images/home/hero-students-1600.webp 1600w\"")
+                .append(" sizes=\"(min-width: 1024px) 48vw, calc(100vw - 32px)\" width=\"1600\" height=\"1071\" fetchpriority=\"high\"")
+                .append(" alt=\"Smiling schoolchildren in uniform on a green school campus\" />");
+        latestUpdates(h);
         List<StateDto> states = locationService.states().stream().filter(s -> s.schoolCount() > 0)
                 .sorted(Comparator.comparing(StateDto::schoolCount).reversed()).toList();
         if (!states.isEmpty()) {
@@ -139,6 +153,34 @@ public class SeoBodyService {
                 .append(link("/blog", "Guides for parents"))
                 .append("</ul>");
         return h.toString();
+    }
+
+    /** The newest school and exam updates as plain links, so the notices are in the page before the app starts. */
+    private void latestUpdates(StringBuilder h) {
+        List<UpdateDtos.UpdateItem> items;
+        try {
+            items = updateFeed.feed(null, 0, 6).content();
+        } catch (RuntimeException e) {
+            log.warn("Updates for the home page's server-rendered content failed: {}", e.toString());
+            return;
+        }
+        if (items.isEmpty()) {
+            return;
+        }
+        h.append("<h2>Latest school and exam updates</h2><ul class=\"pr-list\">");
+        for (UpdateDtos.UpdateItem u : items) {
+            String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
+            if (href == null) {
+                continue;
+            }
+            h.append("<li><a href=\"").append(esc(href)).append("\">").append(esc(u.title())).append("</a>");
+            if (u.eventDate() != null) {
+                h.append(" <span>").append(esc(u.eventLabel() != null ? u.eventLabel() : "Date")).append(": ")
+                        .append(u.eventDate().format(DAY)).append("</span>");
+            }
+            h.append("</li>");
+        }
+        h.append("</ul>");
     }
 
     private String school(SchoolDetailDto s, String description) {

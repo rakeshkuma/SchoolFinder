@@ -89,3 +89,19 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Footer: navy, Schools/Rankings/Exams/Resources/Contact; no invented email, phone or social accounts (contact form links instead) | Done |
 | Phones: categories two per row; rankings, exam prep and featured schools in swipeable rows; no horizontal overflow at 360/390/768/1024/1440 | Done |
 | Removed with the old homepage: fee chart component, `useInView`, the single-box search mode | Done |
+
+## 9. Homepage refinement (14 November 2026; built and checked locally, not committed or deployed)
+
+| Item | Status |
+| --- | --- |
+| Header: Schools, Rankings, Admissions, Exam Prep, Notifications only; Compare moved into the Schools menu and the blog into Admissions ("Guides for parents"); List Your School removed; Google sign-in unchanged; smaller dropdowns | Done |
+| Hero: one licensed photograph (Unsplash, Akshar Dave) in the curved panel instead of two overlapping pictures; 480–1600 px WebP; also in the pre-rendered HTML; preloaded on wide screens | Done |
+| Updates: equal-height cards, title and summary two lines each, date and source in one footer, no picture repeated in a grid, four cards on phones; one school's same-date notices for different classes merged into one update | Done |
+| Explore by Category: Find Schools, Boarding Schools, Schools by City (`/cities`), Admissions & Fees; one photo ratio; Compare removed | Done |
+| Top Rankings: larger photos with the title on them, readable rank numbers, publisher chips (IIRF 2026, Listed A–Z) instead of paragraphs; Trending Now with larger thumbnails | Done |
+| Exam preparation: four equal cards with photos; Claim Your School banner removed | Done |
+| Grow with SchoolDhundo: Sponsored Listings, Lead Generation, Advertise With Us only (enquiry form and Advertise page); Advertise page now says paid placements are labelled "Sponsored" | Done |
+| Footer: Blog & Articles and Add / List Your School removed; shorter | Done |
+| Photos added (Unsplash License): two classrooms by Swastik Arora, one by CIMT HOOGHLY; JNV photo re-cropped to remove a camera date stamp; two unused Sainik School photos removed | Done |
+| Measured on a production build (cold cache): layout shift 0.34 → 0.001 (loading placeholder now a full screen; sign-in slot keeps its width); phone LCP (4× CPU, 4G) about 3.9 s → 1.6 s; desktop LCP about 1.4 s | Done |
+| Signed-out visitors get 401 from `/api/v1/account/me`; that is how the app learns nobody is signed in, not an error | Checked, unchanged |

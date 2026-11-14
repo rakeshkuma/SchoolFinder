@@ -133,4 +133,24 @@ class UpdatesIT extends AbstractIntegrationTest {
         assertThat(item.get("sourceUrl").asText()).isEqualTo("https://www.edudel.nic.in/fixture-notice.pdf");
         assertThat(item.get("linkPath").asText()).endsWith("?tab=admissions");
     }
+
+    @Test
+    void oneSchoolsSeparateNoticesWithTheSameDatesReadAsOneUpdate() throws Exception {
+        long schoolId = createSchool(school("Fixture Two Notices School", Map.of()));
+        for (String[] c : new String[][] {{"IX", "https://example.gov.in/class-ix.pdf"}, {"XI", "https://example.gov.in/class-xi.pdf"}}) {
+            Map<String, Object> cycle = new HashMap<>();
+            cycle.put("classCode", c[0]);
+            cycle.put("academicYear", AcademicYears.of(TODAY.plusYears(1)));
+            cycle.put("category", "GENERAL");
+            cycle.put("applicationStartDate", TODAY.minusDays(3).toString());
+            cycle.put("applicationEndDate", TODAY.plusDays(30).toString());
+            cycle.put("officialNotificationUrl", c[1]);
+            cycle.put("sourceUrl", c[1]);
+            mockMvc.perform(post("/api/v1/admin/schools/{id}/admissions", schoolId).header("Authorization", editorToken())
+                    .contentType(MediaType.APPLICATION_JSON).content(json(cycle))).andExpect(status().isCreated());
+        }
+        List<String> mine = titles("?category=ADMISSION&size=50").stream().filter(t -> t.startsWith("Fixture Two Notices School")).toList();
+        assertThat(mine).hasSize(1);
+        assertThat(mine.get(0)).contains("Classes IX & XI");
+    }
 }

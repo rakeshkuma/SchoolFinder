@@ -2,7 +2,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '../components/common/PageHeader';
 import { Pagination } from '../components/common/Pagination';
 import { AsyncContent } from '../components/common/States';
-import { UpdateCard } from '../components/home/UpdateCard';
+import { UpdateGrid } from '../components/home/HomeUpdates';
 import { UPDATE_TABS } from '../components/home/updateVisuals';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -66,9 +66,7 @@ export function UpdatesPage() {
                   {data.totalElements.toLocaleString('en-IN')} {data.totalElements === 1 ? 'update' : 'updates'}
                   {category ? ` in ${label}` : ''}
                 </p>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {data.content.map((u) => <UpdateCard key={u.id} item={u} />)}
-                </div>
+                <UpdateGrid items={data.content} />
                 <Pagination page={data.page} totalPages={data.totalPages} hrefFor={(p) => href(category, p)} />
               </>
             )}
