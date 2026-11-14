@@ -17,6 +17,8 @@ import com.indiaschoolfinder.enums.ExamVerificationStatus;
 import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.repository.PracticeSetRepository;
 import com.indiaschoolfinder.repository.SiteUpdateRepository;
+import com.indiaschoolfinder.notifications.fetch.UrlPolicy;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +42,8 @@ import java.util.stream.Collectors;
  * The "Latest School & Exam Updates" feed. Nothing in it is written for the feed: exam items come from the official
  * notices and important dates in the exam catalogue, admission items from the open and upcoming admission cycles
  * (grouped by the notice they come from), practice items from newly added practice sets, and editorial items (such as
- * teaching job alerts) from what an editor has published, each citing its source. Badges are worked out from dates on
+ * teaching job alerts) from what an editor has published, and official-source items from notices the daily check
+ * found on approved official websites, each citing its source. Badges are worked out from dates on
  * every request, so an update never shows "closing soon" after its deadline or "new" a week after it appeared.
  */
 @Service
@@ -53,6 +56,8 @@ public class UpdateFeedService {
     static final int FRESH_DAYS = 7;
     /** Practice sets added or changed within this many days count as an update. */
     static final int PRACTICE_WINDOW_DAYS = 30;
+    /** Expired updates stay listed under "past updates" this long. */
+    static final int PAST_DAYS = 90;
     /** Exams with their own preparation page on this site. */
     private static final Set<String> PREP_EXAMS = Set.of("jnvst", "aissee", "netarhat");
     private static final Set<String> DASHBOARD_EXAMS = Set.of("jnvst", "aissee");
@@ -88,6 +93,12 @@ public class UpdateFeedService {
                 .collect(Collectors.toMap(ExamSummaryDto::slug, Function.identity(), (a, b) -> a, LinkedHashMap::new));
         List<UpdateItem> examItems = examItems(examsBySlug, today);
         examItems.forEach(u -> all.add(new Ranked(u, 0)));
+        // A notice found on an official site that the exam catalogue already cites is the same news: the exam item
+        // (with its next date) stands for it.
+        Set<String> examNoticeUrls = examItems.stream().map(UpdateItem::sourceUrl).filter(Objects::nonNull)
+                .map(UpdateFeedService::canonical).collect(Collectors.toSet());
+        all.removeIf(r -> r.item().origin() == Origin.OFFICIAL_SOURCE && r.item().sourceUrl() != null
+                && examNoticeUrls.contains(canonical(r.item().sourceUrl())));
         // In the combined list, an admission group announced by the same notice as an exam item (AISSEE schools and the
         // AISSEE notice) is the same news twice: the exam item stands for it. Its own tab still lists it.
         Set<String> examSources = examItems.stream().map(UpdateItem::sourceUrl).filter(Objects::nonNull).collect(Collectors.toSet());
@@ -150,17 +161,37 @@ public class UpdateFeedService {
         return updates.findByStatus(SiteUpdate.Status.PUBLISHED).stream()
                 .filter(u -> u.getExpiresOn() == null || !u.getExpiresOn().isBefore(today))
                 .filter(u -> !u.getPublishedOn().isAfter(today))
-                .map(u -> {
-                    LocalDate updatedOn = u.getUpdatedAt() == null ? null : u.getUpdatedAt().atZone(INDIA).toLocalDate();
-                    return new Ranked(new UpdateItem("editorial:" + u.getId(), u.getCategory(), u.getTitle(), u.getSummary(), u.getImageUrl(),
-                            u.getPublishedOn(), u.getUpdatedAt(), u.getEventDate(), u.getEventLabel(), u.isDeadline(),
-                            badge(today, u.getPublishedOn(), updatedOn, u.getEventDate(), u.isDeadline(), false),
-                            u.getSourceUrl(), u.getSourceName(), u.getLinkPath(),
-                            u.getActionLabel() != null ? u.getActionLabel() : defaultAction(u.getCategory()),
-                            u.getVerificationStatus() == VerificationStatus.VERIFIED, Origin.EDITORIAL,
-                            u.getCategory().name().toLowerCase(Locale.ROOT)), u.getPriority());
-                })
+                .map(u -> new Ranked(stored(u, today, false), u.getPriority()))
                 .toList();
+    }
+
+    /**
+     * A stored update as a feed item. For one found on an official site, "Updated" follows only the source's own
+     * corrections (last_changed_at), never the daily check or a staff edit, and the publication date is the source's.
+     */
+    private UpdateItem stored(SiteUpdate u, LocalDate today, boolean expired) {
+        boolean official = u.isOfficialSync();
+        Instant changedAt = official ? u.getLastChangedAt() : u.getUpdatedAt();
+        LocalDate updatedOn = changedAt == null ? null : changedAt.atZone(INDIA).toLocalDate();
+        Badge badge = expired ? Badge.EXPIRED : badge(today, u.getPublishedOn(), updatedOn, u.getEventDate(), u.isDeadline(), false);
+        return new UpdateItem((official ? "official:" : "editorial:") + u.getId(), u.getCategory(), u.getTitle(), u.getSummary(),
+                u.getImageUrl(), u.getPublishedOn(), official ? changedAt : u.getUpdatedAt(), u.getEventDate(), u.getEventLabel(),
+                u.isDeadline(), badge, u.getSourceUrl(), u.getSourceName(), u.getLinkPath(),
+                u.getActionLabel() != null ? u.getActionLabel() : official ? "View Notice" : defaultAction(u.getCategory()),
+                u.getVerificationStatus() == VerificationStatus.VERIFIED, official ? Origin.OFFICIAL_SOURCE : Origin.EDITORIAL,
+                u.getTopic() != null ? u.getTopic() : u.getCategory().name().toLowerCase(Locale.ROOT));
+    }
+
+    /** Updates that expired within the last {@value #PAST_DAYS} days, newest first, each with the EXPIRED badge. */
+    public PageResponse<UpdateItem> past(SiteUpdate.Category category, int page, int size) {
+        LocalDate today = LocalDate.now(clock.withZone(INDIA));
+        return PageResponse.of(updates.findRecentlyExpired(category, today.minusDays(PAST_DAYS), PageRequest.of(page, size)),
+                u -> stored(u, today, true));
+    }
+
+    private static String canonical(String url) {
+        String c = UrlPolicy.canonical(url);
+        return c == null ? url : c;
     }
 
     private static String defaultAction(SiteUpdate.Category category) {

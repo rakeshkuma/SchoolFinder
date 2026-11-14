@@ -13,8 +13,12 @@ import {
 } from '../services/publicApi';
 import type { PracticeSetSummary } from '../types/api';
 
-/** The updates feed is asked for again every five minutes while the page is open. */
-const REFRESH_MS = 5 * 60_000;
+/**
+ * The updates feed is read again from our own server every 15 minutes while the page is open and visible. This never
+ * makes the server visit the official websites: those are checked once a day on a schedule, and the feed only reads
+ * what that check stored, so a new notice appears here without a new deploy.
+ */
+export const REFRESH_MS = 15 * 60_000;
 
 /** Practice sets per exam, kept small for the browser's remembered copy (the full list is about 50 KB). */
 export function countPractice(sets: PracticeSetSummary[]): PracticeCounts {
@@ -45,6 +49,7 @@ export function HomePage() {
   const stats = useApi(() => referenceService.stats(), [], true, 'home.stats');
   const feed = useApi(() => updateService.list({ size: 12 }), [tick], true, 'home.updates');
   const prep = useApi(() => updateService.list({ category: 'PREP', size: 20 }), [tick], true, 'home.prep');
+  const sync = useApi(() => updateService.syncStatus(), [tick], true, 'home.sync');
   const practice = useApi(() => practiceService.list().then(countPractice), [], true, 'home.practice');
   const iirf = useApi(() => rankingService.external({ publisher: 'IIRF', size: 3 }), [], true, 'home.iirf');
   const directory = useApi(() => directoryService.summary(), [], true, 'home.directory');
@@ -56,7 +61,7 @@ export function HomePage() {
     <div className="bg-[linear-gradient(180deg,#f6f8ff_0%,#ffffff_28%,#f8f7ff_100%)]">
       <HomeHero schools={stats.data?.activeSchools ?? null} practiceSets={practice.data?.sets ?? null} />
       <LiveTicker state={feed} />
-      <HomeUpdates all={feed} />
+      <HomeUpdates all={feed} refresh={tick} sync={sync.data} />
       <ExploreCategories />
       <HomeRankings iirf={iirf} directory={directory} places={places}
         trending={<TrendingNow updates={feed.data?.content ?? []} posts={posts.data?.content ?? []} />} />

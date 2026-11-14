@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useApi, type ApiState } from '../../hooks/useApi';
-import { updateService, type UpdateCategory, type UpdateItem } from '../../services/publicApi';
+import { updateService, type UpdateCategory, type UpdateItem, type UpdateSyncStatus } from '../../services/publicApi';
 import type { PageResponse } from '../../types/api';
 import { Icon } from '../common/Icon';
 import { AsyncContent } from '../common/States';
@@ -85,8 +85,35 @@ export function LiveTicker({ state }: { state: ApiState<PageResponse<UpdateItem>
   );
 }
 
+/**
+ * How fresh the official notices are, said plainly: the sources are checked once a day, not continuously. Null when
+ * the server has not said yet.
+ */
+export function syncNoteText(status: UpdateSyncStatus | null | undefined): string | null {
+  if (!status) return null;
+  const schedule = status.schedule.replace(/^Daily at /i, '');
+  const base = `Official sources checked daily at ${schedule}`;
+  if (!status.lastCheckedAt) return `${base}.`;
+  const last = new Date(status.lastCheckedAt);
+  if (Number.isNaN(last.getTime())) return `${base}.`;
+  const when = last.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+  return `${base} · last checked ${when}`;
+}
+
+export function SyncNote({ status, className = '' }: { status: UpdateSyncStatus | null | undefined; className?: string }) {
+  const text = syncNoteText(status);
+  if (!text) return null;
+  return (
+    <p className={`flex items-center gap-1.5 text-[12.5px] text-slate-600 ${className}`}>
+      <Icon name="refresh" className="h-3.5 w-3.5 shrink-0 text-royal-600" /> {text}
+    </p>
+  );
+}
+
 /** "Latest School & Exam Updates": the newest six of a kind, as cards. The All tab shares the ticker's answer. */
-export function HomeUpdates({ all }: { all: ApiState<PageResponse<UpdateItem>> }) {
+export function HomeUpdates({ all, refresh = 0, sync }: {
+  all: ApiState<PageResponse<UpdateItem>>; refresh?: number; sync?: UpdateSyncStatus | null;
+}) {
   const [tab, setTab] = useState<UpdateCategory | 'ALL'>('ALL');
   const category = tab === 'ALL' ? undefined : tab;
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -104,7 +131,10 @@ export function HomeUpdates({ all }: { all: ApiState<PageResponse<UpdateItem>> }
   return (
     <section aria-labelledby="updates-heading" className="container-wide pt-8 sm:pt-10">
       <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-        <h2 id="updates-heading" className={HEADING}>Latest School &amp; Exam Updates</h2>
+        <div className="min-w-0">
+          <h2 id="updates-heading" className={HEADING}>Latest School &amp; Exam Updates</h2>
+          <SyncNote status={sync} className="mt-1" />
+        </div>
         <div role="tablist" aria-label="Kind of update" className="no-scrollbar -mx-4 flex max-w-[calc(100%+2rem)] gap-2 overflow-x-auto px-4 py-1 sm:mx-0 sm:max-w-full sm:px-0">
           {UPDATE_TABS.map((t, i) => {
             const selected = t.id === tab;
@@ -123,7 +153,7 @@ export function HomeUpdates({ all }: { all: ApiState<PageResponse<UpdateItem>> }
       </div>
       <div id="updates-panel" role="tabpanel" aria-labelledby={`updates-tab-${tab}`} className="mt-5">
         {/* Keyed by tab: a new tab starts empty (or from its own remembered answer), never showing the last tab's cards. */}
-        {category ? <CategoryPanel key={category} category={category} /> : <UpdatesGrid state={all} tab="ALL" />}
+        {category ? <CategoryPanel key={category} category={category} refresh={refresh} /> : <UpdatesGrid state={all} tab="ALL" />}
       </div>
       <p className="mt-5 text-center sm:text-right">
         <Link to={category ? `/updates?category=${category}` : '/updates'} className="inline-flex items-center gap-1.5 rounded-lg font-bold text-royal-700 hover:underline">
@@ -134,8 +164,8 @@ export function HomeUpdates({ all }: { all: ApiState<PageResponse<UpdateItem>> }
   );
 }
 
-function CategoryPanel({ category }: { category: UpdateCategory }) {
-  const state = useApi(() => updateService.list({ category, size: 6 }), [category], true, `home.updates.${category}`);
+function CategoryPanel({ category, refresh }: { category: UpdateCategory; refresh: number }) {
+  const state = useApi(() => updateService.list({ category, size: 6 }), [category, refresh], true, `home.updates.${category}`);
   return <UpdatesGrid state={state} tab={category} />;
 }
 

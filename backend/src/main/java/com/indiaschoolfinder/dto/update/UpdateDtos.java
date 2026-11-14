@@ -19,11 +19,14 @@ public final class UpdateDtos {
     private UpdateDtos() {
     }
 
-    /** Shown next to an update; worked out from its dates on every request, never stored. */
-    public enum Badge { CLOSING_SOON, NEW, OPEN, UPDATED, UPCOMING }
+    /** Shown next to an update; worked out from its dates on every request, never stored. EXPIRED only in past updates. */
+    public enum Badge { CLOSING_SOON, NEW, OPEN, UPDATED, UPCOMING, EXPIRED }
 
-    /** Where an update comes from. */
-    public enum Origin { EXAM_NOTICE, ADMISSIONS, PRACTICE, EDITORIAL }
+    /**
+     * Where an update comes from. OFFICIAL_SOURCE: found by the daily check of an official website and published from
+     * it automatically (title, date and link as the source gives them; not checked by an editor).
+     */
+    public enum Origin { EXAM_NOTICE, ADMISSIONS, PRACTICE, EDITORIAL, OFFICIAL_SOURCE }
 
     /**
      * One item of the updates feed. {@code linkPath} is the page on this site to open (it may be null for an editorial
@@ -71,11 +74,45 @@ public final class UpdateDtos {
         }
     }
 
-    /** An editorial update as staff see it in the admin area. */
+    /** An update as staff see it in the admin area (editorial or found by the daily check). */
     public record AdminRow(long id, SiteUpdate.Category category, String title, String summary, String imageUrl,
                            LocalDate publishedOn, LocalDate eventDate, String eventLabel, boolean deadline, String sourceUrl,
                            String sourceName, String linkPath, String actionLabel, SiteUpdate.Status status,
                            VerificationStatus verificationStatus, LocalDate expiresOn, int priority, Instant createdAt,
-                           Instant updatedAt, String createdBy, String updatedBy) {
+                           Instant updatedAt, String createdBy, String updatedBy, SiteUpdate.Origin origin, String sourceKey,
+                           String officialTitle, boolean dateConfirmed, String reviewNote, Instant firstSeenAt,
+                           Instant lastSeenAt, Instant lastChangedAt, Instant withdrawnAt, Long supersededById,
+                           boolean staffEdited, String topic) {
+    }
+
+    /** What the public site may know about the daily check: when it last ran and when it runs next. */
+    public record SyncStatus(Instant lastCheckedAt, Instant nextCheckAt, String schedule, int sources) {
+    }
+
+    /** One source's result in one run. */
+    public record SourceRow(String key, String name, String outcome, String error, long durationMs, int requests,
+                            int listed, int relevant, int ignored, int created, int updated, int unchanged, int published,
+                            int pending, int tooOld, int duplicates, int withdrawn) {
+    }
+
+    public record SyncRunRow(long id, String trigger, String status, Instant startedAt, Instant finishedAt, String triggeredBy,
+                             String instanceName, int sourcesChecked, int sourcesFailed, int itemsFound, int itemsCreated,
+                             int itemsUpdated, int itemsPublished, int itemsPending, int itemsExpired, int itemsWithdrawn,
+                             java.util.List<SourceRow> sources) {
+    }
+
+    /** A configured source as staff see it. */
+    public record SourceInfo(String key, String name, String listingUrl, java.util.List<String> hosts, boolean autoPublish,
+                             String reviewOnlyReason, boolean completeListing, boolean enabled) {
+    }
+
+    /** The checker's state for staff. */
+    public record AdminSyncStatus(boolean enabled, boolean running, String cron, String timezone, String schedule,
+                                  Instant nextCheckAt, Instant lastSuccessAt, SyncRunRow lastRun, long pendingReview,
+                                  java.util.List<SourceInfo> sources) {
+    }
+
+    /** The answer to a staff "check now". */
+    public record SyncStartResult(String result, String message) {
     }
 }

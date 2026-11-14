@@ -9,10 +9,13 @@ import { adminService, type SiteUpdateRequest, type SiteUpdateRow, type SiteUpda
 import { ApiError } from '../../services/http';
 import type { UpdateCategory } from '../../services/publicApi';
 import { formatDate } from '../../utils/format';
+import { AdminSyncPanel, istTime } from './AdminSyncPanel';
 
 const TABS: { value: SiteUpdateStatus; label: string }[] = [
+  { value: 'PENDING_REVIEW', label: 'Waiting for review' },
   { value: 'DRAFT', label: 'Drafts' },
   { value: 'PUBLISHED', label: 'Published' },
+  { value: 'EXPIRED', label: 'Expired' },
   { value: 'ARCHIVED', label: 'Archived' },
 ];
 
@@ -30,13 +33,14 @@ const toRequest = (r: SiteUpdateRow): SiteUpdateRequest => ({
 });
 
 /**
- * Editorial school and exam updates (job alerts and notices the automatic feed does not cover). Each is saved as a
- * draft, appears on the home page and /updates only once published, and drops off on its expiry date. Exam dates,
- * open admissions and new practice sets reach the feed by themselves and are not entered here.
+ * School and exam updates: notices found by the daily check of official websites (published automatically when the
+ * site gives their date, otherwise waiting for review here) and editorial notices (job alerts and anything the check
+ * does not cover). An editorial update is saved as a draft and appears on the home page and /updates once published;
+ * every update drops off on its expiry date. Exam dates, open admissions and practice sets reach the feed by themselves.
  */
 export function AdminUpdatesPage() {
   useDocumentTitle('Admin · School & exam updates');
-  const [status, setStatus] = useState<SiteUpdateStatus>('DRAFT');
+  const [status, setStatus] = useState<SiteUpdateStatus>('PENDING_REVIEW');
   const [page, setPage] = useState(0);
   const [nonce, setNonce] = useState(0);
   const [form, setForm] = useState<SiteUpdateRequest>(EMPTY);
@@ -94,6 +98,19 @@ export function AdminUpdatesPage() {
     }
   };
 
+  const supersede = async (row: SiteUpdateRow) => {
+    const answer = window.prompt(`Which update replaces “${row.title}”? Enter its number (#).`);
+    const by = Number.parseInt((answer ?? '').replace('#', ''), 10);
+    if (!by) return;
+    try {
+      await adminService.supersedeUpdate(row.id, by);
+      setMessage({ ok: true, text: `Taken off the site: replaced by update #${by}.` });
+      setNonce((n) => n + 1);
+    } catch (e) {
+      failed(e);
+    }
+  };
+
   const edit = (row: SiteUpdateRow) => {
     setEditing(row.id);
     setForm(toRequest(row));
@@ -107,10 +124,13 @@ export function AdminUpdatesPage() {
         <h1 className="text-2xl font-bold">School &amp; exam updates</h1>
         <p className="mt-1 text-sm text-slate-600">
           Notices for the home page’s “Latest School &amp; Exam Updates” and <Link to="/updates" className="link" target="_blank">/updates</Link>,
-          such as teaching job alerts. Exam dates, open admissions and new practice sets appear there by themselves. Every notice
-          except practice needs its official source; nothing is copied from other websites.
+          such as teaching job alerts. Exam dates, open admissions and new practice sets appear there by themselves, and the daily
+          check adds notices from approved official websites. Every notice except practice needs its official source; only titles,
+          dates and links are taken from official sites, never their text.
         </p>
       </div>
+
+      <AdminSyncPanel onRan={() => setNonce((n) => n + 1)} />
 
       <form ref={formRef} onSubmit={(e) => void save(e)} className="card space-y-4 p-5 text-sm" aria-labelledby="update-form-title">
         <h2 id="update-form-title" className="text-lg font-semibold">{editing ? `Edit update #${editing}` : 'New update (saved as a draft)'}</h2>
@@ -211,9 +231,29 @@ export function AdminUpdatesPage() {
               {data.content.map((r) => (
                 <li key={r.id} className="card space-y-1.5 p-4 text-sm">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <p className="font-semibold">{r.title}</p>
-                    <p className="text-xs text-slate-500">{CATEGORY_LABEL[r.category]} · published {formatDate(r.publishedOn)}{r.expiresOn ? ` · until ${formatDate(r.expiresOn)}` : ''}</p>
+                    <p className="font-semibold"><span className="text-slate-400">#{r.id}</span> {r.title}</p>
+                    <p className="text-xs text-slate-500">
+                      {CATEGORY_LABEL[r.category]} · {r.dateConfirmed ? 'published' : 'found'} {formatDate(r.publishedOn)}
+                      {r.expiresOn ? ` · until ${formatDate(r.expiresOn)}` : ''}
+                    </p>
                   </div>
+                  {r.origin === 'OFFICIAL_SYNC' && (
+                    <p className="text-xs text-slate-600">
+                      <span className="rounded bg-royal-50 px-1.5 py-0.5 font-semibold text-royal-800">Found on the official site ({r.sourceKey})</span>
+                      {' '}first seen {istTime(r.firstSeenAt)} · last seen {istTime(r.lastSeenAt)}
+                      {r.lastChangedAt ? ` · changed at the source ${istTime(r.lastChangedAt)}` : ''}
+                      {r.staffEdited ? ' · edited by staff' : ''}
+                      {r.withdrawnAt ? ` · withdrawn ${istTime(r.withdrawnAt)}` : ''}
+                      {r.supersededById ? ` · replaced by #${r.supersededById}` : ''}
+                    </p>
+                  )}
+                  {r.officialTitle && r.officialTitle !== r.title && <p className="text-xs text-slate-600">Official title: {r.officialTitle}</p>}
+                  {!r.dateConfirmed && (
+                    <p className="rounded-lg bg-amber-50 p-2 text-xs text-amber-900">
+                      The source gave no date. Open the notice, then edit this update with its real publication date before publishing.
+                    </p>
+                  )}
+                  {r.reviewNote && <p className="rounded-lg bg-slate-50 p-2 text-xs text-slate-700">{r.reviewNote}</p>}
                   <p className="text-slate-700">{r.summary}</p>
                   <p className="text-xs text-slate-500">
                     {r.eventDate ? `${r.eventLabel ?? 'Date'}: ${formatDate(r.eventDate)}${r.deadline ? ' (deadline)' : ''} · ` : ''}
@@ -225,6 +265,7 @@ export function AdminUpdatesPage() {
                     <button type="button" className="btn-secondary py-1.5 text-xs" onClick={() => edit(r)}>Edit</button>
                     {r.status !== 'PUBLISHED' && <button type="button" className="btn-primary py-1.5 text-xs" onClick={() => void act(r, 'publish')}>Publish</button>}
                     {r.status !== 'ARCHIVED' && <button type="button" className="btn-secondary py-1.5 text-xs" onClick={() => void act(r, 'archive')}>Archive</button>}
+                    {r.status !== 'ARCHIVED' && <button type="button" className="btn-secondary py-1.5 text-xs" onClick={() => void supersede(r)}>Replaced by…</button>}
                   </div>
                 </li>
               ))}
