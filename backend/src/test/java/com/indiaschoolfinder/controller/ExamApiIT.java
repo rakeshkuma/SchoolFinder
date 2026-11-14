@@ -225,8 +225,9 @@ class ExamApiIT extends AbstractIntegrationTest {
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/hidden-test"))
                 .andReturn().getResponse().getContentAsString()).contains("noindex");
 
-        String sitemap = mockMvc.perform(get("/sitemaps/pages.xml")).andReturn().getResponse().getContentAsString();
-        org.assertj.core.api.Assertions.assertThat(sitemap).contains("/exams/seo-test</loc>").doesNotContain("hidden-test")
+        String sitemap = mockMvc.perform(get("/sitemaps/exams.xml")).andReturn().getResponse().getContentAsString();
+        org.assertj.core.api.Assertions.assertThat(sitemap).contains("/exams/seo-test</loc>").doesNotContain("hidden-test");
+        org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/sitemaps/pages.xml")).andReturn().getResponse().getContentAsString())
                 .contains("/exams/finder</loc>");
 
         // Tool pages under /exams are pages in their own right, not unknown exams, and cannot be taken as slugs.
@@ -257,7 +258,7 @@ class ExamApiIT extends AbstractIntegrationTest {
                 .contains("School entrance exams in Jharkhand").contains("JHX for Jharkhand candidates").doesNotContain("noindex");
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/state/delhi"))
                 .andReturn().getResponse().getContentAsString()).contains("noindex");
-        String pages = mockMvc.perform(get("/sitemaps/pages.xml")).andReturn().getResponse().getContentAsString();
+        String pages = mockMvc.perform(get("/sitemaps/exams.xml")).andReturn().getResponse().getContentAsString();
         org.assertj.core.api.Assertions.assertThat(pages).contains("/exams/class/6</loc>").contains("/exams/state/jharkhand</loc>")
                 .doesNotContain("/exams/state/delhi</loc>").doesNotContain("/exams/class/7</loc>").doesNotContain("/exams/class/1</loc>");
     }

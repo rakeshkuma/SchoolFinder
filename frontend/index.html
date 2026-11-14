@@ -22,10 +22,12 @@
         }
       } catch (e) {}
     </script>
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS"></script>
+    <!-- Google Tag Manager, started once the page has loaded so it does not compete with the page's own code (Lighthouse
+         measured it blocking a phone's main thread for about half a second). The Consent Mode defaults above still come
+         first. The script's SHA-256 is allowed in security-headers.conf. -->
     <script>
     window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+    window.addEventListener('load', function () { var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS'; document.head.appendChild(s); });
     </script>
     <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,9 +45,6 @@
     <!--# include virtual="/__seo$request_uri" stub="seo_default" -->
     <meta name="theme-color" content="#141c4f" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased">
     <!-- The page's main content as plain HTML from the backend (/api/v1/seo/body/<path>, see nginx.conf), so search engines

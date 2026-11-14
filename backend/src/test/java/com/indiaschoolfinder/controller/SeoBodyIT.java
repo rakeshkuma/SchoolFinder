@@ -60,6 +60,38 @@ class SeoBodyIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void aProfileLinksToOtherSchoolsInTheSamePlaceAsTheAppDoes() throws Exception {
+        long id = createSchool(school("Fixture Lakeside School", Map.of("stateCode", "UK", "city", "Bhimtal")));
+        createSchool(school("Fixture Hillside Academy", Map.of("stateCode", "UK", "city", "Bhimtal")));
+        createSchool(school("Fixture Far Away School", Map.of("stateCode", "UK", "city", "Almora")));
+        String slug = body(mockMvc.perform(get("/api/v1/schools/{id}", id)).andReturn()).get("slug").asText();
+        String page = fetch("/api/v1/seo/body/schools/" + slug);
+        assertThat(page).contains("<h2>Other schools in Bhimtal</h2>").contains(">Fixture Hillside Academy</a>")
+                .doesNotContain("Fixture Far Away School")
+                // the school itself is not among its "other schools"
+                .containsOnlyOnce(">Fixture Lakeside School<");
+    }
+
+    @Test
+    void examGuidesAndPreparationPagesCarryTheirContent() throws Exception {
+        mockMvc.perform(post("/api/v1/admin/exams/import").header("Authorization", editorToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new org.springframework.core.io.ClassPathResource("seed/exams.json").getContentAsString(java.nio.charset.StandardCharsets.UTF_8)))
+                .andExpect(status().isOk());
+        String guide = fetch("/api/v1/seo/body/exams/netarhat/guide");
+        assertThat(guide).contains("<h2>Eligibility</h2>").contains("<h2>Official papers</h2>")
+                .contains("netarhatvidyalaya.com/pdf/22_03_18_smple_ppr_entrance_test.pdf").contains("<th>Marks</th>")
+                .contains("href=\"/exams/netarhat\">Netarhat practice questions, mock tests and study plan</a>");
+        String prep = fetch("/api/v1/seo/body/exams/netarhat");
+        assertThat(prep).contains("<th>Marks</th>").contains("href=\"/exams/netarhat/guide\"")
+                // The preparation page shows what that page shows; eligibility is on the guide.
+                .doesNotContain("<h2>Eligibility</h2>");
+        assertThat(fetch("/api/v1/seo/body/exams/aissee/guide")).contains("<h2>Syllabus</h2>");
+        // Fixed pages under /exams are not exams.
+        assertThat(fetch("/api/v1/seo/body/exams/practice")).contains("<h1>").doesNotContain("Official links");
+    }
+
+    @Test
     void placeAndHomePagesListTheirLinksAndPrivateOrUnknownPagesGetNothing() throws Exception {
         createSchool(school("Fixture Doon Valley School", Map.of("stateCode", "UK")));
 

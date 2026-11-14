@@ -135,10 +135,35 @@ class BlogIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void aPublishedArticleIsInTheServerRenderedPageInFullAndSafely() throws Exception {
+        Map<String, Object> post = draft("Documents for admission", "ADMISSIONS", true);
+        post.put("body", "Intro with **bold** and [a guide](/admissions/guide).\n\n## Fees & dates\n\n- one\n- two\n\n"
+                + "| Document | Why |\n| --- | --- |\n| Birth certificate | Age proof |\n\n> Check the official notice.\n\n"
+                + "A [bad link](javascript:void0) and <script>alert(1)</script>.");
+        post.put("faqs", java.util.List.of(Map.of("question", "Is a photo needed?", "answer", "Yes, two.")));
+        post.put("sources", java.util.List.of(Map.of("title", "Official notice", "url", "https://example.gov.in/notice.pdf")));
+        create(post).andExpect(status().isCreated());
+        String html = mockMvc.perform(get("/api/v1/seo/body/blog/documents-for-admission")).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        assertThat(html).contains("<h1>Documents for admission</h1>").contains("By Test Author · Published")
+                .contains("<p>Intro with <strong>bold</strong> and <a href=\"/admissions/guide\">a guide</a>.</p>")
+                .contains("<h2 id=\"fees-dates\">Fees &amp; dates</h2>").contains("<ul><li>one</li><li>two</li></ul>")
+                .contains("<th>Document</th>").contains("<td>Birth certificate</td>")
+                .contains("<p class=\"pr-note\">Check the official notice.</p>")
+                .contains("<dt>Is a photo needed?</dt><dd>Yes, two.</dd>")
+                .contains("<a href=\"https://example.gov.in/notice.pdf\" rel=\"noopener\">Official notice</a>")
+                // Unsafe links stay text and markup is escaped.
+                .contains("A bad link and &lt;script&gt;").doesNotContain("javascript:").doesNotContain("<script>");
+        // A draft has no server-rendered page.
+        create(draft("Unpublished thoughts", "ADMISSIONS", false));
+        assertThat(mockMvc.perform(get("/api/v1/seo/body/blog/unpublished-thoughts")).andReturn().getResponse().getContentAsString()).isEmpty();
+    }
+
+    @Test
     void aPublishedPostIsInTheSitemapAndADraftIsNot() throws Exception {
         create(draft("Sitemap post", "PARENTING_TIPS", true));
         create(draft("Hidden draft", "PARENTING_TIPS", false));
-        String xml = mockMvc.perform(get("/sitemaps/pages.xml")).andReturn().getResponse().getContentAsString();
+        String xml = mockMvc.perform(get("/sitemaps/blog.xml")).andReturn().getResponse().getContentAsString();
         assertThat(xml).contains("/blog/sitemap-post").doesNotContain("/blog/hidden-draft");
     }
 }

@@ -30,7 +30,10 @@ class SeoHeadIT extends AbstractIntegrationTest {
         String h = head("/schools/" + slug + "?utm_source=x");
 
         assertThat(h).contains("<title>Fixture Hill &amp; Valley School, Uttarakhand | SchoolDhundo</title>");
-        assertThat(h).contains("name=\"description\" content=\"Fixture Hill &amp; Valley School, Uttarakhand. Classes Class VI to Class XII.");
+        assertThat(h).contains("name=\"description\" content=\"Fixture Hill &amp; Valley School, Uttarakhand. Classes Class VI to Class XII."
+                + " See contact details, with official sources, on SchoolDhundo.\"");
+        // No fees or admission dates are recorded, so neither the title nor the description mentions them.
+        assertThat(h).doesNotContain("Fees").doesNotContain("fees");
         assertThat(h).contains("<link rel=\"canonical\" href=\"http://localhost/schools/" + slug + "\" />");
         assertThat(h).contains("\"@type\":\"School\"").contains("\"postalCode\":\"263002\"").contains("\"latitude\":29.38");
         // Breadcrumbs: Home › state › school (no district recorded).
@@ -99,7 +102,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
         assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | SchoolDhundo</title>");
         assertThat(head("/rankings/government-boarding")).contains("href=\"http://localhost/rankings/government-boarding\"");
-        mockMvc.perform(get("/sitemaps/pages.xml"))
+        mockMvc.perform(get("/sitemaps/exams.xml"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
                         .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/practice/netarhat-maths-1</loc>")));
     }
@@ -116,7 +119,11 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("3 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
         assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand").doesNotContain("noindex");
         assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | SchoolDhundo</title>")
-                .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex");
+                .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex")
+                .contains("\"@type\":\"BreadcrumbList\"")
+                .contains("\"position\":3,\"name\":\"Bhim Tal\",\"item\":\"http://localhost/states/uttarakhand/city/bhim-tal\"")
+                // fees are promised only "where published"
+                .contains("fees and admission dates where published");
         assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");
         assertThat(head("/schools")).contains("<title>School directory | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/schools\"");
@@ -145,5 +152,8 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/exams/aissee\"").doesNotContain("noindex");
         assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
+        assertThat(head("/exams/netarhat")).contains("<title>Netarhat Entrance Exam Preparation 2026-27 – Free Mock Tests, Practice Questions and Study Plan</title>")
+                .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex");
+        assertThat(head("/exams/netarhat/guide")).contains("href=\"http://localhost/exams/netarhat/guide\"").doesNotContain("noindex");
     }
 }

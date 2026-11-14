@@ -29,16 +29,18 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * robots.txt and an XML sitemap index for search engines: public pages, states and districts with schools, published
- * exam guides, and every
- * active school profile (40,000 per file, below the 50,000-URL protocol limit).
+ * robots.txt and an XML sitemap index for search engines: site pages, places (states, districts and towns with schools),
+ * exams and practice sets, the blog, and every active school profile (10,000 per file).
  */
 @Hidden
 @RestController
 @Transactional(readOnly = true)
 public class SitemapController {
 
-    static final int SCHOOLS_PER_FILE = 40_000;
+    /** 10,000 school profiles per file (the protocol allows 50,000): smaller files show indexing by part in Search Console. */
+    static final int SCHOOLS_PER_FILE = 10_000;
+    /** The other sitemaps, by kind of page, so Search Console reports each kind separately. */
+    private static final List<String> PARTS = List.of("pages", "places", "exams", "blog");
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/updates", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
@@ -80,7 +82,11 @@ public class SitemapController {
                 User-agent: *
                 Allow: /
                 Disallow: /admin
-                Disallow: /api/
+                Disallow: /api/v1/admin/
+                Disallow: /api/v1/account
+                Disallow: /api/v1/auth/
+                Disallow: /api/v1/participants
+                Disallow: /api/v1/dev/
                 Disallow: /saved
                 Disallow: /suggest
                 Disallow: /account
@@ -107,7 +113,9 @@ public class SitemapController {
         long files = Math.max(1, (schoolRepository.countByActiveTrue() + SCHOOLS_PER_FILE - 1) / SCHOOLS_PER_FILE);
         StringBuilder xml = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
                 .append("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
-        xml.append("  <sitemap><loc>").append(escape(base + "/sitemaps/pages.xml")).append("</loc></sitemap>\n");
+        for (String part : PARTS) {
+            xml.append("  <sitemap><loc>").append(escape(base + "/sitemaps/" + part + ".xml")).append("</loc></sitemap>\n");
+        }
         for (int i = 1; i <= files; i++) {
             xml.append("  <sitemap><loc>").append(escape(base + "/sitemaps/schools-" + i + ".xml")).append("</loc></sitemap>\n");
         }
@@ -134,12 +142,31 @@ public class SitemapController {
         // "Best schools in" pages only where enough schools are ranked or listed (the same rule as their noindex).
         bestPlaces.all().stream().filter(r -> r.ranked() + r.listed() >= com.indiaschoolfinder.service.BestPlacesService.MIN_TO_INDEX)
                 .forEach(r -> url(xml, base + "/rankings/best-schools-in-" + r.slug(), null));
-        // The blog appears once it has something to read; drafts never do.
+        for (String board : schoolRepository.boardCodesWithSchools()) {
+            if (!"OTHER".equals(board)) { // "Other / multiple curricula" is not a meaningful directory page
+                url(xml, base + "/boards/" + board, null);
+            }
+        }
+        return xml(xml.append("</urlset>\n"));
+    }
+
+    /** The blog: articles (with their real last-updated date) and categories that hold one. Drafts never appear. */
+    @GetMapping("/sitemaps/blog.xml")
+    public ResponseEntity<String> blog(HttpServletRequest request) {
+        String base = base(request);
+        StringBuilder xml = urlset();
         var posts = blogPosts.findVisible(java.time.Instant.now());
         if (!posts.isEmpty()) url(xml, base + "/blog", null);
         posts.forEach(p -> url(xml, base + "/blog/" + p.getSlug(), p.getUpdatedAt()));
-        // A category page is listed once it has a published article.
         posts.stream().map(p -> p.getCategory()).distinct().forEach(c -> url(xml, base + "/blog/category/" + c.slug(), null));
+        return xml(xml.append("</urlset>\n"));
+    }
+
+    /** States, and the districts and towns with enough schools to be worth a page of their own (the noindex rule). */
+    @GetMapping("/sitemaps/places.xml")
+    public ResponseEntity<String> places(HttpServletRequest request) {
+        String base = base(request);
+        StringBuilder xml = urlset();
         for (StateDto state : locationService.states()) {
             if (state.schoolCount() > 0) {
                 url(xml, base + "/states/" + state.slug(), null);
@@ -153,15 +180,18 @@ public class SitemapController {
         for (Object[] row : schoolRepository.districtsWithSchools(SeoHeadService.MIN_SCHOOLS_TO_INDEX)) {
             url(xml, base + "/states/" + row[0] + "/" + row[1], null);
         }
-        for (String board : schoolRepository.boardCodesWithSchools()) {
-            if (!"OTHER".equals(board)) { // "Other / multiple curricula" is not a meaningful directory page
-                url(xml, base + "/boards/" + board, null);
-            }
-        }
+        return xml(xml.append("</urlset>\n"));
+    }
+
+    /** Entrance exams (preparation pages and guides), exam finders by class and state, and published practice sets. */
+    @GetMapping("/sitemaps/exams.xml")
+    public ResponseEntity<String> exams(HttpServletRequest request) {
+        String base = base(request);
+        StringBuilder xml = urlset();
         List<Exam> exams = examRepository.findByPublishedTrueOrderByDisplayOrderAscShortNameAsc();
         for (Exam exam : exams) {
             url(xml, base + "/exams/" + exam.getSlug(), exam.getUpdatedAt());
-            if ("jnvst".equals(exam.getSlug()) || "aissee".equals(exam.getSlug())) url(xml, base + "/exams/" + exam.getSlug() + "/guide", exam.getUpdatedAt());
+            if (SeoHeadService.PREP_PAGES.contains(exam.getSlug())) url(xml, base + "/exams/" + exam.getSlug() + "/guide", exam.getUpdatedAt());
         }
         // Class pages only for classes with an entrance test; state pages only for states with their own exam
         // (others would repeat existing pages).
@@ -176,8 +206,8 @@ public class SitemapController {
             }
         }
         // Published practice sets (original questions); sittings, attempts and progress stay out (robots.txt).
-        for (var set : practiceSetRepository.findByPublishedTrueOrderByDisplayOrderAscTitleAsc()) {
-            url(xml, base + "/exams/practice/" + set.getSlug(), set.getUpdatedAt());
+        for (Object[] set : practiceSetRepository.findPublishedOutline()) { // without the questions
+            url(xml, base + "/exams/practice/" + set[0], (Instant) set[4]);
         }
         return xml(xml.append("</urlset>\n"));
     }

@@ -260,9 +260,10 @@ export function Layout() {
         </div>
       )}
       {/* isolate: z-indexes inside pages (map panes use 400–1000) stay below the sticky header and its menus. */}
-      <main id="main" className="isolate flex-1">
+      {/* At least a full screen, while a page's code or its data loads too, so the footer never shows in the first screen and
+          then jumps away when the content arrives (the layout shift Lighthouse measured on school profiles). */}
+      <main id="main" className="isolate min-h-[100svh] flex-1">
         {/* Pages load on first visit; the header and footer stay in place meanwhile. */}
-        {/* A full screen while a page loads, so the footer never shows in the first screen and then jumps away (layout shift). */}
         <Suspense fallback={<div className="min-h-[100svh]"><Spinner label="Loading…" /></div>}>
           <Outlet />
         </Suspense>
