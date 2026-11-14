@@ -156,6 +156,11 @@ public class PremierDirectoryService {
             case "STATE" -> "st.name, lower(ps.name)";
             case "CITY" -> "lower(ps.city), lower(ps.name)";
             case "FEE" -> "coalesce(ps.fee_min_inr, ps.fee_max_inr) NULLS LAST, lower(ps.name)";
+            // Schools with a publishable photograph of their own first (for a picture-led preview), then as by name.
+            // Presentation only: it says nothing about the schools.
+            case "PHOTO" -> "EXISTS (SELECT 1 FROM school_image si WHERE si.school_id = s.id AND si.image_type <> 'LOGO'"
+                    + " AND NOT si.illustrative AND si.permission_status IN ('PUBLIC_DOMAIN', 'OPEN_LICENCE', 'WRITTEN_PERMISSION',"
+                    + " 'PURCHASED_LICENCE', 'OWN_WORK')) DESC, ps.featured DESC, regexp_replace(lower(ps.name), '^the\\s+', ''), ps.id";
             // Editorially featured schools first, then A to Z. Featured is a placement, not a rank, and is labelled.
             default -> "ps.featured DESC, regexp_replace(lower(ps.name), '^the\\s+', ''), ps.id";
         };

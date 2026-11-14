@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/common/Icon';
 import { Pagination } from '../components/common/Pagination';
-import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
+import { AsyncContent, EmptyState, Spinner } from '../components/common/States';
 import { Tabs } from '../components/common/Tabs';
 import { RankingShell } from '../components/ranking/RankingShell';
 import { CompareButton } from '../components/school/CompareBar';
@@ -10,17 +10,16 @@ import { SchoolImage } from '../components/school/SchoolImage';
 import { SchoolListSection } from '../components/school/SchoolListSection';
 import { useApi } from '../hooks/useApi';
 import { NETWORK_PAGES } from '../content/networks';
-import { directoryService, locationService, rankingService, schoolListService, schoolService, type BestPlaceSummary, type RankingEdition, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
+import { locationService, rankingService, schoolListService, schoolService, type BestPlaceSummary, type RankingEdition, type RankingRow, type RankingTableParams, type SchoolListSummary } from '../services/publicApi';
 import type { Faq } from '../utils/schoolFaq';
 import { NotFoundPage } from './InfoPages';
-import { DirectoryCategoryCards, DirectoryCategoryPage, DirectoryHero, DirectoryHighlights, DirectoryPlacesPage, PartnerCard } from './RankingDirectory';
+import { DirectoryCategoryPage, DirectoryPlacesPage } from './RankingDirectory';
 import type { BoardingType, SchoolType } from '../types/api';
 import { boardingTypeLabel, formatDate, networkLabel, schoolTypeLabel } from '../utils/format';
 
 export const NO_SEPARATE_RANKING = 'No separate published ranking available for this category.';
 
 const PAGE_SIZE = 25;
-const TOPS: [string, string][] = [['10', 'Top 10'], ['20', 'Top 20'], ['100', 'Top 100'], ['all', 'All']];
 export const BOARDS: [string, string][] = [['CBSE', 'CBSE'], ['CISCE', 'ICSE'], ['IB', 'IB'], ['CAMBRIDGE', 'Cambridge / IGCSE'], ['STATE', 'State Boards']];
 const GOVERNMENT_GROUPS: [string, string][] = [['CENTRAL', 'Central Government'], ['STATE', 'State Government'], ['KV', 'Kendriya Vidyalayas'],
   ['JNV', 'Jawahar Navodaya Vidyalayas'], ['SAINIK', 'Sainik Schools'], ['OTHER', 'Other government institutions']];
@@ -299,74 +298,6 @@ function SourceNote({ list: e, filtered }: { list: RankingEdition; filtered?: bo
 const SCHOOL_TYPES: [string, string][] = [['GOVERNMENT', 'Government'], ['PRIVATE', 'Private'], ['AIDED', 'Government-aided'], ['INTERNATIONAL', 'International']];
 const RESIDENCES: [string, string][] = [['BOARDING', 'Boarding'], ['DAY_CUM_BOARDING', 'Day-cum-boarding'], ['DAY', 'No boarding listed']];
 
-/**
- * The rankings home page: the premier school directory (search, live counts, categories and school cards) first, then
- * the published national ranking as its publisher printed it, kept apart because a directory is not a ranking.
- */
-export function TopSchoolsPage() {
-  const { editions, pick, sp, set } = useLists(isNational);
-  const list = pick.list;
-  const top = TOPS.some(([v]) => v === sp.get('top')) ? (sp.get('top') as string) : '20';
-  const maxRank = top === 'all' ? undefined : Number(top);
-  const q = sp.get('q') ?? undefined;
-  const green = editions.data?.find((e) => e.ratingBased);
-  const summary = useApi(() => directoryService.summary(), []);
-  const places = useApi(() => rankingService.places(list!.id), [list?.id], !!list);
-  const opt = (k: string) => sp.get(k) || undefined;
-  const filters = { q, maxRank, state: opt('state'), board: opt('board') };
-  const narrowed = !!(filters.state || filters.board);
-  const tie = 'Publishers can tie schools, and schools we cannot match to our directory are left out, so ranks can repeat or skip. We never fill the gaps.';
-  return (
-    <RankingShell title="India’s Top Schools & Boarding Schools Rankings" heading="Discover India’s Leading Schools"
-      subtitle="Explore India’s premier schools, boarding schools and leading educational institutions. Compare school boards, locations, facilities and admission information to make informed decisions."
-      description="Explore India’s premier schools and boarding schools. Compare CBSE, ICSE, IB and international schools by location, school type and other important details."
-      hero={<DirectoryHero summary={summary.data} />}>
-      {summary.data ? (
-        <>
-          {summary.data.schools > 0 && <DirectoryCategoryCards summary={summary.data} />}
-          {summary.data.schools > 0 && <DirectoryHighlights total={summary.data.schools} />}
-        </>
-      ) : !summary.error && <SkeletonCards count={4} />}
-      <AsyncContent state={editions} isEmpty={() => !list && !green && !summary.data?.schools} empty={<NoRankings />}>
-        {() => (
-          <>
-            {list && (
-              <section id="ranking-table" aria-labelledby="published-title" className="scroll-mt-24 space-y-4">
-                <div>
-                  <h2 id="published-title" className="font-display text-2xl font-bold text-ink">Published national ranking</h2>
-                  <p className="mt-1 text-sm text-slate-600">
-                    {list.publisher}’s {list.year} list of India’s schools, with each school’s rank exactly as the publisher printed it.
-                  </p>
-                </div>
-                <FilterCard>
-                  <Segmented label="How many schools" value={top} options={TOPS} onChange={(v) => set({ top: v === '20' ? undefined : v })} />
-                  <div className={FILTER_GRID}>
-                    <SearchBox value={q ?? ''} set={set} />
-                    <ListPicker pick={pick} set={set} />
-                    {(places.data?.states.length ?? 0) > 1 && (
-                      <Select label="State" value={filters.state ?? ''} empty="All states" onChange={(v) => set({ state: v })}
-                        options={(places.data?.states ?? []).map((s) => [s.code, s.name])} />
-                    )}
-                    {(places.data?.boards.length ?? 0) > 1 && (
-                      <Select label="Board" value={filters.board ?? ''} empty="All boards" onChange={(v) => set({ board: v })}
-                        options={(places.data?.boards ?? []).map((b) => [b.code, boardName(b.code)])} />
-                    )}
-                  </div>
-                </FilterCard>
-                <RankedSchools list={list} filters={filters} ranks={['national']}
-                  summary={(n) => (maxRank ? `${n} ${n === 1 ? 'school holds' : 'schools hold'} a national rank from 1 to ${maxRank}. ${tie}` : `${n} schools. ${tie}`)} />
-                <SourceNote list={list} filtered={narrowed} />
-              </section>
-            )}
-            {green && <GreenSection list={green} />}
-          </>
-        )}
-      </AsyncContent>
-      <PartnerCard />
-    </RankingShell>
-  );
-}
-
 /** /rankings/{page}: a directory view, the state or city index, or a "best schools in" page. */
 export function RankingSlugPage() {
   const { page = '' } = useParams();
@@ -378,7 +309,7 @@ export function RankingSlugPage() {
 }
 
 /** An optional, separate block: an environmental rating is not an academic rank, so the two never share a table. */
-function GreenSection({ list }: { list: RankingEdition }) {
+export function GreenSection({ list }: { list: RankingEdition }) {
   const { sp, set } = useFilters();
   const open = sp.get('green') === '1';
   const places = useApi(() => rankingService.places(list.id), [list.id], open);
