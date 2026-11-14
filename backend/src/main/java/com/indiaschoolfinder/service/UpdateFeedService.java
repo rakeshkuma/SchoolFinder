@@ -249,8 +249,19 @@ public class UpdateFeedService {
             String key = a.officialNotificationUrl() != null ? a.officialNotificationUrl() : a.sourceUrl();
             byNotice.computeIfAbsent(key == null ? "school:" + a.schoolId() : key, k -> new ArrayList<>()).add(a);
         }
+        // One school's separate notices for different classes with the same year, status and key date (say Class IX
+        // and Class XI, both closing on 8 Jan) read as one update; the first notice stays its source.
+        Map<String, List<AdmissionDto>> groups = new LinkedHashMap<>();
+        Map<String, String> sourceKeyOf = new LinkedHashMap<>();
+        for (Map.Entry<String, List<AdmissionDto>> notice : byNotice.entrySet()) {
+            List<AdmissionDto> list = notice.getValue();
+            boolean oneSchool = list.stream().map(AdmissionDto::schoolId).distinct().count() == 1;
+            String key = oneSchool ? "same:" + list.get(0).schoolId() + "|" + years(list) + "|" + keyDate(list) : notice.getKey();
+            groups.computeIfAbsent(key, k -> new ArrayList<>()).addAll(list);
+            sourceKeyOf.putIfAbsent(key, notice.getKey());
+        }
         List<UpdateItem> items = new ArrayList<>();
-        for (Map.Entry<String, List<AdmissionDto>> group : byNotice.entrySet()) {
+        for (Map.Entry<String, List<AdmissionDto>> group : groups.entrySet()) {
             List<AdmissionDto> list = group.getValue();
             List<String> schools = list.stream().map(AdmissionDto::schoolName).distinct().toList();
             boolean open = list.stream().anyMatch(a -> a.status() == AdmissionStatus.OPEN);
@@ -261,7 +272,7 @@ public class UpdateFeedService {
             Instant updatedAt = list.stream().map(AdmissionDto::updatedAt).filter(Objects::nonNull).max(Comparator.naturalOrder()).orElse(null);
             LocalDate publishedOn = updatedAt == null ? null : updatedAt.atZone(INDIA).toLocalDate();
             String classes = classes(list);
-            String years = list.stream().map(AdmissionDto::academicYear).distinct().sorted().collect(Collectors.joining(", "));
+            String years = years(list);
             String title;
             String summary;
             String link;
@@ -280,7 +291,8 @@ public class UpdateFeedService {
                 link = "/admissions";
             }
             boolean verified = list.stream().allMatch(a -> a.verificationStatus() == VerificationStatus.VERIFIED);
-            String source = group.getKey().startsWith("school:") ? null : group.getKey();
+            String sourceKey = sourceKeyOf.get(group.getKey());
+            String source = sourceKey.startsWith("school:") ? null : sourceKey;
             items.add(new UpdateItem("admissions:" + Integer.toHexString(group.getKey().hashCode()), SiteUpdate.Category.ADMISSION,
                     shorten(title, 160), shorten(summary, 300), null, publishedOn, updatedAt, eventDate,
                     open ? "Last date" : "Applications open", open,
@@ -288,6 +300,20 @@ public class UpdateFeedService {
                     Origin.ADMISSIONS, "admissions"));
         }
         return items;
+    }
+
+    private static String years(List<AdmissionDto> list) {
+        return list.stream().map(AdmissionDto::academicYear).filter(Objects::nonNull).distinct().sorted().collect(Collectors.joining(", "));
+    }
+
+    /** What decides a group's date and badge: open with its last date, or upcoming with its first date. */
+    private static String keyDate(List<AdmissionDto> list) {
+        boolean open = list.stream().anyMatch(a -> a.status() == AdmissionStatus.OPEN);
+        LocalDate date = open
+                ? list.stream().filter(a -> a.status() == AdmissionStatus.OPEN).map(AdmissionDto::applicationEndDate)
+                        .filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null)
+                : list.stream().map(AdmissionDto::applicationStartDate).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
+        return (open ? "open:" : "soon:") + date;
     }
 
     /** "Class VI" or "Classes VI & IX". */

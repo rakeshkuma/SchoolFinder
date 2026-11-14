@@ -3,7 +3,7 @@ import { countPractice } from '../../pages/HomePage';
 import type { UpdateItem } from '../../services/publicApi';
 import type { PracticeSetSummary, SchoolSummary } from '../../types/api';
 import { pickFeatured, prepFlag } from './HomeSections';
-import { badgeFor, sourceLabel, tickerIcon, updateImage, updateTarget } from './updateVisuals';
+import { assignUpdateImages, badgeFor, sourceLabel, tickerIcon, updateImage, updateTarget } from './updateVisuals';
 
 const item = (over: Partial<UpdateItem>): UpdateItem => ({
   id: 'x', category: 'EXAM', title: 't', summary: 's', imageUrl: null, publishedOn: '2026-11-01', updatedAt: null, eventDate: null,
@@ -24,15 +24,27 @@ describe('update badges', () => {
 
 describe('update pictures and links', () => {
   it('uses the exam’s own school system, and only generic pictures for other notices', () => {
-    expect(updateImage(item({ category: 'EXAM', topic: 'aissee' }))).toBe('cadets');
+    expect(updateImage(item({ category: 'EXAM', topic: 'aissee' }))).toBe('cadets-ceremony');
     expect(updateImage(item({ category: 'EXAM', topic: 'netarhat' }))).toBe('netarhat');
-    expect(updateImage(item({ category: 'PREP', topic: 'jnvst' }))).toBe('studying');
-    const generic = ['teacher-class', 'hero-students', 'studying'];
+    expect(updateImage(item({ category: 'PREP', topic: 'jnvst' }))).toBe('reading');
+    const generic = ['classroom', 'teacher-class', 'hero-campus'];
     for (const id of ['admission:a', 'admission:b', 'admission:c']) {
       expect(generic).toContain(updateImage(item({ id, category: 'ADMISSION', topic: 'admissions' })));
     }
     // The same item always gets the same picture.
     expect(updateImage(item({ id: 'admission:a', category: 'ADMISSION' }))).toBe(updateImage(item({ id: 'admission:a', category: 'ADMISSION' })));
+  });
+
+  it('never repeats a picture within one grid of cards', () => {
+    const cards = [
+      item({ id: 'a', category: 'PREP', topic: 'aissee' }), item({ id: 'b', category: 'PREP', topic: 'jnvst' }),
+      item({ id: 'c', category: 'EXAM', topic: 'jnv-class-9' }), item({ id: 'd', category: 'EXAM', topic: 'jnv-class-11' }),
+      item({ id: 'e', category: 'ADMISSION', topic: 'admissions' }), item({ id: 'f', category: 'ADMISSION', topic: 'admissions' }),
+    ];
+    const images = assignUpdateImages(cards);
+    expect(new Set(images.values()).size).toBe(cards.length);
+    expect(images.get('c')).toBe('jnv-rangareddy'); // the first card keeps its exam's own picture
+    expect(images.get('d')).not.toBe('jnv-rangareddy');
   });
 
   it('opens the page on this site, else the official source, else nothing', () => {

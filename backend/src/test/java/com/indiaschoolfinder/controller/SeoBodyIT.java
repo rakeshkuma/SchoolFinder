@@ -3,13 +3,18 @@ package com.indiaschoolfinder.controller;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.indiaschoolfinder.support.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /** Server-rendered page content and the school FAQ that is both shown on the page and sent as FAQPage data. */
@@ -62,10 +67,29 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(state).contains("<h1>Schools in Uttarakhand</h1>").contains("Fixture Doon Valley School");
 
         assertThat(fetch("/api/v1/seo/head/")).contains("\"@type\":\"WebSite\"").contains("\"@type\":\"Organization\"")
+                .contains("<link rel=\"preload\" as=\"image\" media=\"(min-width: 1024px)\"").contains("og:image")
                 .contains("\"url\":\"http://localhost/contact\"");
 
+        // A published notice appears in the home page's first paint, as a link with its date.
+        jdbc.execute("TRUNCATE site_update RESTART IDENTITY");
+        LocalDate today = LocalDate.now(ZoneId.of("Asia/Kolkata"));
+        Map<String, Object> notice = new HashMap<>();
+        notice.put("category", "JOB");
+        notice.put("title", "Fixture teacher recruitment notice");
+        notice.put("summary", "Applications invited for fixture teaching posts; see the official notice.");
+        notice.put("publishedOn", today.toString());
+        notice.put("eventDate", today.plusDays(20).toString());
+        notice.put("eventLabel", "Last date");
+        notice.put("deadline", true);
+        notice.put("sourceUrl", "https://example.gov.in/recruitment.pdf");
+        notice.put("priority", 0);
+        long noticeId = body(mockMvc.perform(post("/api/v1/admin/updates").header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(notice))).andExpect(status().isCreated()).andReturn()).get("id").asLong();
+        mockMvc.perform(post("/api/v1/admin/updates/" + noticeId + "/publish").header("Authorization", editorToken())).andExpect(status().isOk());
+
         String home = fetch("/api/v1/seo/body/");
-        assertThat(home).contains("<h1>Find the Right School for Your Child</h1>")
+        assertThat(home).contains("<h1>Find the Right School for Your Child</h1>").contains("class=\"pr-hero\"")
+                .contains("<h2>Latest school and exam updates</h2>").contains("Fixture teacher recruitment notice")
                 .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"")
                 .contains("href=\"/updates\">Notifications</a>").contains("href=\"/rankings\">Rankings</a>");
 

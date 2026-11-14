@@ -7,20 +7,22 @@
 export interface HomeImage {
   srcSet: string; src: string; width: number; height: number; alt: string;
   credit: string; licence: string; licenceUrl: string | null; sourceUrl: string;
+  /** Where the subject is, for cropped frames (CSS object-position); centre when absent. */
+  position?: string;
 }
 
 export const HOME_IMAGES = {
   'hero-campus': {
     srcSet: '/images/home/hero-campus-960.webp 960w, /images/home/hero-campus-1600.webp 1600w',
-    src: '/images/home/hero-campus-960.webp', width: 1600, height: 988,
+    src: '/images/home/hero-campus-960.webp', width: 1600, height: 988, position: '50% 88%',
     alt: "A school campus in India with the national flag, students at morning assembly and a bright blue sky",
     credit: "Advaithacademy / Wikimedia Commons", licence: "CC BY-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Capital_Campus_-_with_students_and_staff.jpg",
   },
   'hero-students': {
-    srcSet: '/images/home/hero-students-480.webp 480w, /images/home/hero-students-720.webp 720w',
-    src: '/images/home/hero-students-480.webp', width: 720, height: 482,
-    alt: "Smiling Indian schoolboys in blue school uniforms",
+    srcSet: '/images/home/hero-students-480.webp 480w, /images/home/hero-students-720.webp 720w, /images/home/hero-students-960.webp 960w, /images/home/hero-students-1200.webp 1200w, /images/home/hero-students-1600.webp 1600w',
+    src: '/images/home/hero-students-960.webp', width: 1600, height: 1071,
+    alt: "Smiling Indian schoolboys in blue school uniforms on a green school campus",
     credit: "Akshar Dave / Unsplash", licence: "Unsplash License", licenceUrl: "https://unsplash.com/license",
     sourceUrl: "https://unsplash.com/photos/group-of-boys-wearing-blue-school-uniforms-photo-b5UILRPGV_g",
   },
@@ -110,7 +112,7 @@ export const HOME_IMAGES = {
   },
   'jnv-rangareddy': {
     srcSet: '/images/home/jnv-rangareddy-400.webp 400w, /images/home/jnv-rangareddy-720.webp 720w',
-    src: '/images/home/jnv-rangareddy-400.webp', width: 720, height: 540,
+    src: '/images/home/jnv-rangareddy-400.webp', width: 720, height: 464,
     alt: "PM SHRI Jawahar Navodaya Vidyalaya, Rangareddy: school buildings",
     credit: "Satti.Naveen(Lingampally)(Batch 1998-2005) / Wikimedia Commons", licence: "CC BY 3.0", licenceUrl: "https://creativecommons.org/licenses/by/3.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:JNV_Gachibowli.jpg",
@@ -122,19 +124,26 @@ export const HOME_IMAGES = {
     credit: "Souravmohanty2005 / Wikimedia Commons", licence: "CC BY 3.0", licenceUrl: "https://creativecommons.org/licenses/by/3.0",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:KVH_Campus.jpg",
   },
-  'sainik-tilaiya': {
-    srcSet: '/images/home/sainik-tilaiya-400.webp 400w, /images/home/sainik-tilaiya-494.webp 494w',
-    src: '/images/home/sainik-tilaiya-400.webp', width: 494, height: 335,
-    alt: "Sainik School Tilaiya, Jharkhand: view over the campus",
-    credit: "Wikiditot / Wikimedia Commons", licence: "CC BY-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sainik_school_tilaiya.jpg",
+  'classroom': {
+    srcSet: '/images/home/classroom-400.webp 400w, /images/home/classroom-720.webp 720w',
+    src: '/images/home/classroom-400.webp', width: 720, height: 405,
+    alt: "Children in school uniform at their desks in a classroom in India",
+    credit: "Swastik Arora / Unsplash", licence: "Unsplash License", licenceUrl: "https://unsplash.com/license",
+    sourceUrl: "https://unsplash.com/photos/a-group-of-young-children-sitting-in-a-classroom-nFx5TuNxz64",
   },
-  'sainik-ghorakhal': {
-    srcSet: '/images/home/sainik-ghorakhal-400.webp 400w, /images/home/sainik-ghorakhal-640.webp 640w',
-    src: '/images/home/sainik-ghorakhal-400.webp', width: 640, height: 640,
-    alt: "The hills around Sainik School Ghorakhal, Nainital",
-    credit: "Twbnrftw / Wikimedia Commons", licence: "CC BY-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:View_of_Bhimtal_Lake_from_Sainik_School_Ghorakhal.jpg",
+  'reading': {
+    srcSet: '/images/home/reading-400.webp 400w, /images/home/reading-720.webp 720w',
+    src: '/images/home/reading-400.webp', width: 720, height: 435,
+    alt: "Two schoolboys in uniform reading a book at their desk",
+    credit: "Swastik Arora / Unsplash", licence: "Unsplash License", licenceUrl: "https://unsplash.com/license",
+    sourceUrl: "https://unsplash.com/photos/two-young-boys-sitting-at-a-desk-with-a-book-xMYq46yAetM",
+  },
+  'teacher-classroom': {
+    srcSet: '/images/home/teacher-classroom-400.webp 400w, /images/home/teacher-classroom-720.webp 720w',
+    src: '/images/home/teacher-classroom-400.webp', width: 720, height: 481,
+    alt: "A teacher with senior students writing at their desks in a classroom in West Bengal",
+    credit: "CIMT HOOGHLY / Unsplash", licence: "Unsplash License", licenceUrl: "https://unsplash.com/license",
+    sourceUrl: "https://unsplash.com/photos/a-classroom-full-of-students-sitting-at-desks-I4lLt9g8i3k",
   },
 } satisfies Record<string, HomeImage>;
 

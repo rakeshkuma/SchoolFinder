@@ -28,9 +28,9 @@ export function AdvertisePage() {
         <section aria-labelledby="ways-h">
           <h2 id="ways-h" className="section-title">Ways to work with us</h2>
           <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <Feature icon="star" title="Featured school listing">
-              Your school shown first in its city and board pages and on the home page, marked “Featured”. Your profile’s facts still
-              come from official sources.
+            <Feature icon="star" title="Sponsored school listing">
+              Your school shown in a sponsored slot on its city and board pages, always marked “Sponsored” and never inside a
+              ranking. Your profile’s facts still come from official sources.
             </Feature>
             <Feature icon="mail" title="Admission enquiries">
               Parents send enquiries from your profile with their consent. We pass them to your admissions office.
@@ -63,7 +63,7 @@ export function AdvertisePage() {
             ].map((t) => <li key={t} className="flex items-start gap-2"><Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" /> {t}</li>)}
           </ul>
           <p className="mt-4 text-sm text-slate-600">
-            Paid placements are always labelled “Featured”, “Sponsored” or “Advertisement”. See our <Link to="/editorial-policy" className="link">editorial policy</Link>.
+            Paid placements are always labelled “Sponsored” or “Advertisement”. See our <Link to="/editorial-policy" className="link">editorial policy</Link>.
           </p>
         </section>
 

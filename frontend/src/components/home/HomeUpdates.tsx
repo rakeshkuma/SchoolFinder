@@ -6,7 +6,7 @@ import type { PageResponse } from '../../types/api';
 import { Icon } from '../common/Icon';
 import { AsyncContent } from '../common/States';
 import { UpdateCard } from './UpdateCard';
-import { tickerIcon, UPDATE_TABS, updateTarget } from './updateVisuals';
+import { assignUpdateImages, tickerIcon, UPDATE_TABS, updateTarget } from './updateVisuals';
 
 const HEADING = 'font-display text-[26px] font-extrabold tracking-tight text-navy sm:text-[30px]';
 
@@ -147,12 +147,25 @@ function UpdatesGrid({ state, tab }: { state: ApiState<PageResponse<UpdateItem>>
         ? 'No job alerts right now. Teaching and school job notices appear here only with their official source.'
         : `No ${tab === 'ALL' ? '' : `${label.toLowerCase()} `}updates right now.`} />}
       fallback={<UpdatesMessage text="Updates could not be loaded just now." />}>
-      {(page) => (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {page.content.slice(0, 6).map((u) => <UpdateCard key={u.id} item={u} />)}
-        </div>
-      )}
+      {(page) => <UpdateGrid items={page.content.slice(0, 6)} phoneLimit={4} />}
     </AsyncContent>
+  );
+}
+
+/**
+ * Cards of one height in equal rows, each with a picture not used by another card in the grid. `phoneLimit` shows only
+ * the first few on phones (the home page; the rest are one tap away on /updates).
+ */
+export function UpdateGrid({ items, phoneLimit }: { items: UpdateItem[]; phoneLimit?: number }) {
+  const images = assignUpdateImages(items);
+  return (
+    <div className="grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {items.map((u, i) => (
+        <div key={u.id} className={phoneLimit !== undefined && i >= phoneLimit ? 'hidden md:block' : undefined}>
+          <UpdateCard item={u} image={images.get(u.id)} />
+        </div>
+      ))}
+    </div>
   );
 }
 

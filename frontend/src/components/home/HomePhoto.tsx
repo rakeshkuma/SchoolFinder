@@ -20,6 +20,6 @@ export function HomePhoto({ id, sizes, className = '', priority = false, eager =
   return (
     <img src={img.src} srcSet={img.srcSet} sizes={sizes} width={img.width} height={img.height} alt={alt}
       loading={priority || eager ? 'eager' : 'lazy'} decoding="async" {...(priority ? { fetchpriority: 'high' } : {})}
-      className={className} />
+      style={'position' in img && img.position ? { objectPosition: img.position } : undefined} className={className} />
   );
 }

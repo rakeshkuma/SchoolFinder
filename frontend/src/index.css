@@ -159,6 +159,11 @@
   .prerender .pr-brand span {
     @apply text-flame-600;
   }
+  /* The home page's hero photo in the first paint, under the heading as in the app on phones. */
+  .prerender .pr-hero {
+    @apply mt-6 block aspect-[16/10] w-full max-w-2xl rounded-3xl object-cover;
+    object-position: 50% 40%;
+  }
   .prerender .pr-nav {
     @apply hidden items-center gap-5 text-sm font-semibold text-slate-600 xl:flex;
   }

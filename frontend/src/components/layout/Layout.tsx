@@ -21,7 +21,6 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
       { to: '/cities', label: 'Schools by City' },
       { to: '/states', label: 'Schools by State' },
       { to: '/boards/CBSE', label: 'CBSE Schools' },
-      { to: '/claim-school', label: 'Add / List Your School' },
     ],
   },
   {
@@ -52,7 +51,6 @@ const FOOTER: { title: string; links: { to: string; label: string }[] }[] = [
       { to: '/fees', label: 'Fee Calculator' },
       { to: '/updates', label: 'Latest Updates' },
       { to: '/updates?category=JOB', label: 'School Jobs' },
-      { to: '/blog', label: 'Blog & Articles' },
       { to: '/exams/resources', label: 'Study Material' },
     ],
   },
@@ -205,10 +203,6 @@ export function Layout() {
           </Link>
           <DesktopNav />
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-            <Link to="/claim-school"
-              className="hidden h-10 items-center gap-2 rounded-xl border-2 border-royal-200 bg-white px-3 text-sm font-bold text-royal-700 transition hover:border-royal-600 hover:bg-royal-50 md:inline-flex">
-              <Icon name="institution" className="h-5 w-5" /> List Your School
-            </Link>
             {/* The shortlist: schools saved with the heart on any card or profile, kept in this browser. On phones its count
                 rides on the menu button instead, and the menu has the link. */}
             <Link to="/saved" aria-label={shortlistLabel} title="My shortlist"
@@ -221,7 +215,8 @@ export function Layout() {
                 </span>
               )}
             </Link>
-            <AccountMenu />
+            {/* The sign-in button's width is kept from the first paint, so the menu beside it does not move when it appears. */}
+            <div className="flex justify-end xl:min-w-[108px] 2xl:min-w-[196px]"><AccountMenu /></div>
             <button
               type="button"
               className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl text-navy transition hover:bg-slate-100 xl:hidden"
@@ -242,10 +237,7 @@ export function Layout() {
         {open && (
           <nav id="mobile-nav" aria-label="Mobile" className="max-h-[calc(100vh-68px)] overflow-y-auto border-t border-slate-200 bg-white shadow-lift xl:hidden">
             <div className="container-wide py-3">
-              <div className="grid grid-cols-2 gap-2 pb-2 md:hidden">
-                <Link to="/claim-school" className="flex items-center justify-center gap-2 rounded-xl border-2 border-royal-200 px-3 py-2.5 text-sm font-bold text-royal-700">
-                  <Icon name="institution" className="h-5 w-5" /> List Your School
-                </Link>
+              <div className="pb-2 sm:hidden">
                 <Link to="/saved" aria-label={shortlistLabel} className="flex items-center justify-center gap-2 rounded-xl bg-rose-50 px-3 py-2.5 text-sm font-bold text-rose-700">
                   <Icon name="heart" className="h-5 w-5" /> My shortlist{savedCount > 0 ? ` (${savedCount})` : ''}
                 </Link>
@@ -270,7 +262,8 @@ export function Layout() {
       {/* isolate: z-indexes inside pages (map panes use 400–1000) stay below the sticky header and its menus. */}
       <main id="main" className="isolate flex-1">
         {/* Pages load on first visit; the header and footer stay in place meanwhile. */}
-        <Suspense fallback={<div className="min-h-[60vh]"><Spinner label="Loading…" /></div>}>
+        {/* A full screen while a page loads, so the footer never shows in the first screen and then jumps away (layout shift). */}
+        <Suspense fallback={<div className="min-h-[100svh]"><Spinner label="Loading…" /></div>}>
           <Outlet />
         </Suspense>
       </main>
@@ -282,7 +275,7 @@ export function Layout() {
       <div data-print="hide"><ConsentBanner /></div>
 
       <footer data-print="hide" className={`${home ? '' : 'mt-20'} bg-navy text-slate-300`}>
-        <div className="container-wide grid grid-cols-2 gap-x-6 gap-y-10 py-12 text-sm md:grid-cols-3 md:gap-x-8 xl:grid-cols-[1.5fr_repeat(5,minmax(0,1fr))]">
+        <div className="container-wide grid grid-cols-2 gap-x-6 gap-y-8 py-10 text-sm md:grid-cols-3 md:gap-x-8 xl:grid-cols-[1.4fr_repeat(5,minmax(0,1fr))]">
           <div className="col-span-2 md:col-span-3 xl:col-span-1 xl:border-r xl:border-white/10 xl:pr-8">
             <Link to="/" aria-label="SchoolDhundo home" className="inline-block rounded-lg"><Logo light /></Link>
             <p className="mt-4 max-w-md leading-relaxed text-slate-300">

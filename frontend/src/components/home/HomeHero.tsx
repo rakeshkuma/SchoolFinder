@@ -8,6 +8,12 @@ import { HomePhoto } from './HomePhoto';
 interface Stat { to: string; icon: IconName; tone: string; title: string; sub: string; label: string }
 
 /**
+ * The hero photograph's sizes. The server preloads the same file set for wide screens (SeoHeadService.HOME_HERO_PRELOAD),
+ * so this and that must stay identical or the browser downloads the picture twice.
+ */
+export const HERO_SIZES = '(min-width: 1024px) 48vw, calc(100vw - 32px)';
+
+/**
  * The home page's opening: the promise, the school search (with the same suggestions as the directory) and four ways
  * in. Counts appear only once the server has answered; until then each stat says what it opens, never a made-up number.
  */
@@ -39,8 +45,8 @@ export function HomeHero({ schools, practiceSets }: { schools: number | null; pr
     <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-[linear-gradient(115deg,#eaf1ff_0%,#f6f8ff_46%,#f3efff_100%)]">
       <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-royal-100/60 blur-3xl" aria-hidden />
       <div className="container-wide relative">
-        <div className="max-w-[640px] pb-8 pt-9 sm:pt-12 lg:w-[52%] lg:max-w-none lg:py-14 lg:pr-8 xl:w-[49%] xl:py-16">
-          <h1 id="hero-heading" className="font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-navy min-[400px]:text-[38px] sm:text-5xl sm:leading-[1.08] lg:text-[46px] xl:text-[56px]">
+        <div className="max-w-[620px] pb-8 pt-9 sm:pt-12 lg:min-h-[500px] lg:w-[52%] lg:max-w-none lg:py-14 lg:pr-10 xl:w-[50%] xl:py-16">
+          <h1 id="hero-heading" className="font-display text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-navy min-[400px]:text-[38px] sm:text-5xl sm:leading-[1.06] lg:text-[46px] xl:text-[54px]">
             Find the Right School <br className="hidden sm:block" />for{' '}
             <span className="relative inline-block whitespace-nowrap text-flame-600">
               Your Child
@@ -49,18 +55,18 @@ export function HomeHero({ schools, practiceSets }: { schools: number | null; pr
               </svg>
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-slate-700 sm:text-lg">
+          <p className="mt-6 max-w-[34rem] text-[17px] leading-relaxed text-slate-700 sm:text-lg">
             Discover, compare and prepare for the best schools across India — from admissions and rankings to exam updates,
             preparation and more, all in one place.
           </p>
 
           <form onSubmit={submit} role="search" aria-label="Search schools"
-            className="hero-search mt-7 flex flex-col gap-2 rounded-2xl bg-white p-2 shadow-[0_20px_44px_-22px_rgba(15,37,87,0.45)] ring-1 ring-slate-200 transition focus-within:ring-2 focus-within:ring-royal-500 sm:flex-row sm:items-center">
+            className="hero-search mt-7 flex flex-col gap-2 rounded-2xl bg-white p-1.5 shadow-[0_18px_40px_-22px_rgba(15,37,87,0.5)] ring-1 ring-slate-200/90 transition focus-within:ring-2 focus-within:ring-royal-500 sm:flex-row sm:items-center">
             <div className="min-w-0 flex-1">
               <SchoolSuggestInput id="home-search" value={q} onChange={setQ} placeholder="Search school, city, board or location" />
             </div>
             <button type="submit"
-              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-royal-600 px-6 text-[15px] font-bold text-white shadow-[0_10px_20px_-10px_rgba(11,92,213,0.9)] transition hover:bg-royal-700 active:bg-royal-800">
+              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-royal-600 px-7 text-[15px] font-bold text-white shadow-[0_10px_20px_-10px_rgba(11,92,213,0.9)] transition hover:bg-royal-700 active:bg-royal-800">
               Explore Schools <Icon name="arrowRight" className="h-5 w-5" />
             </button>
           </form>
@@ -82,17 +88,17 @@ export function HomeHero({ schools, practiceSets }: { schools: number | null; pr
         </div>
       </div>
 
-      {/* One set of pictures for every width: under the text on phones and tablets, a curved panel on the right from lg. */}
-      <div aria-hidden className="relative mx-4 mb-14 sm:mx-6 lg:absolute lg:inset-y-0 lg:right-0 lg:m-0 lg:w-[48%] xl:w-[51%]">
-        <div className="absolute inset-y-0 -left-2.5 right-0 hidden bg-gradient-to-b from-royal-500 via-royal-600 to-royal-200 lg:block lg:hero-arc" />
-        <div className="relative overflow-hidden rounded-3xl bg-royal-100 shadow-[0_24px_48px_-28px_rgba(15,37,87,0.6)] lg:absolute lg:inset-0 lg:rounded-none lg:shadow-none lg:hero-arc">
-          {/* The campus sits low in a tall sky: zoomed from the bottom so the building and assembly fill the panel. */}
-          <HomePhoto id="hero-campus" priority sizes="(min-width: 1024px) 52vw, calc(100vw - 32px)"
-            className="aspect-[16/10] w-full origin-bottom scale-[1.18] object-cover object-[50%_100%] sm:aspect-[16/8] lg:aspect-auto lg:h-full lg:scale-[1.45]" />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/15 to-transparent" />
-        </div>
-        <div className="absolute -bottom-10 right-4 w-[44%] max-w-[260px] -rotate-2 overflow-hidden rounded-2xl border-4 border-white shadow-[0_22px_44px_-18px_rgba(15,37,87,0.6)] sm:right-8 lg:bottom-10 lg:left-[7%] lg:right-auto lg:w-[40%] lg:max-w-[300px] lg:rounded-3xl">
-          <HomePhoto id="hero-students" eager sizes="(min-width: 1024px) 300px, 44vw" className="aspect-[3/2] w-full object-cover" />
+      {/* One photograph, under the text on phones and tablets and a curved panel on the right from lg. */}
+      <div className="relative mx-4 mb-8 sm:mx-6 lg:absolute lg:inset-y-0 lg:right-0 lg:m-0 lg:w-[48%] xl:w-[50%]">
+        <div aria-hidden className="absolute inset-y-0 -left-2 right-0 hidden bg-gradient-to-b from-royal-400 via-royal-600 to-royal-300 lg:block lg:hero-arc" />
+        <div className="relative overflow-hidden rounded-3xl shadow-[0_24px_48px_-28px_rgba(15,37,87,0.6)] lg:absolute lg:inset-0 lg:rounded-none lg:shadow-none lg:hero-arc">
+          <HomePhoto id="hero-students" priority alt="Smiling schoolchildren in uniform on a green school campus" sizes={HERO_SIZES}
+            className="aspect-[16/10] w-full object-cover object-[50%_40%] sm:aspect-[16/8] lg:aspect-auto lg:h-full" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent" />
+          <p className="absolute bottom-4 left-4 flex items-center gap-2 rounded-xl bg-white/90 px-3 py-2 text-[13px] font-semibold text-navy shadow-lg backdrop-blur sm:bottom-5 sm:left-5 lg:bottom-8 lg:left-[16%]">
+            <span className="grid h-7 w-7 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><Icon name="shield" className="h-4 w-4" /></span>
+            Official sources linked
+          </p>
         </div>
       </div>
     </section>
