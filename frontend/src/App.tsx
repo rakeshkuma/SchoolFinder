@@ -60,7 +60,7 @@ const ChallengeTakePage = page(() => import('./pages/ChallengePages'), 'Challeng
 const MethodologyPage = page(() => import('./pages/MethodologyPage'), 'MethodologyPage');
 const RankingsPage = page(() => import('./pages/RankingsPage'), 'RankingsPage');
 const rankingPages = () => import('./pages/RankingHubPage');
-const TopSchoolsPage = page(rankingPages, 'TopSchoolsPage');
+const RankingsHomePage = page(() => import('./pages/RankingsHome'), 'RankingsHomePage');
 const RankingStatesPage = page(rankingPages, 'RankingStatesPage');
 const RankingSlugPage = page(rankingPages, 'RankingSlugPage');
 const BoardRankingsPage = page(rankingPages, 'BoardRankingsPage');
@@ -161,7 +161,7 @@ export default function App() {
               <Route path="states/:state/city/:city" element={<StatePage />} />
               <Route path="network/:network" element={<NetworkPage />} />
               <Route path="saved" element={<SavedSchoolsPage />} />
-              <Route path="rankings" element={<TopSchoolsPage />} />
+              <Route path="rankings" element={<RankingsHomePage />} />
               <Route path="rankings/states" element={<RankingStatesPage />} />
               <Route path="rankings/boards" element={<BoardRankingsPage />} />
               <Route path="rankings/government-boarding" element={<GovernmentBoardingPage />} />

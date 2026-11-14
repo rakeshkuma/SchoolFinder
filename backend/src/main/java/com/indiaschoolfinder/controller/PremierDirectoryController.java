@@ -59,7 +59,7 @@ public class PremierDirectoryController {
             @RequestParam(required = false) @Pattern(regexp = CODE) String gender,
             @RequestParam(required = false) @Pattern(regexp = CODE) String section,
             @RequestParam(name = "class", required = false) @Min(0) @Max(12) Integer cls,
-            @RequestParam(required = false) @Pattern(regexp = "^(?i)(name|state|city|fee)$") String sort,
+            @RequestParam(required = false) @Pattern(regexp = "^(?i)(name|state|city|fee|photo)$") String sort,
             @RequestParam(defaultValue = "0") @Min(0) int page,
             @RequestParam(defaultValue = "24") @Min(1) @Max(100) int size) {
         return directory.list(new PremierDirectoryDtos.Query(category, blank(q), state, blank(city), board, residence, gender, section, cls, sort), page, size);

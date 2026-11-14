@@ -4,6 +4,9 @@ import com.indiaschoolfinder.dto.common.PageResponse;
 import com.indiaschoolfinder.dto.location.CityDto;
 import com.indiaschoolfinder.dto.location.DistrictDto;
 import com.indiaschoolfinder.dto.location.StateDto;
+import com.indiaschoolfinder.dto.ranking.PremierDirectoryDtos;
+import com.indiaschoolfinder.dto.ranking.RankingCatalogDtos;
+import com.indiaschoolfinder.enums.RankingScope;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
 import com.indiaschoolfinder.dto.school.SchoolSearchCriteria;
 import com.indiaschoolfinder.dto.school.SchoolSummaryDto;
@@ -53,14 +56,19 @@ public class SeoBodyService {
     private final LocationService locationService;
     private final SchoolFaqService faqService;
     private final UpdateFeedService updateFeed;
+    private final RankingCatalogService rankings;
+    private final PremierDirectoryService directory;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
-                          SchoolFaqService faqService, UpdateFeedService updateFeed) {
+                          SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
+                          PremierDirectoryService directory) {
         this.seoHeadService = seoHeadService;
         this.schoolService = schoolService;
         this.locationService = locationService;
         this.faqService = faqService;
         this.updateFeed = updateFeed;
+        this.rankings = rankings;
+        this.directory = directory;
     }
 
     /** @param path the page path as requested (any query string is ignored) */
@@ -84,6 +92,8 @@ public class SeoBodyService {
             Matcher m;
             if (p.equals("/")) {
                 main = home();
+            } else if (p.equals("/rankings")) {
+                main = rankingsHome(description);
             } else if ((m = SCHOOL.matcher(p)).matches()) {
                 main = school(schoolService.getActiveBySlug(m.group(1)), description);
             } else if ((m = CITY.matcher(p)).matches()) {
@@ -152,6 +162,56 @@ public class SeoBodyService {
                 .append(link("/exams/practice", "Mock tests and daily quiz"))
                 .append(link("/blog", "Guides for parents"))
                 .append("</ul>");
+        return h.toString();
+    }
+
+    /**
+     * The rankings page: the published national list's top places exactly as its publisher printed them (ties and gaps
+     * kept, never renumbered), each linked to the school, then the directory's categories. Same facts as the app.
+     */
+    private String rankingsHome(String description) {
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › Rankings</nav>");
+        h.append("<h1>Discover India's Best Schools</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        RankingCatalogDtos.Edition list = rankings.editions().stream()
+                .filter(e -> !e.ratingBased() && e.scope() == RankingScope.NATIONAL && e.boardCode() == null)
+                .findFirst().orElse(null);
+        if (list != null) {
+            List<RankingCatalogDtos.Row> rows = rankings.table(new RankingCatalogDtos.Query(list.id(), null, null, null, null, null, null,
+                    null, null, null, 20, null, null), 0, 50).content();
+            h.append("<h2>").append(esc(list.publisherCode() + " " + list.year() + ": " + (list.category() != null ? list.category() : list.name())))
+                    .append("</h2>");
+            h.append("<p>Published by ").append(esc(list.publisher())).append(". Ranks are the publisher's own, for schools matched to ")
+                    .append("SchoolDhundo's directory, so positions can repeat or skip. <a href=\"").append(esc(list.sourceUrl()))
+                    .append("\" rel=\"nofollow noopener\">Publisher's list</a></p>");
+            h.append("<ul class=\"pr-list\">");
+            for (RankingCatalogDtos.Row r : rows) {
+                h.append("<li>#").append(r.nationalRank()).append(" <a href=\"/schools/").append(esc(r.slug())).append("\">")
+                        .append(esc(r.schoolName())).append("</a> <span>")
+                        .append(esc(String.join(", ", java.util.stream.Stream.of(r.city(), r.stateName()).filter(x -> x != null && !x.isBlank()).toList())))
+                        .append("</span></li>");
+            }
+            h.append("</ul>");
+            h.append("<p><a href=\"/rankings?top=all\">All ").append(list.entries()).append(" ranked schools in this list</a></p>");
+        }
+        PremierDirectoryDtos.Summary summary = directory.summary();
+        if (summary.schools() > 0) {
+            h.append("<h2>Explore by category</h2><ul class=\"pr-grid\">");
+            for (PremierDirectoryDtos.Category c : summary.categories()) {
+                h.append("<li><a href=\"/rankings/").append(c.slug()).append("\">").append(esc(c.title())).append("</a> <span>")
+                        .append(c.schools()).append(" schools</span></li>");
+            }
+            h.append(link("/rankings/states", "Rankings by state and city"))
+                    .append(link("/rankings/boards", "Board-wise rankings"))
+                    .append(link("/rankings/government-boarding", "Government and boarding school rankings"))
+                    .append(link("/rankings/methodology", "How rankings are shown"))
+                    .append("</ul>");
+            h.append("<p>The premier school directory is SchoolDhundo's own selection of ").append(summary.schools())
+                    .append(" schools, listed A to Z; it is not a ranking.</p>");
+        }
         return h.toString();
     }
 

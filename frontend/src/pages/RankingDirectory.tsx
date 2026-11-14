@@ -1,14 +1,14 @@
-import { useState, type FormEvent, type ReactNode } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, type ReactNode } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { PaidLabel } from '../components/common/Badges';
 import { MoreFilters } from '../components/common/FilterSheet';
-import { Icon, type IconName } from '../components/common/Icon';
+import { Icon } from '../components/common/Icon';
 import { Pagination } from '../components/common/Pagination';
 import { EmptyState, ErrorState, SkeletonCards, Spinner } from '../components/common/States';
 import { RankingShell } from '../components/ranking/RankingShell';
 import { SchoolImage } from '../components/school/SchoolImage';
 import { useApi } from '../hooks/useApi';
-import { directoryService, type DirectoryCategory, type DirectoryFacet, type DirectoryFacets, type DirectorySchool, type DirectorySummary } from '../services/publicApi';
+import { directoryService, type DirectoryFacet, type DirectoryFacets, type DirectorySchool } from '../services/publicApi';
 import { formatDate } from '../utils/format';
 import { NotFoundPage } from './InfoPages';
 
@@ -21,20 +21,6 @@ const GENDER_WORD: Record<string, string> = { BOYS: 'boys’', GIRLS: 'girls’'
 const RESIDENCE_WORD: Record<string, string> = { BOARDING: 'boarding school', DAY_CUM_BOARDING: 'day-cum-boarding school', DAY: 'day school' };
 const CLASS_NAMES = ['Pre-primary', ...Array.from({ length: 12 }, (_, i) => `Class ${i + 1}`)];
 const SORTS: [string, string][] = [['', 'School name (A to Z)'], ['state', 'State'], ['city', 'City'], ['fee', 'Approx. fee, lowest first']];
-
-/** How each view looks on the rankings home page. Views not listed here (Cambridge) have pages but no card. */
-const CARD_LOOK: Record<string, { icon: IconName; tone: string }> = {
-  'top-premier-schools': { icon: 'trophy', tone: 'from-amber-400 to-orange-500' },
-  'boarding-schools': { icon: 'home', tone: 'from-brand-500 to-violet-600' },
-  'boys-boarding-schools': { icon: 'users', tone: 'from-sky-500 to-brand-600' },
-  'girls-boarding-schools': { icon: 'users', tone: 'from-rose-400 to-fuchsia-600' },
-  'co-ed-boarding-schools': { icon: 'users', tone: 'from-teal-400 to-emerald-600' },
-  'international-schools': { icon: 'globe', tone: 'from-indigo-400 to-sky-600' },
-  'cbse-schools': { icon: 'graduation', tone: 'from-blue-500 to-indigo-600' },
-  'icse-schools': { icon: 'book', tone: 'from-violet-500 to-purple-700' },
-  'ib-schools': { icon: 'sparkle', tone: 'from-cyan-500 to-teal-600' },
-  'alternative-schools': { icon: 'sun', tone: 'from-lime-500 to-emerald-600' },
-};
 
 /** "₹14.5 lakh" or "₹80,000". */
 export function inr(n: number) {
@@ -131,108 +117,6 @@ function DirectorySchoolCard({ s, priority = false }: { s: DirectorySchool; prio
   );
 }
 
-/** The search and live counts in the rankings home page header. */
-export function DirectoryHero({ summary }: { summary: DirectorySummary | null }) {
-  const navigate = useNavigate();
-  const search = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const q = String(new FormData(e.currentTarget).get('q') ?? '').trim();
-    navigate(`/rankings/top-premier-schools${q ? `?q=${encodeURIComponent(q)}` : ''}`);
-  };
-  const stats: [number | undefined, string][] = [
-    [summary?.schools, 'schools listed'], [summary?.states, 'states covered'], [summary?.boarding, 'boarding schools'], [summary?.boards, 'education boards'],
-  ];
-  return (
-    <div className="space-y-5">
-      <form onSubmit={search} role="search" aria-label="Search schools" className="flex max-w-2xl gap-2 rounded-2xl bg-white/10 p-2 ring-1 ring-white/20 backdrop-blur">
-        <label className="min-w-0 flex-1">
-          <span className="sr-only">School name, city or state</span>
-          <input name="q" maxLength={100} placeholder="Search by school name, city or state"
-            className="w-full rounded-xl border-0 bg-white px-4 py-3 text-sm text-ink shadow-sm focus:ring-2 focus:ring-accent-300" />
-        </label>
-        <button type="submit" className="btn-primary shrink-0 rounded-xl bg-accent-400 px-5 text-ink hover:bg-accent-300">
-          <Icon name="search" className="h-4 w-4" /><span className="hidden sm:inline">Search</span><span className="sr-only sm:hidden">Search</span>
-        </button>
-      </form>
-      <dl className="grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4">
-        {stats.map(([n, label]) => (
-          <div key={label} className="rounded-xl bg-white/10 px-3 py-2 ring-1 ring-white/15">
-            <dt className="sr-only">{label}</dt>
-            <dd className="font-display text-2xl font-bold text-white">{n === undefined ? '–' : n.toLocaleString('en-IN')}</dd>
-            <dd className="text-xs text-blue-100">{label}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  );
-}
-
-/** The twelve doors into the directory; a view with no schools has no card. */
-export function DirectoryCategoryCards({ summary }: { summary: DirectorySummary }) {
-  const views = summary.categories.filter((c) => CARD_LOOK[c.slug]);
-  const card = (to: string, title: string, description: string, count: string, look: { icon: IconName; tone: string }) => (
-    <li key={to}>
-      <Link to={to} className="card group flex h-full flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand-500">
-        <span className={`flex h-20 items-center justify-between bg-gradient-to-br ${look.tone} px-4 text-white`} aria-hidden>
-          <Icon name={look.icon} className="h-8 w-8 opacity-90" />
-          <span className="font-display text-2xl font-bold">{count.split(' ')[0]}</span>
-        </span>
-        <span className="flex flex-1 flex-col p-4">
-          <span className="font-display font-bold text-ink">{title}</span>
-          <span className="mt-1 text-sm text-slate-600">{description}</span>
-          <span className="mt-3 flex items-center justify-between pt-1 text-sm">
-            <span className="text-slate-500">{count}</span>
-            <span className="inline-flex items-center gap-1 font-semibold text-brand-700">Explore <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-0.5" /></span>
-          </span>
-        </span>
-      </Link>
-    </li>
-  );
-  const plural = (n: number, one: string, many: string) => `${n.toLocaleString('en-IN')} ${n === 1 ? one : many}`;
-  const byTitle = (slug: string) => views.find((v) => v.slug === slug);
-  const order = ['top-premier-schools', 'boarding-schools', 'boys-boarding-schools', 'girls-boarding-schools', 'co-ed-boarding-schools',
-    'international-schools', 'cbse-schools', 'icse-schools', 'ib-schools'];
-  return (
-    <section aria-labelledby="dir-cats">
-      <h2 id="dir-cats" className="font-display text-2xl font-bold text-ink">Explore by category</h2>
-      <p className="mt-1 text-sm text-slate-600">Each category is a view of SchoolDhundo’s premier school directory, listed A to Z.</p>
-      <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {order.map(byTitle).filter((c): c is DirectoryCategory => !!c)
-          .map((c) => card(`/rankings/${c.slug}`, c.title, c.description, plural(c.schools, 'school', 'schools'), CARD_LOOK[c.slug]))}
-        {summary.states > 0 && card('/rankings/schools-by-state', 'State-wise Schools', 'Premier and boarding schools grouped by state.',
-          plural(summary.states, 'state', 'states'), { icon: 'map', tone: 'from-orange-400 to-rose-500' })}
-        {summary.cities > 0 && card('/rankings/schools-by-city', 'City-wise Schools', 'From hill towns like Mussoorie and Ooty to Mumbai and Bengaluru.',
-          plural(summary.cities, 'city', 'cities'), { icon: 'building', tone: 'from-slate-500 to-slate-700' })}
-        {byTitle('alternative-schools') && card('/rankings/alternative-schools', byTitle('alternative-schools')!.title, byTitle('alternative-schools')!.description,
-          plural(byTitle('alternative-schools')!.schools, 'school', 'schools'), CARD_LOOK['alternative-schools'])}
-      </ul>
-    </section>
-  );
-}
-
-/** A first look at the directory on the rankings home page: featured schools first, then A to Z. */
-export function DirectoryHighlights({ total }: { total: number }) {
-  const schools = useApi(() => directoryService.list({ category: 'top-premier-schools', size: 6 }), []);
-  return (
-    <section aria-labelledby="dir-top" className="space-y-4">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 id="dir-top" className="font-display text-2xl font-bold text-ink">Premier School Directory</h2>
-          <p className="mt-1 text-sm text-slate-600">India’s leading boarding and day schools, chosen by SchoolDhundo and listed A to Z. A rank appears only where an independent publisher has one.</p>
-        </div>
-        <Link to="/rankings/top-premier-schools" className="btn-secondary">Browse all {total} schools</Link>
-      </div>
-      {schools.error ? <ErrorState error={schools.error} onRetry={schools.reload} />
-        : !schools.data ? <SkeletonCards count={6} /> : (
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {schools.data.content.map((s, i) => <li key={s.id}><DirectorySchoolCard s={s} priority={i < 3} /></li>)}
-          </ul>
-        )}
-    </section>
-  );
-}
-
-/** Space for school partnerships. Nothing paid is shown yet, and paid placement is always labelled and never a rank. */
 export function PartnerCard() {
   return (
     <section aria-labelledby="dir-partner" className="card flex flex-col gap-3 bg-gradient-to-br from-brand-50 to-white p-5 sm:flex-row sm:items-center sm:justify-between">

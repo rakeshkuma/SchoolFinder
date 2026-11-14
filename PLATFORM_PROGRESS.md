@@ -120,3 +120,18 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Public: `/api/v1/updates` (unchanged), `/api/v1/updates/past` (expired, badge EXPIRED), `/api/v1/updates/sync-status` (last and next check only). Staff: review queue, sync status, run history with per-source results; "Check now" for ADMIN only, with a 10-minute cool-down | Done |
 | Home page refreshes the feed every 15 minutes (also the open tab) and keeps the last cards on failure; says "Official sources checked daily at 6:00 AM IST · last checked …"; `/updates` gains "Past updates" | Done |
 | First live check (start-up catch-up, 14 Nov 2026, 9:36 pm IST): 39 new notices, 14 published and 25 waiting for review (22 of them from Rashtriya Military Schools, which prints no dates); CBSE blocked (403); next scheduled check 6:00 AM IST | Checked |
+
+## 11. Rankings page redesign and IIRF audit (built 14 November 2026; not deployed)
+
+| Item | Status |
+| --- | --- |
+| /rankings rebuilt as its own page (`pages/RankingsHome.tsx`); other ranking pages, routes and redirects unchanged | Done |
+| Compact navy hero "Discover India's Best Schools" with four separately labelled counts (schools with a published rank, schools in the premier directory, states and boarding schools in the directory) and the published list's highest-placed schools | Done |
+| Four primary categories (National, Boarding, State & City, Board-wise) linking to the existing pages; Compare hidden on this page only | Done |
+| Published ranking first: "IIRF 2026 — Top (10+2) Schools in India", links to IIRF's page and methodology, disclosure; Top 10/20/100/All by published rank (`?top=`), ties labelled, filters (school, state, board; city and school type under More filters) never renumber; premium table on desktop, cards on phones | Done |
+| Explore by category: six cards plus "Explore more categories"; each card marked "Published ranks" or "Directory · A to Z" | Done |
+| Explore Premier Schools: photo-first preview (new `sort=photo` on the directory API), branded fallback instead of coloured initials, credits shown on photos, unconfirmed details marked | Done |
+| IIRF audit: our 91 entries match IIRF's main "Top (10+2) Schools in India Ranking 2026" (IIRF's own page lists the same leaders in the same order); the "Best Schools in Academic Performance" label belonged to a separate top-10 table. V44 corrects the name and category with an audit-log entry; no rank changed | Done |
+| Wikimedia Commons now refuses 640px thumbnails: four stored photos (Lawrence School Lovedale, RIMC, Sherwood, Woodstock) fail wherever they are shown with their stored address; the rankings page requests standard widths | Found; fixed on /rankings only |
+| 15 freely licensed Commons photos checked by eye for premier schools that had none (`data/images/premier-school-photos-2026-11.json`, `tools/apply-school-photos.mjs`); applied locally, not on the live site | Ready to apply |
+| Server-rendered /rankings now carries the published top 20 with links, the source line and the category links; new title and description | Done |

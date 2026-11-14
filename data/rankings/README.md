@@ -4,12 +4,20 @@ Positions published by other organisations, recorded per school with a link to t
 on the "Published rankings" page and on school profiles, apart from India School Finder's own score, and never count
 towards it. An entry is shown only once an editor has marked it VERIFIED against the publisher's page.
 
-## IIRF Top (10+2) Schools in India 2026
+## IIRF Top (10+2) Schools in India Ranking 2026
 
 | File | Contents |
 |---|---|
 | `iirf-2026-top-schools.json` | The whole list as IIRF printed it on 2026-10-30: position, state position, name, place (220 schools sharing 128 positions) |
 | `iirf-2026-import.csv` | The 91 entries matched to a directory school, in the admin import format (`school_slug`) |
+
+**Re-checked 14 Nov 2026.** These positions are IIRF's main "Top (10+2) Schools in India Ranking 2026" table: IIRF's
+page names its leaders in the same order (Army Public School, Dhaula Kuan; Johnson Grammar School, Hyderabad; Army
+Public School, Hisar; Delhi Public School, Bangalore North; then Bal Bharati Public School, Gangaram and St. Xavier's,
+Raj Niwas Marg, tied). The list was first labelled "Best Schools in Academic Performance", which is a separate top-10
+table on the same page (led by Delhi Public School, Bengaluru North) and is not recorded here. Migration V44 corrected
+the label; no rank changed. IIRF loads its full table in the browser, so the 220 positions could not be re-read
+line by line without scraping, which its terms forbid; the order of the leaders and the source PDF agree.
 
 Only positions and places are recorded, not IIRF's criterion scores (the page reserves reproduction). A school was
 matched only when its name and place both agree with one directory record; entries naming a chain without a branch

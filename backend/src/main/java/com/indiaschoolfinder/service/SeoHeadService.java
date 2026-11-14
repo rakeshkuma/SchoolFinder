@@ -99,8 +99,9 @@ public class SeoHeadService {
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
-            page("/rankings", "India's Top Schools & Boarding Schools Rankings", "Explore India's premier schools and boarding schools. "
-                    + "Compare CBSE, ICSE, IB and international schools by location, school type and other important details."),
+            page("/rankings", "India's Best Schools: Published School Rankings", "Explore trusted school rankings across India. "
+                    + "Discover top-performing schools by ranking publisher, location, education board and school category, with every "
+                    + "rank exactly as its publisher printed it."),
             page("/rankings/schools-by-state", "Premier and boarding schools by state", "India's premier and boarding schools grouped by "
                     + "state, with board, boarding, gender and an approximate fee for each school."),
             page("/rankings/schools-by-city", "Premier and boarding schools by city", "India's premier and boarding schools grouped by "
