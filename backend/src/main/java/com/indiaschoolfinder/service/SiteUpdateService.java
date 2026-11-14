@@ -4,6 +4,7 @@ import com.indiaschoolfinder.dto.common.PageResponse;
 import com.indiaschoolfinder.dto.update.UpdateDtos;
 import com.indiaschoolfinder.entity.SiteUpdate;
 import com.indiaschoolfinder.enums.VerificationStatus;
+import com.indiaschoolfinder.exception.BusinessValidationException;
 import com.indiaschoolfinder.exception.ResourceNotFoundException;
 import com.indiaschoolfinder.repository.SiteUpdateRepository;
 import com.indiaschoolfinder.util.InputSanitizer;
@@ -11,19 +12,25 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Clock;
+import java.time.LocalDate;
+
 /**
- * Editorial updates: an editor drafts one, citing its official source, then publishes it; archiving takes it off the
- * site. Every change is recorded in the audit log.
+ * Updates as staff manage them: an editor drafts one, citing its official source, then publishes it; archiving takes it
+ * off the site. Updates found by the daily check of official websites arrive published or waiting for review
+ * (PENDING_REVIEW); an editor publishes, edits, archives or marks them superseded here. Every change is audited.
  */
 @Service
 public class SiteUpdateService {
 
     private final SiteUpdateRepository updates;
     private final AuditService audit;
+    private final Clock clock;
 
-    public SiteUpdateService(SiteUpdateRepository updates, AuditService audit) {
+    public SiteUpdateService(SiteUpdateRepository updates, AuditService audit, Clock clock) {
         this.updates = updates;
         this.audit = audit;
+        this.clock = clock;
     }
 
     @Transactional(readOnly = true)
@@ -44,6 +51,11 @@ public class SiteUpdateService {
     public UpdateDtos.AdminRow update(long id, UpdateDtos.UpdateRequest r) {
         SiteUpdate u = find(id);
         apply(u, r);
+        if (u.isOfficialSync()) {
+            // Staff wording is kept on later runs, and saving the form confirms the publication date the editor sees.
+            u.setStaffEdited(true);
+            u.setDateConfirmed(true);
+        }
         audit.record("SITE_UPDATE_EDITED", "SITE_UPDATE", id, u.getTitle());
         return row(updates.saveAndFlush(u));
     }
@@ -51,8 +63,29 @@ public class SiteUpdateService {
     @Transactional
     public UpdateDtos.AdminRow setStatus(long id, SiteUpdate.Status status) {
         SiteUpdate u = find(id);
+        if (status == SiteUpdate.Status.PUBLISHED && !u.isDateConfirmed()) {
+            throw new BusinessValidationException("The source gave no date for this notice. Open it, check its date and save the "
+                    + "update with that publication date before publishing.");
+        }
+        if (status == SiteUpdate.Status.PUBLISHED && u.getExpiresOn() != null && u.getExpiresOn().isBefore(LocalDate.now(clock))) {
+            throw new BusinessValidationException("This update's expiry date has passed; change it first to publish it again.");
+        }
         u.setStatus(status);
         audit.record("SITE_UPDATE_" + status, "SITE_UPDATE", id, u.getTitle());
+        return row(updates.saveAndFlush(u));
+    }
+
+    /** Takes an update off the site because a later notice replaces it. */
+    @Transactional
+    public UpdateDtos.AdminRow supersede(long id, long byId) {
+        if (id == byId) {
+            throw new BusinessValidationException("An update cannot replace itself.");
+        }
+        SiteUpdate u = find(id);
+        SiteUpdate by = find(byId);
+        u.setSupersededById(by.getId());
+        u.setStatus(SiteUpdate.Status.ARCHIVED);
+        audit.record("SITE_UPDATE_SUPERSEDED", "SITE_UPDATE", id, u.getTitle() + " -> #" + by.getId());
         return row(updates.saveAndFlush(u));
     }
 
@@ -86,6 +119,8 @@ public class SiteUpdateService {
         return new UpdateDtos.AdminRow(u.getId(), u.getCategory(), u.getTitle(), u.getSummary(), u.getImageUrl(), u.getPublishedOn(),
                 u.getEventDate(), u.getEventLabel(), u.isDeadline(), u.getSourceUrl(), u.getSourceName(), u.getLinkPath(),
                 u.getActionLabel(), u.getStatus(), u.getVerificationStatus(), u.getExpiresOn(), u.getPriority(), u.getCreatedAt(),
-                u.getUpdatedAt(), u.getCreatedBy(), u.getUpdatedBy());
+                u.getUpdatedAt(), u.getCreatedBy(), u.getUpdatedBy(), u.getOrigin(), u.getSourceKey(), u.getOfficialTitle(),
+                u.isDateConfirmed(), u.getReviewNote(), u.getFirstSeenAt(), u.getLastSeenAt(), u.getLastChangedAt(),
+                u.getWithdrawnAt(), u.getSupersededById(), u.isStaffEdited(), u.getTopic());
     }
 }

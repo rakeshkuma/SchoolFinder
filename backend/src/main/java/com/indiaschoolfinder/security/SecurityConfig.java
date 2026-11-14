@@ -74,6 +74,8 @@ public class SecurityConfig {
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/admin/schools/*/status").hasRole("ADMIN")
+                        // Starting the official-source check fetches external websites: ADMIN only (and rate-limited).
+                        .requestMatchers(HttpMethod.POST, "/api/v1/admin/updates/sync").hasRole("ADMIN")
                         .requestMatchers("/api/v1/admin/import/**", "/api/v1/admin/ranking-criteria/**",
                                 "/api/v1/admin/audit-log/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN", "EDITOR")

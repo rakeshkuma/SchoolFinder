@@ -226,6 +226,14 @@ export const adminService = {
   saveUpdate: (id: number, body: SiteUpdateRequest) => http.put<SiteUpdateRow>(`/admin/updates/${id}`, body).then((r) => r.data),
   publishUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/publish`).then((r) => r.data),
   archiveUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/archive`).then((r) => r.data),
+  supersedeUpdate: (id: number, by: number) =>
+    http.post<SiteUpdateRow>(`/admin/updates/${id}/supersede`, null, { params: { by } }).then((r) => r.data),
+  /** The daily check of official websites. */
+  syncStatus: () => http.get<AdminSyncStatus>('/admin/updates/sync-status').then((r) => r.data),
+  syncRuns: (page = 0, size = 10) =>
+    http.get<PageResponse<SyncRunRow>>('/admin/updates/sync-runs', { params: { page, size } }).then((r) => r.data),
+  /** ADMIN only; refused while a check runs and for ten minutes after the last one. */
+  syncNow: () => http.post<{ result: string; message: string }>('/admin/updates/sync').then((r) => r.data),
   challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
   createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
   updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
@@ -364,7 +372,7 @@ export interface AdmissionEnquiry {
   handledBy: string | null;
 }
 
-export type SiteUpdateStatus = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
+export type SiteUpdateStatus = 'DRAFT' | 'PENDING_REVIEW' | 'PUBLISHED' | 'EXPIRED' | 'ARCHIVED';
 
 /** An editorial update as an editor writes it. Every category except PREP needs an official source URL. */
 export interface SiteUpdateRequest {
@@ -393,4 +401,85 @@ export interface SiteUpdateRow extends SiteUpdateRequest {
   updatedAt: string | null;
   createdBy: string | null;
   updatedBy: string | null;
+  /** OFFICIAL_SYNC: found by the daily check of an official website. */
+  origin: 'EDITORIAL' | 'OFFICIAL_SYNC';
+  sourceKey: string | null;
+  /** The title exactly as the source printed it. */
+  officialTitle: string | null;
+  /** False when the source printed no date: publishedOn is only the day it was found. */
+  dateConfirmed: boolean;
+  /** Why it waits for review, or what the source changed. */
+  reviewNote: string | null;
+  firstSeenAt: string | null;
+  lastSeenAt: string | null;
+  lastChangedAt: string | null;
+  withdrawnAt: string | null;
+  supersededById: number | null;
+  staffEdited: boolean;
+  topic: string | null;
+}
+
+export interface SyncSourceResult {
+  key: string;
+  name: string;
+  /** OK, FAILED, BLOCKED (the site refused automated access) or SKIPPED. */
+  outcome: string;
+  error: string | null;
+  durationMs: number;
+  requests: number;
+  listed: number;
+  relevant: number;
+  ignored: number;
+  created: number;
+  updated: number;
+  unchanged: number;
+  published: number;
+  pending: number;
+  tooOld: number;
+  duplicates: number;
+  withdrawn: number;
+}
+
+export interface SyncRunRow {
+  id: number;
+  trigger: 'SCHEDULED' | 'STARTUP' | 'MANUAL';
+  status: 'RUNNING' | 'SUCCEEDED' | 'PARTIAL' | 'FAILED' | 'ABANDONED';
+  startedAt: string;
+  finishedAt: string | null;
+  triggeredBy: string | null;
+  instanceName: string | null;
+  sourcesChecked: number;
+  sourcesFailed: number;
+  itemsFound: number;
+  itemsCreated: number;
+  itemsUpdated: number;
+  itemsPublished: number;
+  itemsPending: number;
+  itemsExpired: number;
+  itemsWithdrawn: number;
+  sources: SyncSourceResult[];
+}
+
+export interface SyncSourceInfo {
+  key: string;
+  name: string;
+  listingUrl: string;
+  hosts: string[];
+  autoPublish: boolean;
+  reviewOnlyReason: string | null;
+  completeListing: boolean;
+  enabled: boolean;
+}
+
+export interface AdminSyncStatus {
+  enabled: boolean;
+  running: boolean;
+  cron: string;
+  timezone: string;
+  schedule: string;
+  nextCheckAt: string | null;
+  lastSuccessAt: string | null;
+  lastRun: SyncRunRow | null;
+  pendingReview: number;
+  sources: SyncSourceInfo[];
 }

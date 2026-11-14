@@ -488,12 +488,14 @@ export const referenceService = {
 
 export type UpdateCategory = 'ADMISSION' | 'EXAM' | 'PREP' | 'JOB';
 /** Worked out by the server from the item's dates on every request (closing within 14 days, published within 7, ...). */
-export type UpdateBadge = 'CLOSING_SOON' | 'NEW' | 'OPEN' | 'UPDATED' | 'UPCOMING';
-export type UpdateOrigin = 'EXAM_NOTICE' | 'ADMISSIONS' | 'PRACTICE' | 'EDITORIAL';
+export type UpdateBadge = 'CLOSING_SOON' | 'NEW' | 'OPEN' | 'UPDATED' | 'UPCOMING' | 'EXPIRED';
+/** OFFICIAL_SOURCE: found by the daily check of an official website and published from it as the site gives it. */
+export type UpdateOrigin = 'EXAM_NOTICE' | 'ADMISSIONS' | 'PRACTICE' | 'EDITORIAL' | 'OFFICIAL_SOURCE';
 
 /**
  * One item of the school and exam updates feed: exam notices and dates, open admissions and new practice sets as they
- * are recorded, plus notices an editor has published with their official source. Nothing is scraped or invented.
+ * are recorded, notices an editor has published with their official source, and notices the daily check found on
+ * approved official websites (title, date and link as the site gives them). Nothing is invented.
  */
 export interface UpdateItem {
   id: string;
@@ -520,7 +522,19 @@ export interface UpdateItem {
   topic: string | null;
 }
 
+/** When the official sources were last checked (once a day) and when they are checked next. */
+export interface UpdateSyncStatus {
+  lastCheckedAt: string | null;
+  nextCheckAt: string | null;
+  schedule: string;
+  sources: number;
+}
+
 export const updateService = {
   list: (params: { category?: UpdateCategory; page?: number; size?: number }) =>
     http.get<PageResponse<UpdateItem>>('/updates', { params: cleanParams(params) }).then((r) => r.data),
+  /** Updates that expired in the last 90 days. */
+  past: (params: { category?: UpdateCategory; page?: number; size?: number }) =>
+    http.get<PageResponse<UpdateItem>>('/updates/past', { params: cleanParams(params) }).then((r) => r.data),
+  syncStatus: () => http.get<UpdateSyncStatus>('/updates/sync-status').then((r) => r.data),
 };

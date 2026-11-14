@@ -105,3 +105,17 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Photos added (Unsplash License): two classrooms by Swastik Arora, one by CIMT HOOGHLY; JNV photo re-cropped to remove a camera date stamp; two unused Sainik School photos removed | Done |
 | Measured on a production build (cold cache): layout shift 0.34 → 0.001 (loading placeholder now a full screen; sign-in slot keeps its width); phone LCP (4× CPU, 4G) about 3.9 s → 1.6 s; desktop LCP about 1.4 s | Done |
 | Signed-out visitors get 401 from `/api/v1/account/me`; that is how the app learns nobody is signed in, not an error | Checked, unchanged |
+
+## 10. Daily official-notification check (built 14 November 2026; not deployed)
+
+Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md).
+
+| Item | Status |
+| --- | --- |
+| Daily check at 6:00 AM IST (`@Scheduled`, `app.notifications.cron`, zone Asia/Kolkata) inside the always-on backend; one run at a time across servers (PostgreSQL advisory lock); unfinished runs marked ABANDONED on restart; catch-up run after a restart if the last success is over a day old | Done |
+| Safe fetching: https only, per-source host allowlist, private and reserved addresses refused (also after redirects), robots.txt obeyed, honest user agent, timeouts, 3 attempts with backoff, size cap, refusals reported as BLOCKED and never worked around | Done |
+| Sources: NTA (AISSEE and RIMCEE, archive table, date from NTA's upload-stamped file names), Navodaya (public JSON API), Netarhat (dated home-page notices), KVS (Notifications/Recruitment and Admission tables), CBSE (blocked: 403 to automated clients; review only), Rashtriya Military Schools (undated; review only). RIMC, Sainik Schools Society portal and state admissions investigated and documented | Done |
+| Stored in the existing `site_update` table (V43: new columns, indexes, `notification_sync_run` for run history); PENDING_REVIEW and EXPIRED statuses; dedupe by source id or canonical address; corrections recorded without moving the publication date; withdrawn and superseded notices tracked; every change audited | Done |
+| Published automatically only from an approved source with a date printed by the source and a link on its own hosts; otherwise waits for review with the reason; undated notices cannot be published until an editor confirms the date; summaries are one templated sentence, never copied text | Done |
+| Public: `/api/v1/updates` (unchanged), `/api/v1/updates/past` (expired, badge EXPIRED), `/api/v1/updates/sync-status` (last and next check only). Staff: review queue, sync status, run history with per-source results; "Check now" for ADMIN only, with a 10-minute cool-down | Done |
+| Home page refreshes the feed every 15 minutes (also the open tab) and keeps the last cards on failure; says "Official sources checked daily at 6:00 AM IST · last checked …"; `/updates` gains "Past updates" | Done |

@@ -21,6 +21,7 @@ const BADGE_STYLE: Record<UpdateBadge, { label: string; className: string }> = {
   OPEN: { label: 'Open', className: 'bg-emerald-700 text-white' },
   UPDATED: { label: 'Updated', className: 'bg-violet-600 text-white' },
   UPCOMING: { label: 'Upcoming', className: 'bg-royal-600 text-white' },
+  EXPIRED: { label: 'Expired', className: 'bg-slate-600 text-white' },
 };
 
 /** The badge the server worked out from the item's dates; "Updated 3h ago" when the change is under a day old. */
