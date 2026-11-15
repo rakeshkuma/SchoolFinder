@@ -19,7 +19,13 @@ public class SmtpMailService implements MailService {
 
     @Override
     public void send(String to, String subject, String text) {
+        send(to, subject, text, null);
+    }
+
+    @Override
+    public void send(String to, String subject, String text, String replyTo) {
         SimpleMailMessage message = new SimpleMailMessage();
+        if (replyTo != null && !replyTo.isBlank()) message.setReplyTo(replyTo);
         message.setFrom(from);
         message.setTo(to);
         message.setSubject(subject);

@@ -8,6 +8,11 @@ public interface MailService {
 
     void send(String to, String subject, String text);
 
+    /** As {@link #send(String, String, String)}, with a Reply-To address so that a reply goes straight to that person. */
+    default void send(String to, String subject, String text, String replyTo) {
+        send(to, subject, text);
+    }
+
     /** False when no provider is configured, so the site can say so instead of claiming email was sent. */
     boolean deliveryConfigured();
 

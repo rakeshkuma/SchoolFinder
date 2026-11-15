@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { Icon, type IconName } from '../components/common/Icon';
 import { PageHeader } from '../components/common/PageHeader';
+import { CONTACT_EMAIL } from '../content/site';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { track } from '../utils/analytics';
 
@@ -72,7 +73,15 @@ export function AdvertisePage() {
             <p className="font-display text-xl font-bold text-white">Talk to us</p>
             <p className="mt-1 text-sm text-slate-300">Tell us about your school or organisation and what you would like to achieve. We reply with options and prices.</p>
           </div>
-          <Link to={contactLink('ADVERTISING', 'Advertising enquiry')} className="btn-accent shrink-0">Send an advertising enquiry</Link>
+          <div className="flex shrink-0 flex-col items-start gap-2 sm:items-end">
+            <Link to={contactLink('ADVERTISING', 'Advertising enquiry')} className="btn-accent">Send an advertising enquiry</Link>
+            {CONTACT_EMAIL && (
+              <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Advertising enquiry')}`}
+                className="inline-flex items-center gap-1.5 break-all text-sm text-slate-300 hover:text-white">
+                <Icon name="mail" className="h-4 w-4 shrink-0" /> or email {CONTACT_EMAIL}
+              </a>
+            )}
+          </div>
         </section>
       </div>
     </>
