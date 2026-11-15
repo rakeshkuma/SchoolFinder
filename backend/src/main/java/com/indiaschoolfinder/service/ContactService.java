@@ -62,7 +62,7 @@ public class ContactService {
         if (inbox == null || inbox.isBlank() || !mail.deliveryConfigured()) return;
         try {
             mail.send(inbox, "[SchoolDhundo] " + m.getTopic() + ": " + m.getSubject().replaceAll("[\\r\\n]+", " "),
-                    "From: " + m.getName() + " <" + m.getEmail() + ">\n\n" + m.getMessage());
+                    "From: " + m.getName() + " <" + m.getEmail() + ">\n\n" + m.getMessage(), m.getEmail());
         } catch (RuntimeException e) {
             log.warn("Could not email contact message {}; it is saved for staff", m.getId());
         }

@@ -1,9 +1,9 @@
 /**
- * The site's public email address. Only an address on the site's own domain (e.g. contact@schooldhundo.in, once email
- * routing for the domain is set up) belongs here; while it is null, pages point to the contact form instead. Messages
- * sent through the form reach the private inbox set on the server (CONTACT_INBOX), which is never shown.
+ * The site's public email address, chosen by the owner. It appears in the footer, on the contact page and beside the
+ * advertising enquiry; set it to null to point everything to the contact form instead. Messages sent through the form
+ * also go to this inbox (CONTACT_INBOX on the server) once SMTP is set up there.
  */
-export const CONTACT_EMAIL: string | null = null;
+export const CONTACT_EMAIL: string | null = 'schooldhundo.in@gmail.com';
 /** The creator, as supplied by the creator. Nothing here may be added to or guessed. */
 export const CREATOR_NAME = 'Rakesh Kumar';
 export const CREATOR_INSTITUTE = 'Indian Institute of Information Technology, Allahabad';
