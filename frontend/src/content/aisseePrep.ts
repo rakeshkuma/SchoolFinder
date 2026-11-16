@@ -209,7 +209,7 @@ export const AISSEE_PREP: PrepConfig = {
   level: LEVEL,
   setPrefix: 'aissee-class6-',
   coverage: true,
-  docTitle: 'AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan',
+  docTitle: 'AISSEE 2027 Class 6 Preparation: Free Mock Tests',
   breadcrumb: 'AISSEE',
   firstMock: 'aissee-class6-mock-1',
   T,

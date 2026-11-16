@@ -25,7 +25,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
     void schoolPagesGetTheirOwnTitleDescriptionCanonicalAndStructuredData() throws Exception {
         long id = createSchool(school("Fixture Hill & Valley School", Map.of("stateCode", "UK", "pinCode", "263002",
                 "websiteUrl", "https://school.example.org", "latitude", 29.38, "longitude", 79.45,
-                "classCodes", java.util.List.of("VI", "XII"))));
+                "classCodes", java.util.List.of("VI", "XII"), "description", RICH_DESCRIPTION)));
         String slug = body(mockMvc.perform(get("/api/v1/schools/{id}", id)).andReturn()).get("slug").asText();
         String h = head("/schools/" + slug + "?utm_source=x");
 
@@ -41,6 +41,25 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("\"name\":\"Uttarakhand\",\"item\":\"http://localhost/states/uttarakhand\"")
                 .contains("\"position\":3,\"name\":\"Fixture Hill & Valley School\"");
         assertThat(h).doesNotContain("noindex");
+    }
+
+    /** An editor's description long enough to count as content of the profile's own. */
+    static final String RICH_DESCRIPTION = "A co-educational day school on the hill road above the lake, founded by a local trust."
+            + " It teaches from Class VI to Class XII with science and commerce streams, runs its own library and laboratories,"
+            + " and admits most students in Class VI after an interaction with parents. Details here come from the school's"
+            + " prospectus and its board affiliation record.";
+
+    @Test
+    void bareBoardListingsStayReachableButAreNotIndexed() throws Exception {
+        // Only the facts every directory repeats (board, affiliation number, address, website): noindex until more is added.
+        long bare = createSchool(school("Fixture Bare Listing School", Map.of("stateCode", "UK", "boardCode", "CBSE",
+                "affiliationNumber", "3530999", "websiteUrl", "https://bare.example.org")));
+        String slug = body(mockMvc.perform(get("/api/v1/schools/{id}", bare)).andReturn()).get("slug").asText();
+        assertThat(head("/schools/" + slug)).contains("<meta name=\"robots\" content=\"noindex\"")
+                .contains("<link rel=\"canonical\"").contains("<title>Fixture Bare Listing School");
+        // Visitors still get the page's first paint.
+        assertThat(mockMvc.perform(get("/api/v1/seo/body/schools/" + slug)).andReturn().getResponse().getContentAsString())
+                .contains("<h1>Fixture Bare Listing School</h1>");
     }
 
     @Test
@@ -61,7 +80,8 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/about")).contains("<title>About SchoolDhundo | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/about\"");
         assertThat(head("/stages/primary")).contains("<title>Primary schools | SchoolDhundo</title>");
-        assertThat(head("/network/kendriya-vidyalaya")).contains("Kendriya Vidyalaya schools");
+        assertThat(head("/network/kendriya-vidyalaya")).contains("<title>Kendriya Vidyalaya list and KVS admission | SchoolDhundo</title>")
+                .contains("href=\"http://localhost/network/kendriya-vidyalaya\"");
     }
 
     @Test
@@ -131,7 +151,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/boards/CISCE\"");
         assertThat(head("/find")).contains("<title>Find the right school for your child | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/find\"");
-        assertThat(head("/")).contains("<title>SchoolDhundo – Discover Schools, Rankings").contains("SearchAction");
+        assertThat(head("/")).contains("<title>SchoolDhundo: Find Schools, Rankings, Admissions &amp; Exam Prep</title>").contains("SearchAction");
         assertThat(head("/some/unknown/page")).doesNotContain("canonical");
     }
 
@@ -144,15 +164,15 @@ class SeoHeadIT extends AbstractIntegrationTest {
                     .content(new ClassPathResource("seed/exams.json").getContentAsString(StandardCharsets.UTF_8)))
                     .andExpect(status().isOk());
         }
-        assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan</title>")
+        assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Preparation 2027: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
         assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex");
-        assertThat(head("/exams/aissee")).contains("<title>AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan</title>")
+        assertThat(head("/exams/aissee")).contains("<title>AISSEE 2027 Class 6 Preparation: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/aissee\"").doesNotContain("noindex");
         assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
-        assertThat(head("/exams/netarhat")).contains("<title>Netarhat Entrance Exam Preparation 2026-27 – Free Mock Tests, Practice Questions and Study Plan</title>")
+        assertThat(head("/exams/netarhat")).contains("<title>Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex");
         assertThat(head("/exams/netarhat/guide")).contains("href=\"http://localhost/exams/netarhat/guide\"").doesNotContain("noindex");
     }

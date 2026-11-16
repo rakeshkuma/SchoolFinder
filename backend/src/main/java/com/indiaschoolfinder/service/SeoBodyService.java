@@ -43,6 +43,8 @@ public class SeoBodyService {
     private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
     private static final Pattern EXAM = Pattern.compile("^/exams/([a-z0-9-]+)/?$");
     private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
+    /** A directory view (/rankings/co-ed-boarding-schools ...); other /rankings/* pages fall through to the default. */
+    private static final Pattern DIRECTORY_VIEW = Pattern.compile("^/rankings/([a-z0-9-]+)/?$");
     /** Fixed pages under /exams that are not an exam. */
     private static final Set<String> EXAM_PAGES = Set.of("practice", "finder", "calendar", "syllabus", "resources",
             "leaderboard", "achievements", "challenges", "guide");
@@ -69,11 +71,13 @@ public class SeoBodyService {
     private final BlogService blogService;
     private final ExamService examService;
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSets;
+    private final PlaceSummaryService placeSummary;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
-                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSets) {
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary) {
+        this.placeSummary = placeSummary;
         this.blogService = blogService;
         this.examService = examService;
         this.practiceSets = practiceSets;
@@ -93,7 +97,9 @@ public class SeoBodyService {
             p = p.substring(0, p.length() - 1);
         }
         String head = seoHeadService.head(p, baseUrl);
-        if (head.contains("name=\"robots\" content=\"noindex\"")) {
+        // Private, unknown and empty pages get nothing. A real school profile that is noindex only because it is a bare
+        // board listing still gets its first paint for visitors; an unknown or hidden school fails its lookup below.
+        if (head.contains("name=\"robots\" content=\"noindex\"") && !SCHOOL.matcher(p).matches()) {
             return "";
         }
         String title = first(TITLE, head);
@@ -121,6 +127,12 @@ public class SeoBodyService {
                 main = exam(examService.get(m.group(1)), heading, description, false);
             } else if ((m = EXAM.matcher(p)).matches() && !EXAM_PAGES.contains(m.group(1))) {
                 main = exam(examService.get(m.group(1)), heading, description, SeoHeadService.PREP_PAGES.contains(m.group(1)));
+            } else if (p.equals("/updates")) {
+                main = updates(heading, description);
+            } else if ((m = DIRECTORY_VIEW.matcher(p)).matches() && isDirectoryView(m.group(1))) {
+                main = directoryView(m.group(1), heading, description);
+            } else if ((m = SeoHeadService.NETWORK.matcher(p)).matches() && NETWORKS.containsKey(m.group(1))) {
+                main = network(m.group(1), heading, description);
             } else {
                 main = "<h1>" + heading + "</h1>" + (description == null ? "" : "<p class=\"pr-lead\">" + description + "</p>");
             }
@@ -343,6 +355,8 @@ public class SeoBodyService {
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
+        var summary = placeSummary.summary(state.slug(), districtSlug, null);
+        placeIntro(h, summary);
         if (districtSlug == null) {
             List<DistrictDto> districts = locationService.districts(state.code()).stream().filter(d -> d.schoolCount() > 0)
                     .sorted(Comparator.comparing(DistrictDto::name)).toList();
@@ -360,6 +374,7 @@ public class SeoBodyService {
                     .findFirst().orElseThrow(() -> new ResourceNotFoundException("District", districtSlug));
             schools(h, criteria(state.code(), district.slug(), null), "Schools in " + district.name());
         }
+        placeQuestions(h, summary);
         return h.toString();
     }
 
@@ -374,7 +389,181 @@ public class SeoBodyService {
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
+        var summary = placeSummary.summary(state.slug(), null, city.slug());
+        placeIntro(h, summary);
         schools(h, criteria(state.code(), null, city.name()), "Schools in " + city.name());
+        placeQuestions(h, summary);
+        return h.toString();
+    }
+
+    /** The place's introduction and its numbers at a glance, as the app's PlaceSummary shows them. */
+    private static void placeIntro(StringBuilder h, com.indiaschoolfinder.dto.location.PlaceSummaryDto p) {
+        if (p.total() == 0) {
+            return;
+        }
+        h.append("<h2>").append(esc(p.place())).append(" at a glance</h2>");
+        h.append("<p>").append(esc(p.intro())).append("</p><dl class=\"pr-facts\">");
+        fact(h, "Schools listed", String.format(Locale.ENGLISH, "%,d", p.total()));
+        for (var c : p.boards()) fact(h, c.label(), String.format(Locale.ENGLISH, "%,d", c.count()));
+        for (var c : p.types()) fact(h, c.label(), String.format(Locale.ENGLISH, "%,d", c.count()));
+        for (var c : p.networks()) fact(h, c.label() + (c.count() == 1 ? "" : "s"), String.format(Locale.ENGLISH, "%,d", c.count()));
+        if (p.boarding() > 0) fact(h, "With boarding", String.format(Locale.ENGLISH, "%,d", p.boarding()));
+        if (p.seniorSecondary() > 0) fact(h, "Up to Class XII", String.format(Locale.ENGLISH, "%,d", p.seniorSecondary()));
+        h.append("</dl>");
+    }
+
+    /** The place's questions and related pages, after its school list. */
+    private static void placeQuestions(StringBuilder h, com.indiaschoolfinder.dto.location.PlaceSummaryDto p) {
+        if (p.faqs().isEmpty()) {
+            return;
+        }
+        h.append("<h2>Questions about schools in ").append(esc(p.place())).append("</h2><dl class=\"pr-faq\">");
+        for (var f : p.faqs()) {
+            h.append("<dt>").append(esc(f.question())).append("</dt><dd>").append(esc(f.answer())).append("</dd>");
+        }
+        h.append("</dl>");
+        if (!p.related().isEmpty()) {
+            h.append("<h2>Related</h2><ul class=\"pr-grid\">");
+            p.related().forEach(l -> h.append(link(l.href(), l.label())));
+            h.append("</ul>");
+        }
+    }
+
+    /** The updates page: the feed's newest items with their summaries, dates and sources, as the app lists them. */
+    private String updates(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › Notifications</nav>");
+        h.append("<h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        List<UpdateDtos.UpdateItem> items = updateFeed.feed(null, 0, 40).content();
+        if (!items.isEmpty()) {
+            h.append("<ul class=\"pr-list\">");
+            for (UpdateDtos.UpdateItem u : items) {
+                String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
+                h.append("<li>");
+                if (href != null) {
+                    h.append("<a href=\"").append(esc(href)).append("\">").append(esc(u.title())).append("</a>");
+                } else {
+                    h.append(esc(u.title()));
+                }
+                if (u.eventDate() != null) {
+                    h.append(" <span>").append(esc(u.eventLabel() != null ? u.eventLabel() : "Date")).append(": ")
+                            .append(u.eventDate().format(DAY)).append("</span>");
+                }
+                if (u.summary() != null && !u.summary().isBlank()) {
+                    h.append("<p>").append(esc(u.summary())).append("</p>");
+                }
+                if (u.sourceName() != null && u.sourceUrl() != null) {
+                    h.append("<p>Source: <a href=\"").append(esc(u.sourceUrl())).append("\" rel=\"noopener\">").append(esc(u.sourceName()))
+                            .append("</a></p>");
+                }
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
+        return h.toString();
+    }
+
+    /**
+     * The government network pages (/network/{slug}): the name used in the list heading, the introduction and official
+     * site exactly as the app shows them (frontend content/networks.ts), then where admission is explained on this site.
+     */
+    private static final java.util.Map<String, String[]> NETWORKS = java.util.Map.of(
+            "jawahar-navodaya-vidyalaya", new String[]{"Jawahar Navodaya Vidyalayas",
+                    "Residential central government schools run by Navodaya Vidyalaya Samiti; admission to Class VI is through the JNV "
+                            + "Selection Test. Education, boarding and lodging are free; a small Vidyalaya Vikas Nidhi contribution applies to "
+                            + "some students in Classes IX to XII under the Samiti’s rules.",
+                    "https://navodaya.gov.in/", "Navodaya Vidyalaya Samiti",
+                    "/exams/jnvst", "JNVST Class 6 preparation: free mock tests", "/exams/jnvst/guide", "JNVST eligibility, dates and syllabus"},
+            "sainik-school", new String[]{"Sainik Schools",
+                    "Residential schools run by the Sainik Schools Society under the Ministry of Defence. Admission to Classes VI and IX is "
+                            + "through the All India Sainik Schools Entrance Examination (AISSEE); eligibility, including for girls, is set in "
+                            + "each year’s bulletin. Fees are charged, with scholarships set by states and the Ministry.",
+                    "https://sainikschoolsociety.in/", "Sainik Schools Society",
+                    "/exams/aissee", "AISSEE Class 6 preparation: free mock tests", "/exams/aissee/guide", "AISSEE eligibility, dates and syllabus"},
+            "eklavya-model-residential-school", new String[]{"Eklavya Model Residential Schools",
+                    "Residential schools for Scheduled Tribe students, set up under the Ministry of Tribal Affairs and run through the "
+                            + "National Education Society for Tribal Students (NESTS) and state societies. Admission rules and dates are set by "
+                            + "each state.",
+                    "https://emrs.tribal.gov.in/", "Ministry of Tribal Affairs (EMRS)",
+                    "/boarding/government", "Government boarding schools in India", "/admissions", "School admissions calendar"},
+            "rashtriya-military-school", new String[]{"Rashtriya Military Schools",
+                    "Residential schools under the Ministry of Defence. Admission to Classes VI and IX is through the Rashtriya Military "
+                            + "Schools Common Entrance Test (RMS CET).",
+                    "https://rashtriyamilitaryschools.edu.in/", "Rashtriya Military Schools",
+                    "/exams/rms-cet", "RMS CET eligibility, dates and syllabus", "/boarding/government", "Government boarding schools in India"},
+            "kendriya-vidyalaya", new String[]{"Kendriya Vidyalayas",
+                    "Central government schools run by Kendriya Vidyalaya Sangathan under the Ministry of Education, affiliated to CBSE. "
+                            + "They are predominantly day schools, not boarding schools.",
+                    "https://kvsangathan.nic.in/", "Kendriya Vidyalaya Sangathan",
+                    "/admissions", "School admissions calendar", "/admissions/guide", "School admission guide: process and documents"});
+
+    /** Most schools a network page lists before the app starts (a few networks have more; the app pages through them). */
+    private static final int NETWORK_LIST_SIZE = 100;
+
+    /** A government network page: its introduction and official site, its schools, and where admission is explained. */
+    private String network(String slug, String heading, String description) {
+        String[] n = NETWORKS.get(slug);
+        PageResponse<SchoolSummaryDto> page = schoolService.search(
+                SeoHeadService.networkCriteria(SeoHeadService.network(slug), NETWORK_LIST_SIZE));
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › <a href=\"/schools\">Schools</a></nav>");
+        h.append("<h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        h.append("<p>").append(esc(n[1])).append(" Admission notices are published by <a href=\"").append(esc(n[2]))
+                .append("\" rel=\"noopener\">").append(esc(n[3])).append("</a>.</p>");
+        h.append("<h2>Admission and preparation</h2><ul class=\"pr-grid\">").append(link(n[4], n[5])).append(link(n[6], n[7])).append("</ul>");
+        schoolList(h, n[0] + " listed on SchoolDhundo", page.content());
+        if (page.totalElements() > page.content().size()) {
+            h.append("<p>Showing ").append(page.content().size()).append(" of ").append(String.format(Locale.ENGLISH, "%,d", page.totalElements()))
+                    .append(" schools, best documented first. <a href=\"/schools\">Search the full school directory</a></p>");
+        }
+        return h.toString();
+    }
+
+    private boolean isDirectoryView(String slug) {
+        return directory.categories().stream().anyMatch(c -> c.slug().equals(slug));
+    }
+
+    /** A directory view: its description, then its schools A to Z with town, state and board, as the app lists them. */
+    private String directoryView(String slug, String heading, String description) {
+        PremierDirectoryDtos.Category category = directory.category(slug);
+        var schools = directory.list(new PremierDirectoryDtos.Query(slug, null, null, null, null, null, null, null, null, null), 0, 120)
+                .content();
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › <a href=\"/rankings\">Rankings</a></nav>");
+        h.append("<h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        if (category.description() != null && !category.description().isBlank()) {
+            h.append("<p>").append(esc(category.description())).append("</p>");
+        }
+        if (!schools.isEmpty()) {
+            h.append("<h2>").append(esc(category.title())).append(": ").append(category.schools()).append(" schools, A to Z</h2><ul class=\"pr-list\">");
+            for (PremierDirectoryDtos.School s : schools) {
+                h.append("<li>");
+                if (s.slug() != null) {
+                    h.append("<a href=\"/schools/").append(s.slug()).append("\">").append(esc(s.name())).append("</a>");
+                } else {
+                    h.append(esc(s.name()));
+                }
+                Set<String> about = new LinkedHashSet<>();
+                if (s.city() != null && !s.city().isBlank()) about.add(s.city().trim());
+                if (s.stateName() != null) about.add(s.stateName());
+                s.boards().stream().filter(b -> !"OTHER".equals(b.code()))
+                        .forEach(b -> about.add("CISCE".equals(b.code()) ? "ICSE/ISC" : b.code()));
+                if (!about.isEmpty()) {
+                    h.append(" <span>").append(esc(String.join(" · ", about))).append("</span>");
+                }
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
         return h.toString();
     }
 

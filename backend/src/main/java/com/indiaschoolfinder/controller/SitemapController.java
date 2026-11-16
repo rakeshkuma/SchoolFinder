@@ -110,7 +110,8 @@ public class SitemapController {
     @GetMapping("/sitemap.xml")
     public ResponseEntity<String> index(HttpServletRequest request) {
         String base = base(request);
-        long files = Math.max(1, (schoolRepository.countByActiveTrue() + SCHOOLS_PER_FILE - 1) / SCHOOLS_PER_FILE);
+        // Bare board listings are noindex (SchoolRepository.INDEXABLE), so only fuller profiles are offered.
+        long files = Math.max(1, (schoolRepository.countIndexable() + SCHOOLS_PER_FILE - 1) / SCHOOLS_PER_FILE);
         StringBuilder xml = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
                 .append("<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
         for (String part : PARTS) {
@@ -217,16 +218,25 @@ public class SitemapController {
         if (n < 1) {
             throw new ResourceNotFoundException("Sitemap", n);
         }
-        List<Object[]> rows = schoolRepository.findActiveSlugs(PageRequest.of(n - 1, SCHOOLS_PER_FILE));
+        List<Object[]> rows = schoolRepository.findIndexableSlugs(PageRequest.of(n - 1, SCHOOLS_PER_FILE));
         if (rows.isEmpty() && n > 1) {
             throw new ResourceNotFoundException("Sitemap", n);
         }
         String base = base(request);
         StringBuilder xml = urlset();
         for (Object[] row : rows) {
-            url(xml, base + "/schools/" + row[0], (Instant) row[1]);
+            url(xml, base + "/schools/" + row[0], instant(row[1]));
         }
         return xml(xml.append("</urlset>\n"));
+    }
+
+    /** A native query's timestamp, whichever Java type the driver returns it as. */
+    private static Instant instant(Object value) {
+        if (value instanceof Instant i) return i;
+        if (value instanceof java.sql.Timestamp t) return t.toInstant();
+        if (value instanceof java.time.OffsetDateTime o) return o.toInstant();
+        if (value instanceof java.time.LocalDateTime l) return l.toInstant(ZoneOffset.UTC);
+        return null;
     }
 
     private String base(HttpServletRequest request) {

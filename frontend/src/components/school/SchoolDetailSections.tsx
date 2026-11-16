@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
+import { serverHeadInPlace } from '../../hooks/useDocumentTitle';
 import { schoolService } from '../../services/publicApi';
 import type { FactSource, SchoolClass, SchoolDetail, SchoolStage, VerificationStatus } from '../../types/api';
 import { formatDate, NOT_AVAILABLE, orNotAvailable, stageLabel } from '../../utils/format';
@@ -139,7 +140,9 @@ export function SourcesTab({ school: s }: { school: SchoolDetail }) {
 /** schema.org School data and a page description, built only from published facts. */
 export function useSchoolSeo(s: SchoolDetail | null | undefined) {
   useEffect(() => {
-    if (!s) return undefined;
+    // On the page first loaded the server already sent the fuller description and School, BreadcrumbList and FAQPage
+    // data (SeoHeadService); they are kept, since search engines read the page after the app has run.
+    if (!s || serverHeadInPlace()) return undefined;
     const place = [s.locality, s.city, s.district?.name, s.stateName].filter(Boolean);
     const description = [
       `${s.name}${place.length ? `, ${[...new Set(place)].join(', ')}` : ''}.`,

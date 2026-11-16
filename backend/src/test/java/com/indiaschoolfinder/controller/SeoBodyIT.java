@@ -96,7 +96,10 @@ class SeoBodyIT extends AbstractIntegrationTest {
         createSchool(school("Fixture Doon Valley School", Map.of("stateCode", "UK")));
 
         String state = fetch("/api/v1/seo/body/states/uttarakhand");
-        assertThat(state).contains("<h1>Schools in Uttarakhand</h1>").contains("Fixture Doon Valley School");
+        assertThat(state).contains("<h1>Schools in Uttarakhand</h1>").contains("Fixture Doon Valley School")
+                // The same introduction, numbers and questions as the app's place summary.
+                .contains("<h2>Uttarakhand at a glance</h2>").contains("SchoolDhundo lists")
+                .contains("<h2>Questions about schools in Uttarakhand</h2>").contains("href=\"/admissions/guide\"");
 
         assertThat(fetch("/api/v1/seo/head/")).contains("\"@type\":\"WebSite\"").contains("\"@type\":\"Organization\"")
                 .contains("<link rel=\"preload\" as=\"image\" media=\"(min-width: 1024px)\"").contains("og:image")
@@ -124,11 +127,42 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 .contains("<h2>Latest school and exam updates</h2>").contains("Fixture teacher recruitment notice")
                 .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"")
                 .contains("href=\"/updates\">Notifications</a>").contains("href=\"/rankings\">Rankings</a>");
+        // The updates page lists the notices with their summaries and sources, not only a heading.
+        assertThat(fetch("/api/v1/seo/body/updates")).contains("Fixture teacher recruitment notice")
+                .contains("Applications invited for fixture teaching posts").contains("https://example.gov.in/recruitment.pdf");
 
         assertThat(fetch("/api/v1/seo/body/about")).contains("<h1>About SchoolDhundo</h1>");
         assertThat(fetch("/api/v1/seo/body/saved")).isEmpty();
         assertThat(fetch("/api/v1/seo/body/admin/schools")).isEmpty();
         assertThat(fetch("/api/v1/seo/body/schools/no-such-school")).isEmpty();
         assertThat(fetch("/api/v1/seo/body/this-page-does-not-exist")).isEmpty();
+    }
+
+    @Test
+    void networkPagesListTheirSchoolsAndSayHowAdmissionWorks() throws Exception {
+        createSchool(school("Fixture Sainik School Alpha", Map.of("stateCode", "UK", "management", "CENTRAL_GOVERNMENT",
+                "network", "SAINIK_SCHOOL")));
+        createSchool(school("Fixture Sainik School Beta", Map.of("stateCode", "UK", "management", "CENTRAL_GOVERNMENT",
+                "network", "SAINIK_SCHOOL")));
+        createSchool(school("Fixture Day School", Map.of("stateCode", "UK")));
+
+        // The title names the search people make; the description starts with how many schools the page lists.
+        String head = fetch("/api/v1/seo/head/network/sainik-school");
+        assertThat(head).contains("<title>Sainik Schools in India: list and admission | SchoolDhundo</title>")
+                .contains("content=\"2 schools listed. Residential schools run by the Sainik Schools Society")
+                .contains("href=\"http://localhost/network/sainik-school\"").doesNotContain("noindex");
+
+        String page = fetch("/api/v1/seo/body/network/sainik-school");
+        assertThat(page).contains("<h1>Sainik Schools in India: list and admission</h1>")
+                .contains("All India Sainik Schools Entrance Examination (AISSEE)")
+                .contains("href=\"https://sainikschoolsociety.in/\"")
+                .contains("href=\"/exams/aissee\"").contains("href=\"/exams/aissee/guide\"")
+                .contains("<h2>Sainik Schools listed on SchoolDhundo</h2>")
+                .contains("Fixture Sainik School Alpha").contains("Fixture Sainik School Beta")
+                .doesNotContain("Fixture Day School");
+        // Every network has its page; an unknown one is the app's "page not found", with no content.
+        assertThat(fetch("/api/v1/seo/body/network/kendriya-vidyalaya")).contains("href=\"https://kvsangathan.nic.in/\"");
+        assertThat(fetch("/api/v1/seo/body/network/no-such-network")).isEmpty();
+        assertThat(fetch("/api/v1/seo/head/network/no-such-network")).contains("noindex").doesNotContain("canonical");
     }
 }
