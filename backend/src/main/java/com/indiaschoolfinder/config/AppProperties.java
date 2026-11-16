@@ -68,8 +68,11 @@ public class AppProperties {
         private String userAgent = "IndiaSchoolFinder/1.0 (school image licence review; https://github.com/rakeshkuma/SchoolFinder)";
         private Duration connectTimeout = Duration.ofSeconds(5);
         private Duration readTimeout = Duration.ofSeconds(10);
-        /** Width of the card thumbnail requested from Commons. */
-        private int thumbnailWidth = 640;
+        /**
+         * Width of the card thumbnail requested from Commons. Commons serves only its standard widths (250, 330, 500, 960,
+         * 1280 …); any other, such as 640, now answers HTTP 400, so the stored thumbnail would never load.
+         */
+        private int thumbnailWidth = 500;
     }
 
     @Getter

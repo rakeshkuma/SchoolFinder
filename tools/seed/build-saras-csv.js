@@ -32,8 +32,10 @@ const TYPE = {
   INDEPENDENT: ['PRIVATE', 'PRIVATE_UNAIDED', ''],
   // Eklavya Model Residential Schools are run by NESTS or state societies, so management is left unknown.
   EMRS: ['GOVERNMENT', '', 'EKLAVYA_MODEL_RESIDENTIAL_SCHOOL'],
-  // Sainik Schools Society schools; boarding profiles come only from boarding-profiles.json, school by school.
-  SAINIK: ['GOVERNMENT', '', 'SAINIK_SCHOOL'],
+  // CBSE's "SAINIK" type holds Army Goodwill and Army Public schools, not the Sainik Schools Society's schools (those
+  // are filed as GOVT), so it gives no network. The 33 Society schools are tagged from the Society's own list,
+  // https://sainikschoolsociety.in/our-schools (done live on 16 Nov 2026 by CBSE affiliation number).
+  SAINIK: ['GOVERNMENT', '', ''],
   // Sambhota Tibetan Schools Society and the Central Schools for Tibetans: funded by the Ministry of Education.
   STSS: ['GOVERNMENT', 'CENTRAL_GOVERNMENT', ''],
 };
