@@ -1,0 +1,28 @@
+[
+ {
+  "batch": "batch-001.json",
+  "result": {
+   "mode": "VALID_ROWS_ONLY",
+   "totalRows": 500,
+   "validRows": 500,
+   "created": 500,
+   "updated": 0,
+   "skipped": 0,
+   "committed": true,
+   "errors": []
+  }
+ },
+ {
+  "batch": "batch-002.json",
+  "result": {
+   "mode": "VALID_ROWS_ONLY",
+   "totalRows": 62,
+   "validRows": 62,
+   "created": 62,
+   "updated": 0,
+   "skipped": 0,
+   "committed": true,
+   "errors": []
+  }
+ }
+]
