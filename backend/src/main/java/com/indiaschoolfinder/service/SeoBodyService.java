@@ -781,4 +781,48 @@ public class SeoBodyService {
     private static String esc(String value) {
         return HtmlUtils.htmlEscape(value, "UTF-8");
     }
+
+    /**
+     * The Olympiad page (/exams/practice?category=OLYMPIAD) as plain HTML: what it offers, its class-wise practice sets
+     * (linked by title; the questions are not loaded) and the exams it prepares for. The app replaces it on load.
+     */
+    public String olympiadPractice() {
+        StringBuilder h = new StringBuilder();
+        h.append("<h1>Olympiad Preparation &amp; Practice</h1>");
+        h.append("<p class=\"pr-lead\">Prepare smarter with class-wise Olympiad questions, topic practice, mock tests and detailed ")
+                .append("explanations: Mathematics, Science, English, Logical Reasoning and IOQM-style problems for Classes 1 to 10.</p>");
+        h.append("<p>Every question is original SchoolDhundo practice in the style of school Olympiads. None is an official, sample or ")
+                .append("previous-year paper, and SchoolDhundo is not connected with SOF, HBCSE or MTA(I).</p>");
+        java.util.Map<String, List<Object[]>> byLevel = new java.util.LinkedHashMap<>();
+        for (Object[] s : practiceSets.findPublishedOutlineByCategory(com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD)) {
+            byLevel.computeIfAbsent((String) s[5], k -> new java.util.ArrayList<>()).add(s);
+        }
+        if (!byLevel.isEmpty()) {
+            h.append("<h2>Class-wise Olympiad practice sets</h2>");
+            byLevel.entrySet().stream()
+                    .sorted(java.util.Comparator.comparingInt(e -> classNumber(e.getKey())))
+                    .forEach(e -> {
+                        h.append("<h3>").append(esc(e.getKey())).append("</h3><ul class=\"pr-list\">");
+                        for (Object[] s : e.getValue()) {
+                            h.append("<li><a href=\"/exams/practice/").append(s[0]).append("\">").append(esc((String) s[1])).append("</a></li>");
+                        }
+                        h.append("</ul>");
+                    });
+        }
+        h.append("<h2>Olympiads these questions prepare for</h2><ul class=\"pr-list\">")
+                .append("<li>SOF International Mathematics Olympiad (IMO): Logical Reasoning, Mathematical Reasoning, Everyday Mathematics and Achievers sections</li>")
+                .append("<li>SOF International Science Olympiad (ISO): Logical Reasoning, Science and Achievers sections</li>")
+                .append("<li>SOF International English Olympiad (IEO): Word and Structure Knowledge, Reading, Spoken and Written Expression</li>")
+                .append("<li>IOQM (Indian Olympiad Qualifier in Mathematics), Classes 8 to 12: IOQM-style problems with whole-number answers</li>")
+                .append("</ul>");
+        h.append("<p><a href=\"/exams/practice\">Practice centre</a> · <a href=\"/exams\">School entrance exams</a></p>");
+        return shell(h.toString());
+    }
+
+    /** "Class V" → 5, so classes sort in order; other levels go last. */
+    private static int classNumber(String level) {
+        List<String> roman = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
+        int i = level != null && level.startsWith("Class ") ? roman.indexOf(level.substring(6)) : -1;
+        return i < 0 ? 100 : i;
+    }
 }

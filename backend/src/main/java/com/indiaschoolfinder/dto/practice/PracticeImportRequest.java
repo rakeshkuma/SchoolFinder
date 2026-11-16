@@ -16,8 +16,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-/** Practice sets in the import format of backend/src/main/resources/seed/practice.json; each replaces the set with its slug. */
-public record PracticeImportRequest(@NotEmpty @Size(max = 100) List<@Valid @NotNull SetRecord> sets) {
+/**
+ * Practice sets in the import format of backend/src/main/resources/seed/practice.json; each replaces the set with its slug.
+ * The whole shipped catalogue is one import (the seed loader and the tests load it at once), so the limit stays above the
+ * number of sets in practice.json (116 since the class-wise Olympiad sets were added).
+ */
+public record PracticeImportRequest(@NotEmpty @Size(max = 200) List<@Valid @NotNull SetRecord> sets) {
 
     public record SetRecord(
             @NotBlank @Pattern(regexp = "[a-z0-9]+(-[a-z0-9]+)*") @Size(max = 80) String slug,

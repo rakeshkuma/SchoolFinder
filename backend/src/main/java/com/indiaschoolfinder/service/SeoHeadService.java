@@ -245,6 +245,28 @@ public class SeoHeadService {
     }
 
     /** The title as sent: without the site-name suffix when that would make it longer than {@link #TITLE_MAX}. */
+    /**
+     * The Olympiad view of the practice centre has its own address, /exams/practice?category=OLYMPIAD, so it gets its own
+     * title, description and canonical link instead of the practice centre's. Other filters on /exams/practice are not
+     * separate pages and keep the practice centre's head.
+     */
+    public static final String OLYMPIAD_PRACTICE = "/exams/practice?category=OLYMPIAD";
+    static final String OLYMPIAD_TITLE = "Olympiad Preparation & Practice: Classes 1 to 10";
+    static final String OLYMPIAD_DESCRIPTION = "Free class-wise Olympiad practice for Classes 1 to 10: original Maths, Science, English, "
+            + "reasoning and IOQM-style questions, mock tests and explained answers.";
+
+    /** True for the Olympiad page: /exams/practice with category=OLYMPIAD. */
+    public static boolean isOlympiadPractice(String path, String category) {
+        return ("/exams/practice".equals(path) || "/exams/practice/".equals(path)) && "OLYMPIAD".equals(category);
+    }
+
+    public String olympiadPractice(String baseUrl) {
+        String url = baseUrl + OLYMPIAD_PRACTICE;
+        return tags(OLYMPIAD_TITLE + " | " + SITE, OLYMPIAD_DESCRIPTION, url, null, false,
+                crumbs(listItem(1, "Home", baseUrl + "/"), listItem(2, "Exams", baseUrl + "/exams"),
+                        listItem(3, "Practice centre", baseUrl + "/exams/practice"), listItem(4, "Olympiad preparation", url)));
+    }
+
     static String fitTitle(String title) {
         String suffix = " | " + SITE;
         return title.length() > TITLE_MAX && title.endsWith(suffix) ? title.substring(0, title.length() - suffix.length()) : title;
