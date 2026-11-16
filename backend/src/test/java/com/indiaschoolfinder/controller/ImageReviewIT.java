@@ -33,7 +33,7 @@ class ImageReviewIT extends AbstractIntegrationTest {
 
     private static ImageCandidate candidate(String licence, ImagePermission permission) {
         return new ImageCandidate("Wikimedia Commons", "File:Review School.jpg", PAGE, FILE,
-                FILE.replace("/commons/", "/commons/thumb/") + "/640px-Review_School.jpg", 1600, 1200, "image/jpeg",
+                FILE.replace("/commons/", "/commons/thumb/") + "/500px-Review_School.jpg", 1600, 1200, "image/jpeg",
                 "Jane Doe", licence, "https://creativecommons.org/licenses/by-sa/4.0", true, "Main building",
                 permission, "Jane Doe, " + licence + ", via Wikimedia Commons", false);
     }
@@ -147,7 +147,7 @@ class ImageReviewIT extends AbstractIntegrationTest {
         mockMvc.perform(post("/api/v1/admin/schools/{id}/images/{imageId}/refresh", id, first)
                         .header("Authorization", editorToken()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.thumbnailUrl").value(org.hamcrest.Matchers.containsString("/640px-")))
+                .andExpect(jsonPath("$.thumbnailUrl").value(org.hamcrest.Matchers.containsString("/500px-")))
                 .andExpect(jsonPath("$.verificationStatus").value("OUTDATED"))
                 .andExpect(jsonPath("$.permissionStatus").value("PENDING"));
     }
