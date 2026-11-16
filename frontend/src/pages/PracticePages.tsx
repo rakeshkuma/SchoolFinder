@@ -26,6 +26,8 @@ import type {
 import { formatDate } from '../utils/format';
 import { clearProgress, loadProgress, saveProgress, type TestProgress } from '../utils/testProgress';
 import { NotFoundPage } from './InfoPages';
+import { OLYMPIAD_DESCRIPTION, OLYMPIAD_DOC_TITLE } from '../content/olympiad';
+import { OlympiadPractice, olympiadSessionText } from './OlympiadPractice';
 
 /** Shown wherever practice questions appear: they are this site's own, never the exam body's. */
 export const PRACTICE_LABEL = 'SchoolDhundo Practice Questions';
@@ -206,9 +208,10 @@ function PointsNote() {
 }
 
 export function PracticeListPage() {
-  useDocumentTitle('Practice centre: free practice tests for school, entrance, Olympiad and competitive exams');
   const [params, setParams] = useSearchParams();
   const category = isCategory(params.get('category')) ? params.get('category') as PracticeCategory : null;
+  useDocumentTitle(category === 'OLYMPIAD' ? OLYMPIAD_DOC_TITLE : 'Practice centre: free practice tests for school, entrance, Olympiad and competitive exams',
+    category === 'OLYMPIAD' ? OLYMPIAD_DESCRIPTION : undefined);
   const sets = useApi(() => practiceService.list(), []);
   const bank = useApi(() => practiceService.bank(), []);
   const exams = useApi(() => examService.all(), []);
@@ -221,6 +224,16 @@ export function PracticeListPage() {
     if (c) next.set('category', c); else next.delete('category');
     setParams(next, { replace: true });
   };
+
+  // Olympiads have their own class-first page on the same address; it uses the same sets, bank and practice engine.
+  if (category === 'OLYMPIAD') {
+    return (
+      <OlympiadPractice sets={sets.data} setsError={sets.error} bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
+        categoryLabels={CATEGORY_LABEL} pointsNote={<PointsNote />}
+        advancedBuilder={<SessionBuilder key="olympiad" bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
+          examName={examName} examSlugs={(exams.data ?? []).map((e) => e.slug)} initialCategory="OLYMPIAD" />} />
+    );
+  }
 
   return (
     <>
@@ -630,6 +643,10 @@ export interface Sitting {
   bankId: (questionId: string) => string;
   /** Scores a guest's attempt (the server's scoring; nothing stored). Result ids are the questions' own ids. */
   guestScore: (answers: Record<string, number>) => Promise<PracticeScore>;
+  /** Where "back" and "start another practice" lead; the practice centre when not given. */
+  home?: { to: string; label: string };
+  /** Filters added to follow-up practice links from the result (retry, weak topics), e.g. an Olympiad class. */
+  scope?: Record<string, string>;
   /** A challenge: already started and timed by the server, which also scores it; it has no intro or retake. */
   challenge?: {
     slug: string;
@@ -655,6 +672,7 @@ export function PracticeTestPage() {
       minutes: set.durationMinutes, reviewedOn: set.reviewedOn,
       bankId: (id) => `${set.slug}/${id}`,
       guestScore: (answers) => practiceService.score(set.slug, answers),
+      ...(set.category === 'OLYMPIAD' ? { home: OLYMPIAD_HOME, scope: { category: 'OLYMPIAD', level: set.level } } : {}),
     };
   }, [state.data]);
   if (state.error instanceof ApiError && state.error.status === 404) return <NotFoundPage />;
@@ -662,6 +680,9 @@ export function PracticeTestPage() {
   if (!sitting) return <Spinner />;
   return <Player key={sitting.key} sitting={sitting} />;
 }
+
+const OLYMPIAD_HOME = { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad practice' };
+const PRACTICE_HOME = { to: '/exams/practice', label: 'Practice centre' };
 
 const BANK_MODES: PracticeMode[] = ['QUICK', 'TOPIC', 'MINI_MOCK', 'FULL', 'DAILY', 'REVISION', 'RETRY'];
 /** Modes that draw questions at random (the daily challenge is already the same for everyone on a day). */
@@ -708,13 +729,18 @@ export function PracticeSessionPage() {
     const s = state.data;
     if (!s) return null;
     const ids = s.questions.map((q) => q.id);
+    // An Olympiad sitting names its class, leads back to the Olympiad page and keeps follow-up practice in that class.
+    const olympiad = olympiadSessionText(params, s.title, s.questions.length);
     return {
-      key: location.key, progressKey: `session:${params.toString()}`, mode: s.mode, eyebrow: 'Practice centre', title: s.title,
-      description: s.description, examSlug: params.get('exam'), setSlug: null, passages: s.passages, questions: s.questions,
+      key: location.key, progressKey: `session:${params.toString()}`, mode: s.mode, eyebrow: olympiad ? 'Olympiad practice' : 'Practice centre',
+      title: olympiad?.title ?? s.title, description: olympiad?.description || s.description, examSlug: params.get('exam'), setSlug: null,
+      passages: s.passages, questions: s.questions,
       marking: null,
       minutes: timer ? (s.suggestedMinutes ?? Math.ceil(s.questions.length * 1.2)) : null, reviewedOn: null,
       bankId: (id) => id,
       guestScore: (answers) => practiceService.scoreSession(ids, answers),
+      ...(params.get('category') === 'OLYMPIAD'
+        ? { home: OLYMPIAD_HOME, scope: { category: 'OLYMPIAD', ...(params.get('level') ? { level: params.get('level')! } : {}) } } : {}),
     };
   }, [state.data, params, location.key, timer]);
 
@@ -1001,7 +1027,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
     return (
       <>
         <PageHeader eyebrow={sitting.eyebrow} title={sitting.title} subtitle={sitting.description}>
-          <Link to="/exams/practice" className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">← Practice centre</Link>
+          <Link to={(sitting.home ?? PRACTICE_HOME).to} className="chip bg-white/10 px-3 py-1.5 text-sm text-slate-100 ring-1 ring-white/15 hover:bg-white/20">← {(sitting.home ?? PRACTICE_HOME).label}</Link>
         </PageHeader>
         <div className="container-page max-w-3xl space-y-5 py-8">
           <PracticeNote />
@@ -1107,7 +1133,7 @@ export function Player({ sitting }: { sitting: Sitting }) {
                   return;
                 }
                 if (sitting.progressKey) clearProgress(sitting.progressKey);
-                navigate('/exams/practice');
+                navigate((sitting.home ?? PRACTICE_HOME).to);
               }}>{sitting.challenge ? 'Leave for now' : 'Leave without saving'}</button>}
             <button type="button" className="btn-secondary py-1.5 text-sm" onClick={() => setConfirming(null)}>Keep going</button>
           </div>
@@ -1280,14 +1306,15 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
         </div>
         <div className="flex flex-wrap gap-2 border-t border-slate-100 p-5">
           {missedIds.length > 0 && (
-            <Link to={`/exams/practice/session?${new URLSearchParams({ mode: 'RETRY', ids: missedIds.join(',') })}`} className="btn-primary">
+            <Link to={`/exams/practice/session?${new URLSearchParams({ mode: 'RETRY', ...sitting.scope, ids: missedIds.join(',') })}`} className="btn-primary">
               <Icon name="repeat" className="h-4 w-4" /> Retry the {missedIds.length} you missed
             </Link>
           )}
           {sitting.challenge
             ? <Link to={`/exams/challenges/${sitting.challenge.slug}`} className="btn-secondary">Back to the challenge</Link>
             : <button type="button" onClick={onRestart} className="btn-secondary">Retake this test</button>}
-          <Link to="/exams/practice" className="btn-secondary">Start another practice</Link>
+          <Link to={(sitting.home ?? PRACTICE_HOME).to} className="btn-secondary">{sitting.home ? `More ${sitting.home.label}` : 'Start another practice'}</Link>
+          {sitting.home && <Link to="/exams/practice/progress" className="btn-ghost"><Icon name="chart" className="h-4 w-4" /> View My Practice Progress</Link>}
           {sitting.examSlug && <Link to={`/exams/${sitting.examSlug}`} className="btn-ghost">Exam guide</Link>}
         </div>
       </section>
@@ -1331,7 +1358,7 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
                 <ul className="mt-1 space-y-1 text-slate-700">
                   {weak.slice(0, 6).map((t) => (
                     <li key={t.section + t.topic}>
-                      <Link to={`/exams/practice/session?${new URLSearchParams({ mode: 'TOPIC', section: t.section, topic: t.topic, count: '10' })}`} className="hover:text-brand-700">
+                      <Link to={`/exams/practice/session?${new URLSearchParams({ mode: 'TOPIC', ...sitting.scope, section: t.section, topic: t.topic, count: '10' })}`} className="hover:text-brand-700">
                         {t.topic}
                       </Link> <span className="text-slate-500">({t.correct}/{t.total})</span>
                     </li>

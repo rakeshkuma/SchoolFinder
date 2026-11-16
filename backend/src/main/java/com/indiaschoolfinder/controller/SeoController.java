@@ -41,7 +41,11 @@ public class SeoController {
     @GetMapping(PREFIX + "/**")
     public ResponseEntity<String> head(HttpServletRequest request) {
         String path = request.getRequestURI().substring(request.getContextPath().length() + PREFIX.length());
-        String body = seoHeadService.head(path.isEmpty() ? "/" : path, SitemapController.baseUrl(properties, request));
+        String base = SitemapController.baseUrl(properties, request);
+        // The one page told apart by its query string (nginx passes the original query along with the path).
+        String body = SeoHeadService.isOlympiadPractice(path, request.getParameter("category"))
+                ? seoHeadService.olympiadPractice(base)
+                : seoHeadService.head(path.isEmpty() ? "/" : path, base);
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
                 .contentType(HTML).body(body);
     }
@@ -50,7 +54,10 @@ public class SeoController {
     @GetMapping(BODY_PREFIX + "/**")
     public ResponseEntity<String> body(HttpServletRequest request) {
         String path = request.getRequestURI().substring(request.getContextPath().length() + BODY_PREFIX.length());
-        String body = seoBodyService.body(path.isEmpty() ? "/" : path, SitemapController.baseUrl(properties, request));
+        String base = SitemapController.baseUrl(properties, request);
+        String body = SeoHeadService.isOlympiadPractice(path, request.getParameter("category"))
+                ? seoBodyService.olympiadPractice()
+                : seoBodyService.body(path.isEmpty() ? "/" : path, base);
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
                 .contentType(HTML).body(body);
     }

@@ -128,6 +128,34 @@ class SeoHeadIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void olympiadPageHasItsOwnHeadAndContent() throws Exception {
+        Integer present = jdbc.queryForObject("SELECT count(*) FROM practice_set WHERE slug = 'olympiad-class5-maths-1'", Integer.class);
+        if (present == null || present == 0) {
+            mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(new ClassPathResource("seed/practice.json").getContentAsString(StandardCharsets.UTF_8)))
+                    .andExpect(status().isOk());
+        }
+        // /exams/practice?category=OLYMPIAD is a page of its own: its own title, description and canonical address.
+        assertThat(head("/exams/practice?category=OLYMPIAD"))
+                .contains("<title>Olympiad Preparation &amp; Practice: Classes 1 to 10</title>")
+                .contains("href=\"http://localhost/exams/practice?category=OLYMPIAD\"")
+                .contains("IOQM-style").contains("\"@type\":\"BreadcrumbList\"")
+                .doesNotContain("noindex");
+        // The practice centre, and its other filters, keep the practice centre's head.
+        assertThat(head("/exams/practice")).contains("href=\"http://localhost/exams/practice\"").doesNotContain("category=OLYMPIAD");
+        assertThat(head("/exams/practice?category=SCHOOL")).contains("href=\"http://localhost/exams/practice\"").doesNotContain("category=");
+        assertThat(head("/exams/practice/progress?category=OLYMPIAD")).contains("noindex");
+        String body = mockMvc.perform(get("/api/v1/seo/body/exams/practice").param("category", "OLYMPIAD")).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        assertThat(body).contains("<h1>Olympiad Preparation &amp; Practice</h1>").contains("<h3>Class V</h3>")
+                .contains("href=\"/exams/practice/olympiad-class5-maths-1\"").contains("not connected with SOF");
+        mockMvc.perform(get("/sitemaps/pages.xml"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/practice?category=OLYMPIAD</loc>")));
+    }
+
+    @Test
     void directoryAndStatePagesDescribeTheirContents() throws Exception {
         createSchool(school("Fixture Lake School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         // A town page listing one or two schools would repeat their profiles: reachable, but not indexed.
