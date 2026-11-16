@@ -1,0 +1,4 @@
+all rows|33072
+active|33047
+CISCE|36
+max id|33137
