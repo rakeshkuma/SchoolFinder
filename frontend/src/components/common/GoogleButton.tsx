@@ -6,6 +6,8 @@ import { track } from '../../utils/analytics';
  * "Sign in with Google" in Google's blue style: the coloured G on a white square, white text on blue. Shown only when
  * the server reports a configured Google client. A plain link: the server redirects to Google and back, so no Google
  * script runs on this site. `compact` is the header size: "Sign in" where the header is full (phones, and beside the desktop menus below 1536px).
+ * On the narrowest phones (under 360px) the header has no room for the words beside the logo and the menu button, so
+ * only the Google mark shows there; the words stay as the link's accessible name.
  */
 export function GoogleButton({ next, remember = false, label = 'Sign in with Google', compact = false }: {
   next: string; remember?: boolean; label?: string; compact?: boolean;
@@ -15,7 +17,7 @@ export function GoogleButton({ next, remember = false, label = 'Sign in with Goo
   return (
     <a href={googleSignInUrl(next, remember)} onClick={() => track('google_sign_in', { step: 'start' })}
       className={`inline-flex items-center gap-3 whitespace-nowrap rounded bg-[#1a73e8] p-0.5 font-medium text-white shadow-sm transition hover:bg-[#1765cc] hover:shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a73e8] ${
-        compact ? 'h-9 pr-3 text-sm' : 'h-11 w-full pr-4 text-base'}`}>
+        compact ? 'h-9 pr-3 text-sm max-[359px]:gap-0 max-[359px]:pr-0.5' : 'h-11 w-full pr-4 text-base'}`}>
       <span className={`flex shrink-0 items-center justify-center rounded-sm bg-white ${compact ? 'h-8 w-8' : 'h-10 w-10'}`}>
         <svg aria-hidden="true" viewBox="0 0 48 48" className="h-[18px] w-[18px]">
           <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
@@ -25,7 +27,7 @@ export function GoogleButton({ next, remember = false, label = 'Sign in with Goo
         </svg>
       </span>
       {compact
-        ? <span><span className="sm:hidden xl:inline 2xl:hidden">Sign in</span><span className="hidden sm:inline xl:hidden 2xl:inline">{label}</span></span>
+        ? <span className="max-[359px]:sr-only"><span className="sm:hidden xl:inline 2xl:hidden">Sign in</span><span className="hidden sm:inline xl:hidden 2xl:inline">{label}</span></span>
         : <span className="flex-1 text-center">{label}</span>}
     </a>
   );
