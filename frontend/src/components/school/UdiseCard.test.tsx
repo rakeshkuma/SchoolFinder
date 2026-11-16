@@ -57,6 +57,23 @@ describe('UdiseCard', () => {
     expect([...view.container.querySelectorAll('button')].some((b) => b.getAttribute('aria-label')?.startsWith('Copy'))).toBe(false);
   });
 
+  it('keeps the board affiliation number apart from the UDISE+ code and never claims verification', () => {
+    view = render(<UdiseCard school={school({ affiliationNumber: '3420006', board: { code: 'CBSE', name: 'Central Board of Secondary Education', websiteUrl: null, description: null },
+      websiteUrl: 'https://www.netarhatvidyalaya.com/' })} boardRecord={'Listed by CBSE as "NETARHAT AWASIYA VIDYALAYA" (affiliation no. 3420006).'} />);
+    const text = view.container.textContent ?? '';
+    expect(view.container.querySelector('h2')?.textContent).toBe('Official School Information & UDISE+');
+    expect(text).toContain('CBSE affiliation no.3420006');
+    expect(text).toContain('UDISE+ codeNot recorded here yet');
+    expect(text).toContain('As listed by the board');
+    expect(text).toContain('netarhatvidyalaya.com');
+    expect(text).toContain('it is different from a board affiliation number');
+    expect(text).not.toMatch(/government verified|fully verified|government approved/i);
+    // The UDISE+ button stays the card's first link, opening the portal's search in a new tab.
+    const a = view.container.querySelector('a')!;
+    expect(a.getAttribute('href')).toBe(UDISE_SEARCH_URL);
+    expect(a.getAttribute('rel')).toBe('noopener noreferrer');
+  });
+
   it('offers to copy a known code when there is no checked link', () => {
     view = render(<UdiseCard school={school({ udiseCode: '07040123456' })} />);
     expect([...view.container.querySelectorAll('button')].some((b) => b.getAttribute('aria-label') === 'Copy UDISE+ code 07040123456')).toBe(true);
