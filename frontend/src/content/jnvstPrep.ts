@@ -231,7 +231,7 @@ export const T = {
 /** The JNVST page as configured for the shared preparation page (pages/ExamPrepPage.tsx). */
 export const JNVST_PREP: PrepConfig = {
   exam: 'jnvst',
-  docTitle: 'JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan',
+  docTitle: 'JNVST Class 6 Preparation 2027: Free Mock Tests',
   breadcrumb: 'JNVST',
   firstMock: 'jnvst-mock-1',
   T,

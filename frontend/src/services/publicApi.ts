@@ -35,6 +35,7 @@ import type {
   ExternalRankingFacets,
   ExternalRankingListItem,
   RankingMethodology,
+  PlaceSummary,
   RankingPublisher,
   RankingPublisherKind,
   RankingScope,
@@ -474,6 +475,9 @@ export const locationService = {
   citiesAcrossIndia: () => http.get<IndiaCity[]>('/locations/cities/all').then((r) => r.data),
   localities: (state?: string) =>
     http.get<string[]>('/locations/localities', { params: cleanParams({ state }) }).then((r) => r.data),
+  /** A state's, district's or town's numbers at a glance, with an introduction and answers (slugs, as in the page address). */
+  summary: (state: string, district?: string, city?: string) =>
+    http.get<PlaceSummary>('/locations/summary', { params: cleanParams({ state, district, city }) }).then((r) => r.data),
 };
 
 export const referenceService = {

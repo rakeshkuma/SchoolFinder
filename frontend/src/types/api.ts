@@ -107,6 +107,30 @@ export interface City {
   schoolCount: number;
 }
 
+/** What the schools listed for a state, district or town add up to; the text is written by the server from these numbers. */
+export interface PlaceSummary {
+  place: string;
+  placeFull: string;
+  total: number;
+  intro: string | null;
+  boards: PlaceCount[];
+  types: PlaceCount[];
+  networks: PlaceCount[];
+  genders: PlaceCount[];
+  boarding: number;
+  seniorSecondary: number;
+  withAdmissionDates: number;
+  oldest: { name: string; slug: string; established: number | null }[];
+  faqs: { question: string; answer: string }[];
+  related: { href: string; label: string }[];
+}
+
+export interface PlaceCount {
+  code: string;
+  label: string;
+  count: number;
+}
+
 export interface IndiaCity {
   name: string;
   slug: string;

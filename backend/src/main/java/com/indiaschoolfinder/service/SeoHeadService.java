@@ -45,7 +45,10 @@ public class SeoHeadService {
      * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
      */
     public static final int MIN_SCHOOLS_TO_INDEX = 3;
-    static final String DEFAULT_TITLE = "SchoolDhundo – Discover Schools, Rankings, Admissions & Exam Preparation";
+    /** 60 characters: Google shows about that much of a title, and longer ones are cut or rewritten. */
+    static final String DEFAULT_TITLE = "SchoolDhundo: Find Schools, Rankings, Admissions & Exam Prep";
+    /** Longest title kept with the " | SchoolDhundo" suffix; Google shows the site name above every result anyway. */
+    static final int TITLE_MAX = 60;
     static final String DEFAULT_DESCRIPTION = "Find schools across India, explore school rankings, compare boarding schools, "
             + "understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources.";
 
@@ -118,7 +121,8 @@ public class SeoHeadService {
                     + "each linked to the school's official notice."),
             page("/fees", "School fee calculator", "Estimate first-year and annual school costs from "
                     + "official fee schedules, with every component shown."),
-            page("/nearby", "Schools near you", "Find schools near any location in India on a map."),
+            // "schools near me": 673,000 searches a month in India (Ubersuggest, 2026-11-16).
+            page("/nearby", "Schools near me: find schools on a map", "Find schools near you, or near any location in India, on a map."),
             page("/boarding", "Boarding and residential schools", "Residential schools across India — "
                     + "Navodaya, Sainik, military and private boarding schools — with entry classes and exams."),
             page("/boarding/india", "Boarding schools in India", "Every boarding and residential school we list in "
@@ -141,7 +145,7 @@ public class SeoHeadService {
             page("/exams/finder", "Which entrance exams can my child take?", "Answer up to four questions — class, "
                     + "state, school type, boarding — to see which school entrance exams may fit and why, with the "
                     + "eligibility rules to confirm in each official notice."),
-            page("/exams/practice", "Free practice tests: school, entrance, Olympiad and competitive exams", "Original "
+            page("/exams/practice", "Free practice tests: entrance, Olympiad and school exams", "Original "
                     + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
                     + "aptitude, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
                     + "not official questions."),
@@ -164,9 +168,9 @@ public class SeoHeadService {
                     + "entrance exams from official sources, and how it writes its own practice questions."),
             page("/contact", "Contact SchoolDhundo", "Get in touch about a school listing, a correction or "
                     + "the practice questions."),
-            page("/privacy", "Privacy policy", "What SchoolDhundo stores about visitors and members, and why."),
-            page("/terms", "Terms of use", "The terms for using SchoolDhundo, its listings and its practice tests."),
-            page("/disclaimer", "Disclaimer", "School facts are taken from official sources and may change; always "
+            page("/privacy", "Privacy policy: what we store and why", "What SchoolDhundo stores about visitors and members, and why."),
+            page("/terms", "Terms of use for listings and practice tests", "The terms for using SchoolDhundo, its listings and its practice tests."),
+            page("/disclaimer", "Disclaimer: confirm school facts at the source", "School facts are taken from official sources and may change; always "
                     + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
             page("/editorial-policy", "Editorial policy", "How SchoolDhundo chooses sources, checks school information, "
                     + "presents published rankings and writes its own practice questions, and how paid content is kept apart."),
@@ -178,15 +182,17 @@ public class SeoHeadService {
                     + "publish official fees, admission notices, photos and contact details, checked by our editors. Free."),
             page("/data-deletion", "Account and data deletion", "How to delete your SchoolDhundo account, leaderboard "
                     + "entry or other information, what is removed and what is kept."),
-            page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya schools", "Central government schools run by "
+            // Network titles name the searches people make ("sainik schools", "kvs admission"); the page lists the schools
+            // and says how admission works, with the official site linked. The description starts with the count (head()).
+            page("/network/kendriya-vidyalaya", "Kendriya Vidyalaya list and KVS admission", "Central government schools run by "
                     + "Kendriya Vidyalaya Sangathan, affiliated to CBSE, with locations and admission links."),
-            page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya schools", "Residential central "
+            page("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalaya list and admission", "Residential central "
                     + "government schools run by Navodaya Vidyalaya Samiti; Class VI admission is through the JNVST."),
-            page("/network/sainik-school", "Sainik Schools in India", "Residential schools run by the Sainik Schools Society "
+            page("/network/sainik-school", "Sainik Schools in India: list and admission", "Residential schools run by the Sainik Schools Society "
                     + "under the Ministry of Defence; Class VI and IX admission is through AISSEE."),
             page("/network/eklavya-model-residential-school", "Eklavya Model Residential Schools (EMRS)", "Residential schools "
                     + "for Scheduled Tribe students under the Ministry of Tribal Affairs, with state-wise admission information."),
-            page("/network/rashtriya-military-school", "Rashtriya Military Schools", "Residential schools under the Ministry "
+            page("/network/rashtriya-military-school", "Rashtriya Military Schools and RMS CET", "Residential schools under the Ministry "
                     + "of Defence; Class VI and IX admission is through the RMS CET."),
             page("/type/government", "Government schools in India", "Schools run by central and state governments and "
                     + "local bodies, with board, classes and admission information from official sources."),
@@ -218,6 +224,30 @@ public class SeoHeadService {
 
     private static Map.Entry<String, String[]> page(String path, String title, String description) {
         return Map.entry(path, new String[]{title, description});
+    }
+
+    /** A government school network's directory page (frontend content/networks.ts); its slug is the enum name in kebab case. */
+    static final Pattern NETWORK = Pattern.compile("^/network/([a-z-]+)$");
+
+    static com.indiaschoolfinder.enums.SchoolNetwork network(String slug) {
+        try {
+            return com.indiaschoolfinder.enums.SchoolNetwork.valueOf(slug.toUpperCase(Locale.ROOT).replace('-', '_'));
+        } catch (IllegalArgumentException e) {
+            throw new ResourceNotFoundException("Network", slug);
+        }
+    }
+
+    /** The network's schools as its page lists them: the best-documented first (the directory's "recommended" order). */
+    static com.indiaschoolfinder.dto.school.SchoolSearchCriteria networkCriteria(com.indiaschoolfinder.enums.SchoolNetwork network, int size) {
+        return new com.indiaschoolfinder.dto.school.SchoolSearchCriteria(null, null, null, null, null, null, null, null, null, null,
+                network, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null, null, "recommended", null, 0, size);
+    }
+
+    /** The title as sent: without the site-name suffix when that would make it longer than {@link #TITLE_MAX}. */
+    static String fitTitle(String title) {
+        String suffix = " | " + SITE;
+        return title.length() > TITLE_MAX && title.endsWith(suffix) ? title.substring(0, title.length() - suffix.length()) : title;
     }
 
     private final SchoolService schoolService;
@@ -272,9 +302,19 @@ public class SeoHeadService {
         // Static pages first: some (/exams/finder) share a prefix with a pattern below.
         String[] page = PAGES.get(p);
         if (page != null) {
-            String description = p.equals("/schools")
-                    ? "%,d schools across India. ".formatted(schoolRepository.countByActiveTrue()) + page[1] : page[1];
+            String description = page[1];
+            Matcher networkPage = NETWORK.matcher(p);
+            if (p.equals("/schools")) {
+                description = "%,d schools across India. ".formatted(schoolRepository.countByActiveTrue()) + description;
+            } else if (networkPage.matches()) {
+                long count = schoolService.search(networkCriteria(network(networkPage.group(1)), 1)).totalElements();
+                if (count > 0) description = "%,d schools listed. ".formatted(count) + description;
+            }
             return tags(page[0] + " | " + SITE, description, baseUrl + p, null, false, null);
+        }
+        if (NETWORK.matcher(p).matches()) {
+            // Every network page is listed above; any other /network address is the app's "page not found".
+            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
         try {
             Matcher m;
@@ -487,7 +527,8 @@ public class SeoHeadService {
         if (faq != null) {
             graph.add(faq);
         }
-        return tags(title, description.toString(), url, image, false, graph);
+        // A bare board listing stays reachable but is noindex until it holds more (SchoolRepository.INDEXABLE).
+        return tags(title, description.toString(), url, image, !schoolRepository.isIndexable(s.id()), graph);
     }
 
     /**
@@ -652,21 +693,24 @@ public class SeoHeadService {
         String title, description, dateLabel;
         switch (e.slug()) {
             case "aissee" -> {
-                title = "AISSEE Class 6 Preparation 2027 – Free Sainik School Mock Tests, Practice Questions and Study Plan";
+                // Searched as "aissee 2027", "aissee class 6", "aissee mock test" (Ubersuggest, India, 2026-11-16).
+                title = "AISSEE 2027 Class 6 Preparation: Free Mock Tests";
                 description = "Free AISSEE Class 6 (Sainik School) preparation in English and Hindi: original practice questions for "
                         + "Mathematics, Intelligence, General Knowledge and Language, full 125-question mock tests, a study plan and "
                         + "progress tracking.";
                 dateLabel = " Entrance exam: ";
             }
             case "netarhat" -> {
-                title = "Netarhat Entrance Exam Preparation 2026-27 – Free Mock Tests, Practice Questions and Study Plan";
+                // Searched as "netarhat vidyalaya class 6 admission", "netarhat vidyalaya exam" (Ubersuggest, 2026-11-16).
+                title = "Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests";
                 description = "Free Netarhat Vidyalaya Class 6 entrance preparation in Hindi and English: original practice questions "
                         + "for Mental Ability, Hindi, Mathematics, Science and Social Studies, full 100-question Paper 1 mock tests, "
                         + "Paper 2 writing tips, a study plan and progress tracking.";
                 dateLabel = " Entrance exam: ";
             }
             default -> {
-                title = "JNVST Class 6 Preparation 2027 – Free Mock Tests, Practice Questions and Study Plan";
+                // "jnvst class 6": 5,400 searches a month in India, difficulty 11 (Ubersuggest, 2026-11-16).
+                title = "JNVST Class 6 Preparation 2027: Free Mock Tests";
                 description = "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
                         + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
                         + "progress tracking.";
@@ -693,7 +737,7 @@ public class SeoHeadService {
         BestPlacesService.Place p = bestPlacesService.place(slug);
         String year = p.rankingSource() == null ? "" : " " + p.rankingSource().substring(p.rankingSource().lastIndexOf(' ') + 1);
         String where = p.kind() == BestPlacesService.Kind.CITY ? p.name() + ", " + p.stateName() : p.name();
-        String title = "Best Schools in " + p.name() + year + ": Rankings and School Lists | " + SITE;
+        String title = "Best Schools in " + p.name() + year + ": Rankings & School Lists | " + SITE;
         StringBuilder description = new StringBuilder("Best schools in ").append(where).append(": ");
         if (p.ranked() > 0) {
             description.append(p.ranked()).append(p.ranked() == 1 ? " school" : " schools").append(" ranked in ").append(p.rankingSource());
@@ -795,6 +839,7 @@ public class SeoHeadService {
 
     private String tags(String title, String description, String canonical, String image, boolean noindex,
                         Object jsonLd) {
+        title = fitTitle(title);
         StringBuilder h = new StringBuilder();
         h.append("<title>").append(html(title)).append("</title>\n");
         h.append(meta("name", "description", description));

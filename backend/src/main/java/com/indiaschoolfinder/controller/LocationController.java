@@ -23,9 +23,19 @@ import java.util.List;
 public class LocationController {
 
     private final LocationService locationService;
+    private final com.indiaschoolfinder.service.PlaceSummaryService placeSummary;
 
-    public LocationController(LocationService locationService) {
+    public LocationController(LocationService locationService, com.indiaschoolfinder.service.PlaceSummaryService placeSummary) {
         this.locationService = locationService;
+        this.placeSummary = placeSummary;
+    }
+
+    @Operation(summary = "What the schools listed for a state, district or town add up to, with an introduction and answers")
+    @GetMapping("/locations/summary")
+    public com.indiaschoolfinder.dto.location.PlaceSummaryDto summary(@RequestParam @Size(max = 80) String state,
+                                                                      @RequestParam(required = false) @Size(max = 80) String district,
+                                                                      @RequestParam(required = false) @Size(max = 80) String city) {
+        return placeSummary.summary(state, district, city);
     }
 
     @Operation(summary = "All 28 states and 8 union territories with active school counts")

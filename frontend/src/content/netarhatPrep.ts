@@ -223,7 +223,7 @@ export const NETARHAT_PREP: PrepConfig = {
   level: LEVEL,
   setPrefix: 'netarhat-',
   coverage: true,
-  docTitle: 'Netarhat Entrance Exam Preparation 2026-27 – Free Mock Tests, Practice Questions and Study Plan',
+  docTitle: 'Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests',
   breadcrumb: 'Netarhat',
   firstMock: 'netarhat-paper1-mock-1',
   T,

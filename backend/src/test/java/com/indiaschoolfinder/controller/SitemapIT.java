@@ -18,7 +18,8 @@ class SitemapIT extends AbstractIntegrationTest {
 
     @Test
     void robotsAndSitemapsListPublicPagesAndActiveSchoolsOnly() throws Exception {
-        createSchool(school("Sitemap Public School", Map.of("stateCode", "BR", "district", "Patna", "boardCode", "CBSE")));
+        createSchool(school("Sitemap Public School", Map.of("stateCode", "BR", "district", "Patna", "boardCode", "CBSE",
+                "description", SeoHeadIT.RICH_DESCRIPTION)));
         createSchool(school("Sitemap Second School", Map.of("stateCode", "BR", "district", "Patna")));
         createSchool(school("Sitemap Third School", Map.of("stateCode", "BR", "district", "Patna")));
         createSchool(school("Sitemap Lone School", Map.of("stateCode", "BR", "district", "Buxar")));
@@ -70,6 +71,8 @@ class SitemapIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/sitemaps/schools-1.xml"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<loc>http://localhost/schools/sitemap-public-school</loc><lastmod>")))
+                // A bare board listing is noindex, so it is not offered either.
+                .andExpect(content().string(not(containsString("sitemap-second-school"))))
                 .andExpect(content().string(not(containsString("sitemap-hidden-school"))));
         mockMvc.perform(get("/sitemaps/schools-2.xml")).andExpect(status().isNotFound());
     }

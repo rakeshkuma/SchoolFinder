@@ -12,6 +12,7 @@ import { MAX_COMPARE, useCompare } from '../hooks/useCompare';
 import { parseIds } from '../utils/geo';
 import { AsyncContent, EmptyState, SkeletonCards, Spinner } from '../components/common/States';
 import { SchoolDirectory } from '../components/school/SchoolDirectory';
+import { PlaceOverview, PlaceQuestions } from '../components/school/PlaceSummary';
 import { SchoolsHero, type HeroSearch } from '../components/school/SchoolsHero';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
@@ -146,6 +147,8 @@ export function StatePage() {
     const list = (await rankingService.editions()).find((e) => !e.ratingBased);
     return list ? rankingService.places(list.id) : null;
   }, []);
+  const summary = useApi(() => locationService.summary(stateSlug, districtSlug, citySlug),
+    [stateSlug, districtSlug ?? '', citySlug ?? '']);
   const district = districtSlug ? districts.data?.find((d) => d.slug === districtSlug) : undefined;
   const city = citySlug ? cities.data?.find((c) => c.slug === citySlug) : undefined;
   const name = state.data?.name;
@@ -210,8 +213,10 @@ export function StatePage() {
             ))}
           </nav>
         )}
+        {summary.data && <PlaceOverview summary={summary.data} />}
         <SchoolDirectory key={`${s.code}-${districtSlug ?? ''}-${citySlug ?? ''}`}
           fixed={district ? { state: s.code, district: district.slug } : city ? { state: s.code, city: city.name } : { state: s.code }} />
+        {summary.data && <PlaceQuestions summary={summary.data} />}
       </div>
     </>
   );

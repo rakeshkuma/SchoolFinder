@@ -84,6 +84,67 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @Query("select s.slug, s.updatedAt from School s where s.active = true order by s.id")
     List<Object[]> findActiveSlugs(org.springframework.data.domain.Pageable page);
 
+    /**
+     * A profile worth offering to search engines: one holding something beyond the bare board listing (board, affiliation
+     * number, address, website), which thousands of other directories repeat word for word. Bare listings stay on the
+     * site for visitors but are noindex and left out of the sitemap until an editor adds more.
+     */
+    String INDEXABLE = """
+            (length(coalesce(s.description, '')) >= 300
+             or exists (select 1 from school_fee f where f.school_id = s.id)
+             or exists (select 1 from admission_schedule a where a.school_id = s.id)
+             or exists (select 1 from school_facility f where f.school_id = s.id)
+             or exists (select 1 from school_image i where i.school_id = s.id and i.image_type <> 'LOGO' and not i.illustrative
+                        and i.permission_status not in ('PENDING', 'REVOKED'))
+             or exists (select 1 from school_ranking r where r.school_id = s.id)
+             or exists (select 1 from school_list_item l where l.school_id = s.id)
+             or exists (select 1 from premier_school p where p.school_id = s.id)
+             or exists (select 1 from school_boarding b where b.school_id = s.id)
+             or exists (select 1 from school_review r where r.school_id = s.id and r.status = 'APPROVED'))""";
+
+    /** Sitemap rows: slug, last update; indexable active schools in id order (stable paging). */
+    @Query(value = "select s.slug, s.updated_at from school s where s.active and " + INDEXABLE + " order by s.id", nativeQuery = true)
+    List<Object[]> findIndexableSlugs(org.springframework.data.domain.Pageable page);
+
+    @Query(value = "select count(*) from school s where s.active and " + INDEXABLE, nativeQuery = true)
+    long countIndexable();
+
+    @Query(value = "select count(*) > 0 from school s where s.id = :id and s.active and " + INDEXABLE, nativeQuery = true)
+    boolean isIndexable(@Param("id") long id);
+
+    /**
+     * The schools of one place: a state, optionally narrowed to one district (id, 0 for any) or one town (the stored
+     * city name, '' for any). Sentinels instead of nulls, so no parameter is ever bound without a type. A plain string with
+     * spaces at both ends: a text block would drop the space after the "where" before it.
+     */
+    String IN_PLACE = " s.active and s.state_code = :state and (:district = 0 or s.district_id = :district)"
+            + " and (:city = '' or s.city = :city) ";
+
+    /** Rows: kind, key, count. Boards, management types, genders, networks, and boarding / Class XII / admission-date counts. */
+    @Query(value = """
+            with p as (select s.id, s.education_board_code, s.school_type, s.gender_type, s.network from school s where """ + IN_PLACE + """
+            )
+            select 'board', coalesce(p.education_board_code, 'OTHER'), count(*) from p group by 2
+            union all select 'type', p.school_type, count(*) from p group by 2
+            union all select 'gender', p.gender_type, count(*) from p where p.gender_type is not null group by 2
+            union all select 'network', p.network, count(*) from p where p.network is not null group by 2
+            union all select 'flag', 'BOARDING', count(*) from p where exists (select 1 from school_boarding b where b.school_id = p.id)
+            union all select 'flag', 'SENIOR_SECONDARY', count(*) from p where exists (select 1 from school_class_offered o
+                      join school_class c on c.id = o.class_id where o.school_id = p.id and c.stage = 'SENIOR_SECONDARY')
+            union all select 'flag', 'ADMISSION_DATES', count(*) from p where exists (select 1 from admission_schedule a where a.school_id = p.id)
+            """, nativeQuery = true)
+    List<Object[]> placeBreakdown(@Param("state") String state, @Param("district") long district, @Param("city") String city);
+
+    /** Rows: kind ('oldest' or 'government'), name, slug, founding year; three of each, for the place's introduction. */
+    @Query(value = """
+            (select 'oldest', s.name, s.slug, s.established_year from school s where """ + IN_PLACE + """
+              and s.established_year >= 1800 order by s.established_year, s.name limit 3)
+            union all
+            (select 'government', s.name, s.slug, s.established_year from school s where """ + IN_PLACE + """
+              and s.school_type = 'GOVERNMENT' order by s.name limit 3)
+            """, nativeQuery = true)
+    List<Object[]> placeExamples(@Param("state") String state, @Param("district") long district, @Param("city") String city);
+
     /** Sitemap rows: state slug, district slug, for districts with at least {@code min} active schools. */
     @Query(value = """
             select st.slug, d.slug from district d join state st on st.code = d.state_code

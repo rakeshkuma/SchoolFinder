@@ -15,7 +15,7 @@ import { formatMoneyCompact } from '../utils/format';
  * it is not stored or sent anywhere else. Before a point is chosen, every mapped school is shown.
  */
 export function NearbyPage() {
-  useDocumentTitle('Schools near you');
+  useDocumentTitle('Schools near me: find schools on a map');
   const [params, setParams] = useSearchParams();
   const lat = params.get('lat') ? Number(params.get('lat')) : null;
   const lon = params.get('lon') ? Number(params.get('lon')) : null;
