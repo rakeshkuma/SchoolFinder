@@ -155,7 +155,7 @@ const ENTRIES: NavEntry[] = [
       {
         title: 'Olympiads', column: 0,
         items: [
-          { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy', hint: 'Class-wise Maths, Science, English and Reasoning' },
+          { to: '/exams/olympiad', label: 'Olympiad preparation', icon: 'trophy', hint: 'Class-wise Maths, Science, English and Reasoning' },
         ],
       },
       {

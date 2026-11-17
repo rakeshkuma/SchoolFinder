@@ -1,5 +1,18 @@
-// Text for the Olympiad preparation page (/exams/practice?category=OLYMPIAD). Exam facts were checked on the
-// organisers' own pages on 16 Nov 2026; keep CHECKED_ON in step when they are checked again.
+// Text for the Olympiad preparation page (/exams/olympiad, and /exams/olympiad/class-5 for a class). Exam facts were
+// checked on the organisers' own pages on 16 Nov 2026; keep CHECKED_ON in step when they are checked again.
+
+/** The page's address (OlympiadPages.PATH on the server). It used to be /exams/practice?category=OLYMPIAD. */
+export const OLYMPIAD_PATH = '/exams/olympiad';
+/** A class's own page: "/exams/olympiad/class-5" for Class V, the class as people search for it. */
+export const olympiadClassPath = (n: number) => `${OLYMPIAD_PATH}/class-${n}`;
+/** 5 for "class-5"; null for anything else. */
+export const classFromSlug = (slug: string | undefined): number | null => {
+  const m = /^class-(\d{1,2})$/.exec(slug ?? '');
+  const n = m ? Number(m[1]) : 0;
+  return n >= 1 && n <= 12 ? n : null;
+};
+/** The heading of a class's page, as the server sends it (OlympiadPages.ClassPage.heading). */
+export const olympiadClassHeading = (n: number) => `Class ${n} Olympiad Preparation`;
 
 export const OLYMPIAD_TITLE = 'Olympiad Preparation & Practice';
 /** The same title and description as the server's head for this page (SeoHeadService.OLYMPIAD_TITLE). */

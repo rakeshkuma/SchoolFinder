@@ -83,7 +83,8 @@ public class SeoBodyService {
                             + "published fee schedule are not listed, even when they charge little or nothing."));
     /** Fixed pages under /exams that are not an exam. */
     private static final Set<String> EXAM_PAGES = Set.of("practice", "finder", "calendar", "syllabus", "resources",
-            "leaderboard", "achievements", "challenges", "guide");
+            "leaderboard", "achievements", "challenges", "guide", "olympiad");
+    private static final Pattern OLYMPIAD_CLASS = Pattern.compile("^" + OlympiadPages.PATH + "/class-(\\d{1,2})$");
     private static final java.time.ZoneId INDIA = java.time.ZoneId.of("Asia/Kolkata");
     private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH);
     private static final Pattern TITLE = Pattern.compile("<title>(.*?)</title>", Pattern.DOTALL);
@@ -110,12 +111,17 @@ public class SeoBodyService {
     private final PlaceSummaryService placeSummary;
     private final BestPlacesService bestPlaces;
     private final SchoolListService schoolLists;
+    private final OlympiadPages olympiadPages;
+    private final AdmissionService admissions;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary,
-                          BestPlacesService bestPlaces, SchoolListService schoolLists) {
+                          BestPlacesService bestPlaces, SchoolListService schoolLists, OlympiadPages olympiadPages,
+                          AdmissionService admissions) {
+        this.admissions = admissions;
+        this.olympiadPages = olympiadPages;
         this.placeSummary = placeSummary;
         this.bestPlaces = bestPlaces;
         this.schoolLists = schoolLists;
@@ -157,19 +163,25 @@ public class SeoBodyService {
             } else if (p.equals("/rankings")) {
                 main = rankingsHome(description);
             } else if ((m = SCHOOL.matcher(p)).matches()) {
-                main = school(schoolService.getActiveBySlug(m.group(1)), description);
+                main = school(schoolService.getActiveBySlug(m.group(1)));
             } else if ((m = CITY.matcher(p)).matches()) {
                 main = city(m.group(1), m.group(2), heading, description);
             } else if ((m = STATE.matcher(p)).matches()) {
                 main = state(m.group(1), m.group(2), heading, description);
             } else if ((m = BLOG_POST.matcher(p)).matches()) {
                 main = blogPost(blogService.published(m.group(1)));
+            } else if (p.equals(OlympiadPages.PATH)) {
+                main = olympiadHub();
+            } else if ((m = OLYMPIAD_CLASS.matcher(p)).matches()) {
+                main = olympiadClass(Integer.parseInt(m.group(1)), description);
             } else if ((m = EXAM_GUIDE.matcher(p)).matches()) {
                 main = exam(examService.get(m.group(1)), heading, description, false);
             } else if ((m = EXAM.matcher(p)).matches() && !EXAM_PAGES.contains(m.group(1))) {
                 main = exam(examService.get(m.group(1)), heading, description, SeoHeadService.PREP_PAGES.contains(m.group(1)));
             } else if (p.equals("/updates")) {
                 main = updates(heading, description);
+            } else if (p.equals("/admissions")) {
+                main = admissionsHome();
             } else if ((m = BEST_IN.matcher(p)).matches()) {
                 main = bestPlace(m.group(1), heading, description);
             } else if (p.equals("/blog")) {
@@ -351,7 +363,7 @@ public class SeoBodyService {
         h.append("</ul>");
     }
 
-    private String school(SchoolDetailDto s, String description) {
+    private String school(SchoolDetailDto s) {
         StringBuilder h = new StringBuilder();
         h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/schools\">Schools</a>");
         if (s.stateSlug() != null) {
@@ -363,12 +375,17 @@ public class SeoBodyService {
         }
         h.append("</nav>");
         h.append("<h1>").append(esc(s.name())).append("</h1>");
-        if (description != null) {
-            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        // Answer first: the factual introduction the app's "About" card opens with (the same words; SchoolAboutText),
+        // then the school's own description when it has one.
+        h.append("<p class=\"pr-lead\">").append(esc(com.indiaschoolfinder.util.SchoolAboutText.about(s))).append("</p>");
+        String own = com.indiaschoolfinder.util.SchoolAboutText.ownDescription(s);
+        if (own != null) {
+            h.append("<p>").append(esc(own)).append("</p>");
         }
         h.append("<dl class=\"pr-facts\">");
         if (s.board() != null) {
             fact(h, "Board", "CISCE".equals(s.board().code()) ? "ICSE/ISC (CISCE)" : s.board().name());
+            fact(h, "Affiliation number", s.affiliationNumber());
         }
         if (!s.classesOffered().isEmpty()) {
             String first = s.classesOffered().get(0).name();
@@ -394,8 +411,45 @@ public class SeoBodyService {
             }
             h.append("</dl>");
         }
+        sources(h, s);
         otherSchools(h, s);
         return h.toString();
+    }
+
+    /**
+     * "School information & sources", as the app's SourcesCard words it: where the profile comes from and when, whether an
+     * editor has checked it, and when the record last changed. Real dates only.
+     */
+    private static void sources(StringBuilder h, SchoolDetailDto s) {
+        h.append("<h2>School information &amp; sources</h2><ul class=\"pr-list\"><li>Profile from the school’s official record");
+        if (s.sourceRetrievedDate() != null) h.append(", retrieved ").append(time(s.sourceRetrievedDate()));
+        h.append('.');
+        if (s.sourceUrl() != null && !s.sourceUrl().isBlank()) {
+            h.append(" <a href=\"").append(esc(s.sourceUrl())).append("\" rel=\"noopener nofollow\">Source: ").append(esc(host(s.sourceUrl())))
+                    .append("</a>");
+        }
+        h.append("</li><li>").append(s.lastVerifiedDate() != null
+                ? "Checked by a SchoolDhundo editor on " + time(s.lastVerifiedDate()) + "." : "Not yet checked by a SchoolDhundo editor.").append("</li>");
+        if (s.updatedAt() != null) {
+            h.append("<li>Record last updated ").append(time(java.time.LocalDate.ofInstant(s.updatedAt(), INDIA))).append(".</li>");
+        }
+        h.append("</ul><p>Missing details are left blank, never estimated. SchoolDhundo is independent; listing a school does not mean ")
+                .append("the school endorses this site.</p>");
+    }
+
+    /** A date as people read it, with its machine-readable form: {@code <time datetime="2026-11-17">17 Nov 2026</time>}. */
+    private static String time(java.time.LocalDate date) {
+        return "<time datetime=\"" + date + "\">" + date.format(DAY) + "</time>";
+    }
+
+    /** "navodaya.gov.in" for a link to it, as the app's SourceLink shows it. */
+    private static String host(String url) {
+        try {
+            String host = java.net.URI.create(url.trim()).getHost();
+            return host == null ? url : host.replaceFirst("^www\\.", "");
+        } catch (IllegalArgumentException e) {
+            return url;
+        }
     }
 
     /**
@@ -428,6 +482,14 @@ public class SeoBodyService {
         h.append("</nav><h1>").append(heading).append("</h1>");
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        if (districtSlug != null) {
+            // The town of the same name has its own page (as in the app's StatePage).
+            locationService.cities(state.code()).stream()
+                    .filter(c -> c.slug().equals(districtSlug) && c.schoolCount() >= SeoHeadService.MIN_SCHOOLS_TO_INDEX)
+                    .max(Comparator.comparingLong(CityDto::schoolCount))
+                    .ifPresent(c -> h.append("<p>Just the city: <a href=\"/states/").append(state.slug()).append("/city/").append(c.slug())
+                            .append("\">").append(count(c.schoolCount())).append(" schools in ").append(esc(c.name())).append("</a></p>"));
         }
         var summary = placeSummary.summary(state.slug(), districtSlug, null);
         placeIntro(h, summary);
@@ -465,6 +527,13 @@ public class SeoBodyService {
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
+        // The district of the same name has its own page (as in the app's StatePage).
+        locationService.districts(state.code()).stream()
+                .filter(d -> d.slug().equals(city.slug()) && d.schoolCount() >= SeoHeadService.MIN_SCHOOLS_TO_INDEX)
+                .findFirst()
+                .ifPresent(d -> h.append("<p>The whole district: <a href=\"/states/").append(state.slug()).append('/').append(d.slug())
+                        .append("\">").append(count(d.schoolCount())).append(" schools in ").append(esc(SeoHeadService.districtName(d.name())))
+                        .append("</a></p>"));
         var summary = placeSummary.summary(state.slug(), null, city.slug());
         placeIntro(h, summary);
         schools(h, criteria(state.code(), null, city.name()), "Schools in " + city.name());
@@ -773,7 +842,7 @@ public class SeoBodyService {
                 .append(link("/exams/jnvst", "JNVST Class 6 preparation (Navodaya)"))
                 .append(link("/exams/aissee", "AISSEE Class 6 preparation (Sainik School)"))
                 .append(link("/exams/netarhat", "Netarhat Vidyalaya entrance preparation"))
-                .append(link(SeoHeadService.OLYMPIAD_PRACTICE, "Olympiad preparation, Classes 1 to 10"))
+                .append(link(OlympiadPages.PATH, "Olympiad preparation, Classes 1 to 10"))
                 .append(link("/exams/practice", "Practice centre: quizzes and mock tests"))
                 .append("</ul>");
         List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = examService.list(new ExamService.Filter(null, null, null, null, null,
@@ -850,8 +919,12 @@ public class SeoBodyService {
     private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String heading, String description) {
         boolean olympiad = set.getCategory() == com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD;
         boolean prep = set.getExamSlug() != null && SeoHeadService.PREP_PAGES.contains(set.getExamSlug());
+        // An Olympiad set for one class belongs to that class's Olympiad page.
+        int olympiadClass = olympiad ? OlympiadPages.classNumber(set.getLevel()) : 0;
+        String classPage = OlympiadPages.PATH + "/class-" + olympiadClass;
         StringBuilder h = new StringBuilder();
-        if (olympiad) crumbs(h, "/exams/practice", "Practice", SeoHeadService.OLYMPIAD_PRACTICE, "Olympiad");
+        if (olympiadClass > 0) crumbs(h, "/exams", "Exams", OlympiadPages.PATH, "Olympiad", classPage, "Class " + olympiadClass);
+        else if (olympiad) crumbs(h, "/exams", "Exams", OlympiadPages.PATH, "Olympiad");
         else if (prep) crumbs(h, "/exams", "Exams", "/exams/" + set.getExamSlug(), set.getExamSlug().toUpperCase(Locale.ROOT));
         else crumbs(h, "/exams/practice", "Practice");
         heading(h, heading, null);
@@ -877,7 +950,8 @@ public class SeoBodyService {
             h.append(link("/exams/" + set.getExamSlug(), "Preparation dashboard and study plan"))
                     .append(link("/exams/" + set.getExamSlug() + "/guide", "Eligibility, dates, syllabus and official papers"));
         } else if (olympiad) {
-            h.append(link(SeoHeadService.OLYMPIAD_PRACTICE, "All Olympiad practice by class"));
+            if (olympiadClass > 0) h.append(link(classPage, "All Class " + olympiadClass + " Olympiad practice"));
+            h.append(link(OlympiadPages.PATH, "Olympiad preparation for every class"));
         }
         h.append(link("/exams/practice", "Practice centre")).append("</ul>");
         return h.toString();
@@ -1144,6 +1218,10 @@ public class SeoBodyService {
         h.append("<h2>Official links</h2><ul class=\"pr-list\">");
         c.officialLinks().forEach(l -> h.append("<li><a href=\"").append(esc(l.url())).append("\" rel=\"noopener\">").append(esc(l.label())).append("</a></li>"));
         h.append("</ul>");
+        // When the page's facts were last checked against those sources (the app says the same under its official links).
+        if (e.lastVerifiedOn() != null) {
+            h.append("<p>Checked against these sources on ").append(time(e.lastVerifiedOn())).append(".</p>");
+        }
         if (!prep && hasPrepPage) {
             h.append("<p><a href=\"/exams/").append(e.slug()).append("\">").append(esc(e.shortName()))
                     .append(" practice questions, mock tests and study plan</a></p>");
@@ -1253,16 +1331,73 @@ public class SeoBodyService {
     }
 
     /**
-     * The Olympiad page (/exams/practice?category=OLYMPIAD) as plain HTML: what it offers, its class-wise practice sets
-     * (linked by title; the questions are not loaded) and the exams it prepares for. The app replaces it on load.
+     * The admissions calendar (/admissions) as the app shows it: upcoming and open admission cycles from official notices,
+     * soonest deadline first (the first 20, the app's first page), each with its school, class, year, status, last date
+     * and official notice. It opens with the answer: how many cycles are recorded and which closes first.
      */
-    public String olympiadPractice() {
+    private String admissionsHome() {
+        var page = admissions.upcoming(0, 20);
         StringBuilder h = new StringBuilder();
+        crumbs(h);
+        heading(h, "Admission process and deadlines",
+                "Upcoming and open admission cycles recorded from official notices, soonest deadline first.");
+        var first = page.content().stream().filter(a -> a.applicationEndDate() != null).findFirst();
+        if (page.totalElements() == 0) {
+            h.append("<p>No upcoming or open admission cycles are recorded right now.</p>");
+        } else {
+            h.append("<p>").append(count(page.totalElements())).append(" upcoming or open admission cycle")
+                    .append(page.totalElements() == 1 ? " is" : "s are").append(" recorded.");
+            first.ifPresent(a -> h.append(" The soonest last date to apply is ").append(time(a.applicationEndDate())).append(", for ")
+                    .append(esc(java.util.Objects.toString(a.className(), "admission"))).append(" at ")
+                    .append(esc(java.util.Objects.toString(a.schoolName(), "a listed school"))).append('.'));
+            h.append(" Always confirm dates in the official notice before applying.</p><ul class=\"pr-list\">");
+            for (var a : page.content()) {
+                h.append("<li><a href=\"/schools/").append(a.schoolSlug()).append("\">").append(esc(java.util.Objects.toString(a.schoolName(), "")))
+                        .append("</a> <span>").append(esc(java.util.Objects.toString(a.className(), ""))).append(" · ")
+                        .append(esc(java.util.Objects.toString(a.academicYear(), ""))).append(" · ")
+                        .append(a.status() == com.indiaschoolfinder.enums.AdmissionStatus.OPEN ? "open" : "upcoming");
+                if (a.applicationEndDate() != null) h.append(" · last date ").append(time(a.applicationEndDate()));
+                h.append("</span>");
+                String notice = a.officialNotificationUrl() != null ? a.officialNotificationUrl() : a.sourceUrl();
+                if (notice != null && !notice.isBlank()) {
+                    h.append(" <a href=\"").append(esc(notice)).append("\" rel=\"noopener nofollow\">Official notice</a>");
+                }
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
+        h.append("<h2>Plan your application</h2><ul class=\"pr-grid\">")
+                .append(link("/admissions/guide", "School admission guide: process, eligibility and documents"))
+                .append(link("/admissions/notifications", "Latest admission notifications"))
+                .append(link("/exams", "School entrance exams"))
+                .append(link("/updates", "Latest school and exam updates")).append("</ul>");
+        return h.toString();
+    }
+
+    private static final String OLYMPIAD_NOTE ="<p>Every question is original SchoolDhundo practice in the style of school Olympiads. "
+            + "None is an official, sample or previous-year paper, and SchoolDhundo is not connected with SOF, HBCSE or MTA(I).</p>";
+
+    /**
+     * The Olympiad page ({@link OlympiadPages#PATH}) as plain HTML: what it offers, a page for each class, its class-wise
+     * practice sets (linked by title; the questions are not loaded) and the exams it prepares for. The app replaces it on
+     * load.
+     */
+    private String olympiadHub() {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams");
         h.append("<h1>Olympiad Preparation &amp; Practice</h1>");
         h.append("<p class=\"pr-lead\">Prepare smarter with class-wise Olympiad questions, topic practice, mock tests and detailed ")
                 .append("explanations: Mathematics, Science, English, Logical Reasoning and IOQM-style problems for Classes 1 to 10.</p>");
-        h.append("<p>Every question is original SchoolDhundo practice in the style of school Olympiads. None is an official, sample or ")
-                .append("previous-year paper, and SchoolDhundo is not connected with SOF, HBCSE or MTA(I).</p>");
+        h.append(OLYMPIAD_NOTE);
+        List<OlympiadPages.ClassPage> classes = olympiadPages.classes();
+        if (!classes.isEmpty()) {
+            h.append("<h2>Olympiad practice by class</h2><ul class=\"pr-grid\">");
+            for (OlympiadPages.ClassPage c : classes) {
+                h.append("<li><a href=\"").append(c.path()).append("\">Class ").append(c.number()).append(" Olympiad practice</a> <span>")
+                        .append(count(c.questions())).append(" questions</span></li>");
+            }
+            h.append("</ul>");
+        }
         java.util.Map<String, List<Object[]>> byLevel = new java.util.LinkedHashMap<>();
         for (Object[] s : practiceSets.findPublishedOutlineByCategory(com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD)) {
             byLevel.computeIfAbsent((String) s[5], k -> new java.util.ArrayList<>()).add(s);
@@ -1286,7 +1421,49 @@ public class SeoBodyService {
                 .append("<li>IOQM (Indian Olympiad Qualifier in Mathematics), Classes 8 to 12: IOQM-style problems with whole-number answers</li>")
                 .append("</ul>");
         h.append("<p><a href=\"/exams/practice\">Practice centre</a> · <a href=\"/exams\">School entrance exams</a></p>");
-        return shell(h.toString());
+        return h.toString();
+    }
+
+    /**
+     * One class's Olympiad page: what it holds (questions, sets, subjects), each set with its length (linked by title;
+     * the questions are not loaded), the timed tests the page offers, and the other classes. As the app's page shows it.
+     */
+    private String olympiadClass(int number, String description) {
+        List<OlympiadPages.ClassPage> classes = olympiadPages.classes();
+        OlympiadPages.ClassPage page = classes.stream().filter(c -> c.number() == number).findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Olympiad class", number));
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams", OlympiadPages.PATH, "Olympiad");
+        h.append("<h1>").append(esc(page.heading())).append("</h1>");
+        if (description != null) h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        h.append("<dl class=\"pr-facts\">");
+        fact(h, "Questions", count(page.questions()));
+        fact(h, "Practice sets", count(page.sets().size()));
+        fact(h, "Subjects", String.join(", ", page.subjects()));
+        h.append("</dl>");
+        h.append("<h2>").append(esc(page.level())).append(" practice sets</h2><ul class=\"pr-list\">");
+        for (var set : page.sets()) {
+            h.append("<li><a href=\"/exams/practice/").append(set.slug()).append("\">").append(esc(set.title())).append("</a> <span>")
+                    .append(set.questionCount()).append(" questions · ")
+                    .append(set.durationMinutes() == null ? "untimed" : "timed, " + set.durationMinutes() + " minutes").append("</span></li>");
+        }
+        h.append("</ul>");
+        if (page.questions() >= 10) {
+            h.append("<h2>Mock tests and daily challenge</h2>")
+                    .append("<p>Timed mock tests are drawn fresh from this class's questions each time, following the order and balance of ")
+                    .append("the Olympiad papers where there are enough questions. The daily challenge is the same set of questions for every ")
+                    .append(esc(page.level())).append(" student on a given day.</p>");
+        }
+        h.append(OLYMPIAD_NOTE);
+        List<OlympiadPages.ClassPage> others = classes.stream().filter(c -> c.number() != page.number()).toList();
+        if (!others.isEmpty()) {
+            h.append("<h2>Olympiad practice for other classes</h2><ul class=\"pr-grid\">");
+            others.forEach(c -> h.append(link(c.path(), "Class " + c.number() + " Olympiad practice")));
+            h.append("</ul>");
+        }
+        h.append("<p><a href=\"").append(OlympiadPages.PATH).append("\">Olympiad preparation for every class</a> · ")
+                .append("<a href=\"/exams/practice\">Practice centre</a></p>");
+        return h.toString();
     }
 
     /** "Class V" → 5, so classes sort in order; other levels go last. */

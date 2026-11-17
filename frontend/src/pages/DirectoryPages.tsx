@@ -138,6 +138,11 @@ export function CitiesPage() {
   );
 }
 
+/** A district or town page needs this many schools to be indexed (SeoHeadService.MIN_SCHOOLS_TO_INDEX). */
+const MIN_SCHOOLS_FOR_PAGE = 3;
+/** "Patna" → "Patna District", as the server's title says (SeoHeadService.districtName). */
+export const districtName = (name: string) => (/district$/i.test(name.trim()) ? name.trim() : `${name.trim()} District`);
+
 export function StatePage() {
   const { state: stateSlug = '', district: districtSlug, city: citySlug } = useParams();
   const state = useApi(() => locationService.state(stateSlug), [stateSlug]);
@@ -152,9 +157,14 @@ export function StatePage() {
   const district = districtSlug ? districts.data?.find((d) => d.slug === districtSlug) : undefined;
   const city = citySlug ? cities.data?.find((c) => c.slug === citySlug) : undefined;
   const name = state.data?.name;
-  const title = district ? `Schools in ${district.name} district, ${name}`
+  // "District" tells a district page apart from the town of the same name (as the server's title does).
+  const title = district ? `Schools in ${districtName(district.name)}, ${name}`
     : city ? `Schools in ${city.name}, ${name}` : name ? `Schools in ${name}` : undefined;
   useDocumentTitle(title);
+  // The district and the town of the same name link to each other, when the other has a page worth indexing.
+  const sameNameCity = district ? (cities.data ?? []).filter((c) => c.slug === district.slug && c.schoolCount >= MIN_SCHOOLS_FOR_PAGE)
+    .sort((a, b) => b.schoolCount - a.schoolCount)[0] : undefined;
+  const sameNameDistrict = city ? (districts.data ?? []).find((d) => d.slug === city.slug && d.schoolCount >= MIN_SCHOOLS_FOR_PAGE) : undefined;
 
   if (state.error?.status === 404 || (districtSlug && districts.data && !district) || (citySlug && cities.data && !city)) {
     return <NotFoundPage />;
@@ -176,6 +186,18 @@ export function StatePage() {
             {city && (
               <span className="mt-2 block">
                 {city.schoolCount.toLocaleString('en-IN')} school{city.schoolCount === 1 ? '' : 's'} listed in {city.name}, each linked to an official source.
+              </span>
+            )}
+            {sameNameCity && (
+              <span className="mt-2 block">
+                Just the city: <Link to={`/states/${s.slug}/city/${sameNameCity.slug}`} className="text-accent-300 underline-offset-2 hover:underline">
+                  {sameNameCity.schoolCount.toLocaleString('en-IN')} schools in {sameNameCity.name}</Link>
+              </span>
+            )}
+            {sameNameDistrict && (
+              <span className="mt-2 block">
+                The whole district: <Link to={`/states/${s.slug}/${sameNameDistrict.slug}`} className="text-accent-300 underline-offset-2 hover:underline">
+                  {sameNameDistrict.schoolCount.toLocaleString('en-IN')} schools in {districtName(sameNameDistrict.name)}</Link>
               </span>
             )}
             {ranked.data && <PlaceRankingsLink places={ranked.data} state={s} district={district} city={city} />}

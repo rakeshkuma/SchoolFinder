@@ -40,12 +40,8 @@ public class SeoController {
 
     @GetMapping(PREFIX + "/**")
     public ResponseEntity<String> head(HttpServletRequest request) {
-        String path = request.getRequestURI().substring(request.getContextPath().length() + PREFIX.length());
-        String base = SitemapController.baseUrl(properties, request);
-        // The one page told apart by its query string (nginx passes the original query along with the path).
-        String body = SeoHeadService.isOlympiadPractice(path, request.getParameter("category"))
-                ? seoHeadService.olympiadPractice(base)
-                : seoHeadService.head(path.isEmpty() ? "/" : path, base);
+        String path = page(request, PREFIX);
+        String body = seoHeadService.head(path, SitemapController.baseUrl(properties, request));
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
                 .contentType(HTML).body(body);
     }
@@ -53,12 +49,22 @@ public class SeoController {
     /** The page's main content as plain HTML for the app's root element (empty for private or unknown pages). */
     @GetMapping(BODY_PREFIX + "/**")
     public ResponseEntity<String> body(HttpServletRequest request) {
-        String path = request.getRequestURI().substring(request.getContextPath().length() + BODY_PREFIX.length());
-        String base = SitemapController.baseUrl(properties, request);
-        String body = SeoHeadService.isOlympiadPractice(path, request.getParameter("category"))
-                ? seoBodyService.olympiadPractice()
-                : seoBodyService.body(path.isEmpty() ? "/" : path, base);
+        String path = page(request, BODY_PREFIX);
+        String body = seoBodyService.body(path, SitemapController.baseUrl(properties, request));
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(10, TimeUnit.MINUTES).cachePublic())
                 .contentType(HTML).body(body);
+    }
+
+    /**
+     * The page path the request is about. The Olympiad page's old address, the one page once told apart by its query
+     * string (/exams/practice?category=OLYMPIAD, with class=5 for a class; nginx passes the query along), is described
+     * as the page it stands for, so it carries that page's canonical link while the app moves visitors there.
+     */
+    private static String page(HttpServletRequest request, String prefix) {
+        String path = request.getRequestURI().substring(request.getContextPath().length() + prefix.length());
+        if (SeoHeadService.isOlympiadPractice(path, request.getParameter("category"))) {
+            return com.indiaschoolfinder.service.OlympiadPages.addressFor(request.getParameter("class"));
+        }
+        return path.isEmpty() ? "/" : path;
     }
 }

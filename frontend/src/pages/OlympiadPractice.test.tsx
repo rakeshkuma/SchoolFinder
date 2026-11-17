@@ -88,7 +88,14 @@ describe('OlympiadPractice', () => {
     expect(view.container.querySelector('button[aria-label="Class V, 67 questions"]')).not.toBeNull();
     expect(view.container.querySelector('a[href="/exams/practice/progress"]')?.textContent).toContain('View My Practice Progress');
 
+    // The practice-centre chip leads to the Olympiad page's own address.
+    expect([...view.container.querySelectorAll('nav[aria-label="Practice categories"] a')].map((a) => a.getAttribute('href')))
+      .toContain('/exams/olympiad');
+
+    // Choosing a class opens that class's own page.
     click(view.container.querySelector('button[aria-label="Class V, 67 questions"]'));
+    expect(view.container.querySelector('h1')?.textContent).toBe('Class 5 Olympiad Preparation');
+    expect(view.container.querySelector('nav[aria-label="Breadcrumb"] a[href="/exams/olympiad"]')?.textContent).toBe('Olympiads');
     expect(text()).toContain('Choose a subject for Class V');
     expect(text()).toContain('Maths Olympiad-style mock');
     expect(text()).toContain('14 Logical Reasoning + 36 Mathematics · 50 questions · 60 min, timed');
@@ -102,5 +109,11 @@ describe('OlympiadPractice', () => {
 
     const card = view.container.querySelector('a[href="/exams/practice/olympiad-class5-maths-1"]');
     expect(card?.textContent).toContain('Start Practice');
+
+    // "Change class" goes back to the Olympiad page for every class.
+    const change = [...view.container.querySelectorAll('button')].find((b) => b.textContent === 'Change class');
+    click(change ?? null);
+    expect(view.container.querySelector('h1')?.textContent).toBe('Olympiad Preparation & Practice');
+    expect(text()).not.toContain('Choose a subject for Class V');
   });
 });

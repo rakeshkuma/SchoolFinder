@@ -43,7 +43,7 @@ public class SitemapController {
     private static final List<String> PARTS = List.of("pages", "places", "exams", "blog");
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
             "/admissions", "/admissions/guide", "/admissions/notifications", "/updates", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
-            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", SeoHeadService.OLYMPIAD_PRACTICE, "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
+            "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", com.indiaschoolfinder.service.OlympiadPages.PATH, "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion", "/advertise", "/claim-school",
             "/network/jawahar-navodaya-vidyalaya", "/network/sainik-school", "/network/eklavya-model-residential-school",
             "/network/rashtriya-military-school", "/network/kendriya-vidyalaya");
@@ -59,12 +59,15 @@ public class SitemapController {
     private final com.indiaschoolfinder.repository.BlogPostRepository blogPosts;
     private final com.indiaschoolfinder.service.BestPlacesService bestPlaces;
     private final com.indiaschoolfinder.service.PremierDirectoryService premierDirectory;
+    private final com.indiaschoolfinder.service.OlympiadPages olympiadPages;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
                              RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts,
                              com.indiaschoolfinder.service.BestPlacesService bestPlaces,
-                             com.indiaschoolfinder.service.PremierDirectoryService premierDirectory) {
+                             com.indiaschoolfinder.service.PremierDirectoryService premierDirectory,
+                             com.indiaschoolfinder.service.OlympiadPages olympiadPages) {
+        this.olympiadPages = olympiadPages;
         this.premierDirectory = premierDirectory;
         this.bestPlaces = bestPlaces;
         this.blogPosts = blogPosts;
@@ -78,7 +81,23 @@ public class SitemapController {
 
     @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> robots(HttpServletRequest request) {
-        String body = """
+        return ResponseEntity.ok().cacheControl(CACHE).contentType(MediaType.TEXT_PLAIN)
+                .body(robotsTxt(base(request), properties.isAiTrainingCrawlers()));
+    }
+
+    /** Crawlers that only collect pages to train AI models; none of them is how a search or answer engine shows a page. */
+    static final List<String> AI_TRAINING_CRAWLERS = List.of("GPTBot", "ClaudeBot", "CCBot", "Applebot-Extended", "meta-externalagent",
+            "Bytespider");
+
+    /**
+     * robots.txt. Every crawler, search and answer engines included (Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User,
+     * PerplexityBot, Applebot …), follows the general rules. When AI-training crawlers are shut out
+     * (app.ai-training-crawlers=false) they get a group of their own, and since a crawler obeys only its own group, the
+     * general rules are unaffected. Google-Extended is not in that list on purpose: besides training, it governs whether
+     * Gemini apps may ground their answers in these pages, which shows and links them.
+     */
+    static String robotsTxt(String base, boolean allowTraining) {
+        String general = """
                 User-agent: *
                 Allow: /
                 Disallow: /admin
@@ -101,10 +120,14 @@ public class SitemapController {
                 Disallow: /exams/leaderboard
                 Disallow: /exams/achievements
                 Disallow: /exams/challenges
-
-                Sitemap: %s/sitemap.xml
-                """.formatted(base(request));
-        return ResponseEntity.ok().cacheControl(CACHE).contentType(MediaType.TEXT_PLAIN).body(body);
+                """;
+        StringBuilder body = new StringBuilder(general);
+        if (!allowTraining) {
+            body.append("\n# Crawlers that only collect pages to train AI models. Search and answer engines follow the rules above.\n");
+            AI_TRAINING_CRAWLERS.forEach(c -> body.append("User-agent: ").append(c).append('\n'));
+            body.append("Disallow: /\n");
+        }
+        return body.append("\nSitemap: ").append(base).append("/sitemap.xml\n").toString();
     }
 
     @GetMapping("/sitemap.xml")
@@ -210,6 +233,8 @@ public class SitemapController {
         for (Object[] set : practiceSetRepository.findPublishedOutline()) { // without the questions
             url(xml, base + "/exams/practice/" + set[0], (Instant) set[4]);
         }
+        // An Olympiad page for each class that has published Olympiad sets.
+        olympiadPages.classes().forEach(c -> url(xml, base + c.path(), null));
         return xml(xml.append("</urlset>\n"));
     }
 

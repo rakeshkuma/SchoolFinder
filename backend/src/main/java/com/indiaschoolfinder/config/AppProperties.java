@@ -22,6 +22,12 @@ public class AppProperties {
     private String publicSiteUrl = "";
     /** Where contact form messages are also emailed, when email is configured. They are always saved for staff. */
     private String contactInbox = "";
+    /**
+     * Whether crawlers that only collect pages to train AI models (GPTBot, ClaudeBot, CCBot, …) may crawl the site:
+     * APP_AI_TRAINING_CRAWLERS=false shuts them out in robots.txt. Search and answer engines that show and link to pages
+     * (Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, PerplexityBot, Applebot, …) follow the general rules either way.
+     */
+    private boolean aiTrainingCrawlers = true;
     private final Cors cors = new Cors();
     private final Jwt jwt = new Jwt();
     private final Ranking ranking = new Ranking();

@@ -29,7 +29,7 @@ describe('Exam Prep menu', () => {
   it('offers the kept destinations once each, and none of the retired ones', () => {
     expect(links).toEqual([
       '/exams/jnvst', '/exams/aissee', '/exams/netarhat', '/exams',
-      '/exams/practice?category=OLYMPIAD',
+      '/exams/olympiad',
       '/exams/practice', '/exams/practice/session?mode=DAILY&timer=1', '/exams/resources?type=QUESTION_PAPER',
       '/exams/practice/progress', '/exams/leaderboard',
     ]);
