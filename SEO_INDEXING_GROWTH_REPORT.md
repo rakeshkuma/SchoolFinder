@@ -34,7 +34,7 @@ committed. No school record, database schema, question, answer, timer, score or 
 | Organic keywords (Ubersuggest) | Not measured today: the 3 daily reports went on the site audit and keyword research |
 | Core Web Vitals (lab, mobile) | Home: LCP 1.7 s, CLS 0. School profile: LCP 5.5 s, **CLS 0.228** (fixed below). Details in §5. |
 | Ubersuggest site health | 63/100. The cached crawl dated 16 Nov returned no new errors. The low-word-count warning applies to server HTML, which this round enlarged. |
-| Tests run | Backend: 371/371 (full suite). Frontend: 209/209, typecheck, production build. |
+| Tests run | Backend: 374/374 (full suite, after the second set of changes). Frontend: 209/209, typecheck, production build. |
 
 ## 2. What is already right (checked, no change needed)
 
@@ -112,6 +112,8 @@ Each step is a one-line change to `SchoolRepository.INDEXABLE`.
 | 6 | P2 | Branches with one name in one town would get identical titles. | When such a namesake exists, the title adds the PIN code, e.g. "Calcutta Public School, Kolkata (700159): ICSE/ISC School Details". | `SeoHeadService.school`, `SchoolRepository.hasNamesake` |
 | 7 | P2 | People search old city names: "best schools in bangalore" gets 12,100 a month at difficulty 15 (Ubersuggest, today), while the page says "Bengaluru". | "Best schools in" titles and descriptions add the well-known older name, for example "Best Schools in Bengaluru (Bangalore) 2026: Rankings". This applies to Bengaluru, Gurugram, Prayagraj, Mysuru, Vadodara, Puducherry, Thiruvananthapuram, Kochi and Ooty. | `SeoHeadService.PLACE_ALIASES` |
 | 8 | P3 | The `/schools` title, "School directory", said nothing searchable. | It is now "Find Schools in India: CBSE & ICSE School Directory". | `SeoHeadService.PAGES` |
+| 9 | P2 | More hub pages had no links in server HTML: `/boarding` and its 7 landing pages (0 schools), `/states` and `/cities` (no place links), `/rankings/states` (no best-schools links). | `/boarding/*` now lists up to 100 schools, A to Z, with the same filter and rule sentence as each app page. `/states` lists states and union territories with counts. `/cities` links every town that has its own page (3 or more schools). `/rankings/states` links every "best schools in" page. | `SeoBodyService` (second commit) |
+| 10 | P2 | Profile LCP was 5.5 s on a phone: the photo request started only after the app had loaded the school and its photos. | The profile head now preloads the hero photo. It uses the same file and 1x/2x choice as the app (first non-logo photo, thumbnail with full size as 2x), so the browser downloads it once. | `SeoHeadService.heroPreload` (second commit) |
 
 None of these changes adds noindex to any page, changes a slug or a URL, or adds a redirect. Every server-rendered body
 shows only facts the app shows on the same page, so the content Google sees is the content visitors see.
@@ -131,8 +133,7 @@ All five pages scored 100 for SEO.
 - **Long server lists are safe.** The Bihar page already carries a 40-school, 90-link server list and shows no layout
   shift, so the larger bodies in change 1 and 2 should not shift either.
 - **Profile LCP.** The largest element is the Wikimedia photo, loaded from upload.wikimedia.org after the app starts.
-  The next step would be to preload it from the server head, as the home page does for its hero. That was not done
-  this round, because the full-size and thumbnail choice is made in the app.
+  It is now preloaded from the server head (change 10), the way the home page preloads its hero.
 - **JNVST CLS (0.084).** This comes from web fonts swapping in. It is within the "good" limit.
 - **Re-measure after deploying.**
 
@@ -221,7 +222,7 @@ targeting them would mislead.
   - board, directory and practice-set bodies, including that **no question or explanation is sent**;
   - PIN codes in namesake titles;
   - a town with two spellings.
-- **Backend, full suite:** 371 tests, 0 failures, BUILD SUCCESS (17 Nov 2026).
+- **Backend, full suite:** 374 tests, 0 failures, BUILD SUCCESS (17 Nov 2026, after changes 9 and 10; 371 after changes 1 to 8).
 - **Frontend:** 209/209 Vitest tests (one new), `tsc --noEmit` clean, `npm run build` succeeds. index.html and its
   inline scripts are unchanged, so the CSP hashes still match.
 - **Not run:** the nginx config check (`nginx -t`). There is no nginx on this PC; the deploy script runs it before
@@ -256,5 +257,6 @@ Checks that need signed-in Search Console access (not done):
   ezyschooling.com gap is in SEO_UBERSUGGEST_AUDIT.md.
 - **Data still to come:** Coimbatore, Pune and Chandigarh have search demand but no ranked or listed schools yet. They
   should get pages only when real data exists.
-- **Boarding pages:** the `/boarding/*` filter pages still send only a heading and a sentence in server HTML. The app
-  lists their schools; the network-page pattern could be reused for them next.
+- **Remaining hub pages:** `/rankings/schools-by-state` and `/rankings/schools-by-city` (premier directory regrouped; its
+  schools are already linked from the server-rendered category pages), and the admissions, fees, compare and nearby
+  tools, which are interactive and have no fixed list to render.

@@ -109,6 +109,19 @@ class SeoBodyIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void theStateAndCityIndexesLinkEveryPlaceThatHasAPage() throws Exception {
+        for (String n : List.of("One", "Two", "Three")) {
+            createSchool(school("Fixture Indexed " + n + " School", Map.of("stateCode", "UK", "city", "Fixturenagar")));
+        }
+        createSchool(school("Fixture Lone School", Map.of("stateCode", "UK", "city", "Fixturegaon")));
+        assertThat(fetch("/api/v1/seo/body/states")).contains("<h2>States</h2>").contains("href=\"/states/uttarakhand\">Uttarakhand</a>");
+        assertThat(fetch("/api/v1/seo/body/cities")).contains("href=\"/states/uttarakhand/city/fixturenagar\"")
+                // A town with too few schools for a page of its own is not linked.
+                .doesNotContain("fixturegaon");
+        assertThat(fetch("/api/v1/seo/body/rankings/states")).contains("href=\"/rankings/methodology\"");
+    }
+
+    @Test
     void aTownSpeltTwoWaysIsOnePageNamedAfterTheSpellingWithMoreSchools() throws Exception {
         for (String n : List.of("One", "Two", "Three")) {
             createSchool(school("Fixture Spelt " + n + " School", Map.of("stateCode", "UK", "city", "Fixturebhuj")));

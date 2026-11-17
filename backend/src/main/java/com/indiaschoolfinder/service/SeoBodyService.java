@@ -51,6 +51,36 @@ public class SeoBodyService {
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
     private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
     private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
+    private static final Pattern BOARDING = Pattern.compile("^/boarding(?:/([a-z0-9-]+))?/?$");
+
+    /**
+     * The boarding landing pages and the rule each states, as in the app (frontend content/boardingLandings.ts): the
+     * school search each one runs (always boarding schools, A to Z) and its rule sentence.
+     */
+    private record BoardingLanding(List<com.indiaschoolfinder.enums.ResidentialSystem> systems, com.indiaschoolfinder.enums.GenderType gender,
+                                   java.math.BigDecimal maxFee, String rule) {
+    }
+
+    private static final java.util.Map<String, BoardingLanding> BOARDING_LANDINGS = java.util.Map.of(
+            "india", new BoardingLanding(null, null, null, "Schools whose official website, prospectus or system record says they "
+                    + "offer boarding. Listed alphabetically; this is not a ranking."),
+            "government", new BoardingLanding(List.of(com.indiaschoolfinder.enums.ResidentialSystem.NAVODAYA,
+                    com.indiaschoolfinder.enums.ResidentialSystem.SAINIK, com.indiaschoolfinder.enums.ResidentialSystem.MILITARY_SCHOOL,
+                    com.indiaschoolfinder.enums.ResidentialSystem.MILITARY_COLLEGE, com.indiaschoolfinder.enums.ResidentialSystem.STATE_RESIDENTIAL,
+                    com.indiaschoolfinder.enums.ResidentialSystem.TRIBAL_RESIDENTIAL), null, null,
+                    "Run by a central or state government or its society. Admission is usually through the system's own entrance exam, "
+                            + "with eligibility rules set in each year's official notice."),
+            "private", new BoardingLanding(List.of(com.indiaschoolfinder.enums.ResidentialSystem.PRIVATE_BOARDING), null, null,
+                    "Privately managed schools whose official source describes them as boarding or residential."),
+            "boys", new BoardingLanding(null, com.indiaschoolfinder.enums.GenderType.BOYS, null,
+                    "The school or its official system states that it admits boys only."),
+            "girls", new BoardingLanding(null, com.indiaschoolfinder.enums.GenderType.GIRLS, null, "The school states that it admits girls only."),
+            "co-ed", new BoardingLanding(null, com.indiaschoolfinder.enums.GenderType.CO_ED, null,
+                    "The school or its official system states that it admits boys and girls. Hostels are usually separate; check the "
+                            + "arrangements with the school."),
+            "affordable", new BoardingLanding(null, null, java.math.BigDecimal.valueOf(150_000),
+                    "The lowest recurring annual fee in the school's official fee schedule is ₹1,50,000 or less. Schools without a "
+                            + "published fee schedule are not listed, even when they charge little or nothing."));
     /** Fixed pages under /exams that are not an exam. */
     private static final Set<String> EXAM_PAGES = Set.of("practice", "finder", "calendar", "syllabus", "resources",
             "leaderboard", "achievements", "challenges", "guide");
@@ -165,6 +195,14 @@ public class SeoBodyService {
                         .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), heading, description);
             } else if (p.equals("/schools")) {
                 main = directoryHome(heading, description);
+            } else if (p.equals("/states")) {
+                main = statesIndex(heading, description);
+            } else if (p.equals("/cities")) {
+                main = citiesIndex(heading, description);
+            } else if (p.equals("/rankings/states")) {
+                main = bestPlacesIndex(heading, description);
+            } else if ((m = BOARDING.matcher(p)).matches() && (m.group(1) == null || BOARDING_LANDINGS.containsKey(m.group(1)))) {
+                main = boarding(m.group(1), heading, description);
             } else if ((m = DIRECTORY_VIEW.matcher(p)).matches() && isDirectoryView(m.group(1))) {
                 main = directoryView(m.group(1), heading, description);
             } else if ((m = SeoHeadService.NETWORK.matcher(p)).matches() && NETWORKS.containsKey(m.group(1))) {
@@ -868,6 +906,92 @@ public class SeoBodyService {
                 .append(link("/nearby", "Schools near me"))
                 .append("</ul>");
         schools(h, criteria(null, null, null), "Schools on SchoolDhundo");
+        return h.toString();
+    }
+
+    /** Every state and union territory with schools, grouped as the app groups them, each with its count. */
+    private String statesIndex(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/schools", "Schools");
+        heading(h, heading, description);
+        List<StateDto> states = locationService.states().stream().filter(s -> s.schoolCount() > 0)
+                .sorted(Comparator.comparing(StateDto::name)).toList();
+        for (var kind : com.indiaschoolfinder.enums.StateKind.values()) {
+            List<StateDto> group = states.stream().filter(s -> s.kind() == kind).toList();
+            if (group.isEmpty()) continue;
+            h.append("<h2>").append(kind == com.indiaschoolfinder.enums.StateKind.UNION_TERRITORY ? "Union territories" : "States")
+                    .append("</h2><ul class=\"pr-grid\">");
+            group.forEach(s -> h.append("<li><a href=\"/states/").append(s.slug()).append("\">").append(esc(s.name()))
+                    .append("</a> <span>").append(count(s.schoolCount())).append(" schools</span></li>"));
+            h.append("</ul>");
+        }
+        return h.toString();
+    }
+
+    /**
+     * Every city with schools, largest first, as the app lists them. Only towns with a page of their own are linked
+     * (enough schools to be indexed); two spellings of one town are one link.
+     */
+    private String citiesIndex(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/schools", "Schools");
+        heading(h, heading, description);
+        Set<String> seen = new java.util.HashSet<>();
+        h.append("<ul class=\"pr-grid\">");
+        for (var c : locationService.citiesAcrossIndia()) {
+            String href = "/states/" + c.stateSlug() + "/city/" + c.slug();
+            if (c.schoolCount() < SeoHeadService.MIN_SCHOOLS_TO_INDEX || !seen.add(href)) continue;
+            h.append("<li><a href=\"").append(href).append("\">").append(esc(c.name())).append("</a> <span>").append(esc(c.stateName()))
+                    .append(" · ").append(count(c.schoolCount())).append("</span></li>");
+        }
+        h.append("</ul><p><a href=\"/states\">Schools by state</a> · <a href=\"/schools\">Search all schools</a></p>");
+        return h.toString();
+    }
+
+    /** The rankings' place index: each state and city with enough ranked or listed schools for a page of its own. */
+    private String bestPlacesIndex(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/rankings", "Rankings");
+        heading(h, heading, description);
+        List<BestPlacesService.Related> places = bestPlaces.all().stream()
+                .filter(r -> r.ranked() + r.listed() >= BestPlacesService.MIN_TO_INDEX).toList();
+        if (!places.isEmpty()) {
+            h.append("<h2>Best schools by state and city</h2><ul class=\"pr-grid\">");
+            places.forEach(r -> h.append(link("/rankings/best-schools-in-" + r.slug(), "Best schools in " + r.name())));
+            h.append("</ul>");
+        }
+        h.append("<p>Ranks are shown only from published rankings checked against the publisher's list. ")
+                .append("<a href=\"/rankings/methodology\">Ranking methodology</a></p>");
+        return h.toString();
+    }
+
+    /**
+     * The boarding directory or one of its landing pages: the rule it applies and its schools A to Z (boarding schools
+     * only, as the app searches them), with links to the other landing pages.
+     */
+    private String boarding(String slug, String heading, String description) {
+        BoardingLanding l = slug == null ? null : BOARDING_LANDINGS.get(slug);
+        StringBuilder h = new StringBuilder();
+        if (slug == null) crumbs(h, "/schools", "Schools"); else crumbs(h, "/boarding", "Boarding schools");
+        heading(h, heading, description);
+        if (l != null) h.append("<p>").append(esc(l.rule())).append("</p>");
+        PageResponse<SchoolSummaryDto> page = schoolService.search(new SchoolSearchCriteria(null, null, null, null, null, null, null, null,
+                null, null, null, null, null, null, l == null ? null : l.maxFee(), null, null, null, null, null, null, null,
+                l == null ? null : l.gender(), null, true, null, l == null ? null : l.systems(), null, null, null, null,
+                "name", null, 0, NETWORK_LIST_SIZE));
+        schoolList(h, slug == null ? "Boarding and residential schools" : heading, page.content());
+        if (page.totalElements() > page.content().size()) {
+            h.append("<p>Showing ").append(page.content().size()).append(" of ").append(count(page.totalElements()))
+                    .append(" schools, A to Z. Listings are not a ranking.</p>");
+        }
+        h.append("<h2>Browse boarding schools</h2><ul class=\"pr-grid\">");
+        for (String[] b : new String[][]{{"india", "Boarding schools in India"}, {"government", "Government boarding schools"},
+                {"private", "Private boarding schools"}, {"boys", "Boys' boarding schools"}, {"girls", "Girls' boarding schools"},
+                {"co-ed", "Co-educational boarding schools"}, {"affordable", "Affordable boarding schools"}}) {
+            if (!b[0].equals(slug)) h.append(link("/boarding/" + b[0], b[1]));
+        }
+        h.append(link("/exams/jnvst", "JNVST (Navodaya) preparation")).append(link("/exams/aissee", "AISSEE (Sainik School) preparation"))
+                .append(link("/blog/day-school-vs-boarding-school", "Day school or boarding school?")).append("</ul>");
         return h.toString();
     }
 
