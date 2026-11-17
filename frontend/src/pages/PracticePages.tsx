@@ -552,9 +552,10 @@ function ProgressPanel({ examName }: { examName: (slug: string | null) => string
       </div>
       <p className="mt-1 text-xs text-slate-500">
         {status === 'signedIn' ? 'Saved to your account.' : token ? 'Recent results in this browser. The full dashboard has everything saved to your leaderboard entry.'
-          : <>Kept in this browser only. <SignInLink>Sign in</SignInLink> to keep results on every device — results from this browser are added when you sign in.</>}
+          : status === 'signedOut' ? 'Kept in this browser only.'
+            : <>Kept in this browser only. <SignInLink>Sign in</SignInLink> to keep results on every device.</>}
       </p>
-      {!token && <div className="mt-3"><SignInOptions bare text="Keep your practice results on every device." /></div>}
+      {!token && <div className="mt-3"><SignInOptions bare text="Sign in to keep your results on every device. Results from this browser are added to your account." /></div>}
       {status === 'signedIn' && server.loading && !server.data ? <Spinner /> : attempts.length === 0 ? (
         <p className="mt-4 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">Your results will appear here after your first practice.</p>
       ) : (
