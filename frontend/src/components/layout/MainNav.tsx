@@ -18,7 +18,19 @@ export interface NavMenu {
   icon: IconName;
   /** Paths (prefixes) that make this menu the active section. */
   match: string[];
-  sections: { title?: string; items: NavItem[] }[];
+  /**
+   * Each section is a column of the desktop panel, unless sections name a `column`: then sections with the same
+   * number are stacked in one column (a short section sits under another instead of leaving a near-empty column).
+   */
+  sections: { title?: string; items: NavItem[]; column?: number }[];
+}
+
+/** The desktop panel's columns: one per section, or the sections grouped by their `column`. */
+export function panelColumns(sections: NavMenu['sections']): NavMenu['sections'][] {
+  if (!sections.some((s) => s.column !== undefined)) return sections.map((s) => [s]);
+  const columns: NavMenu['sections'][] = [];
+  sections.forEach((s) => { (columns[s.column ?? 0] ??= []).push(s); });
+  return columns.filter(Boolean);
 }
 
 /** The ranking pages' own section bar (RankingShell): the destinations, the last being the one comparison page. */
@@ -129,9 +141,10 @@ const ENTRIES: NavEntry[] = [
   },
   {
     label: 'Exam Prep', icon: 'target', match: ['/exams'],
+    // Two balanced columns: what to prepare for (entrance exams, then Olympiads) and how to practise.
     sections: [
       {
-        title: 'Entrance exams',
+        title: 'School entrance exams', column: 0,
         items: [
           { to: '/exams/jnvst', label: 'JNV entrance exam (JNVST)', icon: 'graduation', hint: 'Class 6 mock tests and study plan' },
           { to: '/exams/aissee', label: 'Sainik School entrance (AISSEE)', icon: 'flag', hint: 'Class 6 mock tests and study plan' },
@@ -140,21 +153,18 @@ const ENTRIES: NavEntry[] = [
         ],
       },
       {
-        title: 'School and other exams',
+        title: 'Olympiads', column: 0,
         items: [
-          { to: '/exams/practice/class10-maths-1', label: 'Class 10 preparation', icon: 'book', hint: 'Mathematics' },
-          { to: '/exams/practice/class12-maths-1', label: 'Class 12 preparation', icon: 'layers', hint: 'Mathematics and Physics' },
-          { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy' },
-          { to: '/exams/practice?category=COMPETITIVE', label: 'Government & competitive exams', icon: 'layers' },
+          { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad preparation', icon: 'trophy', hint: 'Class-wise Maths, Science, English and Reasoning' },
         ],
       },
       {
-        title: 'Practise',
+        title: 'Practice & progress', column: 1,
         items: [
-          { to: '/exams/practice', label: 'Mock tests & practice', icon: 'target' },
+          { to: '/exams/practice', label: 'Mock tests & practice', icon: 'target', hint: 'Quick, topic and full practice tests' },
           { to: '/exams/practice/session?mode=DAILY&timer=1', label: 'Daily quiz', icon: 'sun', hint: 'Ten questions, new every day' },
           { to: '/exams/resources?type=QUESTION_PAPER', label: 'Previous year papers', icon: 'file', hint: 'Official papers, linked' },
-          { to: '/exams/practice/progress', label: 'My progress', icon: 'chart' },
+          { to: '/exams/practice/progress', label: 'My progress', icon: 'chart', hint: 'Scores and history for every exam' },
           { to: '/exams/leaderboard', label: 'Leaderboard & challenges', icon: 'trophy', hint: 'All India, by state and exam' },
         ],
       },
@@ -183,6 +193,8 @@ export function activeLabel(entries: { label: string; match: string[] }[], pathn
 
 /** The menus' labels and paths, for tests. */
 export const NAV_PILLARS = ENTRIES.map((e) => ({ label: e.label, match: e.match }));
+/** The menus with their sections, for tests. */
+export const NAV_MENUS: NavMenu[] = ENTRIES.filter(isMenu);
 
 const topLink = (active: boolean) => `flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-2 text-[15px] font-semibold transition ${
   active ? 'bg-royal-50 text-royal-700' : 'text-navy hover:bg-slate-100 hover:text-royal-700'}`;
@@ -253,7 +265,31 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
     else if (e.key === 'End') { e.preventDefault(); focusItem(all.length - 1); }
     else if (e.key === 'Escape') { e.preventDefault(); onClose(); buttonRef.current?.focus(); }
   };
-  const wide = menu.sections.length > 1;
+  const columns = panelColumns(menu.sections);
+  const wide = columns.length > 1;
+  // A menu that stacks sections into columns (Exam Prep) gets a divider between its columns and a little more room.
+  const grouped = columns.length < menu.sections.length;
+  const section = (s: NavMenu['sections'][number], first: boolean) => (
+    <div key={s.title ?? menu.label} className={first ? '' : 'mt-3'}>
+      {s.title && <p className={`px-2 text-[11px] font-bold uppercase tracking-[0.12em] ${grouped ? 'text-navy/70' : 'text-slate-500'}`}>{s.title}</p>}
+      <ul className="mt-1.5 space-y-0.5">
+        {s.items.map((item) => (
+          <li key={item.to + item.label}>
+            <Link to={item.to} data-nav-item onClick={onClose}
+              className="group flex items-start gap-2.5 rounded-xl px-2 py-1.5 outline-none transition hover:bg-royal-50 focus-visible:bg-royal-50 focus-visible:ring-2 focus-visible:ring-royal-500">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-royal-600 group-hover:text-white">
+                <Icon name={item.icon} className="h-4 w-4" />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-sm font-semibold text-navy">{item.label}</span>
+                {item.hint && <span className="block text-xs text-slate-500">{item.hint}</span>}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 
   return (
     <div className="relative" onMouseEnter={onHover} onMouseLeave={onLeave}
@@ -266,28 +302,10 @@ function Dropdown({ menu, align, open, active, onOpen, onClose, onToggle, onHove
       <div id={panelId} ref={panelRef} onKeyDown={onPanelKey} hidden={!open}
         className={`absolute top-full z-50 mt-2 animate-fade-down rounded-2xl border border-slate-200 bg-white p-3 shadow-lift ${
           align === 'left' ? 'left-0' : align === 'right' ? 'right-0' : 'left-1/2 -translate-x-1/2'} ${
-          menu.sections.length > 2 ? 'w-[690px]' : wide ? 'w-[500px]' : 'w-[280px]'}`}>
-        <div className={`grid gap-3 ${menu.sections.length > 2 ? 'grid-cols-3' : wide ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {menu.sections.map((s) => (
-            <div key={s.title ?? menu.label}>
-              {s.title && <p className="px-2 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{s.title}</p>}
-              <ul className="mt-1.5 space-y-0.5">
-                {s.items.map((item) => (
-                  <li key={item.to + item.label}>
-                    <Link to={item.to} data-nav-item onClick={onClose}
-                      className="group flex items-start gap-2.5 rounded-xl px-2 py-1.5 outline-none transition hover:bg-royal-50 focus-visible:bg-royal-50 focus-visible:ring-2 focus-visible:ring-royal-500">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition group-hover:bg-royal-600 group-hover:text-white">
-                        <Icon name={item.icon} className="h-4 w-4" />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-semibold text-navy">{item.label}</span>
-                        {item.hint && <span className="block text-xs text-slate-500">{item.hint}</span>}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          columns.length > 2 ? 'w-[690px]' : grouped ? 'w-[620px]' : wide ? 'w-[500px]' : 'w-[280px]'}`}>
+        <div className={`grid gap-3 ${columns.length > 2 ? 'grid-cols-3' : wide ? 'grid-cols-2' : 'grid-cols-1'} ${grouped ? 'divide-x divide-slate-100 [&>*+*]:pl-3' : ''}`}>
+          {columns.map((col) => (
+            <div key={col.map((s) => s.title ?? '').join('|')}>{col.map((s, i) => section(s, i === 0))}</div>
           ))}
         </div>
       </div>

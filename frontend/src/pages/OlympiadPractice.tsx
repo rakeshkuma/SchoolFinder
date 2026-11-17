@@ -152,7 +152,7 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
         <nav aria-label="Practice categories" className="-mx-1 flex flex-wrap items-center gap-2 text-sm">
           <span className="px-1 text-slate-500">Practice centre:</span>
           <Link to="/exams/practice" className="chip bg-slate-100 px-3 py-1 text-sm text-slate-700 hover:bg-slate-200">All</Link>
-          {(['ENTRANCE', 'SCHOOL', 'OLYMPIAD', 'COMPETITIVE'] as const).map((c) => (
+          {(['ENTRANCE', 'SCHOOL', 'OLYMPIAD'] as const).map((c) => (
             <Link key={c} to={`/exams/practice?category=${c}`} aria-current={c === 'OLYMPIAD' ? 'page' : undefined}
               className={`chip px-3 py-1 text-sm ${c === 'OLYMPIAD' ? 'bg-navy text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}>
               {categoryLabels[c]}

@@ -168,11 +168,11 @@ class MemberPracticeIT extends AbstractIntegrationTest {
 
         // Merging the browser's bookmarks skips unknown questions and keeps the newest first.
         mockMvc.perform(post("/api/v1/account/bookmarks/merge").with(csrf()).cookie(asha).contentType(MediaType.APPLICATION_JSON)
-                        .content(json(Map.of("questionIds", List.of("class10-maths-1/m1", "gone/q9", "jnvst-arithmetic-1/a6")))))
+                        .content(json(Map.of("questionIds", List.of("class8-science-1/c1", "gone/q9", "jnvst-arithmetic-1/a6")))))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2));
         mockMvc.perform(delete("/api/v1/account/bookmarks/jnvst-arithmetic-1/a6").with(csrf()).cookie(asha))
-                .andExpect(jsonPath("$.length()").value(1)).andExpect(jsonPath("$[0]").value("class10-maths-1/m1"));
+                .andExpect(jsonPath("$.length()").value(1)).andExpect(jsonPath("$[0]").value("class8-science-1/c1"));
 
         Cookie ravi = member("ravi@example.org");
         mockMvc.perform(get("/api/v1/account/bookmarks").cookie(ravi)).andExpect(jsonPath("$.length()").value(0));
@@ -180,13 +180,22 @@ class MemberPracticeIT extends AbstractIntegrationTest {
 
     @Test
     void historyCarriesTopicsOutcomesAndMarks() throws Exception {
-        JsonNode catalogue = objectMapper.readTree(new ClassPathResource("seed/practice.json").getInputStream());
-        JsonNode mock = null;
-        for (JsonNode s : catalogue.get("sets")) if (s.get("slug").asText().equals("competitive-aptitude-1")) mock = s;
-        assertThat(mock).isNotNull();
-        int right = mock.get("content").get("questions").get(0).get("answer").asInt();
-        int wrong = (mock.get("content").get("questions").get(1).get("answer").asInt() + 1) % 4;
-        List<String> ids = List.of("competitive-aptitude-1/p1", "competitive-aptitude-1/p2", "competitive-aptitude-1/p3");
+        // A set with negative marking (+1 right, −0.25 wrong); no shipped set uses negative marking, so the test brings its own.
+        List<String> topics = List.of("Percentages", "Profit", "Averages");
+        List<Map<String, Object>> questions = java.util.stream.IntStream.range(0, 3).mapToObj(i -> Map.<String, Object>of(
+                "id", "p" + (i + 1), "section", "Quantitative Aptitude", "topic", topics.get(i), "difficulty", "EASY",
+                "prompt", "A question on " + topics.get(i).toLowerCase() + "?", "options", List.of("1", "2", "3", "4"), "answer", 1,
+                "explanation", "Because it is worked out that way.")).toList();
+        Map<String, Object> marked = new java.util.HashMap<>(Map.of("slug", "marking-test-1", "title", "Negative marking test", "kind", "MOCK",
+                "level", "Class XII", "description", "A test set.", "durationMinutes", 15, "published", true, "reviewedOn", "2026-10-30",
+                "content", Map.of("passages", List.of(), "questions", questions)));
+        marked.put("marksPerQuestion", 1);
+        marked.put("negativeMarks", 0.25);
+        mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(Map.of("sets", List.of(marked))))).andExpect(status().isOk());
+        int right = 1;
+        int wrong = 2;
+        List<String> ids = questions.stream().map(q -> "marking-test-1/" + q.get("id")).toList();
         Cookie asha = member("asha@example.org");
         submit(asha, attempt(UUID.randomUUID(), ids, Map.of(ids.get(0), right, ids.get(1), wrong))).andExpect(status().isCreated())
                 .andExpect(jsonPath("$.attempt.marks").value(0.75)) // +1 right, −0.25 wrong, 0 skipped

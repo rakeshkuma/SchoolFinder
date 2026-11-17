@@ -146,8 +146,8 @@ public class SeoHeadService {
                     + "state, school type, boarding — to see which school entrance exams may fit and why, with the "
                     + "eligibility rules to confirm in each official notice."),
             page("/exams/practice", "Free practice tests: entrance, Olympiad and school exams", "Original "
-                    + "practice quizzes and timed mock tests for JNVST, AISSEE, Class X and VIII subjects, Olympiads and "
-                    + "aptitude, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
+                    + "practice quizzes and timed mock tests for JNVST, AISSEE, Netarhat, class-wise Olympiads and "
+                    + "school subjects, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
                     + "not official questions."),
             page("/blog", "Education insights for parents and students", "Original guides on school admissions, boarding and "
                     + "government schools, entrance exams, boards and parenting in India, with official sources linked."),

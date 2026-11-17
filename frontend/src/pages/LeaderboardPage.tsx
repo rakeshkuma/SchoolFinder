@@ -22,9 +22,8 @@ const SCOPES: { key: string; label: string; params: Partial<LeaderboardParams> }
   { key: 'netarhat', label: 'Netarhat entrance (Class VI)', params: { exam: 'netarhat' } },
   { key: 'jnvst', label: 'JNV entrance (JNVST)', params: { exam: 'jnvst' } },
   { key: 'aissee', label: 'Sainik School entrance (AISSEE)', params: { exam: 'aissee' } },
-  { key: 'school', label: 'School exams (Class X, XII)', params: { category: 'SCHOOL' } },
+  { key: 'school', label: 'School subjects', params: { category: 'SCHOOL' } },
   { key: 'olympiad', label: 'Olympiads', params: { category: 'OLYMPIAD' } },
-  { key: 'competitive', label: 'Government & competitive exams', params: { category: 'COMPETITIVE' } },
   { key: 'daily', label: 'Daily quiz', params: { daily: true } },
 ];
 
