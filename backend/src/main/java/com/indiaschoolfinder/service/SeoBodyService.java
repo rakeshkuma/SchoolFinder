@@ -45,6 +45,12 @@ public class SeoBodyService {
     private static final Pattern EXAM_GUIDE = Pattern.compile("^/exams/([a-z0-9-]+)/guide/?$");
     /** A directory view (/rankings/co-ed-boarding-schools ...); other /rankings/* pages fall through to the default. */
     private static final Pattern DIRECTORY_VIEW = Pattern.compile("^/rankings/([a-z0-9-]+)/?$");
+    private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
+    private static final Pattern BLOG_CATEGORY = Pattern.compile("^/blog/category/([a-z0-9-]+)/?$");
+    private static final Pattern EXAM_CLASS = Pattern.compile("^/exams/class/(\\d{1,2})/?$");
+    private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
+    private static final Pattern BOARD = Pattern.compile("^/boards/([A-Za-z0-9-]+)/?$");
+    private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
     /** Fixed pages under /exams that are not an exam. */
     private static final Set<String> EXAM_PAGES = Set.of("practice", "finder", "calendar", "syllabus", "resources",
             "leaderboard", "achievements", "challenges", "guide");
@@ -72,12 +78,17 @@ public class SeoBodyService {
     private final ExamService examService;
     private final com.indiaschoolfinder.repository.PracticeSetRepository practiceSets;
     private final PlaceSummaryService placeSummary;
+    private final BestPlacesService bestPlaces;
+    private final SchoolListService schoolLists;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
-                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary) {
+                          com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary,
+                          BestPlacesService bestPlaces, SchoolListService schoolLists) {
         this.placeSummary = placeSummary;
+        this.bestPlaces = bestPlaces;
+        this.schoolLists = schoolLists;
         this.blogService = blogService;
         this.examService = examService;
         this.practiceSets = practiceSets;
@@ -129,6 +140,31 @@ public class SeoBodyService {
                 main = exam(examService.get(m.group(1)), heading, description, SeoHeadService.PREP_PAGES.contains(m.group(1)));
             } else if (p.equals("/updates")) {
                 main = updates(heading, description);
+            } else if ((m = BEST_IN.matcher(p)).matches()) {
+                main = bestPlace(m.group(1), heading, description);
+            } else if (p.equals("/blog")) {
+                main = blogIndex(heading, description, null);
+            } else if ((m = BLOG_CATEGORY.matcher(p)).matches()) {
+                var category = com.indiaschoolfinder.entity.BlogPost.Category.bySlug(m.group(1))
+                        .orElseThrow(() -> new ResourceNotFoundException("Blog category", "?"));
+                main = blogIndex(heading, description, category);
+            } else if (p.equals("/exams")) {
+                main = examsHub(heading, description);
+            } else if ((m = EXAM_CLASS.matcher(p)).matches()) {
+                main = examList(heading, description, examService.list(new ExamService.Filter(null, Integer.parseInt(m.group(1)), null,
+                        null, null, null, null, null, null, null, null, null), ExamService.Sort.RELEVANCE, 0, 100).content());
+            } else if ((m = EXAM_STATE.matcher(p)).matches()) {
+                main = examList(heading, description, examService.list(new ExamService.Filter(null, null,
+                        locationService.state(m.group(1)).code(), null, null, null, null, null, null, null, null, null),
+                        ExamService.Sort.RELEVANCE, 0, 100).content());
+            } else if ((m = BOARD.matcher(p)).matches()) {
+                main = board(m.group(1).toUpperCase(Locale.ROOT), heading, description);
+            } else if ((m = PRACTICE_SET.matcher(p)).matches()) {
+                String slug = m.group(1);
+                main = practiceSet(practiceSets.findBySlugAndPublishedTrue(slug)
+                        .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), heading, description);
+            } else if (p.equals("/schools")) {
+                main = directoryHome(heading, description);
             } else if ((m = DIRECTORY_VIEW.matcher(p)).matches() && isDirectoryView(m.group(1))) {
                 main = directoryView(m.group(1), heading, description);
             } else if ((m = SeoHeadService.NETWORK.matcher(p)).matches() && NETWORKS.containsKey(m.group(1))) {
@@ -380,7 +416,9 @@ public class SeoBodyService {
 
     private String city(String stateSlug, String citySlug, String heading, String description) {
         StateDto state = locationService.state(stateSlug);
-        CityDto city = locationService.cities(state.code()).stream().filter(c -> c.slug().equals(citySlug)).findFirst()
+        CityDto city = locationService.cities(state.code()).stream().filter(c -> c.slug().equals(citySlug))
+                // Two spellings of one town ("Bhuj", "BHUJ") share a slug; the page is the one with more schools, as in the sitemap.
+                .max(java.util.Comparator.comparingLong(CityDto::schoolCount))
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
         StringBuilder h = new StringBuilder();
         h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/states\">States</a> › <a href=\"/states/")
@@ -522,6 +560,314 @@ public class SeoBodyService {
             h.append("<p>Showing ").append(page.content().size()).append(" of ").append(String.format(Locale.ENGLISH, "%,d", page.totalElements()))
                     .append(" schools, best documented first. <a href=\"/schools\">Search the full school directory</a></p>");
         }
+        return h.toString();
+    }
+
+    private static void crumbs(StringBuilder h, String... hrefLabelPairs) {
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a>");
+        for (int i = 0; i + 1 < hrefLabelPairs.length; i += 2) {
+            h.append(" › <a href=\"").append(hrefLabelPairs[i]).append("\">").append(esc(hrefLabelPairs[i + 1])).append("</a>");
+        }
+        h.append("</nav>");
+    }
+
+    private static void heading(StringBuilder h, String heading, String description) {
+        h.append("<h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+    }
+
+    private static String count(long n) {
+        return String.format(Locale.ENGLISH, "%,d", n);
+    }
+
+    /**
+     * "Best schools in {state or city}", as the app's BestPlacePage shows it: the counts, the publisher's ranks for the
+     * place exactly as printed (never renumbered), the A-to-Z lists that name its schools, the questions and related places.
+     */
+    private String bestPlace(String slug, String heading, String description) {
+        BestPlacesService.Place p = bestPlaces.place(slug);
+        boolean city = p.kind() == BestPlacesService.Kind.CITY;
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/rankings", "Rankings", "/rankings/states", "State & City");
+        heading(h, heading, description);
+        h.append("<dl class=\"pr-facts\">");
+        fact(h, p.rankingSource() != null ? "Ranked in " + p.rankingSource() : "Ranked in published rankings", count(p.ranked()));
+        fact(h, "In SchoolDhundo's A-to-Z lists (not ranks)", count(p.listed()));
+        fact(h, "Schools in the directory", count(p.schools()));
+        h.append("</dl><p>");
+        h.append(p.ranked() > 0
+                ? esc(p.ranked() + (p.ranked() == 1 ? " school in " : " schools in ") + p.name() + (p.ranked() == 1 ? " holds" : " hold")
+                + " a rank in " + p.rankingSource() + ". ")
+                : esc("No published ranking we have checked covers " + p.name() + " yet. "));
+        if (p.listed() > 0) {
+            h.append(esc(p.listed() + (p.listed() == 1 ? " school is" : " schools are") + " named in SchoolDhundo's compiled A-to-Z lists,"
+                    + " which help you find well-known schools but are not rankings. "));
+        }
+        h.append("Confirm fees, admissions and eligibility with each school before you decide.");
+        if (p.checkedOn() != null) h.append(" Ranks last checked ").append(p.checkedOn().format(DAY)).append('.');
+        h.append("</p>");
+
+        List<String> topNames = new java.util.ArrayList<>();
+        RankingCatalogDtos.Edition national = p.ranked() == 0 ? null : rankings.editions().stream()
+                .filter(e -> !e.ratingBased() && e.scope() == RankingScope.NATIONAL && e.boardCode() == null).findFirst().orElse(null);
+        if (national != null) {
+            List<RankingCatalogDtos.Row> rows = rankings.table(new RankingCatalogDtos.Query(national.id(), p.stateCode(), null, p.city(),
+                    null, null, null, null, null, null, null, null, null), 0, 100).content();
+            if (!rows.isEmpty()) {
+                h.append("<h2>").append(esc("Ranked in " + national.publisherCode() + " " + national.year())).append("</h2><ul class=\"pr-list\">");
+                for (RankingCatalogDtos.Row r : rows) {
+                    List<String> ranks = new java.util.ArrayList<>();
+                    if (city && r.cityRank() != null) ranks.add("City #" + r.cityRank());
+                    if (r.stateRank() != null) ranks.add("State #" + r.stateRank());
+                    if (r.nationalRank() != null) ranks.add("India #" + r.nationalRank());
+                    h.append("<li><a href=\"/schools/").append(esc(r.slug())).append("\">").append(esc(r.schoolName())).append("</a>");
+                    if (!ranks.isEmpty()) h.append(" <span>").append(esc(String.join(" · ", ranks))).append("</span>");
+                    h.append("</li>");
+                    Integer shown = city && r.cityRank() != null ? r.cityRank() : r.stateRank() != null ? r.stateRank() : r.nationalRank();
+                    if (topNames.size() < 3) topNames.add(r.schoolName() + " (" + (shown == null ? "–" : "#" + shown) + ")");
+                }
+                h.append("</ul><p>Ranks are ").append(esc(national.publisher())).append("'s own, as printed. <a href=\"")
+                        .append(esc(national.sourceUrl())).append("\" rel=\"nofollow noopener\">Publisher's list</a></p>");
+            }
+        }
+
+        // A city shows its own city list where one exists, else its state's lists narrowed to the city (as the app does).
+        List<com.indiaschoolfinder.dto.common.SchoolListDtos.Summary> all = schoolLists.lists();
+        var own = city ? all.stream().filter(l -> "CITY".equals(l.kind()) && p.city() != null
+                && l.title().toLowerCase(Locale.ROOT).contains(p.city().toLowerCase(Locale.ROOT))).findFirst().orElse(null) : null;
+        List<com.indiaschoolfinder.dto.common.SchoolListDtos.Summary> lists = own != null ? List.of(own)
+                : all.stream().filter(l -> "STATE".equals(l.kind()) && p.stateCode().equals(l.code())).toList();
+        for (var l : lists) {
+            String town = own == null && city ? p.city() : null;
+            var items = schoolLists.items(l.key(), town, 0, 60);
+            if (items.content().isEmpty()) continue;
+            h.append("<h2>").append(esc(town != null ? l.title() + ": " + town : l.title())).append("</h2>");
+            h.append("<p>An A-to-Z list, not a ranking.</p><ul class=\"pr-list\">");
+            for (var i : items.content()) {
+                h.append("<li>");
+                if (i.slug() != null) {
+                    h.append("<a href=\"/schools/").append(esc(i.slug())).append("\">").append(esc(i.name())).append("</a>");
+                } else {
+                    h.append(esc(i.name()));
+                }
+                String about = java.util.stream.Stream.of(i.place(), i.board()).filter(x -> x != null && !x.isBlank())
+                        .collect(java.util.stream.Collectors.joining(" · "));
+                if (!about.isEmpty()) h.append(" <span>").append(esc(about)).append("</span>");
+                h.append("</li>");
+            }
+            h.append("</ul>");
+            if (items.totalElements() > items.content().size()) {
+                h.append("<p>Showing ").append(items.content().size()).append(" of ").append(count(items.totalElements())).append(" schools in this list.</p>");
+            }
+        }
+
+        h.append("<h2>How this page is put together</h2><p>Ranks come only from published rankings we have checked against the ")
+                .append("publisher's list, and each publisher's rank is shown as printed; we never combine them into an overall rank. ")
+                .append("A-to-Z lists are not rankings. <a href=\"/rankings/methodology\">Ranking methodology</a></p>");
+        h.append("<h2>Questions about schools in ").append(esc(p.name())).append("</h2><dl class=\"pr-faq\">");
+        if (!topNames.isEmpty()) {
+            faq(h, "Which are the best schools in " + p.name() + "?", "In " + p.rankingSource() + ", the highest-placed schools in "
+                    + p.name() + " are " + String.join(", ", topNames) + ". These are the publisher's own ranks; the full list is above.");
+        }
+        faq(h, "How are schools in " + p.name() + " ranked here?", p.ranked() > 0
+                ? "SchoolDhundo does not rank schools itself on this page. It shows ranks from published rankings (" + p.rankingSource()
+                + "), checked against the publisher's list, with each publisher's own rank and year."
+                : "No published ranking that we have checked covers " + p.name() + " yet, so no school here has a rank. The schools shown "
+                + "come from SchoolDhundo's A-to-Z lists, which are not rankings.");
+        faq(h, "Is there an official government ranking of schools in " + p.name() + "?", "No. Government data such as UDISE+ and "
+                + "PGI-D describes schools and states but does not rank individual schools. Rankings shown here come from independent publishers.");
+        faq(h, "How many schools are listed in " + p.name() + "?", "SchoolDhundo's directory has " + count(p.schools()) + " schools in "
+                + p.name() + ", each linked to its official source. Most are not in any published ranking.");
+        h.append("</dl>");
+        h.append("<h2>Related places</h2><ul class=\"pr-grid\">");
+        h.append(link(city ? "/states/" + p.stateSlug() + "/city/" + p.slug() : "/states/" + p.stateSlug(),
+                "All " + count(p.schools()) + " schools in " + p.name()));
+        p.related().stream().filter(r -> r.ranked() + r.listed() >= BestPlacesService.MIN_TO_INDEX)
+                .forEach(r -> h.append(link("/rankings/best-schools-in-" + r.slug(), "Best schools in " + r.name())));
+        h.append("</ul>");
+        return h.toString();
+    }
+
+    private static void faq(StringBuilder h, String question, String answer) {
+        h.append("<dt>").append(esc(question)).append("</dt><dd>").append(esc(answer)).append("</dd>");
+    }
+
+    /** The blog's index or one category: its published articles, newest first, with their excerpts (as the app lists them). */
+    private String blogIndex(String heading, String description, com.indiaschoolfinder.entity.BlogPost.Category category) {
+        StringBuilder h = new StringBuilder();
+        if (category == null) crumbs(h); else crumbs(h, "/blog", "Blog");
+        heading(h, heading, description);
+        var posts = blogService.list(null, category, 0, 50).content();
+        if (!posts.isEmpty()) {
+            h.append("<h2>").append(category == null ? "Latest articles" : "Articles").append("</h2><ul class=\"pr-list\">");
+            for (var post : posts) {
+                h.append("<li><a href=\"/blog/").append(esc(post.slug())).append("\">").append(esc(post.title())).append("</a> <span>")
+                        .append(esc(post.category().label())).append(" · ").append(post.publishedAt().atZone(INDIA).toLocalDate().format(DAY))
+                        .append(" · ").append(post.minutesToRead()).append(" min read</span>");
+                if (post.excerpt() != null) h.append("<p>").append(esc(post.excerpt())).append("</p>");
+                h.append("</li>");
+            }
+            h.append("</ul>");
+        }
+        var counts = blogService.categoryCounts();
+        if (!counts.isEmpty()) {
+            h.append("<h2>Topics</h2><ul class=\"pr-grid\">");
+            for (var c : com.indiaschoolfinder.entity.BlogPost.Category.values()) {
+                long n = counts.getOrDefault(c, 0L);
+                if (n > 0 && c != category) {
+                    h.append("<li><a href=\"/blog/category/").append(c.slug()).append("\">").append(esc(c.label())).append("</a> <span>")
+                            .append(n).append(n == 1 ? " article" : " articles").append("</span></li>");
+                }
+            }
+            h.append("</ul>");
+        }
+        return h.toString();
+    }
+
+    /** The exams hub: the preparation dashboards, then every published entrance exam and admission process with its guide. */
+    private String examsHub(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h);
+        heading(h, heading, description);
+        h.append("<h2>Free preparation</h2><ul class=\"pr-grid\">")
+                .append(link("/exams/jnvst", "JNVST Class 6 preparation (Navodaya)"))
+                .append(link("/exams/aissee", "AISSEE Class 6 preparation (Sainik School)"))
+                .append(link("/exams/netarhat", "Netarhat Vidyalaya entrance preparation"))
+                .append(link(SeoHeadService.OLYMPIAD_PRACTICE, "Olympiad preparation, Classes 1 to 10"))
+                .append(link("/exams/practice", "Practice centre: quizzes and mock tests"))
+                .append("</ul>");
+        List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = examService.list(new ExamService.Filter(null, null, null, null, null,
+                null, null, null, null, null, null, null), ExamService.Sort.RELEVANCE, 0, 100).content();
+        examItems(h, "Entrance exams and admission processes", exams);
+        java.util.SortedSet<Integer> classes = new java.util.TreeSet<>();
+        exams.forEach(e -> { if (e.entryClasses() != null) classes.addAll(e.entryClasses()); });
+        if (!classes.isEmpty()) {
+            h.append("<h2>By admission class</h2><ul class=\"pr-grid\">");
+            classes.stream().filter(n -> n >= 1 && n <= 12)
+                    .forEach(n -> h.append(link("/exams/class/" + n, "Entrance exams for Class " + ROMAN.get(n - 1))));
+            h.append("</ul>");
+        }
+        h.append("<h2>Plan and prepare</h2><ul class=\"pr-grid\">")
+                .append(link("/exams/finder", "Which exams can my child take?"))
+                .append(link("/exams/calendar", "Entrance exam calendar"))
+                .append(link("/exams/syllabus", "Exam pattern and syllabus"))
+                .append(link("/exams/resources", "Official learning resources"))
+                .append("</ul>");
+        return h.toString();
+    }
+
+    private static final List<String> ROMAN = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
+
+    /** A filtered exam page (one class, one state): the exams it lists, each linked to its guide. */
+    private String examList(String heading, String description, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams");
+        heading(h, heading, description);
+        examItems(h, "Exams", exams);
+        return h.toString();
+    }
+
+    private static void examItems(StringBuilder h, String title, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams) {
+        if (exams.isEmpty()) return;
+        h.append("<h2>").append(esc(title)).append("</h2><ul class=\"pr-list\">");
+        for (var e : exams) {
+            String guide = "/exams/" + e.slug() + (SeoHeadService.PREP_PAGES.contains(e.slug()) ? "/guide" : "");
+            h.append("<li><a href=\"").append(guide).append("\">").append(esc(e.shortName().equals(e.name()) ? e.name() : e.shortName() + ": " + e.name()))
+                    .append("</a>");
+            String about = java.util.stream.Stream.of(e.entryClassText(), e.conductingAuthority()).filter(x -> x != null && !x.isBlank())
+                    .collect(java.util.stream.Collectors.joining(" · "));
+            if (!about.isEmpty()) h.append(" <span>").append(esc(about)).append("</span>");
+            h.append("</li>");
+        }
+        h.append("</ul>");
+    }
+
+    /** A board's page: its best-documented schools first, as the app's directory lists them, and the other boards. */
+    private String board(String code, String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/schools", "Schools");
+        heading(h, heading, description);
+        PageResponse<SchoolSummaryDto> page = schoolService.search(new SchoolSearchCriteria(null, null, null, null, null, null, null, code,
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null, "recommended", null, 0, LIST_SIZE));
+        schoolList(h, heading, page.content());
+        if (page.totalElements() > page.content().size()) {
+            h.append("<p>Showing ").append(page.content().size()).append(" of ").append(count(page.totalElements()))
+                    .append(" schools, best documented first.</p>");
+        }
+        h.append("<h2>Other boards</h2><ul class=\"pr-grid\">");
+        for (String[] b : new String[][]{{"CBSE", "CBSE schools"}, {"CISCE", "ICSE/ISC schools"}, {"IB", "IB schools"}, {"CAMBRIDGE", "Cambridge schools"}}) {
+            if (!b[0].equals(code)) h.append(link("/boards/" + b[0], b[1]));
+        }
+        h.append(link("/rankings/boards", "Board-wise rankings")).append(link("/blog/cbse-vs-icse", "CBSE vs ICSE: which board to choose")).append("</ul>");
+        return h.toString();
+    }
+
+    /**
+     * A practice set's landing page: what it covers, its length and level, and where it belongs. The questions and their
+     * answers are not sent here; the app loads them when the set is started.
+     */
+    private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String heading, String description) {
+        boolean olympiad = set.getCategory() == com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD;
+        boolean prep = set.getExamSlug() != null && SeoHeadService.PREP_PAGES.contains(set.getExamSlug());
+        StringBuilder h = new StringBuilder();
+        if (olympiad) crumbs(h, "/exams/practice", "Practice", SeoHeadService.OLYMPIAD_PRACTICE, "Olympiad");
+        else if (prep) crumbs(h, "/exams", "Exams", "/exams/" + set.getExamSlug(), set.getExamSlug().toUpperCase(Locale.ROOT));
+        else crumbs(h, "/exams/practice", "Practice");
+        heading(h, heading, null);
+        if (set.getDescription() != null) h.append("<p class=\"pr-lead\">").append(esc(set.getDescription())).append("</p>");
+        h.append("<dl class=\"pr-facts\">");
+        fact(h, "Type", set.getKind() == com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK ? "Timed mock test" : "Practice quiz");
+        fact(h, "Level", set.getLevel());
+        fact(h, "Questions", set.getContent() == null ? null : String.valueOf(set.getContent().questions().size()));
+        fact(h, "Time", set.getDurationMinutes() == null ? "Untimed" : set.getDurationMinutes() + " minutes");
+        h.append("</dl>");
+        h.append("<p>Original practice questions written by SchoolDhundo, with an explanation for every answer. They are not official ")
+                .append("or previous-year exam questions.</p>");
+        List<Object[]> related = set.getExamSlug() != null ? practiceSets.findPublishedOutlineByExam(set.getExamSlug())
+                : practiceSets.findPublishedOutlineByCategory(set.getCategory());
+        List<Object[]> others = related.stream().filter(s -> !set.getSlug().equals(s[0])).limit(12).toList();
+        if (!others.isEmpty()) {
+            h.append("<h2>More practice</h2><ul class=\"pr-list\">");
+            others.forEach(s -> h.append(link("/exams/practice/" + s[0], (String) s[1])));
+            h.append("</ul>");
+        }
+        h.append("<ul class=\"pr-grid\">");
+        if (prep) {
+            h.append(link("/exams/" + set.getExamSlug(), "Preparation dashboard and study plan"))
+                    .append(link("/exams/" + set.getExamSlug() + "/guide", "Eligibility, dates, syllabus and official papers"));
+        } else if (olympiad) {
+            h.append(link(SeoHeadService.OLYMPIAD_PRACTICE, "All Olympiad practice by class"));
+        }
+        h.append(link("/exams/practice", "Practice centre")).append("</ul>");
+        return h.toString();
+    }
+
+    /** The school directory: the best-documented schools first, as the app lists them, and the ways to browse. */
+    private String directoryHome(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h);
+        heading(h, heading, description);
+        List<StateDto> states = locationService.states().stream().filter(s -> s.schoolCount() > 0)
+                .sorted(Comparator.comparing(StateDto::name)).toList();
+        if (!states.isEmpty()) {
+            h.append("<h2>Schools by state</h2><ul class=\"pr-grid\">");
+            states.forEach(s -> h.append("<li><a href=\"/states/").append(s.slug()).append("\">").append(esc(s.name())).append("</a> <span>")
+                    .append(count(s.schoolCount())).append("</span></li>"));
+            h.append("</ul>");
+        }
+        h.append("<h2>Browse</h2><ul class=\"pr-grid\">")
+                .append(link("/cities", "Schools by city"))
+                .append(link("/boards/CBSE", "CBSE schools")).append(link("/boards/CISCE", "ICSE/ISC schools"))
+                .append(link("/boarding", "Boarding schools"))
+                .append(link("/network/jawahar-navodaya-vidyalaya", "Jawahar Navodaya Vidyalayas"))
+                .append(link("/network/kendriya-vidyalaya", "Kendriya Vidyalayas"))
+                .append(link("/network/sainik-school", "Sainik Schools"))
+                .append(link("/nearby", "Schools near me"))
+                .append("</ul>");
+        schools(h, criteria(null, null, null), "Schools on SchoolDhundo");
         return h.toString();
     }
 

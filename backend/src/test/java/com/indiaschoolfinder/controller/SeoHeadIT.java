@@ -173,7 +173,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 // fees are promised only "where published"
                 .contains("fees and admission dates where published");
         assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");
-        assertThat(head("/schools")).contains("<title>School directory | SchoolDhundo</title>")
+        assertThat(head("/schools")).contains("<title>Find Schools in India: CBSE &amp; ICSE School Directory</title>")
                 .contains("href=\"http://localhost/schools\"");
         assertThat(head("/boards/CISCE")).contains("ICSE/ISC (CISCE) schools in India")
                 .contains("href=\"http://localhost/boards/CISCE\"");

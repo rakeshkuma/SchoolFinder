@@ -89,6 +89,66 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(fetch("/api/v1/seo/body/exams/aissee/guide")).contains("<h2>Syllabus</h2>");
         // Fixed pages under /exams are not exams.
         assertThat(fetch("/api/v1/seo/body/exams/practice")).contains("<h1>").doesNotContain("Official links");
+        // The hub and the class pages link every exam's guide (prep exams to their /guide), as the app lists them.
+        assertThat(fetch("/api/v1/seo/body/exams")).contains("href=\"/exams/netarhat/guide\"").contains("href=\"/exams/jnvst\"")
+                .contains("href=\"/exams/class/6\"").contains("href=\"/exams/practice?category=OLYMPIAD\"");
+        assertThat(fetch("/api/v1/seo/body/exams/class/6")).contains("href=\"/exams/aissee/guide\"").contains("href=\"/exams\">Exams</a>");
+    }
+
+    @Test
+    void twoBranchesWithOneNameInOneTownGetTitlesTheirPinCodesTellApart() throws Exception {
+        long a = createSchool(school("Fixture St. Twin's School", Map.of("stateCode", "UK", "city", "Almora", "pinCode", "263601")));
+        long b = createSchool(school("Fixture St Twins School", Map.of("stateCode", "UK", "city", "Almora", "pinCode", "263645")));
+        long c = createSchool(school("Fixture Single School", Map.of("stateCode", "UK", "city", "Almora", "pinCode", "263601")));
+        String slugA = body(mockMvc.perform(get("/api/v1/schools/{id}", a)).andReturn()).get("slug").asText();
+        String slugB = body(mockMvc.perform(get("/api/v1/schools/{id}", b)).andReturn()).get("slug").asText();
+        String slugC = body(mockMvc.perform(get("/api/v1/schools/{id}", c)).andReturn()).get("slug").asText();
+        assertThat(fetch("/api/v1/seo/head/schools/" + slugA)).contains("<title>Fixture St. Twin&#39;s School, Almora (263601)");
+        assertThat(fetch("/api/v1/seo/head/schools/" + slugB)).contains("<title>Fixture St Twins School, Almora (263645)");
+        assertThat(fetch("/api/v1/seo/head/schools/" + slugC)).contains("<title>Fixture Single School, Almora").doesNotContain("(263601)");
+    }
+
+    @Test
+    void aTownSpeltTwoWaysIsOnePageNamedAfterTheSpellingWithMoreSchools() throws Exception {
+        for (String n : List.of("One", "Two", "Three")) {
+            createSchool(school("Fixture Spelt " + n + " School", Map.of("stateCode", "UK", "city", "Fixturebhuj")));
+        }
+        createSchool(school("Fixture Spelt Caps School", Map.of("stateCode", "UK", "city", "FIXTUREBHUJ")));
+        assertThat(fetch("/api/v1/seo/head/states/uttarakhand/city/fixturebhuj")).doesNotContain("noindex")
+                .contains("<title>Schools in Fixturebhuj, Uttarakhand");
+        assertThat(fetch("/api/v1/seo/body/states/uttarakhand/city/fixturebhuj")).contains("Fixture Spelt Two School");
+    }
+
+    @Test
+    void boardDirectoryAndPracticePagesCarryTheirLinksButNoAnswers() throws Exception {
+        createSchool(school("Fixture Board Listed School", Map.of("stateCode", "UK", "boardCode", "CBSE")));
+        assertThat(fetch("/api/v1/seo/body/boards/CBSE")).contains(">Fixture Board Listed School</a>").contains("href=\"/boards/CISCE\"")
+                .doesNotContain("href=\"/boards/CBSE\"");
+        assertThat(fetch("/api/v1/seo/body/schools")).contains("href=\"/states/uttarakhand\"").contains(">Fixture Board Listed School</a>");
+
+        Map<String, Object> set = new java.util.HashMap<>();
+        set.put("slug", "fixture-ssr-quiz");
+        set.put("examSlug", null);
+        set.put("category", "OLYMPIAD");
+        set.put("title", "Fixture SSR quiz");
+        set.put("kind", "QUIZ");
+        set.put("level", "Class V");
+        set.put("description", "Fixture practice on fractions.");
+        set.put("published", true);
+        set.put("reviewedOn", LocalDate.now(ZoneId.of("Asia/Kolkata")).toString());
+        set.put("content", Map.of("passages", List.of(), "questions", List.of(Map.of("id", "q1", "section", "Mathematics",
+                "topic", "Fractions", "prompt", "Fixture prompt one", "options", List.of("A1", "B1", "C1", "D1"), "answer", 2,
+                "explanation", "Fixture secret explanation"))));
+        mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(Map.of("sets", List.of(set))))).andExpect(status().isOk());
+        String page = fetch("/api/v1/seo/body/exams/practice/fixture-ssr-quiz");
+        assertThat(page).contains("<h1>").contains("<p class=\"pr-lead\">Fixture practice on fractions.</p>")
+                .contains("<dt>Questions</dt><dd>1</dd>").contains("<dt>Level</dt><dd>Class V</dd>")
+                .contains("href=\"/exams/practice?category=OLYMPIAD\"").contains("not official")
+                // A landing page never carries the questions or the answer key.
+                .doesNotContain("Fixture prompt one").doesNotContain("Fixture secret explanation");
+        assertThat(fetch("/api/v1/seo/body/exams/practice/no-such-set")).isEmpty();
+        jdbc.update("DELETE FROM practice_set WHERE slug = ?", "fixture-ssr-quiz");
     }
 
     @Test

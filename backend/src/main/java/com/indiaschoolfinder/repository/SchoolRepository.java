@@ -113,6 +113,17 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     boolean isIndexable(@Param("id") long id);
 
     /**
+     * Whether another active school in the same state and town has the same name, ignoring case and punctuation
+     * ("St. John's School" and "St Johns School"). Separate branches such as Loreto Day School's in Kolkata are real
+     * schools with their own affiliation numbers; their page titles need the PIN code to tell them apart.
+     */
+    @Query(value = """
+            select count(*) > 0 from school o where o.active and o.id <> :id and o.state_code = :state
+              and regexp_replace(lower(o.name), '[^a-z0-9]', '', 'g') = regexp_replace(lower(:name), '[^a-z0-9]', '', 'g')
+              and coalesce(lower(o.city), '') = coalesce(lower(:city), '')""", nativeQuery = true)
+    boolean hasNamesake(@Param("id") long id, @Param("name") String name, @Param("state") String stateCode, @Param("city") String city);
+
+    /**
      * The schools of one place: a state, optionally narrowed to one district (id, 0 for any) or one town (the stored
      * city name, '' for any). Sentinels instead of nulls, so no parameter is ever bound without a type. A plain string with
      * spaces at both ends: a text block would drop the space after the "where" before it.
