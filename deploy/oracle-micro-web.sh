@@ -176,7 +176,8 @@ After=nginx.service schooldhundo.service
 
 [Service]
 Type=oneshot
-User=nobody
+# A throwaway user for each run (systemd warns that User=nobody is not safe); the script only sends GET requests.
+DynamicUser=yes
 Nice=10
 ExecStart=/usr/local/bin/schooldhundo-warm-cache
 EOF
