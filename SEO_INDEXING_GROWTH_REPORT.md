@@ -135,7 +135,17 @@ All five pages scored 100 for SEO.
 - **Profile LCP.** The largest element is the Wikimedia photo, loaded from upload.wikimedia.org after the app starts.
   It is now preloaded from the server head (change 10), the way the home page preloads its hero.
 - **JNVST CLS (0.084).** This comes from web fonts swapping in. It is within the "good" limit.
-- **Re-measure after deploying.**
+- **After deploying (17 Nov 2026, c37dd45 + eb072dd, nginx cache cleared):**
+
+  | Page | Performance | LCP | CLS | TBT |
+  |---|---:|---:|---:|---:|
+  | School profile (Baldwin Academy) | 56 → **77** | 5.5 → 4.8 s | 0.228 → **0** | 420 → 280 ms |
+  | /rankings/best-schools-in-delhi | 72 → **82** | 4.1 → 3.8 s | 0.003 → 0 | 490 → 260 ms |
+  | /boarding | **86** | 2.9 s | 0 | 360 ms |
+
+  The sitemap check was re-run on a cold cache with 4 parallel requests: **2,615 URLs, 0 issues**. The 4 retired
+  practice sets are out of the sitemap and return 410. Profile LCP is still bound by the photo download from
+  Wikimedia's servers.
 
 ## 6. Keyword research (Ubersuggest, India, 17 Nov 2026)
 
