@@ -37,7 +37,7 @@ Step "Uploading to $Server"
 ssh @ssh $target "sudo rm -rf /tmp/schooldhundo && mkdir -p /tmp/schooldhundo"; Check "preparing the upload folder"
 scp @ssh -q $jar.FullName "${target}:/tmp/schooldhundo/app.jar"; Check "uploading the backend"
 scp @ssh -q -r "$root\frontend\dist" "${target}:/tmp/schooldhundo/www"; Check "uploading the website"
-scp @ssh -q "$root\frontend\nginx.conf" "$root\frontend\security-headers.conf" "$root\deploy\oracle-micro-web.sh" "${target}:/tmp/schooldhundo/"
+scp @ssh -q "$root\frontend\nginx.conf" "$root\frontend\security-headers.conf" "$root\deploy\oracle-micro-web.sh" "$root\deploy\warm-seo-cache.sh" "$root\deploy\crawler-report.sh" "${target}:/tmp/schooldhundo/"
 Check "uploading the server settings"
 
 Step "Installing on the server (the backend takes about a minute to start)"

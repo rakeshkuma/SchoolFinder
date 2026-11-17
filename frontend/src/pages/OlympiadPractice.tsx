@@ -1,8 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Icon } from '../components/common/Icon';
 import { ErrorState, Spinner } from '../components/common/States';
-import { BANDS, CHECKED_ON, FAQ, OLYMPIAD_SUBTITLE, OLYMPIAD_TITLE, PATTERNS, PATTERN_NOTES, SOF_DATES, SOURCES, SUBJECTS } from '../content/olympiad';
+import {
+  BANDS, CHECKED_ON, classFromSlug, FAQ, OLYMPIAD_PATH, OLYMPIAD_SUBTITLE, OLYMPIAD_TITLE, olympiadClassHeading, olympiadClassPath, PATTERNS,
+  PATTERN_NOTES, SOF_DATES, SOURCES, SUBJECTS,
+} from '../content/olympiad';
 import { useMember } from '../hooks/useMember';
 import { useLocalList } from '../hooks/usePersonal';
 import { revisionIds, wrongQuestions } from '../hooks/usePracticeProgress';
@@ -10,9 +13,9 @@ import type { PracticeBankQuestion, PracticeCategory, PracticeSetSummary } from 
 import { formatDate } from '../utils/format';
 
 /**
- * The Olympiad view of the practice centre (/exams/practice?category=OLYMPIAD): choose a class, a subject and a topic,
- * then practise with the shared engine. Every test opens /exams/practice/session or a set page, so attempts, scores and
- * progress are recorded exactly as for every other practice; nothing here stores anything of its own.
+ * The Olympiad page (/exams/olympiad): choose a class (each has its own page, /exams/olympiad/class-5), a subject and a
+ * topic, then practise with the shared engine. Every test opens /exams/practice/session or a set page, so attempts,
+ * scores and progress are recorded exactly as for every other practice; nothing here stores anything of its own.
  */
 
 export const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
@@ -107,6 +110,8 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
   categoryLabels: Record<PracticeCategory, string>;
 }) {
   const [params, setParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const olympiad = useMemo(() => (bank ?? []).filter((q) => q.category === 'OLYMPIAD'), [bank]);
   const olympiadSets = useMemo(() => (sets ?? []).filter((s) => s.category === 'OLYMPIAD'), [sets]);
   const byClass = useMemo(() => {
@@ -114,8 +119,9 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
     for (const q of olympiad) { const n = classOf(q.level); if (n) m.set(n, [...(m.get(n) ?? []), q]); }
     return m;
   }, [olympiad]);
-  const requested = Number(params.get('class'));
-  const cls = byClass.has(requested) ? requested : null;
+  // The class is in the address: /exams/olympiad/class-5.
+  const requested = classFromSlug(pathname.split('/').pop());
+  const cls = requested && byClass.has(requested) ? requested : null;
   const subjectParam = params.get('subject');
   const classPool = cls ? byClass.get(cls)! : [];
   const subject = subjectParam && classPool.some((q) => q.section === subjectParam) ? subjectParam : null;
@@ -124,19 +130,24 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
   const [builderOpen, setBuilderOpen] = useState(false);
 
   const choose = (next: { class?: number | null; subject?: string | null }) => {
+    if ('class' in next) {
+      // Each class has its own page; its subject is chosen there.
+      navigate(next.class ? olympiadClassPath(next.class) : OLYMPIAD_PATH);
+      return;
+    }
     const p = new URLSearchParams(params);
-    p.set('category', 'OLYMPIAD');
-    if ('class' in next) { if (next.class) p.set('class', String(next.class)); else p.delete('class'); p.delete('subject'); }
-    if ('subject' in next) { if (next.subject) p.set('subject', next.subject); else p.delete('subject'); }
+    if (next.subject) p.set('subject', next.subject); else p.delete('subject');
     setParams(p, { replace: true });
   };
-  // After a choice, bring the next step into view (not on first load, so a shared link opens at the top).
-  const [scrollTo, setScrollTo] = useState<'subject' | 'practise' | null>(null);
+  // After a choice, bring the next step into view (not on first load, so a shared link opens at the top). A class
+  // opens its own page, which the layout first scrolls to the top, so the step is scrolled to just after that.
+  const pendingScroll = useRef<'subject' | 'practise' | null>(null);
   useEffect(() => {
-    if (!scrollTo) return;
-    (scrollTo === 'subject' ? subjectRef : practiseRef).current?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
-    setScrollTo(null);
-  }, [scrollTo, cls, subject]);
+    const target = pendingScroll.current;
+    if (!target) return;
+    pendingScroll.current = null;
+    window.setTimeout(() => (target === 'subject' ? subjectRef : practiseRef).current?.scrollIntoView?.({ behavior: 'smooth', block: 'start' }), 0);
+  }, [cls, subject]);
 
   const stats = {
     questions: olympiad.length,
@@ -147,13 +158,13 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
 
   return (
     <>
-      <OlympiadHero stats={bank ? stats : null} />
+      <OlympiadHero stats={bank ? stats : null} cls={requested} />
       <div className="container-page py-6 sm:py-8">
         <nav aria-label="Practice categories" className="-mx-1 flex flex-wrap items-center gap-2 text-sm">
           <span className="px-1 text-slate-500">Practice centre:</span>
           <Link to="/exams/practice" className="chip bg-slate-100 px-3 py-1 text-sm text-slate-700 hover:bg-slate-200">All</Link>
           {(['ENTRANCE', 'SCHOOL', 'OLYMPIAD'] as const).map((c) => (
-            <Link key={c} to={`/exams/practice?category=${c}`} aria-current={c === 'OLYMPIAD' ? 'page' : undefined}
+            <Link key={c} to={c === 'OLYMPIAD' ? OLYMPIAD_PATH : `/exams/practice?category=${c}`} aria-current={c === 'OLYMPIAD' ? 'page' : undefined}
               className={`chip px-3 py-1 text-sm ${c === 'OLYMPIAD' ? 'bg-navy text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}>
               {categoryLabels[c]}
             </Link>
@@ -163,12 +174,12 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
         {bankError ? <div className="mt-6"><ErrorState error={bankError} onRetry={onRetry} /></div> : !bank ? <Spinner /> : (
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="min-w-0 space-y-6">
-              <ClassPicker byClass={byClass} selected={cls} onChoose={(n) => { choose({ class: n }); setScrollTo('subject'); }} />
+              <ClassPicker byClass={byClass} selected={cls} onChoose={(n) => { pendingScroll.current = 'subject'; choose({ class: n }); }} />
               {cls && (
                 <section ref={subjectRef} aria-labelledby="step-subject" className="card scroll-mt-24 p-5 sm:p-6">
                   <StepHeading n={2} id="step-subject" title={`Choose a subject for Class ${ROMAN[cls]}`}
                     action={<button type="button" className="text-sm font-semibold text-slate-600 hover:text-ink hover:underline" onClick={() => choose({ class: null })}>Change class</button>} />
-                  <SubjectPicker pool={classPool} selected={subject} cls={cls} onChoose={(s) => { choose({ subject: s }); setScrollTo('practise'); }} />
+                  <SubjectPicker pool={classPool} selected={subject} cls={cls} onChoose={(s) => { pendingScroll.current = 'practise'; choose({ subject: s }); }} />
                 </section>
               )}
               {cls && subject && (
@@ -198,7 +209,7 @@ export function OlympiadPractice({ sets, setsError, bank, bankError, onRetry, po
   );
 }
 
-function OlympiadHero({ stats }: { stats: { questions: number; classes: number; subjects: number; hindi: number } | null }) {
+function OlympiadHero({ stats, cls }: { stats: { questions: number; classes: number; subjects: number; hindi: number } | null; cls: number | null }) {
   return (
     <div className="relative overflow-hidden bg-navy text-white">
       <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy to-royal-700/90" aria-hidden />
@@ -208,14 +219,18 @@ function OlympiadHero({ stats }: { stats: { questions: number; classes: number; 
           <ol className="flex flex-wrap items-center gap-1">
             <li><Link to="/exams" className="hover:text-white hover:underline">Exams</Link></li>
             <li aria-hidden>›</li>
-            <li><Link to="/exams/practice" className="hover:text-white hover:underline">Practice centre</Link></li>
-            <li aria-hidden>›</li>
-            <li aria-current="page" className="text-white">Olympiads</li>
+            {cls ? (
+              <>
+                <li><Link to={OLYMPIAD_PATH} className="hover:text-white hover:underline">Olympiads</Link></li>
+                <li aria-hidden>›</li>
+                <li aria-current="page" className="text-white">Class {ROMAN[cls]}</li>
+              </>
+            ) : <li aria-current="page" className="text-white">Olympiads</li>}
           </ol>
         </nav>
         <div className="mt-3 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">{OLYMPIAD_TITLE}</h1>
+            <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">{cls ? olympiadClassHeading(cls) : OLYMPIAD_TITLE}</h1>
             <p className="mt-2 text-base text-blue-100">{OLYMPIAD_SUBTITLE}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <a href="#step-class" className="btn bg-flame-500 text-navy-950 shadow-sm hover:bg-flame-400">Choose your class <Icon name="arrowRight" className="h-4 w-4" /></a>

@@ -45,13 +45,23 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(questions).noneMatch(q -> q.startsWith("Which board") || q.startsWith("What is the fee") || q.startsWith("When are admissions"));
 
         String head = fetch("/api/v1/seo/head/schools/" + slug);
+        // The profile's own first sentence describes the School entity (the same words the page opens with).
+        String about = "Fixture Ridge & Vale School is a private boarding school in Uttarakhand. It teaches classes from Class VI to Class XII.";
         assertThat(head).contains("\"@type\":\"FAQPage\"")
                 .contains("\"name\":\"Does Fixture Ridge & Vale School have a hostel?\"")
-                .contains("\"text\":\"Yes, Fixture Ridge & Vale School has a hostel.\"");
+                .contains("\"text\":\"Yes, Fixture Ridge & Vale School has a hostel.\"")
+                .contains("\"@id\":\"http://localhost/schools/" + slug + "#school\"")
+                .contains("\"description\":\"" + about + "\"");
 
         String page = fetch("/api/v1/seo/body/schools/" + slug);
         assertThat(page).contains("data-prerender")
                 .contains("<h1>Fixture Ridge &amp; Vale School</h1>")
+                // Answer first: the factual introduction, as the app's "About" card opens.
+                .contains("<h1>Fixture Ridge &amp; Vale School</h1><p class=\"pr-lead\">" + about.replace("&", "&amp;") + "</p>")
+                // Where the profile comes from, and whether it was checked: real dates only.
+                .contains("<h2>School information &amp; sources</h2>").contains("Profile from the school’s official record")
+                .contains("Source: edudel.nic.in</a>").contains("Not yet checked by a SchoolDhundo editor.")
+                .contains("Record last updated <time datetime=\"")
                 .contains("<h2>Quick answers</h2>")
                 .contains("<dt>Does Fixture Ridge &amp; Vale School have a hostel?</dt>")
                 .contains("<dt>Classes</dt><dd>Class VI to Class XII</dd>")
@@ -91,7 +101,7 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(fetch("/api/v1/seo/body/exams/practice")).contains("<h1>").doesNotContain("Official links");
         // The hub and the class pages link every exam's guide (prep exams to their /guide), as the app lists them.
         assertThat(fetch("/api/v1/seo/body/exams")).contains("href=\"/exams/netarhat/guide\"").contains("href=\"/exams/jnvst\"")
-                .contains("href=\"/exams/class/6\"").contains("href=\"/exams/practice?category=OLYMPIAD\"");
+                .contains("href=\"/exams/class/6\"").contains("href=\"/exams/olympiad\"");
         assertThat(fetch("/api/v1/seo/body/exams/class/6")).contains("href=\"/exams/aissee/guide\"").contains("href=\"/exams\">Exams</a>");
     }
 
@@ -119,6 +129,28 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 // A town with too few schools for a page of its own is not linked.
                 .doesNotContain("fixturegaon");
         assertThat(fetch("/api/v1/seo/body/rankings/states")).contains("href=\"/rankings/methodology\"");
+    }
+
+    @Test
+    void aDistrictAndTheTownOfTheSameNameAreToldApartAndLinked() throws Exception {
+        for (String n : List.of("One", "Two", "Three")) {
+            createSchool(school("Fixture Twin " + n + " School", Map.of("stateCode", "UK", "district", "Fixtureabad", "city", "Fixtureabad")));
+        }
+        createSchool(school("Fixture Twin Outer School", Map.of("stateCode", "UK", "district", "Fixtureabad", "city", "Fixturepur")));
+        assertThat(fetch("/api/v1/seo/head/states/uttarakhand/fixtureabad"))
+                .contains("<title>Schools in Fixtureabad District, Uttarakhand | SchoolDhundo</title>");
+        assertThat(fetch("/api/v1/seo/head/states/uttarakhand/city/fixtureabad"))
+                .contains("<title>Schools in Fixtureabad, Uttarakhand | SchoolDhundo</title>");
+        assertThat(fetch("/api/v1/seo/body/states/uttarakhand/fixtureabad"))
+                .contains("<h1>Schools in Fixtureabad District, Uttarakhand</h1>")
+                .contains("Just the city: <a href=\"/states/uttarakhand/city/fixtureabad\">3 schools in Fixtureabad</a>");
+        assertThat(fetch("/api/v1/seo/body/states/uttarakhand/city/fixtureabad"))
+                .contains("<h1>Schools in Fixtureabad, Uttarakhand</h1>")
+                .contains("The whole district: <a href=\"/states/uttarakhand/fixtureabad\">4 schools in Fixtureabad District</a>");
+        // A town of another name has no such link.
+        createSchool(school("Fixture Pur Two School", Map.of("stateCode", "UK", "district", "Fixtureabad", "city", "Fixturepur")));
+        createSchool(school("Fixture Pur Three School", Map.of("stateCode", "UK", "district", "Fixtureabad", "city", "Fixturepur")));
+        assertThat(fetch("/api/v1/seo/body/states/uttarakhand/city/fixturepur")).doesNotContain("The whole district");
     }
 
     @Test
@@ -157,7 +189,8 @@ class SeoBodyIT extends AbstractIntegrationTest {
         String page = fetch("/api/v1/seo/body/exams/practice/fixture-ssr-quiz");
         assertThat(page).contains("<h1>").contains("<p class=\"pr-lead\">Fixture practice on fractions.</p>")
                 .contains("<dt>Questions</dt><dd>1</dd>").contains("<dt>Level</dt><dd>Class V</dd>")
-                .contains("href=\"/exams/practice?category=OLYMPIAD\"").contains("not official")
+                // An Olympiad set for one class leads to that class's Olympiad page.
+                .contains("href=\"/exams/olympiad/class-5\"").contains("href=\"/exams/olympiad\"").contains("not official")
                 // A landing page never carries the questions or the answer key.
                 .doesNotContain("Fixture prompt one").doesNotContain("Fixture secret explanation");
         assertThat(fetch("/api/v1/seo/body/exams/practice/no-such-set")).isEmpty();
@@ -176,7 +209,12 @@ class SeoBodyIT extends AbstractIntegrationTest {
 
         assertThat(fetch("/api/v1/seo/head/")).contains("\"@type\":\"WebSite\"").contains("\"@type\":\"Organization\"")
                 .contains("<link rel=\"preload\" as=\"image\" media=\"(min-width: 1024px)\"").contains("og:image")
-                .contains("\"url\":\"http://localhost/contact\"");
+                .contains("\"url\":\"http://localhost/contact\"")
+                // One entity for the site, with the spellings people use, its publisher and its editorial policy.
+                .contains("\"@id\":\"http://localhost/#organization\"").contains("\"@id\":\"http://localhost/#website\"")
+                .contains("\"alternateName\":[\"School Dhundo\",\"schooldhundo.in\"]")
+                .contains("\"publisher\":{\"@id\":\"http://localhost/#organization\"}")
+                .contains("\"publishingPrinciples\":\"http://localhost/editorial-policy\"");
 
         // A published notice appears in the home page's first paint, as a link with its date.
         jdbc.execute("TRUNCATE site_update RESTART IDENTITY");
@@ -223,7 +261,9 @@ class SeoBodyIT extends AbstractIntegrationTest {
         String head = fetch("/api/v1/seo/head/network/sainik-school");
         assertThat(head).contains("<title>Sainik Schools in India: list and admission | SchoolDhundo</title>")
                 .contains("content=\"2 schools listed. Residential schools run by the Sainik Schools Society")
-                .contains("href=\"http://localhost/network/sainik-school\"").doesNotContain("noindex");
+                .contains("href=\"http://localhost/network/sainik-school\"").doesNotContain("noindex")
+                // Schools › Sainik Schools, as the page's heading names it.
+                .contains("\"@type\":\"BreadcrumbList\"").contains("\"position\":2,\"name\":\"Sainik Schools\"");
 
         String page = fetch("/api/v1/seo/body/network/sainik-school");
         assertThat(page).contains("<h1>Sainik Schools in India: list and admission</h1>")

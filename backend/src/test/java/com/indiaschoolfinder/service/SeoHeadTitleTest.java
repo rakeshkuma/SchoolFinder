@@ -23,6 +23,85 @@ class SeoHeadTitleTest {
     }
 
     @Test
+    void profileTitlesFitBySheddingTheSchemePrefixThenTheTopicThenNetworkWords() {
+        String admissions = ": Admissions & Details";
+        // Short enough as it is: unchanged, with the site name.
+        assertThat(SeoHeadService.schoolTitle("Delhi Public School R. K. Puram", null, "", ": Fees, Admissions & Details"))
+                .isEqualTo("Delhi Public School R. K. Puram: Fees, Admissions & Details | SchoolDhundo");
+        assertThat(SeoHeadService.schoolTitle("Sainik School Amethi", "Amethi", "", admissions))
+                .isEqualTo("Sainik School Amethi: Admissions & Details | SchoolDhundo");
+        // "PM SHRI School" goes first (the record and the heading keep it), then the topic.
+        assertThat(SeoHeadService.schoolTitle("PM SHRI School Jawahar Navodaya Vidyalaya Sukma", "Sukma", "", admissions))
+                .isEqualTo("Jawahar Navodaya Vidyalaya Sukma: Admissions & Details | SchoolDhundo");
+        assertThat(SeoHeadService.schoolTitle("PM SHRI School Jawahar Navodaya Vidyalaya, Birauli, Samastipur", "Samastipur", "", admissions))
+                .isEqualTo("Jawahar Navodaya Vidyalaya, Birauli, Samastipur | SchoolDhundo");
+        assertThat(SeoHeadService.schoolTitle("Jawahar Navodaya Vidyalaya, Chendayad", "Kannur", "", admissions))
+                .isEqualTo("Jawahar Navodaya Vidyalaya, Chendayad, Kannur | SchoolDhundo");
+        // Only a name still too long is shortened to the initials people search by (fitTitle then drops the site name).
+        assertThat(SeoHeadService.schoolTitle("PM SHRI School Jawahar Navodaya Vidyalaya, Pilla Salki Dam Site Tudipaju. Phulbani, Kandhamal",
+                "Kandhamal", "", admissions)).isEqualTo("JNV Pilla Salki Dam Site Tudipaju. Phulbani, Kandhamal | SchoolDhundo");
+        assertThat(SeoHeadService.schoolTitle("PM SHRI Kendriya Vidyalaya No. 2 Air Force Station Hindan Ghaziabad Uttar Pradesh",
+                "Ghaziabad", "", admissions)).isEqualTo("KV No. 2 Air Force Station Hindan Ghaziabad Uttar Pradesh | SchoolDhundo");
+        // The PIN code that tells namesakes apart is always kept; the topic gives way to it.
+        assertThat(SeoHeadService.schoolTitle("Calcutta Public School", "Kolkata", " (700159)", ": ICSE/ISC School Details"))
+                .isEqualTo("Calcutta Public School, Kolkata (700159) | SchoolDhundo");
+        assertThat(SeoHeadService.fitTitle(SeoHeadService.schoolTitle(
+                "PM SHRI School Jawahar Navodaya Vidyalaya, Pilla Salki Dam Site Tudipaju. Phulbani, Kandhamal", "Kandhamal", "", admissions)))
+                .hasSizeLessThanOrEqualTo(SeoHeadService.TITLE_MAX);
+    }
+
+    @Test
+    void networkWordsAndTheSchemePrefixAreRecognisedAsRecorded() {
+        assertThat(SeoHeadService.withoutSchemePrefix("PM SHRI Kendriya Vidyalaya Andrews Ganj")).isEqualTo("Kendriya Vidyalaya Andrews Ganj");
+        assertThat(SeoHeadService.withoutSchemePrefix("PM Shri School Jawahar Navodaya Vidyalaya, Roopvel")).isEqualTo("Jawahar Navodaya Vidyalaya, Roopvel");
+        assertThat(SeoHeadService.withoutSchemePrefix("PM SHRI School")).isEqualTo("PM SHRI School");
+        assertThat(SeoHeadService.withoutSchemePrefix("Shri Ram School")).isEqualTo("Shri Ram School");
+        assertThat(SeoHeadService.networkInitials("Jawahar Navodaya Vidyalaya, Chendayad")).isEqualTo("JNV Chendayad");
+        assertThat(SeoHeadService.networkInitials("Jaawahar Navodaya Vidyalaya Mandi")).isEqualTo("JNV Mandi");
+        assertThat(SeoHeadService.networkInitials("Jawahar Navodaya Vidayalaya, Amipur")).isEqualTo("JNV Amipur");
+        assertThat(SeoHeadService.networkInitials("Kendriya Vidyalaya No. 1 Jammu")).isEqualTo("KV No. 1 Jammu");
+        assertThat(SeoHeadService.networkInitials("Kenriya Vidyalaya Ziro")).isEqualTo("KV Ziro");
+        assertThat(SeoHeadService.networkInitials("Delhi Public School")).isEqualTo("Delhi Public School");
+    }
+
+    @Test
+    void districtPagesSayDistrict() {
+        assertThat(SeoHeadService.districtName("Patna")).isEqualTo("Patna District");
+        assertThat(SeoHeadService.districtName("Mumbai Suburban")).isEqualTo("Mumbai Suburban District");
+        assertThat(SeoHeadService.districtName("Leh District")).isEqualTo("Leh District");
+    }
+
+    @Test
+    void olympiadAddresses() {
+        assertThat(OlympiadPages.classNumber("Class V")).isEqualTo(5);
+        assertThat(OlympiadPages.classNumber("Class X")).isEqualTo(10);
+        assertThat(OlympiadPages.classNumber("Class V–VI")).isZero();
+        assertThat(OlympiadPages.classNumber(null)).isZero();
+        // The old address, /exams/practice?category=OLYMPIAD with an optional class=5, stands for the new page.
+        assertThat(OlympiadPages.addressFor("5")).isEqualTo("/exams/olympiad/class-5");
+        assertThat(OlympiadPages.addressFor(null)).isEqualTo("/exams/olympiad");
+        assertThat(OlympiadPages.addressFor("13")).isEqualTo("/exams/olympiad");
+        assertThat(OlympiadPages.addressFor("5; drop")).isEqualTo("/exams/olympiad");
+        var page = new OlympiadPages.ClassPage(9, java.util.List.of(), 40, java.util.List.of("Maths", "Science", "English", "Reasoning", "IOQM-style Maths"));
+        assertThat(page.title()).isEqualTo("Class 9 Olympiad Preparation: Maths, Science & English").hasSizeLessThanOrEqualTo(SeoHeadService.TITLE_MAX);
+        assertThat(page.description()).isEqualTo("Class 9 Olympiad practice: 40 original questions in Maths, Science, English, Reasoning and "
+                + "IOQM-style Maths, with timed mock tests and explained answers.").hasSizeLessThanOrEqualTo(160);
+        assertThat(new OlympiadPages.ClassPage(1, java.util.List.of(), 6, java.util.List.of("Reasoning")).description())
+                .isEqualTo("Class 1 Olympiad practice: 6 original questions in Reasoning, with explained answers.");
+        assertThat(new OlympiadPages.ClassPage(1, java.util.List.of(), 6, java.util.List.of("Reasoning")).title())
+                .isEqualTo("Class 1 Olympiad Preparation: Practice Tests");
+    }
+
+    @Test
+    void aBylineIsAPersonWithAJobTitle() {
+        var author = SeoHeadService.author("Rakesh Kumar, Editor", "https://schooldhundo.in");
+        assertThat(author).containsEntry("@type", "Person").containsEntry("name", "Rakesh Kumar").containsEntry("jobTitle", "Editor")
+                .containsEntry("url", "https://schooldhundo.in/about");
+        assertThat(SeoHeadService.author("Test Author", "https://schooldhundo.in")).containsEntry("name", "Test Author")
+                .doesNotContainKey("jobTitle");
+    }
+
+    @Test
     void networkSlugsAreTheEnumNamesInKebabCase() {
         assertThat(SeoHeadService.network("sainik-school")).isEqualTo(SchoolNetwork.SAINIK_SCHOOL);
         assertThat(SeoHeadService.network("jawahar-navodaya-vidyalaya")).isEqualTo(SchoolNetwork.JAWAHAR_NAVODAYA_VIDYALAYA);

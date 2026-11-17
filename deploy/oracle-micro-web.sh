@@ -160,4 +160,50 @@ done
 curl -fsS http://127.0.0.1:8080/actuator/health || { echo "Backend not up yet; see: sudo journalctl -u schooldhundo -n 100"; exit 1; }
 echo
 curl -fsS -o /dev/null -w "Website through nginx: HTTP %{http_code}\n" http://127.0.0.1:8081/
+
+say "Keeping the search-engine copies of every sitemap page warm"
+# deploy/warm-seo-cache.sh asks nginx for every sitemap page, one a second (about an hour), so a search engine is not
+# the first to ask for a page that is not cached. It runs daily at 06:45 IST, after the 06:00 notification sync, and
+# 10 minutes after each deploy: by then every copy made before the deploy has expired, so each one is refreshed from
+# the new version while visitors keep being served the old copy. It never stops a deploy.
+if [ -f "$UPLOAD/warm-seo-cache.sh" ]; then
+  sed 's/\r$//' "$UPLOAD/warm-seo-cache.sh" | sudo tee /usr/local/bin/schooldhundo-warm-cache >/dev/null
+  sudo chmod 755 /usr/local/bin/schooldhundo-warm-cache
+  sudo tee /etc/systemd/system/schooldhundo-warm.service >/dev/null <<'EOF'
+[Unit]
+Description=Refresh nginx's cached copy of every SchoolDhundo sitemap page
+After=nginx.service schooldhundo.service
+
+[Service]
+Type=oneshot
+User=nobody
+Nice=10
+ExecStart=/usr/local/bin/schooldhundo-warm-cache
+EOF
+  sudo tee /etc/systemd/system/schooldhundo-warm.timer >/dev/null <<'EOF'
+[Unit]
+Description=Daily refresh of nginx's cached copies of SchoolDhundo pages
+
+[Timer]
+OnCalendar=*-*-* 06:45:00 Asia/Kolkata
+RandomizedDelaySec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+EOF
+  sudo systemctl daemon-reload
+  sudo systemctl enable --now schooldhundo-warm.timer >/dev/null 2>&1 || echo "Could not enable the daily cache refresh (schooldhundo-warm.timer)"
+  if sudo systemd-run --quiet --collect --on-active=600 --unit="schooldhundo-warm-after-deploy-$(date +%s)" \
+      /bin/systemctl start --no-block schooldhundo-warm.service; then
+    echo "The cache refresh starts in 10 minutes and takes about an hour (journalctl -u schooldhundo-warm)"
+  else
+    echo "Could not schedule the cache refresh; start it with: sudo systemctl start schooldhundo-warm.service"
+  fi
+fi
+# How often search and AI answer engines fetch the site, from nginx's log: sudo schooldhundo-crawler-report
+if [ -f "$UPLOAD/crawler-report.sh" ]; then
+  sed 's/\r$//' "$UPLOAD/crawler-report.sh" | sudo tee /usr/local/bin/schooldhundo-crawler-report >/dev/null
+  sudo chmod 755 /usr/local/bin/schooldhundo-crawler-report
+fi
 free -m

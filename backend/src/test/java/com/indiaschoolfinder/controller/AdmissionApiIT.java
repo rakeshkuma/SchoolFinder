@@ -50,6 +50,24 @@ class AdmissionApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void theAdmissionsCalendarAnswersFirstInItsServerRenderedPage() throws Exception {
+        post(cycle("GENERAL", TODAY.minusDays(2), TODAY.plusDays(10))).andExpect(status().isCreated());
+        post(cycle("EWS_DG", TODAY.plusDays(20), TODAY.plusDays(40))).andExpect(status().isCreated());
+        post(cycle("CWSN", null, null)).andExpect(status().isCreated()); // not announced: not on the calendar
+        String body = mockMvc.perform(get("/api/v1/seo/body/admissions")).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        org.assertj.core.api.Assertions.assertThat(body)
+                .contains("<h1>Admission process and deadlines</h1>")
+                .contains("2 upcoming or open admission cycles are recorded. The soonest last date to apply is <time datetime=\""
+                        + TODAY.plusDays(10) + "\">")
+                .contains("href=\"/schools/admissions-test-school\"").contains(">Official notice</a>")
+                .contains("href=\"/admissions/guide\"");
+        String head = mockMvc.perform(get("/api/v1/seo/head/admissions")).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        org.assertj.core.api.Assertions.assertThat(head).contains("content=\"2 upcoming and open admission cycles. ");
+    }
+
+    @Test
     void statusIsDerivedFromDatesAndCategoriesAreKeptSeparate() throws Exception {
         post(cycle("GENERAL", TODAY.minusDays(2), TODAY.plusDays(10)))
                 .andExpect(status().isCreated())

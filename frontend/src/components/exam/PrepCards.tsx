@@ -20,7 +20,7 @@ const EXAM_CARDS: PrepCard[] = [
   { to: '/exams/jnvst', title: 'JNVST', text: 'Navodaya Class VI entrance: guide and mock tests', icon: 'graduation', tone: 'from-brand-600 to-brand-400', count: (q) => q.examSlug === 'jnvst' },
   { to: '/exams/aissee', title: 'Sainik School', text: 'AISSEE Class VI and IX practice', icon: 'flag', tone: 'from-emerald-600 to-emerald-400', count: (q) => q.examSlug === 'aissee' },
   { to: '/exams/netarhat', title: 'Netarhat', text: 'Class 6 entrance: all five Paper 1 subjects, in Hindi and English', icon: 'home', tone: 'from-teal-600 to-teal-400', count: (q) => q.examSlug === 'netarhat' },
-  { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiads', text: 'Class-wise Maths, Science, English and Reasoning', icon: 'trophy', tone: 'from-accent-600 to-accent-400', count: (q) => q.category === 'OLYMPIAD' },
+  { to: '/exams/olympiad', title: 'Olympiads', text: 'Class-wise Maths, Science, English and Reasoning', icon: 'trophy', tone: 'from-accent-600 to-accent-400', count: (q) => q.category === 'OLYMPIAD' },
 ];
 
 const SUBJECT_CARDS: PrepCard[] = [

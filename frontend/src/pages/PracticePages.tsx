@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { track } from '../utils/analytics';
-import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Icon, type IconName } from '../components/common/Icon';
 import { FigureRow, FigureView } from '../components/exam/FigureView';
 import { PageHeader } from '../components/common/PageHeader';
@@ -26,8 +26,8 @@ import type {
 import { formatDate } from '../utils/format';
 import { clearProgress, loadProgress, saveProgress, type TestProgress } from '../utils/testProgress';
 import { NotFoundPage } from './InfoPages';
-import { OLYMPIAD_DESCRIPTION, OLYMPIAD_DOC_TITLE } from '../content/olympiad';
-import { OlympiadPractice, olympiadSessionText } from './OlympiadPractice';
+import { classFromSlug, OLYMPIAD_DESCRIPTION, OLYMPIAD_DOC_TITLE, OLYMPIAD_PATH, olympiadClassHeading, olympiadClassPath } from '../content/olympiad';
+import { classOf, OlympiadPractice, olympiadSessionText } from './OlympiadPractice';
 
 /** Shown wherever practice questions appear: they are this site's own, never the exam body's. */
 export const PRACTICE_LABEL = 'SchoolDhundo Practice Questions';
@@ -211,9 +211,9 @@ function PointsNote() {
 
 export function PracticeListPage() {
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const category = isCategory(params.get('category')) ? params.get('category') as PracticeCategory : null;
-  useDocumentTitle(category === 'OLYMPIAD' ? OLYMPIAD_DOC_TITLE : 'Practice centre: free practice tests for entrance exams, Olympiads and school subjects',
-    category === 'OLYMPIAD' ? OLYMPIAD_DESCRIPTION : undefined);
+  useDocumentTitle('Practice centre: free practice tests for entrance exams, Olympiads and school subjects');
   const sets = useApi(() => practiceService.list(), []);
   const bank = useApi(() => practiceService.bank(), []);
   const exams = useApi(() => examService.all(), []);
@@ -222,19 +222,21 @@ export function PracticeListPage() {
   const subjects = new Set((bank.data?.questions ?? []).map((q) => q.section)).size;
   const hindiCount = (bank.data?.questions ?? []).filter((q) => q.hindi).length;
   const chooseCategory = (c: PracticeCategory | null) => {
+    // Olympiads have a page of their own.
+    if (c === 'OLYMPIAD') { navigate(OLYMPIAD_PATH); return; }
     const next = new URLSearchParams(params);
     if (c) next.set('category', c); else next.delete('category');
     setParams(next, { replace: true });
   };
 
-  // Olympiads have their own class-first page on the same address; it uses the same sets, bank and practice engine.
+  // The Olympiad page's old address (with ?class=5 for a class, and a chosen subject) leads to its own page.
   if (category === 'OLYMPIAD') {
-    return (
-      <OlympiadPractice sets={sets.data} setsError={sets.error} bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
-        categoryLabels={CATEGORY_LABEL} pointsNote={<PointsNote />}
-        advancedBuilder={<SessionBuilder key="olympiad" bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
-          examName={examName} examSlugs={(exams.data ?? []).map((e) => e.slug)} initialCategory="OLYMPIAD" />} />
-    );
+    const n = Number(params.get('class'));
+    const subject = params.get('subject');
+    return <Navigate replace to={{
+      pathname: Number.isInteger(n) && n >= 1 && n <= 12 ? olympiadClassPath(n) : OLYMPIAD_PATH,
+      search: subject ? `?${new URLSearchParams({ subject })}` : '',
+    }} />;
   }
 
   return (
@@ -675,7 +677,7 @@ export function PracticeTestPage() {
       minutes: set.durationMinutes, reviewedOn: set.reviewedOn,
       bankId: (id) => `${set.slug}/${id}`,
       guestScore: (answers) => practiceService.score(set.slug, answers),
-      ...(set.category === 'OLYMPIAD' ? { home: OLYMPIAD_HOME, scope: { category: 'OLYMPIAD', level: set.level } } : {}),
+      ...(set.category === 'OLYMPIAD' ? { home: olympiadHome(set.level), scope: { category: 'OLYMPIAD', level: set.level } } : {}),
     };
   }, [state.data]);
   if (state.error instanceof ApiError && state.error.status === 404) return <NotFoundPage />;
@@ -684,8 +686,36 @@ export function PracticeTestPage() {
   return <Player key={sitting.key} sitting={sitting} />;
 }
 
-const OLYMPIAD_HOME = { to: '/exams/practice?category=OLYMPIAD', label: 'Olympiad practice' };
+/** Where Olympiad practice leads back to: the class's own Olympiad page when it is for one class. */
+const olympiadHome = (level: string | null | undefined) => {
+  const n = classOf(level);
+  return { to: n ? olympiadClassPath(n) : OLYMPIAD_PATH, label: 'Olympiad practice' };
+};
 const PRACTICE_HOME = { to: '/exams/practice', label: 'Practice centre' };
+
+/**
+ * The Olympiad page (/exams/olympiad) and each class's page (/exams/olympiad/class-5). It uses the same sets, question
+ * bank and practice engine as the practice centre; an address for a class without Olympiad questions is not a page.
+ */
+export function OlympiadPage() {
+  const { classSlug } = useParams();
+  const cls = classSlug === undefined ? null : classFromSlug(classSlug);
+  const sets = useApi(() => practiceService.list(), []);
+  const bank = useApi(() => practiceService.bank(), []);
+  const exams = useApi(() => examService.all(), []);
+  const examName = useCallback((slug: string | null) => exams.data?.find((e) => e.slug === slug)?.shortName ?? slug ?? 'General',
+    [exams.data]);
+  useDocumentTitle(cls ? olympiadClassHeading(cls) : OLYMPIAD_DOC_TITLE, cls ? undefined : OLYMPIAD_DESCRIPTION);
+  const noSuchClass = classSlug !== undefined && (cls === null
+    || (bank.data !== null && !bank.data.questions.some((q) => q.category === 'OLYMPIAD' && classOf(q.level) === cls)));
+  if (noSuchClass) return <NotFoundPage />;
+  return (
+    <OlympiadPractice sets={sets.data} setsError={sets.error} bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
+      categoryLabels={CATEGORY_LABEL} pointsNote={<PointsNote />}
+      advancedBuilder={<SessionBuilder key="olympiad" bank={bank.data?.questions ?? null} bankError={bank.error} onRetry={bank.reload}
+        examName={examName} examSlugs={(exams.data ?? []).map((e) => e.slug)} initialCategory="OLYMPIAD" />} />
+  );
+}
 
 const BANK_MODES: PracticeMode[] = ['QUICK', 'TOPIC', 'MINI_MOCK', 'FULL', 'DAILY', 'REVISION', 'RETRY'];
 /** Modes that draw questions at random (the daily challenge is already the same for everyone on a day). */
@@ -743,7 +773,7 @@ export function PracticeSessionPage() {
       bankId: (id) => id,
       guestScore: (answers) => practiceService.scoreSession(ids, answers),
       ...(params.get('category') === 'OLYMPIAD'
-        ? { home: OLYMPIAD_HOME, scope: { category: 'OLYMPIAD', ...(params.get('level') ? { level: params.get('level')! } : {}) } } : {}),
+        ? { home: olympiadHome(params.get('level')), scope: { category: 'OLYMPIAD', ...(params.get('level') ? { level: params.get('level')! } : {}) } } : {}),
     };
   }, [state.data, params, location.key, timer]);
 

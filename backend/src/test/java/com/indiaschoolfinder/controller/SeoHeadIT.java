@@ -128,7 +128,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
     }
 
     @Test
-    void olympiadPageHasItsOwnHeadAndContent() throws Exception {
+    void olympiadPagesHaveTheirOwnAddresses() throws Exception {
         Integer present = jdbc.queryForObject("SELECT count(*) FROM practice_set WHERE slug = 'olympiad-class5-maths-1'", Integer.class);
         if (present == null || present == 0) {
             mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
@@ -136,23 +136,59 @@ class SeoHeadIT extends AbstractIntegrationTest {
                     .content(new ClassPathResource("seed/practice.json").getContentAsString(StandardCharsets.UTF_8)))
                     .andExpect(status().isOk());
         }
-        // /exams/practice?category=OLYMPIAD is a page of its own: its own title, description and canonical address.
-        assertThat(head("/exams/practice?category=OLYMPIAD"))
+        // /exams/olympiad is a page of its own: its own title, description and canonical address.
+        assertThat(head("/exams/olympiad"))
                 .contains("<title>Olympiad Preparation &amp; Practice: Classes 1 to 10</title>")
-                .contains("href=\"http://localhost/exams/practice?category=OLYMPIAD\"")
+                .contains("href=\"http://localhost/exams/olympiad\"")
                 .contains("IOQM-style").contains("\"@type\":\"BreadcrumbList\"")
                 .doesNotContain("noindex");
+        // Each class with published Olympiad sets has a page, named the way people search ("olympiad for class 5").
+        assertThat(head("/exams/olympiad/class-5"))
+                .contains("<title>Class 5 Olympiad Preparation: Maths, Science &amp; English</title>")
+                .contains("href=\"http://localhost/exams/olympiad/class-5\"")
+                .contains("content=\"Class 5 Olympiad practice: ").contains("timed mock tests")
+                .contains("\"position\":3,\"name\":\"Olympiad preparation\",\"item\":\"http://localhost/exams/olympiad\"")
+                .doesNotContain("noindex");
+        // A class without Olympiad sets, and any other address under /exams/olympiad, is not a page.
+        assertThat(head("/exams/olympiad/class-12")).contains("noindex");
+        assertThat(head("/exams/olympiad/class-x")).contains("noindex");
+        assertThat(head("/exams/olympiad/guide")).contains("noindex");
+        // The old address (the practice centre filtered to Olympiads) stands for the new one, whose canonical link it
+        // carries; the app moves visitors on.
+        assertThat(head("/exams/practice?category=OLYMPIAD")).contains("href=\"http://localhost/exams/olympiad\"")
+                .contains("<title>Olympiad Preparation &amp; Practice: Classes 1 to 10</title>").doesNotContain("noindex");
+        assertThat(head("/exams/practice?category=OLYMPIAD&class=5")).contains("href=\"http://localhost/exams/olympiad/class-5\"");
         // The practice centre, and its other filters, keep the practice centre's head.
-        assertThat(head("/exams/practice")).contains("href=\"http://localhost/exams/practice\"").doesNotContain("category=OLYMPIAD");
+        assertThat(head("/exams/practice")).contains("href=\"http://localhost/exams/practice\"").doesNotContain("olympiad\"");
         assertThat(head("/exams/practice?category=SCHOOL")).contains("href=\"http://localhost/exams/practice\"").doesNotContain("category=");
         assertThat(head("/exams/practice/progress?category=OLYMPIAD")).contains("noindex");
-        String body = mockMvc.perform(get("/api/v1/seo/body/exams/practice").param("category", "OLYMPIAD")).andExpect(status().isOk())
+
+        String hub = mockMvc.perform(get("/api/v1/seo/body/exams/olympiad")).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
-        assertThat(body).contains("<h1>Olympiad Preparation &amp; Practice</h1>").contains("<h3>Class V</h3>")
-                .contains("href=\"/exams/practice/olympiad-class5-maths-1\"").contains("not connected with SOF");
+        assertThat(hub).contains("<h1>Olympiad Preparation &amp; Practice</h1>").contains("<h3>Class V</h3>")
+                .contains("href=\"/exams/practice/olympiad-class5-maths-1\"").contains("not connected with SOF")
+                .contains("href=\"/exams/olympiad/class-5\"").contains("href=\"/exams/olympiad/class-1\"");
+        String legacy = mockMvc.perform(get("/api/v1/seo/body/exams/practice").param("category", "OLYMPIAD")).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        assertThat(legacy).isEqualTo(hub);
+        String classPage = mockMvc.perform(get("/api/v1/seo/body/exams/olympiad/class-5")).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        assertThat(classPage).contains("<h1>Class 5 Olympiad Preparation</h1>").contains("<h2>Class V practice sets</h2>")
+                .contains("href=\"/exams/practice/olympiad-class5-maths-1\"").contains("<dt>Subjects</dt>")
+                .contains("href=\"/exams/olympiad/class-4\"").contains("not connected with SOF")
+                // The class page lists sets; their questions and answers stay out of the page.
+                .doesNotContain("\"answer\"").doesNotContain("explanation");
+        assertThat(mockMvc.perform(get("/api/v1/seo/body/exams/olympiad/class-12")).andReturn().getResponse().getContentAsString()).isEmpty();
+
         mockMvc.perform(get("/sitemaps/pages.xml"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
-                        .string(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/practice?category=OLYMPIAD</loc>")));
+                        .string(org.hamcrest.Matchers.allOf(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/olympiad</loc>"),
+                                org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("category=OLYMPIAD")))));
+        mockMvc.perform(get("/sitemaps/exams.xml"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .string(org.hamcrest.Matchers.allOf(org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/olympiad/class-5</loc>"),
+                                org.hamcrest.Matchers.containsString("<loc>http://localhost/exams/olympiad/class-10</loc>"),
+                                org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("/exams/olympiad/class-12")))));
     }
 
     @Test
@@ -165,7 +201,9 @@ class SeoHeadIT extends AbstractIntegrationTest {
         createSchool(school("Fixture Valley School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | SchoolDhundo</title>")
                 .contains("3 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
-        assertThat(head("/states/uttarakhand/nainital")).contains("Schools in Nainital, Uttarakhand").doesNotContain("noindex");
+        // A district page says "District", so it is not mistaken for the town of the same name (/states/…/city/…).
+        assertThat(head("/states/uttarakhand/nainital")).contains("<title>Schools in Nainital District, Uttarakhand | SchoolDhundo</title>")
+                .doesNotContain("noindex");
         assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex")
                 .contains("\"@type\":\"BreadcrumbList\"")
@@ -195,7 +233,19 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Preparation 2027: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
         assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
-                .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex");
+                .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex")
+                // The guide is an Article by the site, dated when its facts were last checked, with the questions it shows.
+                .contains("\"@type\":\"Article\"").contains("\"headline\":\"JNVST: eligibility, dates, pattern and syllabus\"")
+                .contains("\"publisher\":{\"@type\":\"Organization\",\"@id\":\"http://localhost/#organization\"")
+                .contains("\"@type\":\"FAQPage\"").contains("\"name\":\"Is there an application fee for JNVST?\"")
+                .doesNotContain("datePublished");
+        String guideBody = mockMvc.perform(get("/api/v1/seo/body/exams/jnvst/guide")).andReturn().getResponse()
+                .getContentAsString(StandardCharsets.UTF_8);
+        String checked = jdbc.queryForObject("SELECT last_verified_on::text FROM exam WHERE slug = 'jnvst'", String.class);
+        if (checked != null) {
+            assertThat(head("/exams/jnvst/guide")).contains("\"dateModified\":\"" + checked + "\"");
+            assertThat(guideBody).contains("Checked against these sources on <time datetime=\"" + checked + "\">");
+        }
         assertThat(head("/exams/aissee")).contains("<title>AISSEE 2027 Class 6 Preparation: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/aissee\"").doesNotContain("noindex");
         assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")

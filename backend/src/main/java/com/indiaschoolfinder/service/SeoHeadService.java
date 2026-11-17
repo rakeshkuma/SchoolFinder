@@ -220,7 +220,7 @@ public class SeoHeadService {
 
     /** Paths under /exams that are pages, not exam slugs; the exam import rejects them as slugs. */
     public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state",
-            "leaderboard", "achievements", "challenges");
+            "leaderboard", "achievements", "challenges", "olympiad");
 
     private static Map.Entry<String, String[]> page(String path, String title, String description) {
         return Map.entry(path, new String[]{title, description});
@@ -244,29 +244,37 @@ public class SeoHeadService {
                 null, null, null, "recommended", null, 0, size);
     }
 
-    /** The title as sent: without the site-name suffix when that would make it longer than {@link #TITLE_MAX}. */
     /**
-     * The Olympiad view of the practice centre has its own address, /exams/practice?category=OLYMPIAD, so it gets its own
-     * title, description and canonical link instead of the practice centre's. Other filters on /exams/practice are not
-     * separate pages and keep the practice centre's head.
+     * The Olympiad page lives at {@link OlympiadPages#PATH}, with a page for each class. It used to be the practice
+     * centre filtered to Olympiads (/exams/practice?category=OLYMPIAD, with class=5 for a class); that old address is
+     * still served, described as the page it stands for (whose canonical link it then carries), and the app moves
+     * visitors on to the new address.
      */
-    public static final String OLYMPIAD_PRACTICE = "/exams/practice?category=OLYMPIAD";
     static final String OLYMPIAD_TITLE = "Olympiad Preparation & Practice: Classes 1 to 10";
     static final String OLYMPIAD_DESCRIPTION = "Free class-wise Olympiad practice for Classes 1 to 10: original Maths, Science, English, "
             + "reasoning and IOQM-style questions, mock tests and explained answers.";
+    private static final Pattern OLYMPIAD_CLASS = Pattern.compile("^" + OlympiadPages.PATH + "/class-(\\d{1,2})$");
 
-    /** True for the Olympiad page: /exams/practice with category=OLYMPIAD. */
+    /** True for the Olympiad page's old address: /exams/practice with category=OLYMPIAD. */
     public static boolean isOlympiadPractice(String path, String category) {
         return ("/exams/practice".equals(path) || "/exams/practice/".equals(path)) && "OLYMPIAD".equals(category);
     }
 
-    public String olympiadPractice(String baseUrl) {
-        String url = baseUrl + OLYMPIAD_PRACTICE;
+    private String olympiadHub(String baseUrl) {
+        String url = baseUrl + OlympiadPages.PATH;
         return tags(OLYMPIAD_TITLE + " | " + SITE, OLYMPIAD_DESCRIPTION, url, null, false,
                 crumbs(listItem(1, "Home", baseUrl + "/"), listItem(2, "Exams", baseUrl + "/exams"),
-                        listItem(3, "Practice centre", baseUrl + "/exams/practice"), listItem(4, "Olympiad preparation", url)));
+                        listItem(3, "Olympiad preparation", url)));
     }
 
+    private String olympiadClass(OlympiadPages.ClassPage page, String baseUrl) {
+        String url = baseUrl + page.path();
+        return tags(page.title() + " | " + SITE, page.description(), url, null, false,
+                crumbs(listItem(1, "Home", baseUrl + "/"), listItem(2, "Exams", baseUrl + "/exams"),
+                        listItem(3, "Olympiad preparation", baseUrl + OlympiadPages.PATH), listItem(4, "Class " + page.number(), url)));
+    }
+
+    /** The title as sent: without the site-name suffix when that would make it longer than {@link #TITLE_MAX}. */
     static String fitTitle(String title) {
         String suffix = " | " + SITE;
         return title.length() > TITLE_MAX && title.endsWith(suffix) ? title.substring(0, title.length() - suffix.length()) : title;
@@ -286,6 +294,7 @@ public class SeoHeadService {
     private final FeeService feeService;
     private final AdmissionService admissionService;
     private final com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository;
+    private final OlympiadPages olympiadPages;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
@@ -293,7 +302,9 @@ public class SeoHeadService {
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository, BlogService blogService,
                           BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
                           SchoolFaqService faqService, FeeService feeService, AdmissionService admissionService,
-                          com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository) {
+                          com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository,
+                          OlympiadPages olympiadPages) {
+        this.olympiadPages = olympiadPages;
         this.faqService = faqService;
         this.feeService = feeService;
         this.admissionService = admissionService;
@@ -328,9 +339,16 @@ public class SeoHeadService {
             Matcher networkPage = NETWORK.matcher(p);
             if (p.equals("/schools")) {
                 description = "%,d schools across India. ".formatted(schoolRepository.countByActiveTrue()) + description;
+            } else if (p.equals("/admissions")) {
+                long cycles = admissionService.upcoming(0, 1).totalElements();
+                if (cycles > 0) description = "%,d upcoming and open admission cycles. ".formatted(cycles) + description;
             } else if (networkPage.matches()) {
                 long count = schoolService.search(networkCriteria(network(networkPage.group(1)), 1)).totalElements();
                 if (count > 0) description = "%,d schools listed. ".formatted(count) + description;
+                // Schools › the network, named as the page's heading names it ("Kendriya Vidyalayas", NetworkPage).
+                String heading = com.indiaschoolfinder.util.SchoolAboutText.networkName(network(networkPage.group(1))) + "s";
+                return tags(page[0] + " | " + SITE, description, baseUrl + p, null, false,
+                        crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, heading, baseUrl + p)));
             }
             return tags(page[0] + " | " + SITE, description, baseUrl + p, null, false, null);
         }
@@ -354,6 +372,16 @@ public class SeoHeadService {
             }
             if ((m = BOARD.matcher(p)).matches()) {
                 return board(m.group(1), baseUrl);
+            }
+            // Before the exam patterns: "olympiad" is a page, not an exam's slug.
+            if (p.equals(OlympiadPages.PATH)) {
+                return olympiadHub(baseUrl);
+            }
+            if ((m = OLYMPIAD_CLASS.matcher(p)).matches()) {
+                return olympiadClass(olympiadPages.forClass(Integer.parseInt(m.group(1))), baseUrl);
+            }
+            if (p.startsWith(OlympiadPages.PATH + "/")) {
+                throw new ResourceNotFoundException("Olympiad page", p); // the app shows "page not found" here
             }
             if ((m = EXAM.matcher(p)).matches()) {
                 return PREP_PAGES.contains(m.group(1)) ? prepPage(examService.get(m.group(1)), baseUrl) : exam(examService.get(m.group(1)), baseUrl);
@@ -429,8 +457,8 @@ public class SeoHeadService {
         article.put("dateModified", post.getUpdatedAt().toString());
         article.put("articleSection", category.label());
         if (post.getTags() != null) article.put("keywords", post.getTags());
-        article.put("author", Map.of("@type", "Person", "name", post.getAuthorName(), "url", baseUrl + "/about"));
-        article.put("publisher", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        article.put("author", author(post.getAuthorName(), baseUrl));
+        article.put("publisher", publisher(baseUrl));
         if (image != null) article.put("image", image);
         Map<String, Object> crumbs = new LinkedHashMap<>();
         crumbs.put("@type", "BreadcrumbList");
@@ -453,6 +481,21 @@ public class SeoHeadService {
         extra.append(meta("name", "twitter:description", description));
         if (image != null) extra.append(meta("name", "twitter:image", image));
         return head + extra;
+    }
+
+    /**
+     * An article's author as a Person: "Rakesh Kumar, Editor" (the byline as written) is the name "Rakesh Kumar" with the
+     * job title "Editor". The About page introduces the site's creator.
+     */
+    static Map<String, Object> author(String byline, String baseUrl) {
+        Map<String, Object> person = new LinkedHashMap<>();
+        person.put("@type", "Person");
+        int comma = byline.indexOf(", ");
+        person.put("name", comma > 0 ? byline.substring(0, comma).trim() : byline.trim());
+        if (comma > 0 && !byline.substring(comma + 2).isBlank()) person.put("jobTitle", byline.substring(comma + 2).trim());
+        person.put("url", baseUrl + "/about");
+        person.put("worksFor", Map.of("@id", baseUrl + "/#organization"));
+        return person;
     }
 
     /** A blog category page exists only once the category has a published article; until then it is noindex. */
@@ -483,7 +526,7 @@ public class SeoHeadService {
         data.put("educationalLevel", set.getLevel());
         data.put("inLanguage", hindi ? java.util.List.of("en", "hi") : java.util.List.of("en"));
         data.put("isAccessibleForFree", true);
-        data.put("provider", Map.of("@type", "Organization", "name", SITE, "url", baseUrl + "/"));
+        data.put("provider", publisher(baseUrl));
         return tags(set.getTitle() + " | " + SITE, description, url, null, false, data);
     }
 
@@ -503,8 +546,7 @@ public class SeoHeadService {
         // Two branches with one name in one town would share a title; the PIN code tells them apart.
         String pin = s.pinCode() != null && schoolRepository.hasNamesake(s.id(), s.name(), s.stateCode(), s.city())
                 ? " (" + s.pinCode() + ")" : "";
-        String title = s.name() + (town != null && !s.name().contains(town) ? ", " + town : "") + pin
-                + schoolTitleTopic(fees, admissions, board) + " | " + SITE;
+        String title = schoolTitle(s.name(), town, pin, schoolTitleTopic(fees, admissions, board));
         String classes = s.classesOffered().isEmpty() ? null : s.classesOffered().size() == 1
                 ? s.classesOffered().get(0).name()
                 : s.classesOffered().get(0).name() + " to " + s.classesOffered().get(s.classesOffered().size() - 1).name();
@@ -536,9 +578,18 @@ public class SeoHeadService {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "School");
+        data.put("@id", url + "#school");
         data.put("name", s.name());
+        // The profile's own first sentence (the same words the page shows), so the entity is described as the page does.
+        data.put("description", com.indiaschoolfinder.util.SchoolAboutText.about(s));
         data.put("url", url);
         data.put("address", address);
+        // The board's affiliation number, shown on the profile, identifies the school unambiguously.
+        if (s.affiliationNumber() != null && !s.affiliationNumber().isBlank() && s.board() != null) {
+            data.put("identifier", Map.of("@type", "PropertyValue",
+                    "propertyID", ("CISCE".equals(s.board().code()) ? "CISCE" : s.board().code()) + " affiliation number",
+                    "value", s.affiliationNumber().trim()));
+        }
         putIfPresent(data, "sameAs", s.websiteUrl());
         putIfPresent(data, "telephone", s.phone() == null ? null : s.phone().split(",")[0].trim());
         putIfPresent(data, "email", s.email());
@@ -574,6 +625,49 @@ public class SeoHeadService {
                     .append(org.springframework.web.util.HtmlUtils.htmlEscape(hero.url())).append(" 2x\"");
         }
         return link.append(" data-seo=\"server\" />\n").toString();
+    }
+
+    /**
+     * A profile's title for search results: its name, town, PIN code (only when a namesake exists) and topic, kept
+     * within {@link #TITLE_MAX} characters where the name allows. The heading and the School data keep the full
+     * official name; the title first leaves out the "PM SHRI" scheme prefix, which people do not search for, then the
+     * topic, and only then shortens the two big government networks to the initials people search by (JNV, KV). No
+     * other word of the name is changed, so the title never calls a school anything its own record does not.
+     * (Navodaya names are not replaced by their district: 45 districts have more than one JNV in the directory.)
+     */
+    static String schoolTitle(String name, String town, String pin, String topic) {
+        String plain = withoutSchemePrefix(name);
+        String shortName = networkInitials(plain);
+        String[] candidates = {
+                plain + place(plain, town) + pin + topic,
+                plain + place(plain, town) + pin,
+                shortName + place(shortName, town) + pin + topic,
+                shortName + place(shortName, town) + pin};
+        for (String candidate : candidates) {
+            if (candidate.length() <= TITLE_MAX) {
+                return candidate + " | " + SITE;
+            }
+        }
+        return candidates[candidates.length - 1] + " | " + SITE;
+    }
+
+    /** ", Dehradun" after the name, unless the name already says the town. */
+    private static String place(String name, String town) {
+        return town != null && !town.isBlank() && !name.contains(town) ? ", " + town : "";
+    }
+
+    /** "PM SHRI School Jawahar Navodaya Vidyalaya, X" → "Jawahar Navodaya Vidyalaya, X"; a bare "PM SHRI School" is kept. */
+    static String withoutSchemePrefix(String name) {
+        String plain = name.replaceFirst("(?i)^PM\\s+SHRI\\s+(School\\s+)?", "").trim();
+        return plain.length() < 3 || plain.equalsIgnoreCase("School") ? name : plain;
+    }
+
+    /** "Jawahar Navodaya Vidyalaya, Chendayad" → "JNV Chendayad"; "Kendriya Vidyalaya No. 1 Jammu" → "KV No. 1 Jammu". */
+    static String networkInitials(String name) {
+        String shortName = name.replaceFirst("(?i)\\bJa+w?a?har\\s+Navodaya\\s+Vid[a-z]*laya\\b\\s*,?\\s*", "JNV ")
+                .replaceFirst("(?i)\\bKen[a-z]*riya\\s+Vidyal?aya\\b\\s*,?\\s*", "KV ")
+                .replaceAll("\\s{2,}", " ").trim();
+        return shortName.isEmpty() ? name : shortName;
     }
 
     /**
@@ -672,13 +766,20 @@ public class SeoHeadService {
         DistrictDto district = locationService.districts(state.code()).stream()
                 .filter(d -> d.slug().equals(districtSlug)).findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("District", districtSlug));
-        String title = "Schools in " + district.name() + ", " + state.name() + " | " + SITE;
+        // "District" tells this page apart from the town of the same name (/states/bihar/patna vs /states/bihar/city/patna),
+        // which would otherwise have the same title and heading; the town page keeps the plain "Schools in Patna, Bihar".
+        String title = "Schools in " + districtName(district.name()) + ", " + state.name() + " | " + SITE;
         String description = "%,d schools in %s district, %s, with board and classes, and fees and admission dates where "
                 .formatted(district.schoolCount(), district.name(), state.name()) + "published, each linked to its official source.";
         String url = baseUrl + "/states/" + state.slug() + "/" + district.slug();
         return tags(title, description, url, null, district.schoolCount() < MIN_SCHOOLS_TO_INDEX,
                 crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
                         listItem(3, district.name(), url)));
+    }
+
+    /** "Patna" → "Patna District"; a name that already ends in "district" is kept as it is. */
+    public static String districtName(String name) {
+        return name.trim().toLowerCase(Locale.ROOT).endsWith("district") ? name.trim() : name.trim() + " District";
     }
 
     private String city(String stateSlug, String citySlug, String baseUrl) {
@@ -731,7 +832,35 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName(), "item", url)));
-        return tags(title, description.toString(), url, null, false, data);
+        List<Map<String, Object>> graph = new java.util.ArrayList<>(List.of(examArticle(e, title, description.toString(), url, baseUrl), data));
+        // The guide's questions as the page shows them (its "Frequently asked questions"); none are added here.
+        if (detail.content() != null && detail.content().faq() != null && !detail.content().faq().isEmpty()) {
+            Map<String, Object> faq = faqPage(detail.content().faq().stream()
+                    .map(f -> new SchoolFaqService.Faq(f.question(), f.answer())).toList());
+            if (faq != null) graph.add(faq);
+        }
+        return tags(title, description.toString(), url, null, false, graph);
+    }
+
+    /**
+     * An exam guide as an Article written by the site: what it is about, and when its facts were last checked against
+     * the official sources (the date the page shows). No publication date is claimed, because none is recorded.
+     */
+    static Map<String, Object> examArticle(ExamSummaryDto e, String title, String description, String url, String baseUrl) {
+        Map<String, Object> article = new LinkedHashMap<>();
+        article.put("@context", "https://schema.org");
+        article.put("@type", "Article");
+        article.put("headline", title.replace(" | " + SITE, ""));
+        article.put("description", description);
+        article.put("url", url);
+        article.put("mainEntityOfPage", url);
+        article.put("inLanguage", "en-IN");
+        article.put("about", Map.of("@type", "Thing", "name", e.name()));
+        if (e.lastVerifiedOn() != null) article.put("dateModified", e.lastVerifiedOn().toString());
+        if (e.officialUrl() != null && !e.officialUrl().isBlank()) article.put("citation", e.officialUrl());
+        article.put("author", publisher(baseUrl));
+        article.put("publisher", publisher(baseUrl));
+        return article;
     }
 
     /** A Class VI preparation dashboard (JNVST, AISSEE, Netarhat): practice, mock tests and the study plan. */
@@ -866,15 +995,36 @@ public class SeoHeadService {
 
     /** The home page's structured data: the site and its school search. */
     /** Who runs the site: name, address, logo and how to reach it (the contact page; no personal address is published). */
+    /**
+     * The site's other spellings: people write "School Dhundo", and the name is close to other school portals', so
+     * search and answer engines are told these all mean this site (Google uses WebSite alternateName for site names).
+     */
+    static final List<String> ALTERNATE_NAMES = List.of("School Dhundo", "schooldhundo.in");
+
     private static Map<String, Object> organization(String baseUrl) {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "Organization");
+        data.put("@id", baseUrl + "/#organization");
         data.put("name", SITE);
+        data.put("alternateName", ALTERNATE_NAMES);
         data.put("url", baseUrl + "/");
         data.put("logo", baseUrl + "/favicon.svg");
         data.put("description", "Independent school discovery and entrance exam preparation platform for India.");
+        // How information is chosen, checked and corrected (the editorial policy page links the corrections policy).
+        data.put("publishingPrinciples", baseUrl + "/editorial-policy");
         data.put("contactPoint", Map.of("@type", "ContactPoint", "contactType", "customer support", "url", baseUrl + "/contact"));
+        return data;
+    }
+
+    /** The site as the publisher of a page: the same @id as the home page's Organization, with its name, address and logo. */
+    static Map<String, Object> publisher(String baseUrl) {
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("@type", "Organization");
+        data.put("@id", baseUrl + "/#organization");
+        data.put("name", SITE);
+        data.put("url", baseUrl + "/");
+        data.put("logo", baseUrl + "/favicon.svg");
         return data;
     }
 
@@ -886,8 +1036,12 @@ public class SeoHeadService {
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "WebSite");
+        data.put("@id", baseUrl + "/#website");
         data.put("name", SITE);
+        data.put("alternateName", ALTERNATE_NAMES);
         data.put("url", baseUrl + "/");
+        data.put("inLanguage", "en-IN");
+        data.put("publisher", Map.of("@id", baseUrl + "/#organization"));
         data.put("potentialAction", search);
         return data;
     }

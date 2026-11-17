@@ -49,6 +49,7 @@ const ExamStatePage = page(() => import('./pages/ExamHubPages'), 'ExamStatePage'
 const ExamSyllabusPage = page(() => import('./pages/ExamHubPages'), 'ExamSyllabusPage');
 const ExamResourcesPage = page(() => import('./pages/ExamResourcesPage'), 'ExamResourcesPage');
 const PracticeListPage = page(() => import('./pages/PracticePages'), 'PracticeListPage');
+const OlympiadPage = page(() => import('./pages/PracticePages'), 'OlympiadPage');
 const PracticeTestPage = page(() => import('./pages/PracticePages'), 'PracticeTestPage');
 const PracticeAttemptPage = page(() => import('./pages/PracticePages'), 'PracticeAttemptPage');
 const PracticeSessionPage = page(() => import('./pages/PracticePages'), 'PracticeSessionPage');
@@ -203,6 +204,8 @@ export default function App() {
               <Route path="exams/syllabus" element={<ExamSyllabusPage />} />
               <Route path="exams/resources" element={<ExamResourcesPage />} />
               <Route path="exams/practice" element={<PracticeListPage />} />
+              {/* One route for the Olympiad page and each class's page, so choosing a class keeps the page in place. */}
+              <Route path="exams/olympiad/:classSlug?" element={<OlympiadPage />} />
               <Route path="exams/practice/session" element={<PracticeSessionPage />} />
               <Route path="exams/practice/progress" element={<PracticeProgressPage />} />
               <Route path="exams/leaderboard" element={<LeaderboardPage />} />
