@@ -93,6 +93,29 @@ class SeoHeadTitleTest {
     }
 
     @Test
+    void descriptionsFitBingsLimitByLeavingOffWholeSentencesFirst() {
+        // The home page's own description, which Bing Webmaster Tools flagged at 179 characters, now fits.
+        assertThat(SeoHeadService.DEFAULT_DESCRIPTION.length()).isLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
+        assertThat(SeoHeadService.DEFAULT_TITLE.length()).isLessThanOrEqualTo(50);
+        // Short enough: unchanged.
+        assertThat(SeoHeadService.fitDescription("Schools in Bihar.")).isEqualTo("Schools in Bihar.");
+        // Too long: the last sentence goes, so what remains still ends a sentence.
+        String profile = "PM SHRI School Jawahar Navodaya Vidyalaya, Birauli, Samastipur, Samastipur district, Bihar. CBSE school, "
+                + "Class VI to Class XII. See admission dates, affiliation number and contact details, with official sources, on SchoolDhundo.";
+        assertThat(SeoHeadService.fitDescription(profile)).isEqualTo("PM SHRI School Jawahar Navodaya Vidyalaya, Birauli, Samastipur, "
+                + "Samastipur district, Bihar. CBSE school, Class VI to Class XII.");
+        // One sentence that is too long by itself is cut at a word, never mid-word.
+        String one = "A ".repeat(70) + "sentence with no full stop until the very end of it.";
+        String cut = SeoHeadService.fitDescription(one);
+        assertThat(cut).hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX).endsWith("…").doesNotContain(" …");
+        assertThat(SeoHeadService.fitDescription(null)).isNull();
+        // Initials are not sentence ends: a long opening with "R. K." is cut at a word instead of after "R. K.".
+        String initials = "Delhi Public School R. K. Puram, " + "Sector 12, ".repeat(15) + "New Delhi. CBSE school.";
+        assertThat(SeoHeadService.fitDescription(initials)).startsWith("Delhi Public School R. K. Puram, Sector 12,").endsWith("…")
+                .hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
+    }
+
+    @Test
     void aBylineIsAPersonWithAJobTitle() {
         var author = SeoHeadService.author("Rakesh Kumar, Editor", "https://schooldhundo.in");
         assertThat(author).containsEntry("@type", "Person").containsEntry("name", "Rakesh Kumar").containsEntry("jobTitle", "Editor")

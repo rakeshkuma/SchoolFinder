@@ -30,7 +30,7 @@ export function serverPageHasPhoto(): boolean {
 export function useDocumentTitle(title: string | undefined, description?: string) {
   useEffect(() => {
     if (serverHeadInPlace()) return;
-    document.title = title ? `${title} · ${SITE}` : `${SITE}: Find Schools, Rankings, Admissions & Exam Prep`;
+    document.title = title ? `${title} · ${SITE}` : `${SITE}: Find Schools, Rankings and Exam Prep`;
   }, [title]);
   useEffect(() => {
     if (!description || serverHeadInPlace()) return undefined;
