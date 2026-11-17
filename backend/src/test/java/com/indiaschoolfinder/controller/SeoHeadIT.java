@@ -217,7 +217,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/boards/CISCE\"");
         assertThat(head("/find")).contains("<title>Find the right school for your child | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/find\"");
-        assertThat(head("/")).contains("<title>SchoolDhundo: Find Schools, Rankings, Admissions &amp; Exam Prep</title>").contains("SearchAction");
+        assertThat(head("/")).contains("<title>SchoolDhundo: Find Schools, Rankings and Exam Prep</title>").contains("SearchAction");
         assertThat(head("/some/unknown/page")).doesNotContain("canonical");
     }
 
@@ -251,7 +251,9 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
         assertThat(head("/exams/netarhat")).contains("<title>Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests</title>")
-                .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex");
+                .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex")
+                // The whole description fits, so it is never cut short.
+                .doesNotContain("…");
         assertThat(head("/exams/netarhat/guide")).contains("href=\"http://localhost/exams/netarhat/guide\"").doesNotContain("noindex");
     }
 }

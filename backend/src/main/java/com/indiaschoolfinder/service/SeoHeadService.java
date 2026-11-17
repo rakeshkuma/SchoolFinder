@@ -45,12 +45,17 @@ public class SeoHeadService {
      * reachable but is left out of the sitemap and marked noindex until more schools are listed there.
      */
     public static final int MIN_SCHOOLS_TO_INDEX = 3;
-    /** 60 characters: Google shows about that much of a title, and longer ones are cut or rewritten. */
-    static final String DEFAULT_TITLE = "SchoolDhundo: Find Schools, Rankings, Admissions & Exam Prep";
+    /**
+     * The home page's title, well inside 60 characters: Bing Webmaster Tools flagged the earlier 60-character one ("…,
+     * Admissions &amp; Exam Prep") as too long on 17 Nov 2026, so it has room to spare and no character that HTML escapes.
+     */
+    static final String DEFAULT_TITLE = "SchoolDhundo: Find Schools, Rankings and Exam Prep";
     /** Longest title kept with the " | SchoolDhundo" suffix; Google shows the site name above every result anyway. */
     static final int TITLE_MAX = 60;
-    static final String DEFAULT_DESCRIPTION = "Find schools across India, explore school rankings, compare boarding schools, "
-            + "understand admissions and prepare for entrance exams with mock tests, quizzes and practice resources.";
+    /** Bing recommends descriptions under 160 characters (Bing Webmaster Tools flagged a 179-character one); Google cuts about there too. */
+    static final int DESCRIPTION_MAX = 160;
+    static final String DEFAULT_DESCRIPTION = "Find schools across India, compare school rankings and boarding schools, check admissions, "
+            + "and prepare for entrance exams with free mock tests and practice.";
 
     private static final Pattern SCHOOL = Pattern.compile("^/schools/([a-z0-9-]+)/?$");
     /** /schools/{state}/{place}: a short address that hands over to the state, district or town page; not a page itself. */
@@ -272,6 +277,24 @@ public class SeoHeadService {
         return tags(page.title() + " | " + SITE, page.description(), url, null, false,
                 crumbs(listItem(1, "Home", baseUrl + "/"), listItem(2, "Exams", baseUrl + "/exams"),
                         listItem(3, "Olympiad preparation", baseUrl + OlympiadPages.PATH), listItem(4, "Class " + page.number(), url)));
+    }
+
+    /**
+     * The description as sent, at most {@link #DESCRIPTION_MAX} characters: whole sentences are left off the end first,
+     * so the facts that open it stay; only a single sentence that is still too long is cut at a word, with "…".
+     */
+    static String fitDescription(String description) {
+        if (description == null) return null;
+        String d = description.trim();
+        while (d.length() > DESCRIPTION_MAX) {
+            int end = d.lastIndexOf(". ", d.length() - 2);
+            // Not into the opening words: "R. K. Puram" has full stops that do not end a sentence.
+            if (end + 1 < 70) break;
+            d = d.substring(0, end + 1);
+        }
+        if (d.length() <= DESCRIPTION_MAX) return d;
+        int space = d.lastIndexOf(' ', DESCRIPTION_MAX - 1);
+        return d.substring(0, space > 0 ? space : DESCRIPTION_MAX - 1).replaceAll("[\\s,;:–-]+$", "") + "…";
     }
 
     /** The title as sent: without the site-name suffix when that would make it longer than {@link #TITLE_MAX}. */
@@ -513,9 +536,15 @@ public class SeoHeadService {
     private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
         String url = baseUrl + "/exams/practice/" + set.getSlug();
         // The first sentence says what the set covers; the note that the questions are our own is always kept.
+        // The note that the questions are our own always stays; the first sentence gives way to fit the description length.
+        String note = "Original practice questions by " + SITE + ", not official exam questions.";
+        int room = DESCRIPTION_MAX - note.length() - 1;
         String first = set.getDescription().split("(?<=\\.)\\s", 2)[0];
-        if (first.length() > 220) first = first.substring(0, 219) + "…";
-        String description = first + " Original practice questions by " + SITE + ", not official exam questions.";
+        if (first.length() > room) {
+            int space = first.lastIndexOf(' ', room - 1);
+            first = first.substring(0, space > 0 ? space : room - 1).replaceAll("[\\s,;:–-]+$", "") + "…";
+        }
+        String description = first + " " + note;
         boolean hindi = set.getContent().questions().stream().anyMatch(q -> q.hi() != null);
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
@@ -871,25 +900,23 @@ public class SeoHeadService {
             case "aissee" -> {
                 // Searched as "aissee 2027", "aissee class 6", "aissee mock test" (Ubersuggest, India, 2026-11-16).
                 title = "AISSEE 2027 Class 6 Preparation: Free Mock Tests";
-                description = "Free AISSEE Class 6 (Sainik School) preparation in English and Hindi: original practice questions for "
-                        + "Mathematics, Intelligence, General Knowledge and Language, full 125-question mock tests, a study plan and "
-                        + "progress tracking.";
+                // Short enough that the exam date added below still fits the description length (DESCRIPTION_MAX).
+                description = "Free AISSEE Class 6 (Sainik School) prep in English and Hindi: original questions, full 125-question "
+                        + "mock tests and a study plan.";
                 dateLabel = " Entrance exam: ";
             }
             case "netarhat" -> {
                 // Searched as "netarhat vidyalaya class 6 admission", "netarhat vidyalaya exam" (Ubersuggest, 2026-11-16).
                 title = "Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests";
-                description = "Free Netarhat Vidyalaya Class 6 entrance preparation in Hindi and English: original practice questions "
-                        + "for Mental Ability, Hindi, Mathematics, Science and Social Studies, full 100-question Paper 1 mock tests, "
-                        + "Paper 2 writing tips, a study plan and progress tracking.";
+                description = "Free Netarhat Vidyalaya Class 6 entrance prep in Hindi and English: original questions, full Paper 1 "
+                        + "mock tests and a study plan.";
                 dateLabel = " Entrance exam: ";
             }
             default -> {
                 // "jnvst class 6": 5,400 searches a month in India, difficulty 11 (Ubersuggest, 2026-11-16).
                 title = "JNVST Class 6 Preparation 2027: Free Mock Tests";
-                description = "Free JNVST Class 6 preparation in English and Hindi: original practice questions for Mental Ability, "
-                        + "EVS, Arithmetic and Language, full mock tests in the official 80-question pattern, a study plan and "
-                        + "progress tracking.";
+                description = "Free JNVST Class 6 prep in English and Hindi: original questions, mock tests in the official "
+                        + "80-question pattern and a study plan.";
                 dateLabel = " Selection test: ";
             }
         }
@@ -1049,6 +1076,7 @@ public class SeoHeadService {
     private String tags(String title, String description, String canonical, String image, boolean noindex,
                         Object jsonLd) {
         title = fitTitle(title);
+        description = fitDescription(description);
         StringBuilder h = new StringBuilder();
         h.append("<title>").append(html(title)).append("</title>\n");
         h.append(meta("name", "description", description));
