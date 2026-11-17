@@ -98,7 +98,7 @@ public class SeoHeadService {
                     + "budget, board and must-have facilities. See schools whose official sources confirm each one, and why."),
             page("/compare", "Compare schools side by side", "Compare up to four schools: board, classes, "
                     + "official fees, admissions, facilities and distance from home, and share the comparison."),
-            page("/schools", "School directory", "Search and filter schools across Indian states and union "
+            page("/schools", "Find Schools in India: CBSE & ICSE School Directory", "Search and filter schools across Indian states and union "
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
@@ -500,7 +500,10 @@ public class SeoHeadService {
         boolean fees = !feeService.feeHistory(s.id()).isEmpty();
         boolean admissions = !admissionService.bySchool(s.id()).isEmpty();
         boolean facilities = !facilityRepository.findBySchoolIdOrderByCategoryAscNameAsc(s.id()).isEmpty();
-        String title = s.name() + (town != null && !s.name().contains(town) ? ", " + town : "")
+        // Two branches with one name in one town would share a title; the PIN code tells them apart.
+        String pin = s.pinCode() != null && schoolRepository.hasNamesake(s.id(), s.name(), s.stateCode(), s.city())
+                ? " (" + s.pinCode() + ")" : "";
+        String title = s.name() + (town != null && !s.name().contains(town) ? ", " + town : "") + pin
                 + schoolTitleTopic(fees, admissions, board) + " | " + SITE;
         String classes = s.classesOffered().isEmpty() ? null : s.classesOffered().size() == 1
                 ? s.classesOffered().get(0).name()
@@ -664,7 +667,9 @@ public class SeoHeadService {
             throw new ResourceNotFoundException("State", stateSlug);
         }
         CityDto city = locationService.cities(state.code()).stream()
-                .filter(c -> c.slug().equals(citySlug)).findFirst()
+                .filter(c -> c.slug().equals(citySlug))
+                // Two spellings of one town ("Bhuj", "BHUJ") share a slug; the page is the one with more schools, as in the sitemap.
+                .max(java.util.Comparator.comparingLong(CityDto::schoolCount))
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
         String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
         String description = "%,d schools in %s, %s, with board and classes, and fees and admission dates where "
@@ -755,11 +760,19 @@ public class SeoHeadService {
      * "Best schools in {state or city}": the title carries the ranking year only when a published ranking covers the
      * place; the description states the counts; places with too little behind them are noindex.
      */
+    /** Official place names whose older name is still what most people search for. */
+    static final Map<String, String> PLACE_ALIASES = Map.of("bengaluru", "Bangalore", "gurugram", "Gurgaon",
+            "prayagraj", "Allahabad", "mysuru", "Mysore", "vadodara", "Baroda", "puducherry", "Pondicherry",
+            "thiruvananthapuram", "Trivandrum", "kochi", "Cochin", "ooty", "Udhagamandalam");
+
     private String bestPlace(String slug, String baseUrl) {
         BestPlacesService.Place p = bestPlacesService.place(slug);
         String year = p.rankingSource() == null ? "" : " " + p.rankingSource().substring(p.rankingSource().lastIndexOf(' ') + 1);
-        String where = p.kind() == BestPlacesService.Kind.CITY ? p.name() + ", " + p.stateName() : p.name();
-        String title = "Best Schools in " + p.name() + year + ": Rankings & School Lists | " + SITE;
+        // The name people still search by ("best schools in bangalore": 12,100 a month in India, Ubersuggest 2026-11-17).
+        String alias = PLACE_ALIASES.get(p.slug());
+        String name = alias == null ? p.name() : p.name() + " (" + alias + ")";
+        String where = p.kind() == BestPlacesService.Kind.CITY ? name + ", " + p.stateName() : name;
+        String title = "Best Schools in " + name + year + (alias == null ? ": Rankings & School Lists" : ": Rankings") + " | " + SITE;
         StringBuilder description = new StringBuilder("Best schools in ").append(where).append(": ");
         if (p.ranked() > 0) {
             description.append(p.ranked()).append(p.ranked() == 1 ? " school" : " schools").append(" ranked in ").append(p.rankingSource());

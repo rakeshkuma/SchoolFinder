@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { render, type Rendered } from '../test/render';
-import { serverHeadInPlace, useDocumentTitle } from './useDocumentTitle';
+import { serverHeadInPlace, serverPageHasPhoto, useDocumentTitle } from './useDocumentTitle';
 
 const SERVER_TITLE = 'Sainik Schools in India: list and admission | SchoolDhundo';
 
@@ -54,5 +54,14 @@ describe('useDocumentTitle', () => {
   it('sets its own title when the server sent no page head (the fallback block has no canonical link)', () => {
     view = render(<Page title="Compare schools" />);
     expect(document.title).toBe('Compare schools · SchoolDhundo');
+  });
+
+  it('knows the first-loaded page has a photo only when the server named one, and only on that page', () => {
+    serverHead();
+    expect(serverPageHasPhoto()).toBe(false);
+    document.head.insertAdjacentHTML('beforeend', '<meta property="og:image" content="https://example.org/p.jpg" data-seo="server" />');
+    expect(serverPageHasPhoto()).toBe(true);
+    window.history.pushState(null, '', '/schools/another-school');
+    expect(serverPageHasPhoto()).toBe(false);
   });
 });

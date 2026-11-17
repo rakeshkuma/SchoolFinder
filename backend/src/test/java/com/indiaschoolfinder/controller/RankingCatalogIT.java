@@ -116,7 +116,9 @@ class RankingCatalogIT extends AbstractIntegrationTest {
 
     @Test
     void bestSchoolsPagesCountOnlyWhatIsRankedOrListedThere() throws Exception {
-        upload(list(), "ALL_OR_NOTHING");
+        // A third Delhi school, so Delhi has the three ranked schools a best-schools page needs to be indexed.
+        String ddd = school("Ddd Rank School", "DL", "Delhi", "CBSE", "PRIVATE");
+        upload(list() + ddd + ",IIRF,Test Top Schools,2026,All,NATIONAL,4,3,,,," + TAIL, "ALL_OR_NOTHING");
         approveLatestJob();
         mockMvc.perform(get("/api/v1/rankings/best/bihar"))
                 .andExpect(jsonPath("$.kind").value("STATE")).andExpect(jsonPath("$.ranked").value(1))
@@ -132,6 +134,18 @@ class RankingCatalogIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/rankings/best-schools-in-patna\"").contains("BreadcrumbList");
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/rankings/best-schools-in-atlantis"))
                 .andReturn().getResponse().getContentAsString()).contains("noindex");
+        // The page's content is in the server HTML: the publisher's ranks as printed, linked to each school, and the questions.
+        String delhiHead = mockMvc.perform(get("/api/v1/seo/head/rankings/best-schools-in-delhi")).andReturn().getResponse().getContentAsString();
+        org.assertj.core.api.Assertions.assertThat(delhiHead).doesNotContain("noindex");
+        String page = mockMvc.perform(get("/api/v1/seo/body/rankings/best-schools-in-delhi")).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        org.assertj.core.api.Assertions.assertThat(page).contains("<h2>Ranked in IIRF 2026</h2>").contains(">Aaa Rank School</a>")
+                .contains(">Ddd Rank School</a>").contains("State #3 · India #4").doesNotContain("Ccc Rank School")
+                .contains("<dt>Which are the best schools in Delhi?</dt>").contains("Aaa Rank School (#1)")
+                .contains("href=\"/states/delhi\"").contains("href=\"/rankings/methodology\"");
+        // Bihar has one ranked school: still noindex, so no server content is sent for it.
+        org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/body/rankings/best-schools-in-bihar"))
+                .andReturn().getResponse().getContentAsString()).isEmpty();
     }
 
     @Test

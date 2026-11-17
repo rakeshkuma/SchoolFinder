@@ -15,7 +15,7 @@ import { ClassesTab, SourcesTab, useSchoolSeo } from '../components/school/Schoo
 import { labelledBy, PANEL_ID, SchoolProfileNav, type ProfileSection } from '../components/school/SchoolProfileNav';
 import { SchoolMap } from '../components/school/SchoolMap';
 import { useApi, type ApiState } from '../hooks/useApi';
-import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { serverPageHasPhoto, useDocumentTitle } from '../hooks/useDocumentTitle';
 import { recentSchools, type SchoolRef } from '../hooks/usePersonal';
 import { ApiError } from '../services/http';
 import { schoolService } from '../services/publicApi';
@@ -311,11 +311,15 @@ function HeroPhoto({ school: s, photo, count, loading, onFail, onGallery }: {
   school: SchoolDetail; photo: SchoolImage | undefined; count: number; loading: boolean; onFail: () => void; onGallery: () => void;
 }) {
   if (!photo) {
+    // When the server says this page has a photo, phones keep its frame (and caption line) while photos load too, so
+    // nothing below moves when it arrives.
+    const reserve = loading && serverPageHasPhoto();
     return (
-      <div className="hidden lg:block" aria-hidden={loading || undefined}>
+      <div className={reserve ? undefined : 'hidden lg:block'} aria-hidden={loading || undefined} data-testid="hero-photo-placeholder">
         <div className={`aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-slate-200 ${loading ? 'animate-pulse bg-slate-200 motion-reduce:animate-none' : ''}`}>
           {!loading && <SchoolCover name={s.name} caption={s.city ?? s.district?.name} />}
         </div>
+        {reserve && <p className="mt-2 text-[11px] leading-snug">&nbsp;</p>}
         {!loading && (
           <p className="mt-2 text-xs text-slate-500">
             No verified photo of this school yet. <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} className="link">School staff can add one</Link>

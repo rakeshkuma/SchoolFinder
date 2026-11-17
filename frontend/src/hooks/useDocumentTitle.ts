@@ -17,6 +17,15 @@ export function serverHeadInPlace(): boolean {
     && document.head.querySelector('meta[name="robots"][content*="noindex"]') === null;
 }
 
+/**
+ * True when the server's head for the first-loaded page names a preview photo (og:image). On a school profile the
+ * server sets one only when the school has a real photo, so the page can keep room for it while the photos load.
+ */
+export function serverPageHasPhoto(): boolean {
+  return window.location.pathname === firstPath
+    && document.head.querySelector('meta[property="og:image"][data-seo="server"]') !== null;
+}
+
 /** Sets the page title and, when given, the meta description (restored to the previous one on leaving). */
 export function useDocumentTitle(title: string | undefined, description?: string) {
   useEffect(() => {

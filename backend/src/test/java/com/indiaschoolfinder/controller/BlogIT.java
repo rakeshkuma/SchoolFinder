@@ -157,6 +157,14 @@ class BlogIT extends AbstractIntegrationTest {
         // A draft has no server-rendered page.
         create(draft("Unpublished thoughts", "ADMISSIONS", false));
         assertThat(mockMvc.perform(get("/api/v1/seo/body/blog/unpublished-thoughts")).andReturn().getResponse().getContentAsString()).isEmpty();
+        // The blog's index and the category list published articles as links, before the app starts; drafts stay out.
+        String index = mockMvc.perform(get("/api/v1/seo/body/blog")).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        assertThat(index).contains("<a href=\"/blog/documents-for-admission\">Documents for admission</a>")
+                .contains("href=\"/blog/category/school-admissions\"").doesNotContain("unpublished-thoughts");
+        assertThat(mockMvc.perform(get("/api/v1/seo/body/blog/category/school-admissions")).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8))
+                .contains("<a href=\"/blog/documents-for-admission\">").contains("href=\"/blog\">Blog</a>");
     }
 
     @Test
