@@ -46,7 +46,6 @@ export const TRACKS: { value: string; label: string }[] = [
   { value: 'CLASS_9_10', label: 'Class IX–X' },
   { value: 'CLASS_11_12', label: 'Class XI–XII' },
   { value: 'OLYMPIAD', label: 'Olympiads' },
-  { value: 'COMPETITIVE', label: 'Government & competitive exams' },
   { value: 'OTHER', label: 'Something else' },
 ];
 

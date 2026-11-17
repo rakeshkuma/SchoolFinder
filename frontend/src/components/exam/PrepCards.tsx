@@ -20,9 +20,7 @@ const EXAM_CARDS: PrepCard[] = [
   { to: '/exams/jnvst', title: 'JNVST', text: 'Navodaya Class VI entrance: guide and mock tests', icon: 'graduation', tone: 'from-brand-600 to-brand-400', count: (q) => q.examSlug === 'jnvst' },
   { to: '/exams/aissee', title: 'Sainik School', text: 'AISSEE Class VI and IX practice', icon: 'flag', tone: 'from-emerald-600 to-emerald-400', count: (q) => q.examSlug === 'aissee' },
   { to: '/exams/netarhat', title: 'Netarhat', text: 'Class 6 entrance: all five Paper 1 subjects, in Hindi and English', icon: 'home', tone: 'from-teal-600 to-teal-400', count: (q) => q.examSlug === 'netarhat' },
-  { to: '/exams/practice/class10-maths-1', title: 'CBSE Class 10', text: 'Mathematics, chapter by chapter, in English and Hindi', icon: 'book', tone: 'from-violet-600 to-violet-400', count: (q) => q.category === 'SCHOOL' && q.level === 'Class X' },
-  { to: '/exams/practice/class12-maths-1', title: 'CBSE Class 12', text: 'Mathematics and Physics, chapter by chapter', icon: 'layers', tone: 'from-rose-600 to-rose-400', count: (q) => q.category === 'SCHOOL' && q.level === 'Class XII' },
-  { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiads', text: 'Original Olympiad-style questions', icon: 'trophy', tone: 'from-accent-600 to-accent-400', count: (q) => q.category === 'OLYMPIAD' },
+  { to: '/exams/practice?category=OLYMPIAD', title: 'Olympiads', text: 'Class-wise Maths, Science, English and Reasoning', icon: 'trophy', tone: 'from-accent-600 to-accent-400', count: (q) => q.category === 'OLYMPIAD' },
 ];
 
 const SUBJECT_CARDS: PrepCard[] = [

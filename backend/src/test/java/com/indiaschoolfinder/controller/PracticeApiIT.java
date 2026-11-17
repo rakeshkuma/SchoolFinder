@@ -237,13 +237,43 @@ class PracticeApiIT extends AbstractIntegrationTest {
         }
         assertThat(total).as("questions in the bank").isGreaterThanOrEqualTo(300);
         mockMvc.perform(get("/api/v1/practice-bank")).andExpect(jsonPath("$.questionCount").value(total));
-        // Every category is represented, and some sets can be practised in Hindi.
-        for (String category : List.of("SCHOOL", "ENTRANCE", "OLYMPIAD", "COMPETITIVE")) {
+        // Every offered category is represented, and some sets can be practised in Hindi. Competitive exams, and the
+        // Class 10 and 12 sets, were retired on 2026-11-17 and are no longer shipped.
+        for (String category : List.of("SCHOOL", "ENTRANCE", "OLYMPIAD")) {
             mockMvc.perform(get("/api/v1/practice-sets").param("category", category))
                     .andExpect(jsonPath("$.length()").value(org.hamcrest.Matchers.greaterThan(0)));
         }
+        mockMvc.perform(get("/api/v1/practice-sets").param("category", "COMPETITIVE")).andExpect(jsonPath("$.length()").value(0));
+        for (String retired : List.of("class10-maths-1", "class12-maths-1", "class12-physics-1", "competitive-aptitude-1")) {
+            mockMvc.perform(get("/api/v1/practice-sets/" + retired)).andExpect(status().isNotFound());
+        }
         mockMvc.perform(get("/api/v1/practice-sessions").param("mode", "QUICK").param("hindi", "true"))
                 .andExpect(jsonPath("$.questions[0].hi.prompt").isNotEmpty());
+    }
+
+    @Test
+    void retirementMigrationUnpublishesOnlyTheDiscontinuedSets() throws Exception {
+        // As on the live site before V46: the four discontinued sets published, beside a set that stays.
+        List<String> retired = List.of("class10-maths-1", "class12-maths-1", "class12-physics-1", "competitive-aptitude-1");
+        List<Map<String, Object>> sets = new java.util.ArrayList<>();
+        for (String slug : retired) sets.add(set(slug, "QUIZ", null, List.of(q("a", "Mathematics", 1))));
+        sets.add(set("class8-science-1", "QUIZ", null, List.of(q("c1", "Science", 0))));
+        importJson(Map.of("sets", sets)).andExpect(status().isOk());
+        Integer auditBefore = jdbc.queryForObject("SELECT count(*) FROM admin_audit_log WHERE action = 'PRACTICE_SET_RETIRED'", Integer.class);
+        String migration = new ClassPathResource("db/migration/V46__retire_discontinued_practice_sets.sql").getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+
+        jdbc.execute(migration);
+        assertThat(jdbc.queryForList("SELECT slug FROM practice_set WHERE published ORDER BY slug", String.class)).containsExactly("class8-science-1");
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM practice_set", Integer.class)).isEqualTo(5); // nothing deleted
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM admin_audit_log WHERE action = 'PRACTICE_SET_RETIRED'", Integer.class))
+                .isEqualTo(auditBefore + 4);
+        for (String slug : retired) mockMvc.perform(get("/api/v1/practice-sets/" + slug)).andExpect(status().isNotFound());
+        mockMvc.perform(get("/api/v1/practice-sets/class8-science-1")).andExpect(status().isOk());
+
+        // Running it again changes nothing and logs nothing.
+        jdbc.execute(migration);
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM admin_audit_log WHERE action = 'PRACTICE_SET_RETIRED'", Integer.class))
+                .isEqualTo(auditBefore + 4);
     }
 
     @Test

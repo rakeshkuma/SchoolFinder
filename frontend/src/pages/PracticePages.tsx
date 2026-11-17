@@ -37,7 +37,9 @@ const DIFFICULTY_LABEL: Record<string, string> = { EASY: 'Easy', MEDIUM: 'Medium
 export const CATEGORY_LABEL: Record<PracticeCategory, string> = {
   ENTRANCE: 'School entrance exams', SCHOOL: 'School subjects', OLYMPIAD: 'Olympiads', COMPETITIVE: 'Competitive exams',
 };
-const CATEGORY_ORDER: PracticeCategory[] = ['ENTRANCE', 'SCHOOL', 'OLYMPIAD', 'COMPETITIVE'];
+// Competitive exams were retired on 2026-11-17: the category keeps its label for archived sets and old results, but is
+// no longer offered (an old ?category=COMPETITIVE link shows the whole practice centre).
+const CATEGORY_ORDER: PracticeCategory[] = ['ENTRANCE', 'SCHOOL', 'OLYMPIAD'];
 const isCategory = (v: string | null): v is PracticeCategory => CATEGORY_ORDER.includes(v as PracticeCategory);
 
 const LANG_KEY = 'isf.practice.lang';
@@ -210,7 +212,7 @@ function PointsNote() {
 export function PracticeListPage() {
   const [params, setParams] = useSearchParams();
   const category = isCategory(params.get('category')) ? params.get('category') as PracticeCategory : null;
-  useDocumentTitle(category === 'OLYMPIAD' ? OLYMPIAD_DOC_TITLE : 'Practice centre: free practice tests for school, entrance, Olympiad and competitive exams',
+  useDocumentTitle(category === 'OLYMPIAD' ? OLYMPIAD_DOC_TITLE : 'Practice centre: free practice tests for entrance exams, Olympiads and school subjects',
     category === 'OLYMPIAD' ? OLYMPIAD_DESCRIPTION : undefined);
   const sets = useApi(() => practiceService.list(), []);
   const bank = useApi(() => practiceService.bank(), []);
@@ -237,7 +239,7 @@ export function PracticeListPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Practice centre" title="Practise for school, entrance, Olympiad and competitive exams"
+      <PageHeader eyebrow="Practice centre" title="Practise for entrance exams, Olympiads and school subjects"
         subtitle="Quick quizzes, chapter and topic practice, timed mock tests and a daily challenge — every answer explained, many in English and Hindi. Free, and no sign-in needed to start.">
         <dl className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-300">
           <div><dt className="sr-only">Questions</dt><dd><span className="font-display text-2xl font-bold text-white tabular-nums">{bank.data?.questionCount ?? '–'}</span> original questions</dd></div>
