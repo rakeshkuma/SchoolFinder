@@ -553,7 +553,27 @@ public class SeoHeadService {
             graph.add(faq);
         }
         // A bare board listing stays reachable but is noindex until it holds more (SchoolRepository.INDEXABLE).
-        return tags(title, description.toString(), url, image, !schoolRepository.isIndexable(s.id()), graph);
+        return tags(title, description.toString(), url, image, !schoolRepository.isIndexable(s.id()), graph)
+                + heroPreload(schoolService.images(s.id()));
+    }
+
+    /**
+     * The profile's hero photo, requested with the page instead of after the app has loaded the school and its photos
+     * (it is the largest thing on the page; Lighthouse measured LCP 5.5 s on a phone without this). The app shows the
+     * first photo that is not a logo, its thumbnail with the full size as the 2x choice (SchoolDetailPage HeroFigure);
+     * the same choice is made here, so the browser downloads it once.
+     */
+    static String heroPreload(List<ImageDto> images) {
+        ImageDto hero = images.stream().filter(i -> i.imageType() != ImageType.LOGO).findFirst().orElse(null);
+        if (hero == null || hero.url() == null) return "";
+        String small = hero.thumbnailUrl() != null ? hero.thumbnailUrl() : hero.url();
+        StringBuilder link = new StringBuilder("<link rel=\"preload\" as=\"image\" fetchpriority=\"high\" href=\"")
+                .append(org.springframework.web.util.HtmlUtils.htmlEscape(small)).append('"');
+        if (hero.thumbnailUrl() != null && !hero.thumbnailUrl().equals(hero.url())) {
+            link.append(" imagesrcset=\"").append(org.springframework.web.util.HtmlUtils.htmlEscape(hero.thumbnailUrl())).append(" 1x, ")
+                    .append(org.springframework.web.util.HtmlUtils.htmlEscape(hero.url())).append(" 2x\"");
+        }
+        return link.append(" data-seo=\"server\" />\n").toString();
     }
 
     /**
