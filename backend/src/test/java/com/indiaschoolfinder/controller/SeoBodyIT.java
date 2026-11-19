@@ -247,6 +247,11 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(fetch("/api/v1/seo/body/admin/schools")).isEmpty();
         assertThat(fetch("/api/v1/seo/body/schools/no-such-school")).isEmpty();
         assertThat(fetch("/api/v1/seo/body/this-page-does-not-exist")).isEmpty();
+        // Unknown /boarding/{slug}: the app's "page not found", not the home page's heading (live until 19 Nov 2026).
+        assertThat(fetch("/api/v1/seo/body/boarding/uttarakhand")).isEmpty();
+        // A featured boarding page leads with its own heading and summary.
+        assertThat(fetch("/api/v1/seo/body/boarding/rimc")).contains("<h1>Rashtriya Indian Military College (RIMC), Dehradun</h1>")
+                .contains("Class VIII only");
     }
 
     @Test

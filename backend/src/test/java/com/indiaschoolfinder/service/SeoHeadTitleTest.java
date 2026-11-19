@@ -11,6 +11,23 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class SeoHeadTitleTest {
 
     @Test
+    void featuredBoardingPagesMatchTheAppAndFitSearchResults() throws java.io.IOException {
+        java.nio.file.Path app = java.nio.file.Path.of("../frontend/src/content/boarding.ts");
+        if (java.nio.file.Files.exists(app)) {
+            // Every featured page of the app has a server head, and the server names no page the app lacks.
+            java.util.Set<String> slugs = new java.util.TreeSet<>();
+            java.util.regex.Matcher m = java.util.regex.Pattern.compile("^\\s{4}slug: '([a-z0-9-]+)'", java.util.regex.Pattern.MULTILINE)
+                    .matcher(java.nio.file.Files.readString(app));
+            while (m.find()) slugs.add(m.group(1));
+            assertThat(slugs).isEqualTo(new java.util.TreeSet<>(SeoHeadService.BOARDING_FEATURES.keySet()));
+        }
+        SeoHeadService.BOARDING_FEATURES.values().forEach(f -> {
+            assertThat(SeoHeadService.fitTitle(f[0] + " | SchoolDhundo").length()).as(f[0]).isLessThanOrEqualTo(SeoHeadService.TITLE_MAX);
+            assertThat(f[1].length()).as(f[1]).isBetween(70, SeoHeadService.DESCRIPTION_MAX);
+        });
+    }
+
+    @Test
     void keepsTheSiteNameOnlyWhileTheTitleFitsInSixtyCharacters() {
         assertThat(SeoHeadService.fitTitle("Schools in Bihar | SchoolDhundo")).isEqualTo("Schools in Bihar | SchoolDhundo");
         // 66 characters with the suffix: Ubersuggest flagged these as too long; the place and topic are what matter.
@@ -69,6 +86,35 @@ class SeoHeadTitleTest {
         assertThat(SeoHeadService.districtName("Patna")).isEqualTo("Patna District");
         assertThat(SeoHeadService.districtName("Mumbai Suburban")).isEqualTo("Mumbai Suburban District");
         assertThat(SeoHeadService.districtName("Leh District")).isEqualTo("Leh District");
+    }
+
+    @Test
+    void placeTitlesLeaveOutTheStateOnlyWhenItWouldNotFit() {
+        assertThat(SeoHeadService.placeTitle("Patna District", "Bihar")).isEqualTo("Schools in Patna District, Bihar | SchoolDhundo");
+        assertThat(SeoHeadService.placeTitle("Patna", "Bihar")).isEqualTo("Schools in Patna, Bihar | SchoolDhundo");
+        // Found by the 19 Nov crawl at 65 and 61 characters even without the site name.
+        assertThat(SeoHeadService.placeTitle("Diu District", "Dadra and Nagar Haveli and Daman and Diu")).isEqualTo("Schools in Diu District | SchoolDhundo");
+        assertThat(SeoHeadService.placeTitle("Silvassa", "Dadra and Nagar Haveli and Daman and Diu")).isEqualTo("Schools in Silvassa | SchoolDhundo");
+        // Exactly 60 without the site name: kept whole (fitTitle then drops the site name).
+        String sixty = "Schools in " + "X".repeat(60 - "Schools in , Goa".length()) + ", Goa";
+        assertThat(sixty).hasSize(60);
+        assertThat(SeoHeadService.fitTitle(SeoHeadService.placeTitle(sixty.substring(11, sixty.length() - 5), "Goa"))).isEqualTo(sixty);
+    }
+
+    @Test
+    void practiceSetDescriptionsTellSetsOfOneTopicApart() {
+        String covers = "20 questions over the nine topics the prospectus lists for the Arithmetic Test, from number system to "
+                + "simplification, with worked answers. More text.";
+        String one = SeoHeadService.practiceDescription("jnvst-arithmetic-1", covers);
+        String two = SeoHeadService.practiceDescription("jnvst-arithmetic-2", covers);
+        assertThat(one).startsWith("Practice set 1: 20 questions").endsWith("Original practice questions by SchoolDhundo, not official exam questions.")
+                .hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
+        assertThat(two).startsWith("Practice set 2: ").isNotEqualTo(one).hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
+        assertThat(SeoHeadService.practiceDescription("aissee-class6-mock-2", "A full-length paper in the Class VI pattern."))
+                .startsWith("Mock test 2: A full-length paper");
+        // An address without a number keeps the description as before.
+        assertThat(SeoHeadService.practiceDescription("netarhat-guide", "Short. Second.")).isEqualTo(
+                "Short. Original practice questions by SchoolDhundo, not official exam questions.");
     }
 
     @Test

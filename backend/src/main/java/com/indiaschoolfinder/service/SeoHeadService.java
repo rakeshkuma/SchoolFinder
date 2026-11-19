@@ -86,18 +86,7 @@ public class SeoHeadService {
             "/exams/practice/progress", "/exams/practice/attempts", "/exams/practice/session",
             // Leaderboards list students' nicknames, which should not be searchable; achievements are a student's own.
             "/exams/leaderboard", "/exams/achievements", "/exams/challenges");
-    /**
-     * First path segments the React app has routes for (frontend/src/App.tsx). Any other address shows the app's
-     * "page not found" page, so it is marked noindex instead of being offered as a copy of the home page.
-     */
-    static final Set<String> APP_SECTIONS = Set.of("schools", "states", "cities", "network", "saved", "rankings",
-            "admissions", "fees", "compare", "compare-schools", "nearby", "boarding", "boarding-schools", "exams",
-            "exam-preparation", "boards", "updates",
-            "type", "stages", "reviews", "about", "contact", "suggest", "find", "privacy", "privacy-policy", "terms",
-            "terms-of-service", "terms-and-conditions", "disclaimer", "editorial-policy", "corrections-policy",
-            "data-deletion", "signin", "register", "blog", "verify-email", "forgot-password", "reset-password", "account",
-            "admin");
-    /** Static pages with their own title; the rest of the app uses the site defaults. */
+    /** Static pages with their own title; any other address not matched by a pattern below is noindex. */
     private static final Map<String, String[]> PAGES = Map.ofEntries(
             page("/find", "Find the right school for your child", "Choose your area, your child's class, "
                     + "budget, board and must-have facilities. See schools whose official sources confirm each one, and why."),
@@ -107,9 +96,10 @@ public class SeoHeadService {
                     + "territories by board, type, classes, fees and location — every fact linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
-            page("/rankings", "India's Best Schools: Published School Rankings", "Explore trusted school rankings across India. "
-                    + "Discover top-performing schools by ranking publisher, location, education board and school category, with every "
-                    + "rank exactly as its publisher printed it."),
+            // "best schools in india" is searched about 14,800 times a month in India at difficulty 10 (Ubersuggest, 19 Nov
+            // 2026), so the title starts with it. The old description was cut short ("…") at 160 characters.
+            page("/rankings", "Best Schools in India: Published School Rankings", "Best schools in India in published rankings: "
+                    + "browse by publisher, state, city, board and category, with every rank exactly as its publisher printed it."),
             page("/rankings/schools-by-state", "Premier and boarding schools by state", "India's premier and boarding schools grouped by "
                     + "state, with board, boarding, gender and an approximate fee for each school."),
             page("/rankings/schools-by-city", "Premier and boarding schools by city", "India's premier and boarding schools grouped by "
@@ -438,15 +428,56 @@ public class SeoHeadService {
         } catch (ResourceNotFoundException e) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
-        if (!p.equals("/") && !APP_SECTIONS.contains(p.substring(1).split("/", 2)[0])) {
-            return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+        Matcher featured = BOARDING_FEATURE.matcher(p);
+        if (featured.matches() && BOARDING_FEATURES.containsKey(featured.group(1))) {
+            String[] f = BOARDING_FEATURES.get(featured.group(1));
+            return tags(f[0] + " | " + SITE, f[1], baseUrl + (f[2] == null ? p : f[2]), null, false, null);
         }
         if (p.equals("/")) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, baseUrl + "/", baseUrl + HOME_HERO_PREVIEW, false,
                     List.of(website(baseUrl), organization(baseUrl))) + HOME_HERO_PRELOAD;
         }
-        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, false, null);
+        // Every page of the app with something to index is matched above (its own title, or a pattern). What is left is
+        // the app's "page not found" (/boarding/{unknown}, /type/{unknown}, /rankings/{unknown}, an address outside the
+        // app) or a client-side redirect, so it is never offered as a copy of the home page.
+        return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
     }
+
+    /** A featured boarding school page of the app, /boarding/{slug} (frontend content/boarding.ts). */
+    private static final Pattern BOARDING_FEATURE = Pattern.compile("^/boarding/([a-z0-9-]+)$");
+    /**
+     * The app's featured boarding school pages (frontend content/boarding.ts, keep in step): heading, description, and
+     * the address search engines should index instead, where the same school or group already has its own page in the
+     * sitemap (its directory profile or network page). Facts are those the app page states, from its official sources.
+     */
+    static final Map<String, String[]> BOARDING_FEATURES = Map.of(
+            "jnv-mungeshpur", new String[]{"JNV North West Delhi (Mungeshpur)", "Jawahar Navodaya Vidyalaya Mungeshpur, Bawana, "
+                    + "Delhi: a free, co-educational residential CBSE school, Classes VI to XII. Admission to Class VI through JNVST.",
+                    "/schools/jawahar-navodaya-vidyalaya-north-west-delhi-mungeshpur"},
+            "jnv-jaffarpur-kalan", new String[]{"JNV South West Delhi (Jaffarpur Kalan)", "Jawahar Navodaya Vidyalaya Jaffarpur "
+                    + "Kalan, Delhi: a free, co-educational residential CBSE school. Admission to Class VI is through JNVST.",
+                    "/schools/jawahar-navodaya-vidyalaya-south-west-delhi-jaffarpur-kalan"},
+            "netarhat", new String[]{"Netarhat Awasiya Vidyalaya, Jharkhand", "Netarhat Awasiya Vidyalaya (1954), Latehar, Jharkhand: "
+                    + "a free residential school for boys, with 100 Class 6 seats a year filled through its entrance exam.",
+                    "/schools/netarhat-awasiya-vidyalaya"},
+            "rimc", new String[]{"Rashtriya Indian Military College (RIMC), Dehradun", "RIMC, Garhi Cantt, Dehradun: admission "
+                    + "to Class VIII only, in January and July terms, through the RIMC entrance exam, with state-wise vacancies.",
+                    "/schools/rashtriya-indian-military-college"},
+            "sainik-school-kunjpura", new String[]{"Sainik School Kunjpura, Karnal", "Sainik School Kunjpura, Karnal, Haryana: an "
+                    + "English-medium CBSE residential school preparing cadets for NDA. Entry to Classes VI and IX through AISSEE.",
+                    "/schools/sainik-school-kunjpura"},
+            "sainik-school-rewari", new String[]{"Sainik School Rewari, Haryana", "Sainik School Rewari, Haryana: an English-medium "
+                    + "CBSE residential school preparing cadets for NDA. Entry to Classes VI and IX through AISSEE.",
+                    "/schools/sainik-school-rewari"},
+            "sainik-school-ghorakhal", new String[]{"Sainik School Ghorakhal, Nainital", "Sainik School Ghorakhal (1966), Nainital, "
+                    + "Uttarakhand: an English-medium CBSE residential school. Entry to Classes VI and IX through AISSEE.",
+                    "/schools/sainik-school-ghorakhal"},
+            "sainik-school-tilaiya", new String[]{"Sainik School Tilaiya, Koderma", "Sainik School Tilaiya, Koderma, Jharkhand: an "
+                    + "English-medium CBSE residential school for boy and girl cadets. Entry to Classes VI and IX through AISSEE.", null},
+            "rashtriya-military-schools", new String[]{"Rashtriya Military Schools: five campuses", "Rashtriya Military Schools at "
+                    + "Chail, Ajmer, Belgaum, Bengaluru and Dholpur: CBSE boarding schools of the Ministry of Defence. Classes VI and IX via CET.", "/network/rashtriya-military-school"},
+            "sainik-schools", new String[]{"Sainik Schools in India: admission through AISSEE", "The 33 Sainik Schools and approved "
+                    + "New Sainik Schools: English-medium CBSE boarding schools preparing cadets for NDA. Classes VI and IX via AISSEE.", "/network/sainik-school"});
 
     /**
      * The home page hero photograph (frontend/public/images/home; licensed, credited on the page). On wide screens it is
@@ -533,18 +564,28 @@ public class SeoHeadService {
     }
 
     /** Practice sets are original SchoolDhundo questions; the description says so, and the data is a free Quiz. */
-    private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
-        String url = baseUrl + "/exams/practice/" + set.getSlug();
-        // The first sentence says what the set covers; the note that the questions are our own is always kept.
-        // The note that the questions are our own always stays; the first sentence gives way to fit the description length.
+    /**
+     * A practice set's description: "Practice set N: " (or "Mock test N: ") when its address ends in a number (sets of one
+     * topic share their first sentence, so without it five sets had one description), then the first sentence of what it
+     * covers, then the note that the questions are our own, which always stays; the first sentence gives way to fit.
+     */
+    static String practiceDescription(String slug, String setDescription) {
         String note = "Original practice questions by " + SITE + ", not official exam questions.";
-        int room = DESCRIPTION_MAX - note.length() - 1;
-        String first = set.getDescription().split("(?<=\\.)\\s", 2)[0];
+        java.util.regex.Matcher number = Pattern.compile("-(\\d{1,3})$").matcher(slug);
+        String kind = slug.contains("-mock-") ? "Mock test " : "Practice set ";
+        String lead = number.find() ? kind + number.group(1) + ": " : "";
+        int room = DESCRIPTION_MAX - note.length() - 1 - lead.length();
+        String first = setDescription.split("(?<=\\.)\\s", 2)[0];
         if (first.length() > room) {
             int space = first.lastIndexOf(' ', room - 1);
             first = first.substring(0, space > 0 ? space : room - 1).replaceAll("[\\s,;:–-]+$", "") + "…";
         }
-        String description = first + " " + note;
+        return lead + first + " " + note;
+    }
+
+    private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
+        String url = baseUrl + "/exams/practice/" + set.getSlug();
+        String description = practiceDescription(set.getSlug(), set.getDescription());
         boolean hindi = set.getContent().questions().stream().anyMatch(q -> q.hi() != null);
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
@@ -797,13 +838,23 @@ public class SeoHeadService {
                 .orElseThrow(() -> new ResourceNotFoundException("District", districtSlug));
         // "District" tells this page apart from the town of the same name (/states/bihar/patna vs /states/bihar/city/patna),
         // which would otherwise have the same title and heading; the town page keeps the plain "Schools in Patna, Bihar".
-        String title = "Schools in " + districtName(district.name()) + ", " + state.name() + " | " + SITE;
+        String title = placeTitle(districtName(district.name()), state.name());
         String description = "%,d schools in %s district, %s, with board and classes, and fees and admission dates where "
                 .formatted(district.schoolCount(), district.name(), state.name()) + "published, each linked to its official source.";
         String url = baseUrl + "/states/" + state.slug() + "/" + district.slug();
         return tags(title, description, url, null, district.schoolCount() < MIN_SCHOOLS_TO_INDEX,
                 crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
                         listItem(3, district.name(), url)));
+    }
+
+    /**
+     * "Schools in Patna District, Bihar | SchoolDhundo". The state is left out only when the title would pass
+     * {@link #TITLE_MAX} even without the site name ("Schools in Diu District, Dadra and Nagar Haveli and Daman and Diu");
+     * the description still names it.
+     */
+    static String placeTitle(String place, String stateName) {
+        String full = "Schools in " + place + ", " + stateName;
+        return (full.length() > TITLE_MAX ? "Schools in " + place : full) + " | " + SITE;
     }
 
     /** "Patna" → "Patna District"; a name that already ends in "district" is kept as it is. */
@@ -821,7 +872,7 @@ public class SeoHeadService {
                 // Two spellings of one town ("Bhuj", "BHUJ") share a slug; the page is the one with more schools, as in the sitemap.
                 .max(java.util.Comparator.comparingLong(CityDto::schoolCount))
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
-        String title = "Schools in " + city.name() + ", " + state.name() + " | " + SITE;
+        String title = placeTitle(city.name(), state.name());
         String description = "%,d schools in %s, %s, with board and classes, and fees and admission dates where "
                 .formatted(city.schoolCount(), city.name(), state.name()) + "published, each linked to its official source.";
         String url = baseUrl + "/states/" + state.slug() + "/city/" + city.slug();

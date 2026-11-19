@@ -42,6 +42,29 @@ describe('analytics', () => {
       expect(document.querySelector('script[src*="gtag/js"]')).toBeNull();
     });
 
+    it('knows Tag Manager is coming before the page has loaded (index.html adds it on load)', () => {
+      const loader = document.createElement('script');
+      loader.text = "window.addEventListener('load', function () { var s = document.createElement('script'); s.async = true; "
+        + "s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS'; document.head.appendChild(s); });";
+      document.head.appendChild(loader);
+      try {
+        expect(document.querySelector('script[src*="gtm.js"]')).toBeNull();
+        expect(consentNeeded()).toBe(true);
+        expect(analyticsConfigured()).toBe(false);
+        // An event before load is queued for Tag Manager (after Accept), not dropped.
+        window.dataLayer = [];
+        window.gtag = function gtag() {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer?.push(arguments);
+        };
+        setConsent('granted');
+        track('school_profile_view', { school_slug: 'erudite-academy' });
+        expect(window.dataLayer?.[1]).toEqual({ event: 'school_profile_view', school_slug: 'erudite-academy' });
+      } finally {
+        loader.remove();
+      }
+    });
+
     it('passes events only after Accept, with the consent update first', () => {
       addTagManager();
       track('school_search', { state: 'BR', email: 'a@b.c' });
