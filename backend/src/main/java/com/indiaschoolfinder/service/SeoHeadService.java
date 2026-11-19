@@ -92,8 +92,8 @@ public class SeoHeadService {
                     + "budget, board and must-have facilities. See schools whose official sources confirm each one, and why."),
             page("/compare", "Compare schools side by side", "Compare up to four schools: board, classes, "
                     + "official fees, admissions, facilities and distance from home, and share the comparison."),
-            page("/schools", "Find Schools in India: CBSE & ICSE School Directory", "Search and filter schools across Indian states and union "
-                    + "territories by board, type, classes, fees and location — every fact linked to its source."),
+            page("/schools", "Find Schools in India: CBSE & ICSE School Directory", "Search and filter schools across India by state, "
+                    + "board, type, classes, fees and location. Every fact is linked to its source."),
             page("/states", "Schools by state and union territory", "Browse schools in every Indian state and "
                     + "union territory, with district-wise lists and source-linked profiles."),
             // "best schools in india" is searched about 14,800 times a month in India at difficulty 10 (Ubersuggest, 19 Nov
@@ -135,15 +135,12 @@ public class SeoHeadService {
             page("/boarding/affordable", "Affordable boarding schools in India", "Boarding schools whose official "
                     + "published annual fee is up to ₹1.5 lakh, and government residential schools with low or no fees."),
             page("/exams", "School entrance exams in India", "JNVST, AISSEE, RIMC, RMS CET and state entrance "
-                    + "exams: eligibility, confirmed dates, exam pattern, syllabus and official papers, each linked to the "
-                    + "conducting body's notice."),
-            page("/exams/finder", "Which entrance exams can my child take?", "Answer up to four questions — class, "
-                    + "state, school type, boarding — to see which school entrance exams may fit and why, with the "
-                    + "eligibility rules to confirm in each official notice."),
+                    + "exams: eligibility, dates, pattern, syllabus and official papers. Each links to the conducting body's notice."),
+            page("/exams/finder", "Which entrance exams can my child take?", "Answer up to four questions (class, "
+                    + "state, school type, boarding) to see which school entrance exams may fit and why. Confirm each rule in the official notice."),
             page("/exams/practice", "Free practice tests: entrance, Olympiad and school exams", "Original "
-                    + "practice quizzes and timed mock tests for JNVST, AISSEE, Netarhat, class-wise Olympiads and "
-                    + "school subjects, many in English and Hindi, with every answer explained — written by SchoolDhundo, "
-                    + "not official questions."),
+                    + "quizzes and timed mock tests for JNVST, AISSEE, Netarhat, Olympiads and school subjects, many in English and "
+                    + "Hindi. Our own questions, not official."),
             page("/blog", "Education insights for parents and students", "Original guides on school admissions, boarding and "
                     + "government schools, entrance exams, boards and parenting in India, with official sources linked."),
             page("/rankings/methodology", "Ranking methodology", "Who publishes the school rankings shown on SchoolDhundo, their years, "
@@ -151,10 +148,10 @@ public class SeoHeadService {
             page("/cities", "Schools by city", "Cities across India where SchoolDhundo lists schools, with "
                     + "the number listed in each."),
             page("/admissions/guide", "School admission guide: process, eligibility and documents", "How school "
-                    + "admission works in India: the steps, age rules for Class I, reserved seats under the RTE Act, "
-                    + "documents commonly asked for and what to check about hostels."),
-            page("/updates", "Latest school & exam updates", "Latest official notices for AISSEE, JNVST, Netarhat and other school "
-                    + "entrance exams, open school admissions and their last dates, and new practice sets, each linked to its source."),
+                    + "admission works in India: the steps, Class I age rules, RTE reserved seats and the documents commonly asked "
+                    + "for. Also what to check about hostels."),
+            page("/updates", "Latest school & exam updates", "Latest official notices for AISSEE, JNVST, Netarhat and other "
+                    + "entrance exams, open admissions with last dates, and new practice sets. Each links to its source."),
             page("/admissions/notifications", "Latest school admission notifications", "School admission cycles "
                     + "recently added or updated from official notices, by state, class, category and status."),
             page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
@@ -168,7 +165,7 @@ public class SeoHeadService {
             page("/disclaimer", "Disclaimer: confirm school facts at the source", "School facts are taken from official sources and may change; always "
                     + "confirm fees, dates and eligibility in the school's or conducting body's official notice."),
             page("/editorial-policy", "Editorial policy", "How SchoolDhundo chooses sources, checks school information, "
-                    + "presents published rankings and writes its own practice questions, and how paid content is kept apart."),
+                    + "presents published rankings and writes its own practice questions. Paid content is kept apart."),
             page("/corrections-policy", "Corrections policy", "How to report a mistake in a school listing, ranking or "
                     + "practice question on SchoolDhundo, and how corrections are checked and shown."),
             page("/advertise", "Advertise with SchoolDhundo", "Featured school listings, admission enquiries, managed "
@@ -206,12 +203,12 @@ public class SeoHeadService {
             page("/stages/senior-secondary", "Senior secondary schools", "Schools that list Class XI or XII."),
             page("/exams/syllabus", "Exam pattern and syllabus of school entrance exams", "Subjects, questions, marks, "
                     + "duration, format and language of JNVST, AISSEE, RIMC, JNV lateral entry and state entrance exams, from "
-                    + "each conducting body's official notice."),
+                    + "each official notice."),
             page("/exams/calendar", "School entrance exam calendar", "Application deadlines, admit cards and exam dates "
                     + "for JNVST, AISSEE, RIMC and other school entrance exams, month by month, from official notices."),
-            page("/exams/resources", "Learning resources for school entrance exams", "Syllabus, exam pattern, preparation "
-                    + "plans, document checklists, FAQs and links to officially published papers and answer keys for JNVST, "
-                    + "AISSEE, RIMC, RMS CET and other school entrance exams."));
+            page("/exams/resources", "Learning resources for school entrance exams", "Syllabus, exam pattern, study "
+                    + "plans, document checklists and FAQs for JNVST, AISSEE, RIMC, RMS CET and more. Links to official papers and "
+                    + "answer keys."));
 
     /** Paths under /exams that are pages, not exam slugs; the exam import rejects them as slugs. */
     public static final Set<String> RESERVED_EXAM_SLUGS = Set.of("finder", "calendar", "practice", "syllabus", "resources", "class", "state",
@@ -827,8 +824,7 @@ public class SeoHeadService {
         }
         if (districtSlug == null) {
             String title = "Schools in " + state.name() + " | " + SITE;
-            String description = "%,d schools in %s, by district, with board and classes, and fees and admission dates where "
-                    .formatted(state.schoolCount(), state.name()) + "published, each linked to its official source.";
+            String description = placeDescription("%,d schools in %s, by district".formatted(state.schoolCount(), state.name()));
             String url = baseUrl + "/states/" + state.slug();
             return tags(title, description, url, null, state.schoolCount() == 0,
                     crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), url)));
@@ -839,8 +835,7 @@ public class SeoHeadService {
         // "District" tells this page apart from the town of the same name (/states/bihar/patna vs /states/bihar/city/patna),
         // which would otherwise have the same title and heading; the town page keeps the plain "Schools in Patna, Bihar".
         String title = placeTitle(districtName(district.name()), state.name());
-        String description = "%,d schools in %s district, %s, with board and classes, and fees and admission dates where "
-                .formatted(district.schoolCount(), district.name(), state.name()) + "published, each linked to its official source.";
+        String description = placeDescription("%,d schools in %s district, %s".formatted(district.schoolCount(), district.name(), state.name()));
         String url = baseUrl + "/states/" + state.slug() + "/" + district.slug();
         return tags(title, description, url, null, district.schoolCount() < MIN_SCHOOLS_TO_INDEX,
                 crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
@@ -855,6 +850,17 @@ public class SeoHeadService {
     static String placeTitle(String place, String stateName) {
         String full = "Schools in " + place + ", " + stateName;
         return (full.length() > TITLE_MAX ? "Schools in " + place : full) + " | " + SITE;
+    }
+
+    static final String PLACE_DETAILS = "Fees and admission dates are shown where published, each linked to its official source.";
+
+    /**
+     * "65 schools in Kolkata, West Bengal, with board and classes. Fees and admission dates ...". Two sentences, so that
+     * for a long place name ("Dadra and Nagar Haveli and Daman and Diu") {@link #fitDescription} drops the second one
+     * whole instead of cutting a sentence short with "…".
+     */
+    static String placeDescription(String lead) {
+        return lead + ", with board and classes. " + PLACE_DETAILS;
     }
 
     /** "Patna" → "Patna District"; a name that already ends in "district" is kept as it is. */
@@ -873,8 +879,7 @@ public class SeoHeadService {
                 .max(java.util.Comparator.comparingLong(CityDto::schoolCount))
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
         String title = placeTitle(city.name(), state.name());
-        String description = "%,d schools in %s, %s, with board and classes, and fees and admission dates where "
-                .formatted(city.schoolCount(), city.name(), state.name()) + "published, each linked to its official source.";
+        String description = placeDescription("%,d schools in %s, %s".formatted(city.schoolCount(), city.name(), state.name()));
         String url = baseUrl + "/states/" + state.slug() + "/city/" + city.slug();
         return tags(title, description, url, null, city.schoolCount() < MIN_SCHOOLS_TO_INDEX,
                 crumbs(listItem(1, "Schools", baseUrl + "/schools"), listItem(2, state.name(), baseUrl + "/states/" + state.slug()),
@@ -885,8 +890,7 @@ public class SeoHeadService {
         var board = boardRepository.findByCodeIgnoreCase(code).orElseThrow(() -> new ResourceNotFoundException("Board", code));
         String label = "CISCE".equals(board.getCode()) ? "ICSE/ISC (CISCE)" : board.getCode();
         String title = label + " schools in India | " + SITE;
-        String description = "Schools affiliated to " + board.getName() + ", with classes, and fees and admission dates where "
-                + "published, each linked to its official source.";
+        String description = "Schools affiliated to " + board.getName() + ", with their classes. " + PLACE_DETAILS;
         // The site links board pages by their upper-case code (/boards/CBSE), so that is the canonical address.
         return tags(title, description, baseUrl + "/boards/" + board.getCode(), null, false, null);
     }
@@ -1025,7 +1029,7 @@ public class SeoHeadService {
         String name = c.title().replace('’', '\'');
         String title = name + (name.contains("India") ? ": " : " in India: ") + c.schools() + (c.schools() == 1 ? " School" : " Schools") + " | " + SITE;
         String description = c.description().replace('’', '\'') + " Board, boarding, gender, classes and an approximate fee for each of the "
-                + c.schools() + " schools, with links to official websites.";
+                + c.schools() + " schools. Links go to official websites.";
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
