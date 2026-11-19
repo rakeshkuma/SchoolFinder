@@ -5,7 +5,9 @@ facts. Nothing is fetched from the government site, so profiles work the same wh
 
 - **Checked link.** An editor has confirmed a Know Your School page for this school. The card shows the UDISE+ code
   and a "View Official UDISE+ Details" button that opens that page in a new tab, with the date it was checked.
-- **No checked link.** The card shows "Find This School on UDISE+", which opens https://kys.udiseplus.gov.in/.
+- **Confirmed code, no checked link.** "Find This School on UDISE+" opens the school's own portal page,
+  `https://kys.udiseplus.gov.in/#/schooldetail/{code}/1` (see "Links built from a confirmed code" below).
+- **No checked link or confirmed code.** The card shows "Find This School on UDISE+", which opens https://kys.udiseplus.gov.in/.
   - If the code is known, it is shown with a "Copy code" button.
   - Otherwise the card names the school and its place, to help search the portal.
 
@@ -25,14 +27,25 @@ Education.
 The directory was built from CBSE's SARAS affiliation records, which do not include UDISE+ codes. So on day one every
 profile offers the portal's search.
 
-## Why links are not generated from codes
+## Links built from a confirmed code (19 Nov 2026)
 
-The portal is a JavaScript app. Its own search results link to `/#/schooldetail/{school id}/{year id}`, using
-**its internal school id and an academic-year id taken from the search result** (checked in the portal's code,
-14 Nov 2026). A UDISE+ code alone does not give that address, so `/schooldetail/{code}/1` is not assumed to work.
+The portal is a JavaScript app. Its search results link to `/#/schooldetail/{school id}/{year id}` with its internal
+school id. But its school-detail page also accepts the 11-digit UDISE+ code in that place: when the id is 11
+characters, every data call on the page asks for `udiseSchCode` instead of `schoolId`. The year segment is not used to
+choose the school or the year (the page loads the latest year). This was checked in the portal's code on 19 Nov 2026.
 
-The portal's search uses a captcha, so links cannot be looked up automatically, and we do not try. A direct link is
-stored only after a person has found the school on the portal and checked that the page shows it.
+So the button goes to `https://kys.udiseplus.gov.in/#/schooldetail/{code}/1` when:
+- the code is exactly 11 digits (kept as text, so leading zeros stay), and
+- the school's match status is `VERIFIED_MATCH`, meaning an editor confirmed it or an official list matched it
+  without doubt.
+
+A code with no status, `PENDING_REVIEW` or `NOT_MATCHED` never makes a link. In order, the button opens:
+1. a checked page address, if there is one;
+2. the page for a confirmed code;
+3. otherwise the portal's search.
+
+The button text is the same for 2 and 3. If the portal changes how it reads ids, change `udiseCodeUrl` in
+`frontend/src/components/school/UdiseCard.tsx`.
 
 ## Database (migration V45, additive)
 

@@ -9,19 +9,34 @@ export const UDISE_SEARCH_URL = 'https://kys.udiseplus.gov.in/';
 const PROFILE_URL = /^https:\/\/kys\.udiseplus\.gov\.in\/#\/schooldetail1?\/[0-9]{1,20}\/[0-9]{1,4}$/;
 const CODE = /^[0-9]{11}$/;
 
+/**
+ * The portal's own page for an 11-digit UDISE+ code (kept as a string, so leading zeros stay), or null for anything else.
+ * The portal's `schooldetail/:udise/:yearId` page reads an id of 11 characters as a UDISE+ code (its data calls switch
+ * to `udiseSchCode`); the final segment is its year id, which that page does not use to choose the school or the year.
+ * Checked in the portal's code on 19 Nov 2026.
+ */
+export function udiseCodeUrl(code: string | null | undefined): string | null {
+  return code && CODE.test(code) ? `https://kys.udiseplus.gov.in/#/schooldetail/${code}/1` : null;
+}
+
 export type UdiseLink =
   | { kind: 'direct'; url: string; code: string | null; checkedOn: string | null }
+  | { kind: 'code'; url: string; code: string }
   | { kind: 'search'; url: string; code: string | null };
 
 /**
- * Where the UDISE+ button goes: the school's own Know Your School page only when an editor checked that link (and it is a
- * safe portal address); otherwise the portal's search. A link is never built from a code.
+ * Where the UDISE+ button goes: the school's own Know Your School page an editor checked (if it is a safe portal
+ * address); else, for a valid code confirmed for this school (VERIFIED_MATCH), the portal's page for that code;
+ * otherwise the portal's search. A code that was not confirmed (unchecked, pending review) never makes a link.
  */
 export function udiseLink(s: Pick<SchoolDetail, 'udiseCode' | 'udiseProfileUrl' | 'udiseVerifiedOn' | 'udiseMatchStatus'>): UdiseLink {
   const code = s.udiseCode && CODE.test(s.udiseCode) ? s.udiseCode : null;
-  if (s.udiseProfileUrl && PROFILE_URL.test(s.udiseProfileUrl) && s.udiseMatchStatus === 'VERIFIED_MATCH') {
+  const verified = s.udiseMatchStatus === 'VERIFIED_MATCH';
+  if (s.udiseProfileUrl && PROFILE_URL.test(s.udiseProfileUrl) && verified) {
     return { kind: 'direct', url: s.udiseProfileUrl, code, checkedOn: s.udiseVerifiedOn ?? null };
   }
+  const codeUrl = verified ? udiseCodeUrl(code) : null;
+  if (code && codeUrl) return { kind: 'code', url: codeUrl, code };
   return { kind: 'search', url: UDISE_SEARCH_URL, code };
 }
 
@@ -55,7 +70,7 @@ function affiliationLabel(board: SchoolDetail['board']): string {
  * "Official School Information & UDISE+": the government's Know Your School portal, the school's board record and its
  * own website, in one place. Nothing is fetched from the portal (the profile works the same when it is down), and the
  * card never calls a school "verified": the button only opens the portal, and finding the school there is up to the
- * visitor unless an editor has checked a direct link. `boardRecord` is the board-list text kept as the description.
+ * visitor unless an editor has checked a direct link or confirmed the school's code. `boardRecord` is the board-list text kept as the description.
  */
 export function UdiseCard({ school: s, boardRecord }: { school: SchoolDetail; boardRecord?: string | null }) {
   const link = udiseLink(s);
@@ -85,7 +100,7 @@ export function UdiseCard({ school: s, boardRecord }: { school: SchoolDetail; bo
         </div>
         {link.kind === 'direct' ? (
           link.checkedOn && <p className="text-xs text-slate-500">Link checked on {formatDate(link.checkedOn)}: it opens this school’s own page on the portal.</p>
-        ) : (
+        ) : link.kind === 'search' && (
           <p className="rounded-xl bg-slate-50 px-3.5 py-2.5 text-xs leading-relaxed text-slate-600 ring-1 ring-slate-100">
             <span className="font-semibold text-slate-700">The portal opens on its search page.</span>{' '}
             {link.code
