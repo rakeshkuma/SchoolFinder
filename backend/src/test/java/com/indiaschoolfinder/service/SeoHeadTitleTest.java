@@ -28,6 +28,17 @@ class SeoHeadTitleTest {
     }
 
     @Test
+    void placeDescriptionsLoseWholeSentencesNeverHalfOne() {
+        // Short place: both sentences fit.
+        assertThat(SeoHeadService.fitDescription(SeoHeadService.placeDescription("65 schools in Kolkata, West Bengal")))
+                .isEqualTo("65 schools in Kolkata, West Bengal, with board and classes. " + SeoHeadService.PLACE_DETAILS);
+        // Long place (cut with "…" on the live site until 19 Nov 2026): the second sentence goes whole.
+        assertThat(SeoHeadService.fitDescription(SeoHeadService.placeDescription(
+                "14 schools in Daman, Dadra and Nagar Haveli and Daman and Diu")))
+                .isEqualTo("14 schools in Daman, Dadra and Nagar Haveli and Daman and Diu, with board and classes.");
+    }
+
+    @Test
     void keepsTheSiteNameOnlyWhileTheTitleFitsInSixtyCharacters() {
         assertThat(SeoHeadService.fitTitle("Schools in Bihar | SchoolDhundo")).isEqualTo("Schools in Bihar | SchoolDhundo");
         // 66 characters with the suffix: Ubersuggest flagged these as too long; the place and topic are what matter.

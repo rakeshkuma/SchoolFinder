@@ -107,6 +107,12 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/schools/rashtriya-indian-military-college\"");
         assertThat(head("/boarding/sainik-school-tilaiya")).contains("href=\"http://localhost/boarding/sainik-school-tilaiya\"");
         assertThat(head("/boarding/girls")).doesNotContain("noindex");
+        // These descriptions were one long sentence, cut with "…" at 160 characters on the live site (19 Nov 2026).
+        for (String p : new String[]{"/schools", "/exams", "/exams/finder", "/exams/practice", "/exams/syllabus", "/exams/resources",
+                "/admissions/guide", "/updates", "/editorial-policy", "/boards/CISCE", "/boards/CBSE"}) {
+            assertThat(head(p)).as(p).doesNotContain("…");
+        }
+        assertThat(head("/exams/practice")).contains("not official");
         // The policy pages have their own title and canonical address, and are in the sitemap.
         assertThat(head("/editorial-policy")).contains("<title>Editorial policy | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/editorial-policy\"");
@@ -224,7 +230,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("\"@type\":\"BreadcrumbList\"")
                 .contains("\"position\":3,\"name\":\"Bhim Tal\",\"item\":\"http://localhost/states/uttarakhand/city/bhim-tal\"")
                 // fees are promised only "where published"
-                .contains("fees and admission dates where published");
+                .contains("Fees and admission dates are shown where published");
         assertThat(head("/states/uttarakhand/city/atlantis")).contains("noindex");
         assertThat(head("/schools")).contains("<title>Find Schools in India: CBSE &amp; ICSE School Directory</title>")
                 .contains("href=\"http://localhost/schools\"");
