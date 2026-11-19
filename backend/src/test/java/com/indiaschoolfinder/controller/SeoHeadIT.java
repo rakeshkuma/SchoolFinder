@@ -89,9 +89,24 @@ class SeoHeadIT extends AbstractIntegrationTest {
         // No route in the app: the "page not found" page, not a copy of the home page.
         assertThat(head("/this-page-does-not-exist")).contains("noindex").doesNotContain("canonical");
         assertThat(head("/wp-login.php")).contains("noindex");
-        // The home page and app pages without their own title stay indexable.
+        // The home page stays indexable. An address inside an app section that no page answers is the app's "page not
+        // found", not a copy of the home page (found live on 19 Nov 2026 at /boarding/{unknown} and /type/{unknown}).
         assertThat(head("/")).doesNotContain("noindex").contains("href=\"http://localhost/\"");
-        assertThat(head("/rankings/lists")).doesNotContain("noindex");
+        assertThat(head("/rankings/lists")).contains("noindex").doesNotContain("canonical");
+        assertThat(head("/boarding/uttarakhand")).contains("noindex").doesNotContain("canonical");
+        assertThat(head("/type/private")).contains("noindex");
+        assertThat(head("/stages/high-school")).contains("noindex");
+        assertThat(head("/admissions/2027")).contains("noindex");
+        assertThat(head("/rankings/india")).contains("noindex"); // the app redirects it to /rankings
+        // The app's featured boarding pages have their own title; where the school has a directory profile or network
+        // page in the sitemap, that is the address to index.
+        assertThat(head("/boarding/sainik-schools")).contains("<title>Sainik Schools in India: admission through AISSEE</title>")
+                .contains("Classes VI and IX via AISSEE.")
+                .contains("href=\"http://localhost/network/sainik-school\"").doesNotContain("noindex");
+        assertThat(head("/boarding/rimc")).contains("Rashtriya Indian Military College (RIMC), Dehradun")
+                .contains("href=\"http://localhost/schools/rashtriya-indian-military-college\"");
+        assertThat(head("/boarding/sainik-school-tilaiya")).contains("href=\"http://localhost/boarding/sainik-school-tilaiya\"");
+        assertThat(head("/boarding/girls")).doesNotContain("noindex");
         // The policy pages have their own title and canonical address, and are in the sitemap.
         assertThat(head("/editorial-policy")).contains("<title>Editorial policy | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/editorial-policy\"");

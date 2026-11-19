@@ -25,9 +25,10 @@ import { feeEstimate, profileLink } from './RankingDirectory';
  * The rest of the ranking pages (/rankings/states, /rankings/boards, ...) are unchanged and linked from here.
  */
 
-const TITLE = 'India’s Best Schools: Published School Rankings';
-const DESCRIPTION = 'Explore trusted school rankings across India. Discover top-performing schools by ranking publisher, location, '
-  + 'education board, and school category.';
+/** As the server's head for /rankings (SeoHeadService), so the title does not change on in-app navigation. */
+const TITLE = 'Best Schools in India: Published School Rankings';
+const DESCRIPTION = 'Best schools in India in published rankings: browse by publisher, state, city, board and category, with every '
+  + 'rank exactly as its publisher printed it.';
 const PAGE_SIZE = 25;
 export const TOPS: [string, string][] = [['10', 'Top 10'], ['20', 'Top 20'], ['100', 'Top 100'], ['all', 'All']];
 /** The publisher's own explanation of how it ranks, where we know the page. */

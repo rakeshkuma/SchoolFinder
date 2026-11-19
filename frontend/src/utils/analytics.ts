@@ -50,9 +50,17 @@ export function cleanParams(params: Params = {}): Record<string, string | number
   return out;
 }
 
-/** True when Google Tag Manager's container script is on the page (production index.html). */
+const GTM_SRC = 'https://www.googletagmanager.com/gtm.js';
+
+/**
+ * True when Google Tag Manager is on the page (production index.html). index.html adds the container script only after
+ * the page's load event, so before that its inline loader is what shows Tag Manager is coming. Checking only for the
+ * container script hid the cookie banner, and dropped events, on pages that render before load (slow connections).
+ */
 export function tagManagerPresent(): boolean {
-  return typeof document !== 'undefined' && document.querySelector('script[src^="https://www.googletagmanager.com/gtm.js"]') !== null;
+  if (typeof document === 'undefined') return false;
+  if (document.querySelector(`script[src^="${GTM_SRC}"]`) !== null) return true;
+  return Array.from(document.scripts).some((s) => !s.src && s.text.includes(GTM_SRC));
 }
 
 /** Direct gtag.js: only with a measurement ID and no Tag Manager, so GA4 is never installed twice. */

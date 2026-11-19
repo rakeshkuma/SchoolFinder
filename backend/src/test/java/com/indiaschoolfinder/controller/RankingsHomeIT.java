@@ -64,7 +64,7 @@ class RankingsHomeIT extends AbstractIntegrationTest {
     @Test
     void theServerRenderedPageHasTheHeadingTheCategoriesAndSaysTheDirectoryIsNotARanking() throws Exception {
         String head = mockMvc.perform(get("/api/v1/seo/head/rankings")).andReturn().getResponse().getContentAsString();
-        assertThat(head).contains("<title>India&#39;s Best Schools: Published School Rankings</title>");
+        assertThat(head).contains("<title>Best Schools in India: Published School Rankings</title>").doesNotContain("…");
         String body = mockMvc.perform(get("/api/v1/seo/body/rankings")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         assertThat(body).contains("<h1>Discover India's Best Schools</h1>")
                 .contains("href=\"/rankings/top-premier-schools\"")
