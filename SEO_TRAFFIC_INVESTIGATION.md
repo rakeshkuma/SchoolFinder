@@ -341,7 +341,12 @@ Until Search Console data is in hand, these are planning steps, not forecasts.
 
 ## H. Before and after
 
-| Check | Live site now | Fixed local build |
+**Measured after the deploy (7a44c20, 19 Nov afternoon)**, with the same slow-load test on the live site and all GA4 hits
+blocked: the banner and the "Cookie settings" link were shown at 2 s on `/`, `/schools/erudite-academy` and
+`/exams/jnvst` (3 of 3; it was 0 of 3 that morning). The AI visibility tracker (B.6) was saved the same day with the 10
+questions listed, Edustoke and SchoolMyKids, and 25 keywords tracked weekly.
+
+| Check | Live site before the deploy | Fixed local build |
 |---|---|---|
 | Banner shown when load is delayed (/, profile, /exams/jnvst) | 0 of 3 | 3 of 3, at 2 s |
 | "Cookie settings" link in that case | 0 of 3 | 3 of 3 |
