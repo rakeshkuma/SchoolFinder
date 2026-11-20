@@ -63,6 +63,11 @@ public class KvsAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return SourceProfile.national(name(), "SCHOOL_SYSTEM", false, "HTML", SiteUpdate.Category.ADMISSION, SiteUpdate.Category.JOB);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         SourceListing jobs = parse(http.get(RECRUITMENT).html(), SiteUpdate.Category.JOB, true, today);
         SourceListing admissions = parse(http.get(ADMISSION).html(), SiteUpdate.Category.ADMISSION, false, today);

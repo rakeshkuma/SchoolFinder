@@ -77,9 +77,17 @@ export function AdminSyncPanel({ onRan }: { onRan?: () => void }) {
             </dl>
             {s.running && <p className="rounded-xl bg-sky-50 p-3 text-sky-900" role="status">A check is running now.</p>}
             {s.lastRun ? <RunDetails run={s.lastRun} title="Last run" /> : <p className="text-slate-600">No check has run yet.</p>}
+            {(s.registryProblems?.length ?? 0) > 0 && (
+              <div role="alert" className="rounded-xl bg-red-50 p-3 text-red-800">
+                <p className="font-semibold">Source registry entries left out (fix notifications/sources.json):</p>
+                <ul className="mt-1 list-disc pl-5">{s.registryProblems?.map((p) => <li key={p}>{p}</li>)}</ul>
+              </div>
+            )}
             <details className="rounded-xl bg-slate-50 p-3">
-              <summary className="cursor-pointer font-semibold">Sources ({s.sources.length})</summary>
-              <ul className="mt-2 space-y-1.5">
+              <summary className="cursor-pointer font-semibold">
+                Sources ({s.sources.length}{s.sourcesFailing ? `, ${s.sourcesFailing} failing` : ''})
+              </summary>
+              <ul className="mt-2 space-y-2">
                 {s.sources.map((src) => (
                   <li key={src.key}>
                     <a href={src.listingUrl} target="_blank" rel="noopener noreferrer" className="link font-semibold">{src.name}</a>
@@ -87,6 +95,23 @@ export function AdminSyncPanel({ onRan }: { onRan?: () => void }) {
                       {' '}· {src.enabled ? (src.autoPublish ? 'publishes dated notices automatically' : `review only: ${src.reviewOnlyReason ?? ''}`) : 'switched off'}
                       {src.completeListing ? ' · full listing (withdrawals detected)' : ''} · {src.hosts.join(', ')}
                     </span>
+                    {src.sourceCategory && (
+                      <span className="block text-xs text-slate-500">
+                        {src.sourceCategory.toLowerCase().replace('_', ' ')}
+                        {src.sector ? ` · ${src.sector.toLowerCase()}` : ''}{src.boarding ? ' · boarding' : ''}
+                        {src.stateCode ? ` · ${src.city ? `${src.city}, ` : ''}${src.stateCode}` : ''}
+                        {src.noticeTypes?.length ? ` · ${src.noticeTypes.join(', ').toLowerCase()}` : ''}
+                        {src.method ? ` · read via ${src.method}` : ''}{src.schoolPostsOnly ? ' · school posts only' : ''}
+                      </span>
+                    )}
+                    {src.enabled && (
+                      <span className="block text-xs text-slate-500">
+                        {src.lastAttemptAt ? <>last check {istTime(src.lastAttemptAt)}: <span className={`font-bold ${OUTCOME_STYLE[src.lastOutcome ?? ''] ?? ''}`}>{src.lastOutcome}</span></> : 'not checked yet'}
+                        {src.lastSuccessAt ? ` · last success ${istTime(src.lastSuccessAt)}` : ''}
+                        {src.consecutiveFailures ? ` · ${src.consecutiveFailures} failure(s) in a row` : ''}
+                        {src.lastError && src.lastOutcome !== 'OK' ? ` · ${src.lastError}` : ''}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -115,7 +140,9 @@ function RunDetails({ run, title }: { run: SyncRunRow; title: string }) {
         <span className={`rounded-md px-2 py-0.5 text-xs font-bold ${RUN_STYLE[run.status]}`}>{run.status}</span>
         <span className="text-slate-600">
           {istTime(run.startedAt)} · {run.trigger.toLowerCase()}{run.triggeredBy ? ` by ${run.triggeredBy}` : ''} · {run.itemsCreated} new
-          ({run.itemsPublished} published, {run.itemsPending} for review) · {run.itemsUpdated} changed · {run.itemsExpired} expired
+          ({run.itemsPublished} published, {run.itemsPending} for review{run.newJobs || run.newAdmissions
+            ? `; ${run.newJobs ?? 0} jobs, ${run.newAdmissions ?? 0} admissions` : ''}) · {run.itemsUpdated} changed · {run.itemsExpired} expired
+          {run.duplicates ? ` · ${run.duplicates} duplicates skipped` : ''}
           {run.itemsWithdrawn ? ` · ${run.itemsWithdrawn} withdrawn` : ''}
         </span>
       </summary>

@@ -62,6 +62,13 @@ public class NetarhatAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return new SourceProfile(name(), "SCHOOL", com.indiaschoolfinder.entity.SiteUpdate.Sector.GOVERNMENT, true, "JH",
+                "Netarhat", "netarhat-awasiya-vidyalaya", SourceProfile.OFFICIAL_SCHOOL_SITE, "HTML",
+                java.util.Set.of(SiteUpdate.Category.ADMISSION, SiteUpdate.Category.EXAM, SiteUpdate.Category.JOB), false);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         return parse(http.get(HOME).html(), today);
     }

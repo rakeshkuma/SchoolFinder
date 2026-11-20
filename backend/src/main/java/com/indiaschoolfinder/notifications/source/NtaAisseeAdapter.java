@@ -65,6 +65,11 @@ public class NtaAisseeAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return SourceProfile.national(name(), "EXAM_BODY", true, "HTML", SiteUpdate.Category.EXAM, SiteUpdate.Category.ADMISSION);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         return parse(http.get(LISTING).html(), today);
     }

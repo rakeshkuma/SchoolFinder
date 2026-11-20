@@ -3,9 +3,12 @@ package com.indiaschoolfinder.notifications;
 import com.indiaschoolfinder.entity.SiteUpdate;
 import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.notifications.fetch.UrlPolicy;
+import com.indiaschoolfinder.notifications.opportunity.OpportunityClassifier;
+import com.indiaschoolfinder.notifications.opportunity.OpportunityEnricher;
 import com.indiaschoolfinder.notifications.source.FoundNotice;
 import com.indiaschoolfinder.notifications.source.OfficialSourceAdapter;
 import com.indiaschoolfinder.notifications.source.SourceListing;
+import com.indiaschoolfinder.notifications.source.SourceProfile;
 import com.indiaschoolfinder.repository.SiteUpdateRepository;
 import com.indiaschoolfinder.service.AuditService;
 import org.springframework.stereotype.Service;
@@ -52,11 +55,14 @@ public class NotificationIngestService {
     private final SiteUpdateRepository updates;
     private final AuditService audit;
     private final NotificationSyncProperties props;
+    private final OpportunityEnricher enricher;
 
-    public NotificationIngestService(SiteUpdateRepository updates, AuditService audit, NotificationSyncProperties props) {
+    public NotificationIngestService(SiteUpdateRepository updates, AuditService audit, NotificationSyncProperties props,
+                                     OpportunityEnricher enricher) {
         this.updates = updates;
         this.audit = audit;
         this.props = props;
+        this.enricher = enricher;
     }
 
     @Transactional
@@ -68,6 +74,15 @@ public class NotificationIngestService {
         for (SiteUpdate u : updates.findBySourceKey(source.key())) {
             existing.put(u.getSourceItemId(), u);
         }
+        // Several openings listed on one page (a careers page) share that page's address; they are different notices,
+        // not copies of one another.
+        Map<String, Integer> sharedUrls = new HashMap<>();
+        for (FoundNotice n : listing.notices()) {
+            String url = UrlPolicy.canonical(n.url());
+            if (url != null) sharedUrls.merge(url, 1, Integer::sum);
+        }
+        String listingPage = UrlPolicy.canonical(source.listingUrl());
+        if (listingPage != null) sharedUrls.merge(listingPage, 2, Integer::sum);
         Set<String> listedIds = new HashSet<>();
         List<Long> seen = new ArrayList<>();
         for (FoundNotice n : listing.notices()) {
@@ -77,7 +92,7 @@ public class NotificationIngestService {
             }
             SiteUpdate u = existing.get(itemId);
             if (u == null) {
-                create(source, n, itemId, now, today, result);
+                create(source, n, itemId, now, today, result, sharedUrls);
             } else if (Objects.equals(u.getContentHash(), hash(n))) {
                 result.unchanged++;
                 seen.add(u.getId());
@@ -112,15 +127,19 @@ public class NotificationIngestService {
         }
     }
 
-    private void create(OfficialSourceAdapter source, FoundNotice n, String itemId, Instant now, LocalDate today, SourceResult result) {
+    private void create(OfficialSourceAdapter source, FoundNotice n, String itemId, Instant now, LocalDate today, SourceResult result,
+                        Map<String, Integer> sharedUrls) {
         String url = UrlPolicy.canonical(n.url());
         LocalDate published = n.dated() ? n.publishedOn() : today;
-        LocalDate expires = expiry(published, n.officialEndDate());
+        OpportunityClassifier.Facts facts = opportunity(n.category()) ? facts(source, n.category(), n.title(), published) : null;
+        LocalDate closes = n.closesOn() != null ? n.closesOn() : facts == null ? null : facts.closesOn();
+        LocalDate expires = expiry(published, n.officialEndDate(), facts, closes);
         if (expires.isBefore(today)) {
             result.tooOld++;
-            return; // old news: the feed is for current notices
+            return; // old news, or applications already closed: the feed is for current notices
         }
-        if (url != null && updates.findFirstBySourceUrl(url).isPresent()) {
+        boolean sharedPage = url != null && sharedUrls.getOrDefault(url, 0) > 1;
+        if (url != null && !sharedPage && updates.findFirstBySourceUrl(url).isPresent()) {
             result.duplicates++;
             return;
         }
@@ -137,6 +156,13 @@ public class NotificationIngestService {
         if (n.reviewNote() != null && n.dated()) {
             reasons.add(n.reviewNote());
         }
+        // This site lists school jobs: a school system's or commission's notice for an engineer or a project post waits
+        // for an editor. A school's own site only ever recruits for the school.
+        if (facts != null && n.category() == SiteUpdate.Category.JOB && facts.nonSchoolPost() && !facts.schoolPost()
+                && !facts.schoolStaff() && !"SCHOOL".equals(source.profile().sourceCategory())) {
+            reasons.add("The post it names does not look like school employment (this site lists teaching and school staff jobs); "
+                    + "publish it only if it is a school post.");
+        }
         SiteUpdate u = new SiteUpdate();
         u.setOrigin(SiteUpdate.Origin.OFFICIAL_SYNC);
         u.setSourceKey(source.key());
@@ -144,8 +170,8 @@ public class NotificationIngestService {
         u.setCategory(n.category());
         u.setTopic(clip(n.topic(), 40));
         u.setOfficialTitle(clip(n.title(), 400));
-        u.setTitle(displayTitle(n.title()));
-        u.setSummary(summary(source, n, published));
+        u.setTitle(displayTitle(source, n));
+        u.setSummary(facts == null ? summary(source, n, published) : opportunitySummary(source, n, published, facts, closes));
         u.setPublishedOn(published);
         u.setDateConfirmed(n.dated());
         u.setExpiresOn(expires);
@@ -158,8 +184,12 @@ public class NotificationIngestService {
         u.setContentHash(hash(n));
         u.setFirstSeenAt(now);
         u.setLastSeenAt(now);
+        enricher.apply(u, source.profile(), facts, n.closesOn(), true);
         u = updates.save(u);
+        enricher.savePositions(u.getId(), facts);
         result.created++;
+        if (n.category() == SiteUpdate.Category.JOB) result.createdJobs++;
+        if (n.category() == SiteUpdate.Category.ADMISSION) result.createdAdmissions++;
         if (u.getStatus() == SiteUpdate.Status.PUBLISHED) {
             result.published++;
             audit.record("SITE_UPDATE_SYNC_PUBLISHED", "SITE_UPDATE", u.getId(), source.key() + ": " + u.getTitle());
@@ -193,7 +223,10 @@ public class NotificationIngestService {
                 what.add("date");
             }
         }
-        LocalDate newExpiry = expiry(u.getPublishedOn(), n.officialEndDate());
+        OpportunityClassifier.Facts facts = opportunity(n.category())
+                ? facts(source, n.category(), n.title(), u.getPublishedOn()) : null;
+        LocalDate closes = n.closesOn() != null ? n.closesOn() : facts == null ? null : facts.closesOn();
+        LocalDate newExpiry = expiry(u.getPublishedOn(), n.officialEndDate(), facts, closes);
         boolean extended = false;
         if (!u.isStaffEdited() && !newExpiry.equals(u.getExpiresOn())) {
             extended = u.getExpiresOn() == null || newExpiry.isAfter(u.getExpiresOn());
@@ -206,11 +239,13 @@ public class NotificationIngestService {
         }
         u.setOfficialTitle(clip(n.title(), 400));
         if (!u.isStaffEdited()) {
-            u.setTitle(displayTitle(n.title()));
+            u.setTitle(displayTitle(source, n));
             if (url != null && UrlPolicy.allowed(url, source.documentHosts())) {
                 u.setSourceUrl(clip(url, 600));
             }
-            u.setSummary(summary(source, n, u.getPublishedOn()));
+            u.setSummary(facts == null ? summary(source, n, u.getPublishedOn())
+                    : opportunitySummary(source, n, u.getPublishedOn(), facts, closes));
+            enricher.apply(u, source.profile(), facts, n.closesOn(), true);
         }
         String changed = "Changed at the source on " + DAY.format(today) + ": " + String.join(", ", what) + "."
                 + (dateNote == null ? "" : " " + dateNote)
@@ -229,6 +264,9 @@ public class NotificationIngestService {
             relist(u, now);
         }
         updates.save(u);
+        if (!u.isStaffEdited()) {
+            enricher.savePositions(u.getId(), facts);
+        }
         audit.record("SITE_UPDATE_SOURCE_CHANGED", "SITE_UPDATE", u.getId(), clip(source.key() + ": " + String.join(", ", what), 300));
     }
 
@@ -272,6 +310,142 @@ public class NotificationIngestService {
         return published.plusDays(props.getLifetimeDays());
     }
 
+    /**
+     * An opening whose official last date is known stays current until that date (or its exam or interview, if
+     * later), and then moves to past updates; everything else keeps the usual lifetime.
+     */
+    LocalDate expiry(LocalDate published, LocalDate officialEnd, OpportunityClassifier.Facts facts, LocalDate closes) {
+        if (facts != null && closes != null
+                && (facts.noticeType() == SiteUpdate.NoticeType.OPENING || facts.noticeType() == SiteUpdate.NoticeType.EXTENSION)) {
+            LocalDate end = facts.examOn() != null && facts.examOn().isAfter(closes) ? facts.examOn() : closes;
+            if (!end.isAfter(published.plusYears(1))) {
+                return end;
+            }
+        }
+        return expiry(published, officialEnd);
+    }
+
+    /** The notice's facts; on a careers page an entry whose words say nothing else is an opening. */
+    static OpportunityClassifier.Facts facts(OfficialSourceAdapter source, SiteUpdate.Category category, String title, LocalDate published) {
+        OpportunityClassifier.Facts f = OpportunityClassifier.facts(category, title, published);
+        if (source != null && source.profile().openingsPage() && f.noticeType() == SiteUpdate.NoticeType.OTHER) {
+            return f.withNoticeType(SiteUpdate.NoticeType.OPENING);
+        }
+        return f;
+    }
+
+    private static boolean opportunity(SiteUpdate.Category category) {
+        return category == SiteUpdate.Category.ADMISSION || category == SiteUpdate.Category.JOB;
+    }
+
+    /**
+     * Gives notices stored before admissions and jobs had their own facts (or found while a classifier rule was
+     * missing) their facts and page address. Notices staff edited keep everything staff set; editorial notices keep
+     * their dates. Returns how many were filled in; a batch at a time, so a long backlog never makes one run slow.
+     */
+    @Transactional
+    public int enrichExisting(Map<String, OfficialSourceAdapter> sourcesByKey) {
+        int n = 0;
+        for (SiteUpdate u : updates.findTop200ByCategoryInAndSlugIsNullOrderByIdAsc(List.of(SiteUpdate.Category.ADMISSION, SiteUpdate.Category.JOB))) {
+            OfficialSourceAdapter source = u.getSourceKey() == null ? null : sourcesByKey.get(u.getSourceKey());
+            String text = u.getOfficialTitle() != null ? u.getOfficialTitle() : u.getTitle();
+            OpportunityClassifier.Facts facts = facts(source, u.getCategory(), text, u.getPublishedOn());
+            boolean derive = u.isOfficialSync() && !u.isStaffEdited() && u.getEventDate() == null;
+            enricher.apply(u, source == null ? null : source.profile(), facts, null, derive);
+            updates.save(u);
+            if (!u.isStaffEdited()) {
+                enricher.savePositions(u.getId(), facts);
+            }
+            n++;
+        }
+        return n;
+    }
+
+    /**
+     * The summary of an admission or job notice: who published it and when, what it is about as far as its title
+     * says, its last date or that none is given, and what to open for the rest. Facts only, never the notice's text.
+     */
+    static String opportunitySummary(OfficialSourceAdapter source, FoundNotice n, LocalDate published,
+                                     OpportunityClassifier.Facts f, LocalDate closes) {
+        StringBuilder s = new StringBuilder(source.name());
+        s.append(n.dated() ? " published this notice on " + DAY.format(published) : " lists this notice (no date given on its listing)");
+        String what = describe(n.category(), f);
+        if (what != null) {
+            s.append(": ").append(what);
+        }
+        s.append(". ");
+        boolean opening = f.noticeType() == SiteUpdate.NoticeType.OPENING || f.noticeType() == SiteUpdate.NoticeType.EXTENSION;
+        if (closes != null) {
+            s.append(f.walkIn() ? "Walk-in interview: " : "Last date to apply: ").append(DAY.format(closes)).append(". ");
+        } else if (opening) {
+            s.append("No last date is given on the listing. ");
+        }
+        s.append("Open the official notice for ").append(n.category() == SiteUpdate.Category.JOB
+                ? "the posts, eligibility, pay and how to apply" : "eligibility, dates and how to apply").append('.');
+        return clip(s.toString(), 400);
+    }
+
+    private static String describe(SiteUpdate.Category category, OpportunityClassifier.Facts f) {
+        if (category == SiteUpdate.Category.ADMISSION) {
+            String about = "admission" + (f.classes() == null ? "" : " to " + (f.classes().contains(",") ? "Classes " : "Class ") + f.classes())
+                    + (f.academicSession() == null ? "" : " for " + f.academicSession());
+            return switch (f.noticeType()) {
+                case OPENING -> about;
+                case EXTENSION -> "a new last date for " + about;
+                case RESULT -> "results or lists for " + about;
+                case ADMIT_CARD -> "admit cards for " + about;
+                case SCHEDULE -> "a schedule for " + about;
+                case CORRIGENDUM -> "a correction to the notice on " + about;
+                case OTHER -> null;
+            };
+        }
+        List<String> posts = f.postNames(); // real post names only: "Support Staff" is a filter, not a post
+        String named = posts.isEmpty() ? null
+                : String.join(", ", posts.subList(0, Math.min(3, posts.size()))) + (posts.size() > 3 ? " and " + (posts.size() - 3) + " more" : "");
+        return switch (f.noticeType()) {
+            case OPENING -> named == null ? "recruitment" : "recruitment for " + named;
+            case EXTENSION -> named == null ? "a new last date for applications" : "a new last date for " + named;
+            case RESULT -> named == null ? "a result or list of candidates" : "a result or list for " + named;
+            case ADMIT_CARD -> named == null ? "admit cards" : "admit cards for " + named;
+            case SCHEDULE -> named == null ? "a test or interview schedule" : "a schedule for " + named;
+            case CORRIGENDUM -> named == null ? "a correction to an earlier notice" : "a correction for " + named;
+            case OTHER -> named;
+        };
+    }
+
+    /**
+     * The title shown on the site: the official one, after the institution's name when a school's own upload does not
+     * name the school ("Sainik School Korukonda: Final result for the post of TGT"), with file-name underscores as spaces.
+     */
+    static String displayTitle(OfficialSourceAdapter source, FoundNotice n) {
+        String t = n.title();
+        SourceProfile p = source.profile();
+        if (opportunity(n.category()) && p.prefixTitles()) {
+            if (t.chars().filter(c -> c == '_').count() >= 2) {
+                t = t.replace('_', ' ');
+            }
+            if (p.institution() != null && !mentions(t, p.institution())) {
+                t = p.institution() + ": " + t;
+            }
+        }
+        return displayTitle(t);
+    }
+
+    /** Whether the title names the institution by one of its distinctive words ("Korukonda", "Mayo", "DSSSB"). */
+    static boolean mentions(String title, String institution) {
+        String lower = title.toLowerCase(Locale.ROOT);
+        Set<String> generic = Set.of("school", "schools", "public", "college", "international", "residential", "sainik", "vidyalaya",
+                "board", "society", "india", "national", "the", "service", "services", "commission", "selection", "delhi", "subordinate");
+        for (String w : institution.toLowerCase(Locale.ROOT).split("[^\\p{L}\\p{N}]+")) {
+            if (w.length() >= 4 && !generic.contains(w) && lower.contains(w)) {
+                return true;
+            }
+        }
+        // An abbreviation in brackets: "(DSSSB)", "(BPSC)", "(OAVS)".
+        java.util.regex.Matcher abbr = java.util.regex.Pattern.compile("\\(([A-Z]{3,8})\\)").matcher(institution);
+        return abbr.find() && title.contains(abbr.group(1));
+    }
+
     /** A plain sentence from the facts (who, when, what to open): never the notice's own text. */
     static String summary(OfficialSourceAdapter source, FoundNotice n, LocalDate published) {
         String when = n.dated() ? "published this notice on " + DAY.format(published) : "lists this notice (no date given on its listing)";
@@ -297,6 +471,10 @@ public class NotificationIngestService {
     static String hash(FoundNotice n) {
         String basis = String.join("\n", n.title(), String.valueOf(UrlPolicy.canonical(n.url())), String.valueOf(n.publishedOn()),
                 String.valueOf(n.officialEndDate()), n.category().name());
+        if (n.closesOn() != null) {
+            // Only when a listing states one: fingerprints of notices stored before V47 stay exactly the same.
+            basis += "\n" + n.closesOn();
+        }
         try {
             return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(basis.getBytes(StandardCharsets.UTF_8)));
         } catch (NoSuchAlgorithmException e) {

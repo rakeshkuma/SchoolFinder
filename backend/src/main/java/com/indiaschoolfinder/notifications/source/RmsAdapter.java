@@ -64,6 +64,12 @@ public class RmsAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return SourceProfile.national(name(), "SCHOOL_SYSTEM", true, "HTML", SiteUpdate.Category.ADMISSION,
+                SiteUpdate.Category.EXAM, SiteUpdate.Category.JOB);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         return parse(http.get(HOME).html());
     }

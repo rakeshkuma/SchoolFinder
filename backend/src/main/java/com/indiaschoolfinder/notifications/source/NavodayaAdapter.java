@@ -79,6 +79,12 @@ public class NavodayaAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return SourceProfile.national(name(), "SCHOOL_SYSTEM", true, "API", SiteUpdate.Category.ADMISSION,
+                SiteUpdate.Category.EXAM, SiteUpdate.Category.JOB);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         List<JsonNode> items = new ArrayList<>();
         for (int page = 1; page <= MAX_PAGES; page++) {

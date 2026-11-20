@@ -217,7 +217,7 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 .contains("\"publishingPrinciples\":\"http://localhost/editorial-policy\"");
 
         // A published notice appears in the home page's first paint, as a link with its date.
-        jdbc.execute("TRUNCATE site_update RESTART IDENTITY");
+        jdbc.execute("TRUNCATE site_update RESTART IDENTITY CASCADE"); // with the posts of job notices (V47)
         LocalDate today = LocalDate.now(ZoneId.of("Asia/Kolkata"));
         Map<String, Object> notice = new HashMap<>();
         notice.put("category", "JOB");

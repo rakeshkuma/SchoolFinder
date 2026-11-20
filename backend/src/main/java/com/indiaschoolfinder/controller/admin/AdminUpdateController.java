@@ -82,6 +82,13 @@ public class AdminUpdateController {
         return updates.supersede(id, by);
     }
 
+    @Operation(summary = "Set the posts a recruitment notice advertises, as entered from the official notice (replaces the "
+            + "posts read from its title; an empty list removes the entered posts)")
+    @PutMapping("/{id}/positions")
+    public UpdateDtos.AdminRow positions(@PathVariable long id, @Valid @RequestBody java.util.List<UpdateDtos.@Valid PositionRequest> positions) {
+        return updates.setPositions(id, positions);
+    }
+
     // --- the daily check of official websites ------------------------------------------------------------------------
 
     @Operation(summary = "The daily official-source check: schedule, sources, last run and how many updates wait for review")

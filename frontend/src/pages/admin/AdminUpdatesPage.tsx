@@ -5,7 +5,7 @@ import { AsyncContent } from '../../components/common/States';
 import { CATEGORY_LABEL } from '../../components/home/updateVisuals';
 import { useApi } from '../../hooks/useApi';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
-import { adminService, type SiteUpdateRequest, type SiteUpdateRow, type SiteUpdateStatus } from '../../services/adminApi';
+import { adminService, type OpportunityFields, type SiteUpdateRequest, type SiteUpdateRow, type SiteUpdateStatus } from '../../services/adminApi';
 import { ApiError } from '../../services/http';
 import type { UpdateCategory } from '../../services/publicApi';
 import { formatDate } from '../../utils/format';
@@ -30,6 +30,25 @@ const toRequest = (r: SiteUpdateRow): SiteUpdateRequest => ({
   category: r.category, title: r.title, summary: r.summary, imageUrl: r.imageUrl, publishedOn: r.publishedOn, eventDate: r.eventDate,
   eventLabel: r.eventLabel, deadline: r.deadline, sourceUrl: r.sourceUrl, sourceName: r.sourceName, linkPath: r.linkPath,
   actionLabel: r.actionLabel, verificationStatus: r.verificationStatus, expiresOn: r.expiresOn, priority: r.priority,
+  ...(r.details ? { details: r.details } : {}),
+});
+
+const BLANK_FACTS: OpportunityFields = {
+  institutionName: null, campus: null, schoolId: null, sector: null, boarding: null, stateCode: null, city: null, noticeType: null,
+  opensOn: null, closesOn: null, examOn: null, academicSession: null, classes: null, postTypes: null, subjects: null, staffKind: null,
+  employmentType: null, vacancies: null, eligibility: null, experience: null, tetRequirement: null, ageLimit: null, salaryText: null,
+  applicationFee: null, selectionProcess: null, applyUrl: null,
+};
+
+/** "PGT (Physics) | Physics | 3" per line, as the posts editor shows and reads them. */
+const postsText = (r: SiteUpdateRow | undefined) =>
+  (r?.positions ?? []).map((p) => [p.postName, p.subject ?? '', p.vacancies ?? ''].join(' | ').replace(/( \| )+$/, '')).join('\n');
+
+const parsePosts = (text: string) => text.split('\n').map((l) => l.trim()).filter(Boolean).map((l) => {
+  const [name, subject, count] = l.split('|').map((s) => s.trim());
+  const code = (name.match(/^(PGT|TGT|PRT|NTT)\b/i)?.[1] ?? '').toUpperCase();
+  const n = Number.parseInt(count ?? '', 10);
+  return { postName: name, postType: code || null, subject: subject || null, postCode: null, vacancies: n > 0 ? n : null, payScale: null, qualification: null };
 });
 
 /**
@@ -47,10 +66,31 @@ export function AdminUpdatesPage() {
   const [editing, setEditing] = useState<number | null>(null);
   const [message, setMessage] = useState<{ ok: boolean; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
+  const [posts, setPosts] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const rows = useApi(() => adminService.updates(status, page), [status, page, nonce]);
 
   const set = <K extends keyof SiteUpdateRequest>(key: K, value: SiteUpdateRequest[K]) => setForm((f) => ({ ...f, [key]: value }));
+  const opportunity = form.category === 'JOB' || form.category === 'ADMISSION';
+  const facts = form.details ?? BLANK_FACTS;
+  const setFact = <K extends keyof OpportunityFields>(key: K, value: OpportunityFields[K]) =>
+    setForm((f) => ({ ...f, details: { ...(f.details ?? BLANK_FACTS), [key]: value } }));
+  const factText = (key: 'institutionName' | 'campus' | 'city' | 'academicSession' | 'classes' | 'postTypes' | 'subjects' | 'eligibility'
+    | 'experience' | 'tetRequirement' | 'ageLimit' | 'salaryText' | 'applicationFee' | 'selectionProcess' | 'applyUrl' | 'stateCode') =>
+    ({ value: facts[key] ?? '', onChange: (e: { target: { value: string } }) => setFact(key, e.target.value || null) });
+  const factDate = (key: 'opensOn' | 'closesOn' | 'examOn') =>
+    ({ value: facts[key] ?? '', onChange: (e: { target: { value: string } }) => setFact(key, e.target.value || null) });
+
+  const savePosts = async () => {
+    if (!editing) return;
+    try {
+      await adminService.setUpdatePositions(editing, parsePosts(posts));
+      setMessage({ ok: true, text: 'Posts saved. Later daily checks keep them.' });
+      setNonce((n) => n + 1);
+    } catch (e) {
+      failed(e);
+    }
+  };
   const text = (key: 'title' | 'summary' | 'imageUrl' | 'eventLabel' | 'sourceUrl' | 'sourceName' | 'linkPath' | 'actionLabel') =>
     ({ value: form[key] ?? '', onChange: (e: { target: { value: string } }) => set(key, key === 'title' || key === 'summary' ? e.target.value : e.target.value || null) });
 
@@ -114,6 +154,7 @@ export function AdminUpdatesPage() {
   const edit = (row: SiteUpdateRow) => {
     setEditing(row.id);
     setForm(toRequest(row));
+    setPosts(postsText(row));
     setMessage(null);
     formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -209,6 +250,93 @@ export function AdminUpdatesPage() {
             </label>
           </div>
         </div>
+        {opportunity && (
+          <details className="rounded-xl bg-slate-50 p-4" open={!!form.details}>
+            <summary className="cursor-pointer font-semibold">
+              {form.category === 'JOB' ? 'Job' : 'Admission'} facts from the official notice (optional)
+            </summary>
+            <p className="mt-2 text-xs text-slate-600">
+              Enter only what the official notice states; leave the rest empty (the page then says “not given”). Daily checks never
+              overwrite what staff save. A last date here also sets the card’s date line.
+            </p>
+            <div className="mt-3 grid gap-4 sm:grid-cols-3">
+              <label className="block">
+                <span className="label">Kind of notice</span>
+                <select className="input" value={facts.noticeType ?? ''}
+                  onChange={(e) => setFact('noticeType', (e.target.value || null) as OpportunityFields['noticeType'])}>
+                  <option value="">Not set</option>
+                  <option value="OPENING">Opening (applications invited)</option>
+                  <option value="EXTENSION">Last date extended</option>
+                  <option value="CORRIGENDUM">Corrigendum</option>
+                  <option value="SCHEDULE">Test or interview schedule</option>
+                  <option value="ADMIT_CARD">Admit cards</option>
+                  <option value="RESULT">Result or list</option>
+                  <option value="OTHER">Other</option>
+                </select>
+              </label>
+              <label className="block"><span className="label">Applications open</span><input type="date" className="input" {...factDate('opensOn')} /></label>
+              <label className="block"><span className="label">Last date</span><input type="date" className="input" {...factDate('closesOn')} /></label>
+              <label className="block"><span className="label">Exam / interview date</span><input type="date" className="input" {...factDate('examOn')} /></label>
+              <label className="block"><span className="label">Institution</span><input className="input" maxLength={160} {...factText('institutionName')} /></label>
+              <label className="block"><span className="label">Campus</span><input className="input" maxLength={120} {...factText('campus')} /></label>
+              <label className="block"><span className="label">State code</span><input className="input" maxLength={2} placeholder="DL" {...factText('stateCode')} /></label>
+              <label className="block"><span className="label">City</span><input className="input" maxLength={80} {...factText('city')} /></label>
+              <label className="block">
+                <span className="label">Government or private</span>
+                <select className="input" value={facts.sector ?? ''} onChange={(e) => setFact('sector', (e.target.value || null) as OpportunityFields['sector'])}>
+                  <option value="">Not set</option><option value="GOVERNMENT">Government</option><option value="PRIVATE">Private</option>
+                </select>
+              </label>
+              <label className="block">
+                <span className="label">Boarding</span>
+                <select className="input" value={facts.boarding === null ? '' : String(facts.boarding)}
+                  onChange={(e) => setFact('boarding', e.target.value === '' ? null : e.target.value === 'true')}>
+                  <option value="">Not set</option><option value="true">Residential</option><option value="false">Day school</option>
+                </select>
+              </label>
+              {form.category === 'JOB' ? (
+                <>
+                  <label className="block"><span className="label">Post codes</span><input className="input" maxLength={160} placeholder="PGT,TGT" {...factText('postTypes')} /></label>
+                  <label className="block"><span className="label">Subjects</span><input className="input" maxLength={240} placeholder="Physics,Mathematics" {...factText('subjects')} /></label>
+                  <label className="block">
+                    <span className="label">Number of posts</span>
+                    <input type="number" min={1} className="input" value={facts.vacancies ?? ''}
+                      onChange={(e) => setFact('vacancies', Number.parseInt(e.target.value, 10) || null)} />
+                  </label>
+                  <label className="block"><span className="label">Pay (as published)</span><input className="input" maxLength={200} {...factText('salaryText')} /></label>
+                  <label className="block"><span className="label">TET / CTET</span><input className="input" maxLength={200} {...factText('tetRequirement')} /></label>
+                  <label className="block"><span className="label">Experience</span><input className="input" maxLength={300} {...factText('experience')} /></label>
+                </>
+              ) : (
+                <>
+                  <label className="block"><span className="label">Classes</span><input className="input" maxLength={80} placeholder="VI, IX" {...factText('classes')} /></label>
+                  <label className="block"><span className="label">Session</span><input className="input" maxLength={9} placeholder="2027-28" {...factText('academicSession')} /></label>
+                </>
+              )}
+              <label className="block"><span className="label">Age limit</span><input className="input" maxLength={200} {...factText('ageLimit')} /></label>
+              <label className="block"><span className="label">Application fee</span><input className="input" maxLength={200} {...factText('applicationFee')} /></label>
+              <label className="block"><span className="label">Official application URL</span><input type="url" className="input" maxLength={600} {...factText('applyUrl')} /></label>
+            </div>
+            <label className="mt-4 block">
+              <span className="label">Eligibility, in the notice’s words</span>
+              <textarea className="input min-h-[64px]" maxLength={600} {...factText('eligibility')} />
+            </label>
+            <label className="mt-4 block">
+              <span className="label">Selection process</span>
+              <textarea className="input min-h-[48px]" maxLength={400} {...factText('selectionProcess')} />
+            </label>
+            {form.category === 'JOB' && editing && (
+              <div className="mt-4">
+                <label className="block">
+                  <span className="label">Posts, one per line: post | subject | number of posts</span>
+                  <textarea className="input min-h-[84px] font-mono text-xs" value={posts} onChange={(e) => setPosts(e.target.value)}
+                    placeholder={'PGT (Physics) | Physics | 2\nTGT (Mathematics) | Mathematics | 4'} />
+                </label>
+                <button type="button" className="btn-secondary mt-2 py-1.5 text-xs" onClick={() => void savePosts()}>Save posts</button>
+              </div>
+            )}
+          </details>
+        )}
         {message && <p role={message.ok ? 'status' : 'alert'} className={`rounded-xl p-3 ${message.ok ? 'bg-emerald-50 text-emerald-900' : 'bg-red-50 text-red-800'}`}>{message.text}</p>}
         <div className="flex flex-wrap gap-2">
           <button type="submit" className="btn-primary" disabled={busy}>{busy ? 'Saving…' : editing ? 'Save changes' : 'Save draft'}</button>
@@ -255,6 +383,17 @@ export function AdminUpdatesPage() {
                   )}
                   {r.reviewNote && <p className="rounded-lg bg-slate-50 p-2 text-xs text-slate-700">{r.reviewNote}</p>}
                   <p className="text-slate-700">{r.summary}</p>
+                  {r.slug && (r.category === 'JOB' || r.category === 'ADMISSION') && (
+                    <p className="text-xs text-slate-600">
+                      {r.details?.noticeType ? `${r.details.noticeType.toLowerCase().replace('_', ' ')} · ` : ''}
+                      {r.details?.closesOn ? `last date ${formatDate(r.details.closesOn)} · ` : ''}
+                      {r.details?.postTypes ? `${r.details.postTypes} · ` : ''}
+                      {r.positions.length ? `${r.positions.length} post(s) · ` : ''}
+                      {(r.status === 'PUBLISHED' || r.status === 'EXPIRED')
+                        ? <a href={`/${r.category === 'JOB' ? 'jobs' : 'admissions'}/${r.slug}`} target="_blank" rel="noopener noreferrer" className="link">Public page</a>
+                        : <span>page /{r.category === 'JOB' ? 'jobs' : 'admissions'}/{r.slug} (shown once published)</span>}
+                    </p>
+                  )}
                   <p className="text-xs text-slate-500">
                     {r.eventDate ? `${r.eventLabel ?? 'Date'}: ${formatDate(r.eventDate)}${r.deadline ? ' (deadline)' : ''} · ` : ''}
                     {r.sourceUrl ? <a href={r.sourceUrl} target="_blank" rel="noopener noreferrer" className="link">{r.sourceName ?? 'Source'}</a> : 'No source'}

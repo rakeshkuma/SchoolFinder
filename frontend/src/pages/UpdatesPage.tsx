@@ -53,9 +53,14 @@ export function UpdatesPage() {
         </nav>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <SyncNote status={sync.data} />
-          <Link to={href(category, 0, !past)} className="text-sm font-bold text-royal-700 hover:underline">
-            {past ? 'Back to current updates' : 'Past updates (expired)'}
-          </Link>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            {category === 'JOB' && (
+              <Link to="/jobs" className="text-sm font-bold text-royal-700 hover:underline">Filter school jobs by state, post and subject</Link>
+            )}
+            <Link to={href(category, 0, !past)} className="text-sm font-bold text-royal-700 hover:underline">
+              {past ? 'Back to current updates' : 'Past updates (expired)'}
+            </Link>
+          </p>
         </div>
 
         <div className="mt-6">

@@ -113,13 +113,15 @@ public class SeoBodyService {
     private final SchoolListService schoolLists;
     private final OlympiadPages olympiadPages;
     private final AdmissionService admissions;
+    private final NoticeService notices;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary,
                           BestPlacesService bestPlaces, SchoolListService schoolLists, OlympiadPages olympiadPages,
-                          AdmissionService admissions) {
+                          AdmissionService admissions, NoticeService notices) {
+        this.notices = notices;
         this.admissions = admissions;
         this.olympiadPages = olympiadPages;
         this.placeSummary = placeSummary;
@@ -180,6 +182,13 @@ public class SeoBodyService {
                 main = exam(examService.get(m.group(1)), heading, description, SeoHeadService.PREP_PAGES.contains(m.group(1)));
             } else if (p.equals("/updates")) {
                 main = updates(heading, description);
+            } else if (p.equals("/jobs")) {
+                main = jobs(heading, description);
+            } else if ((m = SeoHeadService.JOB_NOTICE.matcher(p)).matches()) {
+                main = notice(m.group(1), com.indiaschoolfinder.entity.SiteUpdate.Category.JOB);
+            } else if ((m = SeoHeadService.ADMISSION_NOTICE.matcher(p)).matches()
+                    && !com.indiaschoolfinder.notifications.opportunity.NoticeSlugs.RESERVED.contains(m.group(1))) {
+                main = notice(m.group(1), com.indiaschoolfinder.entity.SiteUpdate.Category.ADMISSION);
             } else if (p.equals("/admissions")) {
                 main = admissionsHome();
             } else if ((m = BEST_IN.matcher(p)).matches()) {
@@ -582,31 +591,149 @@ public class SeoBodyService {
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
-        List<UpdateDtos.UpdateItem> items = updateFeed.feed(null, 0, 40).content();
-        if (!items.isEmpty()) {
-            h.append("<ul class=\"pr-list\">");
-            for (UpdateDtos.UpdateItem u : items) {
-                String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
-                h.append("<li>");
-                if (href != null) {
-                    h.append("<a href=\"").append(esc(href)).append("\">").append(esc(u.title())).append("</a>");
-                } else {
-                    h.append(esc(u.title()));
-                }
-                if (u.eventDate() != null) {
-                    h.append(" <span>").append(esc(u.eventLabel() != null ? u.eventLabel() : "Date")).append(": ")
-                            .append(u.eventDate().format(DAY)).append("</span>");
-                }
-                if (u.summary() != null && !u.summary().isBlank()) {
-                    h.append("<p>").append(esc(u.summary())).append("</p>");
-                }
-                if (u.sourceName() != null && u.sourceUrl() != null) {
-                    h.append("<p>Source: <a href=\"").append(esc(u.sourceUrl())).append("\" rel=\"noopener\">").append(esc(u.sourceName()))
-                            .append("</a></p>");
-                }
-                h.append("</li>");
+        items(h, updateFeed.feed(null, 0, 40).content());
+        return h.toString();
+    }
+
+    /** Feed items as a list: each title links its page (or the official notice), with its key date, summary and source. */
+    private static void items(StringBuilder h, List<UpdateDtos.UpdateItem> items) {
+        if (items.isEmpty()) {
+            return;
+        }
+        h.append("<ul class=\"pr-list\">");
+        for (UpdateDtos.UpdateItem u : items) {
+            String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
+            h.append("<li>");
+            if (href != null) {
+                h.append("<a href=\"").append(esc(href)).append("\">").append(esc(u.title())).append("</a>");
+            } else {
+                h.append(esc(u.title()));
             }
-            h.append("</ul>");
+            if (u.eventDate() != null) {
+                h.append(" <span>").append(esc(u.eventLabel() != null ? u.eventLabel() : "Date")).append(": ")
+                        .append(u.eventDate().format(DAY)).append("</span>");
+            }
+            if (u.summary() != null && !u.summary().isBlank()) {
+                h.append("<p>").append(esc(u.summary())).append("</p>");
+            }
+            if (u.sourceName() != null && u.sourceUrl() != null) {
+                h.append("<p>Source: <a href=\"").append(esc(u.sourceUrl())).append("\" rel=\"noopener\">").append(esc(u.sourceName()))
+                        .append("</a></p>");
+            } else if (u.sourceUrl() != null && u.linkPath() != null) {
+                // The title opens the notice's page here, so the official source is linked by its site's name.
+                String host = NoticeService.domain(u.sourceUrl());
+                h.append("<p>Source: <a href=\"").append(esc(u.sourceUrl())).append("\" rel=\"noopener\">")
+                        .append(esc(host != null ? host : "official notice")).append("</a></p>");
+            }
+            h.append("</li>");
+        }
+        h.append("</ul>");
+    }
+
+    /** The Jobs page: current school job notices from official sources, open ones first, as the app lists them. */
+    private String jobs(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › School jobs</nav>");
+        h.append("<h1>").append(heading).append("</h1>");
+        if (description != null) {
+            h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        }
+        var list = notices.list(com.indiaschoolfinder.entity.SiteUpdate.Category.JOB, NoticeService.Filter.NONE, false, 0, 40);
+        items(h, list.page().content());
+        if (list.page().content().isEmpty()) {
+            h.append("<p>No school job notices are current right now. Teaching and school staff vacancies appear here only with "
+                    + "their official source.</p>");
+        }
+        h.append("<p>Every notice links its official source. SchoolDhundo does not take applications; apply only as the "
+                + "official notice describes. <a href=\"/updates?category=JOB\">All job updates</a></p>");
+        return h.toString();
+    }
+
+    /**
+     * A notice's page: its facts (each only as the official source states it, or "not given" for the dates that matter),
+     * the posts, questions answered from those facts, the official links and related notices; the same as the app shows.
+     */
+    private String notice(String slug, com.indiaschoolfinder.entity.SiteUpdate.Category category) {
+        var u = notices.visibleNotice(slug, category).orElseThrow(() -> new ResourceNotFoundException("Notice", slug));
+        var d = notices.detail(u, notices.today());
+        boolean job = category == com.indiaschoolfinder.entity.SiteUpdate.Category.JOB;
+        StringBuilder h = new StringBuilder();
+        h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a> › ")
+                .append(job ? "<a href=\"/jobs\">School jobs</a>" : "<a href=\"/admissions\">Admissions</a>").append(" › ")
+                .append(esc(d.title())).append("</nav>");
+        h.append("<h1>").append(esc(d.title())).append("</h1>");
+        h.append("<p class=\"pr-lead\">");
+        if (d.applicationStatusLabel() != null) {
+            h.append("<strong>").append(esc(d.applicationStatusLabel())).append(".</strong> ");
+        }
+        h.append(esc(d.summary())).append("</p>");
+        h.append("<dl class=\"pr-facts\">");
+        fact(h, job ? "Hiring" : "Institution", d.institutionName());
+        fact(h, "Campus", d.campus());
+        fact(h, "Location", d.city() != null && d.stateName() != null ? d.city() + ", " + d.stateName()
+                : d.stateName() != null ? d.stateName() : d.stateCode() == null ? "All India" : null);
+        fact(h, "Kind of notice", d.noticeTypeLabel());
+        fact(h, "Published", d.publishedOn().format(DAY));
+        boolean opening = d.applicationStatus() != null;
+        fact(h, "Applications open", d.opensOn() == null ? null : d.opensOn().format(DAY));
+        fact(h, "Walk-in interview".equals(d.examLabel()) ? "Walk-in interview" : "Last date",
+                d.closesOn() != null ? d.closesOn().format(DAY) : opening ? "Not given in the official listing" : null);
+        if (!"Walk-in interview".equals(d.examLabel())) {
+            fact(h, d.examLabel(), d.examOn() == null ? null : d.examOn().format(DAY));
+        }
+        fact(h, "Posts", d.positions().isEmpty() ? String.join(", ", d.postTypes().stream().map(f -> f.label()).toList())
+                : String.join(", ", d.positions().stream().map(p -> p.postName()).toList()));
+        fact(h, "Subjects", String.join(", ", d.subjects()));
+        fact(h, "Number of posts", d.vacancies() == null ? null : String.valueOf(d.vacancies()));
+        fact(h, "Classes", d.classes());
+        fact(h, "Session", d.academicSession());
+        fact(h, "Staff", d.staffKind() == null ? null : switch (d.staffKind()) {
+            case TEACHING -> "Teaching";
+            case NON_TEACHING -> "Non-teaching";
+            case MIXED -> "Teaching and non-teaching";
+        });
+        fact(h, "Employment", d.employmentType() == null ? null : switch (d.employmentType()) {
+            case REGULAR -> "Regular";
+            case CONTRACT -> "Contract or guest";
+            case PART_TIME -> "Part-time";
+            case TEMPORARY -> "Temporary";
+        });
+        fact(h, "Eligibility", d.eligibility());
+        fact(h, "Experience", d.experience());
+        fact(h, "TET / CTET", d.tetRequirement());
+        fact(h, "Age limit", d.ageLimit());
+        fact(h, "Pay (as published)", d.salaryText());
+        fact(h, "Application fee", d.applicationFee());
+        fact(h, "Selection", d.selectionProcess());
+        h.append("</dl>");
+        if (!d.answers().isEmpty()) {
+            h.append("<h2>Questions and answers</h2><dl class=\"pr-faq\">");
+            for (var a : d.answers()) {
+                h.append("<dt>").append(esc(a.question())).append("</dt><dd>").append(esc(a.answer()));
+                if (a.linkUrl() != null) {
+                    h.append(" <a href=\"").append(esc(a.linkUrl())).append("\" rel=\"noopener\">").append(esc(a.linkLabel())).append("</a>");
+                }
+                h.append("</dd>");
+            }
+            h.append("</dl>");
+        }
+        h.append("<h2>Official source</h2><p>");
+        if (d.sourceUrl() != null) {
+            h.append("<a href=\"").append(esc(d.sourceUrl())).append("\" rel=\"noopener\">Official notice")
+                    .append(d.sourceName() == null ? "" : " from " + esc(d.sourceName())).append("</a>");
+        }
+        if (d.applyUrl() != null) {
+            h.append(" · <a href=\"").append(esc(d.applyUrl())).append("\" rel=\"noopener\">Official application page</a>");
+        }
+        h.append("</p><p>Titles, dates and links are the official source's; the short summary is SchoolDhundo's. Always confirm "
+                + "dates and eligibility in the official notice before you apply.</p>");
+        if (d.school() != null) {
+            h.append("<p><a href=\"/schools/").append(esc(d.school().slug())).append("\">").append(esc(d.school().name()))
+                    .append(": school profile</a></p>");
+        }
+        if (!d.related().isEmpty()) {
+            h.append("<h2>").append(job ? "More school jobs" : "More admission notices").append("</h2>");
+            items(h, d.related());
         }
         return h.toString();
     }

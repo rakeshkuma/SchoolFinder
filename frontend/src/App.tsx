@@ -72,6 +72,9 @@ const BoardingLandingPage = lazy(() => import('./pages/BoardingLandingPage').the
 const PlaceRedirect = lazy(() => import('./pages/PlaceRedirect').then((m) => ({ default: m.PlaceRedirect })));
 const ReviewsPage = page(() => import('./pages/ReviewsPage'), 'ReviewsPage');
 const UpdatesPage = page(() => import('./pages/UpdatesPage'), 'UpdatesPage');
+const JobsPage = page(() => import('./pages/NoticePages'), 'JobsPage');
+const JobNoticePage = page(() => import('./pages/NoticePages'), 'JobNoticePage');
+const AdmissionNoticePage = page(() => import('./pages/NoticePages'), 'AdmissionNoticePage');
 const AboutPage = page(info, 'AboutPage');
 const business = () => import('./pages/BusinessPages');
 const AdvertisePage = page(business, 'AdvertisePage');
@@ -184,6 +187,9 @@ export default function App() {
               <Route path="admissions" element={<AdmissionsPage />} />
               <Route path="admissions/notifications" element={<NotificationsPage />} />
               <Route path="admissions/guide" element={<AdmissionGuidePage />} />
+              <Route path="admissions/:slug" element={<AdmissionNoticePage />} />
+              <Route path="jobs" element={<JobsPage />} />
+              <Route path="jobs/:slug" element={<JobNoticePage />} />
               <Route path="fees" element={<FeeCalculatorPage />} />
               <Route path="compare" element={<ComparePage />} />
               <Route path="compare-schools" element={<Navigate to="/compare" replace />} />
