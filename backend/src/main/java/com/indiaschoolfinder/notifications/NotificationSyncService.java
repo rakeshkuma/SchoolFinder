@@ -424,7 +424,11 @@ public class NotificationSyncService {
             if (read >= pdf.getDocumentsPerSource() || stopping) {
                 break;
             }
-            String url = updates.findById(id).map(SiteUpdate::getSourceUrl).orElse(null);
+            SiteUpdate notice = updates.findById(id).orElse(null);
+            if (notice == null || notice.getClosesOn() != null) {
+                continue; // its date came with its title
+            }
+            String url = notice.getSourceUrl();
             if (url == null || !UrlPolicy.allowed(url, source.documentHosts())) {
                 continue;
             }
@@ -433,10 +437,21 @@ public class NotificationSyncService {
                 String document = isDocument(url) ? url : null;
                 String page = url;
                 // The notice's page links its PDF, or (on the government platform) a document page that does.
+                java.util.Set<String> visited = new java.util.HashSet<>();
                 for (int hop = 0; document == null && page != null && hop < 2; hop++) {
+                    visited.add(page);
                     org.jsoup.nodes.Document html = session.get(page).html();
                     document = documentLink(html, source.documentHosts());
                     page = document == null ? documentPage(html, source.hosts()) : null;
+                }
+                // Some notice pages link nothing, yet the platform keeps the notice's document page under the same name.
+                String guess = document == null ? guessedDocumentPage(url) : null;
+                if (guess != null && !visited.contains(guess) && UrlPolicy.allowed(guess, source.hosts())) {
+                    try {
+                        document = documentLink(session.get(guess).html(), source.documentHosts());
+                    } catch (FetchException e) {
+                        log.debug("No document page {} for update {}: {}", guess, id, e.getMessage());
+                    }
                 }
                 if (document == null) {
                     continue;
@@ -474,6 +489,23 @@ public class NotificationSyncService {
             }
         }
         return null;
+    }
+
+    /**
+     * The government platform's document page of the same name as a notice's page ("/en/notice-x/" → "/en/document/notice-x/"),
+     * or null when the address is not a notice page of that shape.
+     */
+    public static String guessedDocumentPage(String noticeUrl) {
+        try {
+            java.net.URI u = java.net.URI.create(noticeUrl);
+            String[] parts = u.getPath() == null ? new String[0] : u.getPath().replaceAll("^/|/$", "").split("/");
+            if (u.getHost() == null || parts.length != 2 || !parts[0].matches("[a-z]{2}") || parts[1].isBlank() || "document".equals(parts[1])) {
+                return null;
+            }
+            return "https://" + u.getHost() + "/" + parts[0] + "/document/" + parts[1] + "/";
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     /** The government platform's document page a notice's page links ("/en/document/walk-in-interview-21-11-26/"), or null. */

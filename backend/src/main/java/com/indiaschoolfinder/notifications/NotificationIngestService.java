@@ -365,6 +365,17 @@ public class NotificationIngestService {
      * later), and then moves to past updates; everything else keeps the usual lifetime.
      */
     LocalDate expiry(LocalDate published, LocalDate officialEnd, OpportunityClassifier.Facts facts, LocalDate closes) {
+        return expiry(published, officialEnd, facts, closes, props.getLifetimeDays(), props.getWalkInLifetimeDays());
+    }
+
+    /**
+     * The same, with the lifetimes given. A walk-in interview (or an interview for contractual or part-time posts) whose
+     * day no one has read, neither in its title nor in its document, is usually held within days of being announced:
+     * it stays current {@code walkInDays} after its publication, not the usual lifetime, so a past interview is not shown
+     * as open for weeks (and one found later than that is not added at all).
+     */
+    static LocalDate expiry(LocalDate published, LocalDate officialEnd, OpportunityClassifier.Facts facts, LocalDate closes,
+                            int lifetimeDays, int walkInDays) {
         if (facts != null && closes != null
                 && (facts.noticeType() == SiteUpdate.NoticeType.OPENING || facts.noticeType() == SiteUpdate.NoticeType.EXTENSION)) {
             LocalDate end = facts.examOn() != null && facts.examOn().isAfter(closes) ? facts.examOn() : closes;
@@ -372,7 +383,14 @@ public class NotificationIngestService {
                 return end;
             }
         }
-        return expiry(published, officialEnd);
+        if (officialEnd != null && !officialEnd.isBefore(published) && !officialEnd.isAfter(published.plusYears(1))) {
+            return officialEnd;
+        }
+        if (facts != null && closes == null && facts.examOn() == null && facts.walkIn()
+                && facts.noticeType() == SiteUpdate.NoticeType.OPENING && walkInDays > 0) {
+            return published.plusDays(Math.min(walkInDays, lifetimeDays));
+        }
+        return published.plusDays(lifetimeDays);
     }
 
     /** The notice's facts; on a careers page an entry whose words say nothing else is an opening. */

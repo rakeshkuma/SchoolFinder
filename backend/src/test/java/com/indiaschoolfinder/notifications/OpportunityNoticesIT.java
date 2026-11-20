@@ -379,6 +379,8 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
         SiteUpdate before = stored("walkin");
         assertThat(before.getClosesOn()).isNull();
         assertThat(before.getStatus()).isEqualTo(SiteUpdate.Status.PUBLISHED);
+        // Its day unknown so far: current for 10 days after its publication, not 45.
+        assertThat(before.getExpiresOn()).isEqualTo(today.minusDays(2).plusDays(10));
         LocalDate interview = today.plusDays(5);
         String text = "PM SHRI KENDRIYA VIDYALAYA WALK-IN-INTERVIEW F.No. KV/2026-27/412 Dated: " + today.minusDays(2).format(DMY)
                 + " A walk-in interview for preparing a panel of contractual teachers will be held on " + interview.format(DMY)
@@ -397,6 +399,17 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
         assertThat(after.getSourceUrl()).isEqualTo(before.getSourceUrl()); // the notice's own page stays its link
         // Once only: a notice with its date is not read again.
         assertThat(ingest.applyDocument(school, before.getId(), document, text)).isFalse();
+    }
+
+    @Test
+    void anUndatedWalkInFoundMoreThanTenDaysAfterItsNoticeIsNotAdded() {
+        school.notices = List.of(
+                notice("late", "Walk-in interview for contractual teachers 2026-27", today.minusDays(12), SiteUpdate.Category.JOB),
+                notice("advert", "Recruitment of PGT Physics on regular basis", today.minusDays(12), SiteUpdate.Category.JOB));
+        NotificationSyncRun r = run(0);
+        assertThat(updates.findAll()).extracting(SiteUpdate::getSourceItemId).containsExactly("advert");
+        assertThat(sync.results(r)).filteredOn(s -> s.key.equals("test-school")).singleElement()
+                .satisfies(s -> assertThat(s.tooOld).isEqualTo(1));
     }
 
     @Test

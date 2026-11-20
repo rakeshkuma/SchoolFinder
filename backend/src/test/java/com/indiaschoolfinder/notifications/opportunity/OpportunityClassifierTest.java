@@ -235,6 +235,9 @@ class OpportunityClassifierTest {
         // "Interview notice for contractual ..." is the school's call to come: an opening.
         assertThat(job("INTERVIEW NOTICE FOR CONTRACTUAL TEACHERS FOR SESSION 2026-27", "2026-11-04").noticeType()).isEqualTo(NoticeType.OPENING);
         assertThat(job("Interview notice for Contractual Post for session 2026-27", "2026-10-17").noticeType()).isEqualTo(NoticeType.OPENING);
+        // ... and is attended like a walk-in; its result is not.
+        assertThat(job("Interview notice for Contractual Post for session 2026-27", "2026-10-17").walkIn()).isTrue();
+        assertThat(job("Result of interview for contractual teachers 2026-27", "2026-10-17").walkIn()).isFalse();
         // An interview for a regular post (KVS headquarters) is still a later step.
         assertThat(job("Notice for interview for the post of Principal through Limited Departmental Examination (LDE).", "2026-10-19")
                 .noticeType()).isNotEqualTo(NoticeType.OPENING);

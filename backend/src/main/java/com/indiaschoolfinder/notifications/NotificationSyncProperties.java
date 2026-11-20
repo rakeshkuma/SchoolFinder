@@ -38,6 +38,11 @@ public class NotificationSyncProperties {
      * than this when first found are not added at all: the feed is for current news.
      */
     private int lifetimeDays = 45;
+    /**
+     * How long a walk-in interview (or an interview for contractual or part-time posts) stays current when its day was not
+     * read from its title or document: such interviews are usually held within days of the notice.
+     */
+    private int walkInLifetimeDays = 10;
     /** A notice missing from a complete listing for this long is treated as withdrawn. */
     private Duration withdrawAfter = Duration.ofHours(20);
     /**
