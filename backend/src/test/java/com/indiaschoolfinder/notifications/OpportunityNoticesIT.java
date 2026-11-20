@@ -1,6 +1,7 @@
 package com.indiaschoolfinder.notifications;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.indiaschoolfinder.entity.NotificationSource;
 import com.indiaschoolfinder.entity.NotificationSyncRun;
 import com.indiaschoolfinder.entity.SiteUpdate;
@@ -22,17 +23,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -363,6 +369,43 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
         assertThat(pending.getSlug()).isNotNull();
         mockMvc.perform(get("/api/v1/notices/" + pending.getSlug())).andExpect(status().isNotFound());
         assertThat(getText("/api/v1/seo/head/jobs/" + pending.getSlug())).contains("noindex");
+    }
+
+    @Test
+    void anAdminRowWithItsFactsCanBeSavedBackUnchanged() throws Exception {
+        board.notices = List.of(notice("teachers", "Recruitment of PGT Physics, last date " + today.plusDays(9).format(DMY),
+                today.minusDays(1), SiteUpdate.Category.JOB));
+        run(0);
+        long id = stored("teachers").getId();
+        JsonNode rows = objectMapper.readTree(mockMvc.perform(get("/api/v1/admin/updates?status=PUBLISHED").header("Authorization", editorToken()))
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString()).path("content");
+        JsonNode row = null;
+        for (JsonNode r : rows) if (r.path("id").asLong() == id) row = r;
+        assertThat(row).isNotNull();
+        assertThat(row.path("details").has("windowValid")).isFalse(); // a validation rule, not a field
+        saveAsAdminPage(id, row).andExpect(status().isOk());
+        SiteUpdate saved = updates.findById(id).orElseThrow();
+        assertThat(saved.getClosesOn()).isEqualTo(today.plusDays(9));
+        assertThat(saved.getPostTypes()).isEqualTo("PGT");
+        assertThat(saved.isStaffEdited()).isTrue();
+
+        // The rule still applies: facts that open after their last date are refused, and nothing is saved.
+        ObjectNode wrong = row.deepCopy();
+        ((ObjectNode) wrong.get("details")).put("opensOn", today.plusDays(10).toString());
+        String refused = saveAsAdminPage(id, wrong).andExpect(status().isBadRequest()).andReturn().getResponse().getContentAsString();
+        assertThat(refused).contains("opensOn must not be after closesOn");
+        assertThat(updates.findById(id).orElseThrow().getOpensOn()).isEqualTo(saved.getOpensOn());
+    }
+
+    /** Saves an update as the admin page sends it: every request field of its admin row, with the facts exactly as they came. */
+    private ResultActions saveAsAdminPage(long id, JsonNode row) throws Exception {
+        Map<String, Object> request = new LinkedHashMap<>();
+        for (String field : List.of("category", "title", "summary", "imageUrl", "publishedOn", "eventDate", "eventLabel", "deadline", "sourceUrl",
+                "sourceName", "linkPath", "actionLabel", "verificationStatus", "expiresOn", "priority", "details")) {
+            request.put(field, objectMapper.treeToValue(row.get(field), Object.class));
+        }
+        return mockMvc.perform(put("/api/v1/admin/updates/" + id).header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(request)));
     }
 
     private void editorial(String title, String state, SiteUpdate.Sector sector, boolean boarding, String post, LocalDate closes) {
