@@ -149,7 +149,7 @@ Details: [UDISE_INTEGRATION_GUIDE.md](UDISE_INTEGRATION_GUIDE.md).
 | Admin: per-school panel to save a checked code and link (`PUT /admin/schools/{id}/udise`); ADMIN-only dry-run/apply matcher for an official list (`POST /admin/import/udise`), same state + PIN + names, unambiguous only, batched and repeatable | Done |
 | Bulk codes: no lawful bulk source reachable (Data Sharing Portal needs a formal request; secondary sources say the 11-digit code is no longer shared; OpenCity refuses automated access) | Owner to obtain a list |
 
-## 13. Admissions and school jobs from official sources (built 20 November 2026; not committed, not deployed)
+## 13. Admissions and school jobs from official sources (live 20 November 2026 as ce64eac)
 
 Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md) ("Source registry" and "Admissions and school jobs").
 
@@ -167,3 +167,4 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Home page unchanged: no home-page or layout file changed; production builds before and after compared in Chrome against the same data: desktop pixel-identical; phone same height and layout, pixel variation only in the hero photo and smaller than the variation between two captures of the same build | Checked |
 | Not done: PDF text reading for last dates (most notices give none in their titles), conditional requests (ETag), KV school websites (list of addresses needed), private careers pages without a list of openings | Open |
 | Tests: backend full suite 425 tests, 0 failures (new: classifier, rules, registry against saved excerpts of the real pages, ingest rules, end-to-end admissions/jobs IT); frontend 53 files, 226 tests; type-check and production build pass. Existing tests changed only to truncate with CASCADE (new posts table) and, in NotificationSyncIT, to pick the official AISSEE item by its exact title (it failed when run after other suites that leave exam notices) | Done |
+| Deployed 20 Nov 2026 (ce64eac): V47 applied on the live database in 0.22 s; 14 registry sources loaded; 35 earlier notices given their facts and page addresses at start-up. First live check (run #9, started with the admin "Check now" right after the deploy): all 14 registry sources OK from the server, CBSE blocked; 26 new (8 published, 18 for review; 23 jobs, 3 admissions), the same as the local check. Live checks: /jobs head and server-rendered body, notices API (16 current jobs, 3 admission notices), sitemap index with notices.xml (2 indexable pages), JobPosting absent without a last date, noindex for non-school posts, admin endpoints 401 without sign-in | Live |
