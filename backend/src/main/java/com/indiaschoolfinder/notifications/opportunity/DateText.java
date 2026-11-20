@@ -26,6 +26,8 @@ public final class DateText {
     private static final String MONTHS = "(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?"
             + "|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)";
     private static final Pattern NUMERIC = Pattern.compile("(?<![\\d.])(\\d{1,2})\\s?[./-]\\s?(\\d{1,2})\\s?[./-]\\s?(\\d{4})(?!\\d)");
+    /** "21.11.26": a two-digit year (2020-2029 only), with dots or slashes and nothing numeric around it. */
+    private static final Pattern SHORT = Pattern.compile("(?<![\\d./-])(\\d{1,2})([./])(\\d{1,2})\\2(2\\d)(?![\\d./-])");
     private static final Pattern DAY_MONTH = Pattern.compile("(?<!\\d)(\\d{1,2})(?:st|nd|rd|th)?\\s*(?:of\\s+)?[-\\s]?" + MONTHS
             + "\\.?[,\\s-]*(\\d{4})(?!\\d)", Pattern.CASE_INSENSITIVE);
     private static final Pattern MONTH_DAY = Pattern.compile("(?<![a-z])" + MONTHS + "\\.?\\s+(\\d{1,2})(?:st|nd|rd|th)?,?\\s*(\\d{4})(?!\\d)",
@@ -61,6 +63,10 @@ public final class DateText {
         Matcher m = NUMERIC.matcher(text);
         while (m.find()) {
             add(out, of(Integer.parseInt(m.group(3)), Integer.parseInt(m.group(2)), Integer.parseInt(m.group(1))), m);
+        }
+        m = SHORT.matcher(text);
+        while (m.find()) {
+            add(out, of(2000 + Integer.parseInt(m.group(4)), Integer.parseInt(m.group(3)), Integer.parseInt(m.group(1))), m);
         }
         m = DAY_MONTH.matcher(text);
         while (m.find()) {

@@ -107,6 +107,7 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
     }
 
     @Autowired NotificationSyncService sync;
+    @Autowired NotificationIngestService ingest;
     @Autowired SiteUpdateRepository updates;
     @Autowired SiteUpdatePositionRepository positions;
     @Autowired NotificationSourceRepository sources;
@@ -369,6 +370,75 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
         assertThat(pending.getSlug()).isNotNull();
         mockMvc.perform(get("/api/v1/notices/" + pending.getSlug())).andExpect(status().isNotFound());
         assertThat(getText("/api/v1/seo/head/jobs/" + pending.getSlug())).contains("noindex");
+    }
+
+    @Test
+    void aWalkInsDayIsReadFromItsOfficialDocumentWhenItsTitleGivesNone() {
+        school.notices = List.of(notice("walkin", "Walk-in interview for contractual teachers 2026-27", today.minusDays(2), SiteUpdate.Category.JOB));
+        run(0);
+        SiteUpdate before = stored("walkin");
+        assertThat(before.getClosesOn()).isNull();
+        assertThat(before.getStatus()).isEqualTo(SiteUpdate.Status.PUBLISHED);
+        LocalDate interview = today.plusDays(5);
+        String text = "PM SHRI KENDRIYA VIDYALAYA WALK-IN-INTERVIEW F.No. KV/2026-27/412 Dated: " + today.minusDays(2).format(DMY)
+                + " A walk-in interview for preparing a panel of contractual teachers will be held on " + interview.format(DMY)
+                + " at 09:00 AM in the Vidyalaya premises. PRINCIPAL";
+        String document = "https://" + HOST + "/files/walkin-notice.pdf";
+
+        assertThat(ingest.applyDocument(school, before.getId(), document, text)).isTrue();
+        SiteUpdate after = stored("walkin");
+        assertThat(after.getClosesOn()).isEqualTo(interview);
+        assertThat(after.getExamOn()).isEqualTo(interview);
+        assertThat(after.getEventDate()).isEqualTo(interview);
+        assertThat(after.getEventLabel()).isEqualTo("Walk-in interview");
+        assertThat(after.isDeadline()).isTrue();
+        assertThat(after.getExpiresOn()).isEqualTo(interview); // off the current list once the interview is over
+        assertThat(after.getSummary()).contains("Walk-in interview").contains("as the official notice states");
+        assertThat(after.getSourceUrl()).isEqualTo(before.getSourceUrl()); // the notice's own page stays its link
+        // Once only: a notice with its date is not read again.
+        assertThat(ingest.applyDocument(school, before.getId(), document, text)).isFalse();
+    }
+
+    @Test
+    void aDocumentWhoseOnlyDateIsItsOwnChangesNothing() {
+        school.notices = List.of(notice("walkin2", "Walk-in interview for contractual teachers 2026-27", today.minusDays(2), SiteUpdate.Category.JOB));
+        run(0);
+        SiteUpdate before = stored("walkin2");
+        String text = "Walk-in interview for contractual teachers. Dated: " + today.minusDays(2).format(DMY) + ". The date will be announced.";
+        assertThat(ingest.applyDocument(school, before.getId(), "https://" + HOST + "/files/w.pdf", text)).isFalse();
+        SiteUpdate after = stored("walkin2");
+        assertThat(after.getClosesOn()).isNull();
+        assertThat(after.getExpiresOn()).isEqualTo(before.getExpiresOn());
+        assertThat(after.getSummary()).isEqualTo(before.getSummary());
+    }
+
+    @Test
+    void aRunKeepsAFamilysQuietSitesAsOneLine() {
+        java.util.function.BiFunction<String, String, SourceResult> result = (key, outcome) -> {
+            SourceResult r = new SourceResult(key, key);
+            r.outcome = outcome;
+            r.listed = 10;
+            r.ignored = 10;
+            return r;
+        };
+        SourceResult board = result.apply("test-board", "OK");
+        SourceResult quiet = result.apply("kv-mankhurd", "OK");
+        quiet.tooOld = 2;
+        SourceResult found = result.apply("kv-samanaafs", "OK");
+        found.created = 1;
+        found.createdJobs = 1;
+        SourceResult down = result.apply("kv-sukna", "FAILED");
+        SourceResult off = result.apply("kv-tonk", "SKIPPED");
+
+        List<SourceResult> kept = sync.stored(List.of(board, quiet, found, down, off));
+
+        assertThat(kept).extracting(r -> r.key).containsExactly("test-board", "kv", "kv-samanaafs", "kv-sukna");
+        SourceResult family = kept.get(1);
+        assertThat(family.name).isEqualTo("Kendriya Vidyalaya websites: 1 site(s) read with nothing new, 1 skipped");
+        assertThat(family.outcome).isEqualTo("OK");
+        assertThat(family.listed).isEqualTo(20);
+        assertThat(family.tooOld).isEqualTo(2);
+        assertThat(family.created).isZero();
     }
 
     @Test

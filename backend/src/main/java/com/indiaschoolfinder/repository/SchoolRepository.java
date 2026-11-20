@@ -38,6 +38,10 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
     @Query("select s.id from School s where s.slug = :slug and s.active = true")
     Optional<Long> findActiveIdBySlug(@Param("slug") String slug);
 
+    /** Active schools with this board affiliation number (a Kendriya Vidyalaya's own website names its CBSE number). */
+    @Query("select s.id from School s where s.educationBoardCode = :board and s.affiliationNumber = :number and s.active = true")
+    List<Long> findActiveIdsByAffiliation(@Param("board") String board, @Param("number") String number);
+
     /** Slug, name, city and state code of active schools, for notice pages that link the school's profile. */
     @Query("select s.id, s.slug, s.name, s.city, s.stateCode from School s where s.id in :ids and s.active = true")
     List<Object[]> findActiveLinks(@Param("ids") Collection<Long> ids);

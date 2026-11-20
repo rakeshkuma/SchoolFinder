@@ -40,6 +40,11 @@ public class NotificationSyncProperties {
     private int lifetimeDays = 45;
     /** A notice missing from a complete listing for this long is treated as withdrawn. */
     private Duration withdrawAfter = Duration.ofHours(20);
+    /**
+     * How many websites of a family (the Kendriya Vidyalayas' own sites) are read at the same time. Each site is still
+     * asked at most once every perHostInterval; what was read is applied one site after another.
+     */
+    private int parallelFetches = 6;
 
     private final Http http = new Http();
     private final Pdf pdf = new Pdf();
@@ -74,5 +79,12 @@ public class NotificationSyncProperties {
         private int maxChars = 400;
         /** PDFs read per source per run, at most. */
         private int maxPerSource = 3;
+        /**
+         * Sources that read their notices' documents for dates (see OfficialSourceAdapter.readDocuments): new job notices
+         * read per source per run, and how much of each document is read.
+         */
+        private int documentsPerSource = 6;
+        private int documentPages = 3;
+        private int documentChars = 8000;
     }
 }

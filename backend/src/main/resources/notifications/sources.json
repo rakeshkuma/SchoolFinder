@@ -293,6 +293,56 @@
       "mayBeEmpty": true,
       "checked": "2026-11-19",
       "notes": "Media API answered with 8 PDFs, none recent, on 19 Nov 2026; new admission or vacancy PDFs will be picked up."
+    },
+    {
+      "key": "doon-international-bbsr",
+      "name": "Doon International School, Bhubaneswar",
+      "category": "SCHOOL",
+      "sector": "PRIVATE",
+      "state": "OD",
+      "city": "Bhubaneswar",
+      "notices": ["JOB"],
+      "method": "JOB_POSTINGS",
+      "listingUrl": "https://www.dooninternational.in/careers/",
+      "urls": ["https://www.dooninternational.in/careers/"],
+      "hosts": ["www.dooninternational.in"],
+      "assume": "JOB",
+      "reliability": "OFFICIAL_SCHOOL_SITE",
+      "autoPublish": true,
+      "completeListing": true,
+      "checked": "2026-11-20",
+      "notes": "Careers page states each opening as schema.org JobPosting (title, datePosted, validThrough): 28 on 20 Nov 2026, posted 21 Sep 2026, open until 26 Jan 2027. robots.txt disallows only /api/."
+    }
+  ],
+  "families": [
+    {
+      "key": "kv",
+      "name": "Kendriya Vidyalaya websites",
+      "sites": "notifications/sites/kendriya-vidyalayas.csv",
+      "checked": "2026-11-20",
+      "notes": "Each Kendriya Vidyalaya has its own site on the government platform (S3WaaS) at <school>.kvs.ac.in. Its Latest News table (date, title, link to the notice page with its PDF) carries the contractual and walk-in teacher notices. 1,217 sites from the CBSE school records were surveyed on 20 Nov 2026: 1,117 have this table; 93 use another layout and 7 have no such page; 10 of the addresses do not exist (host not found on the first live read): 1,107 listed, with the name each site gives itself. robots.txt on these sites disallows only /wp-admin/; the documents are on cdnbbsr.s3waas.gov.in (no robots.txt). Only job notices are taken: a single Vidyalaya's admission lists are left to the KVS admission item.",
+      "template": {
+        "category": "SCHOOL",
+        "sector": "GOVERNMENT",
+        "boarding": false,
+        "notices": ["JOB"],
+        "method": "HTML_ITEMS",
+        "listingUrl": "https://{host}/en/latest-news/",
+        "urls": ["https://{host}/en/latest-news/"],
+        "hosts": ["{host}"],
+        "documentHosts": ["cdnbbsr.s3waas.gov.in"],
+        "item": "table.data-table-1 tbody tr",
+        "title": "td:nth-of-type(2) a",
+        "link": "td:nth-of-type(2) a",
+        "dateSelector": "td:nth-of-type(1)",
+        "date": "TEXT",
+        "exclude": "bio[\\s-]*data|application\\s*form|eligi|^(?!.*walk[\\s-]*in).*\\b(em)?panel|\\bselect(ed|ion)\\b|\\bresults?\\b|merit|provisional\\s*list|final\\s*list|inspection|workshop|training|orientation|seminar|webinar|\\bstudents?\\b|admission|balvatika",
+        "reliability": "OFFICIAL_SCHOOL_SITE",
+        "autoPublish": true,
+        "completeListing": false,
+        "readDocuments": true,
+        "prefixTitles": true
+      }
     }
   ]
 }

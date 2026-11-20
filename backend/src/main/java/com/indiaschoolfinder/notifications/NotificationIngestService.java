@@ -188,7 +188,10 @@ public class NotificationIngestService {
         u = updates.save(u);
         enricher.savePositions(u.getId(), facts);
         result.created++;
-        if (n.category() == SiteUpdate.Category.JOB) result.createdJobs++;
+        if (n.category() == SiteUpdate.Category.JOB) {
+            result.createdJobs++;
+            result.newJobIds.add(u.getId());
+        }
         if (n.category() == SiteUpdate.Category.ADMISSION) result.createdAdmissions++;
         if (u.getStatus() == SiteUpdate.Status.PUBLISHED) {
             result.published++;
@@ -293,6 +296,53 @@ public class NotificationIngestService {
         updates.saveAll(expired);
         return expired.size();
     }
+
+    /**
+     * The interview or last date of a new job notice, read from its official document when its title gives none (a
+     * Kendriya Vidyalaya's "Walk-in interview 2026-27"). The document's words are read like a title, after the title
+     * itself: a date counts only after its cue word ("walk-in interview on", "last date"), and only if it falls after
+     * the notice's publication and within {@value #DOCUMENT_DAYS} days of it (the letter's own date does not). The
+     * notice then stays current until that date, and its card shows it. An editor's notice is never changed.
+     *
+     * @return true when a date was taken from the document
+     */
+    @Transactional
+    public boolean applyDocument(OfficialSourceAdapter source, long id, String documentUrl, String text) {
+        SiteUpdate u = updates.findById(id).orElse(null);
+        if (u == null || u.isStaffEdited() || u.getCategory() != SiteUpdate.Category.JOB || u.getClosesOn() != null
+                || u.getPublishedOn() == null || text == null || text.isBlank()) {
+            return false;
+        }
+        LocalDate published = u.getPublishedOn();
+        String title = u.getOfficialTitle() != null ? u.getOfficialTitle() : u.getTitle();
+        OpportunityClassifier.Facts titleFacts = facts(source, u.getCategory(), title, published);
+        OpportunityClassifier.DocumentDates doc = OpportunityClassifier.documentDates(text, published, DOCUMENT_DAYS);
+        LocalDate closes = doc.closesOn();
+        LocalDate exam = doc.examOn();
+        if (closes == null && exam == null) {
+            return false;
+        }
+        if (closes == null && doc.walkIn()) {
+            closes = exam; // a walk-in interview is applied for by attending it
+        }
+        // Posts and the kind of notice stay as the title gives them; only the dates come from the document.
+        OpportunityClassifier.Facts merged = titleFacts.withDates(titleFacts.opensOn(), closes, exam,
+                titleFacts.walkIn() || doc.walkIn());
+        enricher.apply(u, source.profile(), merged, null, true);
+        u.setExpiresOn(expiry(published, null, merged, closes != null ? closes : exam));
+        String when = DAY.format(closes != null ? closes : exam);
+        u.setSummary(clip(u.getSummary() + " " + (merged.walkIn() ? "Walk-in interview" : closes != null ? "Last date" : "Interview / exam")
+                + " " + when + ", as the official notice states.", 400));
+        if (u.getStatus() == SiteUpdate.Status.PENDING_REVIEW) {
+            u.setReviewNote(clip((u.getReviewNote() == null ? "" : u.getReviewNote() + " ") + "Date " + when + " read from "
+                    + documentUrl + "; check it there.", 600));
+        }
+        audit.record("SITE_UPDATE_SOURCE_DOCUMENT", "SITE_UPDATE", id, clip(source.key() + ": " + when + " from " + documentUrl, 300));
+        return true;
+    }
+
+    /** Days after publication within which a date read from a notice's document is believed (walk-ins are weeks away). */
+    static final int DOCUMENT_DAYS = 120;
 
     /** Adds a short excerpt of the notice PDF to the review note (staff only). */
     @Transactional

@@ -19,6 +19,8 @@ const RUN_STYLE: Record<SyncRunRow['status'], string> = {
 };
 const OUTCOME_STYLE: Record<string, string> = {
   OK: 'text-emerald-800', FAILED: 'text-red-700', BLOCKED: 'text-amber-800', SKIPPED: 'text-slate-500',
+  // A family of sites (the Kendriya Vidyalaya websites) with a few sites failing.
+  PARTIAL: 'text-amber-800',
 };
 
 /**

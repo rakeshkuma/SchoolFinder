@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.indiaschoolfinder.entity.SiteUpdate;
 import com.indiaschoolfinder.notifications.source.OfficialSourceAdapter;
+import com.indiaschoolfinder.notifications.source.SourceFamily;
 import com.indiaschoolfinder.notifications.source.SourceProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.select.QueryParser;
@@ -95,6 +96,159 @@ public class SourceRegistry {
             }
             ok.add(new RegistrySourceAdapter(d, profile(d), json));
         }
+        for (JsonNode family : root.path("families")) {
+            loadFamily(json, family, keys, ok, bad);
+        }
+    }
+
+    /**
+     * A family: one reviewed template for websites built the same way, and a list of the sites (a CSV file beside the
+     * registry: id, host, name, state, city, school). Each site becomes a source of its own, checked like any entry, its
+     * key the family's key and the site's id ("kv-mankhurd"), "{host}" in the template replaced by the site's host.
+     */
+    static void loadFamily(ObjectMapper json, JsonNode family, Set<String> keys, List<RegistrySourceAdapter> ok, List<String> bad) {
+        String fkey = family.path("key").asText("");
+        String fname = family.path("name").asText("");
+        String label = "family " + (fkey.isEmpty() ? "?" : fkey);
+        if (!fkey.matches("^[a-z][a-z0-9]{1,9}$") || fname.isBlank() || !family.path("template").isObject()) {
+            bad.add(label + ": needs a key (2-10 lower-case letters or digits), a name and a template");
+            return;
+        }
+        String file = family.path("sites").asText("");
+        ClassPathResource sites = new ClassPathResource(file);
+        if (file.isBlank() || !file.startsWith("notifications/") || !sites.exists()) {
+            bad.add(label + ": its sites file " + file + " is missing");
+            return;
+        }
+        List<List<String>> rows;
+        try (InputStream in = sites.getInputStream()) {
+            rows = Csv.read(new String(in.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8));
+        } catch (IOException | IllegalArgumentException e) {
+            bad.add(label + ": its sites file could not be read: " + e.getMessage());
+            return;
+        }
+        if (rows.isEmpty() || !rows.get(0).equals(List.of("id", "host", "name", "state", "city", "school"))) {
+            bad.add(label + ": its sites file must start with the header id,host,name,state,city,school");
+            return;
+        }
+        List<RegistrySourceAdapter> members = new ArrayList<>();
+        List<String> problems = new ArrayList<>();
+        int listed = rows.size() - 1;
+        SourceFamily info = new SourceFamily(fkey, fname, listed);
+        for (int i = 1; i < rows.size(); i++) {
+            List<String> row = rows.get(i);
+            if (row.size() != 6) {
+                problems.add("line " + (i + 1) + " has " + row.size() + " fields, not 6");
+                continue;
+            }
+            String host = row.get(1).trim().toLowerCase(Locale.ROOT);
+            com.fasterxml.jackson.databind.node.ObjectNode node = (com.fasterxml.jackson.databind.node.ObjectNode) fill(family.path("template").deepCopy(), host);
+            node.put("key", fkey + "-" + row.get(0).trim());
+            node.put("name", row.get(2).trim());
+            node.put("institution", row.get(2).trim());
+            putOrNull(node, "state", row.get(3));
+            putOrNull(node, "city", row.get(4));
+            putOrNull(node, "school", row.get(5));
+            if (!node.hasNonNull("checked") && family.hasNonNull("checked")) {
+                node.put("checked", family.path("checked").asText()); // the day the family's sites were surveyed
+            }
+            SourceDefinition d;
+            try {
+                d = json.treeToValue(node, SourceDefinition.class);
+            } catch (IOException e) {
+                bad.add(label + ": its template cannot be read: "
+                        + (e instanceof com.fasterxml.jackson.core.JsonProcessingException j ? j.getOriginalMessage() : e.getMessage()));
+                return;
+            }
+            List<String> errors = validate(d);
+            if (!keys.add(d.key())) errors.add("the key is used twice");
+            if (!errors.isEmpty()) {
+                problems.add(d.key() + " (line " + (i + 1) + "): " + String.join("; ", errors));
+                continue;
+            }
+            members.add(new RegistrySourceAdapter(d, profile(d), json, info));
+        }
+        problems.stream().limit(10).forEach(p -> bad.add(label + ": " + p));
+        if (problems.size() > 10) bad.add(label + ": " + (problems.size() - 10) + " more sites left out");
+        ok.addAll(members);
+        log.info("Source registry: family {} ({}): {} of {} site(s) loaded", fkey, fname, members.size(), listed);
+    }
+
+    /** The template with "{host}" in every text replaced by the site's host. */
+    private static JsonNode fill(JsonNode node, String host) {
+        if (node.isTextual()) {
+            return com.fasterxml.jackson.databind.node.TextNode.valueOf(node.asText().replace("{host}", host));
+        }
+        if (node.isArray()) {
+            com.fasterxml.jackson.databind.node.ArrayNode a = (com.fasterxml.jackson.databind.node.ArrayNode) node;
+            for (int i = 0; i < a.size(); i++) a.set(i, fill(a.get(i), host));
+            return a;
+        }
+        if (node.isObject()) {
+            com.fasterxml.jackson.databind.node.ObjectNode o = (com.fasterxml.jackson.databind.node.ObjectNode) node;
+            List<String> names = new ArrayList<>();
+            o.fieldNames().forEachRemaining(names::add);
+            for (String n : names) o.set(n, fill(o.get(n), host));
+            return o;
+        }
+        return node;
+    }
+
+    private static void putOrNull(com.fasterxml.jackson.databind.node.ObjectNode node, String field, String value) {
+        if (value == null || value.isBlank()) node.putNull(field);
+        else node.put(field, value.trim());
+    }
+
+    /** A minimal CSV reader: commas, double quotes around fields that hold commas or quotes, "" for a quote. */
+    static final class Csv {
+        static List<List<String>> read(String text) {
+            List<List<String>> rows = new ArrayList<>();
+            List<String> row = new ArrayList<>();
+            StringBuilder field = new StringBuilder();
+            boolean quoted = false;
+            boolean any = false;
+            for (int i = 0; i < text.length(); i++) {
+                char ch = text.charAt(i);
+                if (quoted) {
+                    if (ch == '"' && i + 1 < text.length() && text.charAt(i + 1) == '"') {
+                        field.append('"');
+                        i++;
+                    } else if (ch == '"') {
+                        quoted = false;
+                    } else {
+                        field.append(ch);
+                    }
+                } else if (ch == '"') {
+                    quoted = true;
+                    any = true;
+                } else if (ch == ',') {
+                    row.add(field.toString());
+                    field.setLength(0);
+                    any = true;
+                } else if (ch == '\n' || ch == '\r') {
+                    if (ch == '\r' && i + 1 < text.length() && text.charAt(i + 1) == '\n') i++;
+                    if (any || field.length() > 0) {
+                        row.add(field.toString());
+                        rows.add(row);
+                    }
+                    row = new ArrayList<>();
+                    field.setLength(0);
+                    any = false;
+                } else {
+                    field.append(ch);
+                    any = true;
+                }
+            }
+            if (quoted) throw new IllegalArgumentException("a quoted field is not closed");
+            if (any || field.length() > 0) {
+                row.add(field.toString());
+                rows.add(row);
+            }
+            if (!rows.isEmpty() && !rows.get(0).isEmpty() && rows.get(0).get(0).startsWith("﻿")) {
+                rows.get(0).set(0, rows.get(0).get(0).substring(1));
+            }
+            return rows;
+        }
     }
 
     static SourceProfile profile(SourceDefinition d) {
@@ -124,7 +278,7 @@ public class SourceRegistry {
         try {
             method = RegistrySourceAdapter.Method.valueOf(String.valueOf(d.method()));
         } catch (IllegalArgumentException ex) {
-            e.add("method must be one of WP_MEDIA, S3WAAS_DOCS, HTML_ITEMS");
+            e.add("method must be one of WP_MEDIA, S3WAAS_DOCS, HTML_ITEMS, JOB_POSTINGS");
         }
         if (d.date() != null) {
             try {

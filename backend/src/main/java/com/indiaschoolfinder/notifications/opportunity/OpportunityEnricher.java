@@ -70,7 +70,7 @@ public class OpportunityEnricher {
             // The card's date line (the existing card shows eventDate with its label).
             if (closes != null) {
                 u.setEventDate(closes);
-                u.setEventLabel(facts.walkIn() ? "Walk-in interview" : "Last date");
+                u.setEventLabel(facts.walkIn() ? "Walk-in interview" : closes.equals(facts.examOn()) ? "Interview" : "Last date");
                 u.setDeadline(true);
             } else if (facts.examOn() != null) {
                 u.setEventDate(facts.examOn());
@@ -129,7 +129,13 @@ public class OpportunityEnricher {
         if (cached != null) {
             return cached > 0 ? cached : null;
         }
-        Long id = schools.findActiveIdBySlug(slug).orElse(-1L);
+        Long id;
+        if (slug.startsWith("cbse:")) { // "cbse:1100047": the school's CBSE affiliation number, as a family's site list gives it
+            List<Long> ids = schools.findActiveIdsByAffiliation("CBSE", slug.substring(5));
+            id = ids.size() == 1 ? ids.get(0) : -1L;
+        } else {
+            id = schools.findActiveIdBySlug(slug).orElse(-1L);
+        }
         schoolIds.put(slug, id);
         return id > 0 ? id : null;
     }
