@@ -2,6 +2,7 @@ package com.indiaschoolfinder.notifications;
 
 import com.indiaschoolfinder.entity.SiteUpdate;
 import com.indiaschoolfinder.notifications.fetch.FetchSession;
+import com.indiaschoolfinder.notifications.opportunity.OpportunityClassifier;
 import com.indiaschoolfinder.notifications.source.FoundNotice;
 import com.indiaschoolfinder.notifications.source.OfficialSourceAdapter;
 import com.indiaschoolfinder.notifications.source.SourceListing;
@@ -35,6 +36,36 @@ class IngestRulesTest {
 
     private static FoundNotice job(String title) {
         return new FoundNotice("x", title, "https://www.example.edu.in/uploads/jobs/1.pdf", DAY, SiteUpdate.Category.JOB, "test", null, null, null);
+    }
+
+    @Test
+    void aWalkInWhoseDayWasNotReadStaysTenDaysNotFortyFive() {
+        LocalDate posted = LocalDate.of(2026, 11, 12);
+        var walkIn = OpportunityClassifier.facts(SiteUpdate.Category.JOB, "WALK IN INTERVIEW FOR PGT MATHS", posted);
+        assertThat(NotificationIngestService.expiry(posted, null, walkIn, null, 45, 10)).isEqualTo(posted.plusDays(10));
+        // "Interview notice for contractual teachers" is attended like a walk-in.
+        var interview = OpportunityClassifier.facts(SiteUpdate.Category.JOB, "INTERVIEW NOTICE FOR CONTRACTUAL TEACHERS FOR SESSION 2026-27", posted);
+        assertThat(NotificationIngestService.expiry(posted, null, interview, null, 45, 10)).isEqualTo(posted.plusDays(10));
+        // With its day known, it stays until that day.
+        var dated = OpportunityClassifier.facts(SiteUpdate.Category.JOB, "Walk-in interview for contractual teachers on 25/11/2026", posted);
+        assertThat(NotificationIngestService.expiry(posted, null, dated, dated.closesOn(), 45, 10)).isEqualTo(LocalDate.of(2026, 11, 25));
+        // Other notices keep the usual lifetime.
+        var advert = OpportunityClassifier.facts(SiteUpdate.Category.JOB, "Recruitment of PGT Physics", posted);
+        assertThat(NotificationIngestService.expiry(posted, null, advert, null, 45, 10)).isEqualTo(posted.plusDays(45));
+        var result = OpportunityClassifier.facts(SiteUpdate.Category.JOB, "Result of walk-in interview for contractual teachers", posted);
+        assertThat(NotificationIngestService.expiry(posted, null, result, null, 45, 10)).isEqualTo(posted.plusDays(45));
+        // Switched off (0): the usual lifetime.
+        assertThat(NotificationIngestService.expiry(posted, null, walkIn, null, 45, 0)).isEqualTo(posted.plusDays(45));
+    }
+
+    @Test
+    void aNoticePagesHiddenDocumentPageHasTheSameName() {
+        assertThat(NotificationSyncService.guessedDocumentPage(
+                "https://afsthane.kvs.ac.in/en/advertisement-of-walk-in-interview-for-contractual-teachers-for-the-session-2026-2027/"))
+                .isEqualTo("https://afsthane.kvs.ac.in/en/document/advertisement-of-walk-in-interview-for-contractual-teachers-for-the-session-2026-2027/");
+        assertThat(NotificationSyncService.guessedDocumentPage("https://afsthane.kvs.ac.in/en/document/x/")).isNull();
+        assertThat(NotificationSyncService.guessedDocumentPage("https://cdnbbsr.s3waas.gov.in/s3kv0/uploads/2026/10/1.pdf")).isNull();
+        assertThat(NotificationSyncService.guessedDocumentPage("https://afsthane.kvs.ac.in/?p=7543")).isNull();
     }
 
     @Test

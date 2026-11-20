@@ -361,7 +361,9 @@ public final class OpportunityClassifier {
         String t = DateText.normaliseDigits(text == null ? "" : text).replace('\u00a0', ' ');
         boolean job = category == SiteUpdate.Category.JOB;
         SiteUpdate.NoticeType type = noticeType(category, t);
-        boolean walkIn = WALK_IN.matcher(t).find();
+        // "Interview notice for contractual teachers": attended like a walk-in (an opening, not its result).
+        boolean walkIn = WALK_IN.matcher(t).find() || job && type == SiteUpdate.NoticeType.OPENING && INTERVIEW.matcher(t).find()
+                && (CONTRACT.matcher(t).find() || PART_TIME.matcher(t).find());
 
         List<String> posts = new ArrayList<>();
         boolean nonSchool = false;
@@ -449,10 +451,6 @@ public final class OpportunityClassifier {
         }
         if (walkIn && closes == null && exam != null) {
             closes = exam; // a walk-in interview is applied for by attending it
-        }
-        if (!walkIn && job && closes == null && exam != null && INTERVIEW.matcher(t).find()
-                && (CONTRACT.matcher(t).find() || PART_TIME.matcher(t).find())) {
-            closes = exam; // an interview for a contractual or part-time post is attended, like a walk-in
         }
         if (opens != null && closes != null && opens.isAfter(closes)) {
             opens = null;

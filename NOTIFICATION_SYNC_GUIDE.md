@@ -155,7 +155,14 @@ birth do not count. The notice then gets that date as its interview or last date
 "Interview" / "Last date"), stays current until it, and its summary says the date comes from the official notice. Posts
 and the kind of notice still come from the title. A scanned PDF without text, or one without such a date, changes
 nothing; an editor's notice is never changed. An interview for a contractual or part-time post is treated like a
-walk-in (its day is when to come), in titles too.
+walk-in (its day is when to come), in titles too. When neither the title nor the document gives the notice's day (a
+notice page with no PDF, or a scanned PDF without text), the check also tries the platform's document page of the same
+name (`/en/notice-x/` → `/en/document/notice-x/`), where some schools keep the PDF without linking it.
+
+A walk-in (or contractual interview) whose day was not read stays current **10 days** after its publication
+(`walk-in-lifetime-days`), not the usual 45: Vidyalayas hold these interviews within days of the notice. One found more
+than 10 days after its notice is not added. On the first live run, 14 of 20 KV notices had already been held when an
+editor read them (20 Nov 2026).
 
 ### Registry sources (inspected 19 November 2026)
 
@@ -291,6 +298,7 @@ accepts an optional `details` object with the facts (left out, the stored facts 
 | `only-sources` | empty | Read only these (same form); for local checks |
 | `parallel-fetches` | `6` | Sites of a family read at the same time |
 | `lifetime-days` | `45` | How long a notice without an end date stays up |
+| `walk-in-lifetime-days` | `10` | How long a walk-in or contractual interview whose day was not read stays up (0: the usual lifetime) |
 | `withdraw-after` | `20h` | How long a notice must be missing from a complete listing |
 | `http.*` | 10 s connect, 30 s request, 6 MB, 3 attempts, 3 s backoff, 1.5 s per host, 3 redirects, robots on | Fetch limits |
 | `pdf.*` | excerpts on, 5 MB, 2 pages, 400 chars, 3 per source | Opening text of new review items' PDFs, added to the review note (staff only) |
