@@ -76,6 +76,22 @@ public interface OfficialSourceAdapter {
     }
 
     /**
+     * The family this source belongs to (for example "kv": one of the Kendriya Vidyalayas' own websites, all built the
+     * same way), or null. Family members are read side by side and reported together; see SourceRegistry.
+     */
+    default SourceFamily family() {
+        return null;
+    }
+
+    /**
+     * True when the titles seldom carry the dates: each new job notice's own page and the official document it links are
+     * read for its interview or last date and its posts.
+     */
+    default boolean readDocuments() {
+        return false;
+    }
+
+    /**
      * Reads the source. Throws {@link SourceLayoutException} when the page no longer looks as expected (for example
      * no notice rows at all), so a layout change is reported instead of silently finding nothing.
      */

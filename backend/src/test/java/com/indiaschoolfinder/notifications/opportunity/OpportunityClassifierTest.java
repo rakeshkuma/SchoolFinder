@@ -210,4 +210,58 @@ class OpportunityClassifierTest {
         assertThat(OpportunityClassifier.facts(Category.ADMISSION, "कक्षा VI JNVST 2027 का प्रवेश पत्र डाउनलोड करने हेतु यहाँ क्लिक करें।",
                 LocalDate.of(2026, 10, 29)).noticeType()).isEqualTo(NoticeType.ADMIT_CARD);
     }
+
+    /** Kendriya Vidyalaya news titles as their sites printed them on 20 Nov 2026. */
+    @Test
+    void kendriyaVidyalayaInterviewTitlesGiveTheInterviewDay() {
+        var walkIn = job("Notice for Walk-in Interview for Contractual Teachers on 25/11/2026 for session 2026-27", "2026-11-19");
+        assertThat(walkIn.noticeType()).isEqualTo(NoticeType.OPENING);
+        assertThat(walkIn.closesOn()).isEqualTo(LocalDate.of(2026, 11, 25));
+        assertThat(walkIn.employmentType()).isEqualTo(SiteUpdate.EmploymentType.CONTRACT);
+        assertThat(walkIn.academicSession()).isEqualTo("2026-27");
+        // No "walk-in", but an interview for a contractual post on a stated day: that day is when to come.
+        var interview = job("Advertisement for Interview for the Post of Contractual PGT (English) for the Session 2026–27, scheduled to be held on 03.11.2026.",
+                "2026-10-27");
+        assertThat(interview.examOn()).isEqualTo(LocalDate.of(2026, 11, 3));
+        assertThat(interview.closesOn()).isEqualTo(LocalDate.of(2026, 11, 3));
+        assertThat(interview.postTypes()).containsExactly("PGT");
+        // "INTERVIEW-ON" (ASC Centre Bengaluru): the hyphen does not hide the day.
+        var asc = job("CONTRACTUAL TEACHERS INTERVIEW-ON 28/10/2026", "2026-10-28");
+        assertThat(asc.examOn()).isEqualTo(LocalDate.of(2026, 10, 28));
+        assertThat(asc.closesOn()).isEqualTo(LocalDate.of(2026, 10, 28));
+        // A two-digit year, as Mankhurd wrote it.
+        var mankhurd = job("WALK IN INTERVIEW (21.11.26)", "2026-11-18");
+        assertThat(mankhurd.closesOn()).isEqualTo(LocalDate.of(2026, 11, 21));
+        // "Interview notice for contractual ..." is the school's call to come: an opening.
+        assertThat(job("INTERVIEW NOTICE FOR CONTRACTUAL TEACHERS FOR SESSION 2026-27", "2026-11-04").noticeType()).isEqualTo(NoticeType.OPENING);
+        assertThat(job("Interview notice for Contractual Post for session 2026-27", "2026-10-17").noticeType()).isEqualTo(NoticeType.OPENING);
+        // An interview for a regular post (KVS headquarters) is still a later step.
+        assertThat(job("Notice for interview for the post of Principal through Limited Departmental Examination (LDE).", "2026-10-19")
+                .noticeType()).isNotEqualTo(NoticeType.OPENING);
+        // Two-digit years are read only as whole dates: not inside version numbers or sessions.
+        assertThat(DateText.all("Rule 4.2.26.1 and session 2026-27")).isEmpty();
+        // A school's inspection by its panel is not a job.
+        assertThat(OpportunityClassifier.relevance("Annual Panel Inspection will be held on 03.11.2026.", EnumSet.of(Category.JOB))).isNull();
+    }
+
+    @Test
+    void aNoticesDocumentGivesItsInterviewDayNotItsLetterDate() {
+        LocalDate published = LocalDate.of(2026, 11, 18);
+        // The shape of a Vidyalaya's walk-in notice: heading, letter number and date, then the interview.
+        String text = "PM SHRI KENDRIYA VIDYALAYA MANKHURD WALK-IN-INTERVIEW F.No. KVM/2026-27/412 Dated: 18.11.2026 "
+                + "A walk-in interview for preparing a panel of part-time contractual teachers for the session 2026-27 will be held "
+                + "on 21.11.2026 at 09:00 AM in the Vidyalaya premises. Candidates born after 01.07.1965 ... PRINCIPAL";
+        var d = OpportunityClassifier.documentDates(text, published, 120);
+        assertThat(d.examOn()).isEqualTo(LocalDate.of(2026, 11, 21));
+        assertThat(d.walkIn()).isTrue();
+        // A last date stated after its cue is a last date.
+        var form = OpportunityClassifier.documentDates("Applications may be sent by e-mail. Last date for receipt of applications: 30 November 2026.",
+                published, 120);
+        assertThat(form.closesOn()).isEqualTo(LocalDate.of(2026, 11, 30));
+        assertThat(form.walkIn()).isFalse();
+        // Only the letter's own date, or dates long after: nothing.
+        assertThat(OpportunityClassifier.documentDates("Walk-in interview for contractual teachers. Dated: 18.11.2026. Date to be announced.",
+                published, 120)).isEqualTo(new OpportunityClassifier.DocumentDates(null, null, true));
+        assertThat(OpportunityClassifier.documentDates("Walk-in interview on 21.11.2027", published, 120).examOn()).isNull();
+    }
 }

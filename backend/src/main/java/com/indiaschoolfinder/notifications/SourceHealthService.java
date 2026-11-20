@@ -59,10 +59,20 @@ public class SourceHealthService {
             s.setReliability(p.reliability());
             s.setAutoPublish(a.autoPublish());
             s.setEnabled(enabled.test(a));
-            s.setSchoolId(p.schoolSlug() == null ? null : schools.findActiveIdBySlug(p.schoolSlug()).orElse(null));
+            s.setSchoolId(school(p.schoolSlug()));
             s.setUpdatedAt(now);
             sources.save(s);
         }
+    }
+
+    /** The school a source names: its page slug, or "cbse:<affiliation number>" (a family's site list). */
+    private Long school(String ref) {
+        if (ref == null) return null;
+        if (ref.startsWith("cbse:")) {
+            List<Long> ids = schools.findActiveIdsByAffiliation("CBSE", ref.substring(5));
+            return ids.size() == 1 ? ids.get(0) : null;
+        }
+        return schools.findActiveIdBySlug(ref).orElse(null);
     }
 
     /** One source's outcome in a run. SKIPPED (switched off, or the server was stopping) is not an attempt. */

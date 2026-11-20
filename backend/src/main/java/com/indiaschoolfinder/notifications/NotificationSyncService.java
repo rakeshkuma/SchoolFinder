@@ -40,9 +40,14 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -146,10 +151,20 @@ public class NotificationSyncService {
     }
 
     public boolean enabled(OfficialSourceAdapter a) {
-        if (!props.getOnlySources().isEmpty() && !props.getOnlySources().contains(a.key())) {
+        if (!props.getOnlySources().isEmpty() && !matches(props.getOnlySources(), a.key())) {
             return false;
         }
-        return a.enabledByDefault() && !props.getDisabledSources().contains(a.key());
+        return a.enabledByDefault() && !matches(props.getDisabledSources(), a.key());
+    }
+
+    /** "kv-mankhurd", or "kv-*" for every site of the kv family. */
+    private static boolean matches(List<String> keys, String key) {
+        for (String k : keys) {
+            if (k.equals(key) || (k.endsWith("*") && key.startsWith(k.substring(0, k.length() - 1)))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** Entries of the registry file that could not be used, with the reason (for staff). */
@@ -202,6 +217,25 @@ public class NotificationSyncService {
         }
         List<SourceResult> results = new ArrayList<>();
         boolean interrupted = false;
+        // The sites of a family (each Kendriya Vidyalaya's own website) are read side by side ahead of the loop; what was
+        // read is still applied one source at a time, in order, below.
+        ExecutorService pool = null;
+        Map<String, Future<Prefetched>> ahead = Map.of();
+        List<OfficialSourceAdapter> family = adapters.stream().filter(a -> a.family() != null && enabled(a)).toList();
+        if (!family.isEmpty()) {
+            pool = Executors.newFixedThreadPool(Math.max(1, props.getParallelFetches()), r -> {
+                Thread t = new Thread(r, "notification-fetch");
+                t.setDaemon(true);
+                return t;
+            });
+            Map<String, Future<Prefetched>> futures = new HashMap<>();
+            for (OfficialSourceAdapter a : family) {
+                ExecutorService p = pool;
+                futures.put(a.key(), p.submit(() -> prefetch(a, today)));
+            }
+            ahead = futures;
+        }
+        try {
         for (OfficialSourceAdapter source : adapters) {
             SourceResult r = new SourceResult(source.key(), source.name());
             results.add(r);
@@ -216,12 +250,25 @@ public class NotificationSyncService {
                 continue;
             }
             long t0 = System.nanoTime();
-            FetchSession session = new FetchSession(props.getHttp(), transport, sleeper, source.hosts(), () -> stopping);
+            Future<Prefetched> early = ahead.get(source.key());
+            FetchSession session = early != null ? null
+                    : new FetchSession(props.getHttp(), transport, sleeper, source.hosts(), () -> stopping);
+            long fetchMs = 0;
             try {
-                SourceListing listing = source.fetch(session, today);
+                SourceListing listing;
+                if (early != null) {
+                    Prefetched p = await(early);
+                    session = p.session();
+                    fetchMs = p.durationMs();
+                    t0 = System.nanoTime();
+                    listing = p.listing();
+                } else {
+                    listing = source.fetch(session, today);
+                }
                 tx.executeWithoutResult(s -> ingest.apply(source, listing, now, today, r));
                 r.outcome = "OK";
                 excerpts(source, r);
+                documents(source, r);
             } catch (FetchException e) {
                 r.outcome = e.kind() == FetchException.Kind.BLOCKED || e.kind() == FetchException.Kind.ROBOTS ? "BLOCKED"
                         : e.kind() == FetchException.Kind.STOPPED ? "SKIPPED" : "FAILED";
@@ -240,17 +287,22 @@ public class NotificationSyncService {
                 r.error = e.getClass().getSimpleName() + (e.getMessage() == null ? "" : ": " + UrlPolicyAbbrev.of(e.getMessage()));
                 log.warn("Notification sync source {} failed", source.key(), e);
             } finally {
-                r.requests = session.requests();
-                r.durationMs = (System.nanoTime() - t0) / 1_000_000;
+                r.requests += session == null ? 0 : session.requests();
+                r.durationMs = fetchMs + (System.nanoTime() - t0) / 1_000_000;
             }
             try {
                 health.record(source.key(), r, now);
             } catch (RuntimeException e) {
                 log.warn("Notification sync #{}: could not record the health of {}: {}", run.getId(), source.key(), e.toString());
             }
-            log.info("Notification sync #{} {}: {} (listed {}, relevant {}, new {}, changed {}, published {}, pending {}){}",
-                    run.getId(), source.key(), r.outcome, r.listed, r.relevant, r.created, r.updated, r.published, r.pending,
-                    r.error == null ? "" : " - " + r.error);
+            if (source.family() == null || !quiet(r)) {
+                log.info("Notification sync #{} {}: {} (listed {}, relevant {}, new {}, changed {}, published {}, pending {}){}",
+                        run.getId(), source.key(), r.outcome, r.listed, r.relevant, r.created, r.updated, r.published, r.pending,
+                        r.error == null ? "" : " - " + r.error);
+            }
+        }
+        } finally {
+            if (pool != null) pool.shutdownNow();
         }
         if (!interrupted) {
             backfill(run.getId());
@@ -258,6 +310,183 @@ public class NotificationSyncService {
         int expired = interrupted ? 0 : tx.execute(s -> ingest.expire(today));
         finish(run, results, expired, interrupted, clock.instant().isBefore(now) ? now : clock.instant());
         return run;
+    }
+
+    /**
+     * What a run keeps of its sources: every source as it went, except that a family's sites with nothing new are kept as
+     * one line for the family (a run reads over a thousand Kendriya Vidyalaya sites; staff need the ones that found
+     * something or failed). The run's totals are counted from every source before this.
+     */
+    List<SourceResult> stored(List<SourceResult> results) {
+        Map<String, OfficialSourceAdapter> byKey = new HashMap<>();
+        adapters.forEach(a -> byKey.put(a.key(), a));
+        Map<String, SourceResult> summaries = new HashMap<>();
+        Map<String, int[]> counts = new HashMap<>(); // family key -> {quiet, skipped}
+        List<SourceResult> out = new ArrayList<>();
+        for (SourceResult r : results) {
+            OfficialSourceAdapter a = byKey.get(r.key);
+            com.indiaschoolfinder.notifications.source.SourceFamily f = a == null ? null : a.family();
+            boolean skipped = "SKIPPED".equals(r.outcome);
+            if (f == null || (!quiet(r) && !skipped)) {
+                out.add(r);
+                continue;
+            }
+            SourceResult s = summaries.computeIfAbsent(f.key(), k -> {
+                SourceResult n = new SourceResult(f.key(), f.name());
+                out.add(n);
+                return n;
+            });
+            int[] c = counts.computeIfAbsent(f.key(), k -> new int[2]);
+            c[skipped ? 1 : 0]++;
+            s.requests += r.requests;
+            s.durationMs += r.durationMs;
+            s.listed += r.listed;
+            s.relevant += r.relevant;
+            s.ignored += r.ignored;
+            s.unchanged += r.unchanged;
+            s.tooOld += r.tooOld;
+            s.duplicates += r.duplicates;
+        }
+        summaries.forEach((key, s) -> {
+            int[] c = counts.get(key);
+            s.outcome = c[0] > 0 ? "OK" : "SKIPPED";
+            s.name = s.name + ": " + c[0] + " site(s) read with nothing new" + (c[1] > 0 ? ", " + c[1] + " skipped" : "");
+        });
+        return out;
+    }
+
+    /** One family site read ahead of the loop: what it listed, or why it could not be read. */
+    private static final class Prefetched {
+        private final FetchSession session;
+        private final SourceListing listing;
+        private final Exception error;
+        private final long durationMs;
+
+        Prefetched(FetchSession session, SourceListing listing, Exception error, long durationMs) {
+            this.session = session;
+            this.listing = listing;
+            this.error = error;
+            this.durationMs = durationMs;
+        }
+
+        FetchSession session() { return session; }
+        long durationMs() { return durationMs; }
+
+        SourceListing listing() throws FetchException, SourceLayoutException, InterruptedException {
+            if (error instanceof FetchException e) throw e;
+            if (error instanceof SourceLayoutException e) throw e;
+            if (error instanceof InterruptedException e) throw e;
+            if (error instanceof RuntimeException e) throw e;
+            if (error != null) throw new IllegalStateException(error);
+            return listing;
+        }
+    }
+
+    private Prefetched prefetch(OfficialSourceAdapter source, LocalDate today) {
+        FetchSession session = new FetchSession(props.getHttp(), transport, sleeper, source.hosts(), () -> stopping);
+        long t0 = System.nanoTime();
+        try {
+            return new Prefetched(session, source.fetch(session, today), null, (System.nanoTime() - t0) / 1_000_000);
+        } catch (Exception e) {
+            if (e instanceof InterruptedException) Thread.currentThread().interrupt();
+            return new Prefetched(session, null, e, (System.nanoTime() - t0) / 1_000_000);
+        }
+    }
+
+    private static Prefetched await(Future<Prefetched> f) throws InterruptedException {
+        try {
+            return f.get();
+        } catch (ExecutionException e) {
+            throw new IllegalStateException(e.getCause());
+        } catch (java.util.concurrent.CancellationException e) {
+            throw new InterruptedException("stopped");
+        }
+    }
+
+    /** A family site that was read and had nothing new, changed or withdrawn: logged and stored only as part of its family. */
+    static boolean quiet(SourceResult r) {
+        return "OK".equals(r.outcome) && r.created == 0 && r.updated == 0 && r.withdrawn == 0;
+    }
+
+    /**
+     * For a source whose titles seldom give dates: each new job notice's own page is read for the official document it
+     * links (a PDF on the source's document hosts), and the document's words for the interview or last date. Only a
+     * date stated after its cue word, and after the notice's publication, is taken (see NotificationIngestService.applyDocument).
+     */
+    private void documents(OfficialSourceAdapter source, SourceResult r) throws InterruptedException {
+        NotificationSyncProperties.Pdf pdf = props.getPdf();
+        if (!source.readDocuments() || r.newJobIds.isEmpty()) {
+            return;
+        }
+        FetchSession session = new FetchSession(props.getHttp(), transport, sleeper, source.documentHosts(), () -> stopping);
+        int read = 0;
+        for (Long id : r.newJobIds) {
+            if (read >= pdf.getDocumentsPerSource() || stopping) {
+                break;
+            }
+            String url = updates.findById(id).map(SiteUpdate::getSourceUrl).orElse(null);
+            if (url == null || !UrlPolicy.allowed(url, source.documentHosts())) {
+                continue;
+            }
+            read++;
+            try {
+                String document = isDocument(url) ? url : null;
+                String page = url;
+                // The notice's page links its PDF, or (on the government platform) a document page that does.
+                for (int hop = 0; document == null && page != null && hop < 2; hop++) {
+                    org.jsoup.nodes.Document html = session.get(page).html();
+                    document = documentLink(html, source.documentHosts());
+                    page = document == null ? documentPage(html, source.hosts()) : null;
+                }
+                if (document == null) {
+                    continue;
+                }
+                String text = PdfExcerpts.excerpt(session.get(document, pdf.getMaxBytes()).body(), pdf.getDocumentPages(), pdf.getDocumentChars());
+                if (text == null) {
+                    continue; // a scan without a text layer: the title's facts stand
+                }
+                String found = document;
+                Boolean dated = tx.execute(s -> ingest.applyDocument(source, id, found, text));
+                if (Boolean.TRUE.equals(dated)) {
+                    r.documentDates++;
+                }
+            } catch (FetchException e) {
+                log.debug("No document read for update {}: {}", id, e.getMessage());
+            }
+        }
+        r.requests += session.requests();
+    }
+
+    private static boolean isDocument(String url) {
+        String path = url.toLowerCase(java.util.Locale.ROOT);
+        int q = path.indexOf('?');
+        return (q < 0 ? path : path.substring(0, q)).endsWith(".pdf");
+    }
+
+    /** The first PDF the notice's page links in its main content (the government platform's notice table). */
+    public static String documentLink(org.jsoup.nodes.Document page, java.util.Set<String> hosts) {
+        org.jsoup.nodes.Element main = page.selectFirst("main, #SkipContent, article, .entry-content");
+        for (org.jsoup.nodes.Element a : (main != null ? main : page.body()).select("a[href]")) {
+            String href = a.attr("href").replaceAll("\\s+", "");
+            String abs = href.isEmpty() ? "" : org.jsoup.internal.StringUtil.resolve(page.location(), href);
+            if (isDocument(abs) && UrlPolicy.allowed(abs, hosts)) {
+                return abs;
+            }
+        }
+        return null;
+    }
+
+    /** The government platform's document page a notice's page links ("/en/document/walk-in-interview-21-11-26/"), or null. */
+    public static String documentPage(org.jsoup.nodes.Document page, java.util.Set<String> hosts) {
+        org.jsoup.nodes.Element main = page.selectFirst("main, #SkipContent, article, .entry-content");
+        for (org.jsoup.nodes.Element a : (main != null ? main : page.body()).select("a[href]")) {
+            String href = a.attr("href").replaceAll("\\s+", "");
+            String abs = href.isEmpty() ? "" : org.jsoup.internal.StringUtil.resolve(page.location(), href);
+            if (abs.contains("/document/") && !abs.equals(page.location()) && UrlPolicy.allowed(abs, hosts)) {
+                return abs;
+            }
+        }
+        return null;
     }
 
     private void excerpts(OfficialSourceAdapter source, SourceResult r) throws InterruptedException {
@@ -308,7 +537,7 @@ public class NotificationSyncService {
                 : ok > 0 ? NotificationSyncRun.Status.PARTIAL : NotificationSyncRun.Status.FAILED);
         run.setFinishedAt(end);
         try {
-            run.setDetails(json.writeValueAsString(results));
+            run.setDetails(json.writeValueAsString(stored(results)));
         } catch (JsonProcessingException e) {
             run.setDetails("[]");
         }

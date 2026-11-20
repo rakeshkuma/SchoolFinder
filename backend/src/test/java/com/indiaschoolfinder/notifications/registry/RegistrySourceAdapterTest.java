@@ -52,7 +52,8 @@ class RegistrySourceAdapterTest {
     void theRegistryFileIsCleanAndComplete() {
         assertThat(REGISTRY.problems()).isEmpty();
         List<OfficialSourceAdapter> all = REGISTRY.adapters();
-        assertThat(all).hasSize(14);
+        assertThat(all).filteredOn(a -> a.family() == null).hasSize(15);
+        assertThat(all).filteredOn(a -> a.family() != null).hasSize(1107);
         Set<String> keys = new HashSet<>();
         for (OfficialSourceAdapter a : all) {
             assertThat(keys.add(a.key())).as("unique key %s", a.key()).isTrue();
@@ -69,6 +70,113 @@ class RegistrySourceAdapterTest {
         // A page without dates is review-only.
         assertThat(source("nests-emrs").autoPublish()).isFalse();
         assertThat(source("nests-emrs").reviewOnlyReason()).contains("without dates");
+    }
+
+    @Test
+    void kendriyaVidyalayaWebsitesAreOneFamilyEachWithItsOwnSchool() {
+        List<OfficialSourceAdapter> kv = REGISTRY.adapters().stream().filter(a -> a.family() != null).toList();
+        assertThat(kv).allMatch(a -> a.key().startsWith("kv-") && "kv".equals(a.family().key()) && a.family().sites() == 1107);
+        assertThat(kv).allMatch(a -> a.hosts().size() == 1 && a.hosts().iterator().next().endsWith(".kvs.ac.in"));
+        assertThat(kv).allMatch(a -> a.profile().schoolSlug().startsWith("cbse:") && a.profile().stateCode() != null);
+        RegistrySourceAdapter mankhurd = source("kv-mankhurd");
+        assertThat(mankhurd.name()).isEqualTo("PM SHRI Kendriya Vidyalaya Mankhurd");
+        assertThat(mankhurd.listingUrl()).isEqualTo("https://mankhurd.kvs.ac.in/en/latest-news/");
+        assertThat(mankhurd.hosts()).containsExactly("mankhurd.kvs.ac.in");
+        assertThat(mankhurd.documentHosts()).containsExactlyInAnyOrder("mankhurd.kvs.ac.in", "cdnbbsr.s3waas.gov.in");
+        assertThat(mankhurd.profile().institution()).isEqualTo("PM SHRI Kendriya Vidyalaya Mankhurd");
+        assertThat(mankhurd.profile().stateCode()).isEqualTo("MH");
+        assertThat(mankhurd.profile().city()).isEqualTo("Mumbai");
+        assertThat(mankhurd.profile().schoolSlug()).isEqualTo("cbse:1100047");
+        assertThat(mankhurd.profile().sector()).isEqualTo(com.indiaschoolfinder.entity.SiteUpdate.Sector.GOVERNMENT);
+        assertThat(mankhurd.profile().noticeTypes()).containsExactly(Category.JOB);
+        assertThat(mankhurd.readDocuments()).isTrue();
+        assertThat(mankhurd.autoPublish()).isTrue();
+        assertThat(mankhurd.completeListing()).isFalse(); // the news table keeps its history; nothing is withdrawn
+    }
+
+    @Test
+    void aFamilySiteListWithAMistakeLeavesOutOnlyThatSite() {
+        assertThat(SourceRegistry.Csv.read("id,host,name,state,city,school\r\na,\"x, y\",\"Say \"\"hi\"\"\",DL,,cbse:1\n"))
+                .containsExactly(List.of("id", "host", "name", "state", "city", "school"), List.of("a", "x, y", "Say \"hi\"", "DL", "", "cbse:1"));
+        assertThatThrownBy(() -> SourceRegistry.Csv.read("id,\"open")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void aKendriyaVidyalayasNewsKeepsItsTeacherNoticesAndLeavesOutFormsAndAdmissions() throws Exception {
+        RegistrySourceAdapter samana = source("kv-samanaafs");
+        RegistrySourceAdapter.Collector c = new RegistrySourceAdapter.Collector(
+                new RegistrySourceAdapter.Rules(samana.definition(), samana.profile().noticeTypes()), LocalDate.of(2026, 11, 20));
+        RegistrySourceAdapter.parseItems(html("kv-latest-news-samana.html", "https://samanaafs.kvs.ac.in/en/latest-news/"), c);
+        SourceListing listing = c.listing();
+        assertThat(listing.listed()).isEqualTo(8);
+        // The bio-data form and the eligibility page (spelt "Eligilblity" by the site) support the interview notice; admission
+        // lists, the auction notice and the rest are not jobs.
+        assertThat(listing.notices()).extracting(FoundNotice::title, FoundNotice::publishedOn, FoundNotice::url, FoundNotice::category)
+                .containsExactly(tuple("part time contractual interview (session 2026-27)", LocalDate.of(2026, 11, 19),
+                        "https://samanaafs.kvs.ac.in/en/part-time-contractual-interview-session-2026-27/", Category.JOB));
+        assertThat(listing.ignored()).isEqualTo(7);
+    }
+
+    /** Titles from the Vidyalayas' news on 20 Nov 2026 that are about teachers or vacancies but are not job openings. */
+    @Test
+    void aKendriyaVidyalayasNewsLeavesOutWorkshopsStudentVacanciesAndSupportingPages() {
+        RegistrySourceAdapter kv = source("kv-chhattarpur");
+        RegistrySourceAdapter.Collector c = new RegistrySourceAdapter.Collector(
+                new RegistrySourceAdapter.Rules(kv.definition(), kv.profile().noticeTypes()), LocalDate.of(2026, 11, 20));
+        LocalDate d = LocalDate.of(2026, 11, 10);
+        c.consider("Two-Day Regional Training Workshop for Teachers under KVS Civic Behaviour programme", "https://chhattarpur.kvs.ac.in/en/a/", d, null, null);
+        c.consider("Vacancies for students in OBC category in Balvatika 2", "https://chhattarpur.kvs.ac.in/en/b/", d, null, null);
+        c.consider("Part Time Contractual Bio Data Form", "https://chhattarpur.kvs.ac.in/en/c/", d, null, null);
+        c.consider("Eligibility Criteria for the post of PGT Commerece, TGT English and Educational Counsellor", "https://chhattarpur.kvs.ac.in/en/d/", d, null, null);
+        c.consider("Selected Panel for contractual teachers", "https://chhattarpur.kvs.ac.in/en/e/", d, null, null);
+        c.consider("Annual Panel Inspection will be held on 03.11.2026.", "https://chhattarpur.kvs.ac.in/en/f/", d, null, null);
+        c.consider("Panel of the candidates of contractual teachers for the interview held on 10.10.2026", "https://chhattarpur.kvs.ac.in/en/h/", d, null, null);
+        c.consider("EMPANELLED CANDIDATES FOR APPOINTMENT ON PART-TIME CONTRACTUAL BASIS", "https://chhattarpur.kvs.ac.in/en/i/", d, null, null);
+        c.consider("Panel for Part Time Contractual Teacher (TGT-Sanskrit) for the session 2026-27", "https://chhattarpur.kvs.ac.in/en/j/", d, null, null);
+        c.consider("INTERVIEW NOTICE FOR CONTRACTUAL TEACHERS FOR SESSION 2026-27", "https://chhattarpur.kvs.ac.in/en/g/", d, null, null);
+        // "Preparing a panel" in a walk-in notice is the opening itself.
+        c.consider("Walk-in interview for preparing a panel of contractual teachers on 25.11.2026", "https://chhattarpur.kvs.ac.in/en/k/", d, null, null);
+        assertThat(c.listing().notices()).extracting(FoundNotice::title).containsExactly("INTERVIEW NOTICE FOR CONTRACTUAL TEACHERS FOR SESSION 2026-27",
+                "Walk-in interview for preparing a panel of contractual teachers on 25.11.2026");
+        assertThat(c.listing().ignored()).isEqualTo(9);
+    }
+
+    @Test
+    void aNoticePageWithoutAPdfLeadsToItsDocumentPage() throws Exception {
+        Document page = html("kv-notice-mankhurd.html", "https://mankhurd.kvs.ac.in/en/walk-in-interview-21-11-26/");
+        Set<String> hosts = Set.of("mankhurd.kvs.ac.in", "cdnbbsr.s3waas.gov.in");
+        assertThat(com.indiaschoolfinder.notifications.NotificationSyncService.documentLink(page, hosts)).isNull();
+        assertThat(com.indiaschoolfinder.notifications.NotificationSyncService.documentPage(page, Set.of("mankhurd.kvs.ac.in")))
+                .isEqualTo("https://mankhurd.kvs.ac.in/en/document/walk-in-interview-21-11-26/");
+    }
+
+    @Test
+    void aKendriyaVidyalayaNoticePagesDocumentIsThePdfInItsMainContent() throws Exception {
+        Document page = html("kv-notice-page.html",
+                "https://ssbpaliakalan.kvs.ac.in/en/advertisement-for-interview-for-the-post-of-contractual-pgt-english-for-the-session-2026-27/");
+        assertThat(com.indiaschoolfinder.notifications.NotificationSyncService.documentLink(page, Set.of("ssbpaliakalan.kvs.ac.in", "cdnbbsr.s3waas.gov.in")))
+                .isEqualTo("https://cdnbbsr.s3waas.gov.in/s3kv05a94e15d2591837ed8815bdd539e4/uploads/2026/10/2026102737.pdf");
+        // A document on a host the source does not name is not taken.
+        assertThat(com.indiaschoolfinder.notifications.NotificationSyncService.documentLink(page, Set.of("ssbpaliakalan.kvs.ac.in"))).isNull();
+    }
+
+    @Test
+    void aCareersPagesJobPostingsGiveTheirOwnPostingAndClosingDates() throws Exception {
+        RegistrySourceAdapter doon = source("doon-international-bbsr");
+        assertThat(doon.profile().sector()).isEqualTo(com.indiaschoolfinder.entity.SiteUpdate.Sector.PRIVATE);
+        assertThat(doon.profile().openingsPage()).isTrue();
+        RegistrySourceAdapter.Collector c = collector(doon);
+        RegistrySourceAdapter.parseJobPostings(html("doon-careers.html", "https://www.dooninternational.in/careers/"), c, JSON);
+        // The descriptions hold raw line breaks (as served); the postings are read all the same.
+        assertThat(c.listing().notices())
+                .extracting(FoundNotice::title, FoundNotice::publishedOn, FoundNotice::closesOn, FoundNotice::itemId, FoundNotice::category)
+                .containsExactly(
+                        tuple("Higher Secondary Teacher (Physics)", LocalDate.of(2026, 9, 21), LocalDate.of(2027, 1, 26),
+                                "https://www.dooninternational.in/careers/#hss-physics", Category.JOB),
+                        tuple("Higher Secondary Teacher (Chemistry)", LocalDate.of(2026, 9, 21), LocalDate.of(2027, 1, 26),
+                                "https://www.dooninternational.in/careers/#hss-chemistry", Category.JOB),
+                        tuple("Higher Secondary Teacher (Biology)", LocalDate.of(2026, 9, 21), LocalDate.of(2027, 1, 26),
+                                "https://www.dooninternational.in/careers/#hss-biology", Category.JOB));
     }
 
     @Test

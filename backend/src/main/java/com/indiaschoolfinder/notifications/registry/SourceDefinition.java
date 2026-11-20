@@ -68,7 +68,27 @@ public record SourceDefinition(
         String checked,
         String notes,
         /* The site cuts every title at this many characters (OAV's cards): a title that long is marked "…". */
-        Integer titlesCutAt) {
+        Integer titlesCutAt,
+        /*
+         * Its titles seldom give dates (a Kendriya Vidyalaya's "Walk-in interview 2026-27"): for each new job notice, read
+         * the notice's own page and the official document it links, for the interview or last date and the posts.
+         */
+        Boolean readDocuments) {
+
+    /** An entry as written before notices' documents could be read. */
+    public SourceDefinition(String key, String name, String institution, String category, String sector, Boolean boarding,
+                            String state, String city, String school, List<String> notices, String method, String listingUrl,
+                            List<String> urls, List<String> hosts, List<String> documentHosts, Boolean autoPublish,
+                            String reviewOnlyReason, Boolean completeListing, String reliability, Boolean schoolPostsOnly,
+                            Boolean reviewGeneric, String assume, String item, String title, String link, String dateSelector,
+                            String date, String linkPattern, String include, String exclude, Boolean prefixTitles,
+                            Boolean mayBeEmpty, Boolean enabled, String disabledReason, String checked, String notes,
+                            Integer titlesCutAt) {
+        this(key, name, institution, category, sector, boarding, state, city, school, notices, method, listingUrl, urls, hosts,
+                documentHosts, autoPublish, reviewOnlyReason, completeListing, reliability, schoolPostsOnly, reviewGeneric, assume,
+                item, title, link, dateSelector, date, linkPattern, include, exclude, prefixTitles, mayBeEmpty, enabled,
+                disabledReason, checked, notes, titlesCutAt, null);
+    }
 
     public boolean on(Boolean flag) {
         return Boolean.TRUE.equals(flag);

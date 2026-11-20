@@ -12,6 +12,7 @@ import com.indiaschoolfinder.notifications.source.FoundNotice;
 import com.indiaschoolfinder.notifications.source.NoticeText;
 import com.indiaschoolfinder.notifications.source.OfficialSourceAdapter;
 import com.indiaschoolfinder.notifications.source.SourceLayoutException;
+import com.indiaschoolfinder.notifications.source.SourceFamily;
 import com.indiaschoolfinder.notifications.source.SourceListing;
 import com.indiaschoolfinder.notifications.source.SourceProfile;
 import org.jsoup.Jsoup;
@@ -42,7 +43,7 @@ import java.util.regex.Pattern;
  */
 public final class RegistrySourceAdapter implements OfficialSourceAdapter {
 
-    public enum Method { WP_MEDIA, S3WAAS_DOCS, HTML_ITEMS }
+    public enum Method { WP_MEDIA, S3WAAS_DOCS, HTML_ITEMS, JOB_POSTINGS }
 
     public enum DateFrom { SOURCE, TEXT, FILENAME_STAMP, FILENAME_EPOCH, NONE }
 
@@ -55,12 +56,18 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
     private final Rules rules;
     private final SourceProfile profile;
     private final ObjectMapper json;
+    private final SourceFamily family;
 
     RegistrySourceAdapter(SourceDefinition def, SourceProfile profile, ObjectMapper json) {
+        this(def, profile, json, null);
+    }
+
+    RegistrySourceAdapter(SourceDefinition def, SourceProfile profile, ObjectMapper json, SourceFamily family) {
         this.def = def;
         this.rules = new Rules(def, profile.noticeTypes());
         this.profile = profile;
         this.json = json;
+        this.family = family;
     }
 
     public SourceDefinition definition() {
@@ -93,6 +100,8 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
     @Override public SourceProfile profile() { return profile; }
     @Override public boolean enabledByDefault() { return def.enabled() == null || def.enabled(); }
     @Override public boolean schoolPostsOnly() { return rules.schoolPostsOnly; }
+    @Override public SourceFamily family() { return family; }
+    @Override public boolean readDocuments() { return def.on(def.readDocuments()); }
 
     @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
@@ -103,6 +112,7 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
                 case WP_MEDIA -> parseWpMedia(read(page.body(), url), c);
                 case S3WAAS_DOCS -> parseDocs(page.html(), c);
                 case HTML_ITEMS -> parseItems(page.html(), c);
+                case JOB_POSTINGS -> parseJobPostings(page.html(), c, json);
             }
         }
         if (c.listed == 0 && !def.on(def.mayBeEmpty())) {
@@ -193,6 +203,77 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
                 itemId = page + "#" + (words.isEmpty() ? Integer.toHexString(cleanTitle.hashCode()) : words);
             }
             c.consider(cleanTitle, ownLink ? url : page, date, null, itemId);
+        }
+    }
+
+    /**
+     * The openings a careers page states for search engines (schema.org JobPosting in its JSON-LD): title, the date it was
+     * posted and the date applications close ({@code validThrough}), each opening's own address. Only what the school
+     * itself states; a posting without a title is left out.
+     */
+    static void parseJobPostings(Document doc, Collector c, ObjectMapper json) throws SourceLayoutException {
+        List<JsonNode> postings = new ArrayList<>();
+        int blocks = 0;
+        // Pages often put raw line breaks inside JSON-LD strings (search engines accept them); so does this reader.
+        com.fasterxml.jackson.databind.ObjectReader lenient = json.reader()
+                .with(com.fasterxml.jackson.core.json.JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS)
+                .with(com.fasterxml.jackson.core.json.JsonReadFeature.ALLOW_TRAILING_COMMA);
+        for (Element script : doc.select("script[type=application/ld+json]")) {
+            JsonNode root;
+            try {
+                root = lenient.readTree(script.data());
+            } catch (IOException e) {
+                continue; // one malformed block does not hide the others
+            }
+            blocks++;
+            collectPostings(root, postings, 0);
+        }
+        if (blocks == 0 && !doc.select("script[type=application/ld+json]").isEmpty()) {
+            throw new SourceLayoutException("the page's structured data (JSON-LD) could not be read");
+        }
+        String page = doc.location();
+        for (JsonNode p : postings) {
+            String title = p.path("title").asText(null);
+            if (title == null || title.isBlank()) title = p.path("name").asText(null);
+            String url = p.path("url").asText(null);
+            String ident = p.path("identifier").isObject() ? p.path("identifier").path("value").asText(null) : p.path("identifier").asText(null);
+            if (url == null || url.isBlank()) {
+                url = page + (ident == null || ident.isBlank() ? "" : "#" + ident);
+            }
+            LocalDate posted = isoDate(p.path("datePosted").asText(""), c.today);
+            LocalDate closes = isoDate(p.path("validThrough").asText(""), null);
+            String id = url.contains("#") || ident == null ? url : url + "#" + ident;
+            c.consider(title == null ? null : Jsoup.parse(title).text(), url, c.rules.dateFrom == DateFrom.SOURCE ? posted : null, closes, id);
+        }
+    }
+
+    private static void collectPostings(JsonNode node, List<JsonNode> out, int depth) {
+        if (node == null || depth > 6) return;
+        if (node.isArray()) {
+            node.forEach(n -> collectPostings(n, out, depth + 1));
+            return;
+        }
+        if (!node.isObject()) return;
+        JsonNode type = node.path("@type");
+        boolean posting = type.isTextual() ? "JobPosting".equals(type.asText())
+                : type.isArray() && java.util.stream.StreamSupport.stream(type.spliterator(), false).anyMatch(t -> "JobPosting".equals(t.asText()));
+        if (posting) {
+            out.add(node);
+            return;
+        }
+        collectPostings(node.path("@graph"), out, depth + 1);
+        collectPostings(node.path("itemListElement"), out, depth + 1);
+        collectPostings(node.path("item"), out, depth + 1);
+    }
+
+    /** "2026-09-21" or "2026-09-21T10:00:00+05:30": the date part; null when absent or (with {@code today}) implausible. */
+    private static LocalDate isoDate(String raw, LocalDate today) {
+        if (raw == null || raw.length() < 10 || !raw.substring(0, 10).matches("\\d{4}-\\d{2}-\\d{2}")) return null;
+        try {
+            LocalDate d = LocalDate.parse(raw.substring(0, 10));
+            return today == null ? d : bounded(d, today);
+        } catch (RuntimeException e) {
+            return null;
         }
     }
 

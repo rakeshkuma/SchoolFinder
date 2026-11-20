@@ -52,6 +52,13 @@ public final class OpportunityClassifier {
                     walkIn, academicSession, classes, opensOn, closesOn, examOn, vacancies, positions);
         }
 
+        /** The same facts with other dates (read from the notice's official document rather than its title). */
+        public Facts withDates(LocalDate opens, LocalDate closes, LocalDate exam, boolean isWalkIn) {
+            return new Facts(noticeType == SiteUpdate.NoticeType.OTHER && isWalkIn ? SiteUpdate.NoticeType.OPENING : noticeType,
+                    postTypes, subjects, staffKind, isWalkIn ? SiteUpdate.EmploymentType.CONTRACT : employmentType, schoolPost,
+                    schoolStaff, nonSchoolPost, generic, isWalkIn, academicSession, classes, opens, closes, exam, vacancies, positions);
+        }
+
         /** The post names to show: those read as positions, else the posts named (never staff categories). */
         public List<String> postNames() {
             if (!positions.isEmpty()) {
@@ -296,7 +303,8 @@ public final class OpportunityClassifier {
             + "|अंतिम\\s*(तिथि|तारीख|दिनांक)|अन्तिम\\s*(तिथि|तारीख|दिनांक)|ଶେଷ\\s*ତାରିଖ|শেষ\\s*তারিখ");
     private static final Pattern OPENING_CUE = p("(applications?|registrations?|online\\s*(applications?|registrations?|forms?)|forms?)\\s*(will\\s*)?"
             + "(be\\s*)?(open|start|begin|commence|available)\\w*\\s*(from|on|w\\.?e\\.?f\\.?)?");
-    private static final Pattern EXAM_CUE = p("(exam(ination)?|test|interview|entrance)\\s*(will\\s*be\\s*(held|conducted)\\s*)?(on|dated?|date)\\b\\s*:?");
+    private static final Pattern EXAM_CUE = p("(exam(ination)?|test|interview|entrance)[\\s-]*(will\\s*be\\s*(held|conducted)\\s*)?(on|dated?|date)\\b\\s*:?"
+            + "|\\bscheduled\\s*(to\\s*be\\s*(held|conducted)\\s*)?on\\b\\s*:?|\\bto\\s*be\\s*(held|conducted)\\s*on\\b\\s*:?");
     private static final Pattern FROM_TO = p("from\\s*$");
     private static final Pattern SESSION = Pattern.compile("(?<!\\d)(20\\d{2})\\s*[-–/]\\s*(?:20)?(\\d{2})(?!\\d)");
     private static final Pattern CLASS_LIST = p("(?:class(?:es)?|grades?|std\\.?|standard|कक्षा)\\s*[-:]?\\s*((?:\\b(?:xii|xi|x|ix|viii|vii|vi|v|iv|iii|ii|i)\\b|\\d{1,2})"
@@ -304,6 +312,7 @@ public final class OpportunityClassifier {
     private static final Pattern PRE_PRIMARY = p("nursery|pre-?primary|\\blkg\\b|\\bukg\\b|\\bk\\.?g\\.?\\b|kindergarten|balvatika|bal\\s*vatika|pre-?school|play\\s*group");
     private static final Pattern VACANCIES = p("(?<![\\d/.-])(\\d{1,5})\\s*(?:nos?\\.?\\s*(?:of\\s*)?)?(?:posts?|vacanc(?:y|ies)|पद|पदों)\\b");
     private static final Pattern PART_TIME = p("part[\\s-]*time|अंशकालिक");
+    private static final Pattern INTERVIEW = p("interview|साक्षात्कार");
     private static final Pattern CONTRACT = p("contract(ual)?|संविदा|\\bguest\\b|अतिथि|ad[\\s-]*hoc|outsourc|\\btenure\\b|fixed[\\s-]*term|consolidated|honorarium|मानदेय|engagement");
     private static final Pattern TEMPORARY = p("temporary|leave\\s*vacanc|अस्थायी");
     private static final Pattern REGULAR = p("regular\\s*basis|on\\s*regular|permanent|direct\\s*recruitment|regular\\s*(posts?|appointment)|नियमित");
@@ -313,6 +322,41 @@ public final class OpportunityClassifier {
      * The facts the notice's words state. {@code publishedOn} (the source's date for the notice, or the day it was
      * found) bounds the dates read: a "last date" months before publication or years after it is not believed.
      */
+    /**
+     * The interview and last dates an official notice's document states (its text, not its title). A document carries
+     * other dates too: its letter date, usually right under the heading, and dates of birth or experience. So, after each
+     * cue ("walk-in", "interview on", "scheduled on", "last date"), every date within reach is looked at and the first
+     * that falls after the notice's publication, and at most {@code maxDays} after it, is taken.
+     *
+     * @param walkIn the document speaks of a walk-in interview (or an interview for contractual or part-time posts)
+     */
+    public record DocumentDates(LocalDate closesOn, LocalDate examOn, boolean walkIn) {
+    }
+
+    public static DocumentDates documentDates(String text, LocalDate publishedOn, int maxDays) {
+        String t = DateText.normaliseDigits(text == null ? "" : text).replace(' ', ' ');
+        List<DateText.Found> dates = DateText.all(t);
+        boolean walkIn = WALK_IN.matcher(t).find()
+                || INTERVIEW.matcher(t).find() && (CONTRACT.matcher(t).find() || PART_TIME.matcher(t).find());
+        LocalDate closes = firstInWindow(CLOSING_CUE.matcher(t), dates, 80, publishedOn, maxDays);
+        LocalDate exam = firstInWindow(WALK_IN.matcher(t), dates, 160, publishedOn, maxDays);
+        if (exam == null) exam = firstInWindow(EXAM_CUE.matcher(t), dates, 60, publishedOn, maxDays);
+        return new DocumentDates(closes, exam, walkIn);
+    }
+
+    private static LocalDate firstInWindow(Matcher cue, List<DateText.Found> dates, int reach, LocalDate publishedOn, int maxDays) {
+        while (cue.find()) {
+            for (DateText.Found d : dates) {
+                if (d.start() < cue.end()) continue;
+                if (d.start() - cue.end() > reach) break;
+                if (d.date().isAfter(publishedOn) && !d.date().isAfter(publishedOn.plusDays(maxDays))) {
+                    return d.date();
+                }
+            }
+        }
+        return null;
+    }
+
     public static Facts facts(SiteUpdate.Category category, String text, LocalDate publishedOn) {
         String t = DateText.normaliseDigits(text == null ? "" : text).replace('\u00a0', ' ');
         boolean job = category == SiteUpdate.Category.JOB;
@@ -406,6 +450,10 @@ public final class OpportunityClassifier {
         if (walkIn && closes == null && exam != null) {
             closes = exam; // a walk-in interview is applied for by attending it
         }
+        if (!walkIn && job && closes == null && exam != null && INTERVIEW.matcher(t).find()
+                && (CONTRACT.matcher(t).find() || PART_TIME.matcher(t).find())) {
+            closes = exam; // an interview for a contractual or part-time post is attended, like a walk-in
+        }
         if (opens != null && closes != null && opens.isAfter(closes)) {
             opens = null;
         }
@@ -422,6 +470,9 @@ public final class OpportunityClassifier {
         if (CORRIGENDUM.matcher(t).find()) return SiteUpdate.NoticeType.CORRIGENDUM;
         if (EXTENSION.matcher(t).find()) return SiteUpdate.NoticeType.EXTENSION;
         if (WALK_IN.matcher(t).find()) return SiteUpdate.NoticeType.OPENING;
+        // "Interview notice for contractual teachers": a school's call to come for its contractual posts, an opening.
+        if (category == SiteUpdate.Category.JOB && INTERVIEW.matcher(t).find()
+                && (CONTRACT.matcher(t).find() || PART_TIME.matcher(t).find())) return SiteUpdate.NoticeType.OPENING;
         if (SCHEDULE.matcher(t).find()) return SiteUpdate.NoticeType.SCHEDULE;
         Pattern opening = category == SiteUpdate.Category.ADMISSION ? ADMISSION_OPENING : JOB_OPENING;
         return opening.matcher(t).find() ? SiteUpdate.NoticeType.OPENING : SiteUpdate.NoticeType.OTHER;

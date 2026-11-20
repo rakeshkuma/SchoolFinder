@@ -39,6 +39,11 @@ public class SourceResult {
     /** Ids of new updates waiting for review (for PDF excerpts after the transaction). */
     @JsonIgnore
     public transient List<Long> newPendingIds = new ArrayList<>();
+    /** Ids of new job notices (their documents are read for dates when the source asks for it). */
+    @JsonIgnore
+    public transient List<Long> newJobIds = new ArrayList<>();
+    /** New job notices whose interview or last date was read from their official document. */
+    public int documentDates;
 
     public SourceResult() {
     }

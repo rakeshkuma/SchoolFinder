@@ -101,18 +101,61 @@ How a registry source is read (`method`):
 | `WP_MEDIA` | The site's public WordPress media API (`/wp-json/wp/v2/media?mime_type=application/pdf`): the PDFs the institution uploaded | `SOURCE`: the upload date the API gives |
 | `S3WAAS_DOCS` | A government-platform (S3WaaS) document table: title, "Published On", file | `SOURCE`: the "Published On" cell |
 | `HTML_ITEMS` | Entries of a page picked by CSS selectors (`item`, and within it `title`, `link`, `dateSelector`) | `TEXT` (a date the entry prints), `FILENAME_STAMP` (an upload time in the file name), `FILENAME_EPOCH` (a Unix time in the file name) or `NONE` (every entry waits for an editor) |
+| `JOB_POSTINGS` | The openings a careers page states for search engines: schema.org `JobPosting` in its JSON-LD (title, `datePosted`, `validThrough`, each opening's address). Raw line breaks inside the JSON strings are accepted, as search engines accept them | `SOURCE`: `datePosted`; `validThrough` is the last date |
 
 Other settings: `assume` (every entry is a JOB or ADMISSION, e.g. a careers page), `schoolPostsOnly` (keep only teaching
 and school-leadership posts, or posts that name a school or the DoE: for commissions and selection boards),
 `reviewGeneric` (with `schoolPostsOnly`: an advertisement that names no post waits for review instead of being left out),
 `include` / `exclude` / `linkPattern` (regular expressions), `titlesCutAt` (the site cuts titles at N characters; such
 titles are marked "…"), `mayBeEmpty`, `prefixTitles` (start displayed titles with the institution's name; the default for
-a school's own site), and `enabled` with a `disabledReason`.
+a school's own site), `readDocuments` (the titles seldom give dates: each new job notice's own page is read for the
+official PDF it links, and the PDF's text for the interview or last date; see *Dates from the notice's document*), and
+`enabled` with a `disabledReason`.
 
 Every entry is checked when the application starts (key, hosts, https addresses on those hosts, categories, selectors,
 regular expressions). An entry with a mistake is **left out and reported** (in the log, and in red in Admin → School &
 exam updates); it never stops the application or the other sources. `RegistrySourceAdapterTest` fails the build if the
 file has any problem.
+
+### Site families: the Kendriya Vidyalaya websites (20 November 2026)
+
+Some official websites are built the same way by the hundred. A **family** in the registry file is one reviewed
+`template` (any source fields, with `{host}` where the site's host goes) and a list of sites in a CSV file beside the
+registry (`notifications/sites/<name>.csv`: `id,host,name,state,city,school`). Each site becomes a source of its own,
+`<family>-<id>` (`kv-mankhurd`), checked like any entry; a site with a mistake is left out and reported (at most ten
+lines per family). `school` may be `cbse:<affiliation number>`, which links the school's profile by its CBSE number.
+
+The `kv` family is every Kendriya Vidyalaya's own website (`<school>.kvs.ac.in`, the government S3WaaS platform). Its
+**Latest News** table (`/en/latest-news/`: date, title, link to the notice's page) carries the walk-in interviews and
+contractual-teacher notices; the notice's page links its PDF on `cdnbbsr.s3waas.gov.in`. How the list was made: the
+1,217 KV website addresses in the CBSE (SARAS) school records were each read once on 20 Nov 2026 (six at a time); the
+1,117 sites with the table, less 10 whose addresses do not exist, are listed (1,107), with the name each site prints in its header (`span.site_name_english`; spelling
+slips, Hindi-only and all-capital names tidied), state and town from the CBSE record; 93 sites with another layout and 7
+without the page are left out. robots.txt on these sites disallows only `/wp-admin/`; the document host has none.
+
+Rules of the family: only JOB notices (a single Vidyalaya's admission lists stay with the KVS admission item); bio-data
+and application forms, selection panels, results, merit and provisional lists and "panel inspections" are left out;
+titles start with the Vidyalaya's name; nothing is withdrawn (the table keeps its history); `readDocuments`. On the
+survey day 36 Vidyalayas listed 44 job notices from the previous 45 days; contractual hiring peaks in February-April.
+
+How a family is run and shown: its sites are read **side by side** (`parallel-fetches`, default 6; each site still at
+most once per `per-host-interval`) ahead of the loop, and applied one at a time. A run record keeps a family's sites that
+found something or failed as rows of their own and the rest as one line ("Kendriya Vidyalaya websites: 1,090 site(s)
+read with nothing new"). Admin → Sources shows the family as one line with the failing sites named; it counts as failing
+only when more than a quarter of its sites fail. `only-sources` and `disabled-sources` accept `kv-*`.
+
+### Dates from the notice's document
+
+A Vidyalaya's title is often only "Walk-in interview 2026-27". For a source with `readDocuments`, each new job notice
+(up to `pdf.documents-per-source` a run) is followed to its page, the first PDF in the page's main content on the source's
+document hosts is read (`pdf.document-pages`, `pdf.document-chars`), and its text is searched for the dates: after each
+cue ("walk-in", "interview on", "scheduled to be held on", "last date"), every date within reach is looked at, and the
+first one **after the notice's publication and within 120 days of it** is taken; the letter's own date and dates of
+birth do not count. The notice then gets that date as its interview or last date (card: "Walk-in interview" /
+"Interview" / "Last date"), stays current until it, and its summary says the date comes from the official notice. Posts
+and the kind of notice still come from the title. A scanned PDF without text, or one without such a date, changes
+nothing; an editor's notice is never changed. An interview for a contractual or part-time post is treated like a
+walk-in (its day is when to come), in titles too.
 
 ### Registry sources (inspected 19 November 2026)
 
@@ -132,6 +175,8 @@ file has any problem.
 | `vidya-devi-jindal-school` | Vidya Devi Jindal School, Hisar (girls' boarding) | WP_MEDIA | |
 | `good-shepherd-ooty` | Good Shepherd International School, Ooty (boarding) | WP_MEDIA | Its "AP Registration" PDFs (Advanced Placement) go to review, not to admissions |
 | `dps-rk-puram` | Delhi Public School R. K. Puram | WP_MEDIA | No recent PDFs on 19 Nov 2026 (`mayBeEmpty`) |
+| `doon-international-bbsr` | Doon International School, Bhubaneswar (private) | JOB_POSTINGS | 28 openings on 20 Nov 2026 (posted 21 Sep, open until 26 Jan 2027); complete listing: an opening taken off the page is withdrawn |
+| `kv-*` | 1,107 Kendriya Vidyalaya websites | HTML_ITEMS family (`TEXT`, `readDocuments`) | See *Site families* above |
 
 Investigated on 19 November 2026 and **not** added:
 
@@ -139,14 +184,18 @@ Investigated on 19 November 2026 and **not** added:
 - **HPSC** (Haryana): robots.txt disallows everything.
 - **UPPSC**, **RPSC**, **MP ESB**, **TGSWREIS**, **AWES (Army Public Schools)**: script-built pages, errors, TLS failures or
   timeouts for our client.
-- **KV school websites** (`*.kvs.ac.in`, about 1,250): S3WaaS sites whose REST API needs a login (401, respected). Their
-  HTML pages ("walk-in for contractual teachers", "teacher vacancy") are readable and dated, but our school records hold no
-  KV website addresses yet; a list of the KV sites is needed before adding them.
+- **KV school websites**: added on 20 Nov 2026 as the `kv` family (their HTML news pages; the REST API needs a login and is
+  not used). Their "Teacher vacancy" page is a staffing table (sanctioned and vacant posts), not an advertisement: not read.
 - **Navodaya per-school notices**: the public API returns the headquarters' notices for every JNV id, so it adds nothing.
 - **Welham Girls, Welham Boys, Lawrence School Sanawar, Scindia, Modern School, Daly College, DPS Society**: their
   careers pages show only an application form, "No Vacancy Available", or general text, with no list of openings to read.
 - **OAV recruitment page**: loaded by script; the home-page cards are read instead.
 - **Sainik School Bhubaneswar**: its WordPress posts feed has been taken over by gambling spam; not used.
+- **Private schools looked at on 20 Nov 2026**: VIBGYOR (403), Podar, Modern School, Sanskriti, Chinmaya, Kalorex (no
+  careers page at the address), Ryan, Shiv Nadar, Pathways, Heritage, DPS Gurgaon, Amity, Euroschool (no list of openings),
+  Orchids (openings without any dates: each would wait for an editor), Welham Girls (says "no vacancies"), Lawrence School
+  Sanawar (one advert, closed 31 Oct 2026); 26 private boarding and day schools' WordPress media APIs searched for vacancy
+  PDFs: none answered with any. Schools whose careers page states `JobPosting` data can be added with `JOB_POSTINGS`.
 
 ### Source health
 
@@ -238,11 +287,14 @@ accepts an optional `details` object with the facts (left out, the stored facts 
 | `schedule-label` | `Daily at 6:00 AM IST` | Shown on the site; keep it in step with `cron` |
 | `catch-up-on-startup`, `catch-up-after`, `catch-up-delay` | `true`, `24h`, `2m` | After a restart, run once if the last successful run is older than a day |
 | `manual-cooldown` | `10m` | "Check now" is refused (HTTP 429) this soon after the last run |
-| `disabled-sources` (`NOTIFICATIONS_DISABLED_SOURCES`) | empty | e.g. `cbse-recruitment,rms` |
+| `disabled-sources` (`NOTIFICATIONS_DISABLED_SOURCES`) | empty | e.g. `cbse-recruitment,rms`; `kv-*` for a whole family |
+| `only-sources` | empty | Read only these (same form); for local checks |
+| `parallel-fetches` | `6` | Sites of a family read at the same time |
 | `lifetime-days` | `45` | How long a notice without an end date stays up |
 | `withdraw-after` | `20h` | How long a notice must be missing from a complete listing |
 | `http.*` | 10 s connect, 30 s request, 6 MB, 3 attempts, 3 s backoff, 1.5 s per host, 3 redirects, robots on | Fetch limits |
 | `pdf.*` | excerpts on, 5 MB, 2 pages, 400 chars, 3 per source | Opening text of new review items' PDFs, added to the review note (staff only) |
+| `pdf.documents-per-source`, `pdf.document-pages`, `pdf.document-chars` | `6`, `3`, `8000` | Sources with `readDocuments`: new job notices' documents read per run for their dates |
 
 `spring.task.scheduling.pool.size=2` stops the check from delaying the nightly data jobs. On shutdown a run stops
 between sources and is recorded as ABANDONED. A run left RUNNING by a crash is marked ABANDONED on the next start.
