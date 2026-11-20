@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,6 +41,19 @@ class LocationApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void referenceListsMayBeCachedBriefly() throws Exception {
+        // Fetched on every page load and rarely changed: browsers may keep them for five minutes. Everything else
+        // keeps Spring Security's no-store default.
+        for (String path : new String[]{"/api/v1/locations/states", "/api/v1/locations/cities/all", "/api/v1/boards",
+                "/api/v1/classes", "/api/v1/rankings/sections", "/api/v1/directory/order-rules"}) {
+            mockMvc.perform(get(path)).andExpect(status().isOk())
+                    .andExpect(header().string("Cache-Control", "max-age=300, public"));
+        }
+        mockMvc.perform(get("/api/v1/schools/search")).andExpect(status().isOk())
+                .andExpect(header().string("Cache-Control", containsString("no-store")));
+    }
+
+    @Test
     void schoolsAnywhereInIndiaGetStateAndDistrictReferences() throws Exception {
         long id = lucknowSchool("City Montessori Test School", "Lucknow", Map.of("udiseCode", "09270100101",
                 "management", "PRIVATE_UNAIDED", "affiliationNumber", "2130001"));
@@ -61,6 +75,13 @@ class LocationApiIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         mockMvc.perform(get("/api/v1/locations/cities").param("state", "uttar-pradesh"))
                 .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].slug").value("lucknow"))
+                .andExpect(jsonPath("$[0].schoolCount").value(2));
+        // Every city in India, with its state for the city page's address.
+        mockMvc.perform(get("/api/v1/locations/cities/all"))
+                .andExpect(jsonPath("$[0].name").value("Lucknow"))
+                .andExpect(jsonPath("$[0].stateSlug").value("uttar-pradesh"))
+                .andExpect(jsonPath("$[0].stateName").value("Uttar Pradesh"))
                 .andExpect(jsonPath("$[0].schoolCount").value(2));
         // Creating a district is an audited administrative change.
         mockMvc.perform(get("/api/v1/admin/audit-log").header("Authorization", adminToken()))
@@ -97,6 +118,51 @@ class LocationApiIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/schools").param("state", "Narnia"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.fieldErrors[0].field").value("state"));
+    }
+
+    @Test
+    void placeSummaryCountsTheListedSchoolsAndAnswersOnlyFromThem() throws Exception {
+        lucknowSchool("Old Lucknow School", "Lucknow", Map.of("boardCode", "CBSE", "establishedYear", 1905, "genderType", "GIRLS"));
+        lucknowSchool("Govt Lucknow School", "Lucknow", Map.of("boardCode", "CBSE", "schoolType", "GOVERNMENT", "establishedYear", 1950));
+        lucknowSchool("KV Lucknow Test", "Lucknow", Map.of("boardCode", "CBSE", "schoolType", "GOVERNMENT",
+                "management", "CENTRAL_GOVERNMENT", "network", "KENDRIYA_VIDYALAYA"));
+        lucknowSchool("ICSE Lucknow School", "Lucknow", Map.of("boardCode", "CISCE"));
+        createSchool(school("Delhi Elsewhere School", Map.of("boardCode", "CBSE")));
+
+        mockMvc.perform(get("/api/v1/locations/summary").param("state", "uttar-pradesh").param("city", "lucknow"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.place").value("Lucknow"))
+                .andExpect(jsonPath("$.placeFull").value("Lucknow, Uttar Pradesh"))
+                .andExpect(jsonPath("$.total").value(4))
+                .andExpect(jsonPath("$.boards[0].code").value("CBSE"))
+                .andExpect(jsonPath("$.boards[0].count").value(3))
+                .andExpect(jsonPath("$.types[?(@.code == 'GOVERNMENT')].count", hasItem(2)))
+                .andExpect(jsonPath("$.networks[0].label").value("Kendriya Vidyalaya"))
+                .andExpect(jsonPath("$.oldest[0].name").value("Old Lucknow School"))
+                .andExpect(jsonPath("$.oldest[0].established").value(1905))
+                .andExpect(jsonPath("$.intro", containsString("SchoolDhundo lists 4 schools in Lucknow, Uttar Pradesh, each linked")))
+                .andExpect(jsonPath("$.intro", containsString("By board: CBSE 3 and ICSE/ISC 1.")))
+                .andExpect(jsonPath("$.intro", containsString("The oldest with a recorded founding year is Old Lucknow School, established in 1905.")))
+                .andExpect(jsonPath("$.faqs[?(@.question == 'Are there government schools in Lucknow?')].answer", hasItem(
+                        "Yes. 2 of the 4 listed schools are government schools: Govt Lucknow School and KV Lucknow Test."
+                                + " The list includes 1 Kendriya Vidyalaya.")))
+                .andExpect(jsonPath("$.faqs[?(@.question == 'Which boards do schools in Lucknow follow?')].answer", hasItem(
+                        "Most follow CBSE (3 of 4). The others: ICSE/ISC 1.")))
+                // Only the girls' school is known; nothing is said about boys' schools, whose gender is not recorded.
+                .andExpect(jsonPath("$.faqs[*].answer", hasItem(containsString("SchoolDhundo lists 1 girls' school in Lucknow."))))
+                .andExpect(jsonPath("$.faqs[*].answer", hasItem(containsString("Kendriya Vidyalayas follow the yearly KVS admission schedule"))))
+                .andExpect(jsonPath("$.related[*].href", hasItem("/admissions/guide")));
+
+        mockMvc.perform(get("/api/v1/locations/summary").param("state", "UP").param("district", "lucknow"))
+                .andExpect(jsonPath("$.place").value("Lucknow district"))
+                .andExpect(jsonPath("$.total").value(4));
+        // A state with no listed schools gets numbers but no text.
+        mockMvc.perform(get("/api/v1/locations/summary").param("state", "kerala"))
+                .andExpect(jsonPath("$.total").value(0))
+                .andExpect(jsonPath("$.intro").doesNotExist())
+                .andExpect(jsonPath("$.faqs.length()").value(0));
+        mockMvc.perform(get("/api/v1/locations/summary").param("state", "UP").param("city", "atlantis"))
+                .andExpect(status().isNotFound());
     }
 
     @Test

@@ -56,7 +56,7 @@ export function FindSchoolPage() {
     <>
       <PageHeader eyebrow="Guided search" title="Find the right school for your child"
         subtitle="Tell us what matters to your family. We show schools whose official sources confirm it, explain why each one matches, and list nearby schools that have not published those details yet." />
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[360px_minmax(0,1fr)]">
+      <div className="container-page grid grid-cols-1 gap-8 py-8 lg:grid-cols-[360px_minmax(0,1fr)]">
         <form onSubmit={submit} className="card h-fit space-y-5 p-5 lg:sticky lg:top-24" aria-label="What your family needs">
           <fieldset className="space-y-2">
             <legend className="label">Where</legend>
@@ -225,7 +225,7 @@ function Results({ criteria: c, className, onRelax }: {
                 </h2>
                 <p className="text-sm text-slate-600">Each school&apos;s official sources state everything you asked for.</p>
               </div>
-              <div className="flex flex-wrap gap-2"><ShareLinkButtons url={shareUrl} text="Schools that match what we need, on India School Finder:" /></div>
+              <div className="flex flex-wrap gap-2"><ShareLinkButtons url={shareUrl} text="Schools that match what we need, on SchoolDhundo:" /></div>
             </div>
             {page.totalElements === 0 ? (
               <div className="card space-y-3 p-5">

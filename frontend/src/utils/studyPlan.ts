@@ -1,7 +1,7 @@
 import type { ExamContent } from '../types/api';
 
 /**
- * Week-by-week study plans built from an exam's official syllabus and marks. This is India School Finder guidance:
+ * Week-by-week study plans built from an exam's official syllabus and marks. This is SchoolDhundo guidance:
  * it spreads the published topics over the time available and weights daily practice by marks; it does not
  * predict or promise any result.
  */

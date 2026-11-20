@@ -54,10 +54,12 @@ public class SchoolController {
     private final ReviewService reviewService;
     private final SchoolFactService factService;
     private final UpdateSubmissionService submissionService;
+    private final com.indiaschoolfinder.service.SchoolFaqService faqService;
 
     public SchoolController(SchoolService schoolService, FeeService feeService, AdmissionService admissionService,
                             RankingService rankingService, ReviewService reviewService, SchoolFactService factService,
-                            UpdateSubmissionService submissionService) {
+                            UpdateSubmissionService submissionService, com.indiaschoolfinder.service.SchoolFaqService faqService) {
+        this.faqService = faqService;
         this.factService = factService;
         this.submissionService = submissionService;
         this.schoolService = schoolService;
@@ -70,7 +72,8 @@ public class SchoolController {
     @Operation(summary = "Paginated school directory with filters",
             description = "Filters: name, locality, state (ISO code or slug), district (slug), city, pinCode, board, "
                     + "schoolType, management, network, className, stage, minAnnualFee, maxAnnualFee "
-                    + "(official recurring annual fee for feeAcademicYear, default current), admissionStatus, minRating, "
+                    + "(official recurring annual fee for feeAcademicYear, default current), hasFee (true = a published "
+                    + "annual fee for any year), admissionStatus, minRating, "
                     + "hasHostel (true = boarding, false = day), hasTransport, medium, genderType, "
                     + "facility (categories, all required), latitude+longitude+radiusKm. "
                     + "sortBy: name, fee (lowest published annual fee; schools without fees last), locality, city, "
@@ -134,6 +137,12 @@ public class SchoolController {
     @GetMapping("/{id}/admissions")
     public List<AdmissionDto> admissions(@PathVariable Long id) {
         return admissionService.bySchool(id);
+    }
+
+    @Operation(summary = "Common questions about the school, answered only from its recorded facts (also sent as FAQPage data)")
+    @GetMapping("/{id}/faqs")
+    public List<com.indiaschoolfinder.service.SchoolFaqService.Faq> faqs(@PathVariable Long id) {
+        return faqService.faqs(schoolService.getActiveById(id));
     }
 
     @GetMapping("/{id}/facilities")

@@ -2,7 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { MAX_COMPARE, useCompare } from '../../hooks/useCompare';
 import { Icon } from '../common/Icon';
 
-export function CompareButton({ id, name, slug }: { id: number; name: string; slug: string }) {
+/** `size="md"` matches the school profile's action buttons; every other place keeps the small default. */
+export function CompareButton({ id, name, slug, size = 'sm' }: { id: number; name: string; slug: string; size?: 'sm' | 'md' }) {
   const { has, toggle, isFull } = useCompare();
   const selected = has(id);
   return (
@@ -12,7 +13,7 @@ export function CompareButton({ id, name, slug }: { id: number; name: string; sl
       disabled={!selected && isFull}
       aria-pressed={selected}
       title={!selected && isFull ? `You can compare up to ${MAX_COMPARE} schools` : undefined}
-      className={`btn rounded-full px-3 py-1.5 text-xs ${selected ? 'bg-brand-600 text-white hover:bg-brand-700' : 'border border-slate-300 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-700'}`}
+      className={`btn rounded-full ${size === 'md' ? 'px-4 py-2 text-sm' : 'px-3 py-1.5 text-xs'} ${selected ? 'bg-brand-600 text-white hover:bg-brand-700' : 'border border-slate-300 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-700'}`}
     >
       {selected ? <><Icon name="check" className="h-3.5 w-3.5" /> Comparing</> : <><Icon name="scale" className="h-3.5 w-3.5" /> Compare</>}
     </button>

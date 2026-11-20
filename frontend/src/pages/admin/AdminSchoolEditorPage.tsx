@@ -11,7 +11,7 @@ import { ApiError } from '../../services/http';
 import { locationService, referenceService } from '../../services/publicApi';
 import type { GenderType, SchoolDetail, SchoolManagement, SchoolNetwork, SchoolRequest, SchoolType } from '../../types/api';
 import { genderLabel, managementLabel, networkLabel, schoolTypeLabel } from '../../utils/format';
-import { AdmissionPanel, EvidencePanel, FacilityPanel, FeePanel, ImagePanel, StatusPanel, VerifyPanel } from './AdminSchoolPanels';
+import { AdmissionPanel, EvidencePanel, FacilityPanel, FeePanel, ImagePanel, StatusPanel, UdisePanel, VerifyPanel } from './AdminSchoolPanels';
 import { applyServerErrors, optionalNumber } from './formUtils';
 
 type TriState = '' | 'true' | 'false';
@@ -115,7 +115,7 @@ export function AdminSchoolEditorPage() {
         </div>
         {school && (
           <div className="flex items-center gap-2">
-            <VerificationBadge status={school.verificationStatus} date={school.lastVerifiedDate} />
+            <VerificationBadge status={school.verificationStatus} date={school.lastVerifiedDate} admin />
             {!school.active && <span className="chip bg-red-50 text-red-700">Inactive</span>}
             {school.active && <Link to={`/schools/${school.slug}`} className="btn-secondary py-1.5 text-xs">View public page</Link>}
           </div>
@@ -255,6 +255,7 @@ export function AdminSchoolEditorPage() {
       {school && (
         <div className="grid gap-6 xl:grid-cols-2">
           <VerifyPanel school={school} onChange={() => adminService.school(school.id).then((s) => { setSchool(s); reset(toForm(s)); })} />
+          <UdisePanel school={school} onChange={() => adminService.school(school.id).then((s) => { setSchool(s); reset(toForm(s)); })} />
           {isAdmin && <StatusPanel school={school} onChange={setSchool} />}
           <FeePanel schoolId={school.id} />
           <AdmissionPanel schoolId={school.id} />

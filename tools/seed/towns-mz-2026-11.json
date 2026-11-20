@@ -1,0 +1,135 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-project-pushpak-p-0-zemabawk",
+   "facts": {
+    "city": {
+     "name": "Aizawl",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2300001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PROJECT PUSHPAK P.0 ZEMABAWK AIZAWL MIZORAM\", PIN 796017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ramthar-veng",
+   "facts": {
+    "city": {
+     "name": "Lunglei",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2300002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUNGLEI RAMTHAR VENG, P O & DISTT LUNGLEI MIZORAM\", PIN 796701."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-champhai",
+   "facts": {
+    "city": {
+     "name": "Champhai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2300003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA CHAMPHAI, AT DINTHAR CHAMPHAI, DISTTRICT CHAMPHAI\", PIN 796321."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-mizam-university-campus",
+   "facts": {
+    "city": {
+     "name": "Aizawl",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2300004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIZAM UNIVERSITY CAMPUS, TANHRIL, AIZAWL, MIZAM\", PIN 796004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-thenzawl-dt",
+   "facts": {
+    "city": {
+     "name": "Aizawl",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2340002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THENZAWL DT- AIZAWL MIZORAM\", PIN 796181."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-khawzawal",
+   "facts": {
+    "city": {
+     "name": "Champhai",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2340005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O KHAWZAWAL DISTT CHAMPHAI MIZORAM\", PIN 796310."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-jnv",
+   "facts": {
+    "city": {
+     "name": "Mamit",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2340007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JNV MAMIT,, LUANGPAWL, MAMIT\", PIN 796441."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-pukpui",
+   "facts": {
+    "city": {
+     "name": "Lunglei",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2340009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUKPUI, DISTT. LUNGLEI, MIZORAM\", PIN 796691."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mizoram-institute-of-comprehensive",
+   "facts": {
+    "city": {
+     "name": "Aizawl",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2320001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EDUCATION (MICE) POST BOX 147, RM COMPLEX TUIKUAL NORTH, AIZAWL, MIZORAM\", PIN 796001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-emrs-tlangnuam",
+   "facts": {
+    "city": {
+     "name": "Aizawl",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2320105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHARBAWK, TLANGNUAM, AIZAWL\", PIN 796005."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,6 +1,12 @@
 import { cleanParams, http } from './http';
+import type { ChallengeDifficulty, ChallengeKind, ChallengeRelease, ChallengeSummary } from './challengeApi';
+import type { PracticeCategory } from '../types/api';
+import type { UpdateCategory } from './publicApi';
 import type {
   Admission,
+  AdminPracticeSet,
+  PracticeReport,
+  PracticeReportStatus,
   AdmissionRequest,
   AuditLogEntry,
   BatchVerifyRequest,
@@ -16,19 +22,34 @@ import type {
   FacilityQueueItem,
   Fee,
   FeeRequest,
+  DocumentStatus,
+  DocumentUploadRequest,
+  DuplicateReport,
+  ExternalRanking,
+  ExternalRankingListItem,
+  ExternalRankingRequest,
+  ImageCandidate,
   ImageRequest,
+  ImagePermission,
+  ImageUpdateRequest,
   PageResponse,
   RankingMethodology,
+  RankingPublisher,
+  RankingPublisherRequest,
+  RankingPublisherKind,
   Review,
   ReviewStatus,
   SchoolDetail,
   SchoolImage,
   SchoolRequest,
   SchoolSummary,
+  SourceDocumentDetail,
+  SourceDocumentSummary,
   SubmissionStatus,
   TokenResponse,
   UpdateSubmission,
   VerificationHistory,
+  VerificationStatus,
   VerifyRequest,
 } from '../types/api';
 
@@ -48,6 +69,10 @@ export const adminService = {
     http
       .put<SchoolDetail>(`/admin/schools/${id}`, body, { headers: { 'If-Match': `"${version}"` } })
       .then((r) => r.data),
+  /** An editor's checked UDISE+ code and Know Your School link for one school (nulls clear them). */
+  setUdise: (id: number, body: { udiseCode: string | null; profileUrl: string | null; checked: boolean }) =>
+    http.put<{ schoolId: number; udiseCode: string | null; profileUrl: string | null; verifiedOn: string | null; matchStatus: string | null }>(
+      `/admin/schools/${id}/udise`, body).then((r) => r.data),
   setStatus: (id: number, active: boolean, reason: string) =>
     http.patch<SchoolDetail>(`/admin/schools/${id}/status`, { active, reason }).then((r) => r.data),
   upsertFee: (id: number, body: FeeRequest) => http.post<Fee>(`/admin/schools/${id}/fees`, body).then((r) => r.data),
@@ -65,6 +90,57 @@ export const adminService = {
     return http.post<SchoolImage>(`/admin/schools/${id}/images`, form).then((r) => r.data);
   },
   deleteImage: (id: number, imageId: number) => http.delete(`/admin/schools/${id}/images/${imageId}`),
+  imageCandidates: (id: number, q?: string) =>
+    http
+      .get<ImageCandidate[]>(`/admin/schools/${id}/images/candidates`, { params: cleanParams({ q, limit: 24 }) })
+      .then((r) => r.data),
+  updateImage: (id: number, imageId: number, body: ImageUpdateRequest) =>
+    http.put<SchoolImage>(`/admin/schools/${id}/images/${imageId}`, body).then((r) => r.data),
+  approveImage: (id: number, imageId: number, permissionStatus: ImagePermission, note?: string) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/approve`, { permissionStatus, note }).then((r) => r.data),
+  rejectImage: (id: number, imageId: number, reason: string) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/reject`, { reason }).then((r) => r.data),
+  makePrimaryImage: (id: number, imageId: number) =>
+    http.post<SchoolImage[]>(`/admin/schools/${id}/images/${imageId}/primary`).then((r) => r.data),
+  refreshImage: (id: number, imageId: number) =>
+    http.post<SchoolImage>(`/admin/schools/${id}/images/${imageId}/refresh`).then((r) => r.data),
+  rankingPublishers: () => http.get<RankingPublisher[]>('/admin/ranking-publishers').then((r) => r.data),
+  saveRankingPublisher: (code: string, body: RankingPublisherRequest) =>
+    http.put<RankingPublisher>(`/admin/ranking-publishers/${encodeURIComponent(code)}`, body).then((r) => r.data),
+  externalRankings: (params: { publisher?: string; kind?: RankingPublisherKind; year?: string; status?: VerificationStatus; schoolId?: number; page?: number; size?: number }) =>
+    http
+      .get<PageResponse<ExternalRankingListItem>>('/admin/external-rankings', { params: cleanParams(params) })
+      .then((r) => r.data),
+  addExternalRanking: (schoolId: number, body: ExternalRankingRequest) =>
+    http.post<ExternalRanking>(`/admin/schools/${schoolId}/external-rankings`, body).then((r) => r.data),
+  updateExternalRanking: (id: number, body: ExternalRankingRequest) =>
+    http.put<ExternalRanking>(`/admin/external-rankings/${id}`, body).then((r) => r.data),
+  verifyExternalRanking: (id: number, status: VerificationStatus, note?: string) =>
+    http.post<ExternalRanking>(`/admin/external-rankings/${id}/verify`, { status, note }).then((r) => r.data),
+  deleteExternalRanking: (id: number) => http.delete(`/admin/external-rankings/${id}`),
+  documents: (params: { status?: DocumentStatus; schoolId?: number; page?: number; size?: number }) =>
+    http.get<PageResponse<SourceDocumentSummary>>('/admin/documents', { params: cleanParams(params) }).then((r) => r.data),
+  document: (id: number) => http.get<SourceDocumentDetail>(`/admin/documents/${id}`).then((r) => r.data),
+  uploadDocument: (file: File, metadata: DocumentUploadRequest) => {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+    return http.post<SourceDocumentDetail>('/admin/documents', form).then((r) => r.data);
+  },
+  /** A page as a PNG blob (the request needs the admin token, so it cannot be a plain image URL). */
+  documentPage: (id: number, page: number) =>
+    http.get<Blob>(`/admin/documents/${id}/pages/${page}`, { responseType: 'blob', headers: { Accept: 'image/png' } }).then((r) => r.data),
+  reviewDocument: (id: number, body: { status: DocumentStatus; reviewedText?: string | null; note?: string | null }) =>
+    http.put<SourceDocumentDetail>(`/admin/documents/${id}/review`, body).then((r) => r.data),
+  rerunOcr: (id: number) => http.post<SourceDocumentDetail>(`/admin/documents/${id}/ocr`).then((r) => r.data),
+  deleteDocument: (id: number) => http.delete(`/admin/documents/${id}`),
+  duplicates: () => http.get<DuplicateReport>('/admin/duplicates').then((r) => r.data),
+  dismissDuplicates: (schoolIds: number[], note?: string) => http.post('/admin/duplicates/dismiss', { schoolIds, note }),
+  importExternalRankings: (file: File, mode: string) => {
+    const form = new FormData();
+    form.append('file', file);
+    return http.post<CsvImportResult>('/admin/import/external-rankings', form, { params: { mode } }).then((r) => r.data);
+  },
   verify: (id: number, body: VerifyRequest) =>
     http.post<VerificationHistory>(`/admin/schools/${id}/verify`, body).then((r) => r.data),
   verifyBatch: (id: number, body: BatchVerifyRequest) =>
@@ -115,6 +191,351 @@ export const adminService = {
   /** Body in the practice import format: { "sets": [ … ] } (see seed/practice.json). */
   importPractice: (body: unknown) =>
     http.post<{ slugs: string[] }>('/admin/practice-sets/import', body).then((r) => r.data),
+  /** Every practice set, published or not, with what needs checking. */
+  practiceSets: () => http.get<AdminPracticeSet[]>('/admin/practice-sets').then((r) => r.data),
+  publishPractice: (slug: string, published: boolean, reviewedOn?: string) =>
+    http.patch<AdminPracticeSet>(`/admin/practice-sets/${encodeURIComponent(slug)}/published`, { published, reviewedOn })
+      .then((r) => r.data),
+  reviewPractice: (slug: string, note?: string) =>
+    http.post<AdminPracticeSet>(`/admin/practice-sets/${encodeURIComponent(slug)}/review`, { note }).then((r) => r.data),
+  /** The set in the JSON import format, answers included. */
+  exportPractice: (slug: string) =>
+    http.get<unknown>(`/admin/practice-sets/${encodeURIComponent(slug)}/export`).then((r) => r.data),
+  /** Replaces the set's questions; the set is unpublished until it is reviewed and published again. */
+  importPracticeCsv: (slug: string, file: File) => {
+    const form = new FormData();
+    form.append('file', file);
+    return http.post<{ slug: string; questions: number; hindiQuestions: number; published: boolean; message: string }>(
+      `/admin/practice-sets/${encodeURIComponent(slug)}/questions/csv`, form).then((r) => r.data);
+  },
+  practiceReports: (status: PracticeReportStatus, page = 0, size = 20) =>
+    http.get<PageResponse<PracticeReport>>('/admin/practice-reports', { params: { status, page, size } }).then((r) => r.data),
+  resolveReport: (id: number, status: Exclude<PracticeReportStatus, 'OPEN'>, note?: string) =>
+    http.patch<PracticeReport>(`/admin/practice-reports/${id}`, { status, note }).then((r) => r.data),
   importExams: (body: unknown) =>
     http.post<{ created: number; updated: number; slugs: string[] }>('/admin/exams/import', body).then((r) => r.data),
+  rankingImportJobs: (page = 0) => http.get<PageResponse<RankingImportJob>>('/admin/import/ranking-jobs', { params: { page } }).then((r) => r.data),
+  approveRankingImport: (id: number, note: string) => http.post<{ approved: number }>(`/admin/import/ranking-jobs/${id}/approve`, { note }).then((r) => r.data),
+  contactMessages: (status: 'OPEN' | 'HANDLED', page = 0, size = 20) =>
+    http.get<PageResponse<ContactMessage>>('/admin/contact-messages', { params: { status, page, size } }).then((r) => r.data),
+  contactHandled: (id: number) => http.post<ContactMessage>(`/admin/contact-messages/${id}/handled`).then((r) => r.data),
+  enquiries: (status: EnquiryStatus, page = 0, size = 20) =>
+    http.get<PageResponse<AdmissionEnquiry>>('/admin/enquiries', { params: { status, page, size } }).then((r) => r.data),
+  enquiryStatus: (id: number, status: EnquiryStatus, note?: string) =>
+    http.post<AdmissionEnquiry>(`/admin/enquiries/${id}/status`, { status, note }).then((r) => r.data),
+  /** Editorial school and exam updates: saved as drafts, shown in the public feed only once published. */
+  updates: (status: SiteUpdateStatus, page = 0, size = 20) =>
+    http.get<PageResponse<SiteUpdateRow>>('/admin/updates', { params: { status, page, size } }).then((r) => r.data),
+  createUpdate: (body: SiteUpdateRequest) => http.post<SiteUpdateRow>('/admin/updates', body).then((r) => r.data),
+  saveUpdate: (id: number, body: SiteUpdateRequest) => http.put<SiteUpdateRow>(`/admin/updates/${id}`, body).then((r) => r.data),
+  publishUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/publish`).then((r) => r.data),
+  archiveUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/archive`).then((r) => r.data),
+  supersedeUpdate: (id: number, by: number) =>
+    http.post<SiteUpdateRow>(`/admin/updates/${id}/supersede`, null, { params: { by } }).then((r) => r.data),
+  /** The posts a recruitment notice advertises, entered from the notice (replaces those read from its title). */
+  setUpdatePositions: (id: number, positions: { postName: string; postType: string | null; subject: string | null; postCode: string | null;
+    vacancies: number | null; payScale: string | null; qualification: string | null }[]) =>
+    http.put<SiteUpdateRow>(`/admin/updates/${id}/positions`, positions).then((r) => r.data),
+  /** The daily check of official websites. */
+  syncStatus: () => http.get<AdminSyncStatus>('/admin/updates/sync-status').then((r) => r.data),
+  syncRuns: (page = 0, size = 10) =>
+    http.get<PageResponse<SyncRunRow>>('/admin/updates/sync-runs', { params: { page, size } }).then((r) => r.data),
+  /** ADMIN only; refused while a check runs and for ten minutes after the last one. */
+  syncNow: () => http.post<{ result: string; message: string }>('/admin/updates/sync').then((r) => r.data),
+  challenges: () => http.get<AdminChallenge[]>('/admin/challenges').then((r) => r.data),
+  createChallenge: (body: ChallengeInput) => http.post<void>('/admin/challenges', body).then((r) => r.data),
+  updateChallenge: (id: number, body: ChallengeInput) => http.put<void>(`/admin/challenges/${id}`, body).then((r) => r.data),
+  publishChallenge: (id: number, published: boolean) => http.patch<void>(`/admin/challenges/${id}/published`, { published }).then((r) => r.data),
+  deleteChallenge: (id: number) => http.delete<void>(`/admin/challenges/${id}`).then((r) => r.data),
+  moderationOverview: () => http.get<ModerationOverview>('/admin/moderation/overview').then((r) => r.data),
+  flaggedAttempts: (page = 0, size = 20) =>
+    http.get<PageResponse<FlaggedAttempt>>('/admin/moderation/attempts', { params: { page, size } }).then((r) => r.data),
+  decideAttempt: (id: number, decision: 'CLEAR' | 'VOID', note: string) =>
+    http.patch<void>(`/admin/moderation/attempts/${id}`, { decision, note }).then((r) => r.data),
+  moderationParticipants: (q: string) =>
+    http.get<ModeratedParticipant[]>('/admin/moderation/participants', { params: cleanParams({ q }) }).then((r) => r.data),
+  hideParticipant: (publicId: string, hidden: boolean, note: string) =>
+    http.patch<void>(`/admin/moderation/participants/${encodeURIComponent(publicId)}`, { hidden, note }).then((r) => r.data),
 };
+
+/** One run of the ranking import. */
+export interface RankingImportJob {
+  id: number;
+  fileName: string | null;
+  mode: string;
+  totalRows: number;
+  validRows: number;
+  created: number;
+  updated: number;
+  committed: boolean;
+  errors: { row: number; field: string; message: string }[];
+  importedBy: string | null;
+  importedAt: string;
+  approvedBy: string | null;
+  approvedAt: string | null;
+  awaitingApproval: number;
+}
+
+/** A message from the contact form; name and email are null once it has been handled. */
+export interface ContactMessage {
+  id: number;
+  topic: 'FEEDBACK' | 'CORRECTION' | 'LISTING' | 'RANKING' | 'TECHNICAL';
+  name: string | null;
+  email: string | null;
+  subject: string;
+  message: string;
+  status: 'OPEN' | 'HANDLED';
+  createdAt: string;
+  handledAt: string | null;
+  handledBy: string | null;
+}
+
+/** A challenge as editors see it. */
+export interface AdminChallenge {
+  id: number;
+  summary: ChallengeSummary;
+  rules: string | null;
+  questionIds: string[];
+  pointsPerCorrect: number;
+  completionBonus: number;
+  leaderboardEnabled: boolean;
+  published: boolean;
+  attempts: number;
+  flagged: number;
+}
+
+export interface ChallengeInput {
+  slug: string;
+  title: string;
+  description: string;
+  rules: string | null;
+  kind: ChallengeKind;
+  examSlug: string | null;
+  category: PracticeCategory | null;
+  difficulty: ChallengeDifficulty;
+  questionIds: string[];
+  durationMinutes: number;
+  startsAt: string;
+  endsAt: string;
+  pointsPerCorrect: number;
+  completionBonus: number;
+  maxAttempts: number;
+  resultRelease: ChallengeRelease;
+  leaderboardEnabled: boolean;
+}
+
+export interface ModerationOverview {
+  participants: number;
+  listed: number;
+  attemptsLast7Days: number;
+  awaitingReview: number;
+  activeChallenges: number;
+}
+
+export interface FlaggedAttempt {
+  attemptId: number;
+  publicId: string;
+  nickname: string;
+  title: string;
+  mode: string;
+  challengeSlug: string | null;
+  total: number;
+  attempted: number;
+  correct: number;
+  durationSeconds: number | null;
+  reviewFlag: string;
+  createdAt: string;
+}
+
+export interface ModeratedParticipant {
+  publicId: string;
+  nickname: string;
+  stateCode: string | null;
+  guest: boolean;
+  listed: boolean;
+  hidden: boolean;
+  points: number;
+  attempts: number;
+  flagged: number;
+}
+
+export type EnquiryStatus = 'NEW' | 'FORWARDED' | 'CLOSED';
+
+/** A parent's admission enquiry as staff see it; contact details are null once closed. */
+export interface AdmissionEnquiry {
+  id: number;
+  schoolId: number;
+  schoolName: string | null;
+  schoolSlug: string | null;
+  parentName: string | null;
+  phone: string | null;
+  email: string | null;
+  classCode: string;
+  academicYear: string | null;
+  message: string | null;
+  status: EnquiryStatus;
+  staffNote: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+  handledBy: string | null;
+}
+
+export type SiteUpdateStatus = 'DRAFT' | 'PENDING_REVIEW' | 'PUBLISHED' | 'EXPIRED' | 'ARCHIVED';
+
+/** An editorial update as an editor writes it. Every category except PREP needs an official source URL. */
+export interface SiteUpdateRequest {
+  category: UpdateCategory;
+  title: string;
+  summary: string;
+  imageUrl: string | null;
+  publishedOn: string;
+  eventDate: string | null;
+  eventLabel: string | null;
+  deadline: boolean;
+  sourceUrl: string | null;
+  sourceName: string | null;
+  /** A page on this site, such as /exams/aissee; never another site. */
+  linkPath: string | null;
+  actionLabel: string | null;
+  verificationStatus: VerificationStatus | null;
+  expiresOn: string | null;
+  priority: number;
+  /** Admissions and jobs: the notice's facts from the official notice. Sent, they replace the stored facts; left out, they are kept. */
+  details?: OpportunityFields | null;
+}
+
+/** The facts of an admission or job notice; each field only as the official notice states it (null: not given). */
+export interface OpportunityFields {
+  institutionName: string | null; campus: string | null; schoolId: number | null;
+  sector: 'GOVERNMENT' | 'PRIVATE' | null; boarding: boolean | null; stateCode: string | null; city: string | null;
+  noticeType: import('./publicApi').NoticeType | null; opensOn: string | null; closesOn: string | null; examOn: string | null;
+  academicSession: string | null; classes: string | null; postTypes: string | null; subjects: string | null;
+  staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null; employmentType: 'REGULAR' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null;
+  vacancies: number | null; eligibility: string | null; experience: string | null; tetRequirement: string | null;
+  ageLimit: string | null; salaryText: string | null; applicationFee: string | null; selectionProcess: string | null;
+  applyUrl: string | null;
+}
+
+export interface SiteUpdatePosition {
+  id: number; postName: string; postType: string | null; postTypeLabel: string | null; subject: string | null; postCode: string | null;
+  vacancies: number | null; payScale: string | null; qualification: string | null; origin: 'TITLE' | 'EDITOR';
+}
+
+export interface SiteUpdateRow extends SiteUpdateRequest {
+  id: number;
+  status: SiteUpdateStatus;
+  createdAt: string;
+  updatedAt: string | null;
+  createdBy: string | null;
+  updatedBy: string | null;
+  /** OFFICIAL_SYNC: found by the daily check of an official website. */
+  origin: 'EDITORIAL' | 'OFFICIAL_SYNC';
+  sourceKey: string | null;
+  /** The title exactly as the source printed it. */
+  officialTitle: string | null;
+  /** False when the source printed no date: publishedOn is only the day it was found. */
+  dateConfirmed: boolean;
+  /** Why it waits for review, or what the source changed. */
+  reviewNote: string | null;
+  firstSeenAt: string | null;
+  lastSeenAt: string | null;
+  lastChangedAt: string | null;
+  withdrawnAt: string | null;
+  supersededById: number | null;
+  staffEdited: boolean;
+  topic: string | null;
+  /** Admissions and jobs: the notice's own page address (/jobs/{slug} or /admissions/{slug}). */
+  slug: string | null;
+  positions: SiteUpdatePosition[];
+}
+
+export interface SyncSourceResult {
+  key: string;
+  name: string;
+  /** OK, FAILED, BLOCKED (the site refused automated access) or SKIPPED. */
+  outcome: string;
+  error: string | null;
+  durationMs: number;
+  requests: number;
+  listed: number;
+  relevant: number;
+  ignored: number;
+  created: number;
+  updated: number;
+  unchanged: number;
+  published: number;
+  pending: number;
+  tooOld: number;
+  duplicates: number;
+  withdrawn: number;
+  createdJobs?: number;
+  createdAdmissions?: number;
+}
+
+export interface SyncRunRow {
+  id: number;
+  trigger: 'SCHEDULED' | 'STARTUP' | 'MANUAL';
+  status: 'RUNNING' | 'SUCCEEDED' | 'PARTIAL' | 'FAILED' | 'ABANDONED';
+  startedAt: string;
+  finishedAt: string | null;
+  triggeredBy: string | null;
+  instanceName: string | null;
+  sourcesChecked: number;
+  sourcesFailed: number;
+  itemsFound: number;
+  itemsCreated: number;
+  itemsUpdated: number;
+  itemsPublished: number;
+  itemsPending: number;
+  itemsExpired: number;
+  itemsWithdrawn: number;
+  sources: SyncSourceResult[];
+  newJobs?: number;
+  newAdmissions?: number;
+  duplicates?: number;
+  tooOld?: number;
+}
+
+export interface SyncSourceInfo {
+  key: string;
+  name: string;
+  listingUrl: string;
+  hosts: string[];
+  autoPublish: boolean;
+  reviewOnlyReason: string | null;
+  completeListing: boolean;
+  enabled: boolean;
+  /** From the source registry: what the source is and how its checks have gone. */
+  institution?: string | null;
+  sourceCategory?: string | null;
+  sector?: 'GOVERNMENT' | 'PRIVATE' | null;
+  boarding?: boolean | null;
+  stateCode?: string | null;
+  city?: string | null;
+  noticeTypes?: string[];
+  method?: string | null;
+  reliability?: string | null;
+  schoolPostsOnly?: boolean;
+  lastAttemptAt?: string | null;
+  lastSuccessAt?: string | null;
+  lastOutcome?: string | null;
+  lastError?: string | null;
+  consecutiveFailures?: number;
+}
+
+export interface AdminSyncStatus {
+  enabled: boolean;
+  running: boolean;
+  cron: string;
+  timezone: string;
+  schedule: string;
+  nextCheckAt: string | null;
+  lastSuccessAt: string | null;
+  lastRun: SyncRunRow | null;
+  pendingReview: number;
+  sources: SyncSourceInfo[];
+  /** Registry entries that could not be used, with why. */
+  registryProblems?: string[];
+  /** Switched-on sources whose last check failed. */
+  sourcesFailing?: number;
+}

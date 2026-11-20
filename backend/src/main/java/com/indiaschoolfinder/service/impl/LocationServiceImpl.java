@@ -80,7 +80,21 @@ public class LocationServiceImpl implements LocationService {
     public List<CityDto> cities(String stateCodeOrSlug) {
         State state = requireState(stateCodeOrSlug);
         return schoolRepository.countActiveByCity(state.getCode()).stream()
-                .map(r -> new CityDto((String) r[0], state.getCode(), ((Number) r[1]).longValue()))
+                .map(r -> new CityDto((String) r[0], SlugUtil.toSlug((String) r[0]), state.getCode(), ((Number) r[1]).longValue()))
+                .toList();
+    }
+
+    @Override
+    public List<com.indiaschoolfinder.dto.location.IndiaCityDto> citiesAcrossIndia() {
+        java.util.Map<String, State> states = new java.util.HashMap<>();
+        stateRepository.findAllByOrderByNameAsc().forEach(s -> states.put(s.getCode(), s));
+        return schoolRepository.countActiveByCityAcrossIndia().stream()
+                .filter(r -> states.containsKey((String) r[1]))
+                .map(r -> {
+                    State state = states.get((String) r[1]);
+                    return new com.indiaschoolfinder.dto.location.IndiaCityDto((String) r[0], SlugUtil.toSlug((String) r[0]),
+                            state.getCode(), state.getName(), state.getSlug(), ((Number) r[2]).longValue());
+                })
                 .toList();
     }
 

@@ -30,7 +30,7 @@ const card = (overrides: Partial<SchoolSummary>): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: null, websiteUrl: null, boardingType: null,
   residentialSystem: null, entranceExam: null, entryClasses: null, boardingSummary: null, boardingVerificationStatus: null,
   classesFrom: null, classesTo: null, facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null,
-  coverImageIllustrative: false, ...overrides,
+  coverImageIllustrative: false, affiliatedUpTo: null, ...overrides,
 });
 
 describe('RankingCard', () => {
@@ -77,7 +77,8 @@ describe('RankingCard', () => {
     expect(text).not.toContain('Not published');
     expect(text).toContain('Admissions open');
     expect(view.container.querySelector('img')?.getAttribute('src')).toBe('https://example.org/photo.jpg');
-    expect(text).toContain('© Example credit');
+    expect(text).not.toContain('Example credit'); // no credit over the photo
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example credit');
     expect(view.container.querySelector('[aria-label="documented, not verified"]')).toBeNull();
   });
 

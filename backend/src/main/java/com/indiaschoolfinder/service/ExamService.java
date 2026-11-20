@@ -2,11 +2,13 @@ package com.indiaschoolfinder.service;
 
 import com.indiaschoolfinder.config.AppProperties;
 import com.indiaschoolfinder.dto.common.PageResponse;
+import com.indiaschoolfinder.dto.exam.ExamContent;
 import com.indiaschoolfinder.dto.exam.ExamDateDto;
 import com.indiaschoolfinder.dto.exam.ExamDetailDto;
 import com.indiaschoolfinder.dto.exam.ExamImportRequest;
 import com.indiaschoolfinder.dto.exam.ExamImportResult;
 import com.indiaschoolfinder.dto.exam.ExamNoticeDto;
+import com.indiaschoolfinder.dto.exam.ExamResourceDto;
 import com.indiaschoolfinder.dto.exam.ExamReviewDto;
 import com.indiaschoolfinder.dto.exam.ExamSummaryDto;
 import com.indiaschoolfinder.dto.exam.ExamVerifyRequest;
@@ -43,7 +45,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -89,8 +93,12 @@ public class ExamService {
                 .collect(Collectors.toMap(State::getCode, State::getName, (a, b) -> a));
 
         List<ExamSummaryDto> matches = exams.stream()
-                .map(e -> toSummary(e, dates.getOrDefault(e.getId(), List.of()), today))
-                .filter(s -> matches(s, filter, stateNames))
+                .map(e -> {
+                    ExamSummaryDto s = toSummary(e, dates.getOrDefault(e.getId(), List.of()), today);
+                    return Map.entry(s, searchText(e, s, stateNames));
+                })
+                .filter(r -> matches(r.getKey(), r.getValue(), filter))
+                .map(Map.Entry::getKey)
                 .sorted(comparator(sort, filter.q(), today))
                 .toList();
         int from = Math.min(page * size, matches.size());
@@ -225,7 +233,7 @@ public class ExamService {
                 e.getBoarding(), e.getApplicationFree(), e.getExamMode(), e.getCurrentCycle(), e.getAcademicSession(),
                 e.getSummary(), ExamStatusCalculator.status(current, today), t.applicationEnd(), t.exam(), next,
                 current.stream().map(ExamService::toDto).toList(), e.getContent().papers().size(), e.getLastVerifiedOn(),
-                e.getVerificationStatus());
+                e.getVerificationStatus(), e.getContent().officialLinks().get(0).url());
     }
 
     private static ExamDateDto toDto(ExamDate d) {
@@ -238,7 +246,31 @@ public class ExamService {
                 n.getPublishedOn(), n.getUrl());
     }
 
-    private static boolean matches(ExamSummaryDto s, Filter f, Map<String, String> stateNames) {
+    /**
+     * Every word a parent might search an exam by: names, authority, the schools it admits to, classes (in digits and
+     * Roman numerals), states, and its category (boarding, residential, military, government; entrance test or
+     * admission process).
+     */
+    private static String searchText(Exam e, ExamSummaryDto s, Map<String, String> stateNames) {
+        List<String> parts = new ArrayList<>(List.of(s.shortName(), s.name(), s.conductingAuthority(), s.summary(),
+                s.entryClassText(), e.getContent().forSchools(),
+                s.kind() == ExamKind.SELECTION_PROCESS ? "admission process selection" : "entrance test exam",
+                s.scope() == ExamScope.NATIONAL ? "national all india" : "state"));
+        s.stateCodes().forEach(c -> parts.add(stateNames.getOrDefault(c, c)));
+        s.entryClasses().forEach(c -> parts.add("class " + c + " class " + ROMAN[c] + " " + c + "th"));
+        s.schoolTypes().forEach(t -> parts.add(t.name()));
+        if (s.boarding() != ExamBoarding.DAY) parts.add("boarding residential hostel");
+        if (s.boarding() != ExamBoarding.BOARDING) parts.add("day school");
+        return fold(String.join(" ", parts)).replace('_', ' ');
+    }
+
+    private static final String[] ROMAN = {"", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii"};
+
+    /** Words that say nothing about which exam is meant ("boarding school exams" is about boarding). */
+    private static final Set<String> SEARCH_NOISE = Set.of("school", "schools", "exam", "exams", "entrance", "for", "in",
+            "of", "the", "and", "a", "to", "test", "tests");
+
+    private static boolean matches(ExamSummaryDto s, String searchText, Filter f) {
         if (f.entryClass() != null && !s.entryClasses().contains(f.entryClass())) return false;
         if (f.state() != null && !f.state().isBlank() && s.scope() == ExamScope.STATE
                 && !s.stateCodes().contains(f.state().trim().toUpperCase(Locale.ROOT))) return false;
@@ -254,14 +286,89 @@ public class ExamService {
                 && !fold(s.conductingAuthority()).contains(fold(f.authority()))) return false;
         if (f.examMonth() != null && (s.examDate() == null || !YearMonth.from(s.examDate()).equals(f.examMonth()))) return false;
         if (f.q() != null && !f.q().isBlank()) {
-            String haystack = fold(String.join(" ", s.shortName(), s.name(), s.conductingAuthority(), s.summary(),
-                    s.entryClassText(), s.stateCodes().stream().map(c -> stateNames.getOrDefault(c, c)).collect(Collectors.joining(" ")),
-                    s.entryClasses().stream().map(c -> "class " + c).collect(Collectors.joining(" "))));
-            for (String word : fold(f.q()).split("\\s+")) {
-                if (!word.isEmpty() && !haystack.contains(word)) return false;
+            List<String> words = searchWords(f.q());
+            // A query made only of generic words ("school exams") matches every exam.
+            for (String word : words) {
+                if (!containsWord(searchText, word)) return false;
             }
         }
         return true;
+    }
+
+    /** The query's meaningful words; "class 6" style pairs are kept together so "6" alone does not match "2026". */
+    private static List<String> searchWords(String q) {
+        String[] raw = fold(q).replaceAll("[^\\p{L}\\p{N}\\s-]", " ").trim().split("\\s+");
+        List<String> words = new ArrayList<>();
+        for (int i = 0; i < raw.length; i++) {
+            String w = raw[i];
+            if (w.isEmpty() || SEARCH_NOISE.contains(w)) continue;
+            if (w.equals("class") && i + 1 < raw.length) {
+                words.add("class " + raw[++i]);
+            } else {
+                words.add(w);
+            }
+        }
+        return words;
+    }
+
+    /** Prefix match on word starts ("navo" finds Navodaya; "vi" does not match inside "vidyalaya" as class VI would). */
+    private static boolean containsWord(String text, String word) {
+        if (word.startsWith("class ")) {
+            return Pattern.compile("(^|\\W)" + Pattern.quote(word) + "(\\W|$)").matcher(text).find();
+        }
+        return Pattern.compile("(^|[^\\p{L}\\p{N}])" + Pattern.quote(word)).matcher(text).find();
+    }
+
+    /** Learning and official resources of every published exam, from each exam's guide. */
+    public List<ExamResourceDto> resources() {
+        List<ExamResourceDto> out = new ArrayList<>();
+        for (Exam e : examRepository.findByPublishedTrueOrderByDisplayOrderAscShortNameAsc()) {
+            ExamContent c = e.getContent();
+            String guide = "/exams/" + e.getSlug();
+            BiFunction<ExamResourceDto.Type, String[], ExamResourceDto> own = (type, t) ->
+                    new ExamResourceDto(e.getSlug(), e.getShortName(), e.getEntryClasses(), e.getAcademicSession(), type,
+                            t[0], t[1], null, false, null, t[2], e.getLastVerifiedOn());
+            for (ExamContent.Paper p : c.papers()) {
+                out.add(new ExamResourceDto(e.getSlug(), e.getShortName(), e.getEntryClasses(), e.getAcademicSession(),
+                        paperType(p.kind()), p.title(), p.note() == null ? p.kind() : p.kind() + " · " + p.note(), p.year(),
+                        true, p.url(), null, e.getLastVerifiedOn()));
+            }
+            for (ExamContent.Link l : c.officialLinks()) {
+                out.add(new ExamResourceDto(e.getSlug(), e.getShortName(), e.getEntryClasses(), e.getAcademicSession(),
+                        ExamResourceDto.Type.OFFICIAL_LINK, l.label(), "Official page or notice for " + e.getCurrentCycle(),
+                        null, true, l.url(), null, e.getLastVerifiedOn()));
+            }
+            if (!c.syllabus().isEmpty()) {
+                out.add(own.apply(ExamResourceDto.Type.SYLLABUS, new String[]{e.getShortName() + " syllabus",
+                        c.syllabus().stream().map(ExamContent.SyllabusArea::area).collect(Collectors.joining(", ")),
+                        guide + "?tab=pattern"}));
+            }
+            if (!c.pattern().isEmpty()) {
+                out.add(own.apply(ExamResourceDto.Type.EXAM_PATTERN, new String[]{e.getShortName() + " exam pattern",
+                        c.pattern().stream().map(ExamContent.PatternBlock::title).collect(Collectors.joining("; ")),
+                        guide + "?tab=pattern"}));
+            }
+            if (!c.preparation().isEmpty()) {
+                out.add(own.apply(ExamResourceDto.Type.PREPARATION_GUIDE, new String[]{e.getShortName() + " preparation plan",
+                        c.preparation().size() + " steps and a week-by-week study planner", guide + "?tab=prep"}));
+            }
+            if (c.documents() != null && !c.documents().isEmpty()) {
+                out.add(own.apply(ExamResourceDto.Type.DOCUMENT_CHECKLIST, new String[]{e.getShortName() + " application documents",
+                        c.documents().size() + " documents listed in the official notice", guide}));
+            }
+            if (c.faq() != null && !c.faq().isEmpty()) {
+                out.add(own.apply(ExamResourceDto.Type.FAQ, new String[]{e.getShortName() + " frequently asked questions",
+                        c.faq().size() + " questions answered", guide + "?tab=faq"}));
+            }
+        }
+        return out;
+    }
+
+    private static ExamResourceDto.Type paperType(String kind) {
+        String k = fold(kind);
+        if (k.contains("answer")) return ExamResourceDto.Type.ANSWER_KEY;
+        if (k.contains("sample") || k.contains("booklet")) return ExamResourceDto.Type.SAMPLE_PAPER;
+        return ExamResourceDto.Type.QUESTION_PAPER;
     }
 
     private static Comparator<ExamSummaryDto> comparator(Sort sort, String q, LocalDate today) {

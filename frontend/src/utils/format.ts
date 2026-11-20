@@ -5,6 +5,7 @@ import type {
   EntranceExam,
   FacilityCategory,
   GenderType,
+  ImageType,
   ResidentialSystem,
   SchoolManagement,
   SchoolNetwork,
@@ -131,6 +132,21 @@ export const genderLabel: Record<GenderType, string> = {
   GIRLS: 'Girls',
 };
 
+export const imageTypeLabel: Record<ImageType, string> = {
+  LOGO: 'Logo',
+  CAMPUS: 'Campus',
+  MAIN_BUILDING: 'Main building',
+  CLASSROOM: 'Classroom',
+  HOSTEL: 'Hostel',
+  LIBRARY: 'Library',
+  PLAYGROUND: 'Playground',
+  LABORATORY: 'Laboratory',
+  SPORTS: 'Sports',
+  EVENT: 'Event',
+  ACTIVITIES: 'Activities',
+  OTHER: 'Other',
+};
+
 export const stageLabel: Record<SchoolStage, string> = {
   PRE_PRIMARY: 'Nursery & KG',
   PRIMARY: 'Primary (I–V)',
@@ -154,7 +170,7 @@ export const admissionCategoryLabel: Record<AdmissionCategory, string> = {
 
 export const verificationLabel: Record<VerificationStatus, string> = {
   VERIFIED: 'Verified',
-  UNVERIFIED: 'Pending verification',
+  UNVERIFIED: 'Not yet verified',
   OUTDATED: 'Outdated',
   DISPUTED: 'Disputed',
 };

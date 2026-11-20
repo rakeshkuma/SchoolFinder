@@ -1,0 +1,3410 @@
+{
+ "version": 3,
+ "checkedOn": "2026-11-11",
+ "entries": [
+  {
+   "key": "the-doon-school",
+   "order": 1,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "The Doon School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 7 to 12",
+   "lowestClass": 7,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1450000,
+   "feeMaxInr": 1700000,
+   "feeText": null,
+   "websiteUrl": "https://doonschool.com/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-scindia-school",
+   "order": 2,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "The Scindia School",
+   "city": "Gwalior",
+   "stateCode": "MP",
+   "schoolSlug": "the-scindia-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1200000,
+   "feeMaxInr": 1650000,
+   "feeText": null,
+   "websiteUrl": "https://www.scindia.edu/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mayo-college",
+   "order": 3,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Mayo College",
+   "city": "Ajmer",
+   "stateCode": "RJ",
+   "schoolSlug": "mayo-college",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1150000,
+   "feeMaxInr": 1400000,
+   "feeText": null,
+   "websiteUrl": "https://www.mayocollege.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "welham-boys-school",
+   "order": 4,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Welham Boys' School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "welham-boys-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1100000,
+   "feeMaxInr": 1350000,
+   "feeText": null,
+   "websiteUrl": "https://welhamboys.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "bishop-cotton-school",
+   "order": 5,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Bishop Cotton School",
+   "city": "Shimla",
+   "stateCode": "HP",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1050000,
+   "feeMaxInr": 1250000,
+   "feeText": null,
+   "websiteUrl": "https://bishopcottonshimla.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "st-pauls-school",
+   "order": 6,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "St. Paul's School",
+   "city": "Darjeeling",
+   "stateCode": "WB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 450000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://stpaulsdarjeeling.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "rashtriya-indian-military-college",
+   "order": 7,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Rashtriya Indian Military College",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "rashtriya-indian-military-college",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 8 to 12",
+   "lowestClass": 8,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": null,
+   "feeMaxInr": 120000,
+   "feeText": "Government subsidised (about ₹1.2 lakh a year)",
+   "websiteUrl": "https://rimc.gov.in/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "sarala-birla-academy",
+   "order": 8,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Sarala Birla Academy",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 950000,
+   "feeMaxInr": 1300000,
+   "feeText": null,
+   "websiteUrl": "https://www.saralabirlaacademy.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "birla-public-school-vidya-niketan",
+   "order": 9,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "Birla Public School (Vidya Niketan)",
+   "city": "Pilani",
+   "stateCode": "RJ",
+   "schoolSlug": "birla-public-school-pilani",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 500000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://www.bpspilani.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "st-josephs-boys-high-school",
+   "order": 10,
+   "section": "BOYS_RESIDENTIAL",
+   "name": "St. Joseph's Boys' High School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://sjbhs.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "welham-girls-school",
+   "order": 11,
+   "section": "GIRLS_BOARDING",
+   "name": "Welham Girls' School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "welham-girls-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1100000,
+   "feeMaxInr": 1350000,
+   "feeText": null,
+   "websiteUrl": "https://www.welhamgirls.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "scindia-kanya-vidyalaya",
+   "order": 12,
+   "section": "GIRLS_BOARDING",
+   "name": "Scindia Kanya Vidyalaya",
+   "city": "Gwalior",
+   "stateCode": "MP",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 800000,
+   "feeMaxInr": 1050000,
+   "feeText": null,
+   "websiteUrl": "https://www.skvgwalior.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mayo-college-girls-school",
+   "order": 13,
+   "section": "GIRLS_BOARDING",
+   "name": "Mayo College Girls' School",
+   "city": "Ajmer",
+   "stateCode": "RJ",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1000000,
+   "feeMaxInr": 1350000,
+   "feeText": null,
+   "websiteUrl": "https://mcgs.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mussoorie-international-school",
+   "order": 14,
+   "section": "GIRLS_BOARDING",
+   "name": "Mussoorie International School",
+   "city": "Mussoorie",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 800000,
+   "feeMaxInr": 1100000,
+   "feeText": null,
+   "websiteUrl": "https://misindia.net/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "ecole-globale-international-girls-school",
+   "order": 15,
+   "section": "GIRLS_BOARDING",
+   "name": "Ecole Globale International Girls' School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "ecole-globale-girls-international-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 850000,
+   "feeMaxInr": 1200000,
+   "feeText": null,
+   "websiteUrl": "https://www.ecoleglobale.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "hopetown-girls-school",
+   "order": 16,
+   "section": "GIRLS_BOARDING",
+   "name": "Hopetown Girls' School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 950000,
+   "feeMaxInr": 1150000,
+   "feeText": null,
+   "websiteUrl": "https://www.hopetown.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "unison-world-school",
+   "order": 17,
+   "section": "GIRLS_BOARDING",
+   "name": "Unison World School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 900000,
+   "feeMaxInr": 1200000,
+   "feeText": null,
+   "websiteUrl": "https://uws.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "vidya-devi-jindal-school",
+   "order": 18,
+   "section": "GIRLS_BOARDING",
+   "name": "Vidya Devi Jindal School",
+   "city": "Hisar",
+   "stateCode": "HR",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 550000,
+   "feeMaxInr": 750000,
+   "feeText": null,
+   "websiteUrl": "https://www.vdjs.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "ashok-hall-girls-residential-school",
+   "order": 19,
+   "section": "GIRLS_BOARDING",
+   "name": "Ashok Hall Girls' Residential School",
+   "city": "Ranikhet",
+   "stateCode": "UK",
+   "schoolSlug": "ashok-hall-girls-residential-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 450000,
+   "feeMaxInr": 600000,
+   "feeText": null,
+   "websiteUrl": "https://www.ashokhall.net/",
+   "websiteChecked": true,
+   "note": "The PDF lists CISCE; the official CBSE affiliation record lists Ashok Hall as a CBSE school, so CBSE is shown.",
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mody-school",
+   "order": 20,
+   "section": "GIRLS_BOARDING",
+   "name": "Mody School",
+   "city": "Lakshmangarh",
+   "stateCode": "RJ",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 500000,
+   "feeMaxInr": 700000,
+   "feeText": null,
+   "websiteUrl": "https://www.modyschool.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-lawrence-school-sanawar",
+   "order": 21,
+   "section": "COED_BOARDING",
+   "name": "The Lawrence School, Sanawar",
+   "city": "Solan",
+   "stateCode": "HP",
+   "schoolSlug": "lawrence-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1350000,
+   "feeMaxInr": 1650000,
+   "feeText": null,
+   "websiteUrl": "https://sanawar.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-lawrence-school-lovedale",
+   "order": 22,
+   "section": "COED_BOARDING",
+   "name": "The Lawrence School, Lovedale",
+   "city": "Ootacamund",
+   "stateCode": "TN",
+   "schoolSlug": "the-lawrence-school-lovedale",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 850000,
+   "feeText": null,
+   "websiteUrl": "https://www.thelawrenceschool.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "sherwood-college",
+   "order": 23,
+   "section": "COED_BOARDING",
+   "name": "Sherwood College",
+   "city": "Nainital",
+   "stateCode": "UK",
+   "schoolSlug": "sherwood-college",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 800000,
+   "feeText": null,
+   "websiteUrl": "https://sherwood.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-assam-valley-school",
+   "order": 24,
+   "section": "COED_BOARDING",
+   "name": "The Assam Valley School",
+   "city": "Balipara",
+   "stateCode": "AS",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 600000,
+   "feeMaxInr": 800000,
+   "feeText": null,
+   "websiteUrl": "https://www.assamvalleyschool.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "pinegrove-school",
+   "order": 25,
+   "section": "COED_BOARDING",
+   "name": "Pinegrove School",
+   "city": "Kasauli",
+   "stateCode": "HP",
+   "schoolSlug": "pinegrove-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 450000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://pinegrove.in/index.aspx",
+   "websiteChecked": true,
+   "note": "The PDF names Kasauli / Subathu; Pinegrove has campuses at Dharampur (Kasauli Road) and Subathu. The profile linked is the Dharampur campus.",
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-punjab-public-school",
+   "order": 26,
+   "section": "COED_BOARDING",
+   "name": "The Punjab Public School",
+   "city": "Nabha",
+   "stateCode": "PB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://ppsnabha.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "miles-bronson-residential-school",
+   "order": 27,
+   "section": "COED_BOARDING",
+   "name": "Miles Bronson Residential School",
+   "city": "Guwahati",
+   "stateCode": "AS",
+   "schoolSlug": "the-miles-bronson-residential-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://www.mbrs.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "selaqui-international-school",
+   "order": 28,
+   "section": "COED_BOARDING",
+   "name": "SelaQui International School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "selaqui-international-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 850000,
+   "feeText": null,
+   "websiteUrl": "https://www.selaqui.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "kasiga-school",
+   "order": 29,
+   "section": "COED_BOARDING",
+   "name": "Kasiga School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "kasiga-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 700000,
+   "feeMaxInr": 950000,
+   "feeText": null,
+   "websiteUrl": "https://www.kasigaschool.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-sagar-school",
+   "order": 30,
+   "section": "COED_BOARDING",
+   "name": "The Sagar School",
+   "city": "Alwar",
+   "stateCode": "RJ",
+   "schoolSlug": "the-sagar-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 600000,
+   "feeMaxInr": 800000,
+   "feeText": null,
+   "websiteUrl": "https://thesagarschool.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "vasant-valley-school",
+   "order": 31,
+   "section": "COED_BOARDING",
+   "name": "Vasant Valley School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "vasant-valley-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Foundation stage to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 250000,
+   "feeMaxInr": 350000,
+   "feeText": null,
+   "websiteUrl": "https://www.vasantvalley.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-mothers-international-school",
+   "order": 32,
+   "section": "COED_BOARDING",
+   "name": "The Mother's International School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "the-mother-s-international-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": null,
+   "residenceConfirmed": false,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 150000,
+   "feeMaxInr": 250000,
+   "feeText": null,
+   "websiteUrl": "https://themis.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "modern-school-barakhamba-road",
+   "order": 33,
+   "section": "COED_BOARDING",
+   "name": "Modern School, Barakhamba Road",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "modern-school-barakhamba-road",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 450000,
+   "feeMaxInr": 600000,
+   "feeText": null,
+   "websiteUrl": "https://modernschool.net/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "delhi-public-school-r-k-puram",
+   "order": 34,
+   "section": "COED_BOARDING",
+   "name": "Delhi Public School, R.K. Puram",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "delhi-public-school-r-k-puram",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 350000,
+   "feeMaxInr": 500000,
+   "feeText": null,
+   "websiteUrl": "https://dpsrkp.net/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "sanskriti-school",
+   "order": 35,
+   "section": "COED_BOARDING",
+   "name": "Sanskriti School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "sanskriti-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": null,
+   "residenceConfirmed": false,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 200000,
+   "feeMaxInr": 300000,
+   "feeText": null,
+   "websiteUrl": "https://sanskritischool.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "woodstock-school",
+   "order": 36,
+   "section": "INTERNATIONAL",
+   "name": "Woodstock School",
+   "city": "Mussoorie",
+   "stateCode": "UK",
+   "schoolSlug": "woodstock-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    },
+    {
+     "code": "OTHER",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": "US High School Diploma",
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 6 to 12",
+   "lowestClass": 6,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 2000000,
+   "feeMaxInr": 3000000,
+   "feeText": null,
+   "websiteUrl": "https://www.woodstockschool.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "kodaikanal-international-school",
+   "order": 37,
+   "section": "INTERNATIONAL",
+   "name": "Kodaikanal International School",
+   "city": "Kodaikanal",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1400000,
+   "feeMaxInr": 1800000,
+   "feeText": null,
+   "websiteUrl": "https://www.kis.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "good-shepherd-international-school",
+   "order": 38,
+   "section": "INTERNATIONAL",
+   "name": "Good Shepherd International School",
+   "city": "Ootacamund",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 2 to 12",
+   "lowestClass": 2,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1100000,
+   "feeMaxInr": 1550000,
+   "feeText": null,
+   "websiteUrl": "https://gsis.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "uwc-mahindra-college",
+   "order": 39,
+   "section": "INTERNATIONAL",
+   "name": "UWC Mahindra College",
+   "city": "Pune",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 11 to 12",
+   "lowestClass": 11,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 2000000,
+   "feeMaxInr": 2500000,
+   "feeText": null,
+   "websiteUrl": "https://www.uwcmahindra.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "dhirubhai-ambani-international-school",
+   "order": 40,
+   "section": "INTERNATIONAL",
+   "name": "Dhirubhai Ambani International School",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "LKG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 1100000,
+   "feeText": null,
+   "websiteUrl": "https://www.dais.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-british-school",
+   "order": 41,
+   "section": "INTERNATIONAL",
+   "name": "The British School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "the-british-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "OTHER",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": "English National Curriculum",
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1000000,
+   "feeMaxInr": 1800000,
+   "feeText": null,
+   "websiteUrl": "https://www.british-school.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "american-embassy-school",
+   "order": 42,
+   "section": "INTERNATIONAL",
+   "name": "American Embassy School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "OTHER",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": "US curriculum",
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-KG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": null,
+   "feeMaxInr": null,
+   "feeText": "US$18,000 – US$35,000 a year",
+   "websiteUrl": "https://www.aes.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "american-school-of-bombay",
+   "order": 43,
+   "section": "INTERNATIONAL",
+   "name": "American School of Bombay",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "OTHER",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": "US curriculum",
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-KG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": null,
+   "feeMaxInr": null,
+   "feeText": "US$18,000 – US$34,000 a year",
+   "websiteUrl": "https://www.asbindia.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "pathways-world-school",
+   "order": 44,
+   "section": "INTERNATIONAL",
+   "name": "Pathways World School",
+   "city": "Gurugram",
+   "stateCode": "HR",
+   "schoolSlug": "pathways-world-school-gurugram",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 950000,
+   "feeMaxInr": 1400000,
+   "feeText": null,
+   "websiteUrl": "https://pathways.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "jain-international-residential-school",
+   "order": 45,
+   "section": "INTERNATIONAL",
+   "name": "Jain International Residential School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 850000,
+   "feeMaxInr": 1150000,
+   "feeText": null,
+   "websiteUrl": "https://www.jirs.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "indus-international-school",
+   "order": 46,
+   "section": "INTERNATIONAL",
+   "name": "Indus International School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Reception to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 900000,
+   "feeMaxInr": 1300000,
+   "feeText": null,
+   "websiteUrl": "https://indusschool.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-aga-khan-academy",
+   "order": 47,
+   "section": "INTERNATIONAL",
+   "name": "The Aga Khan Academy",
+   "city": "Hyderabad",
+   "stateCode": "TS",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 800000,
+   "feeMaxInr": 1200000,
+   "feeText": null,
+   "websiteUrl": "https://www.agakhanacademies.org/hyderabad",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "stonehill-international-school",
+   "order": 48,
+   "section": "INTERNATIONAL",
+   "name": "Stonehill International School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 1300000,
+   "feeMaxInr": 1800000,
+   "feeText": null,
+   "websiteUrl": "https://www.stonehill.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "trivandrum-international-school",
+   "order": 49,
+   "section": "INTERNATIONAL",
+   "name": "Trivandrum International School",
+   "city": "Thiruvananthapuram",
+   "stateCode": "KL",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 600000,
+   "feeMaxInr": 950000,
+   "feeText": null,
+   "websiteUrl": "https://trins.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "gd-goenka-world-school",
+   "order": 50,
+   "section": "INTERNATIONAL",
+   "name": "GD Goenka World School",
+   "city": "Sohna",
+   "stateCode": "HR",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 800000,
+   "feeMaxInr": 1150000,
+   "feeText": null,
+   "websiteUrl": "https://gdgws.gdgoenka.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "rishi-valley-school",
+   "order": 51,
+   "section": "ALTERNATIVE",
+   "name": "Rishi Valley School",
+   "city": "Madanapalle",
+   "stateCode": "AP",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 450000,
+   "feeMaxInr": 600000,
+   "feeText": null,
+   "websiteUrl": "https://www.rishivalley.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "sahyadri-school",
+   "order": 52,
+   "section": "ALTERNATIVE",
+   "name": "Sahyadri School",
+   "city": "Rajgurunagar",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 4 to 10",
+   "lowestClass": 4,
+   "highestClass": 10,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://www.sahyadrischool.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "rajghat-besant-school",
+   "order": 53,
+   "section": "ALTERNATIVE",
+   "name": "Rajghat Besant School",
+   "city": "Varanasi",
+   "stateCode": "UP",
+   "schoolSlug": "rajghat-besant-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 3 to 12",
+   "lowestClass": 3,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 350000,
+   "feeMaxInr": 500000,
+   "feeText": null,
+   "websiteUrl": "https://www.rajghatbesantschool.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-valley-school",
+   "order": 54,
+   "section": "ALTERNATIVE",
+   "name": "The Valley School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 250000,
+   "feeMaxInr": 350000,
+   "feeText": null,
+   "websiteUrl": "https://www.thevalleyschool.info/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "isha-home-school",
+   "order": 55,
+   "section": "ALTERNATIVE",
+   "name": "Isha Home School",
+   "city": "Coimbatore",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 600000,
+   "feeText": null,
+   "websiteUrl": "https://isha.sadhguru.org/isha-home-school",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mirambika-free-progress-school",
+   "order": 56,
+   "section": "ALTERNATIVE",
+   "name": "Mirambika Free Progress School",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "OTHER",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": "Integral education (Free Progress)",
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Early Child to Class 10",
+   "lowestClass": 0,
+   "highestClass": 10,
+   "classesConfirmed": false,
+   "feeMinInr": 100000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": "https://mirambika.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "shikshantar-school",
+   "order": 57,
+   "section": "ALTERNATIVE",
+   "name": "Shikshantar School",
+   "city": "Gurugram",
+   "stateCode": "HR",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 220000,
+   "feeMaxInr": 350000,
+   "feeText": null,
+   "websiteUrl": "https://shikshantarschool.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "prakriya-green-wisdom-school",
+   "order": 58,
+   "section": "ALTERNATIVE",
+   "name": "Prakriya Green Wisdom School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 10",
+   "lowestClass": 0,
+   "highestClass": 10,
+   "classesConfirmed": false,
+   "feeMinInr": 180000,
+   "feeMaxInr": 280000,
+   "feeText": null,
+   "websiteUrl": "https://prakriyaschool.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "anand-niketan-democratic-school",
+   "order": 59,
+   "section": "ALTERNATIVE",
+   "name": "Anand Niketan Democratic School",
+   "city": "Sevagram",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "STATE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Primary to Secondary",
+   "lowestClass": 1,
+   "highestClass": 10,
+   "classesConfirmed": false,
+   "feeMinInr": null,
+   "feeMaxInr": null,
+   "feeText": "Subsidised / nominal",
+   "websiteUrl": null,
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "centre-for-learning",
+   "order": 60,
+   "section": "ALTERNATIVE",
+   "name": "Centre For Learning",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": "Own curriculum",
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Primary to Class 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 200000,
+   "feeMaxInr": 350000,
+   "feeText": null,
+   "websiteUrl": "https://cfl.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-cathedral-and-john-connon-school",
+   "order": 61,
+   "section": "METRO",
+   "name": "The Cathedral & John Connon School",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 950000,
+   "feeText": null,
+   "websiteUrl": "https://cathedral-school.com/",
+   "websiteChecked": true,
+   "note": "The PDF printed this as \"Campan School (The Cathedral & John Connon)\"; Campion School is a different school. This entry is The Cathedral and John Connon School.",
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-shri-ram-school-moulsari-aravali",
+   "order": 62,
+   "section": "METRO",
+   "name": "The Shri Ram School (Moulsari / Aravali)",
+   "city": "Gurugram",
+   "stateCode": "HR",
+   "schoolSlug": null,
+   "campusSearch": "The Shri Ram School",
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://tsrs.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "national-public-school-indiranagar",
+   "order": 63,
+   "section": "METRO",
+   "name": "National Public School, Indiranagar",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "KG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 150000,
+   "feeMaxInr": 250000,
+   "feeText": null,
+   "websiteUrl": "https://npsinr.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "bombay-scottish-school",
+   "order": 64,
+   "section": "METRO",
+   "name": "Bombay Scottish School",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "KG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 180000,
+   "feeMaxInr": 280000,
+   "feeText": null,
+   "websiteUrl": "https://bombayscottish.in/mahim/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mallya-aditi-international-school",
+   "order": 65,
+   "section": "METRO",
+   "name": "Mallya Aditi International School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 350000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://www.aditi.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "la-martiniere-for-boys",
+   "order": 66,
+   "section": "METRO",
+   "name": "La Martiniere for Boys",
+   "city": "Kolkata",
+   "stateCode": "WB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 180000,
+   "feeMaxInr": 280000,
+   "feeText": null,
+   "websiteUrl": "https://lamartiniere.co/laMartiniereForBoys",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "la-martiniere-for-girls",
+   "order": 67,
+   "section": "METRO",
+   "name": "La Martiniere for Girls",
+   "city": "Kolkata",
+   "stateCode": "WB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 180000,
+   "feeMaxInr": 280000,
+   "feeText": null,
+   "websiteUrl": "https://lamartiniere.co/laMartiniereForGirls",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "st-xaviers-collegiate-school",
+   "order": 68,
+   "section": "METRO",
+   "name": "St. Xavier's Collegiate School",
+   "city": "Kolkata",
+   "stateCode": "WB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    },
+    {
+     "code": "STATE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 100000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": "https://www.sxcsccu.edu.in/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "inventure-academy",
+   "order": 69,
+   "section": "METRO",
+   "name": "Inventure Academy",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-KG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 350000,
+   "feeMaxInr": 700000,
+   "feeText": null,
+   "websiteUrl": "https://www.inventureacademy.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "heritage-xperiential-learning-school",
+   "order": 70,
+   "section": "METRO",
+   "name": "Heritage Xperiential Learning School",
+   "city": "Gurugram",
+   "stateCode": "HR",
+   "schoolSlug": "heritage-xperiential-learning-school-2",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://www.heritagexperiential.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "step-by-step-school",
+   "order": 71,
+   "section": "METRO",
+   "name": "Step by Step School",
+   "city": "Noida",
+   "stateCode": "UP",
+   "schoolSlug": "step-by-step-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 500000,
+   "feeText": null,
+   "websiteUrl": "https://stepbystep.school/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-chintels-school",
+   "order": 72,
+   "section": "METRO",
+   "name": "The Chintels School",
+   "city": "Kanpur",
+   "stateCode": "UP",
+   "schoolSlug": null,
+   "campusSearch": "The Chintels School",
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 100000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": "https://chintelsschool.com/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "vidya-mandir-senior-secondary-school",
+   "order": 73,
+   "section": "METRO",
+   "name": "Vidya Mandir Senior Secondary School",
+   "city": "Chennai",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "LKG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 80000,
+   "feeMaxInr": 140000,
+   "feeText": null,
+   "websiteUrl": "https://www.vidya-mandir.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "padma-seshadri-bala-bhavan",
+   "order": 74,
+   "section": "METRO",
+   "name": "Padma Seshadri Bala Bhavan",
+   "city": "Chennai",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 90000,
+   "feeMaxInr": 160000,
+   "feeText": null,
+   "websiteUrl": "https://www.psbbschools.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "chettinad-vidyashram",
+   "order": 75,
+   "section": "METRO",
+   "name": "Chettinad Vidyashram",
+   "city": "Chennai",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Montessori to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 100000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": "https://www.chettinadvidyashram.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-hyderabad-public-school-begumpet",
+   "order": 76,
+   "section": "METRO",
+   "name": "The Hyderabad Public School, Begumpet",
+   "city": "Hyderabad",
+   "stateCode": "TS",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 350000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://www.hpsbegumpet.org.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "vidyashilp-academy",
+   "order": 77,
+   "section": "METRO",
+   "name": "Vidyashilp Academy",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": null,
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "greenwood-high-international-school",
+   "order": 78,
+   "section": "METRO",
+   "name": "Greenwood High International School",
+   "city": "Bengaluru",
+   "stateCode": "KA",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 900000,
+   "feeText": null,
+   "websiteUrl": "https://greenwoodhigh.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "oakridge-international-school",
+   "order": 79,
+   "section": "METRO",
+   "name": "Oakridge International School",
+   "city": "Hyderabad",
+   "stateCode": "TS",
+   "schoolSlug": "oakridge-international-school-s-no-6-and-13-khajaguda-nanakramguda-road",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": false
+    },
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 750000,
+   "feeText": null,
+   "websiteUrl": "https://www.oakridge.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "chirec-international-school",
+   "order": 80,
+   "section": "METRO",
+   "name": "CHIREC International School",
+   "city": "Hyderabad",
+   "stateCode": "TS",
+   "schoolSlug": "chirec-international-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 300000,
+   "feeMaxInr": 600000,
+   "feeText": null,
+   "websiteUrl": "https://www.chirec.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-daly-college",
+   "order": 81,
+   "section": "REGIONAL",
+   "name": "The Daly College",
+   "city": "Indore",
+   "stateCode": "MP",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 700000,
+   "feeMaxInr": 950000,
+   "feeText": null,
+   "websiteUrl": "https://dalycollege.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "rajkumar-college-rajkot",
+   "order": 82,
+   "section": "REGIONAL",
+   "name": "Rajkumar College, Rajkot",
+   "city": "Rajkot",
+   "stateCode": "GJ",
+   "schoolSlug": "rajkumar-college",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 500000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://rkcrajkot.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "rajkumar-college-raipur",
+   "order": 83,
+   "section": "REGIONAL",
+   "name": "Rajkumar College, Raipur",
+   "city": "Raipur",
+   "stateCode": "CG",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 400000,
+   "feeMaxInr": 550000,
+   "feeText": null,
+   "websiteUrl": "https://rajkumarcollege.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "wynberg-allen-school",
+   "order": 84,
+   "section": "REGIONAL",
+   "name": "Wynberg-Allen School",
+   "city": "Mussoorie",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 600000,
+   "feeMaxInr": 750000,
+   "feeText": null,
+   "websiteUrl": "https://was.edupage.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "st-georges-college",
+   "order": 85,
+   "section": "REGIONAL",
+   "name": "St. George's College",
+   "city": "Mussoorie",
+   "stateCode": "UK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 4 to 12",
+   "lowestClass": 4,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 800000,
+   "feeText": null,
+   "websiteUrl": "https://sgconline.ac.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "bhartiya-vidya-bhavan-vidyashram",
+   "order": 86,
+   "section": "REGIONAL",
+   "name": "Bhartiya Vidya Bhavan (Vidyashram)",
+   "city": "Jaipur",
+   "stateCode": "RJ",
+   "schoolSlug": "bhartiya-vidya-bhavan-s-vidyashram",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 120000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": "https://bhavansvidyashram.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "neerja-modi-school",
+   "order": 87,
+   "section": "REGIONAL",
+   "name": "Neerja Modi School",
+   "city": "Jaipur",
+   "stateCode": "RJ",
+   "schoolSlug": "neerja-modi-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 650000,
+   "feeMaxInr": 900000,
+   "feeText": null,
+   "websiteUrl": "https://nmsindia.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "jayshree-periwal-international-school",
+   "order": 88,
+   "section": "REGIONAL",
+   "name": "Jayshree Periwal International School",
+   "city": "Jaipur",
+   "stateCode": "RJ",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 750000,
+   "feeMaxInr": 1100000,
+   "feeText": null,
+   "websiteUrl": "https://jpischool.com/",
+   "websiteChecked": true,
+   "note": "The PDF gave jpis.org.in, which belongs to Jamuna Prasad International School; the school’s own site is jpischool.com.",
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-emerald-heights-international-school",
+   "order": 89,
+   "section": "REGIONAL",
+   "name": "The Emerald Heights International School",
+   "city": "Indore",
+   "stateCode": "MP",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": false
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 550000,
+   "feeMaxInr": 750000,
+   "feeText": null,
+   "websiteUrl": "https://emeraldheights.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-bishops-school",
+   "order": 90,
+   "section": "REGIONAL",
+   "name": "The Bishop's School",
+   "city": "Pune",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 120000,
+   "feeMaxInr": 200000,
+   "feeText": null,
+   "websiteUrl": "https://thebishopsschool.org/tbsweb/Public/Home.aspx",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "mercedes-benz-international-school",
+   "order": 91,
+   "section": "REGIONAL",
+   "name": "Mercedes-Benz International School",
+   "city": "Pune",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Early to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 600000,
+   "feeMaxInr": 1300000,
+   "feeText": null,
+   "websiteUrl": "https://mbis.org/",
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "army-public-school-dhaula-kuan",
+   "order": 92,
+   "section": "REGIONAL",
+   "name": "Army Public School, Dhaula Kuan",
+   "city": "New Delhi",
+   "stateCode": "DL",
+   "schoolSlug": "the-army-public-school",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY_CUM_BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 70000,
+   "feeMaxInr": 150000,
+   "feeText": null,
+   "websiteUrl": "https://apsdk.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "the-asian-school",
+   "order": 93,
+   "section": "REGIONAL",
+   "name": "The Asian School",
+   "city": "Dehradun",
+   "stateCode": "UK",
+   "schoolSlug": "the-asian-school-3",
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 1 to 12",
+   "lowestClass": 1,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 500000,
+   "feeMaxInr": 650000,
+   "feeText": null,
+   "websiteUrl": "https://www.theasianschool.net/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "tashi-namgyal-academy",
+   "order": 94,
+   "section": "REGIONAL",
+   "name": "Tashi Namgyal Academy",
+   "city": "Gangtok",
+   "stateCode": "SK",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "LKG to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 250000,
+   "feeMaxInr": 380000,
+   "feeText": null,
+   "websiteUrl": "https://tashinamgyalacademy.com/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "st-xaviers-high-school-fort",
+   "order": 95,
+   "section": "REGIONAL",
+   "name": "St. Xavier's High School, Fort",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "STATE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "BOYS",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Classes 1 to 10",
+   "lowestClass": 1,
+   "highestClass": 10,
+   "classesConfirmed": false,
+   "feeMinInr": null,
+   "feeMaxInr": null,
+   "feeText": "Nominal (government-aided)",
+   "websiteUrl": "https://www.stxaviersfort.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "seth-m-r-jaipuria-school",
+   "order": 96,
+   "section": "REGIONAL",
+   "name": "Seth M.R. Jaipuria School",
+   "city": "Lucknow",
+   "stateCode": "UP",
+   "schoolSlug": null,
+   "campusSearch": "Seth M.R. Jaipuria School",
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": false,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 120000,
+   "feeMaxInr": 180000,
+   "feeText": null,
+   "websiteUrl": null,
+   "websiteChecked": false,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "city-montessori-school",
+   "order": 97,
+   "section": "REGIONAL",
+   "name": "City Montessori School",
+   "city": "Lucknow",
+   "stateCode": "UP",
+   "schoolSlug": null,
+   "campusSearch": "City Montessori School",
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": true,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 90000,
+   "feeMaxInr": 150000,
+   "feeText": null,
+   "websiteUrl": "https://cmseducation.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "modern-high-school-for-girls",
+   "order": 98,
+   "section": "REGIONAL",
+   "name": "Modern High School for Girls",
+   "city": "Kolkata",
+   "stateCode": "WB",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "GIRLS",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Nursery to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 180000,
+   "feeMaxInr": 400000,
+   "feeText": null,
+   "websiteUrl": "https://mhsforgirls.edu.in/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "g-d-somani-memorial-school",
+   "order": 99,
+   "section": "REGIONAL",
+   "name": "G.D. Somani Memorial School",
+   "city": "Mumbai",
+   "stateCode": "MH",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CISCE",
+     "confirmed": true
+    },
+    {
+     "code": "CAMBRIDGE",
+     "confirmed": false
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "DAY",
+   "residenceConfirmed": false,
+   "classesLabel": "Pre-primary to Class 12",
+   "lowestClass": 0,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 150000,
+   "feeMaxInr": 250000,
+   "feeText": null,
+   "websiteUrl": "https://gdsomani.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  },
+  {
+   "key": "chinmaya-international-residential-school",
+   "order": 100,
+   "section": "REGIONAL",
+   "name": "Chinmaya International Residential School",
+   "city": "Coimbatore",
+   "stateCode": "TN",
+   "schoolSlug": null,
+   "campusSearch": null,
+   "boards": [
+    {
+     "code": "CBSE",
+     "confirmed": true
+    },
+    {
+     "code": "IB",
+     "confirmed": true
+    }
+   ],
+   "curriculumNote": null,
+   "gender": "CO_ED",
+   "genderConfirmed": true,
+   "residence": "BOARDING",
+   "residenceConfirmed": true,
+   "classesLabel": "Classes 5 to 12",
+   "lowestClass": 5,
+   "highestClass": 12,
+   "classesConfirmed": false,
+   "feeMinInr": 750000,
+   "feeMaxInr": 1050000,
+   "feeText": null,
+   "websiteUrl": "https://cirschool.org/",
+   "websiteChecked": true,
+   "note": null,
+   "checkedOn": "2026-11-11"
+  }
+ ]
+}

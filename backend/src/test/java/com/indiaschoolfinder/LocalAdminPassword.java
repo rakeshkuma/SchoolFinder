@@ -41,8 +41,10 @@ public final class LocalAdminPassword {
         System.setProperty("app.jwt.secret", "local-admin-tool-only-not-used-for-any-token-0123456789");
         System.setProperty("app.scheduling.enabled", "false");
         System.setProperty("app.seed.enabled", "false");
+        // Member sign-in needs the servlet session store, so start a web context on a free port and close it again.
+        System.setProperty("server.port", "0");
         try (ConfigurableApplicationContext ctx = new SpringApplicationBuilder(IndiaSchoolFinderApplication.class)
-                .web(WebApplicationType.NONE).profiles("dev").run()) {
+                .web(WebApplicationType.SERVLET).profiles("dev").run()) {
             AdminUserRepository users = ctx.getBean(AdminUserRepository.class);
             PasswordEncoder encoder = ctx.getBean(PasswordEncoder.class);
             AdminUser user = users.findByUsernameIgnoreCase(username).orElseGet(() -> {

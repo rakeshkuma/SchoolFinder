@@ -1,0 +1,70 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kavaratti-u-t",
+   "facts": {
+    "city": {
+     "name": "Kavaratti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3200001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAVARATTI U.T. OF LAKSHADWEEP LAKSHADWEEP\", PIN 682555."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-minicoy",
+   "facts": {
+    "city": {
+     "name": "Minicoy",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3240001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINICOY P.O LAKSHADWEEP 682559\", PIN 682559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sr-sec-school-minicoy-682-559",
+   "facts": {
+    "city": {
+     "name": "Minicoy",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3220001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINICOY LAKSHADWEEP - 682 559\", PIN 682559."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-senior-secondary-school-kavaratti-u-t-682-555-via-hpo-kochi-kerala",
+   "facts": {
+    "city": {
+     "name": "Kavaratti",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3220002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAVARATTI LAKSHADWEEP(U.T) - 682 555 VIA HPO KOCHI KERALA\", PIN 682555."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-sec-school-minicoy-minicoy-ut-lakshdweep",
+   "facts": {
+    "city": {
+     "name": "Minicoy",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3220004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MINICOY POST MINICOY UT LAKSHDWEEP\", PIN 682559."
+     }
+    }
+   }
+  }
+ ]
+}

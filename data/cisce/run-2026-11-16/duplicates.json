@@ -1,0 +1,2144 @@
+[
+ {
+  "code": "AP022",
+  "name": "Gitanjali School",
+  "city": "Hyderabad",
+  "pin": "500016",
+  "website": "https://www.gitanjalischools.com",
+  "matches": {
+   "id": 12419,
+   "name": "Gitanjali High School",
+   "board": "CBSE",
+   "city": "Hyderabad",
+   "pin": "500043",
+   "web": "https://gisbowrampet.com/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "AP044",
+  "name": "Timpany School",
+  "city": "Visakhapatnam",
+  "pin": "530003",
+  "website": "https://www.timpanyschool.in",
+  "matches": {
+   "id": 19898,
+   "name": "Timpany Secondary School",
+   "board": "CBSE",
+   "city": "Visakhapatnam",
+   "pin": "530003",
+   "web": "http://www.timpanyseniorsecondaryschool.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "BI015",
+  "name": "International School",
+  "city": "Patna",
+  "pin": "800013",
+  "website": "https://international-school.in",
+  "matches": {
+   "id": 14344,
+   "name": "International School",
+   "board": "CBSE",
+   "city": "Patna",
+   "pin": "800013",
+   "web": "http://internationalschoolpatna.com/index.php",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "BI024",
+  "name": "St. Xavier's High School",
+  "city": "Patna",
+  "pin": "800001",
+  "website": "https://www.stxavierspatna.in",
+  "matches": {
+   "id": 6900,
+   "name": "St. Xavier's High School, Patna",
+   "board": null,
+   "city": "Patna",
+   "pin": "800001",
+   "web": "https://www.stxavierspatna.in/",
+   "similarity": 0.67,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "BI029",
+  "name": "St. Paul's School",
+  "city": "Bhagalpur",
+  "pin": "812004",
+  "website": "https://www.spsbhagalpur.com",
+  "matches": {
+   "id": 15230,
+   "name": "St. Pauls Academy",
+   "board": "CBSE",
+   "city": "Bhagalpur",
+   "pin": "812006",
+   "web": "http://www.spadariyapur.com/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "BI043",
+  "name": "St. Paul's Academy",
+  "city": "Hajipur",
+  "pin": "844101",
+  "website": "https://www.stpaulsacademyhajipur.in",
+  "matches": {
+   "id": 14272,
+   "name": "St. Paul's High School",
+   "board": "CBSE",
+   "city": "Hajipur",
+   "pin": "844101",
+   "web": "http://www.stpaulshajipur.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "BI046",
+  "name": "Darbhanga Junior Public School",
+  "city": "Darbhanga",
+  "pin": "846008",
+  "website": "https://www.schooldjps.com/",
+  "matches": {
+   "id": 14517,
+   "name": "Darbhanga Public School",
+   "board": "CBSE",
+   "city": "Darbhanga",
+   "pin": "846005",
+   "web": "http://www.dapsdbg.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "GU014",
+  "name": "Zydus School For Excellence",
+  "city": "Ahmedabad",
+  "pin": "380058",
+  "website": "https://www.zydusschool.org",
+  "matches": {
+   "id": 10630,
+   "name": "Zydus School For Excellence",
+   "board": "CBSE",
+   "city": "Ahmedabad",
+   "pin": "382115",
+   "web": "http://www.zydusschool.org",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "GU044",
+  "name": "New Era Global School",
+  "city": "Rajkot",
+  "pin": "363641",
+  "website": "https://www.neweraglobalschool.org",
+  "matches": {
+   "id": 10810,
+   "name": "New Era Global School",
+   "board": "CBSE",
+   "city": "Rajkot",
+   "pin": "363640",
+   "web": "http://www.neweraglobalschool.org",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "HA011",
+  "name": "Adarsh Public School",
+  "city": "Karnal",
+  "pin": "132001",
+  "website": "https://www.adarshschools.com",
+  "matches": {
+   "id": 29739,
+   "name": "Adarsh Public Senior Secondary School",
+   "board": "CBSE",
+   "city": "Karnal",
+   "pin": "132054",
+   "web": "http://www.apsssgbl.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "HA017",
+  "name": "Rishi Public School",
+  "city": "Gurugram",
+  "pin": "122001",
+  "website": "https://https://www.rishischool.com",
+  "matches": {
+   "id": 19366,
+   "name": "Rishi Public School",
+   "board": "CBSE",
+   "city": "Gurugram",
+   "pin": "122001",
+   "web": "https://rishischool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "HA021",
+  "name": "The Shri Ram School",
+  "city": "Gurugram",
+  "pin": "122002",
+  "website": "https://www.tsrs.org",
+  "matches": {
+   "id": 6901,
+   "name": "The Shri Ram School, Aravali",
+   "board": "CISCE",
+   "city": "Gurugram",
+   "pin": null,
+   "web": "https://www.tsrs.org/aravali-campus",
+   "similarity": 0.67,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "HA045",
+  "name": "Lord Krishna Convent School",
+  "city": "Gurugram",
+  "pin": "122001",
+  "website": "https://www.lordkrishnaconventschool.com",
+  "matches": {
+   "id": 19040,
+   "name": "Lord Krishna International School",
+   "board": "CBSE",
+   "city": "Gurugram",
+   "pin": "123503",
+   "web": "http://www.lkisjmp.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "HP004",
+  "name": "Bishop Cotton School",
+  "city": "Shimla",
+  "pin": "171002",
+  "website": "https://www.bishopcottonshimla.com",
+  "matches": {
+   "id": 19419,
+   "name": "Bishop Cotton School",
+   "board": "CISCE",
+   "city": "Shimla",
+   "pin": null,
+   "web": "https://bishopcottonshimla.com/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "HP036",
+  "name": "St Luke's School",
+  "city": "Solan",
+  "pin": "173205",
+  "website": "https://www.stlukeschoolbaddi.com",
+  "matches": {
+   "id": 9476,
+   "name": "St. Luke's Senior Secondary School",
+   "board": "CBSE",
+   "city": "Solan",
+   "pin": "173212",
+   "web": "http://www.stlukesschoolhp.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "JH020",
+  "name": "Loyola School",
+  "city": "Jamshedpur",
+  "pin": "831001",
+  "website": "https://www.loyolajsr.com",
+  "matches": {
+   "id": 6899,
+   "name": "Loyola School, Jamshedpur",
+   "board": "CISCE",
+   "city": "Jamshedpur",
+   "pin": "831001",
+   "web": "https://loyolajsr.com/",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "JH028",
+  "name": "Bishop Westcott Boys' School",
+  "city": "Ranchi",
+  "pin": "834010",
+  "website": "https://www.bishopwestcottboysschool.com",
+  "matches": {
+   "id": 6896,
+   "name": "Bishop Westcott Boys' School, Namkum",
+   "board": "CISCE",
+   "city": "Ranchi",
+   "pin": "834010",
+   "web": "https://bishopwestcottboysschool.com/",
+   "similarity": 0.67,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA017",
+  "name": "St. Joseph's Boys High School",
+  "city": "Bengaluru",
+  "pin": "560025",
+  "website": "https://www.sjbhs.edu.in",
+  "matches": {
+   "id": 19422,
+   "name": "St. Joseph's Boys' High School",
+   "board": null,
+   "city": "Bengaluru",
+   "pin": null,
+   "web": "https://sjbhs.edu.in/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA018",
+  "name": "Cambridge School",
+  "city": "Bengaluru",
+  "pin": "560036",
+  "website": "https://www.cambridge-school.edu.in",
+  "matches": {
+   "id": 21268,
+   "name": "Cambridge CBSE Academy",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560064",
+   "web": "http://www.cambridgeyelahanka.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA020",
+  "name": "The Valley School",
+  "city": "Bengaluru",
+  "pin": "560062",
+  "website": "https://www.thevalleyschool.info",
+  "matches": {
+   "id": 19446,
+   "name": "The Valley School",
+   "board": "CISCE",
+   "city": "Bengaluru",
+   "pin": null,
+   "web": "https://www.thevalleyschool.info/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA030",
+  "name": "The Oxford English School",
+  "city": "Bengaluru",
+  "pin": "560078",
+  "website": "https://www.theoxford.edu",
+  "matches": {
+   "id": 23033,
+   "name": "The Oxford Senior Secondary School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560078",
+   "web": "http://www.tosss.edu.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA048",
+  "name": "Sri Kumaran Public School",
+  "city": "Bengaluru",
+  "pin": "560062",
+  "website": "https://www.kumarans.org",
+  "matches": {
+   "id": 22183,
+   "name": "Sri Kumaran Childrens Academy",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560062",
+   "web": "http://www.kumarans.org",
+   "similarity": 0.67,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA051",
+  "name": "Ekya School",
+  "city": "Bengaluru",
+  "pin": "560078",
+  "website": "https://www.ekyaschools.com",
+  "matches": {
+   "id": 22243,
+   "name": "Ekya School, Btm Layout",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560076",
+   "web": "http://www.ekyaschools.com",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA058",
+  "name": "St. Thomas Public School",
+  "city": "Bengaluru",
+  "pin": "560075",
+  "website": "https://www.stthomaspublicschool.in",
+  "matches": {
+   "id": 20455,
+   "name": "St Thomas School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560066",
+   "web": "https://www.stthomasschoolwhitefield.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA064",
+  "name": "Sri Vani Public School",
+  "city": "Bengaluru",
+  "pin": "560010",
+  "website": "https://www.srivani.edu.in",
+  "matches": {
+   "id": 22107,
+   "name": "Srivani Education Centre School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560091",
+   "web": "http://www.srivani.edu.in",
+   "similarity": 0,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA065",
+  "name": "Mysore Public School",
+  "city": "Mysuru",
+  "pin": "570008",
+  "website": "https://mysorepublicschool.com",
+  "matches": {
+   "id": 21240,
+   "name": "Mysore International School",
+   "board": "CBSE",
+   "city": "Mysuru",
+   "pin": "570008",
+   "web": "http://www.mysoreinternationalschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA076",
+  "name": "The New Cambridge English School",
+  "city": "Bengaluru",
+  "pin": "560104",
+  "website": "https://www.tncicse.org",
+  "matches": {
+   "id": 21331,
+   "name": "New Cambridge Public School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560100",
+   "web": "http://www.newcambridgepublicschool.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA077",
+  "name": "St. Philomena's English Primary School",
+  "city": "Bengaluru",
+  "pin": "560097",
+  "website": "https://www.stphilomenasschool.co",
+  "matches": {
+   "id": 20371,
+   "name": "St. Philomenas Public School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560089",
+   "web": "https://stphilomenaspublicschoolcbse.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA082",
+  "name": "EuroSchool",
+  "city": "Bengaluru",
+  "pin": "560102",
+  "website": "https://www.euroschoolindia.com",
+  "matches": {
+   "id": 20321,
+   "name": "Euro School, Srinivasapura",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "562149",
+   "web": "http://www.euroschoolindia.com",
+   "similarity": 0,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA087",
+  "name": "Vidyashilp Academy",
+  "city": "Bengaluru",
+  "pin": "560064",
+  "website": "https://www.vidyashilp.com",
+  "matches": {
+   "id": 19465,
+   "name": "Vidyashilp Academy",
+   "board": null,
+   "city": "Bengaluru",
+   "pin": null,
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA094",
+  "name": "Holy Angel's High School",
+  "city": "Bengaluru",
+  "pin": "560040",
+  "website": "https://holyangelshighschool.org",
+  "matches": {
+   "id": 24136,
+   "name": "Holy Angels School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560005",
+   "web": "http://www.holyangelssjt.org/index.html",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA120",
+  "name": "Sarala Birla Academy",
+  "city": "Bengaluru",
+  "pin": "560083",
+  "website": "https://www.saralabirlaacademy.org",
+  "matches": {
+   "id": 19421,
+   "name": "Sarala Birla Academy",
+   "board": "CISCE",
+   "city": "Bengaluru",
+   "pin": null,
+   "web": "https://www.saralabirlaacademy.com/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA126",
+  "name": "Prakriya Green Wisdom School",
+  "city": "Bengaluru",
+  "pin": "560035",
+  "website": "https://www.prakriyaschool.edu.in",
+  "matches": {
+   "id": 19450,
+   "name": "Prakriya Green Wisdom School",
+   "board": null,
+   "city": "Bengaluru",
+   "pin": null,
+   "web": "https://prakriyaschool.edu.in/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA128",
+  "name": "Sri Vani Education Centre",
+  "city": "Bengaluru",
+  "pin": "560079",
+  "website": "https://www.srivani.edu.in",
+  "matches": {
+   "id": 22107,
+   "name": "Srivani Education Centre School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560091",
+   "web": "http://www.srivani.edu.in",
+   "similarity": 0.25,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA153",
+  "name": "Greenwood High",
+  "city": "Bengaluru",
+  "pin": "560087",
+  "website": "https://www.greenwoodhigh.org",
+  "matches": {
+   "id": 19466,
+   "name": "Greenwood High International School",
+   "board": null,
+   "city": "Bengaluru",
+   "pin": null,
+   "web": "https://greenwoodhigh.edu.in/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA157",
+  "name": "Shantiniketan Trust School",
+  "city": "Bengaluru",
+  "pin": "560076",
+  "website": "https://www.shantiniketan.edu.in",
+  "matches": {
+   "id": 22333,
+   "name": "Shantiniketan Trust School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "560076",
+   "web": "https://www.seicentralschool.in/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA186",
+  "name": "Holy Spirit School",
+  "city": "Bengaluru",
+  "pin": "560076",
+  "website": "https://www.holyspiritedu.com",
+  "matches": {
+   "id": 22343,
+   "name": "Holy Spirit School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "560076",
+   "web": "https://holyspiritschoolcbse.com/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA200",
+  "name": "Vibgyor High",
+  "city": "Bengaluru",
+  "pin": "560066",
+  "website": "https://www.vibgyorhigh.com",
+  "matches": {
+   "id": 21285,
+   "name": "Vibgyor High School, Vittasandra",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560114",
+   "web": "http://www.vibgyorhigh.com",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA226",
+  "name": "Sri Taralabalu School",
+  "city": "Davanagere",
+  "pin": "577004",
+  "website": "https://www.abmicse.org",
+  "matches": {
+   "id": 23178,
+   "name": "Sri Taralabalu Public School",
+   "board": "CBSE",
+   "city": "Davanagere",
+   "pin": "577601",
+   "web": "https://www.stjcbsehrr.org/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA265",
+  "name": "Mary Immaculate School",
+  "city": "Bengaluru",
+  "pin": "560030",
+  "website": "https://www.maryimmaculateschool.in",
+  "matches": {
+   "id": 24111,
+   "name": "Mary Immaculate School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "562149",
+   "web": "http://www.misbagalur.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA275",
+  "name": "Akash International Residential Public School",
+  "city": "Bengaluru",
+  "pin": "562110",
+  "website": "https://www.akashinternationalschool.com",
+  "matches": {
+   "id": 21220,
+   "name": "Akash International Residential Public School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "562110",
+   "web": "http://www.akashinternationalschool.com",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA326",
+  "name": "M. E. C. Public School",
+  "city": "Bengaluru",
+  "pin": "560064",
+  "website": "https://www.icse-mec.in",
+  "matches": {
+   "id": 22146,
+   "name": "M.e.c. Public School",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560064",
+   "web": "http://www.mec-edu.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA361",
+  "name": "Smt. Pushpa Shamanur Mahalingappa Residential School",
+  "city": "Davanagere",
+  "pin": "577566",
+  "website": "https://www.spsmrs.org",
+  "matches": {
+   "id": 23993,
+   "name": "Smt Pushpa Shamanur Mahalingappa Residential School",
+   "board": "CBSE",
+   "city": "Davanagere",
+   "pin": "577004",
+   "web": "http://www.cbse.spsmrs.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA406",
+  "name": "SRI CHAITANYA TECHNO SCHOOL (ICSE)",
+  "city": "Bengaluru",
+  "pin": "560099",
+  "website": "https://www.Sorsfort.edu.in",
+  "matches": {
+   "id": 21203,
+   "name": "Sri Chaitanya Techno School, Lakshminarayanapura",
+   "board": "CBSE",
+   "city": null,
+   "pin": "560099",
+   "web": "http://www.srichaitanyatechnoschoolelectroniccity.com",
+   "similarity": 0.75,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA418",
+  "name": "Vibgyor High",
+  "city": "Bengaluru",
+  "pin": "560077",
+  "website": "https://www.vibgyorhigh.com",
+  "matches": {
+   "id": 20478,
+   "name": "Vibgyor High School, Byrathi",
+   "board": "CBSE",
+   "city": null,
+   "pin": "560077",
+   "web": "http://www.vibgyorhigh.com/school/bengaluru/cbse/hennur",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KA429",
+  "name": "Sri B. M. Patil Public School",
+  "city": "Vijayapura",
+  "pin": "586109",
+  "website": "https://www.bldeasbmppsj.in",
+  "matches": {
+   "id": 21216,
+   "name": "Sri B. M. Patil Public School",
+   "board": "CBSE",
+   "city": "Vijayapura",
+   "pin": "586103",
+   "web": "http://www.bldeasbmpps.ac.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA527",
+  "name": "National Academy For Learning",
+  "city": "Bengaluru",
+  "pin": "560064",
+  "website": "https://https://nafljakkur.in/",
+  "matches": {
+   "id": 24900,
+   "name": "National Academy For Learning",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560079",
+   "web": "http://www.naflnorth.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA529",
+  "name": "Ekya School",
+  "city": "Bengaluru",
+  "pin": "560077",
+  "website": "https://www.ekyaschools.com",
+  "matches": {
+   "id": 22243,
+   "name": "Ekya School, Btm Layout",
+   "board": "CBSE",
+   "city": "Bengaluru",
+   "pin": "560076",
+   "web": "http://www.ekyaschools.com",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KE026",
+  "name": "Mar Thoma Residential School",
+  "city": "Pathanamthitta",
+  "pin": "689111",
+  "website": "https://mtrschool.org",
+  "matches": {
+   "id": 24232,
+   "name": "Mar Thoma Senior Secondary School",
+   "board": "CBSE",
+   "city": "Pathanamthitta",
+   "pin": "689641",
+   "web": "http://www.mtsskzy.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KE030",
+  "name": "Loyola School",
+  "city": "Thiruvananthapuram",
+  "pin": "695017",
+  "website": "https://www.loyolaschooltrivandrum.com",
+  "matches": {
+   "id": 20572,
+   "name": "Loyola School",
+   "board": "CBSE",
+   "city": "Thiruvananthapuram",
+   "pin": "695017",
+   "web": "http://www.loyolaschooltrivandrum.com",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KE084",
+  "name": "Trivandrum International School",
+  "city": "Thiruvananthapuram",
+  "pin": "695104",
+  "website": "https://www.trins.org",
+  "matches": {
+   "id": 19442,
+   "name": "Trivandrum International School",
+   "board": "CISCE",
+   "city": "Thiruvananthapuram",
+   "pin": null,
+   "web": "https://trins.org/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "KE112",
+  "name": "K. E. Carmel School",
+  "city": "Alappuzha",
+  "pin": "688504",
+  "website": "https://www.kecspulincunnoo.ac.in",
+  "matches": {
+   "id": 22520,
+   "name": "K E Carmel Public School, Kainakary",
+   "board": "CBSE",
+   "city": "Alappuzha",
+   "pin": "688501",
+   "web": "http://www.kecarmelkainakary.in",
+   "similarity": 0.75,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KE131",
+  "name": "Carmel International School",
+  "city": "Alappuzha",
+  "pin": "688004",
+  "website": "https://www.carmelins.in",
+  "matches": {
+   "id": 24392,
+   "name": "Carmel English Medium School",
+   "board": "CBSE",
+   "city": "Alappuzha",
+   "pin": "688562",
+   "web": "http://www.carmelschoolthakazhy.ac.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA004",
+  "name": "Bombay Scottish School",
+  "city": "Mumbai",
+  "pin": "400016",
+  "website": "https://www.bombayscottish.in",
+  "matches": {
+   "id": 19455,
+   "name": "Bombay Scottish School",
+   "board": null,
+   "city": "Mumbai",
+   "pin": null,
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA034",
+  "name": "The Bishop's School",
+  "city": "Pune",
+  "pin": "411001",
+  "website": "https://www.thebishopsschool.org",
+  "matches": {
+   "id": 19473,
+   "name": "The Bishop's School",
+   "board": "CISCE",
+   "city": "Pune",
+   "pin": null,
+   "web": "https://thebishopsschool.org/tbsweb/Public/Home.aspx",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA096",
+  "name": "Podar International School",
+  "city": "Pune",
+  "pin": "411018",
+  "website": "https://www.podareducation.org/school/pimpri",
+  "matches": {
+   "id": 30639,
+   "name": "Podar International School- Wagholi",
+   "board": "CBSE",
+   "city": "Pune",
+   "pin": "412207",
+   "web": "http://www.podareducation.org/school/wagholi",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA108",
+  "name": "Omkar International School",
+  "city": "Dombivli",
+  "pin": "421203",
+  "website": "https://www.omkaricse.in",
+  "matches": {
+   "id": 32444,
+   "name": "Omkar English Medium School",
+   "board": "CBSE",
+   "city": "Dombivli",
+   "pin": "421203",
+   "web": "http://www.omkarcbse.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA118",
+  "name": "The Bishop's Co - Ed. School",
+  "city": "Pune",
+  "pin": "411060",
+  "website": "https://www.thebishopsschool.org",
+  "matches": {
+   "id": 19473,
+   "name": "The Bishop's School",
+   "board": "CISCE",
+   "city": "Pune",
+   "pin": null,
+   "web": "https://thebishopsschool.org/tbsweb/Public/Home.aspx",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA123",
+  "name": "Vishwajyot High School",
+  "city": "Navi Mumbai",
+  "pin": "410210",
+  "website": "https://www.vishwajyot.com",
+  "matches": {
+   "id": 30070,
+   "name": "Vishwajyot High School",
+   "board": "CBSE",
+   "city": "Navi Mumbai",
+   "pin": "410210",
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA135",
+  "name": "Podar International School",
+  "city": "Navi Mumbai",
+  "pin": "400706",
+  "website": "https://www.podareducation.org",
+  "matches": {
+   "id": 31116,
+   "name": "Podar International School, Nerul",
+   "board": "CBSE",
+   "city": "Navi Mumbai",
+   "pin": "400706",
+   "web": "http://www.podareducation.org/school/nerulcbse",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA187",
+  "name": "Vibgyor High",
+  "city": "Pune",
+  "pin": "411045",
+  "website": "https://www.vibgyorhigh.com",
+  "matches": {
+   "id": 30258,
+   "name": "Vibgyor High School, Bhumkar Das Gugre Road New Midc Road",
+   "board": "CBSE",
+   "city": "Pune",
+   "pin": "411057",
+   "web": "https://www.vibgyorhigh.com/school/pune/cbse/hinjewadi",
+   "similarity": 0.14,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA200",
+  "name": "Lodha World School",
+  "city": "Dombivli",
+  "pin": "421204",
+  "website": "https://www.lodhaworldschoolpalava.com",
+  "matches": {
+   "id": 32084,
+   "name": "Lodha World School",
+   "board": "CBSE",
+   "city": "Dombivli",
+   "pin": "421204",
+   "web": "https://www.lodhaworldschool.com/lsgpalava/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA205",
+  "name": "EuroSchool",
+  "city": "Thane",
+  "pin": "400607",
+  "website": "https://www.euroschoolindia.com",
+  "matches": {
+   "id": 31240,
+   "name": "Euroschool, Survey No S 55 8",
+   "board": "CBSE",
+   "city": "Thane",
+   "pin": "421302",
+   "web": "https://www.euroschoolindia.com/upper-thane/",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA221",
+  "name": "Vibgyor High School",
+  "city": "Pune",
+  "pin": "411013",
+  "website": "https://www.vibgyorhigh.com",
+  "matches": {
+   "id": 30258,
+   "name": "Vibgyor High School, Bhumkar Das Gugre Road New Midc Road",
+   "board": "CBSE",
+   "city": "Pune",
+   "pin": "411057",
+   "web": "https://www.vibgyorhigh.com/school/pune/cbse/hinjewadi",
+   "similarity": 0.14,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA229",
+  "name": "D Y Patil International School",
+  "city": "Pune",
+  "pin": "412105",
+  "website": "https://www.dypispune.in",
+  "matches": {
+   "id": 30252,
+   "name": "D Y Patil Dnyanshanti School",
+   "board": "CBSE",
+   "city": "Pune",
+   "pin": "411044",
+   "web": "https://dypdss.edu.in/",
+   "similarity": 0.75,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA234",
+  "name": "The World School",
+  "city": "Jalgaon",
+  "pin": "425201",
+  "website": "https://www.kolteworldschool.com",
+  "matches": {
+   "id": 32148,
+   "name": "The World International School",
+   "board": "CBSE",
+   "city": "Jalgaon",
+   "pin": "424203",
+   "web": "https://www.twischoolpimpalgaon.in/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA293",
+  "name": "Vibgyor High School",
+  "city": "Navi Mumbai",
+  "pin": "400708",
+  "website": "https://www.vibgyorhigh.com",
+  "matches": {
+   "id": 32080,
+   "name": "Vibgyor High, Sector 15",
+   "board": "CBSE",
+   "city": "Navi Mumbai",
+   "pin": "410210",
+   "web": "http://www.vibgyorhigh.com",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "MA298",
+  "name": "Sanjo Public School",
+  "city": "Chandrapur",
+  "pin": "441205",
+  "website": "https://sanjopublicschoolnagbhid.com",
+  "matches": {
+   "id": 30113,
+   "name": "Sanjo Convent School",
+   "board": "CBSE",
+   "city": "Chandrapur",
+   "pin": "442702",
+   "web": "http://www.sanjocscbse.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MA299",
+  "name": "St. Joseph High School",
+  "city": "Pune",
+  "pin": "411008",
+  "website": "https://https://stjosephpashan.com/",
+  "matches": {
+   "id": 32593,
+   "name": "St. Joseph International School",
+   "board": "CBSE",
+   "city": "Pune",
+   "pin": "412210",
+   "web": "https://www.stjosephinternationalschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MP023",
+  "name": "Mount Carmel School",
+  "city": "Bhopal",
+  "pin": "462026",
+  "website": "https://www.mountcarmelbpl.com",
+  "matches": {
+   "id": 29118,
+   "name": "Mount Carmel Convent School",
+   "board": "CBSE",
+   "city": "Bhopal",
+   "pin": "462042",
+   "web": "https://mountcarmelkolar.edu.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MP043",
+  "name": "Shri G. International School",
+  "city": "Indore",
+  "pin": "452006",
+  "website": "https://www.shriginternationalschool.in",
+  "matches": {
+   "id": 27470,
+   "name": "The SHRI-G International School",
+   "board": "CBSE",
+   "city": "Indore",
+   "pin": "452002",
+   "web": "http://www.theshriginternationalschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "MP051",
+  "name": "Christ School",
+  "city": "Bhopal",
+  "pin": "462022",
+  "website": "https://www.christacademybhopal.org",
+  "matches": {
+   "id": 16467,
+   "name": "Christ Memorial Higher Secondary School",
+   "board": "CBSE",
+   "city": "Bhopal",
+   "pin": "462030",
+   "web": "http://www.christmemorialschool.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "PU138",
+  "name": "Sri Guru Harkrishan Public School",
+  "city": "Amritsar",
+  "pin": "143001",
+  "website": "https://www.sghpsgoldenavenue.com",
+  "matches": {
+   "id": 32223,
+   "name": "Sri Guru Harkrishan Intl School",
+   "board": "CBSE",
+   "city": "Amritsar",
+   "pin": "143001",
+   "web": "http://www.sghi.in",
+   "similarity": 0.75,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "PU151",
+  "name": "Shri Ram Ashram Senior Secondary School",
+  "city": "Amritsar",
+  "pin": "143001",
+  "website": "https://www.shriramashramssschool.org",
+  "matches": {
+   "id": 30839,
+   "name": "SHRI Ram Ashram Public School",
+   "board": "CBSE",
+   "city": "Amritsar",
+   "pin": "143001",
+   "web": "http://www.shriramashramps.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "PU240",
+  "name": "Seth Hukam Chand S.d. Public School",
+  "city": "Jalandhar",
+  "pin": "144008",
+  "website": "https://www.shckpt.in",
+  "matches": {
+   "id": 32170,
+   "name": "Seth Hukam Chand S D Public School",
+   "board": "CBSE",
+   "city": "Jalandhar",
+   "pin": "144008",
+   "web": "http://www.sethhukumchandschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "RA016",
+  "name": "St. Paul's School",
+  "city": "Chittorgarh",
+  "pin": "312601",
+  "website": "https://www.stpaulsnimbahera.co.in",
+  "matches": {
+   "id": 15794,
+   "name": "St. Pauls Sr Sec School",
+   "board": "CBSE",
+   "city": "Chittorgarh",
+   "pin": "312001",
+   "web": "http://www.stpaulschittorgarh.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN016",
+  "name": "Good Shepherd International School",
+  "city": "Ootacamund",
+  "pin": "643004",
+  "website": "https://http://www.gsis.ac.in",
+  "matches": {
+   "id": 19433,
+   "name": "Good Shepherd International School",
+   "board": "CISCE",
+   "city": "Ootacamund",
+   "pin": null,
+   "web": "https://gsis.ac.in/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN044",
+  "name": "The Vikasa School",
+  "city": "Thoothukudi",
+  "pin": "628008",
+  "website": "https://www.vikasaschool.com",
+  "matches": {
+   "id": 20127,
+   "name": "The Vikasa School",
+   "board": "CBSE",
+   "city": "Thoothukudi",
+   "pin": "628251",
+   "web": "http://www.thevikasaschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN059",
+  "name": "Isha Home School",
+  "city": "Coimbatore",
+  "pin": "641114",
+  "website": "https://www.ishahomeschool.org",
+  "matches": {
+   "id": 19447,
+   "name": "Isha Home School",
+   "board": "CISCE",
+   "city": "Coimbatore",
+   "pin": null,
+   "web": "https://isha.sadhguru.org/isha-home-school",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN073",
+  "name": "Stanes School",
+  "city": "Coimbatore",
+  "pin": "641018",
+  "website": "https://www.stanesschool.org",
+  "matches": {
+   "id": 21002,
+   "name": "Stanes School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "641018",
+   "web": "http://www.stanesschool.org",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "TN112",
+  "name": "Rak's Pallikkoodam",
+  "city": "Coimbatore",
+  "pin": "641014",
+  "website": "https://www.rakspallikkoodam.com",
+  "matches": {
+   "id": 20188,
+   "name": "Rak's Pallikkoodam",
+   "board": "CBSE",
+   "city": null,
+   "pin": "641014",
+   "web": "http://www.rakspallikkoodam.com",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "TN115",
+  "name": "Karthi Vidhyalaya International School",
+  "city": "Kumbakonam",
+  "pin": "612501",
+  "website": "https://www.karthividhyalayainternationalschool.com",
+  "matches": {
+   "id": 24820,
+   "name": "Karthi Vidhyalaya Public School",
+   "board": "CBSE",
+   "city": "Kumbakonam",
+   "pin": "612501",
+   "web": "http://www.karthividhyalaya.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN146",
+  "name": "Sunbeam International School",
+  "city": "Vellore",
+  "pin": "632006",
+  "website": "https://www.sbisvellore.com",
+  "matches": {
+   "id": 23711,
+   "name": "Sunbeam School",
+   "board": "CBSE",
+   "city": "Vellore",
+   "pin": "632059",
+   "web": "http://www.sunbeamcbse.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "TN158",
+  "name": "Kingston Icse School",
+  "city": "Vellore",
+  "pin": "632006",
+  "website": "https://www.icse.kingston.ac.in",
+  "matches": {
+   "id": 21938,
+   "name": "Kingston International Academy",
+   "board": "CBSE",
+   "city": "Vellore",
+   "pin": "632059",
+   "web": "http://cbse.kingston.ac.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP009",
+  "name": "Boys' High School & College",
+  "city": "Prayagraj",
+  "pin": "211001",
+  "website": "https://www.boyshighschool.com",
+  "matches": {
+   "id": 2516,
+   "name": "Boys' High School and College",
+   "board": "CISCE",
+   "city": "Prayagraj",
+   "pin": "211001",
+   "web": "https://boyshighschool.com/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP010",
+  "name": "Girls' High School & College",
+  "city": "Prayagraj",
+  "pin": "211001",
+  "website": "https://ghsallahabad.org",
+  "matches": {
+   "id": 2516,
+   "name": "Boys' High School and College",
+   "board": "CISCE",
+   "city": "Prayagraj",
+   "pin": "211001",
+   "web": "https://boyshighschool.com/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP011",
+  "name": "St. Joseph's College",
+  "city": "Prayagraj",
+  "pin": "211001",
+  "website": "https://www.sjcallahabad.org",
+  "matches": {
+   "id": 2515,
+   "name": "St. Joseph's College",
+   "board": "CISCE",
+   "city": "Prayagraj",
+   "pin": "211001",
+   "web": "https://www.sjcallahabad.org/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP013",
+  "name": "Bishop Johnson School & College",
+  "city": "Prayagraj",
+  "pin": "211001",
+  "website": "https://www.bjscprayagraj.org",
+  "matches": {
+   "id": 6799,
+   "name": "Bishop Johnson Girls School & College",
+   "board": "CBSE",
+   "city": "Prayagraj",
+   "pin": "211002",
+   "web": "http://www.bjgsc.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP050",
+  "name": "St. Francis' College",
+  "city": "Lucknow",
+  "pin": "226001",
+  "website": "https://www.stfrancislucknow.com",
+  "matches": {
+   "id": 2514,
+   "name": "St. Francis' College",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://stfrancislucknow.com/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP061",
+  "name": "City Montessori High School",
+  "city": "Lucknow",
+  "pin": "226004",
+  "website": "https://www.cmseducation.org",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP062",
+  "name": "City Montessori Inter College",
+  "city": "Lucknow",
+  "pin": "226003",
+  "website": "https://www.cmseducation.org",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP064",
+  "name": "City Montessori Inter College",
+  "city": "Lucknow",
+  "pin": "226011",
+  "website": "https://cmseducation.org",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP090",
+  "name": "City Montessori Inter College",
+  "city": "Lucknow",
+  "pin": "226024",
+  "website": "https://cmseducation.org/aliganj1",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP097",
+  "name": "Seth M. R. Jaipuria School",
+  "city": "Lucknow",
+  "pin": "226010",
+  "website": "https://https://school.jaipuria.ac.in/",
+  "matches": {
+   "id": 5646,
+   "name": "Seth M R Jaipuria School Bansal Campus",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226201",
+   "web": "http://www.jaipuriabansalcampus.in",
+   "similarity": 0.8,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP132",
+  "name": "Lucknow Public College",
+  "city": "Lucknow",
+  "pin": "226017",
+  "website": "https://lps-lpc.org",
+  "matches": {
+   "id": 5134,
+   "name": "Lucknow Public College, Lucknow",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226101",
+   "web": "http://www.amp.lucknowpublicschoolsandcolleges.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP140",
+  "name": "City Montessori School",
+  "city": "Lucknow",
+  "pin": "226012",
+  "website": "https://www.cmseducation.org/campuses/kanpurrd",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP224",
+  "name": "Lucknow Public College",
+  "city": "Lucknow",
+  "pin": "226021",
+  "website": "https://http://sahara.lucknowpublicschoolsandcolleges.com",
+  "matches": {
+   "id": 5134,
+   "name": "Lucknow Public College, Lucknow",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226101",
+   "web": "http://www.amp.lucknowpublicschoolsandcolleges.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP229",
+  "name": "Sacred Heart Academy",
+  "city": "Gorakhpur",
+  "pin": "273014",
+  "website": "https://shagkp.com",
+  "matches": {
+   "id": 7257,
+   "name": "Sacred Heart Academy",
+   "board": "CBSE",
+   "city": "Gorakhpur",
+   "pin": "273014",
+   "web": "http://www.shagkp.com/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP239",
+  "name": "DR. VIRENDRA SWARUP PUBLIC SCHOOL",
+  "city": "Kanpur",
+  "pin": "208006",
+  "website": "https://vstcs.in",
+  "matches": {
+   "id": 6585,
+   "name": "Dr Virendra Swarup Education Center",
+   "board": "CBSE",
+   "city": "Kanpur",
+   "pin": "208010",
+   "web": "http://www.vsecjajmau.com",
+   "similarity": 0.75,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP324",
+  "name": "Silver Grove School",
+  "city": "Varanasi",
+  "pin": "221106",
+  "website": "https://silvergroveschool.in",
+  "matches": {
+   "id": 6421,
+   "name": "Silver Grove School",
+   "board": "CBSE",
+   "city": "Varanasi",
+   "pin": "221403",
+   "web": "http://www.silvergroveschool.co.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP352",
+  "name": "Trinity International Public School",
+  "city": "Lucknow",
+  "pin": "226002",
+  "website": "https://www.trinitypublicschools.com",
+  "matches": {
+   "id": 6778,
+   "name": "Trinity International Public School, Amrapali Yojana",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226016",
+   "web": "http://www.trinitypublicschools.com",
+   "similarity": 0.33,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP397",
+  "name": "Manav Sthali Public School",
+  "city": "Deoria",
+  "pin": "274509",
+  "website": "https://www.ourmps.com",
+  "matches": {
+   "id": 4684,
+   "name": "Manav Sthali Public School",
+   "board": "CBSE",
+   "city": "Deoria",
+   "pin": "274509",
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP404",
+  "name": "Seth Anandram Jaipuria School",
+  "city": "Lucknow",
+  "pin": "226005",
+  "website": "https://www.jaipuriaalambagh.com",
+  "matches": {
+   "id": 7273,
+   "name": "Seth Anandram Jaipuria School, Sarosa",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226008",
+   "web": "http://www.jaipuriaalambagh.com",
+   "similarity": 0.75,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP406",
+  "name": "St. Francis School",
+  "city": "Lucknow",
+  "pin": "226010",
+  "website": "https://www.stfrancislko.org",
+  "matches": {
+   "id": 3983,
+   "name": "St Francis Mission School",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226029",
+   "web": "http://www.stfms.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP427",
+  "name": "Central Academy",
+  "city": "Gorakhpur",
+  "pin": "273007",
+  "website": "https://www.centralacademygkp.org",
+  "matches": {
+   "id": 4772,
+   "name": "Central Academy, Mundera Bazazr Moti Mandir",
+   "board": "CBSE",
+   "city": "Gorakhpur",
+   "pin": "273201",
+   "web": "http://www.centralacademygkp.org",
+   "similarity": 0.25,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP432",
+  "name": "Adam & Eve's School",
+  "city": "Moradabad",
+  "pin": "244001",
+  "website": "https://www.adameves.in",
+  "matches": {
+   "id": 3734,
+   "name": "Adam & Eves Convent School",
+   "board": "CBSE",
+   "city": "Moradabad",
+   "pin": "244001",
+   "web": "http://www.adamevesschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP437",
+  "name": "Sacred Heart School",
+  "city": "Sitapur",
+  "pin": "261001",
+  "website": "https://www.shsnaipalapur.org",
+  "matches": {
+   "id": 5259,
+   "name": "Sacred Heart Higher Secondary School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "261001",
+   "web": "https://sacredheartsitapur.org/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP488",
+  "name": "City Montessori School",
+  "city": "Lucknow",
+  "pin": "226028",
+  "website": "https://www.cmseducation.org",
+  "matches": {
+   "id": 2489,
+   "name": "City Montessori School, Aliganj Campus I",
+   "board": "CISCE",
+   "city": "Lucknow",
+   "pin": null,
+   "web": "https://cmseducation.org/aliganj-campus-1/",
+   "similarity": 0.5,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UP493",
+  "name": "Ram Lakhan Bhatt Public School",
+  "city": "Kanpur",
+  "pin": "208017",
+  "website": "https://rlbgi.com",
+  "matches": {
+   "id": 4680,
+   "name": "Ram Lakhan Bhatt International School",
+   "board": "CBSE",
+   "city": "Kanpur",
+   "pin": "208020",
+   "web": "http://www.rlbkanpur.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP505",
+  "name": "Seth M. R. Jaipuria School",
+  "city": "Lucknow",
+  "pin": "226002",
+  "website": "https://https://www.jaipuriaschoolshaheedpathlko.in/",
+  "matches": {
+   "id": 5646,
+   "name": "Seth M R Jaipuria School Bansal Campus",
+   "board": "CBSE",
+   "city": "Lucknow",
+   "pin": "226201",
+   "web": "http://www.jaipuriabansalcampus.in",
+   "similarity": 0.8,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UT023",
+  "name": "Mussoorie Public School",
+  "city": "Mussoorie",
+  "pin": "248179",
+  "website": "https://mussooriepublicschool.com",
+  "matches": {
+   "id": 19425,
+   "name": "Mussoorie International School",
+   "board": null,
+   "city": "Mussoorie",
+   "pin": null,
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UT024",
+  "name": "Wynberg Allen School",
+  "city": "Mussoorie",
+  "pin": "248179",
+  "website": "https://www.wynbergallen.com",
+  "matches": {
+   "id": 19469,
+   "name": "Wynberg-Allen School",
+   "board": null,
+   "city": "Mussoorie",
+   "pin": null,
+   "web": "https://was.edupage.org/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UT026",
+  "name": "Mussoorie International School",
+  "city": "Mussoorie",
+  "pin": "248179",
+  "website": "https://www.misindia.net",
+  "matches": {
+   "id": 19425,
+   "name": "Mussoorie International School",
+   "board": null,
+   "city": "Mussoorie",
+   "pin": null,
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UT044",
+  "name": "Touch Wood School",
+  "city": "Dehradun",
+  "pin": "248001",
+  "website": "https://touchwoodschool.org",
+  "matches": {
+   "id": 14129,
+   "name": "Touch Wood School",
+   "board": "CBSE",
+   "city": "Dehradun",
+   "pin": "248001",
+   "web": "https://www.touchwoodschool.org/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UT046",
+  "name": "Ashok Hall Girls' Residential School",
+  "city": "Almora",
+  "pin": "263652",
+  "website": "https://www.ahgrs.net",
+  "matches": {
+   "id": 14144,
+   "name": "Ashok Hall Girls' Residential School",
+   "board": "CBSE",
+   "city": null,
+   "pin": "263652",
+   "web": "http://www.ahgrs.net",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UT062",
+  "name": "Hopetown Girls' School",
+  "city": "Dehradun",
+  "pin": "248011",
+  "website": "https://www.hopetown.in",
+  "matches": {
+   "id": 19426,
+   "name": "Hopetown Girls' School",
+   "board": null,
+   "city": "Dehradun",
+   "pin": null,
+   "web": "https://www.hopetown.in/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "UT063",
+  "name": "Convent Of Jesus And Mary",
+  "city": "Mussoorie",
+  "pin": "248179",
+  "website": "https://www.cjmhamptoncourt.org",
+  "matches": {
+   "id": 13522,
+   "name": "Convent Of Jesus & Mary",
+   "board": "CBSE",
+   "city": "Mussoorie",
+   "pin": "248179",
+   "web": "http://www.cjmwaverley.org",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UT087",
+  "name": "Doon Valley Public School",
+  "city": "Dehradun",
+  "pin": "248003",
+  "website": "https://www.doonvalleypublicschool.com",
+  "matches": {
+   "id": 13549,
+   "name": "Doon Valley Public School",
+   "board": "CBSE",
+   "city": "Dehradun",
+   "pin": "248003",
+   "web": "http://www.doonvalleypublicschool.com",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "WB032",
+  "name": "St. Xavier's Collegiate School",
+  "city": "Kolkata",
+  "pin": "700016",
+  "website": "https://sxcsccu.edu.in",
+  "matches": {
+   "id": 19459,
+   "name": "St. Xavier's Collegiate School",
+   "board": null,
+   "city": "Kolkata",
+   "pin": null,
+   "web": null,
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "WB186",
+  "name": "Himalayan English School",
+  "city": "Jalpaiguri",
+  "pin": "734001",
+  "website": "https://www.himalayan-school.com",
+  "matches": {
+   "id": 9017,
+   "name": "Himalayan International Residential School",
+   "board": "CBSE",
+   "city": "Jalpaiguri",
+   "pin": "735134",
+   "web": "http://www.hirs.in",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "WB218",
+  "name": "Modern High School For Girls",
+  "city": "Kolkata",
+  "pin": "700019",
+  "website": "https://mhsforgirls.edu.in",
+  "matches": {
+   "id": 19477,
+   "name": "Modern High School for Girls",
+   "board": "CISCE",
+   "city": "Kolkata",
+   "pin": null,
+   "web": "https://mhsforgirls.edu.in/",
+   "similarity": 1,
+   "sameWebsite": true
+  }
+ },
+ {
+  "code": "WB266",
+  "name": "National English School",
+  "city": "Kolkata",
+  "pin": "700135",
+  "website": "https://neschool.org",
+  "matches": {
+   "id": 9043,
+   "name": "National High School",
+   "board": "CBSE",
+   "city": "Kolkata",
+   "pin": "700019",
+   "web": "http://www.nhscbse.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "WB392",
+  "name": "National English School",
+  "city": "Kolkata",
+  "pin": "700059",
+  "website": "https://neschool.org",
+  "matches": {
+   "id": 9043,
+   "name": "National High School",
+   "board": "CBSE",
+   "city": "Kolkata",
+   "pin": "700019",
+   "web": "http://www.nhscbse.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "WB405",
+  "name": "St. Paul's School",
+  "city": "Darjeeling",
+  "pin": "734425",
+  "website": "https://http://www.stpaulbidhannagar.in",
+  "matches": {
+   "id": 19420,
+   "name": "St. Paul's School",
+   "board": "CISCE",
+   "city": "Darjeeling",
+   "pin": null,
+   "web": "https://stpaulsdarjeeling.edu.in/",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "KA543",
+  "name": "Prarthana International School",
+  "city": "Vijayapura",
+  "pin": "586127",
+  "website": "https://prarthanainternationalschool.com",
+  "matches": {
+   "id": 25059,
+   "name": "Prarthana Public School",
+   "board": "CBSE",
+   "city": "Vijayapura",
+   "pin": "586109",
+   "web": "http://www.prarthanagroupsvijayapura.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ },
+ {
+  "code": "UP554",
+  "name": "LITTLE FLOWERS CONVENT SCHOOL",
+  "city": "Basti",
+  "pin": "272001",
+  "website": "https://https://lfcsbasti.in/",
+  "matches": {
+   "id": 6256,
+   "name": "Little Flowers School",
+   "board": "CBSE",
+   "city": "Basti",
+   "pin": "272182",
+   "web": "http://www.lfcschool.com",
+   "similarity": 1,
+   "sameWebsite": false
+  }
+ }
+]

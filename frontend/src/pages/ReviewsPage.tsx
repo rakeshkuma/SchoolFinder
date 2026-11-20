@@ -15,7 +15,7 @@ export function ReviewsPage() {
         title="Parent reviews and ratings"
         subtitle="Ratings come only from moderated reviews by parents and guardians on this site. Open a school to read reviews or write one."
       />
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[1fr_340px]">
+      <div className="container-page grid grid-cols-1 gap-8 py-8 lg:grid-cols-[1fr_340px]">
         <section>
           <AsyncContent state={state} isEmpty={(d) => d.content.length === 0}
             empty={<EmptyState title="No published reviews yet.">Open any <Link to="/schools" className="link">school profile</Link> and use the Reviews tab to share your experience.</EmptyState>}>

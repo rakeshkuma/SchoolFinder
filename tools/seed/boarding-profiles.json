@@ -118,11 +118,17 @@
       "boarding_source_url": "https://www.welhamboys.org/"
     },
     "3420006": {
+      "_note": "Checked 2026-10-30 against netarhatvidyalaya.com and advertisement no. 262 (13.08.2026). CBSE SARAS gives the managing body as 'indian trust singape', which contradicts the school's own notices; the advertisement names Netarhat Vidyalaya Samiti. CBSE leaves the PIN field empty; the postal address and the school's contact page give 835218.",
       "gender_type": "BOYS",
+      "managing_body": "Netarhat Vidyalaya Samiti (School Education and Literacy Department, Government of Jharkhand)",
+      "pin_code": "835218",
       "residential_system": "STATE_RESIDENTIAL", "boarding_type": "FULL_BOARDING", "entrance_exam": "NETARHAT",
-      "entry_classes": "Class 6 (100 seats each year)",
-      "boarding_summary": "Government of Jharkhand residential school for meritorious boys, founded in 1954, in the gurukul tradition. Entry to Class 6 is through a two-level written test followed by physical and psychological tests; fees are subsidised by income group.",
-      "boarding_source_url": "https://www.netarhatvidyalaya.com/"
+      "entry_classes": "Class 6 only (100 boys a year)",
+      "boarding_summary": "Jharkhand government residential school for boys, founded in 1954 in the gurukul tradition and run by the Netarhat Vidyalaya Samiti. Entry is to Class 6 only, through a two-level written test and then physical and psychological tests. The admission notice describes the education as free; the school's fee page says guardians pay a subsidised fee by income group (A–E).",
+      "accommodation": "Boys live in hostels called ashrams: 21 ashrams in seven sets of three houses, each set with a central kitchen. Each house has about 20 to 30 boys in the care of a house master and a house mother.",
+      "dining": "Each set of ashrams has a centrally located kitchen; the school says it provides a sumptuous and nutritious diet.",
+      "medical_care": "A 15-bed sick room in the Chalet, staffed by a medical officer, a compounder, a sister, a dresser and two attendants. Medicines prescribed by the doctor are free; emergencies are referred to RMCH (as named by the school).",
+      "boarding_source_url": "https://www.netarhatvidyalaya.com/ashrms.php"
     }
   },
   "schools": [

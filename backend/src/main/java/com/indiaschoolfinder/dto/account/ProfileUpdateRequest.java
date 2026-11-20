@@ -6,5 +6,6 @@ import jakarta.validation.constraints.Size;
 
 /** Email changes are not offered; the address is the sign-in identity and is verified once. */
 public record ProfileUpdateRequest(@NotBlank @Size(max = 80) String displayName, @Pattern(regexp = "[A-Z]{2}") String stateCode,
-                                   @Size(max = 80) String city) {
+                                   @Size(max = 80) String city,
+                                   @Pattern(regexp = "|(\\+91[ -]?)?[6-9][0-9]{9}", message = "enter a 10-digit Indian mobile number") String mobile) {
 }
