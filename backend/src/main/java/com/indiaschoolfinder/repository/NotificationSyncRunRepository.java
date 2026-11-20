@@ -26,4 +26,10 @@ public interface NotificationSyncRunRepository extends JpaRepository<Notificatio
     @Query("update NotificationSyncRun r set r.status = com.indiaschoolfinder.entity.NotificationSyncRun.Status.ABANDONED, "
             + "r.finishedAt = :now where r.status = com.indiaschoolfinder.entity.NotificationSyncRun.Status.RUNNING")
     int abandonRunning(@Param("now") Instant now);
+
+    /** Deletes finished run records started before the cut-off (they are operational data only). */
+    @Modifying
+    @Query("delete from NotificationSyncRun r where r.startedAt < :before "
+            + "and r.status <> com.indiaschoolfinder.entity.NotificationSyncRun.Status.RUNNING")
+    int deleteFinishedBefore(@Param("before") Instant before);
 }

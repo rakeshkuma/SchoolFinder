@@ -33,6 +33,9 @@ public class SourceResult {
     /** Already on the site under another update with the same official address. */
     public int duplicates;
     public int withdrawn;
+    /** Of the new notices, how many were job notices and how many admission notices. */
+    public int createdJobs;
+    public int createdAdmissions;
     /** Ids of new updates waiting for review (for PDF excerpts after the transaction). */
     @JsonIgnore
     public transient List<Long> newPendingIds = new ArrayList<>();

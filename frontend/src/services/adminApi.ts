@@ -232,6 +232,10 @@ export const adminService = {
   archiveUpdate: (id: number) => http.post<SiteUpdateRow>(`/admin/updates/${id}/archive`).then((r) => r.data),
   supersedeUpdate: (id: number, by: number) =>
     http.post<SiteUpdateRow>(`/admin/updates/${id}/supersede`, null, { params: { by } }).then((r) => r.data),
+  /** The posts a recruitment notice advertises, entered from the notice (replaces those read from its title). */
+  setUpdatePositions: (id: number, positions: { postName: string; postType: string | null; subject: string | null; postCode: string | null;
+    vacancies: number | null; payScale: string | null; qualification: string | null }[]) =>
+    http.put<SiteUpdateRow>(`/admin/updates/${id}/positions`, positions).then((r) => r.data),
   /** The daily check of official websites. */
   syncStatus: () => http.get<AdminSyncStatus>('/admin/updates/sync-status').then((r) => r.data),
   syncRuns: (page = 0, size = 10) =>
@@ -396,6 +400,25 @@ export interface SiteUpdateRequest {
   verificationStatus: VerificationStatus | null;
   expiresOn: string | null;
   priority: number;
+  /** Admissions and jobs: the notice's facts from the official notice. Sent, they replace the stored facts; left out, they are kept. */
+  details?: OpportunityFields | null;
+}
+
+/** The facts of an admission or job notice; each field only as the official notice states it (null: not given). */
+export interface OpportunityFields {
+  institutionName: string | null; campus: string | null; schoolId: number | null;
+  sector: 'GOVERNMENT' | 'PRIVATE' | null; boarding: boolean | null; stateCode: string | null; city: string | null;
+  noticeType: import('./publicApi').NoticeType | null; opensOn: string | null; closesOn: string | null; examOn: string | null;
+  academicSession: string | null; classes: string | null; postTypes: string | null; subjects: string | null;
+  staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null; employmentType: 'REGULAR' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null;
+  vacancies: number | null; eligibility: string | null; experience: string | null; tetRequirement: string | null;
+  ageLimit: string | null; salaryText: string | null; applicationFee: string | null; selectionProcess: string | null;
+  applyUrl: string | null;
+}
+
+export interface SiteUpdatePosition {
+  id: number; postName: string; postType: string | null; postTypeLabel: string | null; subject: string | null; postCode: string | null;
+  vacancies: number | null; payScale: string | null; qualification: string | null; origin: 'TITLE' | 'EDITOR';
 }
 
 export interface SiteUpdateRow extends SiteUpdateRequest {
@@ -421,6 +444,9 @@ export interface SiteUpdateRow extends SiteUpdateRequest {
   supersededById: number | null;
   staffEdited: boolean;
   topic: string | null;
+  /** Admissions and jobs: the notice's own page address (/jobs/{slug} or /admissions/{slug}). */
+  slug: string | null;
+  positions: SiteUpdatePosition[];
 }
 
 export interface SyncSourceResult {
@@ -442,6 +468,8 @@ export interface SyncSourceResult {
   tooOld: number;
   duplicates: number;
   withdrawn: number;
+  createdJobs?: number;
+  createdAdmissions?: number;
 }
 
 export interface SyncRunRow {
@@ -462,6 +490,10 @@ export interface SyncRunRow {
   itemsExpired: number;
   itemsWithdrawn: number;
   sources: SyncSourceResult[];
+  newJobs?: number;
+  newAdmissions?: number;
+  duplicates?: number;
+  tooOld?: number;
 }
 
 export interface SyncSourceInfo {
@@ -473,6 +505,22 @@ export interface SyncSourceInfo {
   reviewOnlyReason: string | null;
   completeListing: boolean;
   enabled: boolean;
+  /** From the source registry: what the source is and how its checks have gone. */
+  institution?: string | null;
+  sourceCategory?: string | null;
+  sector?: 'GOVERNMENT' | 'PRIVATE' | null;
+  boarding?: boolean | null;
+  stateCode?: string | null;
+  city?: string | null;
+  noticeTypes?: string[];
+  method?: string | null;
+  reliability?: string | null;
+  schoolPostsOnly?: boolean;
+  lastAttemptAt?: string | null;
+  lastSuccessAt?: string | null;
+  lastOutcome?: string | null;
+  lastError?: string | null;
+  consecutiveFailures?: number;
 }
 
 export interface AdminSyncStatus {
@@ -486,4 +534,8 @@ export interface AdminSyncStatus {
   lastRun: SyncRunRow | null;
   pendingReview: number;
   sources: SyncSourceInfo[];
+  /** Registry entries that could not be used, with why. */
+  registryProblems?: string[];
+  /** Switched-on sources whose last check failed. */
+  sourcesFailing?: number;
 }

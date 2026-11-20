@@ -28,7 +28,7 @@ class UpdatesIT extends AbstractIntegrationTest {
 
     @BeforeEach
     void clean() {
-        jdbc.execute("TRUNCATE site_update RESTART IDENTITY");
+        jdbc.execute("TRUNCATE site_update RESTART IDENTITY CASCADE"); // with the posts of job notices (V47)
     }
 
     private Map<String, Object> job() {

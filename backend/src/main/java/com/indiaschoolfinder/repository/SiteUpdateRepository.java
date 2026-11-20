@@ -42,6 +42,16 @@ public interface SiteUpdateRepository extends JpaRepository<SiteUpdate, Long> {
     @Query("select u from SiteUpdate u where u.status in :statuses and u.expiresOn is not null and u.expiresOn < :today")
     List<SiteUpdate> findExpired(@Param("statuses") Collection<SiteUpdate.Status> statuses, @Param("today") LocalDate today);
 
+    boolean existsBySlug(String slug);
+
+    Optional<SiteUpdate> findBySlug(String slug);
+
+    /** Admission and job notices of one category in the given states (the Admissions and Jobs lists filter these). */
+    List<SiteUpdate> findByCategoryAndStatusIn(SiteUpdate.Category category, Collection<SiteUpdate.Status> statuses);
+
+    /** Notices that have no page address yet (stored before V47), oldest first, a batch at a time. */
+    List<SiteUpdate> findTop200ByCategoryInAndSlugIsNullOrderByIdAsc(Collection<SiteUpdate.Category> categories);
+
     /** Expired updates, newest first, for the public "past updates" list. */
     @Query("select u from SiteUpdate u where u.status = com.indiaschoolfinder.entity.SiteUpdate.Status.EXPIRED "
             + "and u.expiresOn >= :since and (:category is null or u.category = :category) order by u.expiresOn desc, u.id desc")

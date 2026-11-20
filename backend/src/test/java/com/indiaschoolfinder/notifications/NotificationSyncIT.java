@@ -204,7 +204,9 @@ class NotificationSyncIT extends AbstractIntegrationTest {
         all.forEach(n -> titles.add(n.path("title").asText()));
         assertThat(titles).contains("Inviting Online Application for AISSEE-2027", "Recruitment of Teachers 2026: notification")
                 .doesNotContain("Admission notice without a date on the listing", "Admit card for AISSEE-2027 on the exam portal");
-        JsonNode item = all.findParents("title").stream().filter(n -> n.path("title").asText().contains("AISSEE-2027")).findFirst().orElseThrow();
+        // By its exact title: the exam catalogue's own AISSEE-2027 item may come first when other tests left exam notices.
+        JsonNode item = all.findParents("title").stream().filter(n -> n.path("title").asText().equals("Inviting Online Application for AISSEE-2027"))
+                .findFirst().orElseThrow();
         assertThat(item.path("origin").asText()).isEqualTo("OFFICIAL_SOURCE");
         assertThat(item.path("badge").asText()).isEqualTo("NEW");
         assertThat(item.path("verified").asBoolean()).isFalse(); // no editor has checked it

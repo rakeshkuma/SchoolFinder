@@ -8,6 +8,7 @@ import com.indiaschoolfinder.dto.location.StateDto;
 import com.indiaschoolfinder.dto.ranking.PremierDirectoryDtos;
 import com.indiaschoolfinder.dto.school.ImageDto;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
+import com.indiaschoolfinder.entity.SiteUpdate;
 import com.indiaschoolfinder.enums.ExamKind;
 import com.indiaschoolfinder.enums.ExamScope;
 import com.indiaschoolfinder.enums.ExamStatus;
@@ -154,6 +155,10 @@ public class SeoHeadService {
                     + "entrance exams, open admissions with last dates, and new practice sets. Each links to its source."),
             page("/admissions/notifications", "Latest school admission notifications", "School admission cycles "
                     + "recently added or updated from official notices, by state, class, category and status."),
+            // "teacher vacancy" and "school teacher jobs" are the searches; the page lists official notices only.
+            // Short enough to stay whole with the count in front of it ("12 current school job notices. ").
+            page("/jobs", "School teacher jobs: government and private", "School teacher and staff vacancies from official "
+                    + "sources: KVS, Navodaya, DSSSB, BPSC, Sainik and boarding schools."),
             page("/reviews", "Parent reviews of schools", "Moderated reviews of schools across India from parents, "
                     + "students and alumni."),
             page("/about", "About SchoolDhundo", "How SchoolDhundo lists schools, fees, admissions and "
@@ -290,6 +295,7 @@ public class SeoHeadService {
         return title.length() > TITLE_MAX && title.endsWith(suffix) ? title.substring(0, title.length() - suffix.length()) : title;
     }
 
+    private final NoticeService notices;
     private final SchoolService schoolService;
     private final LocationService locationService;
     private final EducationBoardRepository boardRepository;
@@ -313,7 +319,8 @@ public class SeoHeadService {
                           BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
                           SchoolFaqService faqService, FeeService feeService, AdmissionService admissionService,
                           com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository,
-                          OlympiadPages olympiadPages) {
+                          OlympiadPages olympiadPages, NoticeService notices) {
+        this.notices = notices;
         this.olympiadPages = olympiadPages;
         this.faqService = faqService;
         this.feeService = feeService;
@@ -352,6 +359,9 @@ public class SeoHeadService {
             } else if (p.equals("/admissions")) {
                 long cycles = admissionService.upcoming(0, 1).totalElements();
                 if (cycles > 0) description = "%,d upcoming and open admission cycles. ".formatted(cycles) + description;
+            } else if (p.equals("/jobs")) {
+                long current = notices.list(SiteUpdate.Category.JOB, NoticeService.Filter.NONE, false, 0, 1).current();
+                if (current > 0) description = "%,d current school job notices. ".formatted(current) + description;
             } else if (networkPage.matches()) {
                 long count = schoolService.search(networkCriteria(network(networkPage.group(1)), 1)).totalElements();
                 if (count > 0) description = "%,d schools listed. ".formatted(count) + description;
@@ -422,6 +432,13 @@ public class SeoHeadService {
                 return practiceSet(practiceSetRepository.findBySlugAndPublishedTrue(slug)
                         .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
             }
+            // After the static pages: /admissions/guide and /admissions/notifications are pages, not notices.
+            if ((m = JOB_NOTICE.matcher(p)).matches()) {
+                return notice(m.group(1), SiteUpdate.Category.JOB, baseUrl);
+            }
+            if ((m = ADMISSION_NOTICE.matcher(p)).matches()) {
+                return notice(m.group(1), SiteUpdate.Category.ADMISSION, baseUrl);
+            }
         } catch (ResourceNotFoundException e) {
             return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
         }
@@ -438,6 +455,116 @@ public class SeoHeadService {
         // the app's "page not found" (/boarding/{unknown}, /type/{unknown}, /rankings/{unknown}, an address outside the
         // app) or a client-side redirect, so it is never offered as a copy of the home page.
         return tags(DEFAULT_TITLE, DEFAULT_DESCRIPTION, null, null, true, null);
+    }
+
+    /** An admission or job notice's own page (NoticeService). */
+    static final Pattern JOB_NOTICE = Pattern.compile("^/jobs/([a-z0-9-]+)$");
+    static final Pattern ADMISSION_NOTICE = Pattern.compile("^/admissions/([a-z0-9-]+)$");
+
+    /**
+     * A notice's page: its title and summary, and BreadcrumbList and WebPage data with its real publication and change
+     * dates and the official notice it is based on. A current job opening also gets JobPosting data, with only the
+     * fields its page shows (no salary unless one is published, no direct-apply claim). Results, admit cards, closed
+     * and title-only notices are noindex (NoticeService.indexable), with no canonical link and no JobPosting.
+     */
+    private String notice(String slug, SiteUpdate.Category category, String baseUrl) {
+        SiteUpdate u = notices.visibleNotice(slug, category).orElseThrow(() -> new ResourceNotFoundException("Notice", slug));
+        com.indiaschoolfinder.dto.notice.NoticeDtos.NoticeDetail d = notices.detail(u, notices.today(), false);
+        boolean job = category == SiteUpdate.Category.JOB;
+        String url = baseUrl + d.path();
+        List<Object> data = new java.util.ArrayList<>();
+        data.add(crumbs(listItem(1, "Home", baseUrl + "/"), job ? listItem(2, "School jobs", baseUrl + "/jobs")
+                : listItem(2, "Admissions", baseUrl + "/admissions"), listItem(3, d.title(), url)));
+        Map<String, Object> page = new LinkedHashMap<>();
+        page.put("@context", "https://schema.org");
+        page.put("@type", "WebPage");
+        page.put("name", d.title());
+        page.put("url", url);
+        page.put("datePublished", d.publishedOn().toString());
+        page.put("dateModified", (d.lastChangedAt() != null ? d.lastChangedAt().atZone(java.time.ZoneId.of("Asia/Kolkata")).toLocalDate()
+                : d.publishedOn()).toString());
+        if (d.sourceUrl() != null) page.put("isBasedOn", d.sourceUrl());
+        if (d.school() != null) {
+            page.put("about", Map.of("@type", "School", "name", d.school().name(), "url", baseUrl + "/schools/" + d.school().slug()));
+        }
+        page.put("publisher", publisher(baseUrl));
+        data.add(page);
+        boolean opening = d.noticeType() == null || d.noticeType() == SiteUpdate.NoticeType.OPENING
+                || d.noticeType() == SiteUpdate.NoticeType.EXTENSION;
+        // Job markup only while the official last date says applications are open: a notice without a last date may be an
+        // old recruitment the source re-listed, and must not be offered to job search as a live vacancy.
+        if (job && d.indexable() && opening && d.closesOn() != null && !d.closesOn().isBefore(notices.today())) {
+            data.add(jobPosting(d, url));
+        }
+        return tags(noticeTitle(d.title()) + " | " + SITE, d.summary(), d.indexable() ? url : null, null, !d.indexable(), data);
+    }
+
+    /** At most 60 characters, cut after a whole word (the full title is the page's heading). */
+    static String noticeTitle(String title) {
+        String t = title.replaceAll("\\s+", " ").trim();
+        if (t.length() <= TITLE_MAX) {
+            return t;
+        }
+        String cut = t.substring(0, t.lastIndexOf(' ', TITLE_MAX) > 30 ? t.lastIndexOf(' ', TITLE_MAX) : TITLE_MAX);
+        return cut.replaceAll("[\\s,;:–—(-]+$", "").replaceAll("\\s+(of|for|the|and|to|in|on|a|an|by|at|with)$", "");
+    }
+
+    /** schema.org JobPosting from the facts the page shows. */
+    static Map<String, Object> jobPosting(com.indiaschoolfinder.dto.notice.NoticeDtos.NoticeDetail d, String url) {
+        Map<String, Object> j = new LinkedHashMap<>();
+        j.put("@context", "https://schema.org");
+        j.put("@type", "JobPosting");
+        List<String> posts = d.positions().isEmpty() ? d.postTypes().stream().map(f -> f.label()).toList()
+                : d.positions().stream().map(p -> p.postName()).toList();
+        // The job's title, not the notice's: the posts it names, else the official wording (without our institution prefix).
+        String title = posts.isEmpty() ? (d.officialTitle() != null ? d.officialTitle() : d.title())
+                : String.join(", ", posts.subList(0, Math.min(3, posts.size()))) + (posts.size() > 3 ? " and other posts" : "");
+        j.put("title", title.length() > 110 ? noticeTitle(title) : title);
+        StringBuilder description = new StringBuilder("<p>").append(html(d.summary())).append("</p><ul>");
+        String org = d.institutionName() != null ? d.institutionName() : d.sourceName();
+        if (org != null) description.append("<li>Hiring: ").append(html(org)).append("</li>");
+        if (!posts.isEmpty()) description.append("<li>Posts: ").append(html(String.join(", ", posts))).append("</li>");
+        if (!d.subjects().isEmpty()) description.append("<li>Subjects: ").append(html(String.join(", ", d.subjects()))).append("</li>");
+        if (d.vacancies() != null) description.append("<li>Number of posts: ").append(d.vacancies()).append("</li>");
+        if (d.eligibility() != null) description.append("<li>Eligibility: ").append(html(d.eligibility())).append("</li>");
+        if (d.closesOn() != null) description.append("<li>Last date: ").append(d.closesOn().format(DAY)).append("</li>");
+        description.append("</ul><p>Read the official notice before applying.</p>");
+        j.put("description", description.toString());
+        j.put("datePosted", d.publishedOn().toString());
+        if (d.closesOn() != null) {
+            j.put("validThrough", d.closesOn() + "T23:59:59+05:30");
+        }
+        if (d.employmentType() != null) {
+            j.put("employmentType", switch (d.employmentType()) {
+                case REGULAR -> "FULL_TIME";
+                case CONTRACT -> "CONTRACTOR";
+                case PART_TIME -> "PART_TIME";
+                case TEMPORARY -> "TEMPORARY";
+            });
+        }
+        Map<String, Object> hiring = new LinkedHashMap<>();
+        hiring.put("@type", "Organization");
+        hiring.put("name", org != null ? org : "the hiring institution");
+        if (d.sourceUrl() != null) {
+            try {
+                java.net.URI source = java.net.URI.create(d.sourceUrl());
+                hiring.put("sameAs", source.getScheme() + "://" + source.getHost() + "/");
+            } catch (IllegalArgumentException ignored) {
+                // no sameAs
+            }
+        }
+        j.put("hiringOrganization", hiring);
+        Map<String, Object> address = new LinkedHashMap<>();
+        address.put("@type", "PostalAddress");
+        if (d.city() != null) address.put("addressLocality", d.city());
+        if (d.stateName() != null) address.put("addressRegion", d.stateName());
+        address.put("addressCountry", "IN");
+        j.put("jobLocation", Map.of("@type", "Place", "address", address));
+        if (d.eligibility() != null) j.put("qualifications", d.eligibility());
+        if (d.experience() != null) j.put("experienceRequirements", d.experience());
+        if (d.vacancies() != null) j.put("totalJobOpenings", d.vacancies());
+        j.put("url", url);
+        return j;
     }
 
     /** A featured boarding school page of the app, /boarding/{slug} (frontend content/boarding.ts). */

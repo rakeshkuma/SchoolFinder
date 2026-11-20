@@ -9,6 +9,8 @@ import com.indiaschoolfinder.notifications.fetch.FetchException;
 import com.indiaschoolfinder.notifications.fetch.FetchSession;
 import com.indiaschoolfinder.notifications.fetch.HttpTransport;
 import com.indiaschoolfinder.notifications.fetch.UrlPolicy;
+import com.indiaschoolfinder.notifications.opportunity.OpportunityEnricher;
+import com.indiaschoolfinder.notifications.registry.SourceRegistry;
 import com.indiaschoolfinder.notifications.source.OfficialSourceAdapter;
 import com.indiaschoolfinder.notifications.source.SourceLayoutException;
 import com.indiaschoolfinder.notifications.source.SourceListing;
@@ -67,8 +69,14 @@ public class NotificationSyncService {
 
     public enum ManualStart { STARTED, ALREADY_RUNNING, COOLDOWN, DISABLED }
 
+    /** Run records older than this are deleted (operational data; the notices themselves are never deleted). */
+    static final Duration RUN_RETENTION = Duration.ofDays(180);
+
     private final NotificationSyncProperties props;
     private final List<OfficialSourceAdapter> adapters;
+    private final SourceRegistry registry;
+    private final SourceHealthService health;
+    private final OpportunityEnricher enricher;
     private final NotificationIngestService ingest;
     private final NotificationSyncRunRepository runs;
     private final SiteUpdateRepository updates;
@@ -93,9 +101,24 @@ public class NotificationSyncService {
                                    SiteUpdateRepository updates, DataSource dataSource, TransactionTemplate tx,
                                    ObjectMapper json, Clock clock,
                                    @Value("${app.timezone:Asia/Kolkata}") String timezone,
-                                   @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled) {
+                                   @Value("${app.scheduling.enabled:true}") boolean schedulingEnabled,
+                                   SourceRegistry registry, SourceHealthService health, OpportunityEnricher enricher) {
         this.props = props;
-        this.adapters = adapters.stream().sorted(Comparator.comparing(OfficialSourceAdapter::key)).toList();
+        // Built-in adapters first, then the reviewed registry file; a registry key that repeats a built-in one is left out.
+        List<OfficialSourceAdapter> all = new ArrayList<>(adapters);
+        java.util.Set<String> keys = new java.util.HashSet<>();
+        adapters.forEach(a -> keys.add(a.key()));
+        for (OfficialSourceAdapter a : registry.adapters()) {
+            if (keys.add(a.key())) {
+                all.add(a);
+            } else {
+                log.error("Source registry: key {} is already used by a built-in source; the registry entry is left out", a.key());
+            }
+        }
+        this.adapters = all.stream().sorted(Comparator.comparing(OfficialSourceAdapter::key)).toList();
+        this.registry = registry;
+        this.health = health;
+        this.enricher = enricher;
         this.ingest = ingest;
         this.runs = runs;
         this.updates = updates;
@@ -126,7 +149,12 @@ public class NotificationSyncService {
         if (!props.getOnlySources().isEmpty() && !props.getOnlySources().contains(a.key())) {
             return false;
         }
-        return !props.getDisabledSources().contains(a.key());
+        return a.enabledByDefault() && !props.getDisabledSources().contains(a.key());
+    }
+
+    /** Entries of the registry file that could not be used, with the reason (for staff). */
+    public List<String> registryProblems() {
+        return registry.problems();
     }
 
     /** Runs every enabled source now. Empty when another run (here or on another server) is in progress. */
@@ -166,6 +194,12 @@ public class NotificationSyncService {
         run.setInstanceName(instanceName());
         run = runs.save(run);
         log.info("Notification sync #{} ({}) started", run.getId(), trigger);
+        enricher.clearCache();
+        try {
+            health.register(adapters, this::enabled, now);
+        } catch (RuntimeException e) {
+            log.warn("Notification sync #{}: could not update the source registry table: {}", run.getId(), e.toString());
+        }
         List<SourceResult> results = new ArrayList<>();
         boolean interrupted = false;
         for (OfficialSourceAdapter source : adapters) {
@@ -173,7 +207,7 @@ public class NotificationSyncService {
             results.add(r);
             if (!enabled(source)) {
                 r.outcome = "SKIPPED";
-                r.error = "switched off in settings";
+                r.error = source.enabledByDefault() ? "switched off in settings" : "switched off in the source registry";
                 continue;
             }
             if (stopping || interrupted) {
@@ -209,9 +243,17 @@ public class NotificationSyncService {
                 r.requests = session.requests();
                 r.durationMs = (System.nanoTime() - t0) / 1_000_000;
             }
+            try {
+                health.record(source.key(), r, now);
+            } catch (RuntimeException e) {
+                log.warn("Notification sync #{}: could not record the health of {}: {}", run.getId(), source.key(), e.toString());
+            }
             log.info("Notification sync #{} {}: {} (listed {}, relevant {}, new {}, changed {}, published {}, pending {}){}",
                     run.getId(), source.key(), r.outcome, r.listed, r.relevant, r.created, r.updated, r.published, r.pending,
                     r.error == null ? "" : " - " + r.error);
+        }
+        if (!interrupted) {
+            backfill(run.getId());
         }
         int expired = interrupted ? 0 : tx.execute(s -> ingest.expire(today));
         finish(run, results, expired, interrupted, clock.instant().isBefore(now) ? now : clock.instant());
@@ -271,10 +313,34 @@ public class NotificationSyncService {
             run.setDetails("[]");
         }
         runs.save(run);
-        log.info("Notification sync #{} finished {}: {} source(s) checked, {} failed or blocked; {} new ({} published, {} pending), "
-                        + "{} changed, {} expired, {} withdrawn", run.getId(), run.getStatus(), run.getSourcesChecked(), bad,
-                run.getItemsCreated(), run.getItemsPublished(), run.getItemsPending(), run.getItemsUpdated(), expired,
-                run.getItemsWithdrawn());
+        log.info("Notification sync #{} finished {}: {} source(s) checked, {} failed or blocked; {} new ({} published, {} pending; "
+                        + "{} jobs, {} admissions), {} changed, {} expired, {} withdrawn", run.getId(), run.getStatus(),
+                run.getSourcesChecked(), bad, run.getItemsCreated(), run.getItemsPublished(), run.getItemsPending(),
+                results.stream().mapToInt(r -> r.createdJobs).sum(), results.stream().mapToInt(r -> r.createdAdmissions).sum(),
+                run.getItemsUpdated(), expired, run.getItemsWithdrawn());
+        try {
+            Integer pruned = tx.execute(s -> runs.deleteFinishedBefore(end.minus(RUN_RETENTION)));
+            if (pruned != null && pruned > 0) {
+                log.info("Notification sync: {} run record(s) older than {} days deleted", pruned, RUN_RETENTION.toDays());
+            }
+        } catch (RuntimeException e) {
+            log.warn("Notification sync: could not delete old run records: {}", e.toString());
+        }
+    }
+
+    /** Fills in admission and job notices stored without their facts (a batch per call); never fails a run. */
+    private void backfill(Long runId) {
+        try {
+            java.util.Map<String, OfficialSourceAdapter> byKey = new java.util.HashMap<>();
+            adapters.forEach(a -> byKey.put(a.key(), a));
+            Integer n = tx.execute(s -> ingest.enrichExisting(byKey));
+            String when = runId == null ? "at start-up" : "#" + runId;
+            if (n != null && n > 0) {
+                log.info("Notification sync {}: {} earlier admission or job notice(s) given their facts and page address", when, n);
+            }
+        } catch (RuntimeException e) {
+            log.warn("Notification sync {}: filling in earlier notices failed: {}", runId == null ? "at start-up" : "#" + runId, e.toString());
+        }
     }
 
     /** Each source's result in a stored run. */
@@ -315,6 +381,8 @@ public class NotificationSyncService {
         if (!props.isEnabled() || !schedulingEnabled || !props.isCatchUpOnStartup()) {
             return;
         }
+        // Notices stored before their facts existed get them soon after start, not only at the next 6:00 run.
+        background.schedule(() -> backfill(null), 30, TimeUnit.SECONDS);
         Optional<NotificationSyncRun> last = runs.findFirstByStatusInOrderByStartedAtDescIdDesc(COMPLETED);
         if (last.isEmpty() || last.get().getStartedAt().isBefore(clock.instant().minus(props.getCatchUpAfter()))) {
             log.info("Notification sync: no successful run in the last {}; one starts in {}", props.getCatchUpAfter(), props.getCatchUpDelay());

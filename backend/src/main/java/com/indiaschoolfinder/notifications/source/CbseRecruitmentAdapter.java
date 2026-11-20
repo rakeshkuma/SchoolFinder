@@ -62,6 +62,11 @@ public class CbseRecruitmentAdapter implements OfficialSourceAdapter {
     }
 
     @Override
+    public SourceProfile profile() {
+        return SourceProfile.national(name(), "EXAM_BODY", null, "HTML", SiteUpdate.Category.JOB);
+    }
+
+    @Override
     public SourceListing fetch(FetchSession http, LocalDate today) throws FetchException, SourceLayoutException, InterruptedException {
         return parse(http.get(LISTING).html());
     }

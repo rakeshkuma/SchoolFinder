@@ -33,6 +33,20 @@ public class SiteUpdate extends AuditableEntity {
 
     public enum Origin { EDITORIAL, OFFICIAL_SYNC }
 
+    /** Who runs the admitting or hiring institution. */
+    public enum Sector { GOVERNMENT, PRIVATE }
+
+    /**
+     * What an admission or job notice is: an OPENING invites applications; the others are later steps of one (an
+     * EXTENSION of its last date, a CORRIGENDUM, a SCHEDULE of tests or interviews, ADMIT_CARDs, a RESULT or list).
+     */
+    public enum NoticeType { OPENING, EXTENSION, CORRIGENDUM, SCHEDULE, ADMIT_CARD, RESULT, OTHER }
+
+    public enum StaffKind { TEACHING, NON_TEACHING, MIXED }
+
+    /** As the notice states it: regular (permanent) posts, contract or guest engagement, part-time, or temporary. */
+    public enum EmploymentType { REGULAR, CONTRACT, PART_TIME, TEMPORARY }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -130,7 +144,95 @@ public class SiteUpdate extends AuditableEntity {
     @Column(length = 600)
     private String reviewNote;
 
+    // --- admissions and jobs (V47): each only as the official source states it; null means "not given" ------------
+
+    /** The notice's own page here (/jobs/{slug} or /admissions/{slug}); set once, never changed. */
+    @Column(length = 170)
+    private String slug;
+
+    @Column(length = 160)
+    private String institutionName;
+
+    @Column(length = 120)
+    private String campus;
+
+    @Column(name = "school_id")
+    private Long schoolId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 12)
+    private Sector sector;
+
+    private Boolean boarding;
+
+    @Column(length = 2)
+    private String stateCode;
+
+    @Column(length = 80)
+    private String city;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 12)
+    private NoticeType noticeType;
+
+    private LocalDate opensOn;
+    private LocalDate closesOn;
+    private LocalDate examOn;
+
+    @Column(length = 9)
+    private String academicSession;
+
+    @Column(length = 80)
+    private String classes;
+
+    /** Comma-separated post type codes, e.g. "PGT,TGT" (see OpportunityClassifier). */
+    @Column(length = 160)
+    private String postTypes;
+
+    /** Comma-separated subjects, e.g. "Mathematics,Physics". */
+    @Column(length = 240)
+    private String subjects;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 14)
+    private StaffKind staffKind;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 12)
+    private EmploymentType employmentType;
+
+    private Integer vacancies;
+
+    @Column(length = 600)
+    private String eligibility;
+
+    @Column(length = 300)
+    private String experience;
+
+    @Column(length = 200)
+    private String tetRequirement;
+
+    @Column(length = 200)
+    private String ageLimit;
+
+    @Column(length = 200)
+    private String salaryText;
+
+    @Column(length = 200)
+    private String applicationFee;
+
+    @Column(length = 400)
+    private String selectionProcess;
+
+    @Column(length = 600)
+    private String applyUrl;
+
     public boolean isOfficialSync() {
         return origin == Origin.OFFICIAL_SYNC;
+    }
+
+    /** An admission or job notice: these have a page of their own and the facts above. */
+    public boolean isOpportunity() {
+        return category == Category.ADMISSION || category == Category.JOB;
     }
 }

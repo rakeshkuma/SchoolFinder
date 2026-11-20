@@ -51,6 +51,31 @@ public interface OfficialSourceAdapter {
     boolean completeListing();
 
     /**
+     * What the source is (institution, government or private, boarding, place, school, how it is read), recorded in
+     * the source registry and given to the admissions and jobs it publishes. The default says only who publishes it.
+     */
+    default SourceProfile profile() {
+        return new SourceProfile(name(), "SCHOOL_SYSTEM", null, null, null, null, null, SourceProfile.OFFICIAL_PORTAL, "HTML",
+                null, false);
+    }
+
+    /**
+     * False for a source listed in the registry but switched off there (for example one whose site refuses automated
+     * requests). Settings can switch any source off as well (app.notifications.disabled-sources).
+     */
+    default boolean enabledByDefault() {
+        return true;
+    }
+
+    /**
+     * True when only school posts are relevant from this source: a public service commission or selection board also
+     * recruits for offices, police and engineering, which this site does not list.
+     */
+    default boolean schoolPostsOnly() {
+        return false;
+    }
+
+    /**
      * Reads the source. Throws {@link SourceLayoutException} when the page no longer looks as expected (for example
      * no notice rows at all), so a layout change is reported instead of silently finding nothing.
      */

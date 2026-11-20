@@ -40,9 +40,9 @@ public class SitemapController {
     /** 10,000 school profiles per file (the protocol allows 50,000): smaller files show indexing by part in Search Console. */
     static final int SCHOOLS_PER_FILE = 10_000;
     /** The other sitemaps, by kind of page, so Search Console reports each kind separately. */
-    private static final List<String> PARTS = List.of("pages", "places", "exams", "blog");
+    private static final List<String> PARTS = List.of("pages", "places", "exams", "blog", "notices");
     private static final List<String> PAGES = List.of("/", "/find", "/schools", "/states", "/cities", "/rankings", "/rankings/methodology",
-            "/admissions", "/admissions/guide", "/admissions/notifications", "/updates", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
+            "/admissions", "/admissions/guide", "/admissions/notifications", "/updates", "/jobs", "/fees", "/compare", "/nearby", "/boarding", "/boarding/india", "/boarding/government", "/boarding/private", "/boarding/boys",
             "/boarding/girls", "/boarding/co-ed", "/boarding/affordable", "/rankings/score", "/exams", "/exams/finder", "/exams/calendar", "/exams/practice", com.indiaschoolfinder.service.OlympiadPages.PATH, "/exams/syllabus", "/exams/resources", "/reviews", "/about", "/contact",
             "/privacy", "/terms", "/disclaimer", "/editorial-policy", "/corrections-policy", "/data-deletion", "/advertise", "/claim-school",
             "/network/jawahar-navodaya-vidyalaya", "/network/sainik-school", "/network/eklavya-model-residential-school",
@@ -60,13 +60,19 @@ public class SitemapController {
     private final com.indiaschoolfinder.service.BestPlacesService bestPlaces;
     private final com.indiaschoolfinder.service.PremierDirectoryService premierDirectory;
     private final com.indiaschoolfinder.service.OlympiadPages olympiadPages;
+    private final com.indiaschoolfinder.repository.SiteUpdateRepository siteUpdates;
+    private final com.indiaschoolfinder.service.NoticeService notices;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
                              RankingCatalogService rankingCatalog, com.indiaschoolfinder.repository.BlogPostRepository blogPosts,
                              com.indiaschoolfinder.service.BestPlacesService bestPlaces,
                              com.indiaschoolfinder.service.PremierDirectoryService premierDirectory,
-                             com.indiaschoolfinder.service.OlympiadPages olympiadPages) {
+                             com.indiaschoolfinder.service.OlympiadPages olympiadPages,
+                             com.indiaschoolfinder.repository.SiteUpdateRepository siteUpdates,
+                             com.indiaschoolfinder.service.NoticeService notices) {
+        this.siteUpdates = siteUpdates;
+        this.notices = notices;
         this.olympiadPages = olympiadPages;
         this.premierDirectory = premierDirectory;
         this.bestPlaces = bestPlaces;
@@ -183,6 +189,27 @@ public class SitemapController {
         if (!posts.isEmpty()) url(xml, base + "/blog", null);
         posts.forEach(p -> url(xml, base + "/blog/" + p.getSlug(), p.getUpdatedAt()));
         posts.stream().map(p -> p.getCategory()).distinct().forEach(c -> url(xml, base + "/blog/category/" + c.slug(), null));
+        return xml(xml.append("</urlset>\n"));
+    }
+
+    /**
+     * Admission and job notices whose pages may be indexed (NoticeService.indexable: published, current openings with
+     * facts beyond their title), with the date they last changed. Expired, closed, results-only and title-only notices
+     * stay out, so the file never offers a page that says noindex.
+     */
+    @GetMapping("/sitemaps/notices.xml")
+    public ResponseEntity<String> notices(HttpServletRequest request) {
+        String base = base(request);
+        StringBuilder xml = urlset();
+        java.time.LocalDate today = notices.today();
+        for (var category : List.of(com.indiaschoolfinder.entity.SiteUpdate.Category.JOB, com.indiaschoolfinder.entity.SiteUpdate.Category.ADMISSION)) {
+            siteUpdates.findByCategoryAndStatusIn(category, List.of(com.indiaschoolfinder.entity.SiteUpdate.Status.PUBLISHED)).stream()
+                    .filter(u -> com.indiaschoolfinder.service.NoticeService.indexable(u, today))
+                    .sorted(java.util.Comparator.comparing(com.indiaschoolfinder.entity.SiteUpdate::getSlug))
+                    .forEach(u -> url(xml, base + com.indiaschoolfinder.service.UpdateFeedService.noticePath(u),
+                            u.getLastChangedAt() != null ? u.getLastChangedAt()
+                                    : u.getPublishedOn().atStartOfDay(java.time.ZoneId.of("Asia/Kolkata")).toInstant()));
+        }
         return xml(xml.append("</urlset>\n"));
     }
 

@@ -87,6 +87,148 @@ added by editors.
 
 Requests identify themselves as `SchoolDhundoBot/1.0 (+https://schooldhundo.in/contact)` (`app.notifications.http.user-agent`).
 
+## Source registry (`backend/src/main/resources/notifications/sources.json`)
+
+Besides the six built-in adapters above, the check reads the official sources listed in a reviewed registry file. Each
+entry says what the source is (institution, government or private, boarding, state, city, our school profile), what it
+publishes (ADMISSION and/or JOB), how it is read, and how its notices are dated. The file is code-reviewed like any
+change, and an entry is added only after a person has looked at the site (`checked`).
+
+How a registry source is read (`method`):
+
+| Method | What it reads | Date (`date`) |
+|---|---|---|
+| `WP_MEDIA` | The site's public WordPress media API (`/wp-json/wp/v2/media?mime_type=application/pdf`): the PDFs the institution uploaded | `SOURCE`: the upload date the API gives |
+| `S3WAAS_DOCS` | A government-platform (S3WaaS) document table: title, "Published On", file | `SOURCE`: the "Published On" cell |
+| `HTML_ITEMS` | Entries of a page picked by CSS selectors (`item`, and within it `title`, `link`, `dateSelector`) | `TEXT` (a date the entry prints), `FILENAME_STAMP` (an upload time in the file name), `FILENAME_EPOCH` (a Unix time in the file name) or `NONE` (every entry waits for an editor) |
+
+Other settings: `assume` (every entry is a JOB or ADMISSION, e.g. a careers page), `schoolPostsOnly` (keep only teaching
+and school-leadership posts, or posts that name a school or the DoE: for commissions and selection boards),
+`reviewGeneric` (with `schoolPostsOnly`: an advertisement that names no post waits for review instead of being left out),
+`include` / `exclude` / `linkPattern` (regular expressions), `titlesCutAt` (the site cuts titles at N characters; such
+titles are marked "…"), `mayBeEmpty`, `prefixTitles` (start displayed titles with the institution's name; the default for
+a school's own site), and `enabled` with a `disabledReason`.
+
+Every entry is checked when the application starts (key, hosts, https addresses on those hosts, categories, selectors,
+regular expressions). An entry with a mistake is **left out and reported** (in the log, and in red in Admin → School &
+exam updates); it never stops the application or the other sources. `RegistrySourceAdapterTest` fails the build if the
+file has any problem.
+
+### Registry sources (inspected 19 November 2026)
+
+| Key | Source | How | Notes |
+|---|---|---|---|
+| `sainik-school-rewari` | Sainik School Rewari, HR | WP_MEDIA | Recruitment adverts and admission PDFs with upload dates |
+| `sainik-school-goalpara` | Sainik School Goalpara, AS | WP_MEDIA | Recruitment adverts among ration tenders (tenders left out) |
+| `sainik-school-korukonda` | Sainik School Korukonda, AP | WP_MEDIA | TGT recruitment steps (application, shortlist, final result) |
+| `sainik-school-nalanda` | Sainik School Nalanda, BR | WP_MEDIA | Nothing current on 19 Nov 2026 (last advert Dec 2025) |
+| `sainik-school-east-siang` | Sainik School East Siang, AR | WP_MEDIA | AISSEE 2027 details |
+| `bpsc` | Bihar Public Service Commission | WP_MEDIA | School posts only (teachers, head teachers, TRE); uploads titled by file name wait for review |
+| `dsssb` | Delhi Subordinate Services Selection Board | HTML_ITEMS (`TEXT` date) | School posts only; "various posts" adverts wait for review |
+| `oav-odisha` | Odisha Adarsha Vidyalaya Sangathan | HTML_ITEMS (`FILENAME_STAMP`) | Home-page cards; titles cut at 100 characters by the site; promotion lists and HRA orders left out |
+| `nests-emrs` | NESTS (Eklavya Model Residential Schools) | HTML_ITEMS (`NONE`) | No dates on the site: **review only** |
+| `mayo-college` | Mayo College, Ajmer (private boarding) | HTML_ITEMS (`FILENAME_EPOCH`) | Careers page; each opening's advert is `/uploads/jobs/<Unix time>` |
+| `assam-valley-school` | The Assam Valley School (private boarding) | WP_MEDIA | |
+| `vidya-devi-jindal-school` | Vidya Devi Jindal School, Hisar (girls' boarding) | WP_MEDIA | |
+| `good-shepherd-ooty` | Good Shepherd International School, Ooty (boarding) | WP_MEDIA | Its "AP Registration" PDFs (Advanced Placement) go to review, not to admissions |
+| `dps-rk-puram` | Delhi Public School R. K. Puram | WP_MEDIA | No recent PDFs on 19 Nov 2026 (`mayBeEmpty`) |
+
+Investigated on 19 November 2026 and **not** added:
+
+- **The Doon School**: a Cloudflare challenge answers automated clients (403). Not worked around.
+- **HPSC** (Haryana): robots.txt disallows everything.
+- **UPPSC**, **RPSC**, **MP ESB**, **TGSWREIS**, **AWES (Army Public Schools)**: script-built pages, errors, TLS failures or
+  timeouts for our client.
+- **KV school websites** (`*.kvs.ac.in`, about 1,250): S3WaaS sites whose REST API needs a login (401, respected). Their
+  HTML pages ("walk-in for contractual teachers", "teacher vacancy") are readable and dated, but our school records hold no
+  KV website addresses yet; a list of the KV sites is needed before adding them.
+- **Navodaya per-school notices**: the public API returns the headquarters' notices for every JNV id, so it adds nothing.
+- **Welham Girls, Welham Boys, Lawrence School Sanawar, Scindia, Modern School, Daly College, DPS Society**: their
+  careers pages show only an application form, "No Vacancy Available", or general text, with no list of openings to read.
+- **OAV recruitment page**: loaded by script; the home-page cards are read instead.
+- **Sainik School Bhubaneswar**: its WordPress posts feed has been taken over by gambling spam; not used.
+
+### Source health
+
+Every run writes each source's definition and health to the `notification_source` table: last attempt, last success,
+outcome (OK, FAILED, BLOCKED), error, and failures in a row. Staff see it under Admin → School & exam updates → Sources
+("N failing"). A failing source never stops the others; the public "last checked" time is the finish of the last run
+that read at least one source successfully. Run records older than 180 days are deleted (they are operational data;
+notices themselves are never deleted).
+
+## Admissions and school jobs (V47)
+
+### What each notice gets
+
+Admission and job notices (found by the check or written by editors) get facts of their own, each **only as the
+official source states it** (`OpportunityClassifier`, from the official title, in English, Hindi or Odia, with Indian
+digits read as digits):
+
+- **Kind of notice**: OPENING, EXTENSION (of a last date), CORRIGENDUM, SCHEDULE (tests, interviews), ADMIT_CARD,
+  RESULT (results, shortlists, lists), OTHER.
+- **Posts** (codes: PRT, TGT, PGT, NTT, ASSISTANT_MASTER (RMS and Sainik Schools), SPECIAL_EDUCATOR, PET, PRINCIPAL,
+  VICE_PRINCIPAL, HEADMASTER, COORDINATOR, LIBRARIAN, COUNSELLOR, LAB_ASSISTANT, WARDEN; and the kinds of staff
+  IT_SUPPORT, ADMIN_STAFF, SUPPORT_STAFF, TEACHER, which are filters only and never shown as a post's name), **subjects**,
+  teaching or non-teaching, regular / contract / part-time / temporary, number of posts. An entry of a careers page
+  (`assume: JOB`) is an opening unless its words say otherwise.
+- **Admissions**: classes ("VI, IX", "Nursery/KG") and session ("2027-28").
+- **Dates**: application opening, last date, exam or walk-in date: each only when a cue word ("last date", "closing
+  date", "walk-in", "अंतिम तिथि", "ଶେଷ ତାରିଖ"…) is followed by a real date that is plausible for the notice. A
+  publication date is never used as a last date.
+- From the source registry: institution, government or private, boarding, state, city, our school profile.
+- **Posts of a recruitment notice** (`site_update_position`): "PGT English, PGT Hindi and PGT Maths" become three posts.
+  An editor's list (Admin → edit → "Posts") replaces those read from the title, and later checks keep it.
+- A **page address** (`slug`), made once and never changed: `/jobs/{slug}` or `/admissions/{slug}`.
+
+Notices stored before V47 get their facts and address in batches of 200: 30 seconds after start-up and in each run.
+Their wording, dates and expiry are left as they were.
+
+### Rules added for admissions and jobs
+
+- **Application status** is worked out on every request from the official dates: Applications open / Apply now,
+  Closing soon (last date within 14 days), Opening soon / Upcoming, Closed, and **Last date not announced** when the
+  source gives none (never assumed open or closed). Results, admit cards and schedules have no status.
+- **School posts only.** A notice from a school system or commission (KVS, NVS…) for a post that is not school
+  employment (engineers, project associates, consultants…) waits for an editor. Sources marked `schoolPostsOnly` (BPSC,
+  DSSSB) keep only school posts.
+- **Expiry follows the last date.** An opening with an official last date stays current until that date (or its exam
+  or walk-in, if later) and then moves to past updates; an opening found after its last date is not added. Others keep
+  the 45-day lifetime.
+- **Ordering** in the Admissions and Jobs tabs (home page and /updates) and on /jobs: editor-pinned first, then open or
+  opening notices (nearest last date first), then those without a last date, then results and other later steps,
+  closed last; editor-verified first within each. The All, Exams and Prep tabs keep their order.
+- **Duplicates**: the same notice from the same source is one row (source id or address). Several openings on one
+  careers page share its address and are not mistaken for copies.
+
+### Pages, search engines and the sitemap
+
+- **`/jobs`**: current school job notices with filters (state, government/private/boarding, teaching or not, post,
+  subject, status) built from what is listed; filters live in the address, but the canonical address is always `/jobs`,
+  so filter combinations are never indexed separately.
+- **`/jobs/{slug}` and `/admissions/{slug}`**: the notice's status, key facts (with "Not given in the official
+  listing" for a missing last date), posts, questions answered from the facts only, official notice and application
+  links, the school's profile, related notices. Closed notices stay readable, marked "no longer current".
+- **Head** (SeoHeadService): title, description, BreadcrumbList and WebPage (publication and change dates, `isBasedOn`
+  the official notice). **JobPosting** only for a current job opening that may be indexed, with only what the page shows:
+  no `baseSalary` (pay is free text as published), no `directApply`; `validThrough` is the last date at 23:59 IST.
+- **Indexable** (else `noindex`, no canonical link, out of the sitemap): published, dated by the source, current, an
+  opening or extension, not closed, not a post outside school employment (an engineer of a school system), and at
+  least one fact beyond its title (last date, posts, classes, staff kind, number of posts or eligibility). Results,
+  admit cards, closed and title-only notices are noindex.
+- **Sitemap**: `/sitemaps/notices.xml` (in `/sitemap.xml`) lists the indexable notice pages with their last change;
+  `/jobs` is in `/sitemaps/pages.xml`. Server-rendered bodies (SeoBodyService) give crawlers the same facts and answers.
+
+### Endpoints added
+
+| Endpoint | Who | What |
+|---|---|---|
+| `GET /api/v1/notices?category=JOB\|ADMISSION&state=&sector=&staff=&post=&subject=&status=&classes=&session=&q=&past=&page=&size=` | public | Filtered list (feed items) with the filter choices and counts |
+| `GET /api/v1/notices/{slug}` | public | One notice's page data; 404 unless published or expired |
+| `PUT /api/v1/admin/updates/{id}/positions` | ADMIN, EDITOR | Set a recruitment notice's posts from the official notice |
+
+`/api/v1/updates` items gain `applicationStatus` and `noticeType` (null for other items); `PUT /api/v1/admin/updates/{id}`
+accepts an optional `details` object with the facts (left out, the stored facts are kept).
+
 ## Settings (`application.properties`, prefix `app.notifications`)
 
 | Property | Default | Meaning |
@@ -148,7 +290,12 @@ There is no public or anonymous way to start a check.
     revised dates, expiry, withdrawal, a failing source, the lock, crash recovery and the endpoints.
   - `FetchSessionTest` and `UrlPolicyAndRobotsTest` cover the fetch rules. `OfficialSourceAdaptersTest` covers each
     parser against real-page excerpts, and `NotificationScheduleTest` covers 6:00 IST.
-  - Command: `./mvnw -o test -Dtest='Notification*,FetchSessionTest,UrlPolicyAndRobotsTest,OfficialSourceAdaptersTest'`
+  - `OpportunityClassifierTest` and `OpportunityRulesTest` cover reading facts from real official titles, dates, status
+    and page addresses; `RegistrySourceAdapterTest` covers the registry file and each method against saved excerpts of
+    the real pages (19 Nov 2026); `OpportunityNoticesIT` covers admissions and jobs end to end (facts, posts, the
+    school-post rule, closed and later-step notices, source health, the fill-in of older notices, the Jobs list and its
+    filters, page heads with JobPosting, server-rendered bodies and the sitemap).
+  - Command: `./mvnw -o test -Dtest='Notification*,Opportunity*,RegistrySourceAdapterTest,FetchSessionTest,UrlPolicyAndRobotsTest,OfficialSourceAdaptersTest'`
 - **Locally.** Start the backend (`LocalDevApplication`). Sign in to the admin area as an ADMIN, then press "Check now"
   in Admin → School & exam updates, or `POST /api/v1/admin/updates/sync`. Each source's result appears in the panel.
 
@@ -163,6 +310,14 @@ There is no public or anonymous way to start a check.
   on start: it adds columns and indexes to `site_update` and creates `notification_sync_run`. Shortly after the restart,
   the start-up catch-up runs the first check (no successful run yet). Watch it with
   `journalctl -u schooldhundo | grep "Notification sync"` or in the admin panel.
+- **Admissions and jobs (V47)** deploy the same way: Flyway applies `V47__admissions_jobs_intelligence.sql` on start
+  (new nullable columns on `site_update`, and the new tables `site_update_position` and `notification_source`; nothing is
+  dropped or rewritten). About 30 seconds after start, notices stored earlier get their facts and page addresses; the
+  next check (06:00 IST, or the start-up catch-up) reads the registry sources too. `frontend/nginx.conf` adds
+  `/api/v1/notices` to the short public cache and is uploaded by the deploy script. **Rollback:** deploy the previous jar
+  and site; V47 only adds columns and tables, which the previous version ignores (no down-migration is needed; drop them
+  later only if the feature is abandoned). To pause only the new sources, list their keys in
+  `NOTIFICATIONS_DISABLED_SOURCES`.
 - **Switching off:** `NOTIFICATIONS_SYNC_ENABLED=false` (or `NOTIFICATIONS_SYNC_CRON=-`) in `/etc/schooldhundo/backend.env`,
   then restart the service. To skip one site: `NOTIFICATIONS_DISABLED_SOURCES=cbse-recruitment`.
 - The server needs outbound https to the source hosts. Oracle's default egress rules allow it.

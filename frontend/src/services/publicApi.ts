@@ -524,7 +524,65 @@ export interface UpdateItem {
   origin: UpdateOrigin;
   /** An exam slug, "admissions", or null: used to pick a picture. */
   topic: string | null;
+  /** Admissions and jobs only: where applications stand today, from the official dates (null for other items). */
+  applicationStatus?: ApplicationStatus | null;
+  /** Admissions and jobs only: an opening, or a later step such as a result or admit cards. */
+  noticeType?: NoticeType | null;
 }
+
+/** Worked out from the official dates; a notice without a last date is DATE_NOT_ANNOUNCED, never assumed open. */
+export type ApplicationStatus = 'OPEN' | 'OPENING_SOON' | 'CLOSING_SOON' | 'CLOSED' | 'DATE_NOT_ANNOUNCED';
+export type NoticeType = 'OPENING' | 'EXTENSION' | 'CORRIGENDUM' | 'SCHEDULE' | 'ADMIT_CARD' | 'RESULT' | 'OTHER';
+
+export interface NoticeFacet { value: string; label: string; count: number }
+
+export interface NoticeFacets {
+  states: NoticeFacet[]; sectors: NoticeFacet[]; staff: NoticeFacet[]; posts: NoticeFacet[]; subjects: NoticeFacet[];
+  statuses: NoticeFacet[]; classes: NoticeFacet[]; sessions: NoticeFacet[];
+}
+
+export interface NoticeList {
+  category: 'ADMISSION' | 'JOB';
+  page: PageResponse<UpdateItem>;
+  facets: NoticeFacets;
+  /** Current notices of the category before filtering. */
+  current: number;
+}
+
+export interface NoticeFilters {
+  state?: string; sector?: string; staff?: string; post?: string; subject?: string; status?: string; classes?: string;
+  session?: string; q?: string; past?: boolean; page?: number; size?: number;
+}
+
+export interface NoticeAnswer { question: string; answer: string; linkUrl: string | null; linkLabel: string | null }
+
+export interface NoticePosition {
+  id: number; postName: string; postType: string | null; postTypeLabel: string | null; subject: string | null; postCode: string | null;
+  vacancies: number | null; payScale: string | null; qualification: string | null; origin: 'TITLE' | 'EDITOR';
+}
+
+/** An admission or job notice's page: every fact only as the official source states it (null means "not given"). */
+export interface NoticeDetail {
+  id: number; slug: string; category: 'ADMISSION' | 'JOB'; path: string; title: string; officialTitle: string | null; summary: string;
+  institutionName: string | null; campus: string | null; school: { slug: string; name: string; city: string | null; stateCode: string | null } | null;
+  sector: 'GOVERNMENT' | 'PRIVATE' | null; boarding: boolean | null; stateCode: string | null; stateName: string | null;
+  stateSlug: string | null; city: string | null; noticeType: NoticeType | null; noticeTypeLabel: string;
+  applicationStatus: ApplicationStatus | null; applicationStatusLabel: string | null; publishedOn: string; dateConfirmed: boolean;
+  opensOn: string | null; closesOn: string | null; examOn: string | null; examLabel: string; academicSession: string | null;
+  classes: string | null; postTypes: NoticeFacet[]; subjects: string[]; staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null;
+  employmentType: 'REGULAR' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null; vacancies: number | null; eligibility: string | null;
+  experience: string | null; tetRequirement: string | null; ageLimit: string | null; salaryText: string | null;
+  applicationFee: string | null; selectionProcess: string | null; applyUrl: string | null; sourceUrl: string | null;
+  sourceName: string | null; sourceDomain: string | null; reliability: string;
+  verification: 'EDITOR_VERIFIED' | 'OFFICIAL_SOURCE' | 'EDITORIAL'; lastVerifiedAt: string | null; lastChangedAt: string | null;
+  current: boolean; indexable: boolean; positions: NoticePosition[]; answers: NoticeAnswer[]; related: UpdateItem[];
+}
+
+export const noticeService = {
+  list: (category: 'ADMISSION' | 'JOB', filters: NoticeFilters = {}) =>
+    http.get<NoticeList>('/notices', { params: cleanParams({ category, ...filters }) }).then((r) => r.data),
+  detail: (slug: string) => http.get<NoticeDetail>(`/notices/${encodeURIComponent(slug)}`).then((r) => r.data),
+};
 
 /** When the official sources were last checked (once a day) and when they are checked next. */
 export interface UpdateSyncStatus {

@@ -18,6 +18,8 @@ import com.indiaschoolfinder.enums.VerificationStatus;
 import com.indiaschoolfinder.repository.PracticeSetRepository;
 import com.indiaschoolfinder.repository.SiteUpdateRepository;
 import com.indiaschoolfinder.notifications.fetch.UrlPolicy;
+import com.indiaschoolfinder.notifications.opportunity.ApplicationStatus;
+import com.indiaschoolfinder.notifications.opportunity.OpportunityClassifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -80,7 +82,7 @@ public class UpdateFeedService {
     }
 
     /** An item and how far up an editor pinned it (derived items are 0). */
-    private record Ranked(UpdateItem item, int priority) {
+    record Ranked(UpdateItem item, int priority) {
     }
 
     /** Current updates, most relevant first; {@code category} null means all. */
@@ -110,9 +112,12 @@ public class UpdateFeedService {
         }
         practiceItems(examsBySlug, today).forEach(u -> all.add(new Ranked(u, 0)));
 
+        // The Admissions and Jobs tabs put open opportunities first (nearest last date first); All, Exams and Prep keep
+        // the order they always had.
+        boolean opportunities = category == SiteUpdate.Category.ADMISSION || category == SiteUpdate.Category.JOB;
         List<UpdateItem> matching = all.stream()
                 .filter(r -> category == null || r.item().category() == category)
-                .sorted(ORDER)
+                .sorted(opportunities ? OPPORTUNITY_ORDER : ORDER)
                 .map(Ranked::item)
                 .toList();
         int from = Math.min(page * size, matching.size());
@@ -129,6 +134,35 @@ public class UpdateFeedService {
             .thenComparing((Ranked r) -> r.item().publishedOn(), Comparator.nullsLast(Comparator.reverseOrder()))
             .thenComparingInt(Ranked::priority)
             .thenComparing(r -> r.item().title());
+
+    /**
+     * Admissions and jobs: editor-pinned first; then openings whose official dates say applications are open or about
+     * to open, nearest last date first; then openings with no announced last date; then later steps (results, admit
+     * cards, schedules); closed ones last. Within each, notices an editor verified, then the newest.
+     */
+    static final Comparator<Ranked> OPPORTUNITY_ORDER = Comparator
+            .comparingInt((Ranked r) -> -Math.max(r.priority(), 0))
+            .thenComparingInt(r -> tier(r.item()))
+            .thenComparing((Ranked r) -> tier(r.item()) == 0 ? r.item().eventDate() : null, Comparator.nullsLast(Comparator.naturalOrder()))
+            .thenComparing((Ranked r) -> !r.item().verified())
+            .thenComparing((Ranked r) -> r.item().publishedOn(), Comparator.nullsLast(Comparator.reverseOrder()))
+            .thenComparing(r -> r.item().title());
+
+    /**
+     * 0 open or opening soon, 1 last date not announced (or kind unclear), 2 a later step (result, admit cards...), 3 closed,
+     * 4 a post outside school employment.
+     */
+    static int tier(UpdateItem i) {
+        if (i.category() == SiteUpdate.Category.JOB && OpportunityClassifier.nonSchoolOnly(i.title())) {
+            return 4; // an engineer or project post of a school system: listed, but after every school job
+        }
+        ApplicationStatus s = i.applicationStatus();
+        if (s == ApplicationStatus.CLOSED) return 3;
+        if (s != null && s.active()) return 0;
+        if (s == ApplicationStatus.DATE_NOT_ANNOUNCED) return 1;
+        // An opening, or a notice of unclear kind, ranks with the openings that give no last date; results and the like after.
+        return i.noticeType() == null || i.noticeType() == SiteUpdate.NoticeType.OPENING || i.noticeType() == SiteUpdate.NoticeType.OTHER ? 1 : 2;
+    }
 
     /**
      * The badge for an update: a deadline within {@value #CLOSING_SOON_DAYS} days, then a notice published within
@@ -159,27 +193,42 @@ public class UpdateFeedService {
     /** Published editorial updates, until their expiry date; one dated in the future waits for that day. */
     private List<Ranked> editorial(LocalDate today) {
         return updates.findByStatus(SiteUpdate.Status.PUBLISHED).stream()
-                .filter(u -> u.getExpiresOn() == null || !u.getExpiresOn().isBefore(today))
-                .filter(u -> !u.getPublishedOn().isAfter(today))
+                .filter(u -> current(u, today))
                 .map(u -> new Ranked(stored(u, today, false), u.getPriority()))
                 .toList();
+    }
+
+    /** A published update is shown from its publication date until its expiry date. */
+    static boolean current(SiteUpdate u, LocalDate today) {
+        return (u.getExpiresOn() == null || !u.getExpiresOn().isBefore(today)) && !u.getPublishedOn().isAfter(today);
     }
 
     /**
      * A stored update as a feed item. For one found on an official site, "Updated" follows only the source's own
      * corrections (last_changed_at), never the daily check or a staff edit, and the publication date is the source's.
+     * An admission or job notice opens its own page here (which links the official notice), unless it names another.
      */
-    private UpdateItem stored(SiteUpdate u, LocalDate today, boolean expired) {
+    UpdateItem stored(SiteUpdate u, LocalDate today, boolean expired) {
         boolean official = u.isOfficialSync();
         Instant changedAt = official ? u.getLastChangedAt() : u.getUpdatedAt();
         LocalDate updatedOn = changedAt == null ? null : changedAt.atZone(INDIA).toLocalDate();
         Badge badge = expired ? Badge.EXPIRED : badge(today, u.getPublishedOn(), updatedOn, u.getEventDate(), u.isDeadline(), false);
+        String link = u.getLinkPath() != null ? u.getLinkPath() : noticePath(u);
         return new UpdateItem((official ? "official:" : "editorial:") + u.getId(), u.getCategory(), u.getTitle(), u.getSummary(),
                 u.getImageUrl(), u.getPublishedOn(), official ? changedAt : u.getUpdatedAt(), u.getEventDate(), u.getEventLabel(),
-                u.isDeadline(), badge, u.getSourceUrl(), u.getSourceName(), u.getLinkPath(),
+                u.isDeadline(), badge, u.getSourceUrl(), u.getSourceName(), link,
                 u.getActionLabel() != null ? u.getActionLabel() : official ? "View Notice" : defaultAction(u.getCategory()),
                 u.getVerificationStatus() == VerificationStatus.VERIFIED, official ? Origin.OFFICIAL_SOURCE : Origin.EDITORIAL,
-                u.getTopic() != null ? u.getTopic() : u.getCategory().name().toLowerCase(Locale.ROOT));
+                u.getTopic() != null ? u.getTopic() : u.getCategory().name().toLowerCase(Locale.ROOT),
+                u.isOpportunity() ? ApplicationStatus.of(u, today) : null, u.isOpportunity() ? u.getNoticeType() : null);
+    }
+
+    /** /jobs/{slug} or /admissions/{slug} for an admission or job notice with a page; null otherwise. */
+    public static String noticePath(SiteUpdate u) {
+        if (u.getSlug() == null || !u.isOpportunity()) {
+            return null;
+        }
+        return (u.getCategory() == SiteUpdate.Category.JOB ? "/jobs/" : "/admissions/") + u.getSlug();
     }
 
     /** Updates that expired within the last {@value #PAST_DAYS} days, newest first, each with the EXPIRED badge. */
@@ -324,11 +373,15 @@ public class UpdateFeedService {
             boolean verified = list.stream().allMatch(a -> a.verificationStatus() == VerificationStatus.VERIFIED);
             String sourceKey = sourceKeyOf.get(group.getKey());
             String source = sourceKey.startsWith("school:") ? null : sourceKey;
+            ApplicationStatus status = open
+                    ? (eventDate != null && !eventDate.isAfter(today.plusDays(ApplicationStatus.CLOSING_SOON_DAYS))
+                    ? ApplicationStatus.CLOSING_SOON : ApplicationStatus.OPEN)
+                    : ApplicationStatus.OPENING_SOON;
             items.add(new UpdateItem("admissions:" + Integer.toHexString(group.getKey().hashCode()), SiteUpdate.Category.ADMISSION,
                     shorten(title, 160), shorten(summary, 300), null, publishedOn, updatedAt, eventDate,
                     open ? "Last date" : "Applications open", open,
                     badge(today, publishedOn, null, eventDate, open, open), source, null, link, "View Admissions", verified,
-                    Origin.ADMISSIONS, "admissions"));
+                    Origin.ADMISSIONS, "admissions", status, SiteUpdate.NoticeType.OPENING));
         }
         return items;
     }

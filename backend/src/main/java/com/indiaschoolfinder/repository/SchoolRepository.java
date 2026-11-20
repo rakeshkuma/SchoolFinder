@@ -34,6 +34,14 @@ public interface SchoolRepository extends JpaRepository<School, Long>, JpaSpecif
 
     Optional<School> findBySlug(String slug);
 
+    /** The id of an active school, for linking a notice found on the school's own website to its profile. */
+    @Query("select s.id from School s where s.slug = :slug and s.active = true")
+    Optional<Long> findActiveIdBySlug(@Param("slug") String slug);
+
+    /** Slug, name, city and state code of active schools, for notice pages that link the school's profile. */
+    @Query("select s.id, s.slug, s.name, s.city, s.stateCode from School s where s.id in :ids and s.active = true")
+    List<Object[]> findActiveLinks(@Param("ids") Collection<Long> ids);
+
     /** Same name and PIN in the same state, among schools with no UDISE code or board affiliation (see uk_school_name_pin). */
     @Query("""
             select s from School s where s.udiseCode is null
