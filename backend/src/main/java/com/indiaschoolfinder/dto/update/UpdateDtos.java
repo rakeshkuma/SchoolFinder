@@ -84,6 +84,8 @@ public final class UpdateDtos {
             @Size(max = 400) String selectionProcess,
             @HttpUrl @Size(max = 600) String applyUrl) {
 
+        /** A validation rule, not a field: kept out of JSON so an admin row's facts can be sent back unchanged. */
+        @com.fasterxml.jackson.annotation.JsonIgnore
         @AssertTrue(message = "opensOn must not be after closesOn")
         public boolean isWindowValid() {
             return opensOn == null || closesOn == null || !opensOn.isAfter(closesOn);

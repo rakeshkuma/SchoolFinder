@@ -30,8 +30,17 @@ const toRequest = (r: SiteUpdateRow): SiteUpdateRequest => ({
   category: r.category, title: r.title, summary: r.summary, imageUrl: r.imageUrl, publishedOn: r.publishedOn, eventDate: r.eventDate,
   eventLabel: r.eventLabel, deadline: r.deadline, sourceUrl: r.sourceUrl, sourceName: r.sourceName, linkPath: r.linkPath,
   actionLabel: r.actionLabel, verificationStatus: r.verificationStatus, expiresOn: r.expiresOn, priority: r.priority,
-  ...(r.details ? { details: r.details } : {}),
+  ...(r.details ? { details: pickFacts(r.details) } : {}),
 });
+
+/** Only the known fact fields: the server refuses any other key when the update is saved. */
+function pickFacts(d: OpportunityFields): OpportunityFields {
+  const out = { ...BLANK_FACTS };
+  for (const key of Object.keys(BLANK_FACTS) as (keyof OpportunityFields)[]) {
+    (out as Record<string, unknown>)[key] = d[key] ?? null;
+  }
+  return out;
+}
 
 const BLANK_FACTS: OpportunityFields = {
   institutionName: null, campus: null, schoolId: null, sector: null, boarding: null, stateCode: null, city: null, noticeType: null,
