@@ -16,6 +16,7 @@ import type {
 import {
   boardingTypeLabel, entranceExamInfo, facilityCategoryLabel, formatMoneyCompact, genderLabel, residentialSystemLabel,
 } from '../utils/format';
+import { profileLink } from '../utils/profileLink';
 
 const PAGE_SIZE = 24;
 const TOP_SIZES = [10, 20, 50] as const;
@@ -103,7 +104,7 @@ function TopBoardingSchools() {
               {page.content.map((r) => (
                 <li key={r.schoolId} className="card flex items-center gap-3 p-4">
                   <span className="font-display text-xl font-extrabold text-ink">#{r.scopePosition}</span>
-                  <Link to={`/schools/${r.slug}?tab=ranking`} className="font-medium hover:text-brand-700">{r.schoolName}</Link>
+                  <Link {...profileLink(r.slug, 'ranking')} className="font-medium hover:text-brand-700">{r.schoolName}</Link>
                   <span className="ml-auto text-sm font-semibold tabular-nums">{r.totalScore.toFixed(1)}</span>
                 </li>
               ))}

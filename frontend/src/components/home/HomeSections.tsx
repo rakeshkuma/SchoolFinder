@@ -6,6 +6,7 @@ import type { BlogCard, BlogCategory } from '../../services/blogApi';
 import type { BestPlaceSummary, DirectorySummary, UpdateItem } from '../../services/publicApi';
 import type { ExternalRankingListItem, PageResponse, SchoolSummary } from '../../types/api';
 import { formatDate, formatMoneyCompact } from '../../utils/format';
+import { linkTo, profileLink, type ProfileLinkState } from '../../utils/profileLink';
 import { Icon, type IconName } from '../common/Icon';
 import { SchoolImage } from '../school/SchoolImage';
 import { HomePhoto } from './HomePhoto';
@@ -82,7 +83,7 @@ export function ExploreCategories() {
 
 /* ------------------------------------------------------------------ Top rankings + Trending now */
 
-interface RankLine { key: string; to: string; label: string; title?: string; meta?: string; rank?: number | null }
+interface RankLine { key: string; to: string; state?: ProfileLinkState; label: string; title?: string; meta?: string; rank?: number | null }
 
 function RankingCard({ title, icon, tone, image, chip, lines, to, numbered = false, loading, empty }: {
   title: string; icon: IconName; tone: string; image: HomeImageId; lines: RankLine[]; to: string; numbered?: boolean; loading: boolean;
@@ -109,7 +110,7 @@ function RankingCard({ title, icon, tone, image, chip, lines, to, numbered = fal
           <ol className="flex-1 space-y-1.5 text-sm">
             {lines.map((l, i) => (
               <li key={l.key}>
-                <Link to={l.to} className="flex items-center gap-2.5 rounded-lg px-1 py-1 text-slate-700 transition hover:bg-slate-50 hover:text-royal-700">
+                <Link to={l.to} state={l.state} className="flex items-center gap-2.5 rounded-lg px-1 py-1 text-slate-700 transition hover:bg-slate-50 hover:text-royal-700">
                   {numbered
                     ? <span className="grid h-6 min-w-[24px] shrink-0 place-items-center rounded-full bg-amber-400 px-1 text-xs font-extrabold tabular-nums text-navy">{l.rank ?? i + 1}</span>
                     : <span aria-hidden className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-500"><Icon name="chevronRight" className="h-3.5 w-3.5" /></span>}
@@ -156,7 +157,7 @@ export function HomeRankings({ iirf, directory, places, trending }: {
               empty="See India’s top schools in published national rankings."
               lines={entries.slice(0, 3).map((r) => ({
                 key: String(r.entry.id), rank: r.entry.rankPosition,
-                to: r.schoolSlug ? `/schools/${r.schoolSlug}?tab=ranking` : '/rankings',
+                ...(r.schoolSlug ? profileLink(r.schoolSlug, 'ranking') : { to: '/rankings' }),
                 label: r.schoolName ?? 'School', title: [r.schoolName, r.city].filter(Boolean).join(', '),
                 meta: r.entry.score != null ? String(r.entry.score) : undefined,
               }))} />
@@ -232,7 +233,7 @@ export function TrendingNow({ updates, posts }: { updates: UpdateItem[]; posts: 
             const cls = 'group flex items-center gap-3 py-3';
             return (
               <li key={r.key}>
-                {r.external ? <a href={r.to} target="_blank" rel="noopener noreferrer" className={cls}>{body}</a> : <Link to={r.to} className={cls}>{body}</Link>}
+                {r.external ? <a href={r.to} target="_blank" rel="noopener noreferrer" className={cls}>{body}</a> : <Link {...linkTo(r.to)} className={cls}>{body}</Link>}
               </li>
             );
           })}

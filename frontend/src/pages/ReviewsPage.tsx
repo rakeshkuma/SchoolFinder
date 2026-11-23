@@ -5,6 +5,7 @@ import { AsyncContent, EmptyState } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { schoolService } from '../services/publicApi';
+import { profileLink } from '../utils/profileLink';
 
 export function ReviewsPage() {
   useDocumentTitle('Parent reviews and ratings');
@@ -24,7 +25,7 @@ export function ReviewsPage() {
                 {page.content.map((s) => (
                   <li key={s.id} className="flex flex-wrap items-center justify-between gap-2 p-4">
                     <div>
-                      <Link to={`/schools/${s.slug}?tab=reviews`} className="font-medium hover:text-brand-700">{s.name}</Link>
+                      <Link {...profileLink(s.slug, 'reviews')} className="font-medium hover:text-brand-700">{s.name}</Link>
                       <p className="text-xs text-slate-500">{s.locality}</p>
                     </div>
                     <div className="text-right">

@@ -16,6 +16,7 @@ import { NotFoundPage } from './InfoPages';
 import { DirectoryCategoryPage, DirectoryPlacesPage } from './RankingDirectory';
 import type { BoardingType, SchoolType } from '../types/api';
 import { boardingTypeLabel, formatDate, networkLabel, schoolTypeLabel } from '../utils/format';
+import { profileLink } from '../utils/profileLink';
 
 export const NO_SEPARATE_RANKING = 'No separate published ranking available for this category.';
 
@@ -211,7 +212,7 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
   const green = list.ratingBased;
   const kinds = shownRanks(rows, ranks);
   const scored = !green && hasScores(rows, list);
-  const details = (r: RankingRow) => `/schools/${r.slug}?tab=ranking`;
+  const details = (r: RankingRow) => profileLink(r.slug, 'ranking');
   const place = (r: RankingRow) => (green ? r.district : r.city ?? r.district) ?? '–';
   const source = `${list.publisherCode} ${list.year}`;
   // School type, and boarding only where a source says so (no boarding profile is not proof of a day school).
@@ -222,19 +223,19 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
       <ol className="space-y-3 md:hidden">
         {rows.map((r) => (
           <li key={r.entryId} className="card flex gap-3 p-3">
-            <Link to={details(r)} className="w-24 shrink-0" tabIndex={-1} aria-hidden>
+            <Link {...details(r)} className="w-24 shrink-0" tabIndex={-1} aria-hidden>
               <SchoolImage src={r.imageUrl} name={r.schoolName} credit={r.imageCredit} zoom={false} small className="rounded-lg" />
             </Link>
             <div className="min-w-0 flex-1 text-sm">
               <p className="flex flex-wrap gap-x-3 font-display font-bold text-brand-700">
                 {green ? <RatingChip rating={r.rating} /> : kinds.map((k) => <span key={k}>{RANKS[k].short} {rankText(RANKS[k].of(r))}</span>)}
               </p>
-              <Link to={details(r)} className="mt-0.5 block font-semibold text-ink hover:text-brand-700">{r.schoolName}</Link>
+              <Link {...details(r)} className="mt-0.5 block font-semibold text-ink hover:text-brand-700">{r.schoolName}</Link>
               <p className="text-xs text-slate-500">{[place(r), r.stateName].filter((x) => x !== '–').join(', ')} · {boardName(r.board)}</p>
               <p className="text-xs text-slate-500">{kind(r)} · {source}</p>
               {scored && <p className="text-xs text-slate-500">Score: {scoreText(r)}</p>}
               <p className="mt-1.5 flex flex-wrap items-center gap-3">
-                <Link to={details(r)} className="link text-xs">View School Details</Link>
+                <Link {...details(r)} className="link text-xs">View School Details</Link>
                 <CompareButton id={r.schoolId} name={r.schoolName} slug={r.slug} />
               </p>
             </div>
@@ -263,7 +264,7 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
                 <td className="px-4 py-3">
                   <span className="flex items-center gap-3">
                     <span className="w-20 shrink-0"><SchoolImage src={r.imageUrl} name={r.schoolName} credit={r.imageCredit} zoom={false} small className="rounded-lg" /></span>
-                    <Link to={details(r)} className="font-semibold text-ink hover:text-brand-700">{r.schoolName}</Link>
+                    <Link {...details(r)} className="font-semibold text-ink hover:text-brand-700">{r.schoolName}</Link>
                   </span>
                 </td>
                 <td className="px-4 py-3 text-slate-700">{place(r)}</td>
@@ -273,7 +274,7 @@ function RankingTable({ rows, list, ranks }: { rows: RankingRow[]; list: Ranking
                 <td className="whitespace-nowrap px-4 py-3 text-slate-500">{source}</td>
                 {scored && <td className="px-4 py-3 text-right tabular-nums text-slate-700">{scoreText(r)}</td>}
                 <td className="whitespace-nowrap px-4 py-3 text-right">
-                  <Link to={details(r)} className="link mr-3">View School Details</Link>
+                  <Link {...details(r)} className="link mr-3">View School Details</Link>
                   <CompareButton id={r.schoolId} name={r.schoolName} slug={r.slug} />
                 </td>
               </tr>

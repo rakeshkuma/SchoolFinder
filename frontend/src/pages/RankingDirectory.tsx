@@ -8,7 +8,7 @@ import { EmptyState, ErrorState, SkeletonCards, Spinner } from '../components/co
 import { RankingShell } from '../components/ranking/RankingShell';
 import { SchoolImage } from '../components/school/SchoolImage';
 import { useApi } from '../hooks/useApi';
-import { directoryService, type DirectoryFacet, type DirectoryFacets, type DirectorySchool } from '../services/publicApi';
+import { directoryService, type DirectoryFacet, type DirectoryFacets, type DirectoryGuide, type DirectorySchool } from '../services/publicApi';
 import { formatDate } from '../utils/format';
 import { NotFoundPage } from './InfoPages';
 
@@ -210,6 +210,50 @@ function DirectoryFilters({ facets, total, sp, set, category }: {
   );
 }
 
+/** Views with an explainer in the backend's DirectoryGuides (the curricula most parents do not know). */
+export const GUIDED_VIEWS = new Set(['ib-schools', 'cambridge-schools']);
+
+/**
+ * A view's explainer below its list: what the curriculum is, how to check a school, the questions parents ask (the page's
+ * FAQPage data describes these same questions) and the official sources, all as the server sends them.
+ */
+export function DirectoryGuidePanel({ guide }: { guide: DirectoryGuide }) {
+  return (
+    <section aria-labelledby="dir-guide" className="card space-y-4 p-5 text-sm leading-relaxed text-slate-700">
+      <div>
+        <h2 id="dir-guide" className="font-display text-xl font-bold text-ink">{guide.heading}</h2>
+        <p className="mt-1 text-slate-600">{guide.intro}</p>
+      </div>
+      {guide.sections.map((s) => (
+        <div key={s.heading}>
+          <h3 className="font-semibold text-ink">{s.heading}</h3>
+          {s.paragraphs.map((p) => <p key={p} className="mt-1">{p}</p>)}
+          {s.points.length > 0 && <ul className="mt-2 list-disc space-y-1 pl-5">{s.points.map((p) => <li key={p}>{p}</li>)}</ul>}
+        </div>
+      ))}
+      <div>
+        <h3 className="font-semibold text-ink">Questions parents ask</h3>
+        <dl className="mt-2 space-y-3">
+          {guide.faqs.map((f) => (
+            <div key={f.question}>
+              <dt className="font-medium text-ink">{f.question}</dt>
+              <dd className="mt-0.5">{f.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div className="border-t border-slate-100 pt-3 text-xs text-slate-500">
+        <p>Checked against these official sources on {formatDate(guide.checkedOn)}:</p>
+        <ul className="mt-1 space-y-0.5">
+          {guide.sources.map((s) => (
+            <li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer" className="link">{s.title} <span aria-hidden>↗</span></a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 /** A directory view such as /rankings/girls-boarding-schools: filters, cards and pages, all from the database. */
 export function DirectoryCategoryPage({ slug }: { slug: string }) {
   const summary = useApi(() => directoryService.summary(), []);
@@ -227,6 +271,7 @@ export function DirectoryCategoryPage({ slug }: { slug: string }) {
   const params = { category: slug, q: opt('q'), state: opt('state'), city: opt('city'), board: opt('board'), residence: opt('residence'),
     gender: opt('gender'), section: opt('section'), class: cls ? Number(cls) : undefined, sort: opt('sort'), page, size: PAGE_SIZE };
   const schools = useApi(() => directoryService.list(params), [JSON.stringify(params)]);
+  const guide = useApi(() => directoryService.guide(slug), [slug], GUIDED_VIEWS.has(slug));
   if (summary.error || facets.error) {
     const e = summary.error ?? facets.error;
     return e && 'status' in e && e.status === 404 ? <NotFoundPage /> : <div className="container-page py-10"><ErrorState error={e!} /></div>;
@@ -262,6 +307,7 @@ export function DirectoryCategoryPage({ slug }: { slug: string }) {
             <Pagination page={schools.data.page} totalPages={schools.data.totalPages} onChange={(p) => set({ page: p > 0 ? String(p + 1) : undefined })} />
           </>
         )}
+      {guide.data && <DirectoryGuidePanel guide={guide.data} />}
       <section aria-labelledby="dir-about" className="card p-5 text-sm text-slate-700">
         <h2 id="dir-about" className="font-semibold text-ink">About this list</h2>
         <p className="mt-1">

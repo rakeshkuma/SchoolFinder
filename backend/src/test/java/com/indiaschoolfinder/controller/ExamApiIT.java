@@ -219,7 +219,9 @@ class ExamApiIT extends AbstractIntegrationTest {
         org.assertj.core.api.Assertions.assertThat(head)
                 .contains("<title>SEO: eligibility, dates, pattern and syllabus | SchoolDhundo</title>")
                 .contains("/exams/seo-test\" />")
-                .contains("(official notice)")
+                // What the guide answers opens the description, then the confirmed date (SeoHeadService.examGuideDescription).
+                .contains("from the official notice. Exam date: " + java.time.format.DateTimeFormatter.ofPattern("d MMM yyyy",
+                        java.util.Locale.ENGLISH).format(TODAY.plusDays(30)) + ".")
                 .contains("BreadcrumbList")
                 .doesNotContain("noindex");
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/hidden-test"))

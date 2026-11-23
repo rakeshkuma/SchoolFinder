@@ -358,7 +358,7 @@ public class SeoBodyService {
         }
         h.append("<h2>Latest school and exam updates</h2><ul class=\"pr-list\">");
         for (UpdateDtos.UpdateItem u : items) {
-            String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
+            String href = u.linkPath() != null ? plainProfilePath(u.linkPath()) : u.sourceUrl();
             if (href == null) {
                 continue;
             }
@@ -602,7 +602,7 @@ public class SeoBodyService {
         }
         h.append("<ul class=\"pr-list\">");
         for (UpdateDtos.UpdateItem u : items) {
-            String href = u.linkPath() != null ? u.linkPath() : u.sourceUrl();
+            String href = u.linkPath() != null ? plainProfilePath(u.linkPath()) : u.sourceUrl();
             h.append("<li>");
             if (href != null) {
                 h.append("<a href=\"").append(esc(href)).append("\">").append(esc(u.title())).append("</a>");
@@ -1031,6 +1031,12 @@ public class SeoBodyService {
             h.append("<p>Showing ").append(page.content().size()).append(" of ").append(count(page.totalElements()))
                     .append(" schools, best documented first.</p>");
         }
+        // Few IB and Cambridge schools carry the board on their record; the premier directory lists more (as the app links).
+        if ("IB".equals(code) || "CAMBRIDGE".equals(code)) {
+            String view = "IB".equals(code) ? "ib-schools" : "cambridge-schools";
+            h.append("<p>See also <a href=\"/rankings/").append(view).append("\">Best ").append("IB".equals(code) ? "IB" : "Cambridge")
+                    .append(" schools in India and how to check one</a>.</p>");
+        }
         h.append("<h2>Other boards</h2><ul class=\"pr-grid\">");
         for (String[] b : new String[][]{{"CBSE", "CBSE schools"}, {"CISCE", "ICSE/ISC schools"}, {"IB", "IB schools"}, {"CAMBRIDGE", "Cambridge schools"}}) {
             if (!b[0].equals(code)) h.append(link("/boards/" + b[0], b[1]));
@@ -1227,7 +1233,7 @@ public class SeoBodyService {
                 if (s.city() != null && !s.city().isBlank()) about.add(s.city().trim());
                 if (s.stateName() != null) about.add(s.stateName());
                 s.boards().stream().filter(b -> !"OTHER".equals(b.code()))
-                        .forEach(b -> about.add("CISCE".equals(b.code()) ? "ICSE/ISC" : b.code()));
+                        .forEach(b -> about.add(shortBoard(b.code())));
                 if (!about.isEmpty()) {
                     h.append(" <span>").append(esc(String.join(" · ", about))).append("</span>");
                 }
@@ -1235,7 +1241,47 @@ public class SeoBodyService {
             }
             h.append("</ul>");
         }
+        DirectoryGuides.forView(slug).ifPresent(g -> directoryGuide(h, g));
         return h.toString();
+    }
+
+    /** A board in a list line: "ICSE/ISC", "Cambridge", "State board", or the code (CBSE, IB). */
+    static String shortBoard(String code) {
+        return switch (code) {
+            case "CISCE" -> "ICSE/ISC";
+            case "CAMBRIDGE" -> "Cambridge";
+            case "STATE" -> "State board";
+            default -> code;
+        };
+    }
+
+    /**
+     * A feed link to a profile section (/schools/x?tab=admissions) as the plain profile address: the app opens the section
+     * through its navigation state (utils/profileLink.ts), and a ?tab= address is a second copy of the page to a crawler.
+     */
+    static String plainProfilePath(String path) {
+        return path.startsWith("/schools/") && path.contains("?tab=") ? path.substring(0, path.indexOf('?')) : path;
+    }
+
+    /** A view's explainer (DirectoryGuides) as the app shows it below the list: sections, questions, then sources. */
+    private static void directoryGuide(StringBuilder h, PremierDirectoryDtos.Guide g) {
+        h.append("<section><h2>").append(esc(g.heading())).append("</h2><p>").append(esc(g.intro())).append("</p>");
+        for (PremierDirectoryDtos.GuideSection s : g.sections()) {
+            h.append("<h3>").append(esc(s.heading())).append("</h3>");
+            s.paragraphs().forEach(p -> h.append("<p>").append(esc(p)).append("</p>"));
+            if (!s.points().isEmpty()) {
+                h.append("<ul>");
+                s.points().forEach(p -> h.append("<li>").append(esc(p)).append("</li>"));
+                h.append("</ul>");
+            }
+        }
+        h.append("<h3>Questions parents ask</h3><dl class=\"pr-faq\">");
+        g.faqs().forEach(f -> faq(h, f.question(), f.answer()));
+        h.append("</dl><p>Checked against these official sources on <time datetime=\"").append(g.checkedOn()).append("\">")
+                .append(DAY.format(g.checkedOn())).append("</time>:</p><ul>");
+        g.sources().forEach(s -> h.append("<li><a href=\"").append(esc(s.url())).append("\" rel=\"noopener\">")
+                .append(esc(s.title())).append("</a></li>"));
+        h.append("</ul></section>");
     }
 
     /** A published article in full: byline and dates, the body, its questions and its sources, as the app shows them. */
@@ -1411,7 +1457,7 @@ public class SeoBodyService {
         for (SchoolSummaryDto s : schools) {
             Set<String> about = new LinkedHashSet<>();
             if (s.boardCode() != null) {
-                about.add("CISCE".equals(s.boardCode()) ? "ICSE/ISC" : s.boardCode());
+                about.add(shortBoard(s.boardCode()));
             }
             for (String part : new String[]{s.locality(), s.city() != null ? s.city() : s.districtName()}) {
                 if (part != null && !part.isBlank()) {

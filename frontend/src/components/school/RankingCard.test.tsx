@@ -85,8 +85,12 @@ describe('RankingCard', () => {
   it('hides the India position outside a state view and links to the score breakdown', () => {
     view = render(<RankingCard showIndiaRank={false} r={ranking({ status: 'RANKED', provisional: false, scopePosition: 2, rankPosition: 2 })} />);
     expect(view.container.textContent).not.toContain('in India');
-    const link = view.container.querySelector('a[href="/schools/fixture-public-school?tab=ranking"]');
-    expect(link).not.toBeNull();
+    // The score breakdown is opened through the navigation state: every link is the plain profile address, the page
+    // search engines index (see utils/profileLink).
+    const links = [...view.container.querySelectorAll('a')].map((a) => a.getAttribute('href'));
+    expect(links).toContain('/schools/fixture-public-school');
+    expect(links.some((h) => h?.includes('?tab='))).toBe(false);
+    expect(view.container.textContent).toContain('Score breakdown');
   });
 
   it('adds the school to the comparison and remembers it', () => {

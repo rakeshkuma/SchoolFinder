@@ -14,6 +14,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { locationService, rankingService, referenceService, type RankingParams } from '../services/publicApi';
 import type { SchoolType } from '../types/api';
 import { formatDate, schoolTypeLabel } from '../utils/format';
+import { profileLink } from '../utils/profileLink';
 
 const COLORS = ['#2448e8', '#0ea5e9', '#14b8a6', '#22c55e', '#ffa520', '#f97316', '#8b5cf6'];
 
@@ -342,7 +343,7 @@ export function RankingsPage() {
                             )}
                           </td>
                           <td className="px-4 py-3">
-                            <Link to={`/schools/${r.slug}?tab=ranking`} className="font-medium hover:text-brand-700">{r.schoolName}</Link>
+                            <Link {...profileLink(r.slug, 'ranking')} className="font-medium hover:text-brand-700">{r.schoolName}</Link>
                             <div className="text-xs text-slate-500">
                               {[r.locality, r.city, r.districtName, r.stateName].filter((v, i, a) => v && a.indexOf(v) === i).join(', ')}
                             </div>

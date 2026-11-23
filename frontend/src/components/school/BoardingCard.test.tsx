@@ -53,4 +53,11 @@ describe('BoardingCard', () => {
     expect(text).not.toContain('Example / CC BY-SA 4.0'); // no credit over the photo
     expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example / CC BY-SA 4.0');
   });
+
+  it('links to the plain profile address, never a ?tab= copy of it', () => {
+    view = render(<BoardingCard school={school()} />);
+    const profile = [...view.container.querySelectorAll('a')].map((a) => a.getAttribute('href')).filter((h) => h?.startsWith('/schools/'));
+    expect(profile.length).toBe(3); // photo, name and "View details"
+    expect(new Set(profile)).toEqual(new Set(['/schools/fixture-hill-school']));
+  });
 });

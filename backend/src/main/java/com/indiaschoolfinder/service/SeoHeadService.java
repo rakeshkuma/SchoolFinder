@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -725,13 +724,7 @@ public class SeoHeadService {
     }
 
     private String school(SchoolDetailDto s, String baseUrl) {
-        Set<String> placeParts = new LinkedHashSet<>();
-        for (String part : new String[]{s.locality(), s.city(), s.district() == null ? null : s.district().name(), s.stateName()}) {
-            if (part != null && !part.isBlank()) {
-                placeParts.add(part.trim());
-            }
-        }
-        String place = String.join(", ", placeParts);
+        String place = schoolPlace(s.locality(), s.city(), s.district() == null ? null : s.district().name(), s.stateName());
         String town = s.city() != null ? s.city() : s.district() != null ? s.district().name() : s.stateName();
         String board = s.board() == null ? null : "CISCE".equals(s.board().code()) ? "ICSE/ISC" : s.board().code();
         boolean fees = !feeService.feeHistory(s.id()).isEmpty();
@@ -843,6 +836,21 @@ public class SeoHeadService {
             }
         }
         return candidates[candidates.length - 1] + " | " + SITE;
+    }
+
+    /**
+     * "Hisar, Haryana" from locality, town, district and state, each named once. Two spellings of one place count as one
+     * ("Hisar" and the district's "Hissar", "BHUJ" and "Bhuj"): Search Console showed the Moga Devi Minda Memorial School
+     * profile in results with "Hisar, Hissar, Haryana" (29 impressions, 9-21 Nov 2026).
+     */
+    static String schoolPlace(String... parts) {
+        Map<String, String> seen = new LinkedHashMap<>();
+        for (String part : parts) {
+            if (part == null || part.isBlank()) continue;
+            String key = part.toLowerCase(Locale.ROOT).replaceAll("[^a-z]", "").replaceAll("(.)\\1+", "$1");
+            seen.putIfAbsent(key.isEmpty() ? part.trim() : key, part.trim());
+        }
+        return String.join(", ", seen.values());
     }
 
     /** ", Dehradun" after the name, unless the name already says the town. */
@@ -1015,27 +1023,34 @@ public class SeoHeadService {
 
     private String board(String code, String baseUrl) {
         var board = boardRepository.findByCodeIgnoreCase(code).orElseThrow(() -> new ResourceNotFoundException("Board", code));
-        String label = "CISCE".equals(board.getCode()) ? "ICSE/ISC (CISCE)" : board.getCode();
-        String title = label + " schools in India | " + SITE;
+        String title = boardLabel(board.getCode()) + " schools in India | " + SITE;
         String description = "Schools affiliated to " + board.getName() + ", with their classes. " + PLACE_DETAILS;
+        // A board with no school listed (State, Other) is an empty page: kept out of the index, as it is out of the sitemap.
+        boolean empty = "OTHER".equals(board.getCode()) || !schoolRepository.boardCodesWithSchools().contains(board.getCode());
         // The site links board pages by their upper-case code (/boards/CBSE), so that is the canonical address.
-        return tags(title, description, baseUrl + "/boards/" + board.getCode(), null, false, null);
+        return tags(title, description, baseUrl + "/boards/" + board.getCode(), null, empty, null);
+    }
+
+    /**
+     * A board's name in titles and headings. The code was used as it is until November 2026, which titled pages
+     * "CAMBRIDGE schools in India" and "STATE schools in India". The app's BoardPage uses the same names.
+     */
+    public static String boardLabel(String code) {
+        return switch (code == null ? "" : code) {
+            case "CISCE" -> "ICSE/ISC (CISCE)";
+            case "CAMBRIDGE" -> "Cambridge (CAIE)";
+            case "STATE" -> "State board";
+            case "OTHER" -> "Other curriculum";
+            default -> code;
+        };
     }
 
     /** Exam guide: the description states only confirmed dates; otherwise that the notice is awaited. */
     private String exam(ExamDetailDto detail, String baseUrl) {
         ExamSummaryDto e = detail.exam();
         String title = e.shortName() + ": eligibility, dates, pattern and syllabus | " + SITE;
-        StringBuilder description = new StringBuilder(e.name()).append(", conducted by ").append(e.conductingAuthority())
-                .append('.');
-        if (e.examDate() != null) {
-            description.append(' ').append(e.currentCycle()).append(" exam date: ").append(DAY.format(e.examDate()))
-                    .append(" (official notice).");
-        } else if (e.status() == ExamStatus.AWAITING_NOTIFICATION) {
-            description.append(' ').append(e.currentCycle()).append(" dates not announced yet.");
-        }
-        description.append(" Eligibility, pattern, syllabus and official papers.");
         String url = baseUrl + "/exams/" + e.slug() + (PREP_PAGES.contains(e.slug()) ? "/guide" : "");
+        String description = examGuideDescription(e, detail.content() == null ? List.of() : detail.content().eligibility());
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
@@ -1043,14 +1058,58 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName(), "item", url)));
-        List<Map<String, Object>> graph = new java.util.ArrayList<>(List.of(examArticle(e, title, description.toString(), url, baseUrl), data));
+        List<Map<String, Object>> graph = new java.util.ArrayList<>(List.of(examArticle(e, title, description, url, baseUrl), data));
         // The guide's questions as the page shows them (its "Frequently asked questions"); none are added here.
         if (detail.content() != null && detail.content().faq() != null && !detail.content().faq().isEmpty()) {
             Map<String, Object> faq = faqPage(detail.content().faq().stream()
                     .map(f -> new SchoolFaqService.Faq(f.question(), f.answer())).toList());
             if (faq != null) graph.add(faq);
         }
-        return tags(title, description.toString(), url, null, false, graph);
+        return tags(title, description, url, null, false, graph);
+    }
+
+    /**
+     * What the guide answers first, then its date, then who conducts the exam: {@link #fitDescription} leaves sentences off
+     * the end, so the most useful facts must open it. Until November 2026 it opened with the exam's full official name and
+     * conducting body, which alone filled the 160 characters, so search results never showed the date or what the page
+     * covers ("Jawahar Navodaya Vidyalaya Selection Test (JNVST) – Class VI, conducted by …").
+     */
+    static String examGuideDescription(ExamSummaryDto e, List<String> eligibility) {
+        // The name people search by, with the cycle's year: "JNVST 2027", "JNV Class IX 2027", "Netarhat 2026-27". The
+        // cycle's own label is not used as it is: some do not name the exam ("Class IX LEST 2027").
+        String lead = e.shortName();
+        var year = java.util.regex.Pattern.compile("\\b\\d{4}(-\\d{2})?\\b").matcher(e.currentCycle() == null ? "" : e.currentCycle());
+        if (year.find() && !lead.matches(".*\\b\\d{4}\\b.*")) lead += " " + year.group();
+        // "– Class VI" in the official name says which class the exam admits to, unless the short name already does.
+        String name = e.name() == null ? "" : e.name();
+        int dash = name.lastIndexOf(" – ");
+        String classes = dash > 0 && name.substring(dash + 3).startsWith("Class") && !lead.contains("Class")
+                ? " (" + name.substring(dash + 3) + ")" : "";
+        // "age limit" only where the eligibility rules set one (a birth-date window or an age).
+        boolean ageRule = eligibility != null && eligibility.stream().anyMatch(l -> l != null
+                && l.toLowerCase(Locale.ROOT).matches(".*\\b(born|age|aged|years)\\b.*"));
+        // An admission procedure without a test (Kendriya Vidyalaya lottery) has no pattern or syllabus to promise.
+        String covers = e.kind() == ExamKind.SELECTION_PROCESS ? ", dates and admission steps" : ", exam pattern and syllabus";
+        StringBuilder d = new StringBuilder(lead).append(classes).append(": eligibility")
+                .append(ageRule ? ", age limit" : "").append(covers).append(" from the official notice.");
+        String date = examDateSentence(e, "Exam");
+        if (date != null) d.append(' ').append(date);
+        else if (e.status() == ExamStatus.AWAITING_NOTIFICATION) d.append(" Dates not announced yet.");
+        if (e.conductingAuthority() != null && !e.conductingAuthority().isBlank()) {
+            d.append(" Conducted by ").append(e.conductingAuthority()).append('.');
+        }
+        return d.toString();
+    }
+
+    /**
+     * "Exam date: 28 Nov 2026." while it is ahead; "Exam held on 28 Nov 2026." once it has passed (the status says so:
+     * only these four states have the exam still to come), so a snippet never offers a past date as the next one.
+     */
+    static String examDateSentence(ExamSummaryDto e, String label) {
+        if (e.examDate() == null) return null;
+        boolean ahead = e.status() == ExamStatus.EXAM_DATE_ANNOUNCED || e.status() == ExamStatus.APPLICATIONS_OPEN
+                || e.status() == ExamStatus.DEADLINE_APPROACHING || e.status() == ExamStatus.APPLICATIONS_OPENING_SOON;
+        return label + (ahead ? " date: " : " held on ") + DAY.format(e.examDate()) + ".";
     }
 
     /**
@@ -1085,24 +1144,27 @@ public class SeoHeadService {
                 // Short enough that the exam date added below still fits the description length (DESCRIPTION_MAX).
                 description = "Free AISSEE Class 6 (Sainik School) prep in English and Hindi: original questions, full 125-question "
                         + "mock tests and a study plan.";
-                dateLabel = " Entrance exam: ";
+                dateLabel = "Entrance exam";
             }
             case "netarhat" -> {
                 // Searched as "netarhat vidyalaya class 6 admission", "netarhat vidyalaya exam" (Ubersuggest, 2026-11-16).
                 title = "Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests";
                 description = "Free Netarhat Vidyalaya Class 6 entrance prep in Hindi and English: original questions, full Paper 1 "
                         + "mock tests and a study plan.";
-                dateLabel = " Entrance exam: ";
+                dateLabel = "Entrance exam";
             }
             default -> {
-                // "jnvst class 6": 5,400 searches a month in India, difficulty 11 (Ubersuggest, 2026-11-16).
-                title = "JNVST Class 6 Preparation 2027: Free Mock Tests";
+                // "jnvst class 6": 5,400 searches a month in India, difficulty 11 (Ubersuggest, 2026-11-16). Search Console,
+                // 9-21 Nov 2026: the page's visible queries were "jnv mock test class 6 2027" (21 impressions, position 8.5)
+                // and "navodaya mock test for class 6 free 2027", so the title names the mock test and Navodaya (JNV).
+                title = "JNVST Class 6 Mock Test 2027: Free Navodaya (JNV) Practice";
                 description = "Free JNVST Class 6 prep in English and Hindi: original questions, mock tests in the official "
                         + "80-question pattern and a study plan.";
-                dateLabel = " Selection test: ";
+                dateLabel = "Selection test";
             }
         }
-        if (e.examDate() != null) description += dateLabel + DAY.format(e.examDate()) + ".";
+        String date = examDateSentence(e, dateLabel);
+        if (date != null) description += " " + date;
         String url = baseUrl + "/exams/" + e.slug();
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
@@ -1155,8 +1217,7 @@ public class SeoHeadService {
         String url = baseUrl + "/rankings/" + c.slug();
         String name = c.title().replace('’', '\'');
         String title = name + (name.contains("India") ? ": " : " in India: ") + c.schools() + (c.schools() == 1 ? " School" : " Schools") + " | " + SITE;
-        String description = c.description().replace('’', '\'') + " Board, boarding, gender, classes and an approximate fee for each of the "
-                + c.schools() + " schools. Links go to official websites.";
+        String description = directoryDescription(c);
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "BreadcrumbList");
@@ -1164,7 +1225,26 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 1, "name", "Home", "item", baseUrl + "/"),
                 Map.of("@type", "ListItem", "position", 2, "name", "Rankings", "item", baseUrl + "/rankings"),
                 Map.of("@type", "ListItem", "position", 3, "name", c.title().replace('’', '\''), "item", url)));
+        // A view with an explainer (IB, Cambridge) shows its questions on the page; they are described as they appear.
+        var guide = DirectoryGuides.forView(c.slug());
+        if (guide.isPresent()) {
+            Map<String, Object> faq = faqPage(guide.get().faqs().stream().map(f -> new SchoolFaqService.Faq(f.question(), f.answer())).toList());
+            if (faq != null) return tags(title, description, url, null, false, List.of(data, faq));
+        }
         return tags(title, description, url, null, false, data);
+    }
+
+    /**
+     * The view's own sentence, then its count and what each card shows, in words that fit {@link #DESCRIPTION_MAX}. The
+     * second sentence used to be about 110 characters, so {@link #fitDescription} dropped it and IB and Cambridge
+     * schools went out with one 80-character line ("Schools offering International Baccalaureate programmes …").
+     */
+    static String directoryDescription(PremierDirectoryDtos.Category c) {
+        String own = c.description().replace('’', '\'');
+        String count = c.schools() + (c.schools() == 1 ? " school" : " schools");
+        return own + " " + count + (DirectoryGuides.forView(c.slug()).isPresent()
+                ? " with board, boarding, approximate fees and how to verify each."
+                : " with board, boarding, gender and approximate fees. Links go to official websites.");
     }
 
     /** Exams admitting to one class; classes without a published exam are not pages (noindex via not-found). */

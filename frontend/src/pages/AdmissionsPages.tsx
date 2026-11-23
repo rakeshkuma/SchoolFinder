@@ -12,6 +12,7 @@ import { admissionService, examService, locationService, referenceService, type 
 import type { AdmissionCategory, AdmissionStatus } from '../types/api';
 import { admissionCategoryLabel, admissionStatusLabel, daysUntil, formatDate } from '../utils/format';
 import { AdmissionCard } from './SchoolDetailPage';
+import { profileLink } from '../utils/profileLink';
 
 export function AdmissionsPage() {
   useDocumentTitle('Admission process and deadlines');
@@ -54,7 +55,9 @@ export function AdmissionsPage() {
                           ) : <p className="text-xs text-slate-500">Deadline not announced</p>}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <Link to={`/schools/${a.schoolSlug}?tab=admissions`} className="font-semibold hover:text-brand-700">{a.schoolName}</Link>
+                          {a.schoolSlug
+                            ? <Link {...profileLink(a.schoolSlug, 'admissions')} className="font-semibold hover:text-brand-700">{a.schoolName}</Link>
+                            : <span className="font-semibold">{a.schoolName}</span>}
                           <p className="text-sm text-slate-600">
                             {a.className} · {a.academicYear} · {admissionCategoryLabel[a.category]} · {formatDate(a.applicationStartDate)} → {formatDate(a.applicationEndDate)}
                           </p>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import type { HomeImageId } from '../../content/homeImages';
 import type { UpdateItem } from '../../services/publicApi';
 import { formatDate } from '../../utils/format';
+import { linkTo } from '../../utils/profileLink';
 import { Icon } from '../common/Icon';
 import { HomePhoto } from './HomePhoto';
 import { badgeFor, CATEGORY_LABEL, sourceLabel, updateImage, updateTarget } from './updateVisuals';
@@ -30,7 +31,7 @@ export function UpdateCard({ item, image }: { item: UpdateItem; image?: HomeImag
         </p>
         <h3 className="mt-1.5 line-clamp-2 font-display text-[15px] font-extrabold leading-snug text-navy sm:text-base" title={item.title}>
           {target && 'internal' in target
-            ? <Link to={target.internal} className={stretched}>{item.title}</Link>
+            ? <Link {...linkTo(target.internal)} className={stretched}>{item.title}</Link>
             : target ? <a href={target.external} target="_blank" rel="noopener noreferrer" className={stretched}>{item.title}<span className="sr-only"> (official notice, opens in a new tab)</span></a>
               : item.title}
         </h3>

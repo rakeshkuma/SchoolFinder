@@ -2,6 +2,8 @@ package com.indiaschoolfinder.controller;
 
 import com.indiaschoolfinder.dto.common.PageResponse;
 import com.indiaschoolfinder.dto.ranking.PremierDirectoryDtos;
+import com.indiaschoolfinder.exception.ResourceNotFoundException;
+import com.indiaschoolfinder.service.DirectoryGuides;
 import com.indiaschoolfinder.service.PremierDirectoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -86,6 +88,12 @@ public class PremierDirectoryController {
     public PageResponse<PremierDirectoryDtos.School> boarding(@RequestParam(defaultValue = "0") @Min(0) int page,
                                                               @RequestParam(defaultValue = "24") @Min(1) @Max(100) int size) {
         return directory.list(new PremierDirectoryDtos.Query("boarding-schools", null, null, null, null, null, null, null, null, null), page, size);
+    }
+
+    @Operation(summary = "A view's explainer (IB, Cambridge): the curriculum, how to check a school, questions and sources")
+    @GetMapping("/guide/{category}")
+    public PremierDirectoryDtos.Guide guide(@PathVariable @Pattern(regexp = "^[a-z-]{1,40}$") String category) {
+        return DirectoryGuides.forView(category).orElseThrow(() -> new ResourceNotFoundException("Directory guide", category));
     }
 
     @Operation(summary = "Filter choices with counts; only values some school has")

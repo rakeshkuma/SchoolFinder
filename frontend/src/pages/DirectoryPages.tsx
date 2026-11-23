@@ -396,12 +396,27 @@ function SchoolRefRow({ school, onRemove, action }: { school: SchoolRef; onRemov
   );
 }
 
+/** Board names in titles and headings, as the server writes them (SeoHeadService.boardLabel). */
+const BOARD_LABELS: Record<string, string> = {
+  CISCE: 'ICSE/ISC (CISCE)', CAMBRIDGE: 'Cambridge (CAIE)', STATE: 'State board', OTHER: 'Other curriculum',
+};
+
+/**
+ * Few IB and Cambridge schools carry the board on their directory record, so these board pages point to the premier
+ * directory's fuller lists, which also explain the curriculum and how to check a school.
+ */
+const BOARD_DIRECTORY_VIEWS: Record<string, { to: string; label: string }> = {
+  IB: { to: '/rankings/ib-schools', label: 'Best IB schools in India and how to check one' },
+  CAMBRIDGE: { to: '/rankings/cambridge-schools', label: 'Best Cambridge schools in India and how to check one' },
+};
+
 export function BoardPage() {
   const { code = '' } = useParams();
   const boardCode = code.toUpperCase();
   const boards = useApi(() => referenceService.boards(), []);
   const board = boards.data?.find((b) => b.code === boardCode);
-  const display = boardCode === 'CISCE' ? 'ICSE / ISC' : boardCode === 'STATE' ? 'State board' : boardCode;
+  const display = BOARD_LABELS[boardCode] ?? boardCode;
+  const fuller = BOARD_DIRECTORY_VIEWS[boardCode];
   useDocumentTitle(`${display} schools in India`);
   if (boards.data && !board) return <NotFoundPage />;
   return (
@@ -412,6 +427,7 @@ export function BoardPage() {
           <>
             {board.name}.{' '}
             {board.websiteUrl && <a href={board.websiteUrl} target="_blank" rel="noopener noreferrer" className="link">Official website ↗</a>}
+            {fuller && <> · <Link to={fuller.to} className="link">{fuller.label}</Link></>}
           </>
         )}
       >
@@ -428,7 +444,7 @@ function BoardSwitcher({ current, codes }: { current: string; codes: string[] })
       {codes.map((c) => (
         <Link key={c} to={`/boards/${c}`}
           className={`chip px-3 py-1 text-sm ${c === current ? 'bg-accent-400 font-semibold text-ink' : 'bg-white/10 text-slate-200 ring-1 ring-white/15 hover:bg-white/20'}`}>
-          {c === 'CISCE' ? 'ICSE/ISC' : c}
+          {c === 'CISCE' ? 'ICSE/ISC' : c === 'CAMBRIDGE' ? 'Cambridge' : c === 'STATE' ? 'State board' : c}
         </Link>
       ))}
     </div>

@@ -15,6 +15,7 @@ import type { SchoolType } from '../types/api';
 import { formatDate, schoolTypeLabel } from '../utils/format';
 import { BOARDS, GreenSection, pickList } from './RankingHubPage';
 import { feeEstimate, profileLink } from './RankingDirectory';
+import { profileLink as sectionLink } from '../utils/profileLink';
 
 /*
  * The rankings home page (/rankings). Two things are kept visibly apart:
@@ -174,7 +175,7 @@ function Hero({ summary, list }: { summary: DirectorySummary | null; list: Ranki
                     {r.nationalRank}
                   </span>
                   <span className="min-w-0">
-                    <Link to={`/schools/${r.slug}?tab=ranking`} className="block truncate text-sm font-semibold text-white hover:underline">{r.schoolName}</Link>
+                    <Link {...sectionLink(r.slug, 'ranking')} className="block truncate text-sm font-semibold text-white hover:underline">{r.schoolName}</Link>
                     <span className="block truncate text-xs text-blue-100/75">{[r.city, r.stateName].filter(Boolean).join(', ')}</span>
                   </span>
                 </li>
@@ -264,7 +265,7 @@ const placeOf = (r: RankingRow) => r.city ?? r.district ?? '–';
 
 function RankingTable({ rows, list }: { rows: RankingRow[]; list: RankingEdition }) {
   const ties = tiedRanks(rows);
-  const details = (r: RankingRow) => `/schools/${r.slug}?tab=ranking`;
+  const details = (r: RankingRow) => sectionLink(r.slug, 'ranking');
   const edition = `${list.publisherCode} ${list.year}`;
   return (
     <>
@@ -273,14 +274,14 @@ function RankingTable({ rows, list }: { rows: RankingRow[]; list: RankingEdition
           <li key={r.entryId} className="flex gap-3 rounded-2xl bg-white p-3.5 shadow-card ring-1 ring-slate-200/80">
             <RankBadge rank={r.nationalRank} tied={r.nationalRank !== null && ties.has(r.nationalRank)} />
             <div className="min-w-0 flex-1">
-              <Link to={details(r)} className="block font-display text-[15px] font-bold leading-snug text-navy hover:text-royal-700">{r.schoolName}</Link>
+              <Link {...details(r)} className="block font-display text-[15px] font-bold leading-snug text-navy hover:text-royal-700">{r.schoolName}</Link>
               <p className="mt-0.5 text-[13px] text-slate-600">{[placeOf(r), r.stateName].filter((x) => x && x !== '–').join(', ')}</p>
               <p className="mt-1.5 flex flex-wrap gap-1.5 text-[11.5px]">
                 <span className="rounded-md bg-slate-100 px-1.5 py-0.5 font-semibold text-slate-700">{boardName(r.board)}</span>
                 <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-slate-700">{typeOf(r)}</span>
                 <span className="rounded-md bg-amber-50 px-1.5 py-0.5 font-semibold text-amber-900">{edition}</span>
               </p>
-              <Link to={details(r)} className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-royal-700">
+              <Link {...details(r)} className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-royal-700">
                 View details <Icon name="arrowRight" className="h-3.5 w-3.5" /><span className="sr-only">: {r.schoolName}</span>
               </Link>
             </div>
@@ -315,7 +316,7 @@ function RankingTable({ rows, list }: { rows: RankingRow[]; list: RankingEdition
                   <td className="px-3 py-3">
                     <span className="flex min-w-0 items-center gap-3">
                       <Thumb row={r} />
-                      <Link to={details(r)} className="min-w-0 font-display font-bold leading-snug text-navy hover:text-royal-700">{r.schoolName}</Link>
+                      <Link {...details(r)} className="min-w-0 font-display font-bold leading-snug text-navy hover:text-royal-700">{r.schoolName}</Link>
                     </span>
                   </td>
                   <td className="truncate px-3 py-3 text-slate-700">{placeOf(r)}</td>
@@ -324,7 +325,7 @@ function RankingTable({ rows, list }: { rows: RankingRow[]; list: RankingEdition
                   <td className="truncate px-3 py-3 text-slate-700">{typeOf(r)}</td>
                   <td className="px-3 py-3 text-xs font-semibold text-slate-600">{edition}</td>
                   <td className="px-4 py-3 text-right">
-                    <Link to={details(r)} className="inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-bold text-royal-700 ring-1 ring-royal-200 transition hover:bg-royal-600 hover:text-white">
+                    <Link {...details(r)} className="inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-bold text-royal-700 ring-1 ring-royal-200 transition hover:bg-royal-600 hover:text-white">
                       View details<span className="sr-only">: {r.schoolName}</span>
                     </Link>
                   </td>

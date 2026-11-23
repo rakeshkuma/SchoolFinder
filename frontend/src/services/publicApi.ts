@@ -198,7 +198,19 @@ export const directoryService = {
   list: (params: DirectoryParams) =>
     http.get<PageResponse<DirectorySchool>>('/rankings/directory', { params: cleanParams(params) }).then((r) => r.data),
   facets: (category?: string) => http.get<DirectoryFacets>('/rankings/directory/facets', { params: cleanParams({ category }) }).then((r) => r.data),
+  /** The view's explainer (IB, Cambridge); 404 for a view without one. */
+  guide: (category: string) => http.get<DirectoryGuide>(`/rankings/directory/guide/${category}`).then((r) => r.data),
 };
+
+/** SchoolDhundo's explainer for a directory view, each fact from the official sources it lists (backend DirectoryGuides). */
+export interface DirectoryGuide {
+  heading: string;
+  intro: string;
+  sections: { heading: string; paragraphs: string[]; points: string[] }[];
+  faqs: { question: string; answer: string }[];
+  sources: { title: string; url: string }[];
+  checkedOn: string;
+}
 
 export interface DirectoryParams {
   category?: string; q?: string; state?: string; city?: string; board?: string; residence?: string; gender?: string; section?: string;

@@ -3,12 +3,14 @@ slug: jnv-admission-guide-jnvst-class-6
 category: GOVERNMENT_SCHOOLS
 excerpt: Who can apply to a Navodaya Vidyalaya for Class 6, how the JNV Selection Test works, how seats are reserved and what it costs, explained from the official JNVST-2027 prospectus.
 tags: JNVST, Navodaya Vidyalaya, Class 6, Government schools, Admission
-metaTitle: JNV Admission Guide: JNVST Class 6 Eligibility and Pattern
-metaDescription: Eligibility, exam pattern, seat reservation and fees for Jawahar Navodaya Vidyalaya Class 6 admission through JNVST, from the official prospectus.
+metaTitle: JNV Admission 2027-28: Navodaya Class 6 Eligibility & Dates
+metaDescription: Navodaya Class 6 admission 2027-28: who can apply (born 1 May 2015 to 31 Jul 2017), the JNVST date, exam pattern, seats and fees, from the prospectus.
 lastReviewedOn: 2026-11-11
 source: JNVST-2027 prospectus, Navodaya Vidyalaya Samiti (PDF) | https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf | 2026-11-11
 source: NVS admission portal | https://cbseitms.rcil.gov.in/nvs/ | 2026-11-11
 source: Navodaya Vidyalaya Samiti | https://navodaya.gov.in/ | 2026-11-11
+faq: Navodaya exam is for which class? || JNVST admits children to Class 6. Navodaya Vidyalaya Samiti holds separate Lateral Entry Selection Tests for Class 9 and Class 11.
+faq: What is the age limit for Navodaya Class 6 admission in 2027-28? || For JNVST-2027, the child must be born between 1 May 2015 and 31 July 2017, both dates included.
 faq: Is there an application fee for JNVST? || No. The prospectus states that registration for the selection test is free.
 faq: Can my child take JNVST twice? || No. A candidate can appear only once; a child who has appeared before is not eligible again.
 faq: In which district should we apply? || In the district where the child is a bona fide resident and is studying in Class 5, as the prospectus defines it.
@@ -19,6 +21,24 @@ Jawahar Navodaya Vidyalayas (JNVs) are residential schools run by Navodaya Vidya
 This guide follows the **JNVST-2027 prospectus**, which covers admission to Class 6 for the 2027-28 session. Rules can change between years, so read the prospectus for your year before applying.
 
 > Dates, age limits and rules in this article are from the JNVST-2027 prospectus, checked on 11 November 2026. Always confirm them in the current prospectus on the official NVS admission portal.
+
+## At a glance
+
+- **Which class:** JNVST is the entrance test for **Class 6**. Navodaya Vidyalaya Samiti holds separate Lateral Entry Selection Tests for [Class 9](/exams/jnv-class-9) and [Class 11](/exams/jnv-class-11).
+- **Who can apply:** a child studying Class 5 in the 2026-27 session in the district, **born between 1 May 2015 and 31 July 2017**.
+- **Test date:** **28 November 2026**, 11:30 a.m. to 1:30 p.m.
+- **Fee:** registration is **free**.
+
+## Key dates for JNVST-2027
+
+| Step | Date |
+| --- | --- |
+| Last date to apply online | 31 July 2026 (closed) |
+| Selection test | 28 November 2026, 11:30 a.m. to 1:30 p.m. |
+| Result | Expected by the end of March 2027 |
+| Admission process closes | 31 August 2027 |
+
+The prospectus gives the result only as "by the end of March 2027"; watch the official NVS portal for the exact date.
 
 ## Who can apply
 

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, TrustBadge, VerificationBadge } from '../components/common/Badges';
 import { BoardingTab } from '../components/school/BoardingTab';
 import { Pagination } from '../components/common/Pagination';
@@ -43,6 +43,7 @@ import { track } from '../utils/analytics';
 import { schoolFaqs } from '../utils/schoolFaq';
 import { UdiseCard } from '../components/school/UdiseCard';
 import { EnquiryButton } from '../components/school/EnquiryForm';
+import { profileLink, requestedTab } from '../utils/profileLink';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -77,6 +78,12 @@ function profileSections(s: SchoolDetail, photoCount: number): ProfileSection[] 
 export function SchoolDetailPage() {
   const { slug = '' } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  // A card link (utils/profileLink) asks for a section in the navigation state, so its address stays the plain profile
+  // URL that search engines index; the section is then shown in this page's own address, as a click on its tab would.
+  const linkedTab = requestedTab(useLocation().state);
+  useEffect(() => {
+    if (linkedTab && !searchParams.has('tab')) setSearchParams({ tab: linkedTab }, { replace: true });
+  }, [linkedTab, searchParams, setSearchParams]);
   const school = useApi(() => schoolService.bySlug(slug), [slug]);
   useDocumentTitle(school.data?.name);
   useSchoolSeo(school.data);
@@ -105,7 +112,7 @@ export function SchoolDetailPage() {
   const gallery = (images.data ?? []).filter((i) => i.imageType !== 'LOGO');
   const photo = photoFailed ? undefined : gallery[0];
   const sections = profileSections(s, gallery.length);
-  const requested = searchParams.get('tab') ?? 'overview';
+  const requested = searchParams.get('tab') ?? linkedTab ?? 'overview';
   const tab = sections.some((x) => x.id === requested) ? requested : 'overview';
   const setTab = (id: string) => {
     setSearchParams(id === 'overview' ? {} : { tab: id }, { replace: true });
@@ -498,7 +505,7 @@ function Overview({ school: s, onTab }: { school: SchoolDetail; onTab: (id: stri
       </div>
       <aside className="space-y-4" aria-label="Contact, rankings and sources">
         <ContactCard school={s} onTab={onTab} />
-        <RankingSummary schoolId={s.id} />
+        <RankingSummary schoolId={s.id} onTab={onTab} />
         <SourcesCard school={s} onTab={onTab} />
       </aside>
     </div>
@@ -649,7 +656,7 @@ export function AdmissionCard({ admission: a, showSchool = false }: { admission:
     <article className="card p-5">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          {showSchool && a.schoolSlug && <Link to={`/schools/${a.schoolSlug}?tab=admissions`} className="link">{a.schoolName}</Link>}
+          {showSchool && a.schoolSlug && <Link {...profileLink(a.schoolSlug, 'admissions')} className="link">{a.schoolName}</Link>}
           <h3 className="font-semibold">
             {a.className} · {a.academicYear} · <span className="text-brand-700">{admissionCategoryLabel[a.category]}</span>
           </h3>
@@ -953,7 +960,7 @@ function SchoolsInSamePlace({ school: s }: { school: SchoolDetail }) {
  * Ranking information at a glance: our evidence-based status and any published ranking verified by an editor. A school
  * missing from published rankings says "Not listed" — never an estimated position.
  */
-function RankingSummary({ schoolId }: { schoolId: number }) {
+function RankingSummary({ schoolId, onTab }: { schoolId: number; onTab: (id: string) => void }) {
   const state = useApi(() => schoolService.ranking(schoolId), [schoolId]);
   const r = state.data;
   if (!r) return null;
@@ -979,7 +986,8 @@ function RankingSummary({ schoolId }: { schoolId: number }) {
           ))}
         </ul>
       )}
-      <Link to="?tab=ranking" className="link mt-2 inline-block">Ranking details and sources →</Link>
+      {/* A button like the profile's other section links: a ?tab= link would be one more address for this page. */}
+      <button type="button" onClick={() => onTab('ranking')} className="link mt-2 inline-block">Ranking details and sources →</button>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import type { PageResponse } from '../../types/api';
 import { Icon } from '../common/Icon';
 import { AsyncContent } from '../common/States';
 import { UpdateCard } from './UpdateCard';
+import { linkTo } from '../../utils/profileLink';
 import { assignUpdateImages, tickerIcon, UPDATE_TABS, updateTarget } from './updateVisuals';
 
 const HEADING = 'font-display text-[26px] font-extrabold tracking-tight text-navy sm:text-[30px]';
@@ -53,7 +54,7 @@ export function LiveTicker({ state }: { state: ApiState<PageResponse<UpdateItem>
                   const cls = 'flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-1.5 text-[13px] font-semibold text-navy transition hover:text-royal-700 sm:text-sm';
                   return (
                     <li key={`${u.id}-${i}`} aria-hidden={copy || undefined} className="flex shrink-0 items-center">
-                      {target && 'internal' in target ? <Link to={target.internal} tabIndex={copy ? -1 : undefined} className={cls}>{body}</Link>
+                      {target && 'internal' in target ? <Link {...linkTo(target.internal)} tabIndex={copy ? -1 : undefined} className={cls}>{body}</Link>
                         : target ? <a href={target.external} target="_blank" rel="noopener noreferrer" tabIndex={copy ? -1 : undefined} className={cls}>{body}</a>
                           : <span className={cls}>{body}</span>}
                       <span aria-hidden className="h-4 w-px bg-slate-300" />

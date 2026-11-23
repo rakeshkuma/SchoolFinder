@@ -236,6 +236,14 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("href=\"http://localhost/schools\"");
         assertThat(head("/boards/CISCE")).contains("ICSE/ISC (CISCE) schools in India")
                 .contains("href=\"http://localhost/boards/CISCE\"");
+        // Titled "CAMBRIDGE schools in India" and "STATE schools in India" until 23 Nov 2026.
+        assertThat(head("/boards/CAMBRIDGE")).contains("<title>Cambridge (CAIE) schools in India | SchoolDhundo</title>");
+        // A board with no school listed is an empty page: noindex, as it is left out of the sitemap.
+        java.util.List<String> withSchools = jdbc.queryForList(
+                "SELECT DISTINCT education_board_code FROM school WHERE active AND education_board_code IS NOT NULL", String.class);
+        assertThat(head("/boards/STATE")).contains("State board schools in India");
+        assertThat(head("/boards/STATE").contains("noindex")).isEqualTo(!withSchools.contains("STATE"));
+        assertThat(head("/boards/CBSE").contains("noindex")).isEqualTo(!withSchools.contains("CBSE"));
         assertThat(head("/find")).contains("<title>Find the right school for your child | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/find\"");
         assertThat(head("/")).contains("<title>SchoolDhundo: Find Schools, Rankings and Exam Prep</title>").contains("SearchAction");
@@ -251,7 +259,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
                     .content(new ClassPathResource("seed/exams.json").getContentAsString(StandardCharsets.UTF_8)))
                     .andExpect(status().isOk());
         }
-        assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Preparation 2027: Free Mock Tests</title>")
+        assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Mock Test 2027: Free Navodaya (JNV) Practice</title>")
                 .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
         assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex")

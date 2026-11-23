@@ -94,4 +94,26 @@ class PremierDirectoryIT extends AbstractIntegrationTest {
         String none = mockMvc.perform(get("/api/v1/seo/head/rankings/no-such-schools")).andReturn().getResponse().getContentAsString();
         assertThat(none).contains("noindex");
     }
+
+    @Test
+    void ibAndCambridgeViewsExplainTheirCurriculumEverywhereTheyAreRead() throws Exception {
+        mockMvc.perform(get("/api/v1/rankings/directory/guide/ib-schools")).andExpect(status().isOk())
+                .andExpect(jsonPath("$.heading").value("About IB schools in India"))
+                .andExpect(jsonPath("$.faqs[*].question", hasItem("Is the IB Diploma accepted by Indian universities?")))
+                .andExpect(jsonPath("$.sources[0].url").value("https://www.ibo.org/programmes/find-an-ib-school/"));
+        mockMvc.perform(get("/api/v1/rankings/directory/guide/cambridge-schools")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/rankings/directory/guide/boys-boarding-schools")).andExpect(status().isNotFound());
+        if (service.categories().stream().anyMatch(c -> c.slug().equals("ib-schools"))) {
+            String head = mockMvc.perform(get("/api/v1/seo/head/rankings/ib-schools")).andReturn().getResponse().getContentAsString();
+            // The page's visible questions, and a description whose second sentence now fits.
+            assertThat(head).contains("\"@type\":\"FAQPage\"").contains("Is the IB Diploma accepted by Indian universities?")
+                    .contains("schools with board, boarding, approximate fees and how to verify each.").doesNotContain("noindex");
+            String body = mockMvc.perform(get("/api/v1/seo/body/rankings/ib-schools")).andReturn().getResponse()
+                    .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+            assertThat(body).contains("<h2>About IB schools in India</h2>").contains("Middle Years Programme (MYP): ages 11 to 16.")
+                    .contains("<dt>Is this list a ranking?</dt>").contains("href=\"https://www.ibo.org/programmes/find-an-ib-school/\"");
+        }
+        String girls = mockMvc.perform(get("/api/v1/seo/head/rankings/girls-boarding-schools")).andReturn().getResponse().getContentAsString();
+        assertThat(girls).doesNotContain("FAQPage");
+    }
 }

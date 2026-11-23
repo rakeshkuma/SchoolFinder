@@ -35,6 +35,25 @@ public final class PremierDirectoryDtos {
     public record Facet(String code, String name, String stateCode, long schools) {
     }
 
+    /**
+     * SchoolDhundo's own explainer for a view such as IB or Cambridge schools: what the curriculum is, how to check a
+     * school, and the questions parents ask, each fact from the official source listed with it. The app, the server's
+     * HTML and the FAQPage data all use this one text (see DirectoryGuides).
+     */
+    public record Guide(String heading, String intro, List<GuideSection> sections, List<GuideFaq> faqs, List<GuideSource> sources,
+                        LocalDate checkedOn) {
+    }
+
+    /** A section: its paragraphs, then an optional list of points. */
+    public record GuideSection(String heading, List<String> paragraphs, List<String> points) {
+    }
+
+    public record GuideFaq(String question, String answer) {
+    }
+
+    public record GuideSource(String title, String url) {
+    }
+
     /** Only values that some school in the view has, so a filter never offers an empty choice. */
     public record Facets(List<Facet> states, List<Facet> cities, List<Facet> boards, List<Facet> residences, List<Facet> genders,
                          List<Facet> sections, List<Integer> classes) {
