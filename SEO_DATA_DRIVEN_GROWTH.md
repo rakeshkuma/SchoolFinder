@@ -1,6 +1,6 @@
 # SchoolDhundo: data-driven SEO, AEO and GEO round
 
-Prepared 23 November 2026. Every number below comes from Google Search Console or Bing Webmaster Tools through the Windsor.ai connector (`searchconsole`, property `sc-domain:schooldhundo.in`; `bing_webmaster`, `https://schooldhundo.in`), or from the live site fetched as Googlebot on the same day. Nothing is estimated. Status: **built and tested locally, not committed, not deployed.**
+Prepared 23 November 2026. Every number below comes from Google Search Console or Bing Webmaster Tools through the Windsor.ai connector (`searchconsole`, property `sc-domain:schooldhundo.in`; `bing_webmaster`, `https://schooldhundo.in`), or from the live site fetched as Googlebot on the same day. Nothing is estimated. Status: **committed as d75f3c6 and live on schooldhundo.in since 23 November 2026.**
 
 ## 1. Baseline: what Google showed (before these changes)
 
@@ -64,7 +64,7 @@ Queries at positions 4 to 20 (123 query-page pairs) are almost all a school's or
 
 ## 2. Technical problems found (with evidence)
 
-1. **Google indexed school profiles at `?tab=` addresses (fixed).** Search Console reported **18 profile URLs with `?tab=boarding` or `?tab=ranking`** (87 impressions). For 10 of them, such as JNV Budaun (19 impressions), JNV Gulbarga (11) and Navy Children School Chanakyapuri (`?tab=ranking`, 8), Google had **no data at all for the plain profile address**. That means Google chose the tab copy as the main page, even though the server's canonical tag pointed to the plain address. Cause: boarding cards, ranking cards, the rankings pages, the home page rail, the reviews and admissions lists, and the profile's own "Ranking details" link all linked to `/schools/{slug}?tab=…`. The profile shows only the chosen section, so once Google runs the app, each tab address looks like a different page.
+1. **Google indexed school profiles at `?tab=` addresses (fixed).** Search Console reported **18 profile URLs with `?tab=boarding` or `?tab=ranking`** (87 impressions). For 11 of them (listed in §5), such as JNV Budaun (19 impressions), JNV Gulbarga (11) and Navy Children School Chanakyapuri (`?tab=ranking`, 8), Google had **no data at all for the plain profile address**. That means Google chose the tab copy as the main page, even though the server's canonical tag pointed to the plain address. Cause: boarding cards, ranking cards, the rankings pages, the home page rail, the reviews and admissions lists, and the profile's own "Ranking details" link all linked to `/schools/{slug}?tab=…`. The profile shows only the chosen section, so once Google runs the app, each tab address looks like a different page.
 2. **Exam guide descriptions lost their useful part (fixed).** Each guide's description opened with the exam's full official name and conducting body. That alone filled the 160-character limit, so the exam date and "eligibility, pattern, syllabus" were always dropped. The AISSEE guide's description was 167 characters and ended in "…".
 3. **Board pages titled by code (fixed).** "CAMBRIDGE schools in India" (38 impressions, position 64) and "STATE schools in India". `/boards/STATE` lists 0 schools, yet could be indexed (it is not in the sitemap).
 4. **Thin IB and Cambridge list pages (fixed).** Each had about 280 words and a description of about 80 characters, because its second sentence (about 110 characters) was always dropped. `/boards/CAMBRIDGE` lists 3 schools and `/rankings/cambridge-schools` lists 29, and the two did not link to each other.
@@ -112,14 +112,26 @@ Checked and found sound: robots.txt (allows all public pages, blocks private one
   - Loading that address fresh opens the same section; the plain address opens the Overview.
   - The profile's overview links to no `?tab=` address.
   - The Cambridge board page shows the new heading and links to the fuller list.
+- After the deploy (23 Nov 2026), 28 checks on the live site passed. Every page answers with HTTP 200, and the new titles, descriptions, board names, FAQPage data, explainers, guide API (200, and 404 for a view without one) and profile place names are live. The `?tab=` copies still point their canonical to the plain profile. The same browser checks run against the live site matched the local run.
 - Not measured this round: Core Web Vitals. The PageSpeed Insights API refused requests without a key (daily quota), and the local Lighthouse run was refused by this session's permission check. Earlier rounds fixed profile CLS and measured pages; Search Console's Core Web Vitals report will show field data once there are enough Chrome visitors.
 
 ## 5. Remaining issues that need your access
 
-1. **Deploy** (your word needed), then clear or let expire the nginx cache for `/rankings/ib-schools`, `/rankings/cambridge-schools`, `/boards/*`, `/exams/*` and `/blog/jnv-admission-guide-jnvst-class-6`.
+1. **Deploy: done** on 23 Nov 2026. The nginx cache refreshes every sitemap page by itself over the first hour (the warm-up timer).
 2. **Update the live JNV article:** `ADMIN_USERNAME=… ADMIN_PASSWORD=… node tools/blog/load-drafts.js https://schooldhundo.in/api/v1 --update jnv-admission-guide-jnvst-class-6`. Or paste the new text into the admin blog editor.
 3. **Search Console checks** (URL Inspection is not available through Windsor):
-   - Inspect `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-budaun-up` and check "Google-selected canonical". Today it is probably the `?tab=boarding` copy; after deploying, request indexing for the plain addresses of the 10 profiles listed in §2.
+   - Inspect each of the 11 profiles Google had only at a `?tab=` address, check "Google-selected canonical", and request indexing (most impressions first):
+     1. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-budaun-up` (19)
+     2. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-2-kwartq-chittarur-gulbarga` (11)
+     3. `https://schooldhundo.in/schools/navy-children-school-chanakyapuri-delhi` (8)
+     4. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-bemetara-cg` (7)
+     5. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-chhotaudepur` (7)
+     6. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-balod-c-g` (6)
+     7. `https://schooldhundo.in/schools/jnv-pulwama` (5)
+     8. `https://schooldhundo.in/schools/jawahar-navodaya-vidyalaya-bandipora` (4)
+     9. `https://schooldhundo.in/schools/jnv-sepahijala` (4)
+     10. `https://schooldhundo.in/schools/birla-balika-vidyapeeth` (1)
+     11. `https://schooldhundo.in/schools/rashtriya-military-school-belagavi` (1)
    - Request indexing for `/rankings/ib-schools`, `/rankings/cambridge-schools`, `/exams/jnvst` and the JNV article.
    - Check Pages > "Alternate page with proper canonical tag" over the following weeks: the `?tab=` copies should move there.
 4. **GA4 is not connected to Windsor.ai**, so Search Console and GA4 cannot be compared yet. Connect it at the link Windsor gives (googleanalytics4). Log in to the same Windsor account, pick the Google account that owns the GA4 property, tick the Analytics permission and select the property.
