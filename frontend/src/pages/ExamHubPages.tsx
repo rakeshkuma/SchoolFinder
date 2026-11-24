@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { ExamCard } from '../components/exam/ExamCard';
+import { ExamComparison } from '../components/exam/ExamComparison';
 import { PageHeader } from '../components/common/PageHeader';
 import { AsyncContent, Spinner } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
@@ -34,7 +35,9 @@ export function ExamClassPage() {
   const { name } = useStateNames();
   const valid = Number.isInteger(n) && n >= 1 && n <= 12;
   const label = valid ? `Class ${romanClass(n)}` : '';
-  useDocumentTitle(valid ? `Entrance exams for ${label} admission` : undefined);
+  // As the server titles it (SeoHeadService.examClassTitle): parents search "class 6", the notices say "Class VI".
+  const title = `Class ${n} (${romanClass(n)}) entrance exams: dates, fees and who can apply`;
+  useDocumentTitle(valid ? title : undefined);
   if (!valid) return <NotFoundPage />;
   if (!exams.data) return <Spinner />;
   const list = exams.data.filter((e) => e.entryClasses.includes(n));
@@ -42,10 +45,14 @@ export function ExamClassPage() {
   if (list.length === 0) return <NotFoundPage />;
   return (
     <>
-      <PageHeader eyebrow="Entrance exams by class" title={`Entrance exams for ${label} admission`}
+      <PageHeader eyebrow="Entrance exams by class" title={title}
         subtitle={`${list.length} exam${list.length === 1 ? '' : 's'} admit${list.length === 1 ? 's' : ''} students to ${label}. Each guide has the official eligibility, dates, pattern and syllabus, linked to the conducting body's notice.`} />
       <div className="container-page space-y-8 py-8">
         <Crumbs here={label} />
+        {list.length > 1 && (
+          <ExamComparison exams={list} stateName={name}
+            caption={`Entrance exams for ${label} compared: who runs each, who can apply, schools, exam date, application, mode and official source`} />
+        )}
         <div className="grid gap-4 md:grid-cols-2">{list.map((e) => <ExamCard key={e.slug} exam={e} stateName={name} />)}</div>
         <section className="card p-5 text-sm text-slate-700">
           <h2 className="font-display text-lg font-bold text-ink">Not sure which fits your child?</h2>

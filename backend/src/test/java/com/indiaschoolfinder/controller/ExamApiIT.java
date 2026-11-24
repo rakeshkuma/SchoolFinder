@@ -15,6 +15,7 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -78,6 +79,72 @@ class ExamApiIT extends AbstractIntegrationTest {
         for (ObjectNode e : exams) list.add(e);
         return mockMvc.perform(post("/api/v1/admin/exams/import").header("Authorization", editorToken())
                 .contentType(MediaType.APPLICATION_JSON).content(json(body)));
+    }
+
+    private String html(String url) throws Exception {
+        return mockMvc.perform(get(url)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    @Test
+    void calendarResourcesAndPracticePagesCarryTheirListsInTheServerHtml() throws Exception {
+        ObjectNode dated = exam("dated-test", "DATED");
+        addDate(dated, "APPLICATION_END", TODAY.minusDays(3), true);
+        addDate(dated, "EXAM", TODAY.plusDays(12), true);
+        addDate(dated, "RESULT", TODAY.plusDays(70), false);
+        ObjectNode undated = exam("undated-test", "UNDATED");
+        ObjectNode stateExam = exam("state-only-test", "STATEX");
+        stateExam.put("scope", "STATE");
+        stateExam.putArray("stateCodes").add("JH");
+        importExams(dated, undated, stateExam).andExpect(status().isOk());
+
+        java.time.format.DateTimeFormatter month = java.time.format.DateTimeFormatter.ofPattern("MMMM yyyy", java.util.Locale.ENGLISH);
+        String calendar = html("/api/v1/seo/body/exams/calendar");
+        assertThat(calendar).contains("<h2>" + TODAY.plusDays(12).format(month) + "</h2>")
+                .contains("<time datetime=\"" + TODAY.plusDays(12) + "\">")
+                .contains("href=\"/exams/dated-test\">DATED</a>")
+                .contains("<td>EXAM</td><td>Confirmed · <a href=\"" + SRC + "\" rel=\"noopener\">official notice</a></td>")
+                // A tentative date says so; a date that has passed is not on the calendar.
+                .contains("<td>RESULT</td><td>Tentative").doesNotContain("APPLICATION_END")
+                .contains("<h2>No date announced yet</h2>").contains("UNDATED");
+
+        Map<String, Object> set = new java.util.HashMap<>();
+        set.put("slug", "fixture-dated-mock");
+        set.put("examSlug", "dated-test");
+        set.put("category", "ENTRANCE");
+        set.put("title", "Fixture dated mock");
+        set.put("kind", "MOCK");
+        set.put("durationMinutes", 30);
+        set.put("level", "Class V");
+        set.put("description", "Fixture mock.");
+        set.put("published", true);
+        set.put("reviewedOn", TODAY.toString());
+        set.put("content", Map.of("passages", List.of(), "questions", List.of(Map.of("id", "q1", "section", "Mathematics",
+                "topic", "Fractions", "prompt", "Fixture prompt", "options", List.of("A", "B", "C", "D"), "answer", 1,
+                "explanation", "Fixture explanation"))));
+        mockMvc.perform(post("/api/v1/admin/practice-sets/import").header("Authorization", editorToken())
+                .contentType(MediaType.APPLICATION_JSON).content(json(Map.of("sets", List.of(set))))).andExpect(status().isOk());
+        try {
+            String resources = html("/api/v1/seo/body/exams/resources");
+            assertThat(resources).contains("<h2>Official: published by the conducting body</h2>")
+                    .contains("href=\"" + SRC + "\" rel=\"noopener\">Official site</a>")
+                    .contains("<h2>SchoolDhundo guides and practice</h2>")
+                    .contains("href=\"/exams/dated-test\">DATED guide</a> <span>Syllabus</span>")
+                    .contains("href=\"/exams/practice/fixture-dated-mock\">Fixture dated mock</a>")
+                    // The app's ?tab= paths are never written into the HTML: each would be another address for one page.
+                    .doesNotContain("?tab=");
+            assertThat(html("/api/v1/seo/body/exams/practice")).contains("<h2>Entrance exam practice</h2>").contains("<h3>DATED</h3>")
+                    // An exam without a preparation dashboard leads to its guide instead.
+                    .contains("href=\"/exams/dated-test\">DATED: eligibility, dates and syllabus</a>")
+                    .contains("href=\"/exams/practice/fixture-dated-mock\">Fixture dated mock</a> <span>Mock test · 30 min · Class V</span>")
+                    .doesNotContain("Fixture prompt").doesNotContain("Fixture explanation");
+        } finally {
+            jdbc.update("DELETE FROM practice_set WHERE slug = ?", "fixture-dated-mock");
+        }
+
+        // Each exam's page leads to its class's comparison, and the hub to the states that have an exam of their own.
+        assertThat(html("/api/v1/seo/body/exams/dated-test")).contains("href=\"/exams/class/6\">All 3 Class VI entrance exams compared</a>");
+        assertThat(html("/api/v1/seo/body/exams")).contains("href=\"/exams/state/jharkhand\">Entrance exams in Jharkhand</a>");
     }
 
     @Test
@@ -217,7 +284,7 @@ class ExamApiIT extends AbstractIntegrationTest {
         String head = mockMvc.perform(get("/api/v1/seo/head/exams/seo-test")).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         org.assertj.core.api.Assertions.assertThat(head)
-                .contains("<title>SEO: eligibility, dates, pattern and syllabus | SchoolDhundo</title>")
+                .contains("<title>SEO 2027: eligibility, dates, pattern and syllabus</title>")
                 .contains("/exams/seo-test\" />")
                 // What the guide answers opens the description, then the confirmed date (SeoHeadService.examGuideDescription).
                 .contains("from the official notice. Exam date: " + java.time.format.DateTimeFormatter.ofPattern("d MMM yyyy",
@@ -241,7 +308,8 @@ class ExamApiIT extends AbstractIntegrationTest {
         // Class pages exist only for classes with an exam; state pages are indexed only when the state has its own exam.
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/class/6"))
                 .andReturn().getResponse().getContentAsString())
-                .contains("Entrance exams for Class VI admission").contains("SEO admit students").doesNotContain("noindex");
+                .contains("Class 6 (VI) entrance exams: dates, fees and who can apply")
+                .contains("for Class VI: exam date").doesNotContain("noindex");
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/class/7"))
                 .andReturn().getResponse().getContentAsString()).contains("noindex");
         // A class reached only through an admission process (no entrance test) is a page but not indexed.
@@ -250,7 +318,7 @@ class ExamApiIT extends AbstractIntegrationTest {
         ((ArrayNode) process.get("entryClasses")).removeAll().add(1);
         importExams(process).andExpect(status().isOk());
         org.assertj.core.api.Assertions.assertThat(mockMvc.perform(get("/api/v1/seo/head/exams/class/1"))
-                .andReturn().getResponse().getContentAsString()).contains("PROC admit students").contains("noindex");
+                .andReturn().getResponse().getContentAsString()).contains("PROC for Class I: exam date").contains("noindex");
         ObjectNode stateExam = exam("jh-test", "JHX");
         stateExam.put("scope", "STATE");
         stateExam.putArray("stateCodes").add("JH");

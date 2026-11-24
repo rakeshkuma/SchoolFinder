@@ -100,16 +100,25 @@ class SeoHeadTitleTest {
     }
 
     @Test
-    void placeTitlesLeaveOutTheStateOnlyWhenItWouldNotFit() {
-        assertThat(SeoHeadService.placeTitle("Patna District", "Bihar")).isEqualTo("Schools in Patna District, Bihar | SchoolDhundo");
-        assertThat(SeoHeadService.placeTitle("Patna", "Bihar")).isEqualTo("Schools in Patna, Bihar | SchoolDhundo");
-        // Found by the 19 Nov crawl at 65 and 61 characters even without the site name.
-        assertThat(SeoHeadService.placeTitle("Diu District", "Dadra and Nagar Haveli and Daman and Diu")).isEqualTo("Schools in Diu District | SchoolDhundo");
-        assertThat(SeoHeadService.placeTitle("Silvassa", "Dadra and Nagar Haveli and Daman and Diu")).isEqualTo("Schools in Silvassa | SchoolDhundo");
+    void placeTitlesLeadWithTheirCountAndShortenOnlyWhenTheyWouldNotFit() {
+        assertThat(SeoHeadService.placeTitle(412, "Patna District", "Bihar")).isEqualTo("List of 412 Schools in Patna District, Bihar | SchoolDhundo");
+        assertThat(SeoHeadService.placeTitle(14, "Gandhidham", "Gujarat")).isEqualTo("List of 14 Schools in Gandhidham, Gujarat | SchoolDhundo");
+        // A state page names no state after itself; thousands are grouped.
+        assertThat(SeoHeadService.placeTitle(2345, "Bihar", null)).isEqualTo("List of 2,345 Schools in Bihar | SchoolDhundo");
+        // One school is no list (such a page is noindex anyway).
+        assertThat(SeoHeadService.placeTitle(1, "Bhim Tal", "Uttarakhand")).isEqualTo("Schools in Bhim Tal, Uttarakhand | SchoolDhundo");
+        // Found by the 19 Nov crawl at 65 and 61 characters even without the site name: the state goes first.
+        assertThat(SeoHeadService.placeTitle(12, "Diu District", "Dadra and Nagar Haveli and Daman and Diu"))
+                .isEqualTo("List of 12 Schools in Diu District | SchoolDhundo");
+        assertThat(SeoHeadService.placeTitle(30, "Silvassa", "Dadra and Nagar Haveli and Daman and Diu"))
+                .isEqualTo("List of 30 Schools in Silvassa | SchoolDhundo");
+        // Then the count: 61 characters with it, even without the state.
+        assertThat(SeoHeadService.placeTitle(1234, "Sri Potti Sriramulu Nellore District", "Andhra Pradesh"))
+                .isEqualTo("Schools in Sri Potti Sriramulu Nellore District | SchoolDhundo");
         // Exactly 60 without the site name: kept whole (fitTitle then drops the site name).
-        String sixty = "Schools in " + "X".repeat(60 - "Schools in , Goa".length()) + ", Goa";
+        String sixty = "List of 14 Schools in " + "X".repeat(60 - "List of 14 Schools in , Goa".length()) + ", Goa";
         assertThat(sixty).hasSize(60);
-        assertThat(SeoHeadService.fitTitle(SeoHeadService.placeTitle(sixty.substring(11, sixty.length() - 5), "Goa"))).isEqualTo(sixty);
+        assertThat(SeoHeadService.fitTitle(SeoHeadService.placeTitle(14, sixty.substring(22, sixty.length() - 5), "Goa"))).isEqualTo(sixty);
     }
 
     @Test

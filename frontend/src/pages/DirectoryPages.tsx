@@ -256,6 +256,19 @@ export function NetworkPage() {
         subtitle={<>{config.intro} Admission notices are published by{' '}
           <a href={config.officialUrl} target="_blank" rel="noopener noreferrer" className="text-accent-300 underline-offset-2 hover:underline">{config.officialName} ↗</a>.</>} />
       <div className="container-page py-8"><SchoolDirectory key={network} fixed={{ network: config.network }} /></div>
+      {/* Each network page leads to the others, as the server's HTML does (SeoBodyService.NETWORK_ORDER). */}
+      <nav aria-labelledby="other-networks" className="container-page pb-10">
+        <h2 id="other-networks" className="font-display text-lg font-bold text-ink">Other government school networks</h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {Object.entries(NETWORK_PAGES).filter(([slug]) => slug !== network).map(([slug, page]) => (
+            <li key={slug}>
+              <Link to={`/network/${slug}`} className="chip bg-slate-100 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-200">
+                {networkLabel[page.network]}s
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </>
   );
 }

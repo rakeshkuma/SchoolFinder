@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -201,9 +202,18 @@ public class SeoBodyService {
                 main = blogIndex(heading, description, category);
             } else if (p.equals("/exams")) {
                 main = examsHub(heading, description);
+            } else if (p.equals("/exams/calendar")) {
+                main = examCalendar(heading, description);
+            } else if (p.equals("/exams/resources")) {
+                main = examResources(heading, description);
+            } else if (p.equals("/exams/practice")) {
+                main = practiceCentre(heading, description);
             } else if ((m = EXAM_CLASS.matcher(p)).matches()) {
-                main = examList(heading, description, examService.list(new ExamService.Filter(null, Integer.parseInt(m.group(1)), null,
-                        null, null, null, null, null, null, null, null, null), ExamService.Sort.RELEVANCE, 0, 100).content());
+                int cls = Integer.parseInt(m.group(1));
+                var exams = examService.list(new ExamService.Filter(null, cls, null,
+                        null, null, null, null, null, null, null, null, null), ExamService.Sort.RELEVANCE, 0, 100).content();
+                main = examList(heading, description, exams, cls >= 1 && cls <= 12 ? "Entrance exams for Class " + ROMAN.get(cls - 1)
+                        + " compared: who runs each, who can apply, schools, exam date, application, mode and official source" : null);
             } else if ((m = EXAM_STATE.matcher(p)).matches()) {
                 main = examList(heading, description, examService.list(new ExamService.Filter(null, null,
                         locationService.state(m.group(1)).code(), null, null, null, null, null, null, null, null, null),
@@ -252,9 +262,22 @@ public class SeoBodyService {
         }
         h.append("</nav></div></header>");
         h.append("<main class=\"pr-wrap pr-main\">").append(main).append("</main>");
+        // The app's footer links to who runs the site and how it checks facts; without them here, crawlers that read only
+        // this HTML (most AI assistants) found no page linking to /about or /editorial-policy (Nov 2026 crawl).
+        h.append("<footer class=\"pr-footer\"><nav class=\"pr-wrap\" aria-label=\"About SchoolDhundo\">");
+        for (String[] f : FOOTER) {
+            h.append("<a href=\"").append(f[0]).append("\">").append(f[1]).append("</a>");
+        }
+        h.append("</nav></footer>");
         h.append("</div>");
         return h.toString();
     }
+
+    /** The app footer's site links (Layout.tsx), in its order, plus the contact form. */
+    private static final String[][] FOOTER = {
+            {"/about", "About Us"}, {"/editorial-policy", "Editorial Policy"}, {"/corrections-policy", "Corrections Policy"},
+            {"/contact", "Contact"}, {"/privacy", "Privacy Policy"}, {"/terms", "Terms of Use"}, {"/disclaimer", "Disclaimer"},
+    };
 
     private String home() {
         StringBuilder h = new StringBuilder();
@@ -411,7 +434,12 @@ public class SeoBodyService {
         fact(h, "Medium", s.mediumOfInstruction());
         fact(h, "Established", s.establishedYear() == null ? null : String.valueOf(s.establishedYear()));
         fact(h, "Website", s.websiteUrl());
+        String network = networkSlug(s.network());
+        String[] exam = s.boarding() == null ? null : examRoute(s.boarding().entranceExam());
+        if (network != null) factLink(h, "School network", "/network/" + network, NETWORKS.get(network)[0]);
+        if (exam != null) factLink(h, "Entrance exam", exam[1], exam[0]);
         h.append("</dl>");
+        admissionRoutes(h, network, exam);
         List<SchoolFaqService.Faq> faqs = faqService.faqs(s);
         if (!faqs.isEmpty()) {
             h.append("<h2>Quick answers</h2><dl class=\"pr-faq\">");
@@ -488,7 +516,11 @@ public class SeoBodyService {
         if (districtSlug != null) {
             h.append(" › <a href=\"/states/").append(state.slug()).append("\">").append(esc(state.name())).append("</a>");
         }
-        h.append("</nav><h1>").append(heading).append("</h1>");
+        // The heading the app's StatePage shows, not the title: the title leads with the count ("List of 14 Schools in …").
+        String place = districtSlug == null ? state.name() : locationService.districts(state.code()).stream()
+                .filter(d -> d.slug().equals(districtSlug)).findFirst()
+                .map(d -> SeoHeadService.districtName(d.name()) + ", " + state.name()).orElse(null);
+        h.append("</nav><h1>").append(place == null ? heading : esc("Schools in " + place)).append("</h1>");
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
@@ -532,7 +564,8 @@ public class SeoBodyService {
         StringBuilder h = new StringBuilder();
         h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/states\">States</a> › <a href=\"/states/")
                 .append(state.slug()).append("\">").append(esc(state.name())).append("</a></nav>");
-        h.append("<h1>").append(heading).append("</h1>");
+        // The app's heading (StatePage), not the title, which leads with the count.
+        h.append("<h1>").append(esc("Schools in " + city.name() + ", " + state.name())).append("</h1>");
         if (description != null) {
             h.append("<p class=\"pr-lead\">").append(description).append("</p>");
         }
@@ -794,8 +827,18 @@ public class SeoBodyService {
             h.append("<p>Showing ").append(page.content().size()).append(" of ").append(String.format(Locale.ENGLISH, "%,d", page.totalElements()))
                     .append(" schools, best documented first. <a href=\"/schools\">Search the full school directory</a></p>");
         }
+        h.append("<h2>Other government school networks</h2><ul class=\"pr-grid\">");
+        NETWORK_ORDER.stream().filter(other -> !other.equals(slug)).forEach(other -> h.append(link("/network/" + other, NETWORKS.get(other)[0])));
+        h.append("</ul>");
         return h.toString();
     }
+
+    /**
+     * The network pages in the app's order (content/networks.ts). Each page lists the others: until November 2026 none
+     * did, and the Rashtriya Military School and EMRS pages had no link from any server-rendered page.
+     */
+    static final List<String> NETWORK_ORDER = List.of("jawahar-navodaya-vidyalaya", "sainik-school", "eklavya-model-residential-school",
+            "rashtriya-military-school", "kendriya-vidyalaya");
 
     private static void crumbs(StringBuilder h, String... hrefLabelPairs) {
         h.append("<nav class=\"pr-crumbs\" aria-label=\"Breadcrumb\"><a href=\"/\">Home</a>");
@@ -972,8 +1015,7 @@ public class SeoBodyService {
                 .append(link(OlympiadPages.PATH, "Olympiad preparation, Classes 1 to 10"))
                 .append(link("/exams/practice", "Practice centre: quizzes and mock tests"))
                 .append("</ul>");
-        List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = examService.list(new ExamService.Filter(null, null, null, null, null,
-                null, null, null, null, null, null, null), ExamService.Sort.RELEVANCE, 0, 100).content();
+        List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = allExams();
         examItems(h, "Entrance exams and admission processes", exams);
         java.util.SortedSet<Integer> classes = new java.util.TreeSet<>();
         exams.forEach(e -> { if (e.entryClasses() != null) classes.addAll(e.entryClasses()); });
@@ -981,6 +1023,17 @@ public class SeoBodyService {
             h.append("<h2>By admission class</h2><ul class=\"pr-grid\">");
             classes.stream().filter(n -> n >= 1 && n <= 12)
                     .forEach(n -> h.append(link("/exams/class/" + n, "Entrance exams for Class " + ROMAN.get(n - 1))));
+            h.append("</ul>");
+        }
+        // Only states with an exam of their own have a page worth visiting (the others are noindex: they repeat this list).
+        Set<String> ownExamStates = new java.util.HashSet<>();
+        exams.stream().filter(e -> e.scope() == com.indiaschoolfinder.enums.ExamScope.STATE && e.stateCodes() != null)
+                .forEach(e -> ownExamStates.addAll(e.stateCodes()));
+        List<StateDto> examStates = locationService.states().stream().filter(s -> ownExamStates.contains(s.code()))
+                .sorted(Comparator.comparing(StateDto::name)).toList();
+        if (!examStates.isEmpty()) {
+            h.append("<h2>By state</h2><ul class=\"pr-grid\">");
+            examStates.forEach(s -> h.append(link("/exams/state/" + s.slug(), "Entrance exams in " + s.name())));
             h.append("</ul>");
         }
         h.append("<h2>Plan and prepare</h2><ul class=\"pr-grid\">")
@@ -996,11 +1049,281 @@ public class SeoBodyService {
 
     /** A filtered exam page (one class, one state): the exams it lists, each linked to its guide. */
     private String examList(String heading, String description, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams) {
+        return examList(heading, description, exams, null);
+    }
+
+    /** As above; with a caption, the exams are first compared in a table, as the app's class page does (ExamComparison). */
+    private String examList(String heading, String description, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams,
+                            String compareCaption) {
         StringBuilder h = new StringBuilder();
         crumbs(h, "/exams", "Exams");
         heading(h, heading, description);
+        if (compareCaption != null && exams.size() > 1) {
+            Map<String, String> states = new java.util.HashMap<>();
+            locationService.states().forEach(s -> states.put(s.code(), s.name()));
+            examTable(h, compareCaption, exams, states);
+        }
         examItems(h, "Exams", exams);
         return h.toString();
+    }
+
+    /**
+     * The app's "Compare at a glance" table: who runs each exam, who can apply, the kind of school, the exam date (with
+     * "Held on" once it has passed), the application fee, the mode and the official source, from the exams' own records.
+     */
+    static void examTable(StringBuilder h, String caption, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams,
+                          Map<String, String> stateNames) {
+        h.append("<h2>Compare at a glance</h2><table><caption>").append(esc(caption)).append("</caption><thead><tr>");
+        for (String col : new String[]{"Exam", "Who can apply", "Schools", "Exam date", "Application", "Mode", "Source"}) {
+            h.append("<th scope=\"col\">").append(col).append("</th>");
+        }
+        h.append("</tr></thead><tbody>");
+        for (var e : exams) {
+            String scope = e.scope() == com.indiaschoolfinder.enums.ExamScope.NATIONAL ? "All India"
+                    : e.stateCodes().stream().map(c -> stateNames.getOrDefault(c, c)).collect(java.util.stream.Collectors.joining(", "));
+            String schools = e.boarding() == null ? "Not stated" : switch (e.boarding()) {
+                case BOARDING -> "Boarding only";
+                case DAY -> "Day school";
+                case BOTH -> "Boarding or day";
+            };
+            String date = e.examDate() == null
+                    ? (e.status() == com.indiaschoolfinder.enums.ExamStatus.AWAITING_NOTIFICATION ? "Not announced yet" : "No confirmed date")
+                    : (SeoHeadService.examAhead(e) ? "" : "Held on ") + DAY.format(e.examDate());
+            String application = e.applicationFree() == null ? "Not stated" : e.applicationFree() ? "Free" : "Fee charged";
+            String mode = e.examMode() == null ? "Not stated" : switch (e.examMode()) {
+                case PEN_PAPER -> "Pen and paper";
+                case COMPUTER -> "Computer-based";
+                case NO_WRITTEN_TEST -> "No written test";
+            };
+            h.append("<tr><th scope=\"row\"><a href=\"/exams/").append(e.slug()).append("\">").append(esc(e.shortName())).append("</a> <span>")
+                    .append(esc(e.conductingAuthority())).append("</span></th><td>").append(esc(scope)).append("</td><td>").append(schools)
+                    .append("</td><td>").append(date).append(" <span>").append(esc(e.currentCycle())).append("</span></td><td>")
+                    .append(application).append("</td><td>").append(mode).append("</td><td>");
+            if (e.officialUrl() != null && !e.officialUrl().isBlank()) {
+                h.append("<a href=\"").append(esc(e.officialUrl())).append("\" rel=\"noopener\">Official site</a>");
+            }
+            if (e.lastVerifiedOn() != null) h.append(" <span>Checked ").append(DAY.format(e.lastVerifiedOn())).append("</span>");
+            h.append("</td></tr>");
+        }
+        h.append("</tbody></table>");
+    }
+
+    /**
+     * A preparation page's name in a breadcrumb: JNVST and AISSEE are acronyms, Netarhat is a place. The slug in capitals
+     * gave 27 practice pages the link text "NETARHAT" (Nov 2026 crawl).
+     */
+    static String prepName(String examSlug) {
+        return "netarhat".equals(examSlug) ? "Netarhat" : examSlug.toUpperCase(Locale.ROOT);
+    }
+
+    /** Every published exam and admission process, as the exams hub lists them. */
+    private List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> allExams() {
+        return examService.list(new ExamService.Filter(null, null, null, null, null, null, null, null, null, null, null, null),
+                ExamService.Sort.RELEVANCE, 0, 100).content();
+    }
+
+    /**
+     * From an exam's page to the page of each class it admits to, where that class's exams are compared side by side
+     * (examTable). A class this exam alone admits to is left out: its page would only list this exam again.
+     */
+    private void classComparisons(StringBuilder h, List<Integer> entryClasses) {
+        if (entryClasses == null || entryClasses.isEmpty()) return;
+        List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = allExams();
+        StringBuilder items = new StringBuilder();
+        for (int n : entryClasses) {
+            if (n < 1 || n > 12) continue;
+            long count = exams.stream().filter(x -> x.entryClasses() != null && x.entryClasses().contains(n)).count();
+            if (count > 1) items.append(link("/exams/class/" + n, "All " + count + " Class " + ROMAN.get(n - 1) + " entrance exams compared"));
+        }
+        if (!items.isEmpty()) h.append("<h2>Other exams for the same class</h2><ul class=\"pr-grid\">").append(items).append("</ul>");
+    }
+
+    /** "28 Nov 2026", "1 Dec 2026 to 5 Dec 2026", or "December 2026" for a date known only to the month. */
+    static String dateText(com.indiaschoolfinder.dto.exam.ExamDateDto d) {
+        boolean month = d.precision() == com.indiaschoolfinder.enums.DatePrecision.MONTH;
+        String start = month ? d.startsOn().format(MONTH) : time(d.startsOn());
+        if (d.endsOn() == null || d.endsOn().equals(d.startsOn())) return start;
+        return start + " to " + (month ? d.endsOn().format(MONTH) : time(d.endsOn()));
+    }
+
+    /**
+     * The entrance-exam calendar, as the app's list view shows it (ExamCalendarPage): every date of each exam's current
+     * cycle that has not passed, month by month, with whether the official notice confirms it and the notice itself;
+     * then the exams with no date out yet. A tentative date is called tentative, never counted on.
+     */
+    String examCalendar(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams");
+        heading(h, heading, description);
+        List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams = allExams();
+        java.time.LocalDate today = java.time.LocalDate.now(INDIA);
+        record Event(com.indiaschoolfinder.dto.exam.ExamSummaryDto exam, com.indiaschoolfinder.dto.exam.ExamDateDto date) {
+            java.time.LocalDate last() {
+                return date.endsOn() != null ? date.endsOn() : date.startsOn();
+            }
+        }
+        List<Event> events = exams.stream()
+                .flatMap(e -> (e.currentDates() == null ? List.<com.indiaschoolfinder.dto.exam.ExamDateDto>of() : e.currentDates())
+                        .stream().map(d -> new Event(e, d)))
+                .filter(ev -> ev.date().startsOn() != null && !ev.last().isBefore(today))
+                .sorted(Comparator.comparing((Event ev) -> ev.date().startsOn()).thenComparing(ev -> ev.exam().shortName()))
+                .toList();
+        String month = null;
+        for (Event ev : events) {
+            String m = ev.date().startsOn().format(MONTH);
+            if (!m.equals(month)) {
+                if (month != null) h.append("</tbody></table>");
+                month = m;
+                h.append("<h2>").append(m).append("</h2><table><thead><tr><th scope=\"col\">Date</th><th scope=\"col\">Exam</th>")
+                        .append("<th scope=\"col\">What happens</th><th scope=\"col\">Status</th></tr></thead><tbody>");
+            }
+            var e = ev.exam();
+            String guide = "/exams/" + e.slug() + (SeoHeadService.PREP_PAGES.contains(e.slug()) ? "/guide" : "");
+            h.append("<tr><td>").append(dateText(ev.date())).append("</td><th scope=\"row\"><a href=\"").append(guide).append("\">")
+                    .append(esc(e.shortName())).append("</a> <span>").append(esc(e.currentCycle())).append("</span></th><td>")
+                    .append(esc(ev.date().label())).append("</td><td>").append(ev.date().confirmed() ? "Confirmed" : "Tentative");
+            if (ev.date().sourceUrl() != null && !ev.date().sourceUrl().isBlank()) {
+                h.append(" · <a href=\"").append(esc(ev.date().sourceUrl())).append("\" rel=\"noopener\">official notice</a>");
+            }
+            h.append("</td></tr>");
+        }
+        if (month != null) {
+            h.append("</tbody></table>");
+        } else {
+            h.append("<p>No upcoming date has been announced yet.</p>");
+        }
+        Set<String> dated = new java.util.HashSet<>();
+        events.forEach(ev -> dated.add(ev.exam().slug()));
+        examItems(h, "No date announced yet", exams.stream().filter(e -> !dated.contains(e.slug())).toList());
+        h.append("<p>Every date is taken from the conducting body's own notice and checked against it; tentative dates are ")
+                .append("expected from past cycles, not announced.</p>");
+        return h.toString();
+    }
+
+    /** The app's names for resource types (ExamResourcesPage TYPE_INFO). */
+    private static final java.util.Map<com.indiaschoolfinder.dto.exam.ExamResourceDto.Type, String> RESOURCE_TYPES = java.util.Map.of(
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.QUESTION_PAPER, "Previous-year paper",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.ANSWER_KEY, "Answer key",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.SAMPLE_PAPER, "Sample paper",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.OFFICIAL_LINK, "Official notice or page",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.SYLLABUS, "Syllabus",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.EXAM_PATTERN, "Exam pattern",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.PREPARATION_GUIDE, "Preparation plan",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.DOCUMENT_CHECKLIST, "Document checklist",
+            com.indiaschoolfinder.dto.exam.ExamResourceDto.Type.FAQ, "FAQ");
+
+    /**
+     * The learning resources, grouped as the app groups them (ExamResourcesPage): first what each conducting body
+     * publishes (papers, answer keys, notices), linked at its own site and never copied; then, per exam, this site's
+     * guides and its published practice sets, which are original questions, not official ones.
+     */
+    String examResources(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams");
+        heading(h, heading, description);
+        List<com.indiaschoolfinder.dto.exam.ExamResourceDto> resources = examService.resources();
+        java.util.Map<String, List<com.indiaschoolfinder.dto.exam.ExamResourceDto>> official = new java.util.LinkedHashMap<>();
+        java.util.Map<String, List<com.indiaschoolfinder.dto.exam.ExamResourceDto>> own = new java.util.LinkedHashMap<>();
+        java.util.Map<String, String> names = new java.util.LinkedHashMap<>();
+        for (var r : resources) {
+            names.putIfAbsent(r.examSlug(), r.examShortName());
+            (r.official() ? official : own).computeIfAbsent(r.examSlug(), k -> new java.util.ArrayList<>()).add(r);
+        }
+        if (!official.isEmpty()) {
+            h.append("<h2>Official: published by the conducting body</h2><p>Each link opens the conducting body's own site. ")
+                    .append("Files are linked, never copied or re-hosted.</p>");
+            official.forEach((exam, rows) -> resourceGroup(h, names.get(exam), rows));
+        }
+        h.append("<h2>SchoolDhundo guides and practice</h2><p>Our own material, built from the official notices. Practice ")
+                .append("questions are original, not official or previous-year questions.</p>");
+        java.util.Map<String, List<Object[]>> setsByExam = new java.util.HashMap<>();
+        practiceSets.findPublishedCatalogue().stream().filter(s -> s[4] != null)
+                .forEach(s -> setsByExam.computeIfAbsent((String) s[4], k -> new java.util.ArrayList<>()).add(s));
+        for (String exam : names.keySet()) {
+            List<Object[]> sets = setsByExam.getOrDefault(exam, List.of());
+            List<com.indiaschoolfinder.dto.exam.ExamResourceDto> guides = own.getOrDefault(exam, List.of());
+            if (guides.isEmpty() && sets.isEmpty()) continue;
+            h.append("<h3>").append(esc(names.get(exam))).append("</h3><ul class=\"pr-list\">");
+            // One link to the guide's plain address, naming what it holds: the app's ?tab= paths would be new duplicate
+            // addresses for search engines (the profile ?tab= problem of November 2026, see profileLink.ts).
+            if (!guides.isEmpty()) {
+                String guide = "/exams/" + exam + (SeoHeadService.PREP_PAGES.contains(exam) ? "/guide" : "");
+                h.append("<li><a href=\"").append(guide).append("\">").append(esc(names.get(exam))).append(" guide</a> <span>")
+                        .append(guides.stream().map(r -> RESOURCE_TYPES.getOrDefault(r.type(), "Guide")).distinct()
+                                .collect(java.util.stream.Collectors.joining(" · "))).append("</span></li>");
+            }
+            sets.forEach(s -> h.append("<li><a href=\"/exams/practice/").append(s[0]).append("\">").append(esc((String) s[1]))
+                    .append("</a> <span>").append(s[2] == com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK ? "Mock test" : "Practice quiz")
+                    .append(s[3] != null ? " · " + s[3] + " min" : "").append("</span></li>"));
+            h.append("</ul>");
+        }
+        return h.toString();
+    }
+
+    private static void resourceGroup(StringBuilder h, String exam, List<com.indiaschoolfinder.dto.exam.ExamResourceDto> rows) {
+        h.append("<h3>").append(esc(exam)).append("</h3><ul class=\"pr-list\">");
+        for (var r : rows) {
+            h.append("<li><a href=\"").append(esc(r.url())).append("\" rel=\"noopener\">").append(esc(r.title())).append("</a> <span>")
+                    .append(RESOURCE_TYPES.getOrDefault(r.type(), "Official page"));
+            if (r.year() != null && !r.year().isBlank()) h.append(" · ").append(esc(r.year()));
+            if (r.lastVerifiedOn() != null) h.append(" · checked ").append(time(r.lastVerifiedOn()));
+            h.append("</span></li>");
+        }
+        h.append("</ul>");
+    }
+
+    /**
+     * The practice centre: every published set, entrance-exam sets under their exam (with its preparation page where it
+     * has one), Olympiad practice through its class pages, and school-subject sets by name. Until November 2026 this page
+     * had no list in its HTML, and sets such as class8-science-1 had no link from any server-rendered page.
+     */
+    String practiceCentre(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams");
+        heading(h, heading, description);
+        h.append("<p>Original questions written by SchoolDhundo, each with an explanation. They are for practice only: not ")
+                .append("official or previous-year exam questions. Free, with no sign-up needed to start.</p>");
+        List<Object[]> sets = practiceSets.findPublishedCatalogue();
+        java.util.Map<String, String> examNames = new java.util.HashMap<>();
+        allExams().forEach(e -> examNames.put(e.slug(), e.shortName()));
+        java.util.Map<String, List<Object[]>> byExam = new java.util.LinkedHashMap<>();
+        List<Object[]> school = new java.util.ArrayList<>();
+        boolean olympiad = false;
+        for (Object[] s : sets) {
+            var category = (com.indiaschoolfinder.entity.PracticeSet.Category) s[5];
+            if (s[4] != null) byExam.computeIfAbsent((String) s[4], k -> new java.util.ArrayList<>()).add(s);
+            else if (category == com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD) olympiad = true;
+            else school.add(s);
+        }
+        if (!byExam.isEmpty()) {
+            h.append("<h2>Entrance exam practice</h2>");
+            byExam.forEach((exam, list) -> {
+                h.append("<h3>").append(esc(examNames.getOrDefault(exam, exam.toUpperCase(Locale.ROOT)))).append("</h3><ul class=\"pr-list\">");
+                if (SeoHeadService.PREP_PAGES.contains(exam)) h.append(link("/exams/" + exam, "Preparation dashboard and study plan"));
+                else if (examNames.containsKey(exam)) h.append(link("/exams/" + exam, examNames.get(exam) + ": eligibility, dates and syllabus"));
+                list.forEach(s -> practiceItem(h, s));
+                h.append("</ul>");
+            });
+        }
+        if (olympiad) {
+            h.append("<h2>Olympiad practice</h2><ul class=\"pr-grid\">").append(link(OlympiadPages.PATH, "Olympiad preparation, Classes 1 to 10"));
+            for (int c = 1; c <= 10; c++) h.append(link(OlympiadPages.PATH + "/class-" + c, "Class " + c + " Olympiad practice"));
+            h.append("</ul>");
+        }
+        if (!school.isEmpty()) {
+            h.append("<h2>School subject practice</h2><ul class=\"pr-list\">");
+            school.forEach(s -> practiceItem(h, s));
+            h.append("</ul>");
+        }
+        return h.toString();
+    }
+
+    private static void practiceItem(StringBuilder h, Object[] s) {
+        h.append("<li><a href=\"/exams/practice/").append(s[0]).append("\">").append(esc((String) s[1])).append("</a> <span>")
+                .append(s[2] == com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK ? "Mock test" : "Practice quiz");
+        if (s[3] != null) h.append(" · ").append(s[3]).append(" min");
+        if (s[6] != null && !((String) s[6]).isBlank()) h.append(" · ").append(esc((String) s[6]));
+        h.append("</span></li>");
     }
 
     private static void examItems(StringBuilder h, String title, List<com.indiaschoolfinder.dto.exam.ExamSummaryDto> exams) {
@@ -1058,7 +1381,7 @@ public class SeoBodyService {
         StringBuilder h = new StringBuilder();
         if (olympiadClass > 0) crumbs(h, "/exams", "Exams", OlympiadPages.PATH, "Olympiad", classPage, "Class " + olympiadClass);
         else if (olympiad) crumbs(h, "/exams", "Exams", OlympiadPages.PATH, "Olympiad");
-        else if (prep) crumbs(h, "/exams", "Exams", "/exams/" + set.getExamSlug(), set.getExamSlug().toUpperCase(Locale.ROOT));
+        else if (prep) crumbs(h, "/exams", "Exams", "/exams/" + set.getExamSlug(), prepName(set.getExamSlug()));
         else crumbs(h, "/exams/practice", "Practice");
         heading(h, heading, null);
         if (set.getDescription() != null) h.append("<p class=\"pr-lead\">").append(esc(set.getDescription())).append("</p>");
@@ -1395,6 +1718,7 @@ public class SeoBodyService {
         if (e.lastVerifiedOn() != null) {
             h.append("<p>Checked against these sources on ").append(time(e.lastVerifiedOn())).append(".</p>");
         }
+        classComparisons(h, e.entryClasses());
         if (!prep && hasPrepPage) {
             h.append("<p><a href=\"/exams/").append(e.slug()).append("\">").append(esc(e.shortName()))
                     .append(" practice questions, mock tests and study plan</a></p>");
@@ -1492,6 +1816,49 @@ public class SeoBodyService {
 
     private static String link(String href, String label) {
         return "<li><a href=\"" + href + "\">" + esc(label) + "</a></li>";
+    }
+
+    private static void factLink(StringBuilder h, String label, String href, String text) {
+        h.append("<div><dt>").append(label).append("</dt><dd><a href=\"").append(href).append("\">").append(esc(text)).append("</a></dd></div>");
+    }
+
+    /** The network's directory page here (/network/{slug}), or null when the network has none. */
+    static String networkSlug(com.indiaschoolfinder.enums.SchoolNetwork network) {
+        if (network == null) return null;
+        String slug = network.name().toLowerCase(Locale.ROOT).replace('_', '-');
+        return NETWORKS.containsKey(slug) ? slug : null;
+    }
+
+    /**
+     * A school's entrance exam as {label, its page here, its guide or null}, as the app's entranceExamInfo names them; null for
+     * the school's own test, which has no page. JNVST, AISSEE and Netarhat have a preparation page with the guide under it.
+     */
+    static String[] examRoute(com.indiaschoolfinder.enums.EntranceExam exam) {
+        if (exam == null) return null;
+        return switch (exam) {
+            case JNVST -> new String[]{"JNVST", "/exams/jnvst", "/exams/jnvst/guide"};
+            case AISSEE -> new String[]{"AISSEE", "/exams/aissee", "/exams/aissee/guide"};
+            case NETARHAT -> new String[]{"Netarhat entrance", "/exams/netarhat", "/exams/netarhat/guide"};
+            case RMS_CET -> new String[]{"RMS CET", "/exams/rms-cet", null};
+            case RIMC -> new String[]{"RIMC entrance", "/exams/rimc", null};
+            case SCHOOL_TEST -> null;
+        };
+    }
+
+    /**
+     * Where this site explains how a network school admits students: its free practice, the exam's guide and the network's
+     * directory. Until November 2026 none of the 639 JNV or 21 Sainik School profiles in the sitemap linked to any of these.
+     */
+    static void admissionRoutes(StringBuilder h, String network, String[] exam) {
+        if (network == null && exam == null) return;
+        h.append("<h2>Admission and network</h2><ul class=\"pr-grid\">");
+        if (exam != null && exam[2] != null) {
+            h.append(link(exam[1], exam[0] + " preparation: free practice and mock tests")).append(link(exam[2], exam[0] + ": eligibility, dates and syllabus"));
+        } else if (exam != null) {
+            h.append(link(exam[1], exam[0] + ": eligibility, dates and syllabus"));
+        }
+        if (network != null) h.append(link("/network/" + network, "All " + NETWORKS.get(network)[0]));
+        h.append("</ul>");
     }
 
     private static String first(Pattern pattern, String text) {

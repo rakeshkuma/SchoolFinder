@@ -102,7 +102,9 @@ class SeoBodyIT extends AbstractIntegrationTest {
         // The hub and the class pages link every exam's guide (prep exams to their /guide), as the app lists them.
         assertThat(fetch("/api/v1/seo/body/exams")).contains("href=\"/exams/netarhat/guide\"").contains("href=\"/exams/jnvst\"")
                 .contains("href=\"/exams/class/6\"").contains("href=\"/exams/olympiad\"");
-        assertThat(fetch("/api/v1/seo/body/exams/class/6")).contains("href=\"/exams/aissee/guide\"").contains("href=\"/exams\">Exams</a>");
+        assertThat(fetch("/api/v1/seo/body/exams/class/6")).contains("href=\"/exams/aissee/guide\"").contains("href=\"/exams\">Exams</a>")
+                // The shipped catalogue has several Class VI exams, so the page compares them side by side.
+                .contains("<h2>Compare at a glance</h2>").contains("<caption>Entrance exams for Class VI compared");
     }
 
     @Test
@@ -138,9 +140,10 @@ class SeoBodyIT extends AbstractIntegrationTest {
         }
         createSchool(school("Fixture Twin Outer School", Map.of("stateCode", "UK", "district", "Fixtureabad", "city", "Fixturepur")));
         assertThat(fetch("/api/v1/seo/head/states/uttarakhand/fixtureabad"))
-                .contains("<title>Schools in Fixtureabad District, Uttarakhand | SchoolDhundo</title>");
+                .contains("<title>List of 4 Schools in Fixtureabad District, Uttarakhand</title>");
         assertThat(fetch("/api/v1/seo/head/states/uttarakhand/city/fixtureabad"))
-                .contains("<title>Schools in Fixtureabad, Uttarakhand | SchoolDhundo</title>");
+                .contains("<title>List of 3 Schools in Fixtureabad, Uttarakhand | SchoolDhundo</title>");
+        // The heading is the app's (StatePage), not the count-led title.
         assertThat(fetch("/api/v1/seo/body/states/uttarakhand/fixtureabad"))
                 .contains("<h1>Schools in Fixtureabad District, Uttarakhand</h1>")
                 .contains("Just the city: <a href=\"/states/uttarakhand/city/fixtureabad\">3 schools in Fixtureabad</a>");
@@ -160,7 +163,7 @@ class SeoBodyIT extends AbstractIntegrationTest {
         }
         createSchool(school("Fixture Spelt Caps School", Map.of("stateCode", "UK", "city", "FIXTUREBHUJ")));
         assertThat(fetch("/api/v1/seo/head/states/uttarakhand/city/fixturebhuj")).doesNotContain("noindex")
-                .contains("<title>Schools in Fixturebhuj, Uttarakhand");
+                .contains("<title>List of 3 Schools in Fixturebhuj, Uttarakhand"); // the spelling with more schools, and its count
         assertThat(fetch("/api/v1/seo/body/states/uttarakhand/city/fixturebhuj")).contains("Fixture Spelt Two School");
     }
 
@@ -237,7 +240,10 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(home).contains("<h1>Find the Right School for Your Child</h1>").contains("class=\"pr-hero\"")
                 .contains("<h2>Latest school and exam updates</h2>").contains("Fixture teacher recruitment notice")
                 .contains("href=\"/states/uttarakhand\"").contains("href=\"/exams/jnvst\"")
-                .contains("href=\"/updates\">Notifications</a>").contains("href=\"/rankings\">Rankings</a>");
+                .contains("href=\"/updates\">Notifications</a>").contains("href=\"/rankings\">Rankings</a>")
+                // Who runs the site and how it checks facts, linked from every page as the app's footer links them.
+                .contains("<footer class=\"pr-footer\">").contains("href=\"/about\">About Us</a>")
+                .contains("href=\"/editorial-policy\">Editorial Policy</a>").contains("href=\"/corrections-policy\">Corrections Policy</a>");
         // The updates page lists the notices with their summaries and sources, not only a heading.
         assertThat(fetch("/api/v1/seo/body/updates")).contains("Fixture teacher recruitment notice")
                 .contains("Applications invited for fixture teaching posts").contains("https://example.gov.in/recruitment.pdf");
@@ -256,7 +262,7 @@ class SeoBodyIT extends AbstractIntegrationTest {
 
     @Test
     void networkPagesListTheirSchoolsAndSayHowAdmissionWorks() throws Exception {
-        createSchool(school("Fixture Sainik School Alpha", Map.of("stateCode", "UK", "management", "CENTRAL_GOVERNMENT",
+        long alpha = createSchool(school("Fixture Sainik School Alpha", Map.of("stateCode", "UK", "management", "CENTRAL_GOVERNMENT",
                 "network", "SAINIK_SCHOOL")));
         createSchool(school("Fixture Sainik School Beta", Map.of("stateCode", "UK", "management", "CENTRAL_GOVERNMENT",
                 "network", "SAINIK_SCHOOL")));
@@ -277,7 +283,16 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 .contains("href=\"/exams/aissee\"").contains("href=\"/exams/aissee/guide\"")
                 .contains("<h2>Sainik Schools listed on SchoolDhundo</h2>")
                 .contains("Fixture Sainik School Alpha").contains("Fixture Sainik School Beta")
-                .doesNotContain("Fixture Day School");
+                .doesNotContain("Fixture Day School")
+                // Every network page leads to the other four (none did before November 2026), never to itself.
+                .contains("<h2>Other government school networks</h2>").contains("href=\"/network/jawahar-navodaya-vidyalaya\"")
+                .contains("href=\"/network/rashtriya-military-school\"").contains("href=\"/network/eklavya-model-residential-school\"")
+                .doesNotContain("href=\"/network/sainik-school\"");
+        // A network school's profile links its network's page, from the fact and from where admission is explained.
+        String slug = body(mockMvc.perform(get("/api/v1/schools/{id}", alpha)).andReturn()).get("slug").asText();
+        assertThat(fetch("/api/v1/seo/body/schools/" + slug))
+                .contains("<dt>School network</dt><dd><a href=\"/network/sainik-school\">Sainik Schools</a></dd>")
+                .contains("<h2>Admission and network</h2>").contains("href=\"/network/sainik-school\">All Sainik Schools</a>");
         // Every network has its page; an unknown one is the app's "page not found", with no content.
         assertThat(fetch("/api/v1/seo/body/network/kendriya-vidyalaya")).contains("href=\"https://kvsangathan.nic.in/\"");
         assertThat(fetch("/api/v1/seo/body/network/no-such-network")).isEmpty();

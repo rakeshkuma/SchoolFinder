@@ -252,6 +252,13 @@
   .prerender .pr-note {
     @apply mt-4 max-w-3xl rounded-xl bg-amber-50 p-4 text-slate-700;
   }
+  /* The trust-page links under the server-rendered content; the app's own footer replaces them once it loads. */
+  .prerender .pr-footer {
+    @apply border-t border-slate-200 py-6;
+  }
+  .prerender .pr-footer nav {
+    @apply flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600;
+  }
 }
 
 /* Printing (comparison, study plan): the page's own content only, on white, without the site chrome. */

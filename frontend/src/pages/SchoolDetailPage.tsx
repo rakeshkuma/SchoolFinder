@@ -43,6 +43,7 @@ import { track } from '../utils/analytics';
 import { schoolFaqs } from '../utils/schoolFaq';
 import { UdiseCard } from '../components/school/UdiseCard';
 import { EnquiryButton } from '../components/school/EnquiryForm';
+import { NETWORK_PAGES } from '../content/networks';
 import { profileLink, requestedTab } from '../utils/profileLink';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
@@ -440,12 +441,12 @@ function Overview({ school: s, onTab }: { school: SchoolDetail; onTab: (id: stri
     { label: 'Classes', value: classes, icon: 'graduation' },
     { label: 'School category', value: schoolTypeLabel[s.schoolType], icon: 'building' },
     { label: 'Management', value: s.management ? managementLabel[s.management] : null, icon: 'institution' },
-    { label: 'School network', value: s.network ? networkLabel[s.network] : null, icon: 'flag' },
+    { label: 'School network', value: s.network ? <NetworkLink network={s.network} /> : null, icon: 'flag' },
     { label: 'Run by (trust / society)', value: s.managingBody, icon: 'users' },
     { label: 'Principal / head', value: s.principalName, icon: 'user' },
     { label: 'Students', value: s.genderType ? genderLabel[s.genderType] : null, icon: 'users' },
     { label: 'Day or boarding', value: s.hasHostel === null ? (s.boarding ? 'Boarding' : null) : s.hasHostel ? 'Boarding (hostel available)' : 'Day school', icon: 'bed' },
-    { label: 'Entrance exam', value: exam ? exam.label : null, icon: 'target' },
+    { label: 'Entrance exam', value: exam ? (exam.guide ? <Link to={`/exams/${exam.guide}`} className="link">{exam.label}</Link> : exam.label) : null, icon: 'target' },
     { label: 'Medium of instruction', value: s.mediumOfInstruction, icon: 'globe' },
     { label: 'Established', value: s.establishedYear !== null ? String(s.establishedYear) : null, icon: 'calendar' },
     { label: 'School timings', value: s.schoolTimings, icon: 'clock' },
@@ -570,7 +571,16 @@ function SourcesCard({ school: s, onTab }: { school: SchoolDetail; onTab: (id: s
   );
 }
 
-/** Admission through an entrance exam (from the boarding profile), with SchoolDhundo's own guide and preparation pages. */
+/**
+ * The network's name, linked to its directory page when it has one (content/networks.ts). Until November 2026 no school
+ * profile linked to its network page; the server's HTML links the same page (SeoBodyService.networkSlug).
+ */
+function NetworkLink({ network }: { network: NonNullable<SchoolDetail['network']> }) {
+  const slug = Object.entries(NETWORK_PAGES).find(([, page]) => page.network === network)?.[0];
+  return slug ? <Link to={`/network/${slug}`} className="link">{networkLabel[network]}</Link> : <>{networkLabel[network]}</>;
+}
+
+/** Admission through an entrance exam (from the boarding profile), with SchoolDhundo’s own guide and preparation pages. */
 function EntranceExamCard({ school: s }: { school: SchoolDetail }) {
   const examKey = s.boarding?.entranceExam;
   if (!examKey) return null;

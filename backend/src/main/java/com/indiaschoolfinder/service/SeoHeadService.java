@@ -495,16 +495,58 @@ public class SeoHeadService {
         if (job && d.indexable() && opening && d.closesOn() != null && !d.closesOn().isBefore(notices.today())) {
             data.add(jobPosting(d, url));
         }
-        return tags(noticeTitle(d.title()) + " | " + SITE, d.summary(), d.indexable() ? url : null, null, !d.indexable(), data);
+        return tags(noticeTitle(d.title()) + " | " + SITE, noticeDescription(d.title(), d.summary()), d.indexable() ? url : null,
+                null, !d.indexable(), data);
     }
 
-    /** At most 60 characters, cut after a whole word (the full title is the page's heading). */
+    private static final Pattern UNNAMED_RECRUITMENT = Pattern.compile(": recruitment\\.(\\s|$)");
+
+    /**
+     * A notice's summary, after the post its title names when the summary names none ("…: recruitment."). The vacancies
+     * one careers page lists were all summed up that way, so 14 Doon International School, Bhubaneswar notices shared one
+     * description (Nov 2026 crawl): "Art Teacher. Doon International School, Bhubaneswar published this notice on …".
+     */
+    static String noticeDescription(String title, String summary) {
+        if (summary == null || title == null || !UNNAMED_RECRUITMENT.matcher(summary).find()) return summary;
+        int colon = title.indexOf(": ");
+        String post = colon < 0 ? "" : title.substring(colon + 2).replaceAll("\\s+", " ").trim();
+        return post.isEmpty() ? summary : post + (post.endsWith(".") ? " " : ". ") + summary;
+    }
+
+    /**
+     * At most 60 characters, cut after a whole word (the full title is the page's heading). A notice titled
+     * "institution: post (subject)" keeps its post up to the subject: the cut once gave six Doon International School
+     * vacancies the same title, "…, Bhubaneswar: Higher Secondary" (Nov 2026 crawl). The institution is shortened
+     * instead: without "PM SHRI", with network initials, without its place, and at last after a whole word. A cut that
+     * already keeps the subject is left alone, so Kendriya Vidyalaya notices keep the place that tells them apart.
+     */
     static String noticeTitle(String title) {
         String t = title.replaceAll("\\s+", " ").trim();
         if (t.length() <= TITLE_MAX) {
             return t;
         }
-        String cut = t.substring(0, t.lastIndexOf(' ', TITLE_MAX) > 30 ? t.lastIndexOf(' ', TITLE_MAX) : TITLE_MAX);
+        String cut = tidyCut(t.substring(0, t.lastIndexOf(' ', TITLE_MAX) > 30 ? t.lastIndexOf(' ', TITLE_MAX) : TITLE_MAX));
+        int colon = t.indexOf(": ");
+        int close = colon > 0 ? t.indexOf(')', colon) : -1;
+        if (close < 0 || cut.length() > close) {
+            return cut;
+        }
+        String post = t.substring(colon + 2);
+        String subject = t.substring(colon + 2, close + 1);
+        String plain = withoutSchemePrefix(t.substring(0, colon));
+        String unplaced = plain.contains(", ") ? plain.substring(0, plain.indexOf(", ")) : plain;
+        for (String name : List.of(networkInitials(plain), unplaced, networkInitials(unplaced))) {
+            if (name.length() + 2 + post.length() <= TITLE_MAX) return name + ": " + post;
+            if (name.length() + 2 + subject.length() <= TITLE_MAX) return name + ": " + subject;
+        }
+        String shortest = networkInitials(unplaced);
+        int room = TITLE_MAX - 2 - subject.length();
+        int space = room > 0 ? shortest.lastIndexOf(' ', room) : -1;
+        return space >= 3 ? tidyCut(shortest.substring(0, space)) + ": " + subject : cut;
+    }
+
+    /** A cut title without a dangling separator or short word at its end. */
+    private static String tidyCut(String cut) {
         return cut.replaceAll("[\\s,;:–—(-]+$", "").replaceAll("\\s+(of|for|the|and|to|in|on|a|an|by|at|with)$", "");
     }
 
@@ -958,7 +1000,7 @@ public class SeoHeadService {
             throw new ResourceNotFoundException("State", stateSlug); // codes ("UP") are not the canonical address
         }
         if (districtSlug == null) {
-            String title = "Schools in " + state.name() + " | " + SITE;
+            String title = placeTitle(state.schoolCount(), state.name(), null);
             String description = placeDescription("%,d schools in %s, by district".formatted(state.schoolCount(), state.name()));
             String url = baseUrl + "/states/" + state.slug();
             return tags(title, description, url, null, state.schoolCount() == 0,
@@ -969,7 +1011,7 @@ public class SeoHeadService {
                 .orElseThrow(() -> new ResourceNotFoundException("District", districtSlug));
         // "District" tells this page apart from the town of the same name (/states/bihar/patna vs /states/bihar/city/patna),
         // which would otherwise have the same title and heading; the town page keeps the plain "Schools in Patna, Bihar".
-        String title = placeTitle(districtName(district.name()), state.name());
+        String title = placeTitle(district.schoolCount(), districtName(district.name()), state.name());
         String description = placeDescription("%,d schools in %s district, %s".formatted(district.schoolCount(), district.name(), state.name()));
         String url = baseUrl + "/states/" + state.slug() + "/" + district.slug();
         return tags(title, description, url, null, district.schoolCount() < MIN_SCHOOLS_TO_INDEX,
@@ -978,13 +1020,20 @@ public class SeoHeadService {
     }
 
     /**
-     * "Schools in Patna District, Bihar | SchoolDhundo". The state is left out only when the title would pass
-     * {@link #TITLE_MAX} even without the site name ("Schools in Diu District, Dadra and Nagar Haveli and Daman and Diu");
-     * the description still names it.
+     * "List of 65 Schools in Kolkata, West Bengal | SchoolDhundo". The count is the number of schools the page lists (its
+     * description and heading say the same), and "list" is how people search for these pages: "naharlagun school list",
+     * "daman school list", "list of schools in dombivli" (Search Console, Nov 2026, when place pages had about 780
+     * impressions in two weeks and 4 clicks under the plain "Schools in Naharlagun, Arunachal Pradesh").
+     * When the title would pass {@link #TITLE_MAX} even without the site name, the state is left out first, then the
+     * count ("Schools in Diu District"); the description still names both. A state page passes no state name.
      */
-    static String placeTitle(String place, String stateName) {
-        String full = "Schools in " + place + ", " + stateName;
-        return (full.length() > TITLE_MAX ? "Schools in " + place : full) + " | " + SITE;
+    static String placeTitle(long count, String place, String stateName) {
+        String listed = count > 1 ? String.format(Locale.ENGLISH, "List of %,d Schools in ", count) : "Schools in ";
+        String where = stateName == null ? place : place + ", " + stateName;
+        for (String title : List.of(listed + where, listed + place, "Schools in " + where)) {
+            if (title.length() <= TITLE_MAX) return title + " | " + SITE;
+        }
+        return "Schools in " + place + " | " + SITE;
     }
 
     static final String PLACE_DETAILS = "Fees and admission dates are shown where published, each linked to its official source.";
@@ -1013,7 +1062,7 @@ public class SeoHeadService {
                 // Two spellings of one town ("Bhuj", "BHUJ") share a slug; the page is the one with more schools, as in the sitemap.
                 .max(java.util.Comparator.comparingLong(CityDto::schoolCount))
                 .orElseThrow(() -> new ResourceNotFoundException("City", citySlug));
-        String title = placeTitle(city.name(), state.name());
+        String title = placeTitle(city.schoolCount(), city.name(), state.name());
         String description = placeDescription("%,d schools in %s, %s".formatted(city.schoolCount(), city.name(), state.name()));
         String url = baseUrl + "/states/" + state.slug() + "/city/" + city.slug();
         return tags(title, description, url, null, city.schoolCount() < MIN_SCHOOLS_TO_INDEX,
@@ -1048,7 +1097,7 @@ public class SeoHeadService {
     /** Exam guide: the description states only confirmed dates; otherwise that the notice is awaited. */
     private String exam(ExamDetailDto detail, String baseUrl) {
         ExamSummaryDto e = detail.exam();
-        String title = e.shortName() + ": eligibility, dates, pattern and syllabus | " + SITE;
+        String title = examGuideTitle(e) + " | " + SITE;
         String url = baseUrl + "/exams/" + e.slug() + (PREP_PAGES.contains(e.slug()) ? "/guide" : "");
         String description = examGuideDescription(e, detail.content() == null ? List.of() : detail.content().eligibility());
         Map<String, Object> data = new LinkedHashMap<>();
@@ -1074,12 +1123,34 @@ public class SeoHeadService {
      * conducting body, which alone filled the 160 characters, so search results never showed the date or what the page
      * covers ("Jawahar Navodaya Vidyalaya Selection Test (JNVST) – Class VI, conducted by …").
      */
-    static String examGuideDescription(ExamSummaryDto e, List<String> eligibility) {
-        // The name people search by, with the cycle's year: "JNVST 2027", "JNV Class IX 2027", "Netarhat 2026-27". The
-        // cycle's own label is not used as it is: some do not name the exam ("Class IX LEST 2027").
+    /**
+     * "JNV Class XI 2027: eligibility, dates, pattern and syllabus". The cycle's year is in the title because exam
+     * searches carry it ("jnv mock test class 6 2027", "navodaya vidyalaya age limit for class 6 2027"; Search Console,
+     * Nov 2026, when the guide without it had 31 impressions at position 8 and no click); it is left out when the title
+     * would pass {@link #TITLE_MAX} ("EMRSST Odisha 2027-28: …"). An admission procedure without a test (the Kendriya
+     * Vidyalaya lottery) promises dates and admission steps, as its description does, not a pattern and syllabus.
+     */
+    static String examGuideTitle(ExamSummaryDto e) {
+        String covers = e.kind() == ExamKind.SELECTION_PROCESS ? ": eligibility, dates and admission steps"
+                : ": eligibility, dates, pattern and syllabus";
+        String dated = examName(e) + covers;
+        return dated.length() <= TITLE_MAX ? dated : e.shortName() + covers;
+    }
+
+    private static final Pattern CYCLE_YEAR = Pattern.compile("\\b\\d{4}(-\\d{2})?\\b");
+
+    /**
+     * The name people search by, with the cycle's year: "JNVST 2027", "JNV Class IX 2027", "Netarhat 2026-27". The
+     * cycle's own label is not used as it is: some do not name the exam ("Class IX LEST 2027").
+     */
+    static String examName(ExamSummaryDto e) {
         String lead = e.shortName();
-        var year = java.util.regex.Pattern.compile("\\b\\d{4}(-\\d{2})?\\b").matcher(e.currentCycle() == null ? "" : e.currentCycle());
-        if (year.find() && !lead.matches(".*\\b\\d{4}\\b.*")) lead += " " + year.group();
+        Matcher year = CYCLE_YEAR.matcher(e.currentCycle() == null ? "" : e.currentCycle());
+        return year.find() && !lead.matches(".*\\b\\d{4}\\b.*") ? lead + " " + year.group() : lead;
+    }
+
+    static String examGuideDescription(ExamSummaryDto e, List<String> eligibility) {
+        String lead = examName(e);
         // "– Class VI" in the official name says which class the exam admits to, unless the short name already does.
         String name = e.name() == null ? "" : e.name();
         int dash = name.lastIndexOf(" – ");
@@ -1107,9 +1178,13 @@ public class SeoHeadService {
      */
     static String examDateSentence(ExamSummaryDto e, String label) {
         if (e.examDate() == null) return null;
-        boolean ahead = e.status() == ExamStatus.EXAM_DATE_ANNOUNCED || e.status() == ExamStatus.APPLICATIONS_OPEN
+        return label + (examAhead(e) ? " date: " : " held on ") + DAY.format(e.examDate()) + ".";
+    }
+
+    /** True while the exam date is still to come: only these four states have it ahead (the app's ExamComparison agrees). */
+    static boolean examAhead(ExamSummaryDto e) {
+        return e.status() == ExamStatus.EXAM_DATE_ANNOUNCED || e.status() == ExamStatus.APPLICATIONS_OPEN
                 || e.status() == ExamStatus.DEADLINE_APPROACHING || e.status() == ExamStatus.APPLICATIONS_OPENING_SOON;
-        return label + (ahead ? " date: " : " held on ") + DAY.format(e.examDate()) + ".";
     }
 
     /**
@@ -1257,13 +1332,30 @@ public class SeoHeadService {
         if (exams.isEmpty()) {
             throw new ResourceNotFoundException("Class", n);
         }
-        String label = "Class " + ROMAN[n];
-        String names = exams.stream().map(ExamSummaryDto::shortName).collect(Collectors.joining(", "));
         // A class reached only through admission processes (no entrance test) would just repeat those guides.
         boolean hasTest = exams.stream().anyMatch(e -> e.kind() == ExamKind.ENTRANCE_TEST);
-        return tags("Entrance exams for " + label + " admission | " + SITE,
-                names + " admit students to " + label + ". Eligibility, confirmed dates, pattern and syllabus from each "
-                        + "official notice.", baseUrl + "/exams/class/" + n, null, !hasTest, null);
+        return tags(examClassTitle(n) + " | " + SITE, examClassDescription(n, exams.stream().map(ExamSummaryDto::shortName).toList()),
+                baseUrl + "/exams/class/" + n, null, !hasTest, null);
+    }
+
+    /**
+     * "Class 6 (VI) entrance exams: dates, fees and who can apply". Parents search "class 6", the notices say "Class VI",
+     * and the page now compares the exams side by side (the app's ExamComparison table, SeoBodyService.examTable).
+     */
+    static String examClassTitle(int n) {
+        return "Class " + n + " (" + ROMAN[n] + ") entrance exams: dates, fees and who can apply";
+    }
+
+    /** The exams by name (four at most, so the sentence fits), then what the comparison shows. */
+    static String examClassDescription(int n, List<String> shortNames) {
+        String label = "Class " + ROMAN[n];
+        if (shortNames.size() == 1) {
+            return shortNames.get(0) + " for " + label + ": exam date, application fee, mode and who can apply, from the official notice.";
+        }
+        String names = shortNames.size() > 4
+                ? String.join(", ", shortNames.subList(0, 4)) + " and more"
+                : String.join(", ", shortNames.subList(0, shortNames.size() - 1)) + " and " + shortNames.get(shortNames.size() - 1);
+        return names + " compared for " + label + ": exam dates, application fees, mode and who can apply, from each official notice.";
     }
 
     /** National exams plus the state's own; only states with a state-level exam are indexed (others repeat /exams). */

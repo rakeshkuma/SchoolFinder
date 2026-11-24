@@ -30,4 +30,12 @@ public interface PracticeSetRepository extends JpaRepository<PracticeSet, Long> 
     @Query("select p.slug, p.title, p.kind, p.durationMinutes, p.updatedAt, p.level from PracticeSet p where p.published = true"
             + " and p.category = :category order by p.displayOrder, p.title")
     List<Object[]> findPublishedOutlineByCategory(@Param("category") PracticeSet.Category category);
+
+    /**
+     * Every published set with what groups it (slug, title, kind, minutes, exam or null, category, level), in display
+     * order: for the practice centre's server-rendered list, without loading any questions.
+     */
+    @Query("select p.slug, p.title, p.kind, p.durationMinutes, p.examSlug, p.category, p.level from PracticeSet p"
+            + " where p.published = true order by p.displayOrder, p.title")
+    List<Object[]> findPublishedCatalogue();
 }

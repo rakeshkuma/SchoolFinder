@@ -1,8 +1,8 @@
 /**
  * Analytics, only with the visitor's consent. Two ways in, never both in one build:
  * - Google Tag Manager (GTM-PZ7WSXBS), added by index.html with Consent Mode defaults of "denied". GA4 is configured
- *   inside Tag Manager; this module tells Google about the visitor's choice (consent update) and, after Accept, passes
- *   the site's events to Tag Manager's dataLayer. Page views come from GA4's own history tracking in Tag Manager.
+ *   inside Tag Manager; this module tells Google about the visitor's choice (consent update) and, after Accept, sends
+ *   the site's events as gtag('event') commands. Page views come from GA4's own history tracking in Tag Manager.
  * - Direct gtag.js, only when VITE_GA_MEASUREMENT_ID is set at build time and Tag Manager is not on the page.
  * Without consent track() does nothing.
  *
@@ -151,8 +151,10 @@ export function trackPageView(path: string) {
 
 export function track(event: AnalyticsEvent, params?: Params) {
   if (tagManagerPresent()) {
-    // Tag Manager reads these as Custom Event triggers; nothing is passed before the visitor accepts.
-    if (storedConsent() === 'granted') window.dataLayer?.push({ event, ...cleanParams(params) });
+    // A gtag('event') command, which the container's Google tag sends to GA4 as it is. A plain
+    // dataLayer.push({ event }) needs a Custom Event trigger and a GA4 event tag, which the container does not have:
+    // tested on the live container on 24 Nov 2026, the push sent nothing. Nothing is passed before the visitor accepts.
+    if (storedConsent() === 'granted' && typeof window.gtag === 'function') window.gtag('event', event, cleanParams(params));
     return;
   }
   if (!active()) return;

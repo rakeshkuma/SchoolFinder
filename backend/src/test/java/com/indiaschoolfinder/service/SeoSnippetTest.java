@@ -131,6 +131,100 @@ class SeoSnippetTest {
     }
 
     @Test
+    void jobTitlesKeepThePostSubjectSoOneSchoolsVacanciesStayApart() {
+        String biology = SeoHeadService.noticeTitle("Doon International School, Bhubaneswar: Higher Secondary Teacher (Biology)");
+        String sport = SeoHeadService.noticeTitle("Doon International School, Bhubaneswar: Higher Secondary Teacher (Physical Education)");
+        String computing = SeoHeadService.noticeTitle("Doon International School, Bhubaneswar: Higher Secondary Teacher (Computer Science)");
+        // All three were "Doon International School, Bhubaneswar: Higher Secondary" before (Nov 2026 crawl).
+        assertThat(biology).isEqualTo("Doon International: Higher Secondary Teacher (Biology)");
+        assertThat(sport).isEqualTo("Doon: Higher Secondary Teacher (Physical Education)");
+        assertThat(List.of(biology, sport, computing)).doesNotHaveDuplicates()
+                .allMatch(t -> t.length() <= SeoHeadService.TITLE_MAX);
+        // A cut that already keeps the subject is left alone: the place is what tells Kendriya Vidyalayas apart.
+        assertThat(SeoHeadService.noticeTitle("Kendriya Vidyalaya No. 2, Faridabad: PGT (Computer Science) on contract basis"))
+                .isEqualTo("Kendriya Vidyalaya No. 2, Faridabad: PGT (Computer Science)");
+        assertThat(SeoHeadService.noticeTitle("Doon International School, Bhubaneswar: PRT: Social Science"))
+                .isEqualTo("Doon International School, Bhubaneswar: PRT: Social Science");
+    }
+
+    @Test
+    void jobDescriptionsNameThePostWhenTheSummaryNamesNone() {
+        String generic = "Doon International School, Bhubaneswar published this notice on 21 Sep 2026: recruitment. "
+                + "Open the official notice for the posts, eligibility, pay and how to apply.";
+        String art = SeoHeadService.noticeDescription("Doon International School, Bhubaneswar: Art Teacher", generic);
+        String data = SeoHeadService.noticeDescription("Doon International School, Bhubaneswar: Data Entry Operator", generic);
+        // All 14 of this careers page's vacancies had the summary alone as their description (24 Nov 2026 crawl).
+        assertThat(art).startsWith("Art Teacher. Doon International School, Bhubaneswar published this notice on 21 Sep 2026");
+        assertThat(List.of(SeoHeadService.fitDescription(art), SeoHeadService.fitDescription(data))).doesNotHaveDuplicates()
+                .allMatch(d -> d.length() <= SeoHeadService.DESCRIPTION_MAX && !d.contains("…"));
+        // A summary that names its posts, or a notice of another kind, is left as it is.
+        String named = "Kendriya Vidyalaya No. 2, Faridabad published this notice on 18 Nov 2026: recruitment for PGT (Computer Science). "
+                + "Last date to apply: 25 Nov 2026.";
+        assertThat(SeoHeadService.noticeDescription("Kendriya Vidyalaya No. 2, Faridabad: PGT (Computer Science)", named)).isEqualTo(named);
+        String result = "Sainik School Korukonda published this notice on 2 Nov 2026: a result or list of candidates.";
+        assertThat(SeoHeadService.noticeDescription("Sainik School Korukonda: Final result for TGT", result)).isEqualTo(result);
+        assertThat(SeoHeadService.noticeDescription("No colon in this title", generic)).isEqualTo(generic);
+        assertThat(SeoHeadService.noticeDescription("Doon: Art Teacher", null)).isNull();
+    }
+
+    @Test
+    void examGuideTitlesCarryTheCycleYearWhenItFitsAndPromiseOnlyWhatTheGuideHas() {
+        assertThat(SeoHeadService.examGuideTitle(exam("JNV Class XI", ExamKind.ENTRANCE_TEST, "Fixture – Class XI", "Class XI LEST 2027",
+                BODY, ExamStatus.AWAITING_NOTIFICATION, null))).isEqualTo("JNV Class XI 2027: eligibility, dates, pattern and syllabus");
+        assertThat(SeoHeadService.examGuideTitle(exam("Netarhat", ExamKind.ENTRANCE_TEST, "Fixture – Class 6", "Netarhat 2026-27",
+                BODY, ExamStatus.AWAITING_NOTIFICATION, null))).isEqualTo("Netarhat 2026-27: eligibility, dates, pattern and syllabus");
+        // Too long with the year (63 characters): the year is left out, as before.
+        assertThat(SeoHeadService.examGuideTitle(exam("EMRSST Odisha", ExamKind.ENTRANCE_TEST, "Fixture – Class VI", "EMRSST 2027-28",
+                BODY, ExamStatus.AWAITING_NOTIFICATION, null))).isEqualTo("EMRSST Odisha: eligibility, dates, pattern and syllabus");
+        // The Kendriya Vidyalaya lottery has no exam pattern or syllabus (its title promised one until Nov 2026).
+        String kv = SeoHeadService.examGuideTitle(exam("KV admission", ExamKind.SELECTION_PROCESS, "Fixture admission", "KVS 2027-28",
+                BODY, ExamStatus.AWAITING_NOTIFICATION, null));
+        assertThat(kv).isEqualTo("KV admission 2027-28: eligibility, dates and admission steps").hasSizeLessThanOrEqualTo(SeoHeadService.TITLE_MAX);
+        // A short name that already has a year is not given a second one; a cycle without a year adds nothing.
+        assertThat(SeoHeadService.examName(exam("RIMC 2026", ExamKind.ENTRANCE_TEST, NAME, "RIMC 2027", BODY, ExamStatus.AWAITING_NOTIFICATION, null)))
+                .isEqualTo("RIMC 2026");
+        assertThat(SeoHeadService.examName(exam("JNVST", ExamKind.ENTRANCE_TEST, NAME, "CURRENT", BODY, ExamStatus.AWAITING_NOTIFICATION, null)))
+                .isEqualTo("JNVST");
+    }
+
+    @Test
+    void practicePagesNameTheirPreparationPageAsPeopleWriteIt() {
+        assertThat(SeoBodyService.prepName("netarhat")).isEqualTo("Netarhat");
+        assertThat(SeoBodyService.prepName("jnvst")).isEqualTo("JNVST");
+        assertThat(SeoBodyService.prepName("aissee")).isEqualTo("AISSEE");
+    }
+
+    @Test
+    void classPagesAreTitledAsParentsSearchAndNameTheirExams() {
+        assertThat(SeoHeadService.examClassTitle(6)).isEqualTo("Class 6 (VI) entrance exams: dates, fees and who can apply");
+        assertThat(SeoHeadService.fitTitle(SeoHeadService.examClassTitle(11) + " | SchoolDhundo").length())
+                .isLessThanOrEqualTo(SeoHeadService.TITLE_MAX);
+        assertThat(SeoHeadService.examClassDescription(6, List.of("JNVST", "AISSEE", "RMS CET", "RIMC", "Netarhat", "EMRSST Odisha")))
+                .isEqualTo("JNVST, AISSEE, RMS CET, RIMC and more compared for Class VI: exam dates, application fees, mode and who can "
+                        + "apply, from each official notice.")
+                .hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
+        assertThat(SeoHeadService.examClassDescription(9, List.of("JNV Class IX", "AISSEE", "RMS CET")))
+                .startsWith("JNV Class IX, AISSEE and RMS CET compared for Class IX:");
+        assertThat(SeoHeadService.examClassDescription(11, List.of("JNV Class XI"))).startsWith("JNV Class XI for Class XI: exam date,");
+    }
+
+    @Test
+    void theComparisonTableStatesOnlyRecordedFactsAndNeverOffersAPassedDate() {
+        StringBuilder h = new StringBuilder();
+        SeoBodyService.examTable(h, "Fixture caption", List.of(
+                exam("JNVST", ExamKind.ENTRANCE_TEST, NAME, "JNVST-2027", BODY, ExamStatus.APPLICATIONS_CLOSED, LocalDate.of(2026, 11, 28)),
+                exam("RMS CET", ExamKind.ENTRANCE_TEST, "Fixture CET – Class VI", "CET 2027-28", "Fixture Board",
+                        ExamStatus.AWAITING_NOTIFICATION, null)), java.util.Map.of());
+        String table = h.toString();
+        assertThat(table).contains("<caption>Fixture caption</caption>").contains("<th scope=\"col\">Exam date</th>")
+                .contains("Held on 28 Nov 2026").contains("Not announced yet")
+                .contains("<td>All India</td>").contains("<td>Free</td>")
+                // Facts the records do not hold are said to be missing, never guessed.
+                .contains("<td>Not stated</td>")
+                .contains("href=\"/exams/fixture-exam\"");
+    }
+
+    @Test
     void feedLinksToAProfileSectionUseThePlainProfileAddress() {
         assertThat(SeoBodyService.plainProfilePath("/schools/dps-rk-puram?tab=admissions")).isEqualTo("/schools/dps-rk-puram");
         assertThat(SeoBodyService.plainProfilePath("/admissions")).isEqualTo("/admissions");

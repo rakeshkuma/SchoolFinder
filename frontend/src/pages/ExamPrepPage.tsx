@@ -17,6 +17,11 @@ const pct = (c: number, t: number) => (t ? Math.round((c / t) * 100) : 0);
 type Tr = (b: Bi) => string;
 /** The bank section names a preparation section covers (one, or one per language variant). */
 const sectionsOf = (s: PrepSection) => s.variants?.map((v) => v.section) ?? [s.section];
+/** The link to /exams/class/{n}, where every exam for that class is compared side by side (as the server's HTML links it). */
+const compareClass = (n: number): Bi => ({
+  en: `Compare every Class ${n} entrance exam`,
+  hi: `कक्षा ${n} की सभी प्रवेश परीक्षाओं की तुलना`,
+});
 
 /**
  * An exam's Class VI preparation dashboard (/exams/{slug}), driven by a content config (src/content/*Prep.ts).
@@ -160,6 +165,9 @@ export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
               ))}
               <li><Link to={`/exams/${c.exam}/guide`} className="link">{t(T.guide)}</Link></li>
               <li><Link to={c.findSchools.to} className="link">{t(c.findSchools.label)}</Link></li>
+              {(exam?.entryClasses ?? []).map((n) => (
+                <li key={n}><Link to={`/exams/class/${n}`} className="link">{t(compareClass(n))}</Link></li>
+              ))}
             </ul>
           </div>
         </section>

@@ -59,7 +59,7 @@ describe('analytics', () => {
         };
         setConsent('granted');
         track('school_profile_view', { school_slug: 'erudite-academy' });
-        expect(window.dataLayer?.[1]).toEqual({ event: 'school_profile_view', school_slug: 'erudite-academy' });
+        expect(Array.from(window.dataLayer?.[1] as IArguments)).toEqual(['event', 'school_profile_view', { school_slug: 'erudite-academy' }]);
       } finally {
         loader.remove();
       }
@@ -71,8 +71,11 @@ describe('analytics', () => {
       expect(window.dataLayer).toEqual([]);
       setConsent('granted');
       expect(Array.from(window.dataLayer?.[0] as IArguments)).toEqual(['consent', 'update', { analytics_storage: 'granted' }]);
+      // A gtag command, not a plain { event } object: the container has no Custom Event trigger, so only gtag
+      // commands reach GA4 (checked on the live container, 24 Nov 2026).
       track('school_search', { state: 'BR', email: 'a@b.c' });
-      expect(window.dataLayer?.[1]).toEqual({ event: 'school_search', state: 'BR' });
+      expect(Array.from(window.dataLayer?.[1] as IArguments)).toEqual(['event', 'school_search', { state: 'BR' }]);
+      expect(window.dataLayer?.some((d) => !!d && typeof d === 'object' && 'event' in d)).toBe(false);
       resetConsent();
       expect(Array.from(window.dataLayer?.[2] as IArguments)).toEqual(['consent', 'update', { analytics_storage: 'denied' }]);
       track('quiz_start', { mode: 'SET' });

@@ -220,12 +220,13 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/states/uttarakhand/nainital")).contains("noindex");
         createSchool(school("Fixture Hill School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
         createSchool(school("Fixture Valley School", Map.of("stateCode", "UK", "district", "Nainital", "city", "Bhim Tal")));
-        assertThat(head("/states/uttarakhand")).contains("<title>Schools in Uttarakhand | SchoolDhundo</title>")
+        // Titles lead with the count of schools listed, as the description says (SeoHeadService.placeTitle).
+        assertThat(head("/states/uttarakhand")).contains("<title>List of 3 Schools in Uttarakhand | SchoolDhundo</title>")
                 .contains("3 schools in Uttarakhand").contains("href=\"http://localhost/states/uttarakhand\"");
         // A district page says "District", so it is not mistaken for the town of the same name (/states/…/city/…).
-        assertThat(head("/states/uttarakhand/nainital")).contains("<title>Schools in Nainital District, Uttarakhand | SchoolDhundo</title>")
+        assertThat(head("/states/uttarakhand/nainital")).contains("<title>List of 3 Schools in Nainital District, Uttarakhand</title>")
                 .doesNotContain("noindex");
-        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>Schools in Bhim Tal, Uttarakhand | SchoolDhundo</title>")
+        assertThat(head("/states/uttarakhand/city/bhim-tal")).contains("<title>List of 3 Schools in Bhim Tal, Uttarakhand | SchoolDhundo</title>")
                 .contains("href=\"http://localhost/states/uttarakhand/city/bhim-tal\"").doesNotContain("noindex")
                 .contains("\"@type\":\"BreadcrumbList\"")
                 .contains("\"position\":3,\"name\":\"Bhim Tal\",\"item\":\"http://localhost/states/uttarakhand/city/bhim-tal\"")
@@ -261,10 +262,10 @@ class SeoHeadIT extends AbstractIntegrationTest {
         }
         assertThat(head("/exams/jnvst")).contains("<title>JNVST Class 6 Mock Test 2027: Free Navodaya (JNV) Practice</title>")
                 .contains("href=\"http://localhost/exams/jnvst\"").doesNotContain("noindex");
-        assertThat(head("/exams/jnvst/guide")).contains("JNVST: eligibility, dates, pattern and syllabus")
+        assertThat(head("/exams/jnvst/guide")).contains("JNVST 2027: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/jnvst/guide\"").doesNotContain("noindex")
                 // The guide is an Article by the site, dated when its facts were last checked, with the questions it shows.
-                .contains("\"@type\":\"Article\"").contains("\"headline\":\"JNVST: eligibility, dates, pattern and syllabus\"")
+                .contains("\"@type\":\"Article\"").contains("\"headline\":\"JNVST 2027: eligibility, dates, pattern and syllabus\"")
                 .contains("\"publisher\":{\"@type\":\"Organization\",\"@id\":\"http://localhost/#organization\"")
                 .contains("\"@type\":\"FAQPage\"").contains("\"name\":\"Is there an application fee for JNVST?\"")
                 .doesNotContain("datePublished");
@@ -277,7 +278,7 @@ class SeoHeadIT extends AbstractIntegrationTest {
         }
         assertThat(head("/exams/aissee")).contains("<title>AISSEE 2027 Class 6 Preparation: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/aissee\"").doesNotContain("noindex");
-        assertThat(head("/exams/aissee/guide")).contains("AISSEE: eligibility, dates, pattern and syllabus")
+        assertThat(head("/exams/aissee/guide")).contains("AISSEE 2027: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
         assertThat(head("/exams/netarhat")).contains("<title>Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests</title>")
                 .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex")
