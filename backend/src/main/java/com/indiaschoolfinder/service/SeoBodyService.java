@@ -115,13 +115,15 @@ public class SeoBodyService {
     private final OlympiadPages olympiadPages;
     private final AdmissionService admissions;
     private final NoticeService notices;
+    private final ReferenceDataService referenceData;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary,
                           BestPlacesService bestPlaces, SchoolListService schoolLists, OlympiadPages olympiadPages,
-                          AdmissionService admissions, NoticeService notices) {
+                          AdmissionService admissions, NoticeService notices, ReferenceDataService referenceData) {
+        this.referenceData = referenceData;
         this.notices = notices;
         this.admissions = admissions;
         this.olympiadPages = olympiadPages;
@@ -238,6 +240,8 @@ public class SeoBodyService {
                 main = directoryView(m.group(1), heading, description);
             } else if ((m = SeoHeadService.NETWORK.matcher(p)).matches() && NETWORKS.containsKey(m.group(1))) {
                 main = network(m.group(1), heading, description);
+            } else if (TRUST_PAGES.contains(p)) {
+                main = trustPage(p, heading, description);
             } else {
                 main = "<h1>" + heading + "</h1>" + (description == null ? "" : "<p class=\"pr-lead\">" + description + "</p>");
             }
@@ -272,6 +276,120 @@ public class SeoBodyService {
         h.append("</div>");
         return h.toString();
     }
+
+    /** Who runs the site and how it checks facts: given their text here, as the app shows it, for crawlers that run no script. */
+    static final java.util.Set<String> TRUST_PAGES = java.util.Set.of("/about", "/editorial-policy", "/corrections-policy");
+
+    /**
+     * The About, Editorial policy and Corrections policy pages as the app shows them (InfoPages.tsx, with the creator and
+     * labels of content/site.ts): keep the two in step. Until 25 Nov 2026 these pages sent a heading and one line (about 30
+     * words), so Bing and the AI assistants that read only this HTML could not see who runs the site or how it checks facts,
+     * and Ubersuggest's audit counted them among its 50 low-word-count pages.
+     */
+    String trustPage(String path, String heading, String description) {
+        StringBuilder h = new StringBuilder("<h1>").append(heading).append("</h1>");
+        if (description != null) h.append("<p class=\"pr-lead\">").append(description).append("</p>");
+        switch (path) {
+            case "/about" -> {
+                h.append("<p>SchoolDhundo is an education discovery and preparation platform designed to help parents and students explore ")
+                        .append("schools across India.</p>")
+                        .append("<p>Our goal is to make school information easier to discover, compare and understand. The platform brings ")
+                        .append("together school profiles, locations, facilities, admission information, rankings and educational resources.</p>")
+                        .append("<p>We also aim to support students through entrance examination preparation, mock tests, daily quizzes, practice ")
+                        .append("questions and learning progress tracking.</p>")
+                        .append("<p>SchoolDhundo was created by ").append(CREATOR_NAME).append(", an alumnus of the ").append(CREATOR_INSTITUTE)
+                        .append(", with the vision of making school discovery and educational resources more accessible across India.</p>")
+                        .append("<h2>Our data principles</h2><ul class=\"pr-list\">")
+                        .append("<li>We never invent information. Anything not published by an official source is shown as “Not available”.</li>")
+                        .append("<li>Every record links to its source. Once an editor has checked it against that source, it is marked “Verified” ")
+                        .append("with the date.</li>")
+                        .append("<li>Fees and admission dates are kept per academic year, so history is preserved.</li>")
+                        .append("<li>Photos are used only from official sources or with a clear licence, with credit shown.</li>")
+                        .append("<li>Our ranking is our own, published methodology — not an official government ranking.</li></ul>")
+                        .append("<h2>How we label information</h2><ul class=\"pr-list\">");
+                for (String[] kind : INFORMATION_KINDS) {
+                    h.append("<li><strong>").append(kind[0]).append(":</strong> ").append(kind[1]).append("</li>");
+                }
+                h.append("</ul><p>").append(DISCLAIMER).append("</p>")
+                        .append("<p>SchoolDhundo is not affiliated with CBSE, CISCE, IIRF, Navodaya Vidyalaya Samiti, Netarhat Awasiya Vidyalaya ")
+                        .append("or the Sainik Schools Society.</p>");
+                var sources = referenceData.dataSources();
+                if (!sources.isEmpty()) {
+                    h.append("<h2>Primary sources</h2><ul class=\"pr-list\">");
+                    for (var s : sources) {
+                        h.append("<li><a href=\"").append(esc(s.url())).append("\" rel=\"noopener\">").append(esc(s.name())).append("</a>");
+                        if (s.description() != null && !s.description().isBlank()) h.append(" — ").append(esc(s.description()));
+                        h.append("</li>");
+                    }
+                    h.append("</ul>");
+                }
+                h.append("<p>Schools: if your information is missing or out of date, please <a href=\"/contact?topic=LISTING\">contact us</a> ")
+                        .append("with a link to the official source.</p>");
+            }
+            case "/editorial-policy" -> h.append("<h2>Sources come first</h2><ul class=\"pr-list\">")
+                    .append("<li>School facts come from official and public sources: education boards (for example the CBSE affiliation ")
+                    .append("directory, SARAS), government bodies, and schools’ own websites and notices. Each profile links to its source and ")
+                    .append("shows when it was retrieved.</li>")
+                    .append("<li>We never invent information. A fact no official source publishes is shown as “Not available”, not guessed.</li>")
+                    .append("<li>Every record links to its source. Once an editor has checked it against that source, it is marked “Verified” ")
+                    .append("with the date.</li>")
+                    .append("<li>Fees and admission dates are kept per academic year and linked to the notice they come from.</li>")
+                    .append("<li>Photos are used only from official sources or under a clear licence, with credit shown next to each image.</li></ul>")
+                    .append("<h2>Rankings</h2><ul class=\"pr-list\">")
+                    .append("<li>Rankings published by other organisations are shown with the publisher’s name, the year and the publisher’s ")
+                    .append("own rank, and checked against the publisher’s list. They belong to their publishers.</li>")
+                    .append("<li>Where a publisher says its list is not a ranking (for example an A-to-Z list), we show it as a list, not as ranks.</li>")
+                    .append("<li>Our own SchoolDhundo score is calculated from source-linked evidence using a ")
+                    .append("<a href=\"/rankings/methodology\">published methodology</a> and is always kept apart from published rankings. ")
+                    .append("It is not an official ranking.</li>")
+                    .append("<li>Rankings and scores cannot be bought. No payment changes a school’s rank, score or the facts on its profile.</li></ul>")
+                    .append("<h2>Practice questions and articles</h2><ul class=\"pr-list\">")
+                    .append("<li>Practice questions and mock tests are written by SchoolDhundo for practice. They are not official exam ")
+                    .append("questions, and we say so on every test. Officially published papers are linked to the conducting body’s own site.</li>")
+                    .append("<li>Guides and blog articles are written to help families and are dated. Exam dates and rules are always checked ")
+                    .append("against the official notice, which is linked.</li></ul>")
+                    .append("<h2>Advertising and sponsored content</h2><ul class=\"pr-list\">")
+                    .append("<li>The site shows no advertisements today. If advertising or sponsored listings are added, they will be clearly ")
+                    .append("labelled “Advertisement” or “Sponsored”, kept apart from school facts and rankings, and will never change them.</li>")
+                    .append("<li>We do not promise or guarantee admission to any school.</li></ul>")
+                    .append("<h2>Independence</h2><p>SchoolDhundo is independent. It is not affiliated with or endorsed by any school, ")
+                    .append("education board, ranking publisher or government body, and listing a school does not mean the school endorses ")
+                    .append("this site.</p><p>Found a mistake? See our <a href=\"/corrections-policy\">corrections policy</a>.</p>");
+            case "/corrections-policy" -> h.append("<h2>How to report a mistake</h2><ul class=\"pr-list\">")
+                    .append("<li>On a school profile, use <strong>Report incorrect information</strong> (in the “Data sources” box), or ")
+                    .append("<a href=\"/contact?topic=CORRECTION\">contact us</a> and choose “Report incorrect information”.</li>")
+                    .append("<li>Tell us what is wrong and, if you can, give a link to the official page that shows the correct information ")
+                    .append("(the school’s website, an admission notice or the board’s directory).</li>")
+                    .append("<li>Schools can also <a href=\"/contact?topic=LISTING\">send their information</a> with a link to where they ")
+                    .append("publish it.</li></ul>")
+                    .append("<h2>How we check it</h2><ul class=\"pr-list\">")
+                    .append("<li>An editor compares the report with the official source. We change a fact only when an official or clearly ")
+                    .append("reliable source supports the change, so we may ask for a link.</li>")
+                    .append("<li>When a fact is corrected, the profile shows the new source and the date it was checked.</li>")
+                    .append("<li>Mistakes in our own practice questions can be reported from the question itself; we fix the question or its ")
+                    .append("explanation.</li>")
+                    .append("<li>Rankings published by others are shown as their publishers published them. If a publisher corrects its list, ")
+                    .append("we update ours.</li></ul>")
+                    .append("<h2>Reviews</h2><p>To ask for a review to be removed or corrected, <a href=\"/contact\">contact us</a> with the ")
+                    .append("school and the review.</p>");
+            default -> { }
+        }
+        return h.toString();
+    }
+
+    /** content/site.ts: the creator as supplied by the creator, and how each kind of information is told apart. */
+    private static final String CREATOR_NAME = "Rakesh Kumar";
+    private static final String CREATOR_INSTITUTE = "Indian Institute of Information Technology, Allahabad";
+    private static final String DISCLAIMER = "SchoolDhundo is an independent school discovery and educational preparation platform. "
+            + "School information and rankings are presented with their respective sources where available. Parents and students should "
+            + "verify important admission, fee and examination details with the relevant official institution.";
+    private static final String[][] INFORMATION_KINDS = {
+            {"Official school information", "Taken from government records and school sources, with the link and the date it was checked."},
+            {"Third-party rankings", "Published by other organisations, shown under their name and year, and kept apart from our own score."},
+            {"User-submitted information", "Reviews and suggested updates come from visitors. An editor checks them before they appear."},
+            {"Original practice questions", "Written by SchoolDhundo for practice. They are not official exam questions."},
+            {"Official previous-year papers", "Linked at their official source. We do not republish them."},
+    };
 
     /** The app footer's site links (Layout.tsx), in its order, plus the contact form. */
     private static final String[][] FOOTER = {

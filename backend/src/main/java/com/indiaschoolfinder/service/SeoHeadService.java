@@ -728,30 +728,74 @@ public class SeoHeadService {
                 url, null, articles == 0, null);
     }
 
+    /** Says the questions are our own; short, so the description still has room for what the set covers. */
+    static final String PRACTICE_NOTE = "Original questions, not official papers.";
+
     /** Practice sets are original SchoolDhundo questions; the description says so, and the data is a free Quiz. */
     /**
      * A practice set's description: "Practice set N: " (or "Mock test N: ") when its address ends in a number (sets of one
-     * topic share their first sentence, so without it five sets had one description), then the first sentence of what it
-     * covers, then the note that the questions are our own, which always stays; the first sentence gives way to fit.
+     * topic share their first sentence, so without it five sets had one description), then what it covers, then the note
+     * that the questions are our own, which always stays. What it covers is the first sentence when it fits; else that
+     * sentence up to a clause break (" — ", ": ", "; "), which still reads as a whole thought; else the set's own facts, the
+     * most detailed wording that fits ("20 JNVST Arithmetic questions for Class V with explained answers, 30 minutes, in
+     * English and Hindi."). Until 25 Nov 2026 the first sentence was cut at a word, with "…", on all 115 published sets: the
+     * longer note left it about 70 characters.
      */
-    static String practiceDescription(String slug, String setDescription) {
-        String note = "Original practice questions by " + SITE + ", not official exam questions.";
+    static String practiceDescription(String slug, String setDescription, List<String> facts) {
         java.util.regex.Matcher number = Pattern.compile("-(\\d{1,3})$").matcher(slug);
         String kind = slug.contains("-mock-") ? "Mock test " : "Practice set ";
         String lead = number.find() ? kind + number.group(1) + ": " : "";
-        int room = DESCRIPTION_MAX - note.length() - 1 - lead.length();
-        String first = setDescription.split("(?<=\\.)\\s", 2)[0];
-        if (first.length() > room) {
-            int space = first.lastIndexOf(' ', room - 1);
-            first = first.substring(0, space > 0 ? space : room - 1).replaceAll("[\\s,;:–-]+$", "") + "…";
+        int room = DESCRIPTION_MAX - PRACTICE_NOTE.length() - 1 - lead.length();
+        String first = setDescription == null ? "" : setDescription.trim().split("(?<=\\.)\\s", 2)[0];
+        return lead + covers(first, facts == null ? List.of() : facts, room) + " " + PRACTICE_NOTE;
+    }
+
+    private static String covers(String first, List<String> facts, int room) {
+        if (!first.isEmpty() && first.length() <= room) return first;
+        String head = first.substring(0, Math.min(first.length(), room - 1));
+        int clause = Math.max(head.lastIndexOf(" — "), Math.max(head.lastIndexOf(": "), head.lastIndexOf("; ")));
+        if (clause >= 40) return first.substring(0, clause).replaceAll("[\\s,;:–—-]+$", "") + ".";
+        for (String f : facts) {
+            if (f.length() <= room) return f;
         }
-        return lead + first + " " + note;
+        int space = first.lastIndexOf(' ', room - 1);
+        return first.substring(0, space > 0 ? space : Math.min(first.length(), room - 1)).replaceAll("[\\s,;:–-]+$", "") + "…";
+    }
+
+    /**
+     * The set's own facts, most detailed first: "20 JNVST Arithmetic questions for Class V with explained answers, 30 minutes,
+     * in English and Hindi.", then without the languages, the time, the answers. The exam and the class keep sets apart:
+     * without them, 32 of the 115 live sets (Olympiad classes with equal counts) would have shared 14 descriptions.
+     */
+    static List<String> practiceFacts(int questions, String exam, List<String> sections, String level, Integer minutes, boolean hindi) {
+        String who = exam == null || exam.isBlank() ? "" : exam + " ";
+        String what = sections.size() == 1 ? questions + " " + who + sections.get(0) + " questions"
+                : questions + " " + who + "questions in " + sections.size() + " sections";
+        String forLevel = level == null || level.isBlank() ? "" : " for " + level;
+        String time = minutes == null ? "" : ", " + minutes + " minutes";
+        return List.of(what + forLevel + " with explained answers" + time + (hindi ? ", in English and Hindi" : "") + ".",
+                what + forLevel + " with explained answers" + time + ".",
+                what + forLevel + " with explained answers.",
+                what + forLevel + ".");
+    }
+
+    /** The name a set's exam is searched by ("JNVST", "Netarhat"), "Olympiad" for Olympiad sets, else nothing. */
+    private String practiceExam(com.indiaschoolfinder.entity.PracticeSet set) {
+        if (set.getCategory() == com.indiaschoolfinder.entity.PracticeSet.Category.OLYMPIAD) return "Olympiad";
+        if (set.getExamSlug() == null) return null;
+        try {
+            return examService.get(set.getExamSlug()).exam().shortName();
+        } catch (ResourceNotFoundException e) {
+            return null;
+        }
     }
 
     private String practiceSet(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
         String url = baseUrl + "/exams/practice/" + set.getSlug();
-        String description = practiceDescription(set.getSlug(), set.getDescription());
         boolean hindi = set.getContent().questions().stream().anyMatch(q -> q.hi() != null);
+        List<String> sections = set.getContent().questions().stream().map(q -> q.section()).distinct().toList();
+        String description = practiceDescription(set.getSlug(), set.getDescription(), practiceFacts(set.getContent().questions().size(),
+                practiceExam(set), sections, set.getLevel(), set.getDurationMinutes(), hindi));
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
         data.put("@type", "Quiz");
@@ -1211,21 +1255,18 @@ public class SeoHeadService {
     /** A Class VI preparation dashboard (JNVST, AISSEE, Netarhat): practice, mock tests and the study plan. */
     private String prepPage(ExamDetailDto detail, String baseUrl) {
         ExamSummaryDto e = detail.exam();
-        String title, description, dateLabel;
+        String title, offer, dateLabel;
         switch (e.slug()) {
             case "aissee" -> {
                 // Searched as "aissee 2027", "aissee class 6", "aissee mock test" (Ubersuggest, India, 2026-11-16).
                 title = "AISSEE 2027 Class 6 Preparation: Free Mock Tests";
-                // Short enough that the exam date added below still fits the description length (DESCRIPTION_MAX).
-                description = "Free AISSEE Class 6 (Sainik School) prep in English and Hindi: original questions, full 125-question "
-                        + "mock tests and a study plan.";
+                offer = "Free AISSEE (Sainik School) Class 6 mock tests in the 125-question pattern, in English and Hindi.";
                 dateLabel = "Entrance exam";
             }
             case "netarhat" -> {
                 // Searched as "netarhat vidyalaya class 6 admission", "netarhat vidyalaya exam" (Ubersuggest, 2026-11-16).
                 title = "Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests";
-                description = "Free Netarhat Vidyalaya Class 6 entrance prep in Hindi and English: original questions, full Paper 1 "
-                        + "mock tests and a study plan.";
+                offer = "Free Netarhat Vidyalaya Class 6 mock tests (full Paper 1) and practice in Hindi and English.";
                 dateLabel = "Entrance exam";
             }
             default -> {
@@ -1233,13 +1274,12 @@ public class SeoHeadService {
                 // 9-21 Nov 2026: the page's visible queries were "jnv mock test class 6 2027" (21 impressions, position 8.5)
                 // and "navodaya mock test for class 6 free 2027", so the title names the mock test and Navodaya (JNV).
                 title = "JNVST Class 6 Mock Test 2027: Free Navodaya (JNV) Practice";
-                description = "Free JNVST Class 6 prep in English and Hindi: original questions, mock tests in the official "
-                        + "80-question pattern and a study plan.";
+                // Short enough that "…held on 28 Nov 2026; result expected by end of March 2027." still fits after the test.
+                offer = "Free JNVST Class 6 mock tests in the 80-question pattern, in English and Hindi.";
                 dateLabel = "Selection test";
             }
         }
-        String date = examDateSentence(e, dateLabel);
-        if (date != null) description += " " + date;
+        String description = prepDescription(e, offer, dateLabel, java.time.LocalDate.now(IST));
         String url = baseUrl + "/exams/" + e.slug();
         Map<String, Object> data = new LinkedHashMap<>();
         data.put("@context", "https://schema.org");
@@ -1249,6 +1289,55 @@ public class SeoHeadService {
                 Map.of("@type", "ListItem", "position", 2, "name", "Entrance exams", "item", baseUrl + "/exams"),
                 Map.of("@type", "ListItem", "position", 3, "name", e.shortName() + " preparation", "item", url)));
         return tags(title, description, url, null, false, data);
+    }
+
+    private static final java.time.ZoneId IST = java.time.ZoneId.of("Asia/Kolkata");
+    private static final DateTimeFormatter MONTH_YEAR = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH);
+
+    /**
+     * A preparation page's description: what it offers, and the one date a searcher needs at this point of the cycle. While
+     * applications are open that is the last date (and the exam date) first, as "AISSEE 2027: apply by 2 Dec 2026; exam on
+     * 31 Jan 2027."; then the exam date; once the exam is over, when the result is expected. Until 25 Nov 2026 the offer and
+     * the date sentence came to 161-164 characters, so {@link #fitDescription} dropped the date from all three pages.
+     */
+    static String prepDescription(ExamSummaryDto e, String offer, String dateLabel, java.time.LocalDate today) {
+        // The most useful wording that fits, then shorter ones: fitDescription would drop the whole date sentence instead.
+        List<String> candidates = new java.util.ArrayList<>();
+        boolean applying = (e.status() == ExamStatus.APPLICATIONS_OPEN || e.status() == ExamStatus.DEADLINE_APPROACHING)
+                && e.applicationDeadline() != null && !e.applicationDeadline().isBefore(today);
+        String date = examDateSentence(e, dateLabel);
+        if (applying) {
+            String apply = examName(e) + ": apply by " + DAY.format(e.applicationDeadline());
+            if (e.examDate() != null) candidates.add(apply + "; exam on " + DAY.format(e.examDate()) + ". " + offer);
+            candidates.add(apply + ". " + offer);
+        } else if (date != null) {
+            String result = examAhead(e) ? null : resultPhrase(e, today);
+            if (result != null) candidates.add(offer + " " + date.substring(0, date.length() - 1) + "; " + result + ".");
+            candidates.add(offer + " " + date);
+        }
+        candidates.add(offer);
+        return candidates.stream().filter(c -> c.length() <= DESCRIPTION_MAX).findFirst().orElse(offer);
+    }
+
+    /**
+     * "result expected by end of March 2027" (a month-precise date, as the JNVST prospectus gives it), "result on
+     * 27 Feb 2027" or "result declared on 27 Feb 2027": the cycle's result date after the exam, while it is still useful.
+     * Nothing once an expected date has gone by without the result, so a snippet never promises a date already past.
+     */
+    static String resultPhrase(ExamSummaryDto e, java.time.LocalDate today) {
+        if (e.examDate() == null || e.currentDates() == null) return null;
+        for (var d : e.currentDates()) {
+            if (d.kind() != com.indiaschoolfinder.enums.ExamDateKind.RESULT || d.startsOn() == null || !d.startsOn().isAfter(e.examDate())) {
+                continue;
+            }
+            boolean month = d.precision() == com.indiaschoolfinder.enums.DatePrecision.MONTH;
+            java.time.LocalDate by = month ? d.startsOn().withDayOfMonth(d.startsOn().lengthOfMonth()) : d.startsOn();
+            if (e.status() == ExamStatus.RESULT_ANNOUNCED && d.confirmed() && !month) return "result declared on " + DAY.format(by);
+            if (by.isBefore(today)) return null;
+            if (month) return "result expected by end of " + MONTH_YEAR.format(d.startsOn());
+            return (d.confirmed() ? "result on " : "result expected on ") + DAY.format(by);
+        }
+        return null;
     }
 
     /**

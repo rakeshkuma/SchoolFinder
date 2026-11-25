@@ -125,16 +125,16 @@ class SeoHeadTitleTest {
     void practiceSetDescriptionsTellSetsOfOneTopicApart() {
         String covers = "20 questions over the nine topics the prospectus lists for the Arithmetic Test, from number system to "
                 + "simplification, with worked answers. More text.";
-        String one = SeoHeadService.practiceDescription("jnvst-arithmetic-1", covers);
-        String two = SeoHeadService.practiceDescription("jnvst-arithmetic-2", covers);
-        assertThat(one).startsWith("Practice set 1: 20 questions").endsWith("Original practice questions by SchoolDhundo, not official exam questions.")
+        String one = SeoHeadService.practiceDescription("jnvst-arithmetic-1", covers, null);
+        String two = SeoHeadService.practiceDescription("jnvst-arithmetic-2", covers, null);
+        assertThat(one).startsWith("Practice set 1: 20 questions").endsWith(SeoHeadService.PRACTICE_NOTE)
                 .hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
         assertThat(two).startsWith("Practice set 2: ").isNotEqualTo(one).hasSizeLessThanOrEqualTo(SeoHeadService.DESCRIPTION_MAX);
-        assertThat(SeoHeadService.practiceDescription("aissee-class6-mock-2", "A full-length paper in the Class VI pattern."))
+        assertThat(SeoHeadService.practiceDescription("aissee-class6-mock-2", "A full-length paper in the Class VI pattern.", null))
                 .startsWith("Mock test 2: A full-length paper");
         // An address without a number keeps the description as before.
-        assertThat(SeoHeadService.practiceDescription("netarhat-guide", "Short. Second.")).isEqualTo(
-                "Short. Original practice questions by SchoolDhundo, not official exam questions.");
+        assertThat(SeoHeadService.practiceDescription("netarhat-guide", "Short. Second.", null)).isEqualTo(
+                "Short. " + SeoHeadService.PRACTICE_NOTE);
     }
 
     @Test

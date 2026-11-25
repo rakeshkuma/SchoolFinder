@@ -138,7 +138,8 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(set).contains("<title>Netarhat Paper 1 practice: Mathematics 1")
                 .contains("href=\"http://localhost/exams/practice/netarhat-maths-1\"")
                 .contains("\"@type\":\"Quiz\"").contains("\"inLanguage\":[\"en\",\"hi\"]")
-                .contains("20 original multiple-choice questions").contains("not official exam questions")
+                // The first sentence is too long to fit whole, so the set's own facts describe it (25 Nov 2026).
+                .contains("Mathematics questions for Class V with explained answers").contains("Original questions, not official papers.")
                 .doesNotContain("noindex");
         assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
         assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | SchoolDhundo</title>");
@@ -281,9 +282,9 @@ class SeoHeadIT extends AbstractIntegrationTest {
         assertThat(head("/exams/aissee/guide")).contains("AISSEE 2027: eligibility, dates, pattern and syllabus")
                 .contains("href=\"http://localhost/exams/aissee/guide\"").doesNotContain("noindex");
         assertThat(head("/exams/netarhat")).contains("<title>Netarhat Vidyalaya Entrance Exam 2026-27: Free Mock Tests</title>")
-                .contains("href=\"http://localhost/exams/netarhat\"").contains("Paper 1 mock tests").doesNotContain("noindex")
-                // The whole description fits, so it is never cut short.
-                .doesNotContain("…");
+                .contains("href=\"http://localhost/exams/netarhat\"").contains("mock tests (full Paper 1)").doesNotContain("noindex")
+                // The whole description fits, so it is never cut short, and the exam date stays in it (25 Nov 2026).
+                .doesNotContain("…").contains("6 Dec 2026");
         assertThat(head("/exams/netarhat/guide")).contains("href=\"http://localhost/exams/netarhat/guide\"").doesNotContain("noindex");
     }
 }

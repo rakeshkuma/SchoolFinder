@@ -4,9 +4,9 @@ category: GOVERNMENT_SCHOOLS
 excerpt: Who can apply to a Navodaya Vidyalaya for Class 6, how the JNV Selection Test works, how seats are reserved and what it costs, explained from the official JNVST-2027 prospectus.
 tags: JNVST, Navodaya Vidyalaya, Class 6, Government schools, Admission
 metaTitle: JNV Admission 2027-28: Navodaya Class 6 Eligibility & Dates
-metaDescription: Navodaya Class 6 admission 2027-28: who can apply (born 1 May 2015 to 31 Jul 2017), the JNVST date, exam pattern, seats and fees, from the prospectus.
-lastReviewedOn: 2026-11-11
-source: JNVST-2027 prospectus, Navodaya Vidyalaya Samiti (PDF) | https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf | 2026-11-11
+metaDescription: Navodaya Class 6 admission 2027-28: who can apply (born 1 May 2015 to 31 Jul 2017), the test, when the result comes, seats and documents.
+lastReviewedOn: 2026-11-25
+source: JNVST-2027 prospectus, Navodaya Vidyalaya Samiti (PDF) | https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf | 2026-11-25
 source: NVS admission portal | https://cbseitms.rcil.gov.in/nvs/ | 2026-11-11
 source: Navodaya Vidyalaya Samiti | https://navodaya.gov.in/ | 2026-11-11
 faq: Navodaya exam is for which class? || JNVST admits children to Class 6. Navodaya Vidyalaya Samiti holds separate Lateral Entry Selection Tests for Class 9 and Class 11.
@@ -15,12 +15,15 @@ faq: Is there an application fee for JNVST? || No. The prospectus states that re
 faq: Can my child take JNVST twice? || No. A candidate can appear only once; a child who has appeared before is not eligible again.
 faq: In which district should we apply? || In the district where the child is a bona fide resident and is studying in Class 5, as the prospectus defines it.
 faq: Is studying in a Navodaya Vidyalaya free? || Education, boarding and lodging are free. A Vidyalaya Vikas Nidhi contribution is collected from some students in Classes 9 to 12; SC/ST, Divyang and girl students and families below the poverty line are exempt, as set by the Samiti.
+faq: When will the JNVST 2027 result come? || The prospectus says it is expected by the end of March 2027, on the NVS admission portal and navodaya.gov.in. It is also displayed at the JNV and the district offices, and selected children are told by speed post.
+faq: Is there an official JNVST answer key? || The prospectus does not provide for one, and it rules out re-evaluation, re-totalling and scrutiny. Answer keys on other websites are unofficial.
+faq: Does NVS publish a waiting list? || No. If a selected child does not join or lacks the required certificates, the next child in the same category and quota is moved up through the admission portal, until admissions close on 31 August 2027.
 ---
 Jawahar Navodaya Vidyalayas (JNVs) are residential schools run by Navodaya Vidyalaya Samiti, an autonomous organisation under the Ministry of Education. Most districts in India have one. Children join in **Class 6**, through a single test: the **Jawahar Navodaya Vidyalaya Selection Test (JNVST)**.
 
 This guide follows the **JNVST-2027 prospectus**, which covers admission to Class 6 for the 2027-28 session. Rules can change between years, so read the prospectus for your year before applying.
 
-> Dates, age limits and rules in this article are from the JNVST-2027 prospectus, checked on 11 November 2026. Always confirm them in the current prospectus on the official NVS admission portal.
+> Dates, age limits and rules in this article are from the JNVST-2027 prospectus, checked on 25 November 2026. Always confirm them in the current prospectus on the official NVS admission portal.
 
 ## At a glance
 
@@ -39,6 +42,18 @@ This guide follows the **JNVST-2027 prospectus**, which covers admission to Clas
 | Admission process closes | 31 August 2027 |
 
 The prospectus gives the result only as "by the end of March 2027"; watch the official NVS portal for the exact date.
+
+## After the test: result and admission
+
+What the JNVST-2027 prospectus says happens once the test is over:
+
+- **When the result comes:** it is **expected by the end of March 2027**.
+- **Where to see it:** on the NVS admission portal and navodaya.gov.in. It is also displayed at the JNV, the offices of the District Education Officer and the District Magistrate, and the NVS regional office, and the JNV principal informs selected children by **speed post**.
+- **Answer key and re-evaluation:** the prospectus does not provide for an answer key, and it rules out **re-evaluation, re-totalling and scrutiny**, because the OMR sheets are marked electronically. "Answer keys" shared on other websites are unofficial.
+- **No waiting list:** NVS does not release wait-lists. If a selected child does not join, or cannot produce the required certificates, the next child in the same category and quota is moved up through the admission portal. The admission process closes by **31 August 2027**.
+- **Documents:** selection stays **provisional** until the JNV checks the originals. They include a birth certificate issued by a government authority before registration, proof of residence in the district, a Central-list OBC, SC or ST certificate when that category is claimed, a rural-area certificate if the Class 3 to 5 school's location is not on UDISE, and a UDID or CMO certificate for Divyang candidates. Parents are advised to get a transfer certificate from the child's current school.
+- **Which JNV:** a selected child is admitted only to the JNV of the district they applied in; requests to move to another JNV are not entertained.
+- **Class 9 migration:** under the NVS scheme, some students spend one year of Class 9 in a JNV in another language region (Hindi-speaking to non-Hindi-speaking, and the other way). A student who refuses cannot continue in the JNV.
 
 ## Who can apply
 

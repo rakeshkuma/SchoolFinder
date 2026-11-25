@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ExamDate, ExamSummary } from '../types/api';
-import { classLabel, countdown, daysBetween, formatExamDate, isFirm, upcomingEvents } from './exams';
+import { classLabel, countdown, daysBetween, formatExamDate, isFirm, prepMilestones, upcomingEvents } from './exams';
 
 const date = (over: Partial<ExamDate>): ExamDate => ({
   cycle: 'C-2027', kind: 'EXAM', label: 'Exam', startsOn: '2026-12-06', endsOn: null, precision: 'DAY', confirmed: true,
@@ -47,5 +47,41 @@ describe('exam utils', () => {
     expect(formatExamDate(date({}))).toBe('6 Dec 2026');
     expect(formatExamDate(date({ startsOn: '2026-10-01', endsOn: '2026-10-07' }))).toBe('1 Oct – 7 Oct 2026');
     expect(formatExamDate(date({ startsOn: '2027-03-01', precision: 'MONTH' }))).toBe('Mar 2027');
+  });
+
+  describe('prepMilestones', () => {
+    // AISSEE-2027 as the NTA notice of 3 Nov 2026 gives it.
+    const aissee = [
+      date({ kind: 'APPLICATION_START', startsOn: '2026-11-03' }),
+      date({ kind: 'APPLICATION_END', startsOn: '2026-12-02' }),
+      date({ kind: 'LATE_APPLICATION_END', startsOn: '2026-12-03', endsOn: '2026-12-06' }),
+      date({ kind: 'EXAM', startsOn: '2027-01-31' }),
+    ];
+    // JNVST-2027 as the prospectus gives it: the result only as a month, not confirmed.
+    const jnvst = [
+      date({ kind: 'APPLICATION_END', startsOn: '2026-07-31' }),
+      date({ kind: 'EXAM', startsOn: '2026-11-28' }),
+      date({ kind: 'RESULT', startsOn: '2027-03-01', precision: 'MONTH', confirmed: false }),
+    ];
+
+    it('puts the last date to apply next to the exam while applications are open, then the late-fee window', () => {
+      expect(prepMilestones(aissee, '2026-11-25')).toMatchObject({ apply: { kind: 'APPLICATION_END' }, exam: { startsOn: '2027-01-31' } });
+      expect(prepMilestones(aissee, '2026-12-04').apply?.kind).toBe('LATE_APPLICATION_END');
+      expect(prepMilestones(aissee, '2026-12-07').apply).toBeUndefined();
+    });
+
+    it('after the exam shows when it was held and the expected result until that month is over', () => {
+      expect(prepMilestones(jnvst, '2026-11-25')).toMatchObject({ exam: { startsOn: '2026-11-28' } });
+      const after = prepMilestones(jnvst, '2026-11-29');
+      expect(after.exam).toBeUndefined();
+      expect(after.held?.startsOn).toBe('2026-11-28');
+      expect(after.result?.kind).toBe('RESULT');
+      expect(prepMilestones(jnvst, '2027-03-20').result?.kind).toBe('RESULT');
+      expect(prepMilestones(jnvst, '2027-04-01').result).toBeUndefined();
+    });
+
+    it('never counts down to a tentative last date', () => {
+      expect(prepMilestones([date({ kind: 'APPLICATION_END', startsOn: '2026-12-02', confirmed: false })], '2026-11-25').apply).toBeUndefined();
+    });
   });
 });

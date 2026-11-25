@@ -76,6 +76,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/admin/schools/*/status").hasRole("ADMIN")
                         // Starting the official-source check fetches external websites: ADMIN only (and rate-limited).
                         .requestMatchers(HttpMethod.POST, "/api/v1/admin/updates/sync").hasRole("ADMIN")
+                        // Submitting the site's addresses to IndexNow contacts an external service: ADMIN only.
+                        .requestMatchers(HttpMethod.POST, "/api/v1/admin/seo/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/admin/import/**", "/api/v1/admin/ranking-criteria/**",
                                 "/api/v1/admin/audit-log/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN", "EDITOR")

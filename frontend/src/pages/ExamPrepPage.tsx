@@ -10,11 +10,20 @@ import { localAttempts } from '../hooks/usePracticeProgress';
 import { examService, practiceService } from '../services/publicApi';
 import type { ExamDetail, PracticeBankQuestion } from '../types/api';
 import { formatDate } from '../utils/format';
-import { countdown, daysBetween, formatExamDate, isoToday, lastDay } from '../utils/exams';
+import { countdown, daysBetween, formatExamDate, isoToday, lastDay, prepMilestones } from '../utils/exams';
 import { useLanguage } from './PracticePages';
 
 const pct = (c: number, t: number) => (t ? Math.round((c / t) * 100) : 0);
 type Tr = (b: Bi) => string;
+/** The hero's date cards, the same for every exam: the last date to apply, then the exam, then the expected result. */
+const HERO = {
+  applyBy: { en: 'Last date to apply', hi: 'आवेदन की अंतिम तिथि' },
+  lateApply: { en: 'Late applications (late fee)', hi: 'विलंब शुल्क के साथ आवेदन' },
+  apply: { en: 'Apply on the official website', hi: 'आधिकारिक वेबसाइट पर आवेदन करें' },
+  result: { en: 'Result expected by', hi: 'परिणाम अपेक्षित' },
+  resultOn: { en: 'Result', hi: 'परिणाम' },
+  held: { en: 'held on', hi: 'आयोजित' },
+} satisfies Record<string, Bi>;
 /** The bank section names a preparation section covers (one, or one per language variant). */
 const sectionsOf = (s: PrepSection) => s.variants?.map((v) => v.section) ?? [s.section];
 /** The link to /exams/class/{n}, where every exam for that class is compared side by side (as the server's HTML links it). */
@@ -55,7 +64,8 @@ export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
 
   const exam = detail.data?.exam;
   const today = isoToday();
-  const testDate = exam?.currentDates.find((d) => d.kind === 'EXAM' && lastDay(d) >= today);
+  const steps = prepMilestones(exam?.currentDates ?? [], today);
+  const testDate = steps.exam;
   const own = (sets.data ?? []).filter((s) => !c.setPrefix || s.slug.startsWith(c.setPrefix));
   const mocks = own.filter((s) => s.kind === 'MOCK');
   const quizzes = own.filter((s) => s.kind === 'QUIZ');
@@ -87,10 +97,35 @@ export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
             </div>
           </div>
           <div className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            {steps.apply && (
+              <div className="rounded-2xl bg-accent-400/15 p-5 ring-1 ring-accent-300/50">
+                <p className="text-sm text-brand-100">{t(steps.apply.kind === 'LATE_APPLICATION_END' ? HERO.lateApply : HERO.applyBy)}</p>
+                <p className="mt-1 font-display text-2xl font-bold">{formatExamDate(steps.apply)}</p>
+                <p className="mt-1 text-sm text-accent-200">{countdown(daysBetween(today, lastDay(steps.apply)))}</p>
+                {exam?.officialUrl && (
+                  <a href={exam.officialUrl} target="_blank" rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-white underline underline-offset-2 hover:text-accent-200">
+                    {t(HERO.apply)} <Icon name="external" className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
+            )}
             <div className="rounded-2xl bg-white/10 p-5 ring-1 ring-white/15">
-              <p className="text-sm text-brand-100">{t(T.examIn)}</p>
-              <p className="mt-1 font-display text-2xl font-bold">{testDate ? formatExamDate(testDate) : t(c.examDateFallback)}</p>
-              {testDate && <p className="mt-1 text-sm text-accent-200">{countdown(daysBetween(today, testDate.startsOn))}</p>}
+              {steps.result ? (
+                <>
+                  <p className="text-sm text-brand-100">{t(steps.result.confirmed && steps.result.precision === 'DAY' ? HERO.resultOn : HERO.result)}</p>
+                  <p className="mt-1 font-display text-2xl font-bold">{formatExamDate(steps.result)}</p>
+                  {steps.held && <p className="mt-1 text-sm text-accent-200">{t(T.examIn)}: {t(HERO.held)} {formatExamDate(steps.held)}</p>}
+                </>
+              ) : (
+                <>
+                  <p className="text-sm text-brand-100">{t(T.examIn)}</p>
+                  <p className="mt-1 font-display text-2xl font-bold">
+                    {testDate ? formatExamDate(testDate) : steps.held ? formatExamDate(steps.held) : t(c.examDateFallback)}
+                  </p>
+                  {testDate && <p className="mt-1 text-sm text-accent-200">{countdown(daysBetween(today, testDate.startsOn))}</p>}
+                </>
+              )}
             </div>
             <div className="grid grid-cols-3 gap-3 text-center">
               {c.heroStats.map(([v, l]) => (

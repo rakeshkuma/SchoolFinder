@@ -96,7 +96,13 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(prep).contains("<th>Marks</th>").contains("href=\"/exams/netarhat/guide\"")
                 // The preparation page shows what that page shows; eligibility is on the guide.
                 .doesNotContain("<h2>Eligibility</h2>");
-        assertThat(fetch("/api/v1/seo/body/exams/aissee/guide")).contains("<h2>Syllabus</h2>");
+        assertThat(fetch("/api/v1/seo/body/exams/aissee/guide")).contains("<h2>Syllabus</h2>")
+                // The AISSEE-2027 bulletin's age windows (25 Nov 2026), not the 2026 cycle's.
+                .contains("born 01.04.2015 to 31.03.2017").doesNotContain("31.03.2026").doesNotContain("Not as of 25 October 2026");
+        // What the JNVST-2027 prospectus says about the result, on the page and in its FAQPage data.
+        assertThat(fetch("/api/v1/seo/body/exams/jnvst/guide")).contains("Is there a waiting list or second list?")
+                .contains("NVS does not release wait-lists");
+        assertThat(fetch("/api/v1/seo/head/exams/jnvst/guide")).contains("\"name\":\"When will the JNVST 2027 result be announced?\"");
         // Fixed pages under /exams are not exams.
         assertThat(fetch("/api/v1/seo/body/exams/practice")).contains("<h1>").doesNotContain("Official links");
         // The hub and the class pages link every exam's guide (prep exams to their /guide), as the app lists them.
@@ -105,6 +111,20 @@ class SeoBodyIT extends AbstractIntegrationTest {
         assertThat(fetch("/api/v1/seo/body/exams/class/6")).contains("href=\"/exams/aissee/guide\"").contains("href=\"/exams\">Exams</a>")
                 // The shipped catalogue has several Class VI exams, so the page compares them side by side.
                 .contains("<h2>Compare at a glance</h2>").contains("<caption>Entrance exams for Class VI compared");
+    }
+
+    /** Who runs the site and how it checks facts, readable without the app (25 Nov 2026: about 30 words each before). */
+    @Test
+    void trustPagesSayWhoRunsTheSiteAndHowItChecksFacts() throws Exception {
+        String about = fetch("/api/v1/seo/body/about");
+        assertThat(about).contains("<h1>About SchoolDhundo</h1>").contains("SchoolDhundo was created by Rakesh Kumar")
+                .contains("We never invent information").contains("SchoolDhundo is not affiliated with CBSE")
+                .contains("<h2>How we label information</h2>").contains("href=\"/contact?topic=LISTING\"");
+        assertThat(about.replaceAll("<[^>]+>", " ").trim().split("\\s+").length).isGreaterThan(300);
+        assertThat(fetch("/api/v1/seo/body/editorial-policy")).contains("<h2>Independence</h2>")
+                .contains("Rankings and scores cannot be bought").contains("href=\"/rankings/methodology\"");
+        assertThat(fetch("/api/v1/seo/body/corrections-policy")).contains("<h2>How we check it</h2>")
+                .contains("href=\"/contact?topic=CORRECTION\"");
     }
 
     @Test

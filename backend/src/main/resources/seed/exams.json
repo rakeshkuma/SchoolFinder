@@ -105,7 +105,8 @@
           "Merit in the selection test, district-wise. At least 75% of seats for rural candidates; the rest are open.",
           "At least one-third of seats for girls; SC/ST as per district population (minimum 15% SC and 7.5% ST); 27% OBC (Central list); Divyang reservation as per GOI norms.",
           "Ties broken by Mental Ability & EVS marks, then Arithmetic, then category and age rules in the prospectus.",
-          "Provisional selection is confirmed only after document verification at the JNV."
+          "Provisional selection is confirmed only after document verification at the JNV.",
+          "No wait-lists: if a selected candidate does not join or lacks the required certificates, the next candidate in the same category and quota is moved up through the admission portal. Admissions close by 31 August 2027."
         ],
         "fee": "Application is free. In JNVs, Classes VI–VIII are free; a Vidyalaya Vikas Nidhi of ₹600/month is collected in Classes IX–XII (SC/ST, Divyang, girls and BPL students are exempt).",
         "preparation": [
@@ -153,6 +154,26 @@
           {
             "question": "Which district should we apply in?",
             "answer": "The district where the child is a bona fide resident and studying in Class V, as defined in the prospectus.",
+            "guidance": false
+          },
+          {
+            "question": "When will the JNVST 2027 result be announced?",
+            "answer": "The prospectus says the result is expected by the end of March 2027. It is published on the NVS admission portal and navodaya.gov.in, and displayed at the JNV, the offices of the District Education Officer and the District Magistrate, and the NVS regional office. The JNV principal also informs selected candidates by speed post.",
+            "guidance": false
+          },
+          {
+            "question": "Does NVS publish an answer key for JNVST?",
+            "answer": "The JNVST-2027 prospectus does not provide for an answer key, and we found no official key for earlier years; keys shared on other websites are unofficial. Marks are calculated electronically, and the prospectus rules out re-evaluation, re-totalling and scrutiny.",
+            "guidance": false
+          },
+          {
+            "question": "Is there a waiting list or second list?",
+            "answer": "No. NVS does not release wait-lists. If a provisionally selected candidate does not join or cannot produce the required certificates, the next candidate in the same category and quota is moved up through the admission portal. Admissions close by 31 August 2027.",
+            "guidance": false
+          },
+          {
+            "question": "Which documents are checked after selection?",
+            "answer": "The originals the prospectus asks for, including a birth certificate issued by a government authority before registration, proof of residence in the district, a Central-list OBC, SC or ST certificate when claiming that category, a rural-area certificate if the Class III–V school’s location is not on UDISE, and a UDID or CMO certificate for Divyang candidates. Parents are also advised to get a transfer certificate from the current school. Selection stays provisional until the JNV verifies them.",
             "guidance": false
           }
         ],
@@ -205,7 +226,7 @@
         ]
       },
       "displayOrder": 10,
-      "lastVerifiedOn": "2026-10-24",
+      "lastVerifiedOn": "2026-11-25",
       "verificationStatus": "VERIFIED",
       "published": true,
       "dates": [
@@ -774,11 +795,11 @@
         "forSchools": "33 Sainik Schools and approved New Sainik Schools — English-medium CBSE residential schools that prepare cadets for NDA and other officer academies",
         "entryClassText": "Class VI and Class IX",
         "eligibility": [
-          "Class VI (2026-27 cycle): 10–12 years as on 31.03.2026 — born 01.04.2014 to 31.03.2016.",
-          "Class IX (2026-27 cycle): 13–15 years as on 31.03.2026 — born 01.04.2011 to 31.03.2013, and passed Class VIII.",
-          "Girls are eligible to apply (for approved New Sainik Schools, check the school’s own admission policy).",
+          "Class VI (AISSEE-2027, admission 2027-28): 10–12 years as on 31.03.2027 — born 01.04.2015 to 31.03.2017 (both days inclusive).",
+          "Class IX (AISSEE-2027, admission 2027-28): 13–15 years as on 31.03.2027 — born 01.04.2012 to 31.03.2014, and passed Class VIII from a recognised school at the time of admission.",
+          "Girls can apply for Class VI, and for Class IX where vacancies exist, with the same age limits as boys (for approved New Sainik Schools, check the school’s own admission policy).",
           "Home State vs Outside State is decided by the candidate’s domicile and the location of the Sainik School chosen.",
-          "Check the current year’s bulletin: age windows move forward by one year each cycle."
+          "Age windows move forward by one year each cycle; these are the AISSEE-2027 windows."
         ],
         "pattern": [
           {
@@ -898,12 +919,12 @@
           }
         ],
         "selection": [
-          "Qualifying standard in the bulletin: at least 25% marks in each subject and 40% in aggregate (see the bulletin for category-specific rules).",
+          "Qualifying standard (AISSEE-2027 bulletin): at least 25% marks in each subject and 40% in aggregate. Existing Sainik Schools prescribe no minimum for SC/ST candidates; approved New Sainik Schools apply the rule to everyone.",
           "School-wise, gender-wise and category-wise (Home State / Outside State) merit lists, followed by e-counselling.",
           "Medical fitness and original-document verification at the allotted school.",
           "Approved New Sainik Schools fill at least 40% of seats from AISSEE merit (Category A)."
         ],
-        "fee": "AISSEE-2026 application fee: ₹850 (General / Defence / OBC-NCL), ₹700 (SC/ST). School fees differ by Sainik School — see each school’s fee structure.",
+        "fee": "AISSEE-2027 application fee: ₹850 (General / Defence / OBC-NCL), ₹700 (SC/ST), not refundable; late applications (3–6 Dec 2026) pay a ₹500 late fee. School fees differ by Sainik School — see each school’s fee structure.",
         "preparation": [
           {
             "step": "Download the current NTA bulletin",
@@ -938,18 +959,33 @@
         "faq": [
           {
             "question": "Have the AISSEE-2027 dates been announced?",
-            "answer": "Not as of 25 October 2026: the NTA website had no AISSEE-2027 notice. This page will show the dates once NTA publishes them.",
+            "answer": "Yes. NTA’s public notice of 3 November 2026 opened applications until 2 December 2026 (11:50 p.m.), with late applications and a ₹500 late fee from 3 to 6 December. The exam is on 31 January 2027 and admit cards are due on 25 January 2027.",
+            "guidance": false
+          },
+          {
+            "question": "What is the age limit for Class 6 in AISSEE-2027?",
+            "answer": "10 to 12 years on 31 March 2027: the child must be born between 1 April 2015 and 31 March 2017 (both days inclusive). For Class 9 it is 13 to 15 years: born between 1 April 2012 and 31 March 2014.",
             "guidance": false
           },
           {
             "question": "Can girls apply to Sainik Schools?",
-            "answer": "Yes, girls are eligible to apply. For approved New Sainik Schools, check the school’s own admission policy.",
+            "answer": "Yes. Admission for girls is open in Class VI, and in Class IX where vacancies exist, with the same age limits as boys. For approved New Sainik Schools, check the school’s own admission policy.",
             "guidance": false
           },
           {
             "question": "Is there negative marking?",
-            "answer": "The AISSEE-2026 bulletin does not provide for negative marking, so it is worth attempting every question. Check the new bulletin each year.",
+            "answer": "No. The AISSEE-2027 bulletin says there is no negative marking for a wrong response, so it is worth attempting every question.",
             "guidance": true
+          },
+          {
+            "question": "What marks are needed to qualify?",
+            "answer": "At least 25% in each subject and 40% in aggregate. Existing Sainik Schools prescribe no minimum for SC/ST candidates; approved New Sainik Schools apply the rule to everyone. Admission then follows e-counselling on the merit list, a medical check and document verification.",
+            "guidance": false
+          },
+          {
+            "question": "Will NTA publish an answer key?",
+            "answer": "The AISSEE-2027 bulletin says the attempted question papers and provisional answer keys will be displayed on the NTA AISSEE website on a date to be announced. NTA’s final answer keys for earlier years are linked under Official papers.",
+            "guidance": false
           }
         ],
         "papers": [
@@ -1014,8 +1050,8 @@
             "url": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
           },
           {
-            "label": "AISSEE-2026 information bulletin (PDF)",
-            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2025/10/20251010937989896.pdf"
+            "label": "AISSEE-2027 information bulletin (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2026/11/202611031403322790.pdf"
           },
           {
             "label": "National Testing Agency",
@@ -1023,6 +1059,10 @@
           }
         ],
         "sources": [
+          {
+            "label": "AISSEE-2027 information bulletin (PDF)",
+            "url": "https://cdnbbsr.s3waas.gov.in/s388a839f2f6f1427879fc33ee4acf4f66/uploads/2026/11/202611031403322790.pdf"
+          },
           {
             "label": "NTA public notice, 3 Nov 2026 (AISSEE-2027 schedule)",
             "url": "https://nta.ac.in/Download/Notice/Notice_20261103151121.PDF"
@@ -1066,10 +1106,13 @@
         ],
         "languages": "Class VI: English, Hindi and 11 regional languages; Class IX: English",
         "applicationSteps": null,
-        "examDay": null
+        "examDay": [
+          "Class VI: 2:00 p.m. to 4:30 p.m. (150 minutes). Class IX: 2:00 p.m. to 5:00 p.m. (180 minutes).",
+          "Pen and paper: answers are marked on an OMR sheet, at the centre named on the admit card."
+        ]
       },
       "displayOrder": 20,
-      "lastVerifiedOn": "2026-11-12",
+      "lastVerifiedOn": "2026-11-25",
       "verificationStatus": "VERIFIED",
       "published": true,
       "dates": [
