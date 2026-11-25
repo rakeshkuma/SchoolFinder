@@ -3,9 +3,12 @@
 For the site owner. It covers what Ubersuggest, Windsor.ai (Search Console, GA4, Bing) and the official exam documents
 showed on 25 Nov 2026, what was changed in the code, how it was tested, and what needs you.
 
+Status: **committed as 0ed6637 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
+live when you publish them.
+
 Status labels: **VERIFIED** (checked against data or the live site), **IMPLEMENTED** (in the code), **TESTED** (tests or
-browser checks pass), **DEPLOYED** (live; nothing in this round is yet), **RECOMMENDED** (not done), **BLOCKED** (needs
-you or access this session does not have). Ubersuggest volumes, difficulty and authority are third-party estimates.
+browser checks pass), **DEPLOYED** (live and checked), **RECOMMENDED** (not done), **BLOCKED** (needs you or access this
+session does not have). Ubersuggest volumes, difficulty and authority are third-party estimates.
 Nothing here claims a traffic increase: that can only be measured after a deploy.
 
 ---
@@ -34,8 +37,8 @@ Nothing here claims a traffic increase: that can only be measured after a deploy
 5. **Why traffic is low:** the property is 17 days old, has domain authority 1 and no referring domains, and most of its
    impressions are people searching for a school by name, who want that school's own website. The site is technically
    sound (sitemap 2,657 URLs, 0 errors).
-6. **What needs you now:** approve the deploy, publish two updated articles, start the one-time IndexNow submission, and
-   five settings in Google and Bing tools (§16).
+6. **Deployed on 25 Nov 2026** and checked live. **What needs you now:** publish two updated articles, start the one-time
+   IndexNow submission, and a few settings in Google and Bing tools (§16).
 
 ---
 
@@ -296,7 +299,8 @@ engagement feature is justified by the data yet.
 
 ## 12. What changed
 
-All **IMPLEMENTED** and **TESTED**; none **DEPLOYED**.
+All **IMPLEMENTED**, **TESTED** and **DEPLOYED** (25 Nov 2026, commit 0ed6637), except the two articles, which go live
+when you publish them.
 
 ### SEO
 
@@ -387,7 +391,8 @@ overlay scrollbars, so phones are not affected.
 | `/about` server HTML | About 30 words | More than 300 words | Integration test |
 | IndexNow | None | Daily and on request | Unit and integration tests |
 
-The after values become live measurements only after the deploy: re-check with the same Windsor pulls on 9 and 23 Dec.
+After the deploy, the "after" column was confirmed on the live site for every row (§16). Its effect on clicks and
+impressions can only be measured once Google and Bing recrawl: re-check with the same Windsor pulls on 9 and 23 Dec.
 
 ---
 
@@ -443,9 +448,25 @@ Wellfound), schools' own blogs linking to their listings, and media stories.
 
 ## 16. Deployment and what needs you
 
-**Deployment: NOT DEPLOYED.** The changes are on `develop`, not yet committed.
+**Deployment: DEPLOYED** on 25 Nov 2026 with `deploy/oracle-micro-deploy.ps1` (commit 0ed6637, pushed to
+`origin/develop`). V48 ran on start. Live checks, all passed:
 
-After a deploy (`deploy/oracle-micro-deploy.ps1`; V48 runs on start):
+| Check | Live result |
+|---|---|
+| IndexNow key file | `/1d69358d6e265f485ec60722cd51fb81.txt` serves the key (HTTP 200) |
+| AISSEE guide (API) | 2027 eligibility, 6 questions, checked 2026-11-25; its 11 dates and 8 notices unchanged |
+| JNVST guide | 7 questions; the new ones in the page HTML and in its FAQPage data |
+| `/exams/aissee` snippet | "AISSEE 2027: apply by 2 Dec 2026; exam on 31 Jan 2027. Free AISSEE (Sainik School) Class 6 mock tests…" (152) |
+| `/exams/jnvst`, `/exams/netarhat` snippets | Date kept (113 and 124 characters) |
+| `/exams/practice/jnvst-mat-1` snippet | Ends on a whole clause, no "…" (156) |
+| `/about` server HTML | 474 words (was about 30) |
+| AISSEE page in a browser | "Last date to apply · 2 Dec 2026 · in 7 days · Apply on the official website", then "31 Jan 2027 · in 67 days" |
+| Homepage and sitemap index | HTTP 200 |
+
+Right after a deploy, nginx can answer once from its old cache (API 30 s, page HTML 10 min) while it refreshes; the
+second request was fresh. The cache warm-up refreshes every sitemap page within about an hour.
+
+Still to do (you):
 
 1. **Publish the two articles:**
    `ADMIN_USERNAME=… ADMIN_PASSWORD=… node tools/blog/load-drafts.js https://schooldhundo.in/api/v1 --update jnv-admission-guide-jnvst-class-6`,
@@ -471,7 +492,7 @@ After a deploy (`deploy/oracle-micro-deploy.ps1`; V48 runs on start):
 
 ## 17. Remaining blockers
 
-- Deploy approval (production), and steps 1–5 above, which need your sign-ins.
+- Steps 1–5 above, which need your sign-ins.
 - No direct Search Console, GA4 or Tag Manager access in this session: no URL Inspection, Core Web Vitals or Pages
   report, and the GA4 tag inside Tag Manager could not be read.
 - Windsor is a trial with 30 days of history; Ubersuggest's free tier gives 3 reports a day.
@@ -484,7 +505,7 @@ After a deploy (`deploy/oracle-micro-deploy.ps1`; V48 runs on start):
 Targets are checkpoints against the baseline in §3, not promises.
 
 **Next 7 days (to 2 Dec)**
-- Deploy, ideally before 28 Nov (JNVST) and in any case before 2 Dec (AISSEE deadline); then do §16 steps 1–5.
+- Deployed on 25 Nov, before JNVST (28 Nov) and the AISSEE deadline (2 Dec). Now do §16 steps 1–5, the articles first.
 - From 29 Nov, watch Search Console for answer-key and result searches; add official NVS notices to the guide only when
   NVS publishes them.
 
