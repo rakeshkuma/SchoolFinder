@@ -4,7 +4,7 @@ For the site owner. It covers what Ubersuggest, Windsor.ai (Search Console, GA4,
 showed on 25 Nov 2026, what was changed in the code, how it was tested, and what needs you.
 
 Status: **committed as 0ed6637 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
-live when you publish them.
+live when you publish them. The fix for Search Console's job-posting warnings was **DEPLOYED on 26 Nov 2026** as cbe0968 (§20).
 
 Status labels: **VERIFIED** (checked against data or the live site), **IMPLEMENTED** (in the code), **TESTED** (tests or
 browser checks pass), **DEPLOYED** (live and checked), **RECOMMENDED** (not done), **BLOCKED** (needs you or access this
@@ -545,3 +545,44 @@ Targets are checkpoints against the baseline in §3, not promises.
 | Deadline in the hero | NTA notice; live page | Deadline 7 days away, not shown | AISSEE preparation page | Hero card | P0 | AISSEE page engagement in GA4 |
 | No mental-ability page yet | Ubersuggest: 22,200 a month, difficulty 12; weak results page | Site has 5 sets, 150 questions | — | Next round, one landing | P1 | — |
 | No link schemes | Ubersuggest gap rows mostly spam | — | — | Schools, profiles, data stories | P1 | Referring domains (0 now) |
+| Job data fields | Search Console e-mail, 24 Nov 2026; live notices, 25 Nov | 30 JobPostings without street address and PIN; 27 without employment type; none with salary | `/jobs/*` | Employer's stated type, school address, published pay only (§20) | P1 | Search Console "Validate fix" |
+
+---
+
+## 20. Job postings: Search Console warnings (fixed 26 Nov 2026)
+
+**Reported** (Search Console e-mail of 24 Nov 2026, 4 non-critical issues): JobPosting data missing `employmentType`,
+`baseSalary`, and `postalCode` and `streetAddress` in `jobLocation.address`. Non-critical issues do not stop the pages
+from appearing.
+
+**Found** (live data, 25 Nov): 30 of the 39 current job notices carried JobPosting data.
+- **27 Doon International School, Bhubaneswar openings.** The school's own careers page marks every opening `FULL_TIME`
+  and gives the campus address with PIN 751019 in its own JobPosting data. The importer kept only the title and dates,
+  and the notices were not linked to the school's profile, even though that profile's website is the careers page's site.
+- **3 Kendriya Vidyalaya walk-ins.** These already had their employment type (contract). Each was linked to its school,
+  but the school's address and PIN were not used.
+- **No notice states its pay.**
+
+**Fixed** (IMPLEMENTED, TESTED, DEPLOYED as cbe0968):
+
+| Field | How it is filled now | Effect on the live postings (26 Nov) |
+|---|---|---|
+| `employmentType` | The employer's own stated type is kept by the daily check, as a listed last date already was. New type "Full-time", because a private school's full-time post is not "Regular" (permanent). V49 gave the 27 stored Doon openings `FULL_TIME` (staff-edited notices untouched). | All 28 current postings |
+| `streetAddress`, `postalCode` | From the linked school's profile, when the school is in the notice's state. The Doon source is linked to its profile in `sources.json` (new openings); V49 linked the stored ones. | All 28 current postings |
+| `baseSalary` | Only from pay a notice publishes ("Pay (as published)" in the admin), when it is one amount or one range for one period. Never estimated: Google asks for the salary the employer states. | None yet: no notice publishes pay, so this suggestion stays until one does |
+
+Two Kendriya Vidyalaya walk-ins closed on 25 Nov, so 28 postings carry the data on 26 Nov.
+
+Tests: backend 482, 0 failures (new: the employer's type read from the real careers page, the rules for reading pay,
+the job data with a linked school and published pay, and V49 run on stored rows), frontend 242. Live check after the
+deploy: the API shows the Doon openings linked to `doon-international-school-3` with `FULL_TIME`; the pages show
+`employmentType`, `streetAddress` and `postalCode` (for example, Doon TGT Maths: "Plot No. 109, Adjacent To Aiims
+Bhubaneswar", 751019; KV Yelahanka: "Rail Wheel Factory Yelahanka Bangalore Karnataka", 560106). Pages cached before the
+deploy refresh within 10 minutes.
+
+**For you:**
+1. In Search Console → Job postings, open each of the four issues and click **Validate fix**.
+   - `employmentType`, `streetAddress` and `postalCode` should pass.
+   - `baseSalary` will stay listed for postings that publish no pay. That is correct, and it is only a suggestion.
+2. Optional: where an official notice states the pay (Kendriya Vidyalaya walk-in notices usually give a consolidated
+   monthly amount), copy it word for word into "Pay (as published)" in the admin. The job data then includes `baseSalary`.
