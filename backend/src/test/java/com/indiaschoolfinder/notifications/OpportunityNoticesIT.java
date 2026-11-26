@@ -550,6 +550,37 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
                 .contains("\"streetAddress\":\"Plot No. 109, Adjacent To Aiims Bhubaneswar\"").contains("\"postalCode\":\"751019\"");
     }
 
+    /** V50 on stored rows: the last dates and PIN the official documents state; only records still as they were found. */
+    @Test
+    void officialDatesAndAPinCorrectionApplyOnceAndOnlyToRecordsStillAsFound() throws Exception {
+        editorial("mayo college engineering associate mcgc", "RJ", SiteUpdate.Sector.PRIVATE, true, "OTHER", null);
+        editorial("pm shri kendriya vidyalaya thrissur walk-in interview for pgt maths and", "KL", SiteUpdate.Sector.GOVERNMENT, false, "PGT", null);
+        // Already given a last date by an editor: left alone.
+        editorial("mayo college lead engineer mcgc", "RJ", SiteUpdate.Sector.PRIVATE, true, "OTHER", LocalDate.of(2026, 11, 30));
+        long kv = createSchool(school("Kendriya Vidyalaya Rail Wheel Factory Yelahanka", Map.of("stateCode", "KA", "pinCode", "560106")));
+        jdbc.update("UPDATE school SET slug = 'kendriya-vidyalaya-rail-wheel-factory-yelahanka-bangalore' WHERE id = ?", kv);
+        String v50 = new org.springframework.core.io.ClassPathResource("db/migration/V50__job_notice_corrections_from_official_documents.sql")
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        Integer auditBefore = jdbc.queryForObject("SELECT count(*) FROM admin_audit_log WHERE details LIKE '%Migration V50.%'", Integer.class);
+
+        jdbc.execute(v50);
+        jdbc.execute(v50); // a second run changes nothing
+
+        SiteUpdate mayo = updates.findBySlug("mayo-college-engineering-associate-mcgc").orElseThrow();
+        assertThat(mayo.getClosesOn()).isEqualTo(LocalDate.of(2026, 11, 25));
+        assertThat(mayo.getExpiresOn()).isEqualTo(LocalDate.of(2026, 11, 25));
+        assertThat(mayo.getEventLabel()).isEqualTo("Last date");
+        assertThat(mayo.isStaffEdited()).isTrue();
+        SiteUpdate thrissur = updates.findBySlug("pm-shri-kendriya-vidyalaya-thrissur-walk-in-interview-for-pgt-maths-and").orElseThrow();
+        assertThat(thrissur.getClosesOn()).isEqualTo(LocalDate.of(2026, 11, 26));
+        assertThat(thrissur.getEventLabel()).isEqualTo("Walk-in interview");
+        assertThat(updates.findBySlug("mayo-college-lead-engineer-mcgc").orElseThrow().getClosesOn()).isEqualTo(LocalDate.of(2026, 11, 30));
+        assertThat(jdbc.queryForObject("SELECT pin_code FROM school WHERE id = ?", String.class, kv)).isEqualTo("560064");
+        // Three changes recorded once each: two notices and the school.
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM admin_audit_log WHERE details LIKE '%Migration V50.%'", Integer.class))
+                .isEqualTo(auditBefore + 3);
+    }
+
     private void editorial(String title, String state, SiteUpdate.Sector sector, boolean boarding, String post, LocalDate closes) {
         SiteUpdate u = new SiteUpdate();
         u.setCategory(SiteUpdate.Category.JOB);
