@@ -40,6 +40,15 @@ public class OpportunityEnricher {
      *                        false for an editor's notice, whose dates the editor set
      */
     public void apply(SiteUpdate u, SourceProfile profile, OpportunityClassifier.Facts facts, LocalDate listedClosesOn, boolean deriveDates) {
+        apply(u, profile, facts, listedClosesOn, null, deriveDates);
+    }
+
+    /**
+     * @param listedEmployment a kind of employment the listing states in a field of its own (an employer's JobPosting
+     *                         data); it wins over one read from the title, as a listed last date does
+     */
+    public void apply(SiteUpdate u, SourceProfile profile, OpportunityClassifier.Facts facts, LocalDate listedClosesOn,
+                      SiteUpdate.EmploymentType listedEmployment, boolean deriveDates) {
         if (!u.isOpportunity() || facts == null) {
             return;
         }
@@ -57,7 +66,7 @@ public class OpportunityEnricher {
         u.setPostTypes(join(facts.postTypes(), 160));
         u.setSubjects(join(facts.subjects(), 240));
         u.setStaffKind(facts.staffKind());
-        u.setEmploymentType(facts.employmentType());
+        u.setEmploymentType(listedEmployment != null ? listedEmployment : facts.employmentType());
         u.setAcademicSession(facts.academicSession());
         u.setClasses(facts.classes());
         u.setVacancies(facts.vacancies());

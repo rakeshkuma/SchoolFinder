@@ -45,7 +45,11 @@ public class SiteUpdate extends AuditableEntity {
     public enum StaffKind { TEACHING, NON_TEACHING, MIXED }
 
     /** As the notice states it: regular (permanent) posts, contract or guest engagement, part-time, or temporary. */
-    public enum EmploymentType { REGULAR, CONTRACT, PART_TIME, TEMPORARY }
+    /**
+     * REGULAR: a regular (permanent) appointment, as government notices say; FULL_TIME: full-time, as an employer states it
+     * in its own job data (schema.org FULL_TIME), without saying the post is permanent.
+     */
+    public enum EmploymentType { REGULAR, FULL_TIME, CONTRACT, PART_TIME, TEMPORARY }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -158,7 +158,7 @@ export function JobsPage() {
 }
 
 const STAFF_LABEL = { TEACHING: 'Teaching', NON_TEACHING: 'Non-teaching', MIXED: 'Teaching and non-teaching' } as const;
-const EMPLOYMENT_LABEL = { REGULAR: 'Regular', CONTRACT: 'Contract or guest', PART_TIME: 'Part-time', TEMPORARY: 'Temporary' } as const;
+const EMPLOYMENT_LABEL = { REGULAR: 'Regular', FULL_TIME: 'Full-time', CONTRACT: 'Contract or guest', PART_TIME: 'Part-time', TEMPORARY: 'Temporary' } as const;
 const VERIFICATION_LABEL = {
   EDITOR_VERIFIED: 'Checked by a SchoolDhundo editor against the official notice.',
   OFFICIAL_SOURCE: 'Taken from the official website by our daily check: the title, date and link are the official site’s. Not yet checked by an editor.',

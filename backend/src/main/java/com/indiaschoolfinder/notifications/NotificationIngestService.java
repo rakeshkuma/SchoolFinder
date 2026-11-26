@@ -184,7 +184,7 @@ public class NotificationIngestService {
         u.setContentHash(hash(n));
         u.setFirstSeenAt(now);
         u.setLastSeenAt(now);
-        enricher.apply(u, source.profile(), facts, n.closesOn(), true);
+        enricher.apply(u, source.profile(), facts, n.closesOn(), n.employmentType(), true);
         u = updates.save(u);
         enricher.savePositions(u.getId(), facts);
         result.created++;
@@ -248,7 +248,7 @@ public class NotificationIngestService {
             }
             u.setSummary(facts == null ? summary(source, n, u.getPublishedOn())
                     : opportunitySummary(source, n, u.getPublishedOn(), facts, closes));
-            enricher.apply(u, source.profile(), facts, n.closesOn(), true);
+            enricher.apply(u, source.profile(), facts, n.closesOn(), n.employmentType(), true);
         }
         String changed = "Changed at the source on " + DAY.format(today) + ": " + String.join(", ", what) + "."
                 + (dateNote == null ? "" : " " + dateNote)

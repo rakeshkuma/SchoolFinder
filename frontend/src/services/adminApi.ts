@@ -410,7 +410,7 @@ export interface OpportunityFields {
   sector: 'GOVERNMENT' | 'PRIVATE' | null; boarding: boolean | null; stateCode: string | null; city: string | null;
   noticeType: import('./publicApi').NoticeType | null; opensOn: string | null; closesOn: string | null; examOn: string | null;
   academicSession: string | null; classes: string | null; postTypes: string | null; subjects: string | null;
-  staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null; employmentType: 'REGULAR' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null;
+  staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null; employmentType: 'REGULAR' | 'FULL_TIME' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null;
   vacancies: number | null; eligibility: string | null; experience: string | null; tetRequirement: string | null;
   ageLimit: string | null; salaryText: string | null; applicationFee: string | null; selectionProcess: string | null;
   applyUrl: string | null;

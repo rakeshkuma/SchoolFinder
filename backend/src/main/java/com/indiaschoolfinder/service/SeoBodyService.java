@@ -845,6 +845,7 @@ public class SeoBodyService {
         });
         fact(h, "Employment", d.employmentType() == null ? null : switch (d.employmentType()) {
             case REGULAR -> "Regular";
+            case FULL_TIME -> "Full-time";
             case CONTRACT -> "Contract or guest";
             case PART_TIME -> "Part-time";
             case TEMPORARY -> "Temporary";

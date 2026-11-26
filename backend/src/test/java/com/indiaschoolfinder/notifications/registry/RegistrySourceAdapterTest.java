@@ -177,6 +177,24 @@ class RegistrySourceAdapterTest {
                                 "https://www.dooninternational.in/careers/#hss-chemistry", Category.JOB),
                         tuple("Higher Secondary Teacher (Biology)", LocalDate.of(2026, 9, 21), LocalDate.of(2027, 1, 26),
                                 "https://www.dooninternational.in/careers/#hss-biology", Category.JOB));
+        // The employer's own employmentType is kept (Search Console, 24 Nov 2026: JobPosting data lacked it), and the
+        // notices belong to the school's profile, whose address the job data then carries.
+        assertThat(c.listing().notices()).extracting(FoundNotice::employmentType)
+                .containsOnly(com.indiaschoolfinder.entity.SiteUpdate.EmploymentType.FULL_TIME);
+        assertThat(doon.profile().schoolSlug()).isEqualTo("doon-international-school-3");
+    }
+
+    @Test
+    void anEmployersEmploymentTypeIsKeptOnlyWhenItIsOneKnownKind() throws Exception {
+        var full = com.indiaschoolfinder.entity.SiteUpdate.EmploymentType.FULL_TIME;
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("\"FULL_TIME\""))).isEqualTo(full);
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("[\"full-time\"]"))).isEqualTo(full);
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("\"CONTRACTOR\"")))
+                .isEqualTo(com.indiaschoolfinder.entity.SiteUpdate.EmploymentType.CONTRACT);
+        // Two kinds, a kind with no counterpart, or none: nothing is assumed.
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("[\"FULL_TIME\", \"PART_TIME\"]"))).isNull();
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("\"INTERN\""))).isNull();
+        assertThat(RegistrySourceAdapter.employment(JSON.readTree("{}").path("employmentType"))).isNull();
     }
 
     @Test

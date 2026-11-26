@@ -493,7 +493,12 @@ public class SeoHeadService {
         // Job markup only while the official last date says applications are open: a notice without a last date may be an
         // old recruitment the source re-listed, and must not be offered to job search as a live vacancy.
         if (job && d.indexable() && opening && d.closesOn() != null && !d.closesOn().isBefore(notices.today())) {
-            data.add(jobPosting(d, url));
+            // The workplace's street address and PIN code from the linked school's profile, when the school is in the
+            // notice's state (Search Console, 24 Nov 2026: jobLocation lacked streetAddress and postalCode).
+            com.indiaschoolfinder.entity.School school = d.school() == null ? null
+                    : schoolRepository.findBySlug(d.school().slug()).orElse(null);
+            boolean samePlace = school != null && (d.stateCode() == null || d.stateCode().equals(d.school().stateCode()));
+            data.add(jobPosting(d, url, samePlace ? school.getAddressLine() : null, samePlace ? school.getPinCode() : null));
         }
         return tags(noticeTitle(d.title()) + " | " + SITE, noticeDescription(d.title(), d.summary()), d.indexable() ? url : null,
                 null, !d.indexable(), data);
@@ -550,8 +555,13 @@ public class SeoHeadService {
         return cut.replaceAll("[\\s,;:–—(-]+$", "").replaceAll("\\s+(of|for|the|and|to|in|on|a|an|by|at|with)$", "");
     }
 
-    /** schema.org JobPosting from the facts the page shows. */
-    static Map<String, Object> jobPosting(com.indiaschoolfinder.dto.notice.NoticeDtos.NoticeDetail d, String url) {
+    /**
+     * schema.org JobPosting from the facts the page shows, and the workplace's address from the linked school's profile.
+     * Only what the employer or the official notice states: no salary unless the notice publishes one, no employment type
+     * unless one is stated.
+     */
+    static Map<String, Object> jobPosting(com.indiaschoolfinder.dto.notice.NoticeDtos.NoticeDetail d, String url, String streetAddress,
+                                          String postalCode) {
         Map<String, Object> j = new LinkedHashMap<>();
         j.put("@context", "https://schema.org");
         j.put("@type", "JobPosting");
@@ -568,6 +578,7 @@ public class SeoHeadService {
         if (!d.subjects().isEmpty()) description.append("<li>Subjects: ").append(html(String.join(", ", d.subjects()))).append("</li>");
         if (d.vacancies() != null) description.append("<li>Number of posts: ").append(d.vacancies()).append("</li>");
         if (d.eligibility() != null) description.append("<li>Eligibility: ").append(html(d.eligibility())).append("</li>");
+        if (d.salaryText() != null) description.append("<li>Pay (as published): ").append(html(d.salaryText())).append("</li>");
         if (d.closesOn() != null) description.append("<li>Last date: ").append(d.closesOn().format(DAY)).append("</li>");
         description.append("</ul><p>Read the official notice before applying.</p>");
         j.put("description", description.toString());
@@ -577,12 +588,14 @@ public class SeoHeadService {
         }
         if (d.employmentType() != null) {
             j.put("employmentType", switch (d.employmentType()) {
-                case REGULAR -> "FULL_TIME";
+                case REGULAR, FULL_TIME -> "FULL_TIME";
                 case CONTRACT -> "CONTRACTOR";
                 case PART_TIME -> "PART_TIME";
                 case TEMPORARY -> "TEMPORARY";
             });
         }
+        Map<String, Object> salary = baseSalary(d.salaryText());
+        if (salary != null) j.put("baseSalary", salary);
         Map<String, Object> hiring = new LinkedHashMap<>();
         hiring.put("@type", "Organization");
         hiring.put("name", org != null ? org : "the hiring institution");
@@ -597,8 +610,10 @@ public class SeoHeadService {
         j.put("hiringOrganization", hiring);
         Map<String, Object> address = new LinkedHashMap<>();
         address.put("@type", "PostalAddress");
+        if (streetAddress != null && !streetAddress.isBlank()) address.put("streetAddress", streetAddress.replaceAll("\\s+", " ").trim());
         if (d.city() != null) address.put("addressLocality", d.city());
         if (d.stateName() != null) address.put("addressRegion", d.stateName());
+        if (postalCode != null && PIN_CODE.matcher(postalCode.trim()).matches()) address.put("postalCode", postalCode.trim());
         address.put("addressCountry", "IN");
         j.put("jobLocation", Map.of("@type", "Place", "address", address));
         if (d.eligibility() != null) j.put("qualifications", d.eligibility());
@@ -606,6 +621,63 @@ public class SeoHeadService {
         if (d.vacancies() != null) j.put("totalJobOpenings", d.vacancies());
         j.put("url", url);
         return j;
+    }
+
+    /** An Indian PIN code: six digits, not starting with 0. */
+    private static final Pattern PIN_CODE = Pattern.compile("[1-9][0-9]{5}");
+    /** A rupee amount as notices print it: "₹27,500", "Rs. 21,250/-", "INR 3,00,000". */
+    private static final Pattern RUPEES = Pattern.compile("(?:₹|\\bRs\\.?|\\bINR\\b)\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)(?:\\s*/-)?",
+            Pattern.CASE_INSENSITIVE);
+    /** Two amounts joined as a range: "₹21,250 – ₹27,500", "Rs. 21,250/- to 27,500/-". */
+    private static final Pattern RUPEE_RANGE = Pattern.compile("(?:₹|\\bRs\\.?|\\bINR\\b)\\s*[0-9][0-9,]*(?:\\.[0-9]{1,2})?(?:\\s*/-)?"
+            + "\\s*(?:-|–|—|\\bto\\b)\\s*(?:₹|\\bRs\\.?|\\bINR\\b)?\\s*[0-9][0-9,]*", Pattern.CASE_INSENSITIVE);
+    private static final Map<String, Pattern> PAY_UNITS = new LinkedHashMap<>(Map.of(
+            "MONTH", Pattern.compile("per\\s*month|/\\s*month|\\bp\\.?\\s*m\\b\\.?|\\bmonthly\\b|\\ba\\s+month\\b|प्रति\\s*माह|प्रतिमाह",
+                    Pattern.CASE_INSENSITIVE),
+            "YEAR", Pattern.compile("per\\s*(annum|year)|/\\s*(year|annum)|\\bp\\.?\\s*a\\b\\.?|\\bannual(ly)?\\b|\\ba\\s+year\\b|प्रति\\s*वर्ष",
+                    Pattern.CASE_INSENSITIVE),
+            "DAY", Pattern.compile("per\\s*day|/\\s*day|\\bdaily\\b|प्रति\\s*दिन", Pattern.CASE_INSENSITIVE),
+            "HOUR", Pattern.compile("per\\s*hour|/\\s*hour|\\bhourly\\b", Pattern.CASE_INSENSITIVE)));
+
+    /**
+     * baseSalary from the pay a notice publishes ("Pay (as published)"), only when it is unambiguous: one rupee amount or
+     * one range, and one period (month, year, day or hour). "₹27,500 per month (consolidated)" gives 27,500 a month;
+     * "Rs. 21,250/- to 27,500/- per month" gives that range. A pay level without a period, two posts' different pay, or
+     * "as per norms" give nothing: Google asks for the salary the employer states, never an estimate.
+     */
+    static Map<String, Object> baseSalary(String text) {
+        if (text == null || text.isBlank()) return null;
+        List<java.math.BigDecimal> amounts = new java.util.ArrayList<>();
+        Matcher m = RUPEES.matcher(text);
+        while (m.find()) amounts.add(new java.math.BigDecimal(m.group(1).replace(",", "")));
+        // A range's second amount may be printed without "₹" ("₹44,900–1,42,400"): read it from the range itself.
+        Matcher range = RUPEE_RANGE.matcher(text);
+        boolean isRange = range.find();
+        if (isRange && amounts.size() == 1) {
+            String second = range.group().replaceAll(".*(?:-|–|—|\\bto\\b)\\s*(?:₹|Rs\\.?|INR)?\\s*", "").replaceAll("[^0-9,]", "");
+            if (!second.isEmpty()) amounts.add(new java.math.BigDecimal(second.replace(",", "")));
+        }
+        if (amounts.isEmpty() || amounts.size() > 2 || (amounts.size() == 2 && !isRange)
+                || amounts.stream().anyMatch(a -> a.signum() <= 0)) {
+            return null;
+        }
+        List<String> units = PAY_UNITS.entrySet().stream().filter(e -> e.getValue().matcher(text).find()).map(Map.Entry::getKey).toList();
+        if (units.size() != 1) return null;
+        Map<String, Object> value = new LinkedHashMap<>();
+        value.put("@type", "QuantitativeValue");
+        if (amounts.size() == 1) {
+            value.put("value", amounts.get(0));
+        } else {
+            if (amounts.get(0).compareTo(amounts.get(1)) >= 0) return null;
+            value.put("minValue", amounts.get(0));
+            value.put("maxValue", amounts.get(1));
+        }
+        value.put("unitText", units.get(0));
+        Map<String, Object> salary = new LinkedHashMap<>();
+        salary.put("@type", "MonetaryAmount");
+        salary.put("currency", "INR");
+        salary.put("value", value);
+        return salary;
     }
 
     /** A featured boarding school page of the app, /boarding/{slug} (frontend content/boarding.ts). */

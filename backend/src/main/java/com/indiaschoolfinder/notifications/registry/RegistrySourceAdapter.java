@@ -243,8 +243,32 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
             LocalDate posted = isoDate(p.path("datePosted").asText(""), c.today);
             LocalDate closes = isoDate(p.path("validThrough").asText(""), null);
             String id = url.contains("#") || ident == null ? url : url + "#" + ident;
-            c.consider(title == null ? null : Jsoup.parse(title).text(), url, c.rules.dateFrom == DateFrom.SOURCE ? posted : null, closes, id);
+            c.consider(title == null ? null : Jsoup.parse(title).text(), url, c.rules.dateFrom == DateFrom.SOURCE ? posted : null, closes, id,
+                    employment(p.path("employmentType")));
         }
+    }
+
+    /**
+     * The employer's own schema.org employmentType ("FULL_TIME", or a list of one kind), or null when it gives none, gives
+     * several kinds, or a kind with no counterpart here (INTERN, VOLUNTEER, PER_DIEM, OTHER).
+     */
+    static SiteUpdate.EmploymentType employment(JsonNode value) {
+        List<String> values = new ArrayList<>();
+        if (value.isTextual()) values.add(value.asText());
+        else if (value.isArray()) value.forEach(v -> values.add(v.asText()));
+        java.util.Set<SiteUpdate.EmploymentType> kinds = new java.util.HashSet<>();
+        for (String v : values) {
+            SiteUpdate.EmploymentType kind = switch (v.trim().toUpperCase(java.util.Locale.ROOT).replace('-', '_').replace(' ', '_')) {
+                case "FULL_TIME" -> SiteUpdate.EmploymentType.FULL_TIME;
+                case "PART_TIME" -> SiteUpdate.EmploymentType.PART_TIME;
+                case "CONTRACTOR", "CONTRACT" -> SiteUpdate.EmploymentType.CONTRACT;
+                case "TEMPORARY" -> SiteUpdate.EmploymentType.TEMPORARY;
+                default -> null;
+            };
+            if (kind == null) return null;
+            kinds.add(kind);
+        }
+        return kinds.size() == 1 ? kinds.iterator().next() : null;
     }
 
     private static void collectPostings(JsonNode node, List<JsonNode> out, int depth) {
@@ -358,6 +382,11 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
         }
 
         void consider(String rawTitle, String rawUrl, LocalDate date, LocalDate closesOn, String itemId) {
+            consider(rawTitle, rawUrl, date, closesOn, itemId, null);
+        }
+
+        /** @param employment the kind of employment the listing states in a field of its own, or null */
+        void consider(String rawTitle, String rawUrl, LocalDate date, LocalDate closesOn, String itemId, SiteUpdate.EmploymentType employment) {
             listed++;
             String title = NoticeText.clean(rawTitle);
             String url = NoticeText.url(rawUrl);
@@ -407,7 +436,7 @@ public final class RegistrySourceAdapter implements OfficialSourceAdapter {
             }
             String id = itemId != null ? itemId : url;
             FoundNotice n = new FoundNotice(id, title, url, date, category, rules.key, null, null,
-                    notes.isEmpty() ? null : String.join(" ", notes), closesOn);
+                    notes.isEmpty() ? null : String.join(" ", notes), closesOn, employment);
             FoundNotice before = notices.get(id);
             if (before == null || (!before.dated() && n.dated())) {
                 notices.put(id, n);

@@ -491,6 +491,65 @@ class OpportunityNoticesIT extends AbstractIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON).content(json(request)));
     }
 
+    /**
+     * Search Console, 24 Nov 2026: JobPosting data lacked employmentType, baseSalary and jobLocation's street address and
+     * PIN code. They come from what the employer or the notice states, and the linked school's profile; never estimated.
+     */
+    @Test
+    void jobDataCarriesTheEmployersFactsAndTheSchoolsAddress() throws Exception {
+        long schoolId = createSchool(school("Fixture Valley Public School", Map.of("stateCode", "DL", "pinCode", "110017",
+                "addressLine", "Plot 4, Sector 7, Saket")));
+        editorial("Valley school PGT opening", "DL", SiteUpdate.Sector.PRIVATE, false, "PGT", today.plusDays(20));
+        SiteUpdate u = updates.findBySlug("valley-school-pgt-opening").orElseThrow();
+        u.setSchoolId(schoolId);
+        u.setEmploymentType(SiteUpdate.EmploymentType.FULL_TIME);
+        u.setSalaryText("₹27,500 per month (consolidated)");
+        updates.save(u);
+
+        String head = getText("/api/v1/seo/head/jobs/valley-school-pgt-opening");
+        assertThat(head).contains("\"@type\":\"JobPosting\"").contains("\"employmentType\":\"FULL_TIME\"")
+                .contains("\"streetAddress\":\"Plot 4, Sector 7, Saket\"").contains("\"postalCode\":\"110017\"")
+                .contains("\"baseSalary\":{\"@type\":\"MonetaryAmount\",\"currency\":\"INR\",\"value\":{\"@type\":\"QuantitativeValue\","
+                        + "\"value\":27500,\"unitText\":\"MONTH\"}}");
+        assertThat(getText("/api/v1/seo/body/jobs/valley-school-pgt-opening")).contains("Full-time");
+
+        // Pay that is not one amount (or range) for one period gives no baseSalary; nothing is estimated.
+        u.setSalaryText("As per KVS norms");
+        updates.save(u);
+        assertThat(getText("/api/v1/seo/head/jobs/valley-school-pgt-opening")).doesNotContain("baseSalary")
+                .contains("\"postalCode\":\"110017\"");
+    }
+
+    /** V49 on stored rows: Doon International's openings get its stated FULL_TIME and the school link; nothing else moves. */
+    @Test
+    void storedDoonOpeningsGetTheEmployersTypeAndTheSchoolLink() throws Exception {
+        long schoolId = createSchool(school("Doon International School", Map.of("stateCode", "OD", "pinCode", "751019",
+                "addressLine", "Plot No. 109, Adjacent To Aiims Bhubaneswar")));
+        jdbc.update("UPDATE school SET slug = 'doon-international-school-3' WHERE id = ?", schoolId);
+        editorial("Doon TGT maths opening", "OD", SiteUpdate.Sector.PRIVATE, false, "TGT", today.plusDays(30));
+        editorial("Doon staff edited opening", "OD", SiteUpdate.Sector.PRIVATE, false, "PRT", today.plusDays(30));
+        editorial("Other school opening", "OD", SiteUpdate.Sector.PRIVATE, false, "PRT", today.plusDays(30));
+        jdbc.update("UPDATE site_update SET source_key = 'doon-international-bbsr' WHERE slug IN ('doon-tgt-maths-opening', 'doon-staff-edited-opening')");
+        jdbc.update("UPDATE site_update SET staff_edited = TRUE WHERE slug = 'doon-staff-edited-opening'");
+
+        jdbc.execute(new org.springframework.core.io.ClassPathResource("db/migration/V49__job_posting_employer_facts.sql")
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8));
+
+        SiteUpdate doon = updates.findBySlug("doon-tgt-maths-opening").orElseThrow();
+        assertThat(doon.getEmploymentType()).isEqualTo(SiteUpdate.EmploymentType.FULL_TIME);
+        assertThat(doon.getSchoolId()).isEqualTo(schoolId);
+        // Staff edits keep what staff set; the school link (a fact of the source, not wording) is still made.
+        SiteUpdate edited = updates.findBySlug("doon-staff-edited-opening").orElseThrow();
+        assertThat(edited.getEmploymentType()).isNull();
+        assertThat(edited.getSchoolId()).isEqualTo(schoolId);
+        SiteUpdate other = updates.findBySlug("other-school-opening").orElseThrow();
+        assertThat(other.getEmploymentType()).isNull();
+        assertThat(other.getSchoolId()).isNull();
+        // And the job data now carries the employer's facts and the campus address.
+        assertThat(getText("/api/v1/seo/head/jobs/doon-tgt-maths-opening")).contains("\"employmentType\":\"FULL_TIME\"")
+                .contains("\"streetAddress\":\"Plot No. 109, Adjacent To Aiims Bhubaneswar\"").contains("\"postalCode\":\"751019\"");
+    }
+
     private void editorial(String title, String state, SiteUpdate.Sector sector, boolean boarding, String post, LocalDate closes) {
         SiteUpdate u = new SiteUpdate();
         u.setCategory(SiteUpdate.Category.JOB);
