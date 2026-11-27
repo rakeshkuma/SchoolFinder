@@ -586,3 +586,16 @@ deploy refresh within 10 minutes.
    - `baseSalary` will stay listed for postings that publish no pay. That is correct, and it is only a suggestion.
 2. Optional: where an official notice states the pay (Kendriya Vidyalaya walk-in notices usually give a consolidated
    monthly amount), copy it word for word into "Pay (as published)" in the admin. The job data then includes `baseSalary`.
+
+---
+
+## 21. Follow-up done on 26–27 Nov 2026
+
+| Item | What was done | Status |
+|---|---|---|
+| Pay (as published) | Every current job notice's official document was read: Doon's careers page, the Kendriya Vidyalaya walk-in notices, Mayo College's and Vidya Devi Jindal School's advertisements. None of the 37 states any pay, so nothing was entered; `baseSalary` stays absent rather than estimated. | VERIFIED |
+| Corrections found while reading (V50, a3e5ae5) | Mayo College General Council's two openings closed on 25 Nov 2026 (their image ads say so); they had been listed as open. The KV Thrissur walk-in was on 26 Nov ("… 26/11" in its title). KV RWF Yelahanka's PIN is 560064, from its own website and notice letterhead (the profile had 560106). All marked staff-edited and audit-logged. | DEPLOYED, VERIFIED (Mayo and Thrissur now closed; the PIN is live) |
+| Ubersuggest rank tracking | Six head terms the site cannot reach yet ("kvs admission", "udise code", "10 best schools in india", "best schools in bangalore", "best schools in chennai", "best schools in hyderabad") were replaced by "jnv mock test class 6 2027", "navodaya mental ability question paper", "navodaya results class 6", "aissee 2027 exam date", "schools in naharlagun" and "schools in asansol"; 25 of 25. | DONE |
+| Ubersuggest AI visibility | Four prompts were replaced by parents' questions the site now answers: JNVST answer key, JNVST 2027 result date, a free JNVST mock test, the AISSEE 2027 last date. 10 prompts; 2 of 100 brand operations used. | DONE |
+| IndexNow in production | The 07:30 IST runs: 26 Nov, 6 of 6 changed addresses accepted; 27 Nov, 8 of 8 (HTTP 200), with the key file read through local nginx. The one-time submission of every address still needs an admin login (§16, step 2). | VERIFIED |
+| Re-measurement | Two one-time cloud runs at 10:00 IST: 9 Dec 2026 (https://claude.ai/code/routines/trig_01EVtsL1FJTDBjbYYCi1XhKC) and 23 Dec 2026 (https://claude.ai/code/routines/trig_01P96AhGma3w7KPmiqpQDTDc). Each reads Search Console, GA4 and Bing through Windsor.ai and Ubersuggest's free reports, read-only, and compares them with the baseline in §3; the report is the run's result. Windsor's trial must still be active then. | SCHEDULED |
