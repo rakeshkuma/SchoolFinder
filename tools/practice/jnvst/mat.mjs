@@ -13,7 +13,7 @@ const mirror = (s) => ({ ...s, x: round(100 - s.x), rotate: norm(-s.rotate) });
 const water = (s) => ({ ...s, y: round(100 - s.y), rotate: norm(180 - s.rotate) });
 const turn = (s) => ({ ...s, x: round(100 - s.x), y: round(100 - s.y), rotate: norm(s.rotate + 180) });
 /** Identity of a question by its figures, whatever order the options were shuffled into. */
-const key = (q) => JSON.stringify([q.figure, q.optionFigures.map((f) => JSON.stringify(f.shapes)).sort()]);
+export const key = (q) => JSON.stringify([q.figure, q.optionFigures.map((f) => JSON.stringify(f.shapes)).sort()]);
 
 const DIR = { 0: 'up', 45: 'up-right', 90: 'right', 135: 'down-right', 180: 'down', '-135': 'down-left', '-90': 'left', '-45': 'up-left' };
 const dir = (a) => DIR[String(norm(a))] ?? `${norm(a)}°`;
@@ -164,7 +164,7 @@ const SQ = { top: S('line', 50, 20, 60, 0), bottom: S('line', 50, 80, 60, 0), le
 const TRI = { base: S('line', 50, 80, 60, 0), left: S('line', 35, 50, 67, -63.4), right: S('line', 65, 50, 67, 63.4) };
 const shifted = (s, dx, dy) => ({ ...s, x: round(s.x + dx), y: round(s.y + dy) });
 
-function completeQuestion(r) {
+export function completeQuestion(r) {
   const shape = pick(r, ['square', 'triangle']);
   if (shape === 'square') {
     const names = ['top', 'right', 'bottom', 'left'];
@@ -205,7 +205,7 @@ export function mirrorQuestion(r) {
   const angle = pick(r, [30, 45, 60, 120, 135, 150, -30, -60]);
   const corner = pick(r, [[22, 22], [78, 22], [22, 78], [78, 78]]);
   const shapes = [S(main, 44, 52, 46, angle), S('dot', corner[0], corner[1], 10, 0, true), S('line', 74, 68, 26, pick(r, [0, 90, 45]))];
-  const problem = fig(`a ${main} pointing ${dir(angle)}, a dot near one corner and a short line`, shapes);
+  const problem = fig(`${main === 'arrow' ? 'an' : 'a'} ${main} pointing ${dir(angle)}, a dot near one corner and a short line`, shapes);
   const apply = (fn, alt) => fig(alt, shapes.map(fn));
   const correct = apply(isWater ? water : mirror, isWater ? 'the figure flipped top to bottom' : 'the figure flipped left to right');
   const wrong = [apply((s) => s, 'the figure unchanged'), apply(isWater ? mirror : water, isWater ? 'the figure flipped left to right' : 'the figure flipped top to bottom'), apply(turn, 'the figure turned upside down (rotated 180°)')];
@@ -237,7 +237,7 @@ const EMBED_EXTRAS = [
   [S('square', 50, 50, 92), S('line', 50, 88, 70, 0)],
 ];
 
-function embeddedQuestion(r) {
+export function embeddedQuestion(r) {
   const pickedBase = pick(r, EMBED_BASES), extras = pick(r, EMBED_EXTRAS);
   const quarter = int(r, 0, 3);
   let shapes = pickedBase.shapes;

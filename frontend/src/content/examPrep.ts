@@ -31,6 +31,8 @@ export interface PrepSection {
   tips: Bi[];
   /** shows the exam's own syllabus entry whose area starts with this text (from the exam guide data, unchanged) */
   syllabusArea?: string;
+  /** a page that explains this section in full (the JNVST Mental Ability page) */
+  guide?: { to: string; label: Bi };
 }
 
 export interface RoadmapStage {

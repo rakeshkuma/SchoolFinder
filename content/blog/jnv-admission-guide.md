@@ -5,7 +5,7 @@ excerpt: Who can apply to a Navodaya Vidyalaya for Class 6, how the JNV Selectio
 tags: JNVST, Navodaya Vidyalaya, Class 6, Government schools, Admission
 metaTitle: JNV Admission 2027-28: Navodaya Class 6 Eligibility & Dates
 metaDescription: Navodaya Class 6 admission 2027-28: who can apply (born 1 May 2015 to 31 Jul 2017), the test, when the result comes, seats and documents.
-lastReviewedOn: 2026-11-25
+lastReviewedOn: 2026-11-27
 source: JNVST-2027 prospectus, Navodaya Vidyalaya Samiti (PDF) | https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf | 2026-11-25
 source: NVS admission portal | https://cbseitms.rcil.gov.in/nvs/ | 2026-11-11
 source: Navodaya Vidyalaya Samiti | https://navodaya.gov.in/ | 2026-11-11
@@ -112,10 +112,10 @@ Only use the **official portal** to apply. Registration is free, so be wary of a
 
 What follows is SchoolDhundo's guidance, not part of the prospectus:
 
-- **Mental Ability** questions are non-verbal: pattern completion, figure series, mirror and water images, embedded figures. A few questions every day helps more than long sessions once a week.
+- **Mental Ability** questions are non-verbal, in five types: pattern completion, figure series, geometrical figure completion, mirror and water images, and embedded figures. A few questions every day helps more than long sessions once a week. Our [Navodaya Mental Ability Test page](/exams/jnvst/mental-ability) explains each type with a worked example.
 - **Arithmetic** follows the Class 3 to 5 syllabus. Fractions, measurement, area and perimeter, and reading simple graphs are worth extra practice.
 - **Language** is reading comprehension. Reading one short passage a day in the exam language and answering questions on it builds speed.
-- Solve the **official 2026 question paper** and the sample questions in the prospectus under real timing (60, 30 and 30 minutes).
+- Solve the **official 2026 question paper** and the sample questions in the prospectus under real timing (60, 30 and 30 minutes). The 2026 paper follows the earlier pattern, with 40 Mental Ability questions and no EVS: its Mental Ability questions 9–16, 21–28 and 37–40 are the types in the test now.
 - Do not leave any section weak: the qualifying marks apply to each section separately.
 
 You can find practice sets, the exam calendar and the full syllabus on our [JNVST guide](/exams/jnvst), and all JNVs near you in the [Navodaya Vidyalaya directory](/network/jawahar-navodaya-vidyalaya).

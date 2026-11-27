@@ -20,9 +20,55 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /** Server-rendered page content and the school FAQ that is both shown on the page and sent as FAQPage data. */
 class SeoBodyIT extends AbstractIntegrationTest {
 
+    @org.springframework.beans.factory.annotation.Autowired
+    private com.indiaschoolfinder.service.MentalAbilityPage mentalAbilityPage;
+
     private String fetch(String url) throws Exception {
         MvcResult result = mockMvc.perform(get(url)).andExpect(status().isOk()).andReturn();
         return result.getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    /** /exams/jnvst/mental-ability: its head, its full content for crawlers, its sitemap entry and the links to it. */
+    @Test
+    void theMentalAbilityPageIsSentInFullAndLinkedFromTheJnvstPages() throws Exception {
+        // The JNVST pages need the exam catalogue, whichever test runs first.
+        mockMvc.perform(post("/api/v1/admin/exams/import").header("Authorization", editorToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new org.springframework.core.io.ClassPathResource("seed/exams.json").getContentAsString(java.nio.charset.StandardCharsets.UTF_8)))
+                .andExpect(status().isOk());
+        var page = mentalAbilityPage.content();
+        String checked = page.checkedOn().toString();
+        String head = fetch("/api/v1/seo/head/exams/jnvst/mental-ability");
+        assertThat(head).contains("<title>Navodaya Mental Ability Question Paper: Free Practice Tests</title>")
+                .contains("<link rel=\"canonical\" href=\"http://localhost/exams/jnvst/mental-ability\" />").doesNotContain("noindex")
+                .contains("\"@type\":\"BreadcrumbList\"").contains("\"name\":\"JNVST preparation\"")
+                .contains("\"@type\":\"Article\"").contains("\"dateModified\":\"" + checked + "\"")
+                .contains("\"citation\":[\"https://cbseitms.rcil.gov.in/nvs/assets/pdf/Final_Prospectus_2027.pdf\"")
+                .contains("\"@type\":\"FAQPage\"").contains("\"name\":\"Is there an official Navodaya Mental Ability question paper?\"");
+        String body = fetch("/api/v1/seo/body/exams/jnvst/mental-ability");
+        assertThat(body).contains("<h1>Navodaya Mental Ability Test: Question Papers and Practice</h1>")
+                .contains("<h3>Part I: Pattern completion (questions 1–4)</h3>")
+                .contains("<h3>Part IV: Mirror and water images (questions 12–16)</h3>")
+                .contains("<h3>Part V: Embedded figure (questions 17–20)</h3>")
+                // Every worked example, its figures in words and its answer.
+                .contains("<strong>Example (water image):</strong>")
+                .contains("<details><summary>Answer</summary><p>Figure " + page.examples().get(0).answerLetter() + ". ")
+                // The official 2026 paper: which of its questions are the types in the test now, and which are not.
+                .contains("href=\"https://cbseitms.rcil.gov.in/nvs/assets/pdf/PYQ_English_2026.pdf\"")
+                .contains("<li>Questions 37–40: Embedded figure</li>").contains("<li>Questions 29–32: Punched-hole patterns (paper folding)</li>")
+                .contains("<dt>How many Mental Ability questions are there in JNVST?</dt>")
+                .contains("Checked against these sources on <time datetime=\"" + checked + "\">");
+        Integer sets = jdbc.queryForObject("SELECT count(*) FROM practice_set WHERE slug LIKE 'jnvst-mat-%' AND published", Integer.class);
+        if (sets != null && sets > 0) {
+            assertThat(body).contains("<h2>Free practice papers</h2>").contains("href=\"/exams/practice/jnvst-mat-1\"");
+            assertThat(fetch("/api/v1/seo/body/exams/practice/jnvst-mat-1")).contains("href=\"/exams/jnvst/mental-ability\"");
+        }
+        // Linked from the JNVST preparation page and guide, and listed in the exams sitemap with the date it was checked.
+        assertThat(fetch("/api/v1/seo/body/exams/jnvst")).contains("<a href=\"/exams/jnvst/mental-ability\">");
+        assertThat(fetch("/api/v1/seo/body/exams/jnvst/guide")).contains("<a href=\"/exams/jnvst/mental-ability\">");
+        assertThat(fetch("/api/v1/seo/body/exams/aissee")).doesNotContain("/exams/jnvst/mental-ability");
+        assertThat(fetch("/sitemaps/exams.xml"))
+                .contains("<loc>http://localhost/exams/jnvst/mental-ability</loc><lastmod>" + checked + "</lastmod>");
     }
 
     @Test

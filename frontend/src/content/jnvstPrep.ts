@@ -4,6 +4,7 @@
  * `section` matches the section name of the questions in the practice bank (tools/practice/jnvst).
  */
 import type { Bi, PrepConfig, PrepTexts, RoadmapStage } from './examPrep';
+import { MENTAL_ABILITY_LINK, MENTAL_ABILITY_PATH } from './jnvstLinks';
 
 export type { Bi, Lang } from './examPrep';
 
@@ -29,6 +30,7 @@ export interface JnvstSection {
   about: Bi;
   topics: { topic: string; label: Bi }[];
   tips: Bi[];
+  guide?: { to: string; label: Bi };
 }
 
 export const JNVST_SECTIONS: JnvstSection[] = [
@@ -49,6 +51,7 @@ export const JNVST_SECTIONS: JnvstSection[] = [
       { en: 'Look for one change at a time: turning, moving, adding or filling.', hi: 'एक बार में एक बदलाव खोजिए: घूमना, खिसकना, जुड़ना या भरना।' },
       { en: 'In a mirror on the right, left and right swap; top and bottom stay.', hi: 'दाईं ओर के दर्पण में बायाँ-दायाँ बदलता है; ऊपर-नीचे वही रहता है।' },
     ],
+    guide: { to: MENTAL_ABILITY_PATH, label: MENTAL_ABILITY_LINK },
   },
   {
     key: 'evs', section: 'Environmental Studies', icon: 'sparkle', tone: 'from-emerald-600 to-emerald-400',
@@ -217,7 +220,8 @@ export const T = {
   updates: { en: 'Important dates', hi: 'महत्त्वपूर्ण तिथियाँ' },
   officialLinks: { en: 'Official links', hi: 'आधिकारिक लिंक' },
   prospectus: { en: 'JNVST 2027 prospectus (PDF)', hi: 'JNVST 2027 प्रॉस्पेक्टस (PDF)' },
-  previousPaper: { en: 'Official previous question booklet (PDF)', hi: 'आधिकारिक पिछला प्रश्न-पत्र (PDF)' },
+  // The 2026 booklet is in the earlier pattern (40 Mental Ability questions in ten parts, no EVS), read 27 Nov 2026.
+  previousPaper: { en: 'Official JNVST 2026 question paper (PDF, earlier pattern)', hi: 'आधिकारिक JNVST 2026 प्रश्न-पत्र (PDF, पुराना पैटर्न)' },
   portal: { en: 'NVS admission portal and admit card', hi: 'NVS प्रवेश पोर्टल और प्रवेश पत्र' },
   originality: {
     en: 'All practice questions on this page are written by SchoolDhundo in the style of the official pattern. They are not official or previous-year questions, and practice scores do not predict selection. Official papers are linked above, never copied.',

@@ -5,6 +5,7 @@ showed on 25 Nov 2026, what was changed in the code, how it was tested, and what
 
 Status: **committed as 0ed6637 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
 live when you publish them. The fix for Search Console's job-posting warnings was **DEPLOYED on 26 Nov 2026** as cbe0968 (§20).
+The Navodaya Mental Ability page and the 2026-paper corrections were built on 27 Nov 2026 (§22).
 
 Status labels: **VERIFIED** (checked against data or the live site), **IMPLEMENTED** (in the code), **TESTED** (tests or
 browser checks pass), **DEPLOYED** (live and checked), **RECOMMENDED** (not done), **BLOCKED** (needs you or access this
@@ -599,3 +600,42 @@ deploy refresh within 10 minutes.
 | Ubersuggest AI visibility | Four prompts were replaced by parents' questions the site now answers: JNVST answer key, JNVST 2027 result date, a free JNVST mock test, the AISSEE 2027 last date. 10 prompts; 2 of 100 brand operations used. | DONE |
 | IndexNow in production | The 07:30 IST runs: 26 Nov, 6 of 6 changed addresses accepted; 27 Nov, 8 of 8 (HTTP 200), with the key file read through local nginx. The one-time submission of every address still needs an admin login (§16, step 2). | VERIFIED |
 | Re-measurement | Two one-time cloud runs at 10:00 IST: 9 Dec 2026 (https://claude.ai/code/routines/trig_01EVtsL1FJTDBjbYYCi1XhKC) and 23 Dec 2026 (https://claude.ai/code/routines/trig_01P96AhGma3w7KPmiqpQDTDc). Each reads Search Console, GA4 and Bing through Windsor.ai and Ubersuggest's free reports, read-only, and compares them with the baseline in §3; the report is the run's result. Windsor's trial must still be active then. | SCHEDULED |
+
+---
+
+## 22. The Navodaya Mental Ability page (27 Nov 2026)
+
+The 30-day plan (§18) called for one landing for "navodaya mental ability" searches, built from the existing sets with no
+duplicate pages. It is `/exams/jnvst/mental-ability`.
+
+**Evidence**
+
+| What | Finding | Status |
+|---|---|---|
+| Demand (Ubersuggest, India, 27 Nov) | "navodaya mental ability question paper" 22,200 a month (difficulty 12); "… test" 9,900 (16); "… questions pdf" 9,900 (19); "… questions" 8,100 (26): about 50,000 a month in one intent. One paid report used. | VERIFIED |
+| The site today (Search Console via Windsor, 28 Oct–27 Nov) | No query containing "mental", "reasoning" or "question paper" at all: the site is not in these searches. | VERIFIED |
+| Who ranks (Ubersuggest results page, collected 12 Sep 2026) | Scribd PDFs (#1, #6), notes and mock-test pages of sites with authority 4–16 (vedaacademy.in, navodayastudy.com, navodayacoaching.in, competitivecracker.com), selfstudys.com (44), a video block and an AI Overview. | VERIFIED (third-party data) |
+| The official pattern (JNVST 2027 prospectus, sections 5–7) | Mental Ability is questions 1–20, non-verbal, five parts: pattern completion (with letter and number patterns), figure series, geometrical figure completion, mirror and water images, embedded figures. It shares Section 1's 60 minutes and 14 qualifying marks with EVS and decides ties first (7F). The prospectus says four questions per part but numbers Part III as 9–11 and Part IV as 12–16; the page says so. | VERIFIED |
+| The official 2026 paper (PYQ_English_2026.pdf, read page by page) | It is in the **earlier pattern**: 40 Mental Ability questions in ten parts and no EVS. Its questions 9–12 (pattern completion), 13–16 (figure series), 21–24 (geometrical figure completion), 25–28 (mirror images) and 37–40 (embedded figures) are the types in the test now. Odd figure out (1–4), figure matching (5–8), analogy (17–20), punched-hole patterns (29–32) and space visualisation (33–36) are not in the 2027 pattern. The site linked this paper as "the previous question booklet" without saying so, and the JNV article told families to solve it under real timing. | VERIFIED; corrected below |
+
+**What was built**
+
+| Item | Detail | Status |
+|---|---|---|
+| The page | Title "Navodaya Mental Ability Question Paper: Free Practice Tests" (59 characters), a 146-character description, English and Hindi. The test at a glance; each of the five parts with its task, a tip and a worked example drawn as figures, answer hidden until asked; "Practise this type" for every type, with the bank's count; the five 20-question practice papers and two mock tests; the official papers, with which 2026 questions to use; nine questions parents ask; sources and the date checked. | IMPLEMENTED, TESTED |
+| Worked examples | Six new questions (Part IV has a mirror and a water example) from the practice bank's own rules (`tools/practice/jnvst/mat.mjs`). None is a bank question: the bank keeps answers on the server until a test is submitted. A first draft's pattern example matched question 13 of the Class 4 Olympiad reasoning set, so the check now covers every figure question of every exam. | IMPLEMENTED, TESTED |
+| One source for app and server | `tools/practice/jnvst/mental-ability-page.mjs` writes the same JSON to the app and to the server, which builds the head (Article dated 27 Nov 2026 with its two NVS citations, BreadcrumbList, FAQPage) and the full HTML for crawlers from it. A test fails if the two copies differ. | IMPLEMENTED, TESTED |
+| Sitemap and links | In `sitemaps/exams.xml` with lastmod 2026-11-27, so the daily IndexNow run sends it to Bing. Linked from the JNVST preparation page (Mental Ability card), the JNVST guide (syllabus), every Mental Ability practice paper and mock test, and the JNV admission article. | IMPLEMENTED, TESTED |
+| Corrections from the 2026 paper | V51 gives the JNVST guide's 2026-paper entry a note: earlier pattern, and which questions match the test now (the seed has the same text). The preparation page's link reads "Official JNVST 2026 question paper (PDF, earlier pattern)". The JNV article (still to be published by you) now lists all five Mental Ability types, links the page, and says how to use the 2026 paper. | IMPLEMENTED, TESTED |
+| Small fix | The generator described an arrow as "a arrow"; it now says "an arrow" (the stored bank changes only when it is rebuilt). | IMPLEMENTED |
+
+**Checks**: backend `MentalAbilityPageTest` (5: same content in app and server; five parts with an example each; the
+shown mirror, water and embedded answers follow their rule; no example is in the bank; the official papers are the ones the
+JNVST guide lists), `SeoBodyIT` (head, full HTML, links, sitemap entry), `ExamSeedMigrationTest` (V51 equals the seed);
+frontend 5 new tests (247 in all) and the production build. In a browser at 1,280 and 360 pixels the page lays out with no
+overflow of its own; the 9-pixel overflow measured at 360 pixels with a desktop scrollbar comes from the site header and is
+the same on `/exams/jnvst` (pre-existing, RECOMMENDED: let the header's sign-in button shrink below 360 pixels).
+
+**Not claimed**: no ranking or traffic change; measure it from the 9 Dec and 23 Dec runs ("navodaya mental ability question
+paper" is one of the 25 tracked keywords since 26 Nov). Next for this page: Search Console URL Inspection → Request indexing
+(you), and when NVS publishes the JNVST 2028 prospectus, check the pattern and re-run the builder.

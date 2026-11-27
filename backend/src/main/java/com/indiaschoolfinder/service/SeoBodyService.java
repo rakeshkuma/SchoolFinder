@@ -116,13 +116,16 @@ public class SeoBodyService {
     private final AdmissionService admissions;
     private final NoticeService notices;
     private final ReferenceDataService referenceData;
+    private final MentalAbilityPage mentalAbilityPage;
 
     public SeoBodyService(SeoHeadService seoHeadService, SchoolService schoolService, LocationService locationService,
                           SchoolFaqService faqService, UpdateFeedService updateFeed, RankingCatalogService rankings,
                           PremierDirectoryService directory, BlogService blogService, ExamService examService,
                           com.indiaschoolfinder.repository.PracticeSetRepository practiceSets, PlaceSummaryService placeSummary,
                           BestPlacesService bestPlaces, SchoolListService schoolLists, OlympiadPages olympiadPages,
-                          AdmissionService admissions, NoticeService notices, ReferenceDataService referenceData) {
+                          AdmissionService admissions, NoticeService notices, ReferenceDataService referenceData,
+                          MentalAbilityPage mentalAbilityPage) {
+        this.mentalAbilityPage = mentalAbilityPage;
         this.referenceData = referenceData;
         this.notices = notices;
         this.admissions = admissions;
@@ -179,6 +182,8 @@ public class SeoBodyService {
                 main = olympiadHub();
             } else if ((m = OLYMPIAD_CLASS.matcher(p)).matches()) {
                 main = olympiadClass(Integer.parseInt(m.group(1)), description);
+            } else if (p.equals(MentalAbilityPage.PATH)) {
+                main = mentalAbility();
             } else if ((m = EXAM_GUIDE.matcher(p)).matches()) {
                 main = exam(examService.get(m.group(1)), heading, description, false);
             } else if ((m = EXAM.matcher(p)).matches() && !EXAM_PAGES.contains(m.group(1))) {
@@ -1521,6 +1526,10 @@ public class SeoBodyService {
             h.append("</ul>");
         }
         h.append("<ul class=\"pr-grid\">");
+        // A Mental Ability paper, or a mock test that opens with the Mental Ability section.
+        if (set.getSlug().startsWith("jnvst-mat-") || set.getSlug().startsWith("jnvst-mock-")) {
+            h.append(link(MentalAbilityPage.PATH, MENTAL_ABILITY_LINK));
+        }
         if (prep) {
             h.append(link("/exams/" + set.getExamSlug(), "Preparation dashboard and study plan"))
                     .append(link("/exams/" + set.getExamSlug() + "/guide", "Eligibility, dates, syllabus and official papers"));
@@ -1784,6 +1793,7 @@ public class SeoBodyService {
         }
         if (prep) {
             practiceSets(h, e.slug());
+            mentalAbilityLink(h, e.slug());
             h.append("<p><a href=\"/exams/").append(e.slug()).append("/guide\">").append(esc(e.shortName()))
                     .append(": eligibility, dates, syllabus and official papers</a></p>");
         } else {
@@ -1815,6 +1825,7 @@ public class SeoBodyService {
                 for (var area : c.syllabus()) {
                     list(h, null, area.topics(), area.area());
                 }
+                mentalAbilityLink(h, e.slug());
             }
             list(h, "Selection", c.selection());
             if (c.faq() != null && !c.faq().isEmpty()) {
@@ -1843,6 +1854,93 @@ public class SeoBodyService {
                     .append(" practice questions, mock tests and study plan</a></p>");
         }
         return h.toString();
+    }
+
+    /** The link from the JNVST pages to the Mental Ability page, worded as people search for it. */
+    static final String MENTAL_ABILITY_LINK = "Navodaya Mental Ability Test: question types, worked examples and official papers";
+
+    /**
+     * The JNVST Mental Ability page as the app shows it (MentalAbilityPage; pages/MentalAbilityPage.tsx), in English: the
+     * test at a glance, the five parts with a worked example of each (its figures described in words, the answer under
+     * "Answer"), the practice papers, how the official 2026 paper maps onto the five parts, and the questions parents ask.
+     */
+    String mentalAbility() {
+        MentalAbilityPage.Content c = mentalAbilityPage.content();
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/exams", "Exams", "/exams/jnvst", "JNVST");
+        heading(h, esc(c.heading().en()), esc(c.intro().en()));
+        h.append("<dl class=\"pr-facts\">");
+        c.facts().forEach(f -> fact(h, esc(f.label().en()), f.value().en()));
+        h.append("</dl><p>Pattern: <a href=\"").append(esc(c.patternSource().url())).append("\" rel=\"noopener\">")
+                .append(esc(c.patternSource().label())).append("</a>.</p>");
+
+        h.append("<h2>The five parts, with a worked example of each</h2>");
+        for (MentalAbilityPage.Part part : c.parts()) {
+            h.append("<h3>Part ").append(part.part()).append(": ").append(esc(part.name().en())).append(" (questions ")
+                    .append(esc(part.questions())).append(")</h3><p>").append(esc(part.task().en())).append("</p><p>Tip: ")
+                    .append(esc(part.tip().en())).append("</p>");
+            for (MentalAbilityPage.Example e : c.examples()) {
+                if (!e.part().equals(part.part())) continue;
+                h.append("<p><strong>Example").append(part.topics().size() > 1 ? " (" + esc(e.topic().toLowerCase(Locale.ROOT)) + ")" : "")
+                        .append(":</strong> ").append(esc(e.prompt().en())).append("</p><p>Problem figure")
+                        .append(e.figure().size() > 1 ? "s" : "").append(": ")
+                        .append(esc(String.join("; ", e.figure().stream().map(MentalAbilityPage.Figure::alt).toList())))
+                        .append(e.figureAsksNext() ? "; then a blank for the next figure" : "").append(".</p><p>Answer figures:</p><ol type=\"A\">");
+                e.optionFigures().forEach(f -> h.append("<li>").append(esc(f.alt())).append("</li>"));
+                h.append("</ol><details><summary>Answer</summary><p>Figure ").append(e.answerLetter()).append(". ")
+                        .append(esc(e.explanation().en())).append("</p></details>");
+            }
+        }
+        h.append("<p>").append(esc(c.numberingNote().en())).append("</p>");
+
+        List<Object[]> sets = practiceSets.findPublishedOutlineByExam("jnvst");
+        List<Object[]> papers = sets.stream().filter(s -> ((String) s[0]).startsWith("jnvst-mat-")).toList();
+        List<Object[]> mocks = sets.stream().filter(s -> s[2] == com.indiaschoolfinder.entity.PracticeSet.Kind.MOCK).toList();
+        if (!papers.isEmpty()) {
+            h.append("<h2>Free practice papers</h2><p>").append(esc(c.practiceHelp().en())).append("</p><ul class=\"pr-list\">");
+            papers.forEach(s -> practiceLink(h, s));
+            h.append("</ul>");
+        }
+        if (!mocks.isEmpty()) {
+            h.append("<h3>Full mock tests</h3><p>").append(esc(c.mocksHelp().en())).append("</p><ul class=\"pr-list\">");
+            mocks.forEach(s -> practiceLink(h, s));
+            h.append("</ul>");
+        }
+
+        h.append("<h2>Official question papers</h2><ul class=\"pr-list\">");
+        c.officialPapers().forEach(p -> h.append("<li><a href=\"").append(esc(p.url())).append("\" rel=\"noopener\">")
+                .append(esc(p.title().en())).append("</a> <span>").append(esc(p.note().en())).append("</span></li>"));
+        MentalAbilityPage.Paper2026 old = c.paper2026();
+        h.append("</ul><p>").append(esc(old.intro().en())).append("</p><ul>");
+        c.parts().forEach(part -> h.append("<li>Questions ").append(esc(part.paper2026())).append(": ").append(esc(part.name().en())).append("</li>"));
+        h.append("</ul><p>").append(esc(old.mirrorNote().en())).append(' ').append(esc(old.droppedIntro().en())).append("</p><ul>");
+        old.dropped().forEach(d -> h.append("<li>Questions ").append(esc(d.questions())).append(": ").append(esc(d.name().en())).append("</li>"));
+        h.append("</ul><p>").append(esc(old.answerKey().en())).append("</p>");
+
+        h.append("<h2>Questions parents ask</h2><dl class=\"pr-faq\">");
+        c.faq().forEach(f -> h.append("<dt>").append(esc(f.q().en())).append("</dt><dd>").append(esc(f.a().en())).append("</dd>"));
+        h.append("</dl><h2>Sources</h2><ul class=\"pr-list\">");
+        c.sources().forEach(s -> h.append("<li><a href=\"").append(esc(s.url())).append("\" rel=\"noopener\">").append(esc(s.label()))
+                .append("</a></li>"));
+        h.append("</ul><p>Checked against these sources on ").append(time(c.checkedOn())).append(".</p><p>")
+                .append(esc(c.originality().en())).append("</p><ul class=\"pr-grid\">")
+                .append(link("/exams/jnvst", "JNVST preparation: every section, full mock tests and a study plan"))
+                .append(link("/exams/jnvst/guide", "JNVST eligibility, dates, syllabus and result"))
+                .append("</ul>");
+        return h.toString();
+    }
+
+    /** On the JNVST pages only: the link to the Mental Ability page. */
+    private static void mentalAbilityLink(StringBuilder h, String examSlug) {
+        if ("jnvst".equals(examSlug)) {
+            h.append("<p><a href=\"").append(MentalAbilityPage.PATH).append("\">").append(esc(MENTAL_ABILITY_LINK)).append("</a></p>");
+        }
+    }
+
+    private static void practiceLink(StringBuilder h, Object[] s) {
+        h.append("<li><a href=\"/exams/practice/").append(s[0]).append("\">").append(esc((String) s[1])).append("</a>");
+        if (s[3] != null) h.append(" <span>").append(s[3]).append(" min</span>");
+        h.append("</li>");
     }
 
     /** The exam's published practice sets, mock tests first, linked by title (the questions themselves are not loaded). */

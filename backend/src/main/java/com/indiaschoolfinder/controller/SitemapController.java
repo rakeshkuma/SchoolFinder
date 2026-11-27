@@ -62,6 +62,7 @@ public class SitemapController {
     private final com.indiaschoolfinder.service.OlympiadPages olympiadPages;
     private final com.indiaschoolfinder.repository.SiteUpdateRepository siteUpdates;
     private final com.indiaschoolfinder.service.NoticeService notices;
+    private final com.indiaschoolfinder.service.MentalAbilityPage mentalAbilityPage;
 
     public SitemapController(SchoolRepository schoolRepository, ExamRepository examRepository, LocationService locationService,
                              AppProperties properties, com.indiaschoolfinder.repository.PracticeSetRepository practiceSetRepository,
@@ -70,7 +71,9 @@ public class SitemapController {
                              com.indiaschoolfinder.service.PremierDirectoryService premierDirectory,
                              com.indiaschoolfinder.service.OlympiadPages olympiadPages,
                              com.indiaschoolfinder.repository.SiteUpdateRepository siteUpdates,
-                             com.indiaschoolfinder.service.NoticeService notices) {
+                             com.indiaschoolfinder.service.NoticeService notices,
+                             com.indiaschoolfinder.service.MentalAbilityPage mentalAbilityPage) {
+        this.mentalAbilityPage = mentalAbilityPage;
         this.siteUpdates = siteUpdates;
         this.notices = notices;
         this.olympiadPages = olympiadPages;
@@ -243,6 +246,11 @@ public class SitemapController {
         for (Exam exam : exams) {
             url(xml, base + "/exams/" + exam.getSlug(), exam.getUpdatedAt());
             if (SeoHeadService.PREP_PAGES.contains(exam.getSlug())) url(xml, base + "/exams/" + exam.getSlug() + "/guide", exam.getUpdatedAt());
+            if ("jnvst".equals(exam.getSlug())) {
+                // Dated by when its facts were last checked, the date the page shows.
+                url(xml, base + com.indiaschoolfinder.service.MentalAbilityPage.PATH,
+                        mentalAbilityPage.content().checkedOn().atStartOfDay(ZoneOffset.UTC).toInstant());
+            }
         }
         // Class pages only for classes with an entrance test; state pages only for states with their own exam
         // (others would repeat existing pages).

@@ -310,6 +310,7 @@ public class SeoHeadService {
     private final AdmissionService admissionService;
     private final com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository;
     private final OlympiadPages olympiadPages;
+    private final MentalAbilityPage mentalAbilityPage;
 
     public SeoHeadService(SchoolService schoolService, LocationService locationService,
                           EducationBoardRepository boardRepository, SchoolRepository schoolRepository,
@@ -318,7 +319,8 @@ public class SeoHeadService {
                           BestPlacesService bestPlacesService, PremierDirectoryService premierDirectory,
                           SchoolFaqService faqService, FeeService feeService, AdmissionService admissionService,
                           com.indiaschoolfinder.repository.SchoolFacilityRepository facilityRepository,
-                          OlympiadPages olympiadPages, NoticeService notices) {
+                          OlympiadPages olympiadPages, NoticeService notices, MentalAbilityPage mentalAbilityPage) {
+        this.mentalAbilityPage = mentalAbilityPage;
         this.notices = notices;
         this.olympiadPages = olympiadPages;
         this.faqService = faqService;
@@ -401,6 +403,9 @@ public class SeoHeadService {
             }
             if (p.startsWith(OlympiadPages.PATH + "/")) {
                 throw new ResourceNotFoundException("Olympiad page", p); // the app shows "page not found" here
+            }
+            if (p.equals(MentalAbilityPage.PATH)) {
+                return mentalAbility(baseUrl);
             }
             if ((m = EXAM.matcher(p)).matches()) {
                 return PREP_PAGES.contains(m.group(1)) ? prepPage(examService.get(m.group(1)), baseUrl) : exam(examService.get(m.group(1)), baseUrl);
@@ -1322,6 +1327,34 @@ public class SeoHeadService {
         article.put("author", publisher(baseUrl));
         article.put("publisher", publisher(baseUrl));
         return article;
+    }
+
+    /**
+     * The JNVST Mental Ability page (MentalAbilityPage): an Article by the site, dated when its facts were last checked
+     * against the NVS prospectus and paper it cites, its place under the JNVST preparation page, and the questions it
+     * answers on the page (FAQPage).
+     */
+    private String mentalAbility(String baseUrl) {
+        MentalAbilityPage.Content c = mentalAbilityPage.content();
+        String url = baseUrl + MentalAbilityPage.PATH;
+        Map<String, Object> article = new LinkedHashMap<>();
+        article.put("@context", "https://schema.org");
+        article.put("@type", "Article");
+        article.put("headline", c.heading().en());
+        article.put("description", c.description());
+        article.put("url", url);
+        article.put("mainEntityOfPage", url);
+        article.put("inLanguage", "en-IN");
+        article.put("about", Map.of("@type", "Thing", "name", "JNVST Mental Ability Test (Class VI)"));
+        article.put("dateModified", c.checkedOn().toString());
+        article.put("citation", c.sources().stream().map(MentalAbilityPage.Source::url).toList());
+        article.put("author", publisher(baseUrl));
+        article.put("publisher", publisher(baseUrl));
+        return tags(c.title() + " | " + SITE, c.description(), url, null, false, List.of(
+                crumbs(listItem(1, "Home", baseUrl + "/"), listItem(2, "Entrance exams", baseUrl + "/exams"),
+                        listItem(3, "JNVST preparation", baseUrl + "/exams/jnvst"), listItem(4, "Mental Ability Test", url)),
+                article,
+                faqPage(c.faq().stream().map(f -> new SchoolFaqService.Faq(f.q().en(), f.a().en())).toList())));
     }
 
     /** A Class VI preparation dashboard (JNVST, AISSEE, Netarhat): practice, mock tests and the study plan. */

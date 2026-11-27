@@ -12,6 +12,7 @@ import { Pagination } from '../components/common/Pagination';
 import { AsyncContent, EmptyState, ErrorState, Spinner } from '../components/common/States';
 import { Tabs } from '../components/common/Tabs';
 import { BOARDING_SCHOOLS } from '../content/boarding';
+import { MENTAL_ABILITY_LINK, MENTAL_ABILITY_PATH } from '../content/jnvstLinks';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { savedExams, useLocalList } from '../hooks/usePersonal';
@@ -727,6 +728,11 @@ export function ExamGuidePage() {
                         </div>
                       ))}
                     </div>
+                    {exam.slug === 'jnvst' && (
+                      <Link to={MENTAL_ABILITY_PATH} className="link mt-5 inline-flex items-center gap-1 text-sm font-semibold">
+                        {MENTAL_ABILITY_LINK.en} <Icon name="arrowRight" className="h-3.5 w-3.5" />
+                      </Link>
+                    )}
                     <p className="mt-5 text-xs text-slate-500">From the official notice for {exam.currentCycle}; check the latest bulletin before you start.</p>
                   </section>
                 </div>

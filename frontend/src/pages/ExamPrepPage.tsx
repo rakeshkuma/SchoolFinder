@@ -294,6 +294,11 @@ function Sections({ c, t, lang, bank, quizzes, sessionUrl, detail }: {
                   </details>
                 )}
                 <ul className="list-disc space-y-1 pl-5 text-slate-600">{s.tips.map((tip) => <li key={tip.en}>{tip[lang]}</li>)}</ul>
+                {s.guide && (
+                  <Link to={s.guide.to} className="link inline-flex items-center gap-1 font-semibold">
+                    {t(s.guide.label)} <Icon name="arrowRight" className="h-3.5 w-3.5" />
+                  </Link>
+                )}
                 <div className="flex flex-wrap gap-2 pt-1">
                   {(s.variants ?? [{ section: s.section }]).map((v) => (
                     <Link key={v.section} to={sessionUrl({ mode: 'TOPIC', section: v.section, count: '20', timer: '1' })} className="btn-primary py-1.5 text-sm">

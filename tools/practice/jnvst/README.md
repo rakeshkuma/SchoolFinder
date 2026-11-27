@@ -40,3 +40,16 @@ papers are linked from the exam guide, not reproduced.
 
 Load into a running server with the admin practice import (`POST /api/v1/admin/practice-sets/import`, used by
 `tools/seed/import-to-server.js`-style tooling or the admin page) or, locally, with `LocalPracticeImport`.
+
+## The Mental Ability page
+
+```
+node tools/practice/jnvst/mental-ability-page.mjs
+```
+
+builds the content of `/exams/jnvst/mental-ability` (the five parts, worked examples, official papers, questions parents
+ask) and writes the same JSON to `frontend/src/content/jnvstMentalAbility.json` and
+`backend/src/main/resources/content/jnvst-mental-ability.json`; `MentalAbilityPageTest` fails if they differ. Its worked
+examples come from the rules in `mat.mjs` with their own seed, and the builder refuses any whose figures match a figure
+question anywhere in `practice.json`, because the page shows the answer. When the next prospectus changes the pattern,
+edit the text in the builder, set `checkedOn`, and re-run it.

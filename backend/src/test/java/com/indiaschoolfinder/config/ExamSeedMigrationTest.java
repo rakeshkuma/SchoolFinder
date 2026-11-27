@@ -26,6 +26,10 @@ class ExamSeedMigrationTest {
             "SET content = content \\|\\| '(.*?)'::jsonb,\\s*last_verified_on = DATE '([0-9-]+)',.*?WHERE slug = '([a-z0-9-]+)';",
             Pattern.DOTALL);
 
+    private static final String PAPER_NOTE = "db/migration/V51__jnvst_2026_paper_is_the_earlier_pattern.sql";
+    private static final Pattern CONTENT_ONLY = Pattern.compile(
+            "SET content = content \\|\\| '(.*?)'::jsonb,\\s*updated_at = now\\(\\)\\s*WHERE slug = '([a-z0-9-]+)';", Pattern.DOTALL);
+
     private final ObjectMapper json = new ObjectMapper();
 
     @Test
@@ -48,6 +52,26 @@ class ExamSeedMigrationTest {
                     assertThat(patch.get(key)).as(slug + "." + key).isEqualTo(seed.get(slug).get(key)));
         }
         assertThat(updates).isEqualTo(2);
+    }
+
+    /** V51: the JNVST guide's note on the 2026 paper, which is in the earlier ten-part pattern (read on 27 Nov 2026). */
+    @Test
+    void jnvstPaperNoteIsTheSeedsAndSaysThePaperIsInTheEarlierPattern() throws IOException {
+        Map<String, JsonNode> seed = new HashMap<>();
+        for (JsonNode exam : json.readTree(read("seed/exams.json")).get("exams")) {
+            seed.put(exam.get("slug").asText(), exam.get("content"));
+        }
+        Matcher m = CONTENT_ONLY.matcher(read(PAPER_NOTE));
+        assertThat(m.find()).isTrue();
+        assertThat(m.group(2)).isEqualTo("jnvst");
+        JsonNode patch = json.readTree(m.group(1).replace("''", "'"));
+        java.util.List<String> keys = new java.util.ArrayList<>();
+        patch.fieldNames().forEachRemaining(keys::add);
+        assertThat(keys).containsExactly("papers");
+        assertThat(patch.get("papers")).isEqualTo(seed.get("jnvst").get("papers"));
+        assertThat(patch.get("papers").get(0).get("note").asText()).contains("earlier pattern").contains("9–16, 21–28 and 37–40")
+                .hasSizeLessThanOrEqualTo(300);
+        assertThat(m.find()).as("one update").isFalse();
     }
 
     @Test
