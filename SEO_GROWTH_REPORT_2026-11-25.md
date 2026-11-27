@@ -5,7 +5,7 @@ showed on 25 Nov 2026, what was changed in the code, how it was tested, and what
 
 Status: **committed as 0ed6637 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
 live when you publish them. The fix for Search Console's job-posting warnings was **DEPLOYED on 26 Nov 2026** as cbe0968 (§20).
-The Navodaya Mental Ability page and the 2026-paper corrections were built on 27 Nov 2026 (§22).
+The Navodaya Mental Ability page and the 2026-paper corrections were **DEPLOYED on 28 Nov 2026** as 538d3da; 12 of 12 live checks passed (§22).
 
 Status labels: **VERIFIED** (checked against data or the live site), **IMPLEMENTED** (in the code), **TESTED** (tests or
 browser checks pass), **DEPLOYED** (live and checked), **RECOMMENDED** (not done), **BLOCKED** (needs you or access this
@@ -639,3 +639,10 @@ the same on `/exams/jnvst` (pre-existing, RECOMMENDED: let the header's sign-in 
 **Not claimed**: no ranking or traffic change; measure it from the 9 Dec and 23 Dec runs ("navodaya mental ability question
 paper" is one of the 25 tracked keywords since 26 Nov). Next for this page: Search Console URL Inspection → Request indexing
 (you), and when NVS publishes the JNVST 2028 prospectus, check the pattern and re-run the builder.
+
+**Deployment: DEPLOYED** at about 00:05 IST on 28 Nov 2026 (538d3da, pushed to `origin/develop`); V51 ran on start. Live
+checks, all passed: the page answers 200 with its title, canonical, BreadcrumbList, Article and FAQPage (9 questions);
+its server HTML (2,291 words) has the five parts, the examples and the practice-paper links; it is in `sitemaps/exams.xml`
+with lastmod 2026-11-27; it is linked from `/exams/jnvst`, `/exams/jnvst/guide` and `/exams/practice/jnvst-mat-1`; the
+API shows V51's note on the 2026 paper; the guide is still served in full. The guide's page HTML needed one 10-minute cache
+refresh (140 seconds after the first check).
