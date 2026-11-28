@@ -142,6 +142,15 @@ class SeoHeadIT extends AbstractIntegrationTest {
                 .contains("Mathematics questions for Class V with explained answers").contains("Original questions, not official papers.")
                 .doesNotContain("noindex");
         assertThat(head("/exams/practice/no-such-set")).contains("noindex").doesNotContain("canonical");
+        // The printable paper is the set's print version: the set's own page is its canonical, and it is not a Quiz page.
+        assertThat(head("/exams/practice/netarhat-maths-1/paper"))
+                .contains("href=\"http://localhost/exams/practice/netarhat-maths-1\"")
+                .contains("Print or save as PDF").contains("printable paper")
+                .doesNotContain("noindex").doesNotContain("\"@type\":\"Quiz\"").doesNotContain("/paper\"");
+        assertThat(head("/exams/practice/no-such-set/paper")).contains("noindex").doesNotContain("canonical");
+        mockMvc.perform(get("/sitemaps/exams.xml"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.content()
+                        .string(org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("/paper</loc>"))));
         assertThat(head("/boarding/girls")).contains("<title>Girls&#39; boarding schools in India | SchoolDhundo</title>");
         assertThat(head("/rankings/government-boarding")).contains("href=\"http://localhost/rankings/government-boarding\"");
         mockMvc.perform(get("/sitemaps/exams.xml"))

@@ -53,6 +53,7 @@ const PracticeListPage = page(() => import('./pages/PracticePages'), 'PracticeLi
 const OlympiadPage = page(() => import('./pages/PracticePages'), 'OlympiadPage');
 const PracticeTestPage = page(() => import('./pages/PracticePages'), 'PracticeTestPage');
 const PracticeAttemptPage = page(() => import('./pages/PracticePages'), 'PracticeAttemptPage');
+const PracticePaperPage = page(() => import('./pages/PracticePaperPage'), 'PracticePaperPage');
 const PracticeSessionPage = page(() => import('./pages/PracticePages'), 'PracticeSessionPage');
 const PracticeProgressPage = page(() => import('./pages/PracticeProgressPage'), 'PracticeProgressPage');
 const LeaderboardPage = page(() => import('./pages/LeaderboardPage'), 'LeaderboardPage');
@@ -222,6 +223,7 @@ export default function App() {
               <Route path="exams/challenges/:slug/take" element={<ChallengeTakePage />} />
               <Route path="exams/practice/attempts/:id" element={<PracticeAttemptPage />} />
               <Route path="exams/practice/:slug" element={<PracticeTestPage />} />
+              <Route path="exams/practice/:slug/paper" element={<PracticePaperPage />} />
               <Route path="exams/jnvst" element={<JnvstPrepPage />} />
               <Route path="exams/jnvst/mental-ability" element={<MentalAbilityPage />} />
               <Route path="exams/aissee" element={<AisseePrepPage />} />

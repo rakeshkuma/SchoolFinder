@@ -68,7 +68,7 @@ export function questionText(q: PracticeQuestion, lang: PracticeLanguage): { pro
   return lang === 'hi' && q.hi ? { ...q.hi, hindi: true } : { prompt: q.prompt, options: q.options, hindi: false };
 }
 
-function passageText(p: PracticePassage, lang: PracticeLanguage) {
+export function passageText(p: PracticePassage, lang: PracticeLanguage) {
   return lang === 'hi' && p.hi ? p.hi : { title: p.title, text: p.text };
 }
 
@@ -147,7 +147,7 @@ function BookmarkButton({ id }: { id: string }) {
   );
 }
 
-function LanguageSwitch({ lang, onChange }: { lang: PracticeLanguage; onChange: (lang: PracticeLanguage) => void }) {
+export function LanguageSwitch({ lang, onChange }: { lang: PracticeLanguage; onChange: (lang: PracticeLanguage) => void }) {
   return (
     <div className="flex rounded-full bg-white p-0.5 text-xs font-semibold ring-1 ring-slate-200" role="group" aria-label="Question language">
       {([['en', 'English'], ['hi', 'हिन्दी']] as const).map(([v, label]) => (
@@ -1097,6 +1097,13 @@ export function Player({ sitting }: { sitting: Sitting }) {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               {!saved && <button type="button" onClick={start} className="btn-primary">Start now <Icon name="arrowRight" className="h-4 w-4" /></button>}
               {hindiCount > 0 && <LanguageSwitch lang={lang} onChange={setLang} />}
+              {/* A ready-made set can also be sat on paper, e.g. by a class sharing one device. */}
+              {sitting.mode === 'SET' && sitting.setSlug && (
+                <Link to={`/exams/practice/${sitting.setSlug}/paper${lang === 'hi' ? '?lang=hi' : ''}`}
+                  className="text-sm font-semibold text-brand-700 underline hover:text-ink">
+                  Print this paper or save it as a PDF
+                </Link>
+              )}
             </div>
           </section>
         </div>

@@ -33,6 +33,7 @@ export type AnalyticsEvent =
   | 'exam_page_view'
   | 'quiz_start'
   | 'quiz_complete'
+  | 'paper_print'
   | 'google_sign_in'
   | 'user_registration';
 

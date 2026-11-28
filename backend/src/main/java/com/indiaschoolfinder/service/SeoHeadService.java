@@ -72,6 +72,8 @@ public class SeoHeadService {
     private static final Pattern EXAM_STATE = Pattern.compile("^/exams/state/([a-z0-9-]+)/?$");
     /** A practice set; progress, attempts and sessions under /exams/practice are private and handled first. */
     private static final Pattern PRACTICE_SET = Pattern.compile("^/exams/practice/([a-z0-9-]+)/?$");
+    /** A practice set as a paper to print or save as PDF: a print version, whose canonical address is the set's own. */
+    private static final Pattern PRACTICE_PAPER = Pattern.compile("^/exams/practice/([a-z0-9-]+)/paper/?$");
     private static final Pattern BLOG_POST = Pattern.compile("^/blog/([a-z0-9-]+)/?$");
     private static final Pattern BLOG_CATEGORY = Pattern.compile("^/blog/category/([a-z0-9-]+)/?$");
     private static final Pattern BEST_IN = Pattern.compile("^/rankings/best-schools-in-([a-z0-9-]+)/?$");
@@ -434,6 +436,11 @@ public class SeoHeadService {
             if ((m = PRACTICE_SET.matcher(p)).matches()) {
                 String slug = m.group(1);
                 return practiceSet(practiceSetRepository.findBySlugAndPublishedTrue(slug)
+                        .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
+            }
+            if ((m = PRACTICE_PAPER.matcher(p)).matches()) {
+                String slug = m.group(1);
+                return practicePaper(practiceSetRepository.findBySlugAndPublishedTrue(slug)
                         .orElseThrow(() -> new ResourceNotFoundException("Practice set", slug)), baseUrl);
             }
             // After the static pages: /admissions/guide and /admissions/notifications are pages, not notices.
@@ -884,6 +891,18 @@ public class SeoHeadService {
         data.put("isAccessibleForFree", true);
         data.put("provider", publisher(baseUrl));
         return tags(set.getTitle() + " | " + SITE, description, url, null, false, data);
+    }
+
+    /**
+     * A set's printable paper. Its canonical address is the set's own page, as for any print version, so search engines
+     * show the test and credit it with any link to the paper. Not in the sitemap.
+     */
+    private String practicePaper(com.indiaschoolfinder.entity.PracticeSet set, String baseUrl) {
+        int count = set.getContent().questions().size();
+        String description = "Print or save as PDF: " + set.getTitle() + ", " + count + " questions with an answer sheet. "
+                + "Check the answers online, free. Original questions, not official papers.";
+        return tags(set.getTitle() + ": printable paper | " + SITE, description, baseUrl + "/exams/practice/" + set.getSlug(),
+                null, false, null);
     }
 
     private String school(SchoolDetailDto s, String baseUrl) {
