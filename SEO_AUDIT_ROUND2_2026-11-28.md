@@ -15,7 +15,7 @@ DEPLOYED, RECOMMENDED, BLOCKED. Nothing here is estimated, and no page is called
 4. **One real issue found and fixed in code: old `?tab=` section addresses.** 24 of them were shown in Google between
    13 and 28 Nov (172 impressions), several still on 26 Nov, as copies of school profiles and exam guides. This morning's robots.txt rule would
    have frozen them in the index. They now get a permanent redirect to the page itself (§4.1). IMPLEMENTED, TESTED,
-   **not yet DEPLOYED** (§6).
+   **DEPLOYED on 28 Nov at the owner's request** (commit bb2bc17) and checked live (§6).
 5. **The admission guide was nearly empty for crawlers that run no script** (55 words of about 700). Fixed (§4.2).
 
 ## 2. Consoles (VERIFIED in Chrome, 28 Nov evening)
@@ -82,7 +82,7 @@ DEPLOYED, RECOMMENDED, BLOCKED. Nothing here is estimated, and no page is called
   top 100 (next update 3 Dec). Backlinks 0, authority 1. AI visibility: 0 of 6 ChatGPT answers name SchoolDhundo.
   0 of 3 paid reports used.
 
-## 4. Fixes (IMPLEMENTED and TESTED, not yet DEPLOYED)
+## 4. Fixes (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as bb2bc17)
 
 ### 4.1 One address per page: sections in the #fragment, old ?tab= addresses redirected
 
@@ -120,20 +120,26 @@ file stayed on disk, where the next restart or reboot would have loaded it.
 | New frontend tests | `sectionAddress.test.tsx`: fragment parsing, guide links, old ?tab= and card-link state moved into the fragment, other parameters and state kept. `sectionAddress.nginx.test.ts`: the redirect rules read from `nginx.conf` itself, 8 addresses redirected as intended and 12 left alone |
 | Backend tests (`mvnw test`) | 495 tests, 0 failures, 0 errors, BUILD SUCCESS: all 86 test classes, every test method in the source |
 | New or changed backend checks | `RobotsTxtTest` (no ?tab= rule; the claim-form rule stays), `ExamApiIT` (resources link `/exams/jnvst/guide#pattern`), `SeoBodyIT` (the guide's sections, over 600 words) |
-| nginx syntax on the server | **BLOCKED**: SSH to the server was refused by this session's permission settings, so the config could not be tried on a spare port there. The rules are covered by the test above, and the deploy script now rolls back if `nginx -t` rejects the file |
+| nginx on the server | A trial on a spare port beforehand was refused by this session's permission settings. At the deploy the server's own `nginx -t` accepted the file (the new rollback branch did not run) and nginx was reloaded |
 
-## 6. What needs you
+## 6. Deployment and live checks (28 Nov, evening)
 
-1. **Deploy** (BLOCKED for me: SSH to the server was not permitted in this session). From the repository root in
-   PowerShell: `.\deploy\oracle-micro-deploy.ps1`. If nginx rejects the new settings, the script now stops and keeps the
-   old ones; the app and robots.txt would still be correct without the redirects.
-2. **After the deploy** (I can do these in Chrome when you ask):
-   - check `curl -sI "https://schooldhundo.in/schools/jnv-pulwama?tab=boarding"` gives `301` and `Location: /schools/jnv-pulwama#boarding`;
-   - Search Console → Settings → robots.txt → request a recrawl; inspect one `?tab=` address (should become "Page with
-     redirect" once recrawled); request indexing for /admissions/guide.
-3. **How to tell it worked** (not claimed yet): over 1–3 weeks the `?tab=` addresses leave the Performance report and
-   their plain profiles gain the impressions; the `?tab=` addresses in "Excluded by 'noindex' tag" (787 of its 1,000
-   examples on 28 Nov) move to "Page with redirect".
+Pushed (`develop` 066b76c..bb2bc17) and deployed with `deploy/oracle-micro-deploy.ps1` at the owner's request; the script
+built both parts, installed them and found the site answering 200. Checked live afterwards (VERIFIED):
+
+| Check | Result |
+|---|---|
+| Old section addresses | `/schools/jnv-pulwama?tab=boarding` → **301** `/schools/jnv-pulwama#boarding`; `…navy-children-school-chanakyapuri-delhi?tab=ranking` → 301 `…#ranking`; `/exams/jnvst?tab=faq` → 301 `/exams/jnvst/guide#faq`; `/exams/netarhat?tab=prep` → 301 `/exams/netarhat/guide#prep`; `/exams/jnv-class-9?tab=prep` → 301 `…#prep`; `/exams/jnv-class-11?tab=pattern` → 301 `…#pattern` |
+| Left alone | 200 for the plain profile, a profile with `?tab=…&utm_source=…`, `/rankings/government-boarding?tab=boarding`, `/states/bihar/nalanda?page=1`, `/exams/jnvst` |
+| robots.txt | No `?tab=` rule; `Disallow: /claim-school?` kept |
+| Resources API | 36 `#section` paths, 0 `?tab=` (the first answer was nginx's stale 30-second copy) |
+| /admissions/guide for crawlers | **718 words** with its five sections (the first answer was the cached 55-word copy) |
+| In Chrome, live | The old profile address opens `#boarding` with the Boarding tab; `/exams/jnvst?tab=faq` opens the guide's FAQ; no console errors; the new app bundle is served |
+| Search Console | robots.txt **recrawl requested** (Google's copy was from 09:31 with the old rule); **indexing requested** for /admissions/guide (indexed from an earlier crawl) |
+
+**How to tell it worked** (not claimed yet): over 1–3 weeks the `?tab=` addresses leave the Performance report and their
+plain profiles gain the impressions; the `?tab=` addresses in "Excluded by 'noindex' tag" (787 of its 1,000 examples on
+28 Nov) move to "Page with redirect".
 
 ## 7. Remaining opportunities (RECOMMENDED)
 
