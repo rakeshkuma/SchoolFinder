@@ -124,14 +124,29 @@ sudo mv /var/www/schooldhundo.new /var/www/schooldhundo
 sudo install -d /etc/nginx/snippets
 # Where nginx keeps the last good copy of public API answers (see proxy_cache_path in nginx.conf).
 sudo install -d -o www-data -g www-data -m 700 /var/cache/schooldhundo-api
+SITE=/etc/nginx/sites-available/schooldhundo
+# The running configuration is kept until the new one passes nginx -t: a rejected file must not stay on disk, where the
+# next restart or reboot would load it and take the site down.
+if [ -f "$SITE" ]; then sudo cp "$SITE" "$SITE.previous"; fi
+if [ -f /etc/nginx/snippets/security-headers.conf ]; then
+  sudo cp /etc/nginx/snippets/security-headers.conf /etc/nginx/snippets/security-headers.conf.previous
+fi
 sudo cp "$UPLOAD/security-headers.conf" /etc/nginx/snippets/security-headers.conf
 sed -e 's#listen 80;#listen 127.0.0.1:8081;#' \
     -e 's#http://backend:8080#http://127.0.0.1:8080#g' \
     -e 's#root /usr/share/nginx/html;#root /var/www/schooldhundo;#' \
-    "$UPLOAD/nginx.conf" | sudo tee /etc/nginx/sites-available/schooldhundo >/dev/null
-sudo ln -sf /etc/nginx/sites-available/schooldhundo /etc/nginx/sites-enabled/schooldhundo
+    "$UPLOAD/nginx.conf" | sudo tee "$SITE" >/dev/null
+sudo ln -sf "$SITE" /etc/nginx/sites-enabled/schooldhundo
 sudo rm -f /etc/nginx/sites-enabled/default
-sudo nginx -t
+if ! sudo nginx -t; then
+  echo "nginx rejected the new configuration; the previous one is put back and nginx keeps running it." >&2
+  if [ -f "$SITE.previous" ]; then sudo mv "$SITE.previous" "$SITE"; fi
+  if [ -f /etc/nginx/snippets/security-headers.conf.previous ]; then
+    sudo mv /etc/nginx/snippets/security-headers.conf.previous /etc/nginx/snippets/security-headers.conf
+  fi
+  sudo nginx -t
+  exit 1
+fi
 sudo systemctl enable nginx >/dev/null
 sudo systemctl reload nginx || sudo systemctl restart nginx
 

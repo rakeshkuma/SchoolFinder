@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AdmissionStatusBadge, ProvisionalBadge, SourceLink, Stars, TrustBadge, VerificationBadge } from '../components/common/Badges';
 import { BoardingTab } from '../components/school/BoardingTab';
 import { Pagination } from '../components/common/Pagination';
@@ -44,7 +44,8 @@ import { schoolFaqs } from '../utils/schoolFaq';
 import { UdiseCard } from '../components/school/UdiseCard';
 import { EnquiryButton } from '../components/school/EnquiryForm';
 import { NETWORK_PAGES } from '../content/networks';
-import { profileLink, requestedTab } from '../utils/profileLink';
+import { profileLink } from '../utils/profileLink';
+import { PREP_EXAMS as PREP_PAGES, useSectionAddress } from '../utils/sectionAddress';
 
 // The charts library is only needed in the Ranking tab, so it is not part of the profile's first download.
 const RankingBreakdown = lazy(() => import('../components/school/RankingBreakdown').then((m) => ({ default: m.RankingBreakdown })));
@@ -53,12 +54,10 @@ const toRef = (s: SchoolDetail): SchoolRef => ({
   id: s.id, name: s.name, slug: s.slug, place: placeLine(s.locality, s.city, s.stateName),
 });
 
-/** Exams with a SchoolDhundo preparation page at /exams/{slug}; their eligibility guide is at /exams/{slug}/guide. */
-const PREP_PAGES = new Set(['jnvst', 'aissee', 'netarhat']);
-
 /**
- * The profile's sections. The ids are the ?tab= values links have always used (?tab=admissions, ?tab=ranking …), so
- * every old address still opens the same section. Boarding is a main section only for schools with a boarding profile.
+ * The profile's sections. A section's address is the profile's own with the id as its fragment (/schools/x#admissions,
+ * see utils/sectionAddress); the ids are the ?tab= values links used before, and nginx sends every old ?tab= address to
+ * the same section. Boarding is a main section only for schools with a boarding profile.
  */
 function profileSections(s: SchoolDetail, photoCount: number): ProfileSection[] {
   return [
@@ -78,13 +77,9 @@ function profileSections(s: SchoolDetail, photoCount: number): ProfileSection[] 
 
 export function SchoolDetailPage() {
   const { slug = '' } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
-  // A card link (utils/profileLink) asks for a section in the navigation state, so its address stays the plain profile
-  // URL that search engines index; the section is then shown in this page's own address, as a click on its tab would.
-  const linkedTab = requestedTab(useLocation().state);
-  useEffect(() => {
-    if (linkedTab && !searchParams.has('tab')) setSearchParams({ tab: linkedTab }, { replace: true });
-  }, [linkedTab, searchParams, setSearchParams]);
+  // The open section is the address's #fragment. A card link (utils/profileLink) asks for one in the navigation state
+  // and an old link may still say ?tab=; either is moved into the fragment, as a click on the section's tab would.
+  const section = useSectionAddress('overview');
   // One request brings the profile and what its first view shows (photos, fees, admissions, questions, ranking).
   const school = useApi(() => schoolService.page(slug), [slug]);
   useDocumentTitle(school.data?.name);
@@ -114,10 +109,9 @@ export function SchoolDetailPage() {
   const gallery = (images.data ?? []).filter((i) => i.imageType !== 'LOGO');
   const photo = photoFailed ? undefined : gallery[0];
   const sections = profileSections(s, gallery.length);
-  const requested = searchParams.get('tab') ?? linkedTab ?? 'overview';
-  const tab = sections.some((x) => x.id === requested) ? requested : 'overview';
+  const tab = sections.some((x) => x.id === section.requested) ? section.requested : 'overview';
   const setTab = (id: string) => {
-    setSearchParams(id === 'overview' ? {} : { tab: id }, { replace: true });
+    section.open(id);
     // Read further down, a new section starts at its top (under the sticky bar), not mid-page.
     const top = document.getElementById('school-sections');
     if (top && top.getBoundingClientRect().top < 0) top.scrollIntoView({ block: 'start' });

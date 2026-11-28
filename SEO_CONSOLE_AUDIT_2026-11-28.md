@@ -67,6 +67,10 @@ Disallow: /claim-school?
 Disallow: /schools/*?tab=
 ```
 
+**Changed the same evening** (SEO_AUDIT_ROUND2_2026-11-28.md §4.1): the `/schools/*?tab=` rule is dropped again, because
+some of those addresses were still shown in Google and a blocked address cannot show the crawler where it belongs; they now
+get a permanent redirect instead. The claim-form rule stays.
+
 The claim form's per-school copies and the old profile-section addresses are not crawled any more. The plain /claim-school
 page, every profile and the contact page stay open (tested). The contact form's few addresses are left open on purpose:
 they are linked from every page, and blocking an address that many pages link to can get it indexed without content, as

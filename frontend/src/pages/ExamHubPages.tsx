@@ -10,6 +10,7 @@ import type { ExamDetail } from '../types/api';
 import { formatDate } from '../utils/format';
 import { classLabel, examModeLabel, romanClass } from '../utils/exams';
 import { NotFoundPage } from './InfoPages';
+import { examGuideSection } from '../utils/sectionAddress';
 
 function Crumbs({ here }: { here: string }) {
   return (
@@ -144,7 +145,7 @@ function PatternCard({ d }: { d: ExamDetail }) {
     <section id={`p-${exam.slug}`} aria-labelledby={`h-${exam.slug}`} className="card scroll-mt-24 overflow-hidden">
       <div className="border-b border-slate-100 p-5">
         <h2 id={`h-${exam.slug}`} className="font-display text-lg font-bold text-ink">
-          <Link to={`/exams/${exam.slug}?tab=pattern`} className="hover:text-brand-700">{exam.name}</Link>
+          <Link to={examGuideSection(exam.slug, 'pattern')} className="hover:text-brand-700">{exam.name}</Link>
         </h2>
         <p className="mt-1 text-sm text-slate-600">
           {classLabel(exam.entryClasses)} · {exam.currentCycle}
@@ -176,7 +177,7 @@ function PatternCard({ d }: { d: ExamDetail }) {
         </div>
       ))}
       <p className="bg-slate-50 px-5 py-3 text-xs text-slate-600">
-        <Link to={`/exams/${exam.slug}?tab=pattern`} className="link">Topic-wise syllabus</Link>
+        <Link to={examGuideSection(exam.slug, 'pattern')} className="link">Topic-wise syllabus</Link>
         {' · Source: '}<a href={content.sources[0].url} target="_blank" rel="noopener noreferrer" className="link">{content.sources[0].label} ↗</a>
         {exam.lastVerifiedOn && ` · checked ${formatDate(exam.lastVerifiedOn)}`}
       </p>

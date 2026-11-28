@@ -12,6 +12,7 @@ import type { ExamDetail, PracticeBankQuestion } from '../types/api';
 import { formatDate } from '../utils/format';
 import { countdown, daysBetween, formatExamDate, isoToday, lastDay, prepMilestones } from '../utils/exams';
 import { useLanguage } from './PracticePages';
+import { examGuideSection, sectionOf } from '../utils/sectionAddress';
 
 const pct = (c: number, t: number) => (t ? Math.round((c / t) * 100) : 0);
 type Tr = (b: Bi) => string;
@@ -36,7 +37,7 @@ const compareClass = (n: number): Bi => ({
  * An exam's Class VI preparation dashboard (/exams/{slug}), driven by a content config (src/content/*Prep.ts).
  * Questions, answers and scoring stay in the practice engine (answers never reach the browser before submission);
  * this page only links into it with the right filters. The eligibility and dates guide lives at /exams/{slug}/guide,
- * and old ?tab= links are sent there.
+ * and old ?tab= links are sent there, the tab as the guide's #fragment (nginx does the same for a page load).
  */
 export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
   const location = useLocation();
@@ -58,8 +59,10 @@ export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
   const examBank = useMemo(() => (bank.data?.questions ?? []).filter((q) => q.examSlug === c.exam && (!c.level || q.level === c.level)), [bank.data, c.exam, c.level]);
   const mine = attempts.filter((a) => a.examSlug === c.exam && (!c.setPrefix || !a.setSlug || a.setSlug.startsWith(c.setPrefix)));
 
+  // An old /exams/{slug}?tab=… link meant a tab of the guide, which now has its own address (the tab as its fragment).
+  const oldTab = sectionOf(new URLSearchParams(location.search).get('tab') ?? '');
   if (new URLSearchParams(location.search).has('tab')) {
-    return <Navigate to={`/exams/${c.exam}/guide${location.search}`} replace />;
+    return <Navigate to={oldTab ? examGuideSection(c.exam, oldTab) : `/exams/${c.exam}/guide`} replace />;
   }
 
   const exam = detail.data?.exam;
@@ -184,7 +187,7 @@ export function ExamPrepPage({ config: c }: { config: PrepConfig }) {
               ))}
             </ul>
             {exam && exam.currentDates.length === 0 && c.T.noDates && (
-              <p className="mt-3 text-sm text-slate-600">{t(c.T.noDates)} <Link to={`/exams/${c.exam}/guide?tab=dates`} className="link">{t(T.guide)}</Link></p>
+              <p className="mt-3 text-sm text-slate-600">{t(c.T.noDates)} <Link to={examGuideSection(c.exam, 'dates')} className="link">{t(T.guide)}</Link></p>
             )}
             {detail.error && <ErrorState error={detail.error} onRetry={detail.reload} />}
           </div>

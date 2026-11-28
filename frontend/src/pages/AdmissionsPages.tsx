@@ -115,7 +115,8 @@ const GUIDE_SECTIONS = [
 
 /**
  * General guidance on how school admissions work in India. Rules differ by state, board and school, so every
- * section points back to the official notice; nothing here replaces it.
+ * section points back to the official notice; nothing here replaces it. The server sends the same text for crawlers
+ * that run no script (SeoBodyService.admissionGuide): keep the two in step.
  */
 export function AdmissionGuidePage() {
   useDocumentTitle('School admission guide: process, eligibility and documents');

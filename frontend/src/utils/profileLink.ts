@@ -4,8 +4,8 @@
  * The link's address is always the plain profile URL, the page search engines should index. The profile shows only the
  * chosen section, so to a crawler that runs the app a ?tab= address looks like a different page: in November 2026 Google
  * indexed ten profiles only at their ?tab=boarding or ?tab=ranking address, the addresses these cards used to link to.
- * The section now travels in the navigation state; SchoolDetailPage opens it and writes ?tab= into its own address, so the
- * visitor can still share the page at that section.
+ * The section now travels in the navigation state; SchoolDetailPage opens it and writes it into its own address as the
+ * #fragment (utils/sectionAddress), so the visitor can still share the page at that section.
  */
 export interface ProfileLinkProps {
   to: string;

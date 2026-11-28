@@ -324,7 +324,9 @@ public class ExamService {
         List<ExamResourceDto> out = new ArrayList<>();
         for (Exam e : examRepository.findByPublishedTrueOrderByDisplayOrderAscShortNameAsc()) {
             ExamContent c = e.getContent();
-            String guide = "/exams/" + e.getSlug();
+            // The guide's own address, and a part of it as the guide's address plus #section, as the app opens its tabs
+            // (utils/sectionAddress.ts): the old ?tab= paths were further addresses of one page to search engines.
+            String guide = "/exams/" + e.getSlug() + (SeoHeadService.PREP_PAGES.contains(e.getSlug()) ? "/guide" : "");
             BiFunction<ExamResourceDto.Type, String[], ExamResourceDto> own = (type, t) ->
                     new ExamResourceDto(e.getSlug(), e.getShortName(), e.getEntryClasses(), e.getAcademicSession(), type,
                             t[0], t[1], null, false, null, t[2], e.getLastVerifiedOn());
@@ -341,16 +343,16 @@ public class ExamService {
             if (!c.syllabus().isEmpty()) {
                 out.add(own.apply(ExamResourceDto.Type.SYLLABUS, new String[]{e.getShortName() + " syllabus",
                         c.syllabus().stream().map(ExamContent.SyllabusArea::area).collect(Collectors.joining(", ")),
-                        guide + "?tab=pattern"}));
+                        guide + "#pattern"}));
             }
             if (!c.pattern().isEmpty()) {
                 out.add(own.apply(ExamResourceDto.Type.EXAM_PATTERN, new String[]{e.getShortName() + " exam pattern",
                         c.pattern().stream().map(ExamContent.PatternBlock::title).collect(Collectors.joining("; ")),
-                        guide + "?tab=pattern"}));
+                        guide + "#pattern"}));
             }
             if (!c.preparation().isEmpty()) {
                 out.add(own.apply(ExamResourceDto.Type.PREPARATION_GUIDE, new String[]{e.getShortName() + " preparation plan",
-                        c.preparation().size() + " steps and a week-by-week study planner", guide + "?tab=prep"}));
+                        c.preparation().size() + " steps and a week-by-week study planner", guide + "#prep"}));
             }
             if (c.documents() != null && !c.documents().isEmpty()) {
                 out.add(own.apply(ExamResourceDto.Type.DOCUMENT_CHECKLIST, new String[]{e.getShortName() + " application documents",
@@ -358,7 +360,7 @@ public class ExamService {
             }
             if (c.faq() != null && !c.faq().isEmpty()) {
                 out.add(own.apply(ExamResourceDto.Type.FAQ, new String[]{e.getShortName() + " frequently asked questions",
-                        c.faq().size() + " questions answered", guide + "?tab=faq"}));
+                        c.faq().size() + " questions answered", guide + "#faq"}));
             }
         }
         return out;

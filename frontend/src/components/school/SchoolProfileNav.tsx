@@ -22,7 +22,8 @@ export function labelledBy(sections: ProfileSection[], active: string): string {
 /**
  * The school profile's one sticky bar: the main sections as tabs (arrow keys, Home and End move between them, as the
  * WAI-ARIA tabs pattern describes), the less-used sections under "More", and room for one action on wide screens.
- * The active section lives in the URL (?tab=…), so every section keeps its address.
+ * The active section lives in the URL's fragment (#fees …, see utils/sectionAddress), so every section keeps an address
+ * that can be shared while search engines see one page.
  */
 export function SchoolProfileNav({ sections, active, onChange, action }: {
   sections: ProfileSection[];

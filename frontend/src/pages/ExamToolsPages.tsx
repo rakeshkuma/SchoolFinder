@@ -15,6 +15,7 @@ import {
   type ExamEvent,
 } from '../utils/exams';
 import { downloadIcs } from '../utils/ics';
+import { examGuideSection } from '../utils/sectionAddress';
 
 function useStates() {
   const states = useApi(() => locationService.states(), []);
@@ -188,7 +189,7 @@ function FinderCard({ result }: { result: FinderResult }) {
       ) : <p className="mt-1 text-sm text-slate-500">Loading the eligibility rules…</p>}
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
         <Link to={`/exams/${exam.slug}`} className="link">Full guide →</Link>
-        <Link to={`/exams/${exam.slug}?tab=dates`} className="link">Dates & notices</Link>
+        <Link to={examGuideSection(exam.slug, 'dates')} className="link">Dates & notices</Link>
       </div>
     </article>
   );
@@ -361,7 +362,7 @@ function CalendarRow({ exam, date, today }: { exam: ExamSummary; date: ExamEvent
         </span>
       </span>
       <span className="mt-1 block min-w-0 flex-1 sm:mt-0">
-        <Link to={`/exams/${exam.slug}?tab=dates`} className="font-semibold text-ink hover:text-brand-700">{exam.shortName}</Link>
+        <Link to={examGuideSection(exam.slug, 'dates')} className="font-semibold text-ink hover:text-brand-700">{exam.shortName}</Link>
         <span className="text-slate-600"> · {date.label}</span>
         <span className="block text-xs text-slate-500">{examDateKindLabel[date.kind]} · {date.cycle}</span>
       </span>
@@ -448,7 +449,7 @@ function MonthGrid({ events, today, month, onMonth }: { events: ExamEvent[]; tod
                 <ul className="mt-1 space-y-1">
                   {items.map(({ exam, date }) => (
                     <li key={`${exam.slug}-${date.kind}-${date.startsOn}`}>
-                      <Link to={`/exams/${exam.slug}?tab=dates`} title={`${exam.shortName}: ${date.label}`}
+                      <Link to={examGuideSection(exam.slug, 'dates')} title={`${exam.shortName}: ${date.label}`}
                         className={`block truncate rounded px-1.5 py-0.5 text-[11px] font-semibold ${KIND_TONE[date.kind] ?? 'bg-slate-100 text-slate-800'} ${lastDay(date) < today ? 'opacity-60' : ''}`}>
                         {exam.shortName} · {examDateKindLabel[date.kind]}
                       </Link>
@@ -477,7 +478,7 @@ function MonthGrid({ events, today, month, onMonth }: { events: ExamEvent[]; tod
           <ul className="mt-2 space-y-1 text-slate-600">
             {unplaced.map(({ exam, date }) => (
               <li key={`${exam.slug}-${date.kind}-${date.startsOn}`}>
-                <Link to={`/exams/${exam.slug}?tab=dates`} className="font-medium text-ink hover:text-brand-700">{exam.shortName}</Link> · {date.label}: {formatExamDate(date)}{' '}
+                <Link to={examGuideSection(exam.slug, 'dates')} className="font-medium text-ink hover:text-brand-700">{exam.shortName}</Link> · {date.label}: {formatExamDate(date)}{' '}
                 <span className="text-slate-500">({date.confirmed ? 'month given in the official notice' : 'tentative — no countdown until confirmed'})</span>
               </li>
             ))}

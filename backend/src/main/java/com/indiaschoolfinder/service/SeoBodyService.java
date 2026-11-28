@@ -194,6 +194,8 @@ public class SeoBodyService {
                 main = jobs(heading, description);
             } else if ((m = SeoHeadService.JOB_NOTICE.matcher(p)).matches()) {
                 main = notice(m.group(1), com.indiaschoolfinder.entity.SiteUpdate.Category.JOB);
+            } else if (p.equals("/admissions/guide")) {
+                main = admissionGuide(heading, description);
             } else if ((m = SeoHeadService.ADMISSION_NOTICE.matcher(p)).matches()
                     && !com.indiaschoolfinder.notifications.opportunity.NoticeSlugs.RESERVED.contains(m.group(1))) {
                 main = notice(m.group(1), com.indiaschoolfinder.entity.SiteUpdate.Category.ADMISSION);
@@ -279,6 +281,78 @@ public class SeoBodyService {
         }
         h.append("</nav></footer>");
         h.append("</div>");
+        return h.toString();
+    }
+
+    /**
+     * The school admission guide as the app shows it (AdmissionGuidePage in AdmissionsPages.tsx): keep the two in step.
+     * Until 28 Nov 2026 this page sent its heading and one line (55 words), so crawlers that read only this HTML (most AI
+     * assistants, Bing at first, Ubersuggest's audit) saw a near-empty page where visitors read about 700 words.
+     */
+    String admissionGuide(String heading, String description) {
+        StringBuilder h = new StringBuilder();
+        crumbs(h, "/admissions", "Admissions");
+        heading(h, heading, description);
+        h.append("<p>Rules differ by state, board and school: the school’s official notice is always the final word.</p>")
+                .append("<h2 id=\"process\">Admission process</h2><ol class=\"pr-list\">")
+                .append("<li><strong>Shortlist schools</strong> — compare board, distance, classes and official fees. ")
+                .append("<a href=\"/schools\">Find schools</a> · <a href=\"/compare\">compare them</a>.</li>")
+                .append("<li><strong>Read each school’s admission notice</strong> — seats per class, criteria, fee and the last date. ")
+                .append("Schools publish it on their website or notice board.</li>")
+                .append("<li><strong>Register or apply</strong> — online or on a paper form, by the deadline. Many schools charge a ")
+                .append("registration fee; the notice states it.</li>")
+                .append("<li><strong>Selection</strong> — for the entry classes of elementary education, the Right to Education Act does ")
+                .append("not allow schools to screen children or parents; schools use published criteria (such as distance or siblings) ")
+                .append("or a draw. For higher classes, some schools hold an admission test or look at previous results.</li>")
+                .append("<li><strong>Lists and confirmation</strong> — the school publishes a selection list. Bring the documents for ")
+                .append("verification and pay the fee by the date given, or the seat may go to the next child.</li></ol>")
+                .append("<p><strong>Reserved seats:</strong> under Section 12(1)(c) of the Right to Education Act, private unaided ")
+                .append("(non-minority) schools reserve at least 25% of entry-level seats for children from economically weaker sections ")
+                .append("and disadvantaged groups. The state or UT runs this process, usually through a central online application and draw.</p>")
+                .append("<p><strong>Government residential schools</strong> such as Navodaya Vidyalayas and Sainik Schools admit through ")
+                .append("entrance tests — see the <a href=\"/exams\">entrance exam guides</a>. <strong>Kendriya Vidyalayas</strong> follow ")
+                .append("the admission guidelines KVS publishes each year.</p>")
+                .append("<h2 id=\"eligibility\">Eligibility</h2><ul class=\"pr-list\">")
+                .append("<li><strong>Age for Class I and pre-primary:</strong> each state and UT notifies its own minimum age and cut-off ")
+                .append("date. The Ministry of Education has asked states to set the minimum age for Class I at six years, in line with ")
+                .append("the National Education Policy 2020; check your state’s current notification.</li>")
+                .append("<li><strong>Higher classes:</strong> the child must have passed the previous class. Schools usually ask for a ")
+                .append("transfer certificate and the last report card, and may hold a test.</li>")
+                .append("<li><strong>Class XI:</strong> streams and subjects often depend on Class X results and the seats the school has ")
+                .append("in each stream.</li>")
+                .append("<li><strong>Entrance-test schools:</strong> class, age and domicile rules are set in each exam’s official notice — ")
+                .append("the <a href=\"/exams/finder\">exam finder</a> shows which tests may fit.</li></ul>")
+                .append("<h2 id=\"dates\">Important dates</h2>")
+                .append("<p>Admission dates differ by state, school and class, and change every year. We list admission cycles recorded ")
+                .append("from official notices, with the days left until each deadline.</p><ul class=\"pr-list\">")
+                .append(link("/admissions", "Open and upcoming admissions"))
+                .append(link("/admissions/notifications", "Latest notifications"))
+                .append(link("/exams/calendar", "Entrance exam calendar")).append("</ul>")
+                .append("<h2 id=\"documents\">Documents required</h2>")
+                .append("<p>Documents commonly asked for — the school’s notice lists the exact ones, and the formats it accepts:</p>")
+                .append("<ul class=\"pr-list\"><li>Birth certificate of the child (proof of age).</li>")
+                .append("<li>Proof of residence of the parents or guardian.</li>")
+                .append("<li>Recent passport-size photographs of the child (and of parents, where asked).</li>")
+                .append("<li>Identity documents of the child and parents, where the school or state asks for them.</li>")
+                .append("<li>For classes above the entry class: transfer certificate and the last report card; a counter-signed transfer ")
+                .append("certificate may be needed when moving from another state or board.</li>")
+                .append("<li>For reserved seats: category certificate, and income certificate for economically weaker sections, issued ")
+                .append("by the competent authority.</li>")
+                .append("<li>Medical or disability certificate, where relevant to the child’s needs.</li></ul>")
+                .append("<p>Keep photocopies and a scanned set ready; many applications are made online.</p>")
+                .append("<h2 id=\"hostel\">Hostel information</h2>")
+                .append("<p>Before applying to a boarding school, ask the school (and check its official prospectus) about:</p>")
+                .append("<ul class=\"pr-list\"><li>Whether boarding is offered for your child’s class and gender, and how many places ")
+                .append("there are.</li>")
+                .append("<li>Hostel and mess fees, which are often charged separately from tuition, and any refundable deposit.</li>")
+                .append("<li>Who looks after the children — wardens and house parents — and how many children each looks after.</li>")
+                .append("<li>Medical care: a nurse or doctor on campus, and the nearest hospital.</li>")
+                .append("<li>Food, laundry, study hours, phone and visiting rules, and leave and holidays.</li>")
+                .append("<li>Safety: fire safety arrangements and how the campus is secured.</li></ul>")
+                .append("<p>Where a school publishes these facts, they appear on its profile’s Boarding tab. ")
+                .append("<a href=\"/boarding\">Browse boarding schools →</a></p>")
+                .append("<h2>This is general guidance</h2><p>It is written by SchoolDhundo from the rules that apply across India. It is ")
+                .append("not legal advice and does not replace any school’s, board’s or state’s official notice.</p>");
         return h.toString();
     }
 

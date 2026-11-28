@@ -173,6 +173,20 @@ class SeoBodyIT extends AbstractIntegrationTest {
                 .contains("href=\"/contact?topic=CORRECTION\"");
     }
 
+    /** The admission guide's text, readable without the app (28 Nov 2026: 55 words, the heading and one line, before). */
+    @Test
+    void theAdmissionGuideSendsItsWholeTextToCrawlersThatRunNoScript() throws Exception {
+        String guide = fetch("/api/v1/seo/body/admissions/guide");
+        assertThat(guide).contains("<h1>School admission guide: process, eligibility and documents</h1>")
+                .contains("<h2 id=\"process\">Admission process</h2>").contains("<h2 id=\"eligibility\">Eligibility</h2>")
+                .contains("<h2 id=\"dates\">Important dates</h2>").contains("<h2 id=\"documents\">Documents required</h2>")
+                .contains("<h2 id=\"hostel\">Hostel information</h2>").contains("Section 12(1)(c) of the Right to Education Act")
+                .contains("href=\"/admissions/notifications\"").contains("href=\"/exams/finder\"");
+        assertThat(guide.replaceAll("<[^>]+>", " ").trim().split("\\s+").length).isGreaterThan(600);
+        // The notices under /admissions/ are unaffected: "guide" is one of the reserved words, never a notice.
+        assertThat(fetch("/api/v1/seo/body/admissions")).doesNotContain("<h2 id=\"process\">");
+    }
+
     @Test
     void twoBranchesWithOneNameInOneTownGetTitlesTheirPinCodesTellApart() throws Exception {
         long a = createSchool(school("Fixture St. Twin's School", Map.of("stateCode", "UK", "city", "Almora", "pinCode", "263601")));

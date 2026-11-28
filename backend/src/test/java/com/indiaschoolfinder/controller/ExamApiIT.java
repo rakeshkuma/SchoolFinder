@@ -380,7 +380,7 @@ class ExamApiIT extends AbstractIntegrationTest {
         // Resources: official files are linked at the source; this site's own guidance points to the exam guide.
         mockMvc.perform(get("/api/v1/exams/resources")).andExpect(status().isOk())
                 .andExpect(jsonPath("$[?(@.type == 'ANSWER_KEY' && @.official == true && @.url != null)]").exists())
-                .andExpect(jsonPath("$[?(@.type == 'SYLLABUS' && @.official == false && @.path == '/exams/jnvst?tab=pattern')]").exists())
+                .andExpect(jsonPath("$[?(@.type == 'SYLLABUS' && @.official == false && @.path == '/exams/jnvst/guide#pattern')]").exists())
                 .andExpect(jsonPath("$[?(@.type == 'SYLLABUS' && @.url != null)]").doesNotExist());
     }
 }

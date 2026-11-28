@@ -99,7 +99,7 @@ const ROADMAP: RoadmapStage[] = [
       { en: 'Look through the school\'s official sample papers', hi: 'विद्यालय के आधिकारिक नमूना प्रश्न-पत्र देखिए' },
       { en: 'Take one quiz in each subject to see where you stand', hi: 'अपनी स्थिति जानने के लिए हर विषय का एक क्विज़ दीजिए' },
     ],
-    to: '/exams/netarhat/guide?tab=papers', action: { en: 'See the sample papers', hi: 'नमूना प्रश्न-पत्र देखें' },
+    to: '/exams/netarhat/guide#papers', action: { en: 'See the sample papers', hi: 'नमूना प्रश्न-पत्र देखें' },
   },
   {
     title: { en: 'Subject-wise preparation', hi: 'विषयवार तैयारी' }, weeks: { en: 'Weeks 2–5', hi: 'सप्ताह 2–5' },
@@ -124,7 +124,7 @@ const ROADMAP: RoadmapStage[] = [
       { en: 'Mathematics: show every step and write the unit in the answer', hi: 'गणित: हर चरण लिखिए और उत्तर में इकाई लिखिए' },
       { en: 'Science and Social Studies: answers of 2–4 sentences, diagrams and maps', hi: 'विज्ञान और सामाजिक अध्ययन: 2–4 वाक्यों के उत्तर, चित्र और मानचित्र' },
     ],
-    to: '/exams/netarhat/guide?tab=prep', action: { en: 'Preparation tips in the guide', hi: 'गाइड में तैयारी के सुझाव' },
+    to: '/exams/netarhat/guide#prep', action: { en: 'Preparation tips in the guide', hi: 'गाइड में तैयारी के सुझाव' },
   },
   {
     title: { en: 'Weekly revision', hi: 'साप्ताहिक दोहराई' }, weeks: { en: 'Every Sunday', hi: 'हर रविवार' },

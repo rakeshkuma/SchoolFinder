@@ -28,6 +28,7 @@ import { clearProgress, loadProgress, saveProgress, type TestProgress } from '..
 import { NotFoundPage } from './InfoPages';
 import { classFromSlug, OLYMPIAD_DESCRIPTION, OLYMPIAD_DOC_TITLE, OLYMPIAD_PATH, olympiadClassHeading, olympiadClassPath } from '../content/olympiad';
 import { classOf, OlympiadPractice, olympiadSessionText } from './OlympiadPractice';
+import { examGuideSection } from '../utils/sectionAddress';
 
 /** Shown wherever practice questions appear: they are this site's own, never the exam body's. */
 export const PRACTICE_LABEL = 'SchoolDhundo Practice Questions';
@@ -1340,7 +1341,7 @@ function Results({ sitting, result, answers, marked, onRestart, headingRef }: {
           {sitting.marking
             ? `Scoring: ${perCorrect(sitting.marking)} per correct answer${sitting.marking.negative > 0 ? `, ${marksWord(sitting.marking.negative)} deducted per wrong answer` : ', nothing deducted for wrong ones'}, nothing for skipped ones`
             : 'Scoring: each question uses the marking of the set it comes from'}; accuracy is correct ÷ attempted. This is
-          our practice scoring, not the official marking scheme{sitting.examSlug ? <> (see the <Link to={`/exams/${sitting.examSlug}?tab=pattern`} className="link">exam pattern</Link>)</> : ''}.
+          our practice scoring, not the official marking scheme{sitting.examSlug ? <> (see the <Link to={examGuideSection(sitting.examSlug, 'pattern')} className="link">exam pattern</Link>)</> : ''}.
           A practice score does not predict an exam result or guarantee admission.
           {' '}{sitting.challenge ? '' : result.saved ? 'Saved to your account.' : status === 'signedIn' ? '' : result.points ? 'Saved to your leaderboard entry.' : <>Saved in this browser only — <Link to="/signin?next=%2Fexams%2Fpractice" className="link">sign in</Link> to keep it on every device.</>}
         </div>

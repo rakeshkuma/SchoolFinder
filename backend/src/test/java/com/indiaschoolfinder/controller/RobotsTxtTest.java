@@ -19,11 +19,19 @@ class RobotsTxtTest {
     @Test
     void queryStringCopiesThatOnlyCostCrawlingAreKeptOut() {
         String robots = SitemapController.robotsTxt("https://schooldhundo.in", true);
-        // The claim form's per-school copies and old profile-section addresses are not crawled ...
-        assertThat(robots).contains("Disallow: /claim-school?\n").contains("Disallow: /schools/*?tab=\n");
+        // The claim form's per-school copies are not crawled ...
+        assertThat(robots).contains("Disallow: /claim-school?\n");
         // ... while the plain pages they copy stay open: the claim page, every profile and the contact page.
         assertThat(robots).doesNotContain("Disallow: /claim-school\n").doesNotContain("Disallow: /schools\n")
                 .doesNotContain("Disallow: /schools/\n").doesNotContain("Disallow: /contact");
+    }
+
+    @Test
+    void oldSectionAddressesStayCrawlableSoTheirRedirectIsSeen() {
+        // nginx answers /schools/x?tab=… with a 301 to /schools/x; a blocked address could never show a crawler that,
+        // and the copies Google had indexed would stay in its index.
+        String robots = SitemapController.robotsTxt("https://schooldhundo.in", true);
+        assertThat(robots).doesNotContain("?tab=").doesNotContain("/schools/*");
     }
 
     @Test

@@ -27,6 +27,7 @@ import {
 } from '../utils/exams';
 import { ApiError } from '../services/http';
 import { NotFoundPage } from './InfoPages';
+import { useSectionAddress } from '../utils/sectionAddress';
 
 const PAGE_SIZE = 12;
 
@@ -501,7 +502,8 @@ const TAB_IDS = ['overview', 'dates', 'pattern', 'prep', 'papers', 'faq', 'sourc
 
 export function ExamGuidePage() {
   const { slug = '' } = useParams();
-  const [params, setParams] = useSearchParams();
+  // The open tab is the address's #fragment (/exams/rimc#dates); an old ?tab= link is moved there (utils/sectionAddress).
+  const section = useSectionAddress('overview');
   const location = useLocation();
   const state = useApi(() => examService.get(slug), [slug]);
   const { name: stateName } = useStateNames();
@@ -516,12 +518,8 @@ export function ExamGuidePage() {
   if (!detail) return <Spinner />;
 
   const { exam, content } = detail;
-  const tab = TAB_IDS.includes(params.get('tab') as (typeof TAB_IDS)[number]) ? params.get('tab')! : 'overview';
-  const setTab = (id: string) => {
-    const next = new URLSearchParams(params);
-    if (id === 'overview') next.delete('tab'); else next.set('tab', id);
-    setParams(next, { replace: true });
-  };
+  const tab = TAB_IDS.includes(section.requested as (typeof TAB_IDS)[number]) ? section.requested : 'overview';
+  const setTab = section.open;
   const backTo = (location.state as { from?: string } | null)?.from ?? '/exams';
   const today = isoToday();
   const schools = BOARDING_SCHOOLS.filter((s) => s.examSlug === exam.slug);
