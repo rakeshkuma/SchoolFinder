@@ -50,7 +50,7 @@ The JSON examples Google lists (985) are almost all one school profile's calls: 
 ranking 137, questions 136, the school itself 127. On the live site a profile's first view makes 9 API requests, 6 of
 them for the profile (measured in Chrome today). Google's crawl-budget guidance counts every such request.
 
-## 4. Fixes (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as 5c2332d)
+## 4. Fixes (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as 695d94a)
 
 ### 4.1 One request per profile instead of six
 
@@ -97,7 +97,7 @@ Vivekananda Vidya Peedam (51), K K Cambridge International School (51), Moga Dev
 Bahadur Public School (47), Edify School Amravati (46), Little Flower EMS Chelavoor (46), Kamalavati HSS (38) and Sambhota
 Tibetan School Mundgod (36). They will drop out of Google as it recrawls them.
 
-**DONE 28 Nov (DEPLOYED as 3fca82e):** descriptions and facilities for seven of the ten, from each school's own website
+**DONE 28 Nov (DEPLOYED as 8683da9):** descriptions and facilities for seven of the ten, from each school's own website
 (migration V52; `tools/seo/data/profile-description-drafts-2026-11-28.md`). Live: all seven indexable and in the sitemap;
 indexing requested for K K Cambridge, Swami Vivekananda Vidya Peedam and Moga Devi Minda. Not possible for Velammal,
 Hidaya and Baba Banda Bahadur (no working official website).

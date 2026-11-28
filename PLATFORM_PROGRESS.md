@@ -8,11 +8,11 @@ waiting for an outside step) or **Planned** (not started). Continue from the fir
 
 | Item | Status |
 | --- | --- |
-| Homepage sections never show error blocks: nginx keeps the last good copy of public API answers (`proxy_cache sd_api`, stale on error); the browser remembers the homepage lists (`useApi(..., cacheKey)`); fallback quick links | Done (live 0ac64dd) |
+| Homepage sections never show error blocks: nginx keeps the last good copy of public API answers (`proxy_cache sd_api`, stale on error); the browser remembers the homepage lists (`useApi(..., cacheKey)`); fallback quick links | Done (live cafbed2) |
 | Five-pillar navigation (Find Schools, Boarding Schools, Compare, Admissions & Fees, Exam Prep), no duplicate destinations | Replaced by the new header (section 8) |
-| Unfinished items hidden ("Not available yet", empty ranking card) | Done (live 0ac64dd) |
-| Personal email and admin link removed from public pages; contact form instead (`CONTACT_EMAIL` in `frontend/src/content/site.ts`) | Done (live 0ac64dd) |
-| Crest-style covers for schools without photos; trust badges ("Official notice · updated …", "Verified …"); shortlist counter; hero polish | Done (live 0ac64dd) |
+| Unfinished items hidden ("Not available yet", empty ranking card) | Done (live cafbed2) |
+| Personal email and admin link removed from public pages; contact form instead (`CONTACT_EMAIL` in `frontend/src/content/site.ts`) | Done (live cafbed2) |
+| Crest-style covers for schools without photos; trust badges ("Official notice · updated …", "Verified …"); shortlist counter; hero polish | Done (live cafbed2) |
 | Homepage "Latest guides" section (three newest articles) | Done |
 
 ## 2. School discovery and enquiries
@@ -40,8 +40,8 @@ waiting for an outside step) or **Planned** (not started). Continue from the fir
 
 | Item | Status |
 | --- | --- |
-| Server-rendered page content (headings, facts, links) for home, school, state, district and city pages, via SSI (`SeoBodyService`) | Done (live 0ac64dd) |
-| School + BreadcrumbList + FAQPage (same questions as shown on the page) | Done (live 0ac64dd) |
+| Server-rendered page content (headings, facts, links) for home, school, state, district and city pages, via SSI (`SeoBodyService`) | Done (live cafbed2) |
+| School + BreadcrumbList + FAQPage (same questions as shown on the page) | Done (live cafbed2) |
 | WebSite (with search) + Organization on the homepage | Done |
 | Sitemap, robots.txt, canonical URLs, noindex for private/thin pages, Article schema | Done earlier |
 | Titles, descriptions and sitemap entries for /advertise and /claim-school | Done |
@@ -74,7 +74,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 4. In GA4, mark `generate_lead` as a key event.
 5. AdSense: apply, then switch on the prepared slots.
 
-## 8. Homepage redesign from the reference image (live 14 November 2026 as c925e9a)
+## 8. Homepage redesign from the reference image (live 14 November 2026 as c093759)
 
 | Item | Status |
 | --- | --- |
@@ -90,7 +90,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Phones: categories two per row; rankings, exam prep and featured schools in swipeable rows; no horizontal overflow at 360/390/768/1024/1440 | Done |
 | Removed with the old homepage: fee chart component, `useInView`, the single-box search mode | Done |
 
-## 9. Homepage refinement (live 14 November 2026 as 283ae12)
+## 9. Homepage refinement (live 14 November 2026 as ae8d2dc)
 
 | Item | Status |
 | --- | --- |
@@ -106,7 +106,7 @@ Events: `school_search`, `school_profile_view`, `school_comparison`, `generate_l
 | Measured on a production build (cold cache): layout shift 0.34 → 0.001 (loading placeholder now a full screen; sign-in slot keeps its width); phone LCP (4× CPU, 4G) about 3.9 s → 1.6 s; desktop LCP about 1.4 s | Done |
 | Signed-out visitors get 401 from `/api/v1/account/me`; that is how the app learns nobody is signed in, not an error | Checked, unchanged |
 
-## 10. Daily official-notification check (live 14 November 2026 as 3940405)
+## 10. Daily official-notification check (live 14 November 2026 as 3a1ce17)
 
 Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md).
 
@@ -121,7 +121,7 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Home page refreshes the feed every 15 minutes (also the open tab) and keeps the last cards on failure; says "Official sources checked daily at 6:00 AM IST · last checked …"; `/updates` gains "Past updates" | Done |
 | First live check (start-up catch-up, 14 Nov 2026, 9:36 pm IST): 39 new notices, 14 published and 25 waiting for review (22 of them from Rashtriya Military Schools, which prints no dates); CBSE blocked (403); next scheduled check 6:00 AM IST | Checked |
 
-## 11. Rankings page redesign and IIRF audit (live 14 November 2026 as 55c9b10)
+## 11. Rankings page redesign and IIRF audit (live 14 November 2026 as 1234b27)
 
 | Item | Status |
 | --- | --- |
@@ -149,7 +149,7 @@ Details: [UDISE_INTEGRATION_GUIDE.md](UDISE_INTEGRATION_GUIDE.md).
 | Admin: per-school panel to save a checked code and link (`PUT /admin/schools/{id}/udise`); ADMIN-only dry-run/apply matcher for an official list (`POST /admin/import/udise`), same state + PIN + names, unambiguous only, batched and repeatable | Done |
 | Bulk codes: no lawful bulk source reachable (Data Sharing Portal needs a formal request; secondary sources say the 11-digit code is no longer shared; OpenCity refuses automated access) | Owner to obtain a list |
 
-## 13. Admissions and school jobs from official sources (live 20 November 2026 as ce64eac)
+## 13. Admissions and school jobs from official sources (live 20 November 2026 as e071c4e)
 
 Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md) ("Source registry" and "Admissions and school jobs").
 
@@ -167,11 +167,11 @@ Details, sources and operations: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_
 | Home page unchanged: no home-page or layout file changed; production builds before and after compared in Chrome against the same data: desktop pixel-identical; phone same height and layout, pixel variation only in the hero photo and smaller than the variation between two captures of the same build | Checked |
 | Not done: PDF text reading for last dates (most notices give none in their titles), conditional requests (ETag), KV school websites (list of addresses needed), private careers pages without a list of openings | Open |
 | Tests: backend full suite 425 tests, 0 failures (new: classifier, rules, registry against saved excerpts of the real pages, ingest rules, end-to-end admissions/jobs IT); frontend 53 files, 226 tests; type-check and production build pass. Existing tests changed only to truncate with CASCADE (new posts table) and, in NotificationSyncIT, to pick the official AISSEE item by its exact title (it failed when run after other suites that leave exam notices) | Done |
-| Deployed 20 Nov 2026 (ce64eac): V47 applied on the live database in 0.22 s; 14 registry sources loaded; 35 earlier notices given their facts and page addresses at start-up. First live check (run #9, started with the admin "Check now" right after the deploy): all 14 registry sources OK from the server, CBSE blocked; 26 new (8 published, 18 for review; 23 jobs, 3 admissions), the same as the local check. Live checks: /jobs head and server-rendered body, notices API (16 current jobs, 3 admission notices), sitemap index with notices.xml (2 indexable pages), JobPosting absent without a last date, noindex for non-school posts, admin endpoints 401 without sign-in | Live |
+| Deployed 20 Nov 2026 (e071c4e): V47 applied on the live database in 0.22 s; 14 registry sources loaded; 35 earlier notices given their facts and page addresses at start-up. First live check (run #9, started with the admin "Check now" right after the deploy): all 14 registry sources OK from the server, CBSE blocked; 26 new (8 published, 18 for review; 23 jobs, 3 admissions), the same as the local check. Live checks: /jobs head and server-rendered body, notices API (16 current jobs, 3 admission notices), sitemap index with notices.xml (2 indexable pages), JobPosting absent without a last date, noindex for non-school posts, admin endpoints 401 without sign-in | Live |
 | Review queue (20 Nov 2026): the 43 waiting notices checked one by one against their official documents. 2 published: NVS JNVST 2027 Class VI admit cards (shown through the existing JNVST-2027 exam card, which cites the same official page) and the NESTS Tier-II result for TGT Computer Science and TGT English (dated 07.10.2026, verified). 41 archived as stale or closed: 22 Rashtriya Military School documents dated Jan 2025 to Apr 2026, 13 NESTS results dated 3 Sep to 1 Oct 2026, 2 Netarhat 2025-26 items, DSSSB 05/2026 (District Court sweepers and chowkidars), Sainik School Goalpara SSG/03/2026 (closed 12 Nov) and Sainik School Rewari's advert and form (closed 6 Nov). Also archived: 3 live non-school notices (2 KVS engineer last-date extensions, NVS project associates). Queue empty afterwards; archived notices stay in the database and can be published again | Done |
-| Fix (20 Nov 2026, e22a6a0): saving a job or admission notice from the admin page failed with HTTP 400, because the facts carried "windowValid" (the opens-before-closes check) and the save refused it as an unknown field. The check stays but is kept out of the JSON; the page sends only known fact fields. Tests: 84 notification, notice and updates tests pass, including a new one (an admin row saved back unchanged is accepted; facts opening after their last date are still refused). Live check: the admin row no longer carries the field and a published job notice saved back unchanged returns 200 with nothing changed | Live |
+| Fix (20 Nov 2026, c9a3fdc): saving a job or admission notice from the admin page failed with HTTP 400, because the facts carried "windowValid" (the opens-before-closes check) and the save refused it as an unknown field. The check stays but is kept out of the JSON; the page sends only known fact fields. Tests: 84 notification, notice and updates tests pass, including a new one (an admin row saved back unchanged is accepted; facts opening after their last date are still refused). Live check: the admin row no longer carries the field and a published job notice saved back unchanged returns 200 with nothing changed | Live |
 
-## 14. More school jobs: Kendriya Vidyalaya websites and private careers pages (live 20 November 2026 as b4ae0aa)
+## 14. More school jobs: Kendriya Vidyalaya websites and private careers pages (live 20 November 2026 as 564ba57)
 
 Details: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md) ("Site families", "Dates from the notice's document").
 
@@ -185,6 +185,6 @@ Details: [NOTIFICATION_SYNC_GUIDE.md](NOTIFICATION_SYNC_GUIDE.md) ("Site familie
 | Private schools: about 45 careers pages and WordPress media APIs looked at (VIBGYOR, Podar, Orchids, Ryan, Shiv Nadar, Pathways, Heritage, Welham, Sanawar, Scindia, Daly and others): none lists dated openings that can be read; recorded in the guide | Checked |
 | Live check of the real sites from a local server (20 Nov 2026, fresh local database, only the new sources): 1,108 sources read in 8 min 23 s, 1 timed out; 53 new job notices (28 Doon International openings, 25 KV notices from 21 Vidyalayas, among them walk-ins at Mankhurd 21 Nov, Itanagar 21 Nov and Ambarnath 25 Nov), 50 published and 3 for review (two undated rows, one "Advertisement Copy"). The rules tightened after this check leave out 4 of the 25 (an eligibility page spelt "Eligilblity" and three selection panels); most KV notice PDFs are scans without text, so those keep "last date not announced" and leave after 45 days | Checked |
 | Tests: backend full suite 438 tests, 0 failures (new: the KV family list and its rules against the real Samana news table and real 20 Nov titles, notice page → document page → PDF links, JobPosting reading with raw line breaks, document dates that skip the letter date, compact run records, a walk-in dated from its document end to end); frontend 53 files, 226 tests; type-check passes | Done |
-| Deployed 20 Nov 2026 (b4ae0aa): registry loaded 1,122 sources (family kv: 1,107 of 1,107 sites), no registry problems. Live check run #10 (admin "Check now" right after the deploy): 1,128 sources read in 11 min 7 s, 2 failed or blocked (CBSE 403 as before, one KV site timed out); 48 new job notices (28 Doon International openings, 20 from 18 Vidyalayas): 45 published, 3 for review (Mancherial: the 2025 national KVS/NVS notification and a qualifications page, both undated on the site; Bhimtal "Advertisement Copy"). /jobs then listed 59 current job notices (14 published jobs before the deploy); KV Mankhurd's walk-in page carries JobPosting (interview 21 Nov), undated ones do not; the run record kept 41 rows | Live |
+| Deployed 20 Nov 2026 (564ba57): registry loaded 1,122 sources (family kv: 1,107 of 1,107 sites), no registry problems. Live check run #10 (admin "Check now" right after the deploy): 1,128 sources read in 11 min 7 s, 2 failed or blocked (CBSE 403 as before, one KV site timed out); 48 new job notices (28 Doon International openings, 20 from 18 Vidyalayas): 45 published, 3 for review (Mancherial: the 2025 national KVS/NVS notification and a qualifications page, both undated on the site; Bhimtal "Advertisement Copy"). /jobs then listed 59 current job notices (14 published jobs before the deploy); KV Mankhurd's walk-in page carries JobPosting (interview 21 Nov), undated ones do not; the run record kept 41 rows | Live |
 | Editor review of the new KV notices (20 Nov 2026, after run #10): every notice's official document read (PDF text, or the scanned page or image read by eye; one PDF found only on the site's unlinked /en/document/ page). 6 kept, dated, posts entered and verified: Mankhurd 21 Nov, Itanagar 21 Nov, KVS Tinsukia Region ATL/Vocational Instructors 21 Nov (Itanagar and Dibrugarh), Samana 23 Nov, Ambarnath 25 Nov; all carry JobPosting. 14 archived: interviews already held (Palakkad 19 Nov, IIT Kharagpur and Bhimtal 20 Nov, Davanagere 12 Nov, Bidar and Agar Malwa 5 Nov, RHE Pune 3 Nov, AFS Thane 29 Oct, Tezpur 28 Oct, Patiala 14 Oct), official pages with no notice or date (Thanjavur, Kochi), and two Mancherial items (the 2025 national notification, a March 2026 qualifications page). /jobs: 48 current job notices, review queue empty | Done |
 | Undated walk-ins (20 Nov 2026): a walk-in or contractual/part-time interview whose day is read neither from its title nor its document stays current 10 days after publication (`walk-in-lifetime-days`), not 45, and one found later than that is not added; "Interview notice for contractual ..." counts as a walk-in (an opening; its result does not). When a notice page links no PDF, the check also tries the platform's same-name `/en/document/` page (AFS Thane kept its PDF there). Notices whose day is in the title are no longer downloaded for it | Done |

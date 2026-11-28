@@ -306,7 +306,7 @@ After deploying, check: home page, a school page (FAQ visible), `/editorial-poli
 
 ## 10. Rolling back
 
-- **Code:** check out the previous commit (`git checkout 70f0b9c`), run the deploy script, return with
+- **Code:** check out the previous commit (`git checkout 4de326f`), run the deploy script, return with
   `git checkout develop`.
 - **Database:** V37 only adds one nullable column (`user_account.picture_url`). Older code ignores it, so rolling the
   code back needs no database change. Never delete the migration from the database history.

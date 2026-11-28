@@ -3,9 +3,9 @@
 For the site owner. It covers what Ubersuggest, Windsor.ai (Search Console, GA4, Bing) and the official exam documents
 showed on 25 Nov 2026, what was changed in the code, how it was tested, and what needs you.
 
-Status: **committed as 0ed6637 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
-live when you publish them. The fix for Search Console's job-posting warnings was **DEPLOYED on 26 Nov 2026** as cbe0968 (§20).
-The Navodaya Mental Ability page and the 2026-paper corrections were **DEPLOYED on 28 Nov 2026** as 538d3da; 12 of 12 live checks passed (§22).
+Status: **committed as 01777d4 and DEPLOYED on 25 Nov 2026; 15 of 15 live checks passed** (§16). The two articles go
+live when you publish them. The fix for Search Console's job-posting warnings was **DEPLOYED on 26 Nov 2026** as 1e37c3b (§20).
+The Navodaya Mental Ability page and the 2026-paper corrections were **DEPLOYED on 28 Nov 2026** as c3a35a0; 12 of 12 live checks passed (§22).
 
 Status labels: **VERIFIED** (checked against data or the live site), **IMPLEMENTED** (in the code), **TESTED** (tests or
 browser checks pass), **DEPLOYED** (live and checked), **RECOMMENDED** (not done), **BLOCKED** (needs you or access this
@@ -300,7 +300,7 @@ engagement feature is justified by the data yet.
 
 ## 12. What changed
 
-All **IMPLEMENTED**, **TESTED** and **DEPLOYED** (25 Nov 2026, commit 0ed6637), except the two articles, which go live
+All **IMPLEMENTED**, **TESTED** and **DEPLOYED** (25 Nov 2026, commit 01777d4), except the two articles, which go live
 when you publish them.
 
 ### SEO
@@ -449,7 +449,7 @@ Wellfound), schools' own blogs linking to their listings, and media stories.
 
 ## 16. Deployment and what needs you
 
-**Deployment: DEPLOYED** on 25 Nov 2026 with `deploy/oracle-micro-deploy.ps1` (commit 0ed6637, pushed to
+**Deployment: DEPLOYED** on 25 Nov 2026 with `deploy/oracle-micro-deploy.ps1` (commit 01777d4, pushed to
 `origin/develop`). V48 ran on start. Live checks, all passed:
 
 | Check | Live result |
@@ -564,7 +564,7 @@ from appearing.
   but the school's address and PIN were not used.
 - **No notice states its pay.**
 
-**Fixed** (IMPLEMENTED, TESTED, DEPLOYED as cbe0968):
+**Fixed** (IMPLEMENTED, TESTED, DEPLOYED as 1e37c3b):
 
 | Field | How it is filled now | Effect on the live postings (26 Nov) |
 |---|---|---|
@@ -595,7 +595,7 @@ deploy refresh within 10 minutes.
 | Item | What was done | Status |
 |---|---|---|
 | Pay (as published) | Every current job notice's official document was read: Doon's careers page, the Kendriya Vidyalaya walk-in notices, Mayo College's and Vidya Devi Jindal School's advertisements. None of the 37 states any pay, so nothing was entered; `baseSalary` stays absent rather than estimated. | VERIFIED |
-| Corrections found while reading (V50, a3e5ae5) | Mayo College General Council's two openings closed on 25 Nov 2026 (their image ads say so); they had been listed as open. The KV Thrissur walk-in was on 26 Nov ("… 26/11" in its title). KV RWF Yelahanka's PIN is 560064, from its own website and notice letterhead (the profile had 560106). All marked staff-edited and audit-logged. | DEPLOYED, VERIFIED (Mayo and Thrissur now closed; the PIN is live) |
+| Corrections found while reading (V50, 946f15e) | Mayo College General Council's two openings closed on 25 Nov 2026 (their image ads say so); they had been listed as open. The KV Thrissur walk-in was on 26 Nov ("… 26/11" in its title). KV RWF Yelahanka's PIN is 560064, from its own website and notice letterhead (the profile had 560106). All marked staff-edited and audit-logged. | DEPLOYED, VERIFIED (Mayo and Thrissur now closed; the PIN is live) |
 | Ubersuggest rank tracking | Six head terms the site cannot reach yet ("kvs admission", "udise code", "10 best schools in india", "best schools in bangalore", "best schools in chennai", "best schools in hyderabad") were replaced by "jnv mock test class 6 2027", "navodaya mental ability question paper", "navodaya results class 6", "aissee 2027 exam date", "schools in naharlagun" and "schools in asansol"; 25 of 25. | DONE |
 | Ubersuggest AI visibility | Four prompts were replaced by parents' questions the site now answers: JNVST answer key, JNVST 2027 result date, a free JNVST mock test, the AISSEE 2027 last date. 10 prompts; 2 of 100 brand operations used. | DONE |
 | IndexNow in production | The 07:30 IST runs: 26 Nov, 6 of 6 changed addresses accepted; 27 Nov, 8 of 8 (HTTP 200), with the key file read through local nginx. The one-time submission of every address still needs an admin login (§16, step 2). | VERIFIED |
@@ -640,7 +640,7 @@ the same on `/exams/jnvst` (pre-existing, RECOMMENDED: let the header's sign-in 
 paper" is one of the 25 tracked keywords since 26 Nov). Next for this page: Search Console URL Inspection → Request indexing
 (you), and when NVS publishes the JNVST 2028 prospectus, check the pattern and re-run the builder.
 
-**Deployment: DEPLOYED** at about 00:05 IST on 28 Nov 2026 (538d3da, pushed to `origin/develop`); V51 ran on start. Live
+**Deployment: DEPLOYED** at about 00:05 IST on 28 Nov 2026 (c3a35a0, pushed to `origin/develop`); V51 ran on start. Live
 checks, all passed: the page answers 200 with its title, canonical, BreadcrumbList, Article and FAQPage (9 questions);
 its server HTML (2,291 words) has the five parts, the examples and the practice-paper links; it is in `sitemaps/exams.xml`
 with lastmod 2026-11-27; it is linked from `/exams/jnvst`, `/exams/jnvst/guide` and `/exams/practice/jnvst-mat-1`; the

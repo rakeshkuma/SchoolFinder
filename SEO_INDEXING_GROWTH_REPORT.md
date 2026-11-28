@@ -135,7 +135,7 @@ All five pages scored 100 for SEO.
 - **Profile LCP.** The largest element is the Wikimedia photo, loaded from upload.wikimedia.org after the app starts.
   It is now preloaded from the server head (change 10), the way the home page preloads its hero.
 - **JNVST CLS (0.084).** This comes from web fonts swapping in. It is within the "good" limit.
-- **After deploying (17 Nov 2026, c37dd45 + eb072dd, nginx cache cleared):**
+- **After deploying (17 Nov 2026, adbd6ee + 56c95a2, nginx cache cleared):**
 
   | Page | Performance | LCP | CLS | TBT |
   |---|---:|---:|---:|---:|

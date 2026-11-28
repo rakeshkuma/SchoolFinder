@@ -100,7 +100,7 @@ Not drafted, with the reason:
 Consider sending from the site's own address (schooldhundo.in@gmail.com, shown in the footer): copy the drafts there.
 Follow up once after a week; never more.
 
-## 5. Printable practice papers (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as 3ac339f)
+## 5. Printable practice papers (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as fdd49a7)
 
 **Why.** Demand: "navodaya mental ability question paper" 22,200 searches a month and "… questions pdf" 9,900 (Ubersuggest,
 27 Nov). Scribd PDFs hold #1 and #6 for it. Free-coaching groups for rural children, whom the JNVST is designed for, often

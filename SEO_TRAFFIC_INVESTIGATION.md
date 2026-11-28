@@ -35,7 +35,7 @@ All test hits were intercepted and blocked in the browser, so none reached your 
 Google can estimate them through behavioural modelling, but only on properties with far more traffic than this one.
 So "users" in GA4 means "people who clicked Accept", which on a new site may be close to zero on a given day.
 
-**2. Defect: on slow page loads the cookie banner never appears (live since 15 Nov, commit 6d9c666).**
+**2. Defect: on slow page loads the cookie banner never appears (live since 15 Nov, commit 56c6e88).**
 - `index.html` adds the Tag Manager script only after the page's `load` event.
 - The banner, the footer's "Cookie settings" link and the site's own events all checked for that script when the page
   first drew. If `load` came later, as on a slow mobile connection or with a slow image, they decided there was no
@@ -341,7 +341,7 @@ Until Search Console data is in hand, these are planning steps, not forecasts.
 
 ## H. Before and after
 
-**Measured after the deploy (7a44c20, 19 Nov afternoon)**, with the same slow-load test on the live site and all GA4 hits
+**Measured after the deploy (a810a37, 19 Nov afternoon)**, with the same slow-load test on the live site and all GA4 hits
 blocked: the banner and the "Cookie settings" link were shown at 2 s on `/`, `/schools/erudite-academy` and
 `/exams/jnvst` (3 of 3; it was 0 of 3 that morning). The AI visibility tracker (B.6) was saved the same day with the 10
 questions listed, Edustoke and SchoolMyKids, and 25 keywords tracked weekly.

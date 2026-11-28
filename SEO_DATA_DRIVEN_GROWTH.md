@@ -1,6 +1,6 @@
 # SchoolDhundo: data-driven SEO, AEO and GEO round
 
-Prepared 23 November 2026. Every number below comes from Google Search Console or Bing Webmaster Tools through the Windsor.ai connector (`searchconsole`, property `sc-domain:schooldhundo.in`; `bing_webmaster`, `https://schooldhundo.in`), or from the live site fetched as Googlebot on the same day. Nothing is estimated. Status: **committed as d75f3c6 and live on schooldhundo.in since 23 November 2026.**
+Prepared 23 November 2026. Every number below comes from Google Search Console or Bing Webmaster Tools through the Windsor.ai connector (`searchconsole`, property `sc-domain:schooldhundo.in`; `bing_webmaster`, `https://schooldhundo.in`), or from the live site fetched as Googlebot on the same day. Nothing is estimated. Status: **committed as 3dab533 and live on schooldhundo.in since 23 November 2026.**
 
 ## 1. Baseline: what Google showed (before these changes)
 
