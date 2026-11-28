@@ -15,8 +15,8 @@ BLOCKED. No number here is estimated; where a source had no data, it says so.
    cite.
 4. **Done today:** five outreach e-mails, each to an address published on the recipient's own website, saved as Gmail
    **drafts (not sent)** (§4); and a **printable paper for every practice set**, in English and Hindi, a free resource
-   for teachers and free-coaching groups whose students share one device (§5). IMPLEMENTED, TESTED, **not deployed**.
-5. **What needs you** (§7): send the drafts; approve the deploy; create the LinkedIn, Crunchbase and Wellfound pages.
+   for teachers and free-coaching groups whose students share one device (§5). IMPLEMENTED, TESTED, DEPLOYED 28 Nov.
+5. **What needs you** (§7): send the drafts; create the LinkedIn, Crunchbase and Wellfound pages.
 
 ## 2. Tools used today
 
@@ -96,7 +96,7 @@ Not drafted, with the reason:
 Consider sending from the site's own address (schooldhundo.in@gmail.com, shown in the footer): copy the drafts there.
 Follow up once after a week; never more.
 
-## 5. Printable practice papers (IMPLEMENTED, TESTED, not deployed)
+## 5. Printable practice papers (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as 3ac339f)
 
 **Why.** Demand: "navodaya mental ability question paper" 22,200 searches a month and "… questions pdf" 9,900 (Ubersuggest,
 27 Nov). Scribd PDFs hold #1 and #6 for it. Free-coaching groups for rural children, whom the JNVST is designed for, often
@@ -129,7 +129,8 @@ a paper counts for the test page. Not in the sitemap; no Quiz data on the paper.
 ## 6. Next, in order (RECOMMENDED)
 
 1. **Send the five drafts** (you). Measure replies and any link they add.
-2. **Deploy the printable papers** (your approval), then request indexing for one practice page in Search Console.
+2. **Printable papers**: deployed 28 Nov and checked live (the start-screen link, the Hindi paper, the head with the
+   set's canonical). Indexing was requested for three practice sets the same day.
 3. **Official profiles**: LinkedIn company page, Crunchbase and Wellfound (accounts are yours; I can write the text).
    Send me the addresses and I will add them as `sameAs` in the site's Organization data, so Google and AI assistants
    connect the brand.
@@ -148,8 +149,7 @@ or asking a school to link as a condition of anything.
 ## 7. What needs you now
 
 1. Review and send the five drafts in Gmail (or tell me to send them).
-2. Approve deploying the printable papers.
-3. Create the LinkedIn company page (and Crunchbase and Wellfound if you agree), and send me the addresses.
+2. Create the LinkedIn company page (and Crunchbase and Wellfound if you agree), and send me the addresses.
 
 ## 8. How to measure
 

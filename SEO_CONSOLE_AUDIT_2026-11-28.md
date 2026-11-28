@@ -10,7 +10,8 @@ today against the source), IMPLEMENTED, TESTED, DEPLOYED, RECOMMENDED. Nothing h
 2. **Problem 1: Google spends its crawling on the wrong things.** In the last 90 days, 74% of Googlebot's 55,500 requests
    were page resources and 66% were JSON: mostly the six API calls every school profile makes while it renders. The form
    and tab copies of each profile (claim, suggest, contact, ?tab=) took thousands more. Meanwhile **2,011 real pages
-   (profiles, district and city pages, practice sets) have been discovered but never crawled.** FIXED in code (§4).
+   (profiles, district and city pages, practice sets) have been discovered but never crawled.** FIXED and DEPLOYED on
+   28 Nov (§4).
 3. **Problem 2: 31 of the 41 school profiles Google showed 20 or more times in 28 days are noindex** (about 1,040
    impressions). This is the 16 Nov rule for bare listings, kept on 24 Nov with the plan to enrich those schools. Still
    open (§5).
@@ -49,15 +50,15 @@ The JSON examples Google lists (985) are almost all one school profile's calls: 
 ranking 137, questions 136, the school itself 127. On the live site a profile's first view makes 9 API requests, 6 of
 them for the profile (measured in Chrome today). Google's crawl-budget guidance counts every such request.
 
-## 4. Fixes (IMPLEMENTED, TESTED, not yet deployed)
+## 4. Fixes (IMPLEMENTED, TESTED, DEPLOYED 28 Nov 2026 as 5c2332d)
 
 ### 4.1 One request per profile instead of six
 
 `GET /api/v1/schools/slug/{slug}/page` returns the school with its photos, fees, admissions, questions and ranking; each
 part is exactly what its own endpoint returns (an integration test compares them). The profile asks for it once; the
 sections that ask for those parts get them from a one-minute cache in the browser. Visitors get a faster profile too.
-Measured on the live site today: 9 API requests on a profile's first view. Expected after deploy: 4 (the three site-wide
-ones stay); to be measured live after the deploy.
+Measured on the live site in Chrome: a profile's first view made 9 API requests before the deploy and makes 4 after it
+(the three site-wide ones and the new page call); the profile shows as before.
 
 ### 4.2 robots.txt
 
@@ -80,6 +81,7 @@ The two claim links and two suggest links on each profile carry rel="nofollow".
 - Indexing requested: /exams/practice/jnvst-mat-1, /exams/practice/jnvst-mock-2, /exams/practice/aissee-class6-mock-1
   (all three listed as "Google chose different canonical" from a 13 Nov crawl), after the five pages and the JNV article
   earlier today.
+- robots.txt recrawl requested after the deploy (Settings → robots.txt; Google's last fetch was 15 Nov).
 - Not repeated: the "Crawled – currently not indexed" validation (it failed because Google chose not to index those
   pages; nothing technical has changed for them).
 
@@ -124,8 +126,10 @@ Nothing on Bing's side is broken; it indexes a new, unlinked site slowly. The fi
 
 ## 8. What needs you
 
-1. Approve deploying §4 together with this morning's printable papers.
-2. Decide on §5: enrich the top ten (I draft, you approve) and send the outreach drafts.
+1. Approve the seven profile descriptions in `tools/seo/data/profile-description-drafts-2026-11-28.md` (or say what to
+   change). Then enter them in the admin, or have them added as a database update marked staff-edited with their sources.
+   Three schools could not be drafted (no working official website).
+2. Send the five outreach drafts in Gmail.
 3. Switch the GA4 internal-traffic filter to Active when ready.
 
 ## 9. Checks
@@ -138,6 +142,7 @@ Nothing on Bing's side is broken; it indexes a new, unlinked site slowly. The fi
 | Frontend tests (`vitest`) | 255 tests in 59 files, 0 failures (new `schoolPage.test.ts`: one request answers all five parts; another school or a part older than a minute is fetched again) |
 | Production build | Passes |
 | Live baseline before deploy (Chrome) | A profile's first view: 9 API requests, 6 of them for the profile |
+| Live after deploy (curl and Chrome) | robots.txt has both rules; /api/v1/schools/slug/…/page answers 200 with its six parts; a profile's first view makes 4 API requests and shows as before; the printable paper's head has its own title and the set's canonical, no noindex |
 
 ## 10. Files
 
