@@ -133,8 +133,8 @@ Nothing on Bing's side is broken; it indexes a new, unlinked site slowly. The fi
 ## 8. What needs you
 
 Done on 28 Nov at the owner's instruction ("you take decision and do it now"): the seven descriptions (§5), the five
-outreach e-mails (sent), the GA4 internal-traffic filter (Active). Left: the four superseded Gmail drafts of the school
-e-mails (delete them; the sent versions are in Sent), and replies from the schools.
+outreach e-mails (sent), the GA4 internal-traffic filter (Active). The four superseded Gmail drafts were deleted. Left:
+replies from the schools (add any fee or admission page they send, with its source).
 
 ## 9. Checks
 
