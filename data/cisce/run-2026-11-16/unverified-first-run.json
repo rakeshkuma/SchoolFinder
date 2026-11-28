@@ -1,0 +1,5787 @@
+[
+ {
+  "code": "AP036",
+  "name": "St. Ann's School",
+  "city": "Rajahmundry",
+  "state": "AP",
+  "website": "https://stannsschoolrajamundry.com",
+  "reason": "no answer (curl: (6) Could not resolve host: stannsschoolrajamundry.com\r\n)"
+ },
+ {
+  "code": "AP048",
+  "name": "Alwardas Public School",
+  "city": "Visakhapatnam",
+  "state": "AP",
+  "website": "https://www.alwardaspublicschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.alwardaspublicschool.com\r\n)"
+ },
+ {
+  "code": "AP055",
+  "name": "Bhuvanagiri Public School",
+  "city": "Kadapa",
+  "state": "AP",
+  "website": "https://www.bhuvanagiripublicschool.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "AP068",
+  "name": "Redfields School",
+  "city": "Nellore",
+  "state": "AP",
+  "website": "https://www.redfieldsschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.redfieldsschool.com\r\n)"
+ },
+ {
+  "code": "AP029",
+  "name": "Flaiz Memorial Higher Secondary School Of S. D. A.",
+  "city": "Narsapur",
+  "state": "AP",
+  "website": "https://www.flaiz.org",
+  "reason": "page does not name the school (missing: s, d)",
+  "pageTitle": "Flaiz Adventist College &amp; School &#8211; Official website of Flaiz Adventist College &amp; Flaiz Memorial Higher secondary School of Seventh-day Adventists."
+ },
+ {
+  "code": "AP069",
+  "name": "The Noble School",
+  "city": "Hyderabad",
+  "state": "TS",
+  "website": "https://www.thenobleschool.net",
+  "reason": "no answer (curl: (6) Could not resolve host: www.thenobleschool.net\r\n)"
+ },
+ {
+  "code": "AP079",
+  "name": "Emmaus - Swiss Referral Hospital School",
+  "city": "Chittoor",
+  "state": "AP",
+  "website": "https://www.emmaus-schools.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.emmaus-schools.com\r\n)"
+ },
+ {
+  "code": "AP028",
+  "name": "Vasishta School",
+  "city": "Madanapalle",
+  "state": "AP",
+  "website": "https://www.vasishtaschools.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "AP101",
+  "name": "The Future Kid's School",
+  "city": "Ranga Reddy",
+  "state": "TS",
+  "website": "https://www.fkshyderabad.com",
+  "reason": "page does not name the school (missing: future, kids)",
+  "pageTitle": "开云官方手机入口站官网-开云online(中国)"
+ },
+ {
+  "code": "AP122",
+  "name": "Saraswathi Vidyalai E M High School",
+  "city": "Tadepalligudem",
+  "state": "AP",
+  "website": "https://www.saraswathividyalai.org",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error usually occu)"
+ },
+ {
+  "code": "AP124",
+  "name": "The Cedar Schools",
+  "city": "Visakhapatnam",
+  "state": "AP",
+  "website": "https://www.thecedarschools.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.thecedarschools.com\r\n)"
+ },
+ {
+  "code": "AS004",
+  "name": "The Assam Valley School",
+  "city": "Sonitpur",
+  "state": "AS",
+  "website": "https://www.assamvalleyschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.assamvalleyschool.org\r\n)"
+ },
+ {
+  "code": "BI001",
+  "name": "Mount Assisi School",
+  "city": "Bhagalpur",
+  "state": "BR",
+  "website": "https://www.mountassisibgp.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mountassisibgp.in\r\n)"
+ },
+ {
+  "code": "AP128",
+  "name": "St. Patrick's Academy ( E.m.) High School",
+  "city": "RAVULAPALEM",
+  "state": "AP",
+  "website": "https://https://www.stpatricksraap.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "AP127",
+  "name": "Nirmala English Medium High School",
+  "city": "Vijayawada",
+  "state": "AP",
+  "website": "https://https://nirmalahighschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "AP132",
+  "name": "Rosa Mystica School",
+  "city": "Chittoor",
+  "state": "AP",
+  "website": "https://https://rosamystica.co.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "BI002",
+  "name": "Carmel School",
+  "city": "Bhagalpur",
+  "state": "BR",
+  "website": "https://https://www.carmelschoolbhagalpur.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "BI016",
+  "name": "Lohia Nagar Mount Carmel High School",
+  "city": "Patna",
+  "state": "BR",
+  "website": "https://www.Lmcgroupedu.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.Lmcgroupedu.org\r\n)"
+ },
+ {
+  "code": "BI021",
+  "name": "St. Joseph's School",
+  "city": "Bhagalpur",
+  "state": "BR",
+  "website": "https://www.stjosephskahalgaon.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "BI045",
+  "name": "St Xavier's School",
+  "city": "Purnia",
+  "state": "BR",
+  "website": "https://www.stxaviersschoolbaghmara.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "BI022",
+  "name": "St. M.G. Public School",
+  "city": "Patna",
+  "state": "BR",
+  "website": "https://www.mgpschool.co.in",
+  "reason": "page does not name the school (missing: st, m, g)",
+  "pageTitle": ""
+ },
+ {
+  "code": "BI055",
+  "name": "St. Basil's School",
+  "city": "East Champaran",
+  "state": "BR",
+  "website": "https://www.stbasilsschoolraxaul.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stbasilsschoolraxaul.com\r\n)"
+ },
+ {
+  "code": "BI063",
+  "name": "Delhi Public School",
+  "city": "Muzaffarpur",
+  "state": "BR",
+  "website": "https://dpssharfuddinpur.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "BI053",
+  "name": "B P Indraprastha International School",
+  "city": "Muzaffarpur",
+  "state": "BR",
+  "website": "https://https://indraprasthamuzaffarpur.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "CG005",
+  "name": "St. Xavier's High School",
+  "city": "Raipur",
+  "state": "CG",
+  "website": "https://www.ryangroup.org",
+  "reason": "page does not name the school (missing: st, xaviers)",
+  "pageTitle": "Top 10 International Schools in India - Ryan Group"
+ },
+ {
+  "code": "BI064",
+  "name": "Birla Open Minds International School Aurangabad",
+  "city": "Aurangabad",
+  "state": "BR",
+  "website": "https://https://bomis.org.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "CG004",
+  "name": "Carmel Convent Senior Secondary School",
+  "city": "Raigarh",
+  "state": "CG",
+  "website": "https://https://raigarhcarmel.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "CG007",
+  "name": "St. Xavier's High School",
+  "city": "Durg",
+  "state": "CG",
+  "website": "https://https://www.ryangroup.org/ryaninternational/icse/durg/xaviers-high-school-dhanore-road",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "AP130",
+  "name": "Don Bosco Em School",
+  "city": "Guntur",
+  "state": "AP",
+  "website": "https://www.dbsmangalagiriicse.org",
+  "reason": "page does not name the school (missing: em)",
+  "pageTitle": "Don Bosco School ,Mangalagirii"
+ },
+ {
+  "code": "CH009",
+  "name": "C.l. Aggarwal Dav Model School",
+  "city": "Chandigarh",
+  "state": "CH",
+  "website": "https://www.claggarwaldavchd.com",
+  "reason": "HTTP 525"
+ },
+ {
+  "code": "GO006",
+  "name": "G. V. M' S Utkarsh Vidyamandir",
+  "city": "Ponda",
+  "state": "GA",
+  "website": "https://https://utkarshvidyamandir.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "GU012",
+  "name": "Ryan International School",
+  "city": "Surat",
+  "state": "GJ",
+  "website": "https://www.ryaninterantional.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ryaninterantional.org\r\n)"
+ },
+ {
+  "code": "GU002",
+  "name": "Metas Adventist School",
+  "city": "Surat",
+  "state": "GJ",
+  "website": "https://www.suratschool.metasofsda.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "GO009",
+  "name": "Jnyan Vikas School",
+  "city": "Bardez",
+  "state": "GA",
+  "website": "https://https://www.jnyanvikasschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "GU013",
+  "name": "S. G. V. P. International School",
+  "city": "Ahmedabad",
+  "state": "GJ",
+  "website": "https://www.sgvp.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "GU031",
+  "name": "Madhav International School",
+  "city": "Ahmedabad",
+  "state": "GJ",
+  "website": "https://www.madhavinternationalschool.org",
+  "reason": "HTTP 421"
+ },
+ {
+  "code": "GU039",
+  "name": "Mother Teresa Memorial School",
+  "city": "Ahmedabad",
+  "state": "GJ",
+  "website": "https://www.motherteresamemorialschool.in",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "GU003",
+  "name": "S.N. Kansagra School",
+  "city": "Rajkot",
+  "state": "GJ",
+  "website": "https://www.tges.org",
+  "reason": "page does not name the town, district or PIN (Rajkot, Rajkot, 360005)",
+  "pageTitle": "TGES &#8211; The Galaxy Education System &#8211; TGES"
+ },
+ {
+  "code": "GU042",
+  "name": "Alpha International School",
+  "city": "Ahmedabad",
+  "state": "GJ",
+  "website": "https://https://alphaschoolahmedabad.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "GU035",
+  "name": "S. B. Sharma World School",
+  "city": "Jamnagar",
+  "state": "GJ",
+  "website": "https://www.sbsworldschool.org",
+  "reason": "no answer (curl: (7) Failed to connect to www.sbsworldschool.org:443 after 3317 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "GU046",
+  "name": "Edunova Global Public School",
+  "city": "Ahmedabad",
+  "state": "GJ",
+  "website": "https://edunova.ac.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "GU045",
+  "name": "St. Xavier's School",
+  "city": "Mehsana",
+  "state": "GJ",
+  "website": "https://https://cisce.stxaviermehsana.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "HA004",
+  "name": "St. Joseph's High School",
+  "city": "Sirsa",
+  "state": "HR",
+  "website": "https://www.stjosephpilar.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "GU020",
+  "name": "S. N. V. International School",
+  "city": "Nadiad",
+  "state": "GJ",
+  "website": "https://www.snvschool.org",
+  "reason": "page does not name the school (missing: s, n)",
+  "pageTitle": "SNV International School"
+ },
+ {
+  "code": "HA013",
+  "name": "Orchids The International School",
+  "city": "Gurugram",
+  "state": "HR",
+  "website": "https://www.orchidstheinternationalschool.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "HA001",
+  "name": "St. Paul's High School",
+  "city": "Ambala",
+  "state": "HR",
+  "website": "https://www.stpaulsambala.org",
+  "reason": "page does not name the school (missing: st, pauls)",
+  "pageTitle": "NAGATOP: Agen Daftar Rekomendasi Game Mesin Slot Daring & Prediksi Skor Bola Modern Resmi Terpercaya"
+ },
+ {
+  "code": "HA034",
+  "name": "St Thomas Convent School",
+  "city": "Kurukshetra",
+  "state": "HR",
+  "website": "https://WWW.STTHOMASPEHOWA.COM",
+  "reason": "no answer (curl: (6) Could not resolve host: WWW.STTHOMASPEHOWA.COM\r\n)"
+ },
+ {
+  "code": "HA035",
+  "name": "The Alpine Top School",
+  "city": "Fatehabad",
+  "state": "HR",
+  "website": "https://www.alpinetopschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.alpinetopschool.com\r\n)"
+ },
+ {
+  "code": "HA033",
+  "name": "Matrikiran High School",
+  "city": "Gurugram",
+  "state": "HR",
+  "website": "https://www.matrikiran.in",
+  "reason": "page does not name the town, district or PIN (Gurugram, Gurugram, 122012)",
+  "pageTitle": "Welcome to MatriKiran"
+ },
+ {
+  "code": "HA036",
+  "name": "Apex Convent School",
+  "city": "Fatehabad",
+  "state": "HR",
+  "website": "https://www.apexconventschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.apexconventschool.in\r\n)"
+ },
+ {
+  "code": "HP014",
+  "name": "Sacred Heart Sr. Sec. School",
+  "city": "Dharamshala",
+  "state": "HP",
+  "website": "https://www.shsdharamshala.com",
+  "reason": "page does not name the town, district or PIN (Dharamshala, Kangra, 176057)",
+  "pageTitle": "Sacred Heart Sr. Sec. School is under construction"
+ },
+ {
+  "code": "HA048",
+  "name": "Agastya International School",
+  "city": "Rohtak",
+  "state": "HR",
+  "website": "https://https://aisrohtak.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "AP117",
+  "name": "St. Anns E M High School",
+  "city": "Bhimavaram",
+  "state": "AP",
+  "website": "https://www.stannschool.com",
+  "reason": "no answer (curl: (28) Failed to connect to www.stannschool.com:443 after 21285 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "HP028",
+  "name": "Mount Carmel School",
+  "city": "Kangra",
+  "state": "HP",
+  "website": "https://www.mcsbaijnath.com",
+  "reason": "no answer (curl: (7) Failed to connect to www.mcsbaijnath.com:443 after 21 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "HP018",
+  "name": "Day Star School",
+  "city": "Manali",
+  "state": "HP",
+  "website": "https://www.daystarmanali.org",
+  "reason": "page does not name the town, district or PIN (Manali, Kullu, 175131)",
+  "pageTitle": "Day Star School &#8211; Transforming Lives Through Education"
+ },
+ {
+  "code": "HP029",
+  "name": "Mount Carmel High School",
+  "city": "Kangra",
+  "state": "HP",
+  "website": "https://www.mcsgaggal.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "HP030",
+  "name": "Auckland House School For Boys",
+  "city": "Shimla",
+  "state": "HP",
+  "website": "https://https://aucklandhouseschoolboys.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH005",
+  "name": "De Nobili School",
+  "city": "Sindri",
+  "state": "JH",
+  "website": "https://denobilisindri.in",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "HP038",
+  "name": "Mother Teresa Global Convent School",
+  "city": "Kangra",
+  "state": "HP",
+  "website": "https://https://motherteresaglobal.com/?bypass_code=Ubswiu",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH007",
+  "name": "Sacred Heart School",
+  "city": "Daltonganj",
+  "state": "JH",
+  "website": "https://www.shschianki.com",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "JH024",
+  "name": "Hill Top School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://https://www.hilltopschooljamshedpur.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "HA008",
+  "name": "St. Kabir's Residential & Day School",
+  "city": "Hisar",
+  "state": "HR",
+  "website": "https://www.saintkabir.co.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: CRYPT_E_REVOCATION_OFFLINE (0x80092013) - The revocation fun)"
+ },
+ {
+  "code": "JH025",
+  "name": "Kerala Samajam Model School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://https://ksms.ac.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH029",
+  "name": "Bishop Westcott Girls' School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://https://www.namkombwgs.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH034",
+  "name": "S.d.a. Senior Secondary School",
+  "city": "Khunti",
+  "state": "JH",
+  "website": "https://sdakhunti.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "JH046",
+  "name": "St. Francis School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://www.stfrancisranchi.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stfrancisranchi.com\r\n)"
+ },
+ {
+  "code": "HP033",
+  "name": "D A V Public School",
+  "city": "Manali",
+  "state": "HP",
+  "website": "https://www.davmanali.com",
+  "reason": "page does not name the school (missing: d, v)",
+  "pageTitle": "Welcome to DAV PUBLIC SCHOOL"
+ },
+ {
+  "code": "JH039",
+  "name": "Loyola School",
+  "city": "Dhanbad",
+  "state": "JH",
+  "website": "https://www.loyolataldanga.com",
+  "reason": "page does not name the town, district or PIN (Dhanbad, Dhanbad, 828202)",
+  "pageTitle": "Index"
+ },
+ {
+  "code": "JH051",
+  "name": "Dayanand Anglo Vedic Public School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://www.davpatelnagar.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "JH043",
+  "name": "A. D. L. S. Sunshine School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://adlssunshine.org",
+  "reason": "page does not name the school (missing: d, l, s)",
+  "pageTitle": "ADLS: Homepage"
+ },
+ {
+  "code": "JH069",
+  "name": "Carmel School",
+  "city": "Bokaro Steel City",
+  "state": "JH",
+  "website": "https://www.carmelbokaro.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.carmelbokaro.com\r\n)"
+ },
+ {
+  "code": "JH075",
+  "name": "Mazzarello School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://http://Mazzarello School. com",
+  "reason": "no answer (curl: (3) URL rejected: Bad path\r\n)"
+ },
+ {
+  "code": "JH081",
+  "name": "Bishop Hartmann Academy",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://www.bhaacademy.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "JH085",
+  "name": "Lievens Academy",
+  "city": "Lohardaga",
+  "state": "JH",
+  "website": "https://www.lievensacademy.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.lievensacademy.com\r\n)"
+ },
+ {
+  "code": "JH077",
+  "name": "Carmel School",
+  "city": "Hazaribagh",
+  "state": "JH",
+  "website": "https://hazaribagcarmel.in",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "JH071",
+  "name": "St. Xavier's English School",
+  "city": "Chaibasa",
+  "state": "JH",
+  "website": "https://www.stxaviersenglishschool.ac.in",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "JH048",
+  "name": "Andhra Association English School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://http://aaeskadmajsr.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "JH089",
+  "name": "Mount Carmel School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://www.mountcarmelormanjhi.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mountcarmelormanjhi.com\r\n)"
+ },
+ {
+  "code": "JH094",
+  "name": "Children Of The New Dawn",
+  "city": "Khunti",
+  "state": "JH",
+  "website": "https://www.cndtorpa.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.cndtorpa.org\r\n)"
+ },
+ {
+  "code": "JH090",
+  "name": "Don Bosco School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://www.donboscoranchi.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "JH102",
+  "name": "De Nobili School",
+  "city": "Dhanbad",
+  "state": "JH",
+  "website": "https://www.denobilibhuli.in",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "JH104",
+  "name": "Ramakrishna Mission Lady Indrasingh English School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://www.rkmjamshedpur.org",
+  "reason": "page does not name the school (missing: indrasingh)",
+  "pageTitle": "Home | Ramakrishna Mission Vivekananda Society, Jamshedpur"
+ },
+ {
+  "code": "JH106",
+  "name": "St. Francis School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://www.stfrancisschoolbanhora.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stfrancisschoolbanhora.com\r\n)"
+ },
+ {
+  "code": "JH107",
+  "name": "St. Joseph School",
+  "city": "Pakur",
+  "state": "JH",
+  "website": "https://www.stjosephsschool.in",
+  "reason": "page does not name the school (missing: joseph)",
+  "pageTitle": "St.Joseph's school"
+ },
+ {
+  "code": "JH109",
+  "name": "St.Maria School",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://wwwstmariaschoolranchi",
+  "reason": "no answer (curl: (6) Could not resolve host: wwwstmariaschoolranchi\r\n)"
+ },
+ {
+  "code": "JH116",
+  "name": "St. Xavier's Academy",
+  "city": "Daltonganj",
+  "state": "JH",
+  "website": "https://https://xavierdaltonganj.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH131",
+  "name": "St. Thomas School",
+  "city": "Godda",
+  "state": "JH",
+  "website": "https://www.stthomasdhamri.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "JH128",
+  "name": "Kerala Public School Gamharia",
+  "city": "Seraikela Kharsawan",
+  "state": "JH",
+  "website": "https://www.keralapublicschooltrust.com",
+  "reason": "page does not name the town, district or PIN (Seraikela Kharsawan, West Singhbhum, 832108)",
+  "pageTitle": "Kerala Public School Trust"
+ },
+ {
+  "code": "JH143",
+  "name": "St. Joseph's School",
+  "city": "Giridih",
+  "state": "JH",
+  "website": "https://www.sjsgrd.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sjsgrd.com\r\n)"
+ },
+ {
+  "code": "JK002",
+  "name": "St. Peter`s Higher Secondary School",
+  "city": "Jammu",
+  "state": "JK",
+  "website": "https://www.stpeterschoolkaranbagh.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stpeterschoolkaranbagh.com\r\n)"
+ },
+ {
+  "code": "KA004",
+  "name": "Bishop Cotton Boys' School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.cottonboys.com www.bishopcottonboysschool.edu.in",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "JH141",
+  "name": "St. Xavier's Academy",
+  "city": "Latehar",
+  "state": "JH",
+  "website": "https://https://www.stxaviersacademylth.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JK003",
+  "name": "St. Peter's High School",
+  "city": "Leh",
+  "state": "LA",
+  "website": "https://www.stpeterschoolleh.com",
+  "reason": "no answer (curl: (7) Failed to connect to www.stpeterschoolleh.com:443 after 17 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "JH124",
+  "name": "St. Claret School",
+  "city": "Latehar",
+  "state": "JH",
+  "website": "https://www.stclaretschoolbarwadih.in",
+  "reason": "page does not name the school (missing: st, claret)",
+  "pageTitle": "Melbet App in India: Download APK for Android &amp; iOS"
+ },
+ {
+  "code": "KA008",
+  "name": "The Frank Anthony Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.fapsian.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.fapsian.com\r\n)"
+ },
+ {
+  "code": "KA001",
+  "name": "American Friendship Residential School",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://nrti.com/afrs",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error usually occu)"
+ },
+ {
+  "code": "KA014",
+  "name": "St. Francis Xavier Girls' High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.sfxghs.org",
+  "reason": "site says the school is aided: type cannot be set without checking",
+  "pageTitle": "St. Francis Xavier Girls' High School"
+ },
+ {
+  "code": "KA019",
+  "name": "Bethany High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bethanyinstitutions.edu.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "KA050",
+  "name": "Phoenix Public Residential School",
+  "city": "Honaga",
+  "state": "KA",
+  "website": "https://www.phoenixpublicschool.info",
+  "reason": "no answer (curl: (6) Could not resolve host: www.phoenixpublicschool.info\r\n)"
+ },
+ {
+  "code": "KA024",
+  "name": "Presidency School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://presidencyschoolrtn.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA047",
+  "name": "Sandur Girls Residential School",
+  "city": "Ballari",
+  "state": "KA",
+  "website": "https://www.sgrschool.com",
+  "reason": "page does not name the school (missing: sandur)",
+  "pageTitle": "欧宝官方站网站·欧宝ObOpel-欧宝(中国)"
+ },
+ {
+  "code": "KA059",
+  "name": "Vidyaniketan Public School",
+  "city": "Udupi",
+  "state": "KA",
+  "website": "https://www.jannavidya.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.jannavidya.com\r\n)"
+ },
+ {
+  "code": "KA060",
+  "name": "Carmel High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.carmeledu.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.carmeledu.com\r\n)"
+ },
+ {
+  "code": "KA053",
+  "name": "Coorg Public School",
+  "city": "S. Kodagu",
+  "state": "KA",
+  "website": "https://www.coorgpublicschool.org.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "KA066",
+  "name": "Sri Siddhi Vinayaka Residential School",
+  "city": "Udupi",
+  "state": "KA",
+  "website": "https://www.ssrshattiangadi.in",
+  "reason": "page does not name the school (missing: vinayaka)",
+  "pageTitle": "Home - Sri Siddhivinayaka Residential School"
+ },
+ {
+  "code": "KA070",
+  "name": "Bishop Sargant School",
+  "city": "Tumkur",
+  "state": "KA",
+  "website": "https://www.bishopsargant.com",
+  "reason": "page does not name the town, district or PIN (Tumkur, Tumakuru, 572102)",
+  "pageTitle": "BISHOP SARGANT SCHOOL & P. U COLLEGE | HOME"
+ },
+ {
+  "code": "KA062",
+  "name": "Dayananda Sagar International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.dayanandasagar.edu",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560078)",
+  "pageTitle": "Dayananda Sagar Institutions - Kumarswamy Layout"
+ },
+ {
+  "code": "KA079",
+  "name": "Ryan International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.ryaninternational.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "KA086",
+  "name": "Miranda English Medium School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.mirandaschool.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA073",
+  "name": "ACTS School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://www.actsschool.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA099",
+  "name": "St. Flowers English Medium School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.stflowerschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stflowerschool.com\r\n)"
+ },
+ {
+  "code": "KA100",
+  "name": "National Residential School",
+  "city": "Konandoor",
+  "state": "KA",
+  "website": "https://www.nrskonandur.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "KA107",
+  "name": "Deccan International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.deccan.edu.in",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560061)",
+  "pageTitle": "Best International School in South Bangalore – Padmanabhanagar, JP Nagar, Kanakpura Road, Banashankari, Uttarahalli, Rajarajeshwari Nagar"
+ },
+ {
+  "code": "KA110",
+  "name": "School Vivekananda",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.schoolvivekananda.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.schoolvivekananda.com\r\n)"
+ },
+ {
+  "code": "KA112",
+  "name": "Nandini Vidyanikethana",
+  "city": "Vijayapura",
+  "state": "KA",
+  "website": "https://www.nandinividyanikethana.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.nandinividyanikethana.org\r\n)"
+ },
+ {
+  "code": "KA096",
+  "name": "R.N.S. Vidyaniketan",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bsrnsv.com",
+  "reason": "page does not name the school (missing: r, n)",
+  "pageTitle": "BSRNSV Vidyaniketan Education &#8211; School, College"
+ },
+ {
+  "code": "KA124",
+  "name": "Amber Valley Residential School",
+  "city": "Chikkamagaluru",
+  "state": "KA",
+  "website": "https://www.ambervalleyschool.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA127",
+  "name": "Karaumbiah's Academy For Learning And Sports",
+  "city": "South Coorg",
+  "state": "KA",
+  "website": "https://www.kalschool.com",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "JH014",
+  "name": "Carmel School",
+  "city": "Giridih",
+  "state": "JH",
+  "website": "https://www.carmelschoolgiridih.com",
+  "reason": "no answer (curl: (28) Failed to connect to www.carmelschoolgiridih.com:443 after 21072 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KA138",
+  "name": "New Millennium School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www,newmillenniumschool,com",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "KA163",
+  "name": "Christ Academy I. C. S. E. School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.christacademy.in",
+  "reason": "page does not name the school (missing: c, s, e)",
+  "pageTitle": "Christ Academy ICSE School"
+ },
+ {
+  "code": "KA151",
+  "name": "Gnana Jyothi School",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://www.gnanajyothiicsemulbagal.in",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "KA072",
+  "name": "Daffodils English School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.daffodils.school",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560094)",
+  "pageTitle": "Home - Daffodils Academy"
+ },
+ {
+  "code": "KA185",
+  "name": "California Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.californiapublicschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.californiapublicschool.in\r\n)"
+ },
+ {
+  "code": "KA194",
+  "name": "Lawrence High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.lawrenceschool.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA195",
+  "name": "Green Country Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.greencountrypublicschool.org",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560092)",
+  "pageTitle": "GREEN COUNTRY PUBLIC SCHOOL - best school in hebbal"
+ },
+ {
+  "code": "KA068",
+  "name": "R.t. Nagar Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.rtnagargroups.com",
+  "reason": "HTTP 522"
+ },
+ {
+  "code": "KA201",
+  "name": "Gnanodaya Public School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://www.gpsmysore.org",
+  "reason": "page does not name the school (missing: gnanodaya)",
+  "pageTitle": "1Win India: Online Betting & Casino | Login to the Official Website"
+ },
+ {
+  "code": "KA215",
+  "name": "Gem International Residential School",
+  "city": "Gauribidanur Taluk",
+  "state": "KA",
+  "website": "https://www.girs.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_INTERNAL_ERROR (0x80090304) - The Local Security Autho)"
+ },
+ {
+  "code": "KA219",
+  "name": "Rainbow Residential Public School",
+  "city": "Haveri",
+  "state": "KA",
+  "website": "https://rainbow-education.com",
+  "reason": "page does not name the town, district or PIN (Haveri, Haveri, 581115)",
+  "pageTitle": "RAINBOW RESIDENTIAL PUBLIC SCHOOL || HOME"
+ },
+ {
+  "code": "KA204",
+  "name": "St. Dominic's School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.stdominicsweb.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error usually occu)"
+ },
+ {
+  "code": "KA223",
+  "name": "A.C. School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.anthonyclaretschool.com",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "KA227",
+  "name": "V.L.S. International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.vlsinternationalschool.education",
+  "reason": "page does not name the school (missing: v, l, s)",
+  "pageTitle": "VLS International School"
+ },
+ {
+  "code": "KA245",
+  "name": "Sahyadri School",
+  "city": "Thirthalli Tq.",
+  "state": "KA",
+  "website": "https://sahyadriicse.org",
+  "reason": "no answer (curl: (6) Could not resolve host: sahyadriicse.org\r\n)"
+ },
+ {
+  "code": "KA251",
+  "name": "Prem Seva Vidyalaya",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://www.lnltrust.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.lnltrust.org\r\n)"
+ },
+ {
+  "code": "KA252",
+  "name": "Jyothi Nivas School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://www.jyothinivasedu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.jyothinivasedu.in\r\n)"
+ },
+ {
+  "code": "KA253",
+  "name": "Kuvempu Vidyaniketan",
+  "city": "Chikkamagaluru",
+  "state": "KA",
+  "website": "https://https://www.kuvempuvidyaniketan.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA026",
+  "name": "St. Mira's English School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.stmiras.org",
+  "reason": "no answer (curl: (28) Failed to connect to www.stmiras.org:443 after 21059 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KA256",
+  "name": "Bethesda International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bethesdainternationalschool.com",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560060)",
+  "pageTitle": "Bethesda International School | ICSE School Kengeri"
+ },
+ {
+  "code": "KA141",
+  "name": "Shree Bharathi Vidyalaya",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bharathividyalaya.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.bharathividyalaya.in\r\n)"
+ },
+ {
+  "code": "KA269",
+  "name": "Podar International School",
+  "city": "Hassan",
+  "state": "KA",
+  "website": "https://www.podar.org",
+  "reason": "page does not name the town, district or PIN (Hassan, Hassan, 573201)",
+  "pageTitle": "::Welcome To Podar Education Complex:::"
+ },
+ {
+  "code": "KA261",
+  "name": "Head Start Educational Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.headstarteducationalacademy.edu.in",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 562125)",
+  "pageTitle": "HSEA® &#8211; Our Tomorrow Is Today®"
+ },
+ {
+  "code": "KA273",
+  "name": "Janak Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.janakschools.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA270",
+  "name": "PRESTIGE SCHOOL",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://www.prestigegroupofinstitutions.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA289",
+  "name": "St. Patrick's Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.patsacademy.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "KA287",
+  "name": "Shree Dhanraj Phoolchand Hindi High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.dphhighschool.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA311",
+  "name": "Shri Vivekananda Public School",
+  "city": "Hassan",
+  "state": "KA",
+  "website": "https://www.viscrp.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "KA312",
+  "name": "Brooklyn National Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.brooklynnationalpublicschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.brooklynnationalpublicschool.com\r\n)"
+ },
+ {
+  "code": "KA315",
+  "name": "Swamy Vivekananda School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https:// KA315CISCE.ORG",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "KA300",
+  "name": "B G S Model Public School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://www.bgsmps.com",
+  "reason": "page does not name the school (missing: s)",
+  "pageTitle": "Home - BGS MODEL PUBLIC SCHOOL"
+ },
+ {
+  "code": "KA234",
+  "name": "Nightingales English School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://nightingalesschool.com",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560076)",
+  "pageTitle": "Nightingales Group of Institutions"
+ },
+ {
+  "code": "KA324",
+  "name": "INDIAN PUBLIC SCHOOL",
+  "city": "Tumakuru",
+  "state": "KA",
+  "website": "https://www.ipsturuvekere.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ipsturuvekere.com\r\n)"
+ },
+ {
+  "code": "KA319",
+  "name": "Pratham International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://http://prathamschool.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA303",
+  "name": "Shree Mahaveer Jain Vidyalaya",
+  "city": "Mysuru",
+  "state": "KA",
+  "website": "https://www.mahaveerjainvidyalaya.org",
+  "reason": "page does not name the town, district or PIN (Mysuru, Mysuru, 570011)",
+  "pageTitle": "Shree Mahaveer Jain Vidyalaya &#8211; a unit of Shree Bhagvan Mahaveer Jain Educational Trust, Mysore was established in the year 2010."
+ },
+ {
+  "code": "KA329",
+  "name": "St. Antony's Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.stantonystcp.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "KA325",
+  "name": "The Paradise Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://http://www.paradiseresidentialschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA336",
+  "name": "BEENA VAIDYA INTERNATIONAL PUBLIC SCHOOL",
+  "city": "MURDESHWAR",
+  "state": "KA",
+  "website": "https://www.beenavaidyaeducationtrust.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.beenavaidyaeducationtrust.com\r\n)"
+ },
+ {
+  "code": "KA342",
+  "name": "Attibele Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.apschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.apschool.in\r\n)"
+ },
+ {
+  "code": "KA344",
+  "name": "St. Anthony's School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.schoolstanthonys.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.schoolstanthonys.org\r\n)"
+ },
+ {
+  "code": "KA340",
+  "name": "Athena Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.athenapublicschool.com",
+  "reason": "HTTP 404"
+ },
+ {
+  "code": "KA345",
+  "name": "Twinkle United Public School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://www.twinkleunitedschool.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "KA351",
+  "name": "St. Francis School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.sfsbagaluricse.com",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Rural, 562149)",
+  "pageTitle": "St. Francis School | Best ICSE School In Bagalur"
+ },
+ {
+  "code": "KA352",
+  "name": "Cambridge Innovative School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.cambridgeinnovativeschools.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "KA350",
+  "name": "St. Norbert School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.snsbangalore.ac.in",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "KA353",
+  "name": "Indian High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://http://www.iesinternational.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA187",
+  "name": "Orchids The International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.vijayashreepublicschool.com",
+  "reason": "no answer (curl: (28) Failed to connect to www.vijayashreepublicschool.com:443 after 21046 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KA333",
+  "name": "B G S World School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bgsworldschool.org",
+  "reason": "page does not name the school (missing: b, g)",
+  "pageTitle": "Home -"
+ },
+ {
+  "code": "KA354",
+  "name": "St. Mary's Convent School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://https://smcsmandya.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA373",
+  "name": "A R J International The Futuristic School",
+  "city": "Vijayapura",
+  "state": "KA",
+  "website": "https://www.arjis.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.arjis.in\r\n)"
+ },
+ {
+  "code": "KA375",
+  "name": "Maruthi International Public School",
+  "city": "Sullia",
+  "state": "KA",
+  "website": "https://maruthischool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: maruthischool.com\r\n)"
+ },
+ {
+  "code": "KA262",
+  "name": "ORCHIDS THE INTERNATIONAL SCHOOL",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.rtnagargroups.com",
+  "reason": "HTTP 522"
+ },
+ {
+  "code": "KA376",
+  "name": "St.ann's Eng.med. School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.stannsems.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stannsems.org\r\n)"
+ },
+ {
+  "code": "KA380",
+  "name": "22nd Century Public School",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://www.22ndcenturypublicschoolmandya.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.22ndcenturypublicschoolmandya.com\r\n)"
+ },
+ {
+  "code": "KA367",
+  "name": "THE BISHOP COTTON ACADEMY",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://www.bishopcottonacademy.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA384",
+  "name": "Baldwin Co-education School",
+  "city": "Raichur",
+  "state": "KA",
+  "website": "https://www.baldwin2011rcr.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.baldwin2011rcr.com\r\n)"
+ },
+ {
+  "code": "KA370",
+  "name": "Brookfield High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://http://brookfieldhigh.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA397",
+  "name": "Vismaya Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://infovismayaacademy.org",
+  "reason": "no answer (curl: (6) Could not resolve host: infovismayaacademy.org\r\n)"
+ },
+ {
+  "code": "KA391",
+  "name": "Lourdes Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.laicse.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA203",
+  "name": "Shanti Niketan Public School",
+  "city": "Ballari",
+  "state": "KA",
+  "website": "https://WWW.SNPSCHOOL.IN",
+  "reason": "no answer (curl: (28) Failed to connect to WWW.SNPSCHOOL.IN:443 after 21055 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KA389",
+  "name": "Nirmala Rani School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.nrsicse.com",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560055)",
+  "pageTitle": "Nirmala Rani School - ICSE"
+ },
+ {
+  "code": "KA402",
+  "name": "BHARATHI PUBLIC SCHOOL",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bharathiinstitutions.in",
+  "reason": "HTTP 500"
+ },
+ {
+  "code": "KA379",
+  "name": "Neev Academy School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://http://www.neevacademy.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA410",
+  "name": "Bangalore International High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.bangaloreinternationalacademy.co.in",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560082)",
+  "pageTitle": "Bangalore International Group of Institutions | BIGI Schools Bangalore"
+ },
+ {
+  "code": "KA433",
+  "name": "Shree Sai International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.shreesaiinstitutions.org",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "KA425",
+  "name": "St. Joseph Chaminade Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://stjosephchaminade.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA431",
+  "name": "Mayur Global School",
+  "city": "Davanagere",
+  "state": "KA",
+  "website": "https://http://mayurglobalschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA440",
+  "name": "Amrita International Vidyalayam",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.aiv.edu.in",
+  "reason": "no answer (curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed\r\n)"
+ },
+ {
+  "code": "KA453",
+  "name": "Ikue International School",
+  "city": "Raichur",
+  "state": "KA",
+  "website": "https://ka453cisce.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA452",
+  "name": "Chrysalis High",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://www.chrysalishigh.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA468",
+  "name": "Gnana Bhaskara Public School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.gnanabhaskarapublicschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.gnanabhaskarapublicschool.com\r\n)"
+ },
+ {
+  "code": "KA454",
+  "name": "Sir M Visvesvaraya International School",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://https://smvischool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA458",
+  "name": "Udgam School",
+  "city": "Kushalnagar",
+  "state": "KA",
+  "website": "https://http://www.udgamcoorg.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA491",
+  "name": "P N C Cognitio School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.pnccs.edu.in",
+  "reason": "page does not name the school (missing: p, n, c)",
+  "pageTitle": "PNC Cognitio School | Best ICSE, CBSE &amp; Cambridge International School in Whitefield, Bangalore"
+ },
+ {
+  "code": "KA498",
+  "name": "Ladyhill School",
+  "city": "Mangaluru",
+  "state": "KA",
+  "website": "https://www.ladyhillshool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ladyhillshool.org\r\n)"
+ },
+ {
+  "code": "KA496",
+  "name": "Good Samaritan Public High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.gspsbengaluru.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.gspsbengaluru.com\r\n)"
+ },
+ {
+  "code": "KA474",
+  "name": "Poola School",
+  "city": "Doddaballapura",
+  "state": "KA",
+  "website": "https://https://poola.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA480",
+  "name": "Gupta's International School",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://http://giskolar.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KA482",
+  "name": "Don Bosco School",
+  "city": "Ballari",
+  "state": "KA",
+  "website": "https://https://dbhospet.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA487",
+  "name": "Alvas English Medium Primary & Higher Primary School",
+  "city": "Mangaluru",
+  "state": "KA",
+  "website": "https://https://www.alvasschools.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA511",
+  "name": "Dream World International Public School",
+  "city": "Chitradurga",
+  "state": "KA",
+  "website": "https://www.dreamworldinternationalpublicschoolholalkere",
+  "reason": "no answer (curl: (6) Could not resolve host: www.dreamworldinternationalpublicschoolholalkere\r\n)"
+ },
+ {
+  "code": "KA509",
+  "name": "Shree Sai Saadhanaa School",
+  "city": "Doddaballapura",
+  "state": "KA",
+  "website": "https://sssdbp.org",
+  "reason": "no answer (curl: (6) Could not resolve host: sssdbp.org\r\n)"
+ },
+ {
+  "code": "KA505",
+  "name": "V G S Elite International School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://vgseliteinternationalschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA513",
+  "name": "M S B Educational Institute",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.idaramsb.net",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KA522",
+  "name": "ST.THERESA'S SCHOOL",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://stsblr.ac.in",
+  "reason": "page does not name the town, district or PIN (Bengaluru, Bengaluru Urban, 560060)",
+  "pageTitle": "Welcome to :: ST.THERESA'S SCHOOL, KENGERI, BANGALORE ::"
+ },
+ {
+  "code": "KA512",
+  "name": "Gnana Mudra Vidya Mandir",
+  "city": "Mandya",
+  "state": "KA",
+  "website": "https://https://gnanamudra.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA528",
+  "name": "Akshara International School",
+  "city": "Tumkur",
+  "state": "KA",
+  "website": "https://www.aissira.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.aissira.com\r\n)"
+ },
+ {
+  "code": "KA518",
+  "name": "Sudhiksha International School",
+  "city": "Siruguppa",
+  "state": "KA",
+  "website": "https://https://www.sudhikshainternationalschool.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA521",
+  "name": "Tenbroeck Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://tenbroeckacademy.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA525",
+  "name": "Flomont World School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://flomont.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KE017",
+  "name": "St. Pius X English School",
+  "city": "Idukki",
+  "state": "KL",
+  "website": "https://www.stpiuskuttikanam.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stpiuskuttikanam.org\r\n)"
+ },
+ {
+  "code": "KE023",
+  "name": "Infant Jesus Anglo - Indian Higher Secondary School",
+  "city": "Kollam",
+  "state": "KL",
+  "website": "https://ijhsss.org",
+  "reason": "no answer (curl: (6) Could not resolve host: ijhsss.org\r\n)"
+ },
+ {
+  "code": "KA531",
+  "name": "KUVEMPU INTERNATIONAL SCHOOL",
+  "city": "Hassan",
+  "state": "KA",
+  "website": "https://www.kuvempu.school.in",
+  "reason": "page does not name the town, district or PIN (Hassan, Hassan, 573225)",
+  "pageTitle": "Kuvempu International School - Admissions Open"
+ },
+ {
+  "code": "KA530",
+  "name": "Green Globe Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://www.greenglobeacademy.co.in/contact.php",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KE001",
+  "name": "Alphonsa Residential School",
+  "city": "Kottayam",
+  "state": "KL",
+  "website": "https://www.alphonsaresidentialschool.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "KE029",
+  "name": "Lourde Mount School",
+  "city": "Thiruvananthapuram",
+  "state": "KL",
+  "website": "https://lourdesmounticse.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: lourdesmounticse.edu.in\r\n)"
+ },
+ {
+  "code": "KE015",
+  "name": "Mt. Zion Residential School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.mzschool.org",
+  "reason": "page does not name the school (missing: mt)",
+  "pageTitle": "MOUNT ZION RESIDENTIAL SCHOOL"
+ },
+ {
+  "code": "KE033",
+  "name": "Sarvodaya Vidyalaya",
+  "city": "Thiruvananthapuram",
+  "state": "KL",
+  "website": "https://sarvodayavidyalaya.edu.in",
+  "reason": "site says the school is aided: type cannot be set without checking",
+  "pageTitle": "Home - Sarvodaya Vidyalaya ICSE"
+ },
+ {
+  "code": "KE037",
+  "name": "Bethany Academy",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.bethanyacademy.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.bethanyacademy.in\r\n)"
+ },
+ {
+  "code": "KE041",
+  "name": "Good Shepherd Modern English School",
+  "city": "Malappuram",
+  "state": "KL",
+  "website": "https://www.goodshepherdpalunda.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.goodshepherdpalunda.org\r\n)"
+ },
+ {
+  "code": "KE024",
+  "name": "Mount Carmel Convent Anglo - Indian Girls High School",
+  "city": "Kollam",
+  "state": "KL",
+  "website": "https://www.mcctangi.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mcctangi.org\r\n)"
+ },
+ {
+  "code": "KE038",
+  "name": "St. Aloysius Convent I.s.c. School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://www.staloysiusisckochi.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.staloysiusisckochi.com\r\n)"
+ },
+ {
+  "code": "KE044",
+  "name": "Christ Nagar Higher Secondary School",
+  "city": "Thiruvananthapuram",
+  "state": "KL",
+  "website": "https://www.christnagarschool.org/icse",
+  "reason": "no answer (curl: (6) Could not resolve host: www.christnagarschool.org\r\n)"
+ },
+ {
+  "code": "KE043",
+  "name": "Evershine Residential School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://evershineschool.org",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "KE054",
+  "name": "Infant Jesus English Medium School",
+  "city": "Alappuzha",
+  "state": "KL",
+  "website": "https://www.infantjesusmvk.co.in",
+  "reason": "no answer (curl: (7) Failed to connect to www.infantjesusmvk.co.in:443 after 8 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KE056",
+  "name": "Amalambika Convent English School",
+  "city": "Idukki",
+  "state": "KL",
+  "website": "https://www.amalambikaschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.amalambikaschool.com\r\n)"
+ },
+ {
+  "code": "KE059",
+  "name": "Shalom Public School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.pedsociety.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.pedsociety.com\r\n)"
+ },
+ {
+  "code": "KE032",
+  "name": "Holy Angels I.s.c. School",
+  "city": "Thiruvananthapuram",
+  "state": "KL",
+  "website": "https://www.holyangelsisc.edu.in",
+  "reason": "page does not name the school (missing: s, c)",
+  "pageTitle": "Holy Angels&rsquo; ISC School &#8211; To promote education that drives individuals to become responsible citizens who are a blessing to the society and the environment."
+ },
+ {
+  "code": "KE062",
+  "name": "Vidya Vikas School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://www.vidayavikasschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.vidayavikasschool.com\r\n)"
+ },
+ {
+  "code": "KE067",
+  "name": "Sankaramangalam Public School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.sankaramangalam.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sankaramangalam.edu.in\r\n)"
+ },
+ {
+  "code": "KE070",
+  "name": "The Indian Public School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://www.tipsglobal.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.tipsglobal.org\r\n)"
+ },
+ {
+  "code": "KE050",
+  "name": "Marion Villa Convent I. C. S. E. School",
+  "city": "Thiruvananthapuram",
+  "state": "KL",
+  "website": "https://https://marionvillaiscschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KE045",
+  "name": "Auxilium English Medium School",
+  "city": "Kollam",
+  "state": "KL",
+  "website": "https://www.auxiliumschoolkottiyam.com",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "KE080",
+  "name": "Maria Agnes English Medium Convent School",
+  "city": "Kollam",
+  "state": "KL",
+  "website": "https://mariaagnesschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: mariaagnesschool.com\r\n)"
+ },
+ {
+  "code": "KE086",
+  "name": "St. Joseph's Convent English Medium School",
+  "city": "Alappuzha",
+  "state": "KL",
+  "website": "https://wwwsjcemsp.org",
+  "reason": "no answer (curl: (6) Could not resolve host: wwwsjcemsp.org\r\n)"
+ },
+ {
+  "code": "KE061",
+  "name": "Auxilium Nava Jyoti School",
+  "city": "Kozhikode",
+  "state": "KL",
+  "website": "https://http://www.auxiliumschoolklm.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "KE096",
+  "name": "Little Flower Vidyaniketan",
+  "city": "Kottayam",
+  "state": "KL",
+  "website": "https://www.littleflowervidyanikethan.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.littleflowervidyanikethan.com\r\n)"
+ },
+ {
+  "code": "KA308",
+  "name": "De Sales Academy",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://www.desalesacademy.com",
+  "reason": "no answer (curl: (28) Failed to connect to www.desalesacademy.com:443 after 21265 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KE081",
+  "name": "Little Flower School",
+  "city": "Alappuzha",
+  "state": "KL",
+  "website": "https://www.littleflowerschoolaroor.org",
+  "reason": "page does not name the town, district or PIN (Alappuzha, Alappuzha, 688534)",
+  "pageTitle": "Little Flower School, Basil Nagar, Aroor"
+ },
+ {
+  "code": "KE092",
+  "name": "Seventh-Day Adventist English School",
+  "city": "Kannur",
+  "state": "KL",
+  "website": "https://njanaseelen@gmail.com",
+  "reason": "redirects to accounts.google.com, not the school's own site"
+ },
+ {
+  "code": "KE124",
+  "name": "Auxilium School",
+  "city": "Kasaragod",
+  "state": "KL",
+  "website": "https://www.auxiliumvarakkad.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.auxiliumvarakkad.org\r\n)"
+ },
+ {
+  "code": "KE118",
+  "name": "Green Woods Public School",
+  "city": "Kasaragod",
+  "state": "KL",
+  "website": "https://bekalgreenwoodsschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: bekalgreenwoodsschool.com\r\n)"
+ },
+ {
+  "code": "KE128",
+  "name": "St. Anne's English Medium School",
+  "city": "Kannur",
+  "state": "KL",
+  "website": "https://www.saintannesschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.saintannesschool.in\r\n)"
+ },
+ {
+  "code": "KE126",
+  "name": "Nirmala Matha Convent School",
+  "city": "Palakkad",
+  "state": "KL",
+  "website": "https://nirmalamathaschoolmalampuzha.com",
+  "reason": "no answer (curl: (6) Could not resolve host: nirmalamathaschoolmalampuzha.com\r\n)"
+ },
+ {
+  "code": "KE129",
+  "name": "Mary Giri Vidya Mandir",
+  "city": "Kollam",
+  "state": "KL",
+  "website": "https://www.marygirividyamandir.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.marygirividyamandir.in\r\n)"
+ },
+ {
+  "code": "KE109",
+  "name": "Mary Matha ( I C S E ) School",
+  "city": "Thrissur",
+  "state": "KL",
+  "website": "https://www.marymathaicsepudukkad.com",
+  "reason": "page does not name the school (missing: s)",
+  "pageTitle": "Mary Matha ICSE School,Pudukad, Thrissur | Affiliated to CISCE New Delhi"
+ },
+ {
+  "code": "KE149",
+  "name": "M. K. Letha Memorial Public School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://mklm.in",
+  "reason": "no answer (curl: (6) Could not resolve host: mklm.in\r\n)"
+ },
+ {
+  "code": "KE150",
+  "name": "Icet Public School",
+  "city": "Malappuram",
+  "state": "KL",
+  "website": "https://www.icetpublicschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.icetpublicschool.in\r\n)"
+ },
+ {
+  "code": "KE046",
+  "name": "Sri Adwayananda Public School (english Medium)",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.alliance-edu-foundation.org",
+  "reason": "page does not name the town, district or PIN (Pathanamthitta, Pathanamthitta, 689532)",
+  "pageTitle": "Sri Adwayananda Public School | Alliance Educational Foundation"
+ },
+ {
+  "code": "KE137",
+  "name": "Jeevass C. M. I. Central School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://www.jeevass.org",
+  "reason": "page does not name the school (missing: c, m, i)",
+  "pageTitle": "jeevass.com"
+ },
+ {
+  "code": "KE141",
+  "name": "Sophia International Academy",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://sophiainternational.org",
+  "reason": "HTTP 500"
+ },
+ {
+  "code": "KE155",
+  "name": "Santhi Vidyalaya",
+  "city": "ERNAKULAM",
+  "state": "KL",
+  "website": "https://www.santhividyalaya.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.santhividyalaya.com\r\n)"
+ },
+ {
+  "code": "KE152",
+  "name": "St. Francis School",
+  "city": "Thrissur",
+  "state": "KL",
+  "website": "https://www.sfspalayur.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "KE163",
+  "name": "Auxilium School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://www.auxiliumangamaly.ac.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.auxiliumangamaly.ac.in\r\n)"
+ },
+ {
+  "code": "KE160",
+  "name": "Maria Bhavan School",
+  "city": "Angamaly",
+  "state": "KL",
+  "website": "https://www.mariabhavanschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mariabhavanschool.com\r\n)"
+ },
+ {
+  "code": "KE169",
+  "name": "Mulamoottil Central School",
+  "city": "Pathanamthitta",
+  "state": "KL",
+  "website": "https://www.mulamoottilcentralschool.com",
+  "reason": "page does not name the town, district or PIN (Pathanamthitta, Pathanamthitta, 689641)",
+  "pageTitle": "Mulamootil Central School|Holistic Education for Your Child in the Lap of Nature"
+ },
+ {
+  "code": "KE125",
+  "name": "St. Francis School",
+  "city": "Palakkad",
+  "state": "KL",
+  "website": "https://www.sfsvdy.org",
+  "reason": "no answer (curl: (7) Failed to connect to www.sfsvdy.org:443 after 2664 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "KE175",
+  "name": "Vidyajyothi School",
+  "city": "Kochi",
+  "state": "KL",
+  "website": "https://http://vidyajyothi.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA008",
+  "name": "Dunne's Institute",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://dunnes-institute.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA015",
+  "name": "Queen Mary School",
+  "city": "V.P. Road",
+  "state": "MH",
+  "website": "https://https://queenmaryschool.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA035",
+  "name": "Hutchings High School & Junior College",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.hutchingsschoolpune.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.hutchingsschoolpune.in\r\n)"
+ },
+ {
+  "code": "MA025",
+  "name": "Arya Vidya Mandir",
+  "city": "Bandra (West)",
+  "state": "MH",
+  "website": "https://www.avmschools.ac.in",
+  "reason": "page does not name the town, district or PIN (Bandra (West), Mumbai Suburban, 400050)",
+  "pageTitle": "AVM Schools"
+ },
+ {
+  "code": "MA040",
+  "name": "Vidya Pratishthan's Vinodkumar Gujar Bal Vikas Mandir",
+  "city": "Baramati",
+  "state": "MH",
+  "website": "https://www.vpbalvikas.org",
+  "reason": "site says the school is aided: type cannot be set without checking",
+  "pageTitle": "Vidya Pratishthan's Vinodkumar Gujar Bal Vikas Mandir | Baramati"
+ },
+ {
+  "code": "MA042",
+  "name": "Smt. Lilavatibai Podar High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.lilavatibaipodarschool.com",
+  "reason": "page does not name the school (missing: smt)",
+  "pageTitle": "::: Lilavatibai Podar High School :::"
+ },
+ {
+  "code": "MA038",
+  "name": "St. Helena's School And Junior College",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.sthelenas.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MA043",
+  "name": "M.S.B. Educational Institute",
+  "city": "Mazagaon",
+  "state": "MH",
+  "website": "https://www.msbmumbai.in",
+  "reason": "page does not name the school (missing: b)",
+  "pageTitle": "MSB School Mumbai"
+ },
+ {
+  "code": "MA062",
+  "name": "Vasudev C. Wadhwa Arya Vidya Mandir",
+  "city": "Bandra (East)",
+  "state": "MH",
+  "website": "https://avmschools.ac.in",
+  "reason": "page does not name the school (missing: vasudev, c, wadhwa)",
+  "pageTitle": "AVM Schools"
+ },
+ {
+  "code": "MA069",
+  "name": "Kanakia International School",
+  "city": "Mira-Bhayandar",
+  "state": "MH",
+  "website": "https://www.rbkei.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.rbkei.org\r\n)"
+ },
+ {
+  "code": "MA048",
+  "name": "Marble Arch School",
+  "city": "Andheri (West)",
+  "state": "MH",
+  "website": "https://https://www.marblearchschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA057",
+  "name": "The Chanda Devi Saraf School",
+  "city": "Nagpur",
+  "state": "MH",
+  "website": "https://https://www.cdsschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA074",
+  "name": "Riverdale International Residential School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.sgispune.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "MA083",
+  "name": "Seventh Day Adventist English High School",
+  "city": "Navi Mumbai",
+  "state": "MH",
+  "website": "https://www.sdaschoolsanpada.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sdaschoolsanpada.co.in\r\n)"
+ },
+ {
+  "code": "MA061",
+  "name": "Hiranandani Foundation School",
+  "city": "Thane",
+  "state": "MH",
+  "website": "https://http://www.hiranandanischools.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA085",
+  "name": "Priceless Pearl Scholar's Academy",
+  "city": "Nashik",
+  "state": "MH",
+  "website": "https://www.ppsa.org.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ppsa.org.in\r\n)"
+ },
+ {
+  "code": "MA080",
+  "name": "Lady Ratanbai And Sir Mathuradas Vissanji Academy",
+  "city": "Andheri (East)",
+  "state": "MH",
+  "website": "https://www.vissanjiacademy.com",
+  "reason": "page does not name the school (missing: lady, ratanbai, sir, mathuradas)",
+  "pageTitle": "Vissanji Academy | Mumbai - Maharashtra | Home"
+ },
+ {
+  "code": "MA073",
+  "name": "Vidya Valley School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://https://vidyavalley.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA050",
+  "name": "Codesh School",
+  "city": "Satara",
+  "state": "MH",
+  "website": "https://www.codeshschoolpanchgani.in",
+  "reason": "page does not name the school (missing: codesh)",
+  "pageTitle": "LIVE123: Bandar Link Slot Jackpot Terbaru Hari Ini Agen 888 Resmi Terpercaya"
+ },
+ {
+  "code": "MA070",
+  "name": "St. Ann's School",
+  "city": "Beed",
+  "state": "MH",
+  "website": "https://stannsbeed.com",
+  "reason": "HTTP 503"
+ },
+ {
+  "code": "MA112",
+  "name": "SRI CHAITANYA TECHNO SCHOOL",
+  "city": "Kalyan",
+  "state": "MH",
+  "website": "https://www.themeridianschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.themeridianschool.in\r\n)"
+ },
+ {
+  "code": "MA093",
+  "name": "Gopal Sharma International School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.gsisschool.com",
+  "reason": "page does not name the town, district or PIN (Mumbai, Mumbai, 400076)",
+  "pageTitle": "Home"
+ },
+ {
+  "code": "MA126",
+  "name": "Anubhuti School",
+  "city": "Jalgaon",
+  "state": "MH",
+  "website": "https://www.anubhutischool.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MA116",
+  "name": "Shishuvan",
+  "city": "Mumbai City",
+  "state": "MH",
+  "website": "https://http://www.shishuvan.com",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA120",
+  "name": "Sanjivani International School",
+  "city": "Navi Mumbai",
+  "state": "MH",
+  "website": "https://https://www.sanjivaniis.com/index.php",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA134",
+  "name": "V. P. M.'s International School",
+  "city": "Navi Mumbai",
+  "state": "MH",
+  "website": "https://vpminternationalschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: vpminternationalschool.com\r\n)"
+ },
+ {
+  "code": "MA147",
+  "name": "Tomoae Primary English Medium School",
+  "city": "Amravati",
+  "state": "MH",
+  "website": "https://www.tomoaeschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.tomoaeschool.org\r\n)"
+ },
+ {
+  "code": "MA145",
+  "name": "My Rich Dad's Academy",
+  "city": "Jalna",
+  "state": "MH",
+  "website": "https://mrda.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "MA142",
+  "name": "Children's Academy",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://childrens-academy.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA157",
+  "name": "Pawar Public School",
+  "city": "Kandivali (W)",
+  "state": "MH",
+  "website": "https://www.ppskandivali.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "MA155",
+  "name": "Universal High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://dahisar.universalhigh.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA150",
+  "name": "St. John's High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.sfetedu.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sfetedu.com\r\n)"
+ },
+ {
+  "code": "MA161",
+  "name": "Diamond Jubilee High School",
+  "city": "Mazagaon",
+  "state": "MH",
+  "website": "https://www.agakhanschools.org",
+  "reason": "page does not name the school (missing: diamond, jubilee)",
+  "pageTitle": "Aga Khan Education Services - Aga Khan Schools"
+ },
+ {
+  "code": "MA159",
+  "name": "Goldcrest High",
+  "city": "Navi Mumbai",
+  "state": "MH",
+  "website": "https://www.goldcresthigh.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "MA166",
+  "name": "Vidya International School",
+  "city": "Nashik",
+  "state": "MH",
+  "website": "https://www.vesyeola.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.vesyeola.com\r\n)"
+ },
+ {
+  "code": "MA165",
+  "name": "St. Thomas English Medium School",
+  "city": "Solapur",
+  "state": "MH",
+  "website": "https://www.saintthomassolapur.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "MA053",
+  "name": "Bombay Scottish School",
+  "city": "Powai",
+  "state": "MH",
+  "website": "https://www.bombayscottish.in",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "MA163",
+  "name": "Dnyan Ganga Education Trust's International School",
+  "city": "Thane",
+  "state": "MH",
+  "website": "https://www.dginternationalschool.in",
+  "reason": "page does not name the school (missing: dnyan, ganga)",
+  "pageTitle": "Best School in Thane, Mumbai 2026-27 - DG International Thane (ICSE)"
+ },
+ {
+  "code": "MA175",
+  "name": "Lodha World School",
+  "city": "Thane",
+  "state": "MH",
+  "website": "https://https://www.lodhaworldschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA182",
+  "name": "J B C N International School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://http://www.jbcnschool.edu.in/borivali/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA192",
+  "name": "Anchorwala Education Academy",
+  "city": "Navi Mumbai",
+  "state": "MH",
+  "website": "https://www.aeaschoolvashi.edu.in",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "MA144",
+  "name": "Horizon Academy",
+  "city": "Nashik",
+  "state": "MH",
+  "website": "https://www.horizonacademy.in",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "MA199",
+  "name": "St. Antony National School",
+  "city": "Wardha",
+  "state": "MH",
+  "website": "https://www.stantonyicsewardha.in",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "MA202",
+  "name": "G S Shetty International School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.gsinternationalschool.com",
+  "reason": "page does not name the town, district or PIN (Mumbai, Mumbai Suburban, 400078)",
+  "pageTitle": "Best ICSE & International School in Bhandup | GS Shetty International School"
+ },
+ {
+  "code": "MA213",
+  "name": "St. Xaviers English Medium School",
+  "city": "Vasai-Virar",
+  "state": "MH",
+  "website": "https://www. stxaviersvasai.com",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "MA212",
+  "name": "Euro School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.es10.euroschoolindia.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "MA197",
+  "name": "Vianney Vidya Niketan",
+  "city": "GADCHIROLI",
+  "state": "MH",
+  "website": "https://www.vianneygadchiroli.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "MA211",
+  "name": "M S B Educational Institute",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.msbpune.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "MA218",
+  "name": "R. J. International",
+  "city": "Chhatrapati Sambhajinagar",
+  "state": "MH",
+  "website": "https://www.rjschool.org",
+  "reason": "page does not name the school (missing: j)",
+  "pageTitle": "RJ International School"
+ },
+ {
+  "code": "MA222",
+  "name": "Rassaz International School",
+  "city": "Mira-Bhayandar",
+  "state": "MH",
+  "website": "https://www.rassazschool.com",
+  "reason": "page does not name the town, district or PIN (Mira-Bhayandar, Thane, 401107)",
+  "pageTitle": "Best ICSE School Mira Road | Top ICSE International School in Mira Road - Rassaz"
+ },
+ {
+  "code": "MA201",
+  "name": "St. Mary's High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.stmarysandheri.org",
+  "reason": "page does not name the town, district or PIN (Mumbai, Mumbai Suburban, 400053)",
+  "pageTitle": "St. Mary's School (I.C.S.E)"
+ },
+ {
+  "code": "MA223",
+  "name": "Wisdom World School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://https://www.wisdomworldschool.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA241",
+  "name": "St. Xavier's International School",
+  "city": "Kalyan",
+  "state": "MH",
+  "website": "https://stxaviersinternationalschool.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: stxaviersinternationalschool.co.in\r\n)"
+ },
+ {
+  "code": "MA230",
+  "name": "Sir J. P. International School",
+  "city": "PALGHAR",
+  "state": "MH",
+  "website": "https://www.sirjpgi.com",
+  "reason": "page does not name the school (missing: sir, j, p)",
+  "pageTitle": "Coming Soon"
+ },
+ {
+  "code": "MA231",
+  "name": "Euro School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://http://www.es11.euroschoolindia.com",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA242",
+  "name": "Cresmonde World School Andheri",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.bhisandheri.com",
+  "reason": "page does not name the school (missing: cresmonde)",
+  "pageTitle": "Welcome to Billabong : Top International Schools in Andheri"
+ },
+ {
+  "code": "MA254",
+  "name": "Pearl Drop School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.pearldropschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.pearldropschool.com\r\n)"
+ },
+ {
+  "code": "MA259",
+  "name": "Judson High School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.judsonschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.judsonschool.in\r\n)"
+ },
+ {
+  "code": "MA235",
+  "name": "C. P. Goenka International School",
+  "city": "Thane",
+  "state": "MH",
+  "website": "https://www.cpgoenkathane.com",
+  "reason": "page does not name the school (missing: c, p, goenka)",
+  "pageTitle": "Pocket Option"
+ },
+ {
+  "code": "MA249",
+  "name": "G C C International School",
+  "city": "Mira-Bhayandar",
+  "state": "MH",
+  "website": "https://www.gccinternationalschool.com",
+  "reason": "page does not name the school (missing: g, c, c)",
+  "pageTitle": "GCC International School - Best ICSE school in Mira Road"
+ },
+ {
+  "code": "MA279",
+  "name": "St. Anne Vidya Niketan",
+  "city": "Ratnagiri",
+  "state": "MH",
+  "website": "https://https;//annevidyaniketan.com/",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "MA269",
+  "name": "Chavara International School",
+  "city": "Jalgaon",
+  "state": "MH",
+  "website": "https://www.chavarainternational.org",
+  "reason": "page does not name the town, district or PIN (Jalgaon, Jalgaon, 425108)",
+  "pageTitle": "HOME - Chavara International School , Akkulkheda Chopda"
+ },
+ {
+  "code": "MA283",
+  "name": "A. M. Naik School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.amnaikschool.in",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "MA280",
+  "name": "Seth Govardhan Biyani School",
+  "city": "Mira-Bhayandar",
+  "state": "MH",
+  "website": "https://www.deepjyotischool.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MA289",
+  "name": "Universal High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.chembur.universalhigh.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.chembur.universalhigh.edu.in\r\n)"
+ },
+ {
+  "code": "MA288",
+  "name": "Shiksha Veritas School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://shikshaveritasschool.co.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MA274",
+  "name": "Thakur Ramnarayan Public School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://http://www.thakureducation.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "MA276",
+  "name": "Wisdom High International School",
+  "city": "Nashik",
+  "state": "MH",
+  "website": "https://https://www.whis.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA305",
+  "name": "Thakur Shyamnarayan International School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://tshmumbai.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MA286",
+  "name": "St. Agnes' High School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://cjmstagnesbyculla.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA296",
+  "name": "Hiranandani Trust School",
+  "city": "PANVEL",
+  "state": "MH",
+  "website": "https://https://htspanvel.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA300",
+  "name": "Gundecha Education Academy",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://www.gundechaedu.org/gundecha-borivali/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA303",
+  "name": "K E S International School",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://www.kesinternationalschool.org",
+  "reason": "page does not name the school (missing: e)",
+  "pageTitle": "Home - International School in Kandivali - Best International School In Kandivali – KES International School – a good education is a foundation for better future"
+ },
+ {
+  "code": "MA307",
+  "name": "Thakur Vidya Mandir High School And Junior College",
+  "city": "Mumbai",
+  "state": "MH",
+  "website": "https://https://www.tvmhsicsemumbai.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "ME001",
+  "name": "St. Edmund's School",
+  "city": "Shillong",
+  "state": "ML",
+  "website": "https://www.ses.ac.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ses.ac.in\r\n)"
+ },
+ {
+  "code": "MN001",
+  "name": "Patkai Christian Academy",
+  "city": "Ukhrul",
+  "state": "MN",
+  "website": "https://under construction",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "MA318",
+  "name": "Zenith Concept School",
+  "city": "Amravati",
+  "state": "MH",
+  "website": "https://www.zenithconceptschool.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_INTERNAL_ERROR (0x80090304) - The Local Security Autho)"
+ },
+ {
+  "code": "MP008",
+  "name": "Wendy School Junior College",
+  "city": "Gwalior",
+  "state": "MP",
+  "website": "https://www.wendyeducation.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.wendyeducation.org\r\n)"
+ },
+ {
+  "code": "MA308",
+  "name": "The Bishops School",
+  "city": "Mira-Bhayandar",
+  "state": "MH",
+  "website": "https://https://thebishopsinternationalschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MA316",
+  "name": "Sanskruti Techno School",
+  "city": "Pune",
+  "state": "MH",
+  "website": "https://www.paradiseems.co.in",
+  "reason": "page does not name the school (missing: sanskruti, techno)",
+  "pageTitle": "Paradise English Medium School"
+ },
+ {
+  "code": "MP028",
+  "name": "Central Malwa Academy",
+  "city": "Dewas",
+  "state": "MP",
+  "website": "https://www.centralmalwaacademy.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.centralmalwaacademy.com\r\n)"
+ },
+ {
+  "code": "MP015",
+  "name": "St. Joseph's Higher Secondary School",
+  "city": "Singrauli",
+  "state": "MP",
+  "website": "https://https://www.stjosephwaidhan.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP040",
+  "name": "St.Francis High School",
+  "city": "Jabalpur",
+  "state": "MP",
+  "website": "https://mp040.org",
+  "reason": "no answer (curl: (6) Could not resolve host: mp040.org\r\n)"
+ },
+ {
+  "code": "MP055",
+  "name": "St. Mary's Convent School",
+  "city": "Sagar",
+  "state": "MP",
+  "website": "https://www.smcdeori.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.smcdeori.com\r\n)"
+ },
+ {
+  "code": "MP059",
+  "name": "Samaritans School",
+  "city": "Narmadapuram",
+  "state": "MP",
+  "website": "https://gyanvigyansamaritanspipariya.in",
+  "reason": "no answer (curl: (6) Could not resolve host: gyanvigyansamaritanspipariya.in\r\n)"
+ },
+ {
+  "code": "MP068",
+  "name": "B S N Convent School",
+  "city": "Guna",
+  "state": "MP",
+  "website": "https://www.bsnconvetnschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.bsnconvetnschool.com\r\n)"
+ },
+ {
+  "code": "MP070",
+  "name": "Persistent Junior Knowledge Academy",
+  "city": "Dhar",
+  "state": "MP",
+  "website": "https://pjkacademy.co.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "MP053",
+  "name": "Raj Vedanta School",
+  "city": "Bhopal",
+  "state": "MP",
+  "website": "https://https://rajvedanta.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP073",
+  "name": "Christ Jyoti School",
+  "city": "SIDHI",
+  "state": "MP",
+  "website": "https://www.christjyotisidhi.org",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "MP061",
+  "name": "The Palladian House",
+  "city": "Khargone",
+  "state": "MP",
+  "website": "https://https://thepalladianhouse.business.site/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP065",
+  "name": "Academic Heights Public School",
+  "city": "Datia",
+  "state": "MP",
+  "website": "https://https://datia.academicheights.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP080",
+  "name": "The Maanvendra Academy",
+  "city": "Gwalior",
+  "state": "MP",
+  "website": "https://www.themanvendraacademy.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "MP072",
+  "name": "Army Public School The International Academy",
+  "city": "Chhindwara",
+  "state": "MP",
+  "website": "https://https://armychhindwara.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "NA002",
+  "name": "N N Nagi School",
+  "city": "Dimapur",
+  "state": "NL",
+  "website": "https://www.nnnagischool.edu.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "MP081",
+  "name": "Unique School Of Modern Education",
+  "city": "PACHORE",
+  "state": "MP",
+  "website": "https://https://www.uniqueschoolpachore.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP083",
+  "name": "School Of Real Learners",
+  "city": "Balaghat",
+  "state": "MP",
+  "website": "https://https://srlbalaghat.nletschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "OR025",
+  "name": "Ispat English Medium School",
+  "city": "Rourkela",
+  "state": "OD",
+  "website": "https://www.iemsrsp.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.iemsrsp.com\r\n)"
+ },
+ {
+  "code": "MP084",
+  "name": "Shishukunj International School",
+  "city": "Guna",
+  "state": "MP",
+  "website": "https://https://shishukunjinternational.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "OR030",
+  "name": "Indo English School",
+  "city": "Rourkela",
+  "state": "OD",
+  "website": "https://www.iesrkl.org",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "OR032",
+  "name": "Ispat E.M. School",
+  "city": "Sundargarh",
+  "state": "OD",
+  "website": "https://https://www.iems22.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "OR046",
+  "name": "Nirmala Convent School",
+  "city": "Keonjhar",
+  "state": "OD",
+  "website": "https://ncskeonjhar.ac.in",
+  "reason": "HTTP 500"
+ },
+ {
+  "code": "OR050",
+  "name": "Saint Lawrence School",
+  "city": "Angul",
+  "state": "OD",
+  "website": "https://www.slsangul.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.slsangul.com\r\n)"
+ },
+ {
+  "code": "OR056",
+  "name": "Saint Mary's School",
+  "city": "Sundargarh",
+  "state": "OD",
+  "website": "https://saintmarysschoolrkl.com",
+  "reason": "no answer (curl: (6) Could not resolve host: saintmarysschoolrkl.com\r\n)"
+ },
+ {
+  "code": "OR033",
+  "name": "Mar Gregorios Memorial English School",
+  "city": "Sundargarh",
+  "state": "OD",
+  "website": "https://https://mgmesrourkela.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "OR084",
+  "name": "St. Thomas English School",
+  "city": "Jharsuguda",
+  "state": "OD",
+  "website": "https://www.stthomasjsg.org",
+  "reason": "no answer (curl: (7) Failed to connect to www.stthomasjsg.org:443 after 14 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "OR065",
+  "name": "Stewart School",
+  "city": "Tata Steel",
+  "state": "OD",
+  "website": "https://www.stewartschoolsukinda.in",
+  "reason": "HTTP 530"
+ },
+ {
+  "code": "OR086",
+  "name": "Carmel School",
+  "city": "Bhadrak",
+  "state": "OD",
+  "website": "https://www.carmelschoolbdk.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.carmelschoolbdk.com\r\n)"
+ },
+ {
+  "code": "MP038",
+  "name": "Progressive Education IV School",
+  "city": "Indore",
+  "state": "MP",
+  "website": "https://progressiveeducationschool.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "OR096",
+  "name": "St. Theresa English School",
+  "city": "Sundargarh",
+  "state": "OD",
+  "website": "https://www.sttheresa.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sttheresa.co.in\r\n)"
+ },
+ {
+  "code": "OR105",
+  "name": "Don Bosco English Medium School",
+  "city": "Rourkela",
+  "state": "OD",
+  "website": "https://www.dbemkuarmunda.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "PU001",
+  "name": "Assumption Convent School",
+  "city": "Fazilka",
+  "state": "PB",
+  "website": "https://ASSUMPTION CONVENT SCHOOL ABOHAR",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "PU005",
+  "name": "Minerva Public School",
+  "city": "Mohali",
+  "state": "PB",
+  "website": "https://www.mssafep.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mssafep.com\r\n)"
+ },
+ {
+  "code": "OR093",
+  "name": "Loyola School",
+  "city": "Baripada",
+  "state": "OD",
+  "website": "https://https://loyolabpd.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU006",
+  "name": "St. Joseph's Convent School",
+  "city": "Firozpur",
+  "state": "PB",
+  "website": "https://https://sjcsfzr.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU019",
+  "name": "St. Joseph's Convent School",
+  "city": "Kapurthala",
+  "state": "PB",
+  "website": "https://stjosephphagwara.org",
+  "reason": "no answer (curl: (6) Could not resolve host: stjosephphagwara.org\r\n)"
+ },
+ {
+  "code": "PU022",
+  "name": "St. Francis School",
+  "city": "Tarn Taran",
+  "state": "PB",
+  "website": "https://www.stfrancistarntaran.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stfrancistarntaran.org\r\n)"
+ },
+ {
+  "code": "PU016",
+  "name": "Yadavindra Public School",
+  "city": "Patiala",
+  "state": "PB",
+  "website": "https://http://www.ypspatiala.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "PU029",
+  "name": "BIBI SURINDER KAUR BADAL MALWA SCHOOL",
+  "city": "Muktsar",
+  "state": "PB",
+  "website": "https://www.malwaschoolgdb.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.malwaschoolgdb.com\r\n)"
+ },
+ {
+  "code": "PU034",
+  "name": "Mount Carmel School",
+  "city": "Hoshiarpur",
+  "state": "PB",
+  "website": "https://mountcarmelgsr.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "PU043",
+  "name": "Little Flower Convent School",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://www.lfcsdnr.com",
+  "reason": "page does not name the town, district or PIN (Gurdaspur, Gurdaspur, 143536)",
+  "pageTitle": "Little Flower Convent School, Dinanagar"
+ },
+ {
+  "code": "PU040",
+  "name": "Col. V.R. Mohan D.A.V. Public School",
+  "city": "Mohali",
+  "state": "PB",
+  "website": "https://www.cvrmdavpublicschool.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "PU044",
+  "name": "Mount Carmel School",
+  "city": "Hoshiarpur",
+  "state": "PB",
+  "website": "https://www.mountcarmelmehtiana.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "PU046",
+  "name": "Holy Family Convent School",
+  "city": "Rupnagar",
+  "state": "PB",
+  "website": "https://www.hfcsropar.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "PU045",
+  "name": "St. Francis Convent School",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://www.sfcsderababananak.com",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "PU054",
+  "name": "Sachkhand Convent School",
+  "city": "Fazilka",
+  "state": "PB",
+  "website": "https://www.sachkhandconventschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sachkhandconventschool.com\r\n)"
+ },
+ {
+  "code": "PU049",
+  "name": "New Angel Public School",
+  "city": "Sahibzada Ajit Singh Nagar",
+  "state": "PB",
+  "website": "https://https://www.newangelschool.co.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU050",
+  "name": "St. Francis Convent School",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://www.sfcsgkbangar.com",
+  "reason": "page does not name the school (missing: st, francis)",
+  "pageTitle": "&#20122;&#27954;&#27431;&#27954;&#26085;&#26412;&#22312;&#32447;&#45;&#27431;&#32654;&#26085;&#38889;&#19977;&#32423;&#35270;&#39057;&#45;&#30007;&#22899;&#25630;&#98;&#35270;&#39057;&#45;&#22269;&#20135;&#27431;&#32654;&#22312;&#32447;&#20122;&#27954;&#19968;&#21306;&#21016;&#20134;&#33778;"
+ },
+ {
+  "code": "PU065",
+  "name": "Punjab International Public School",
+  "city": "Tehsil Balachaur",
+  "state": "PB",
+  "website": "https://PIPSPOJEWAL.COM",
+  "reason": "no answer (curl: (6) Could not resolve host: PIPSPOJEWAL.COM\r\n)"
+ },
+ {
+  "code": "PU053",
+  "name": "Model Study High School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://http://modelstudyhighschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "PU090",
+  "name": "S. M. S. Memorial Public School",
+  "city": "Ludhiana",
+  "state": "PB",
+  "website": "https://www.smsmemorialpublicschool.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "PU080",
+  "name": "Sacred Heart Convent School",
+  "city": "Ludhiana",
+  "state": "PB",
+  "website": "https://http://shcssnl.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "PU097",
+  "name": "British Convent School",
+  "city": "Sangrur",
+  "state": "PB",
+  "website": "https://www.britishconventschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.britishconventschool.org\r\n)"
+ },
+ {
+  "code": "PU098",
+  "name": "Sacred Heart Convent School",
+  "city": "Ludhiana",
+  "state": "PB",
+  "website": "https://www.shcsmachhiwara.in",
+  "reason": "page does not name the town, district or PIN (Ludhiana, Ludhiana, 141114)",
+  "pageTitle": "Sacred Heart Convent School, Machhiwara- Home"
+ },
+ {
+  "code": "PU103",
+  "name": "St. Mary's Convent School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://www.smcsothian.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.smcsothian.com\r\n)"
+ },
+ {
+  "code": "PU108",
+  "name": "St. Joseph's Convent School",
+  "city": "Jalandhar",
+  "state": "PB",
+  "website": "https://www.stjosephdeepnagar.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "OR047",
+  "name": "Pragati Public School",
+  "city": "Sundargarh",
+  "state": "OD",
+  "website": "https://pragatipublicschoolrkl.in",
+  "reason": "no answer (curl: (6) Could not resolve host: pragatipublicschoolrkl.in\r\n)"
+ },
+ {
+  "code": "PU112",
+  "name": "St. Joseph's Convent School",
+  "city": "Nawanshahr",
+  "state": "PB",
+  "website": "https://www.PU112cise.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.PU112cise.org\r\n)"
+ },
+ {
+  "code": "PU119",
+  "name": "Guru Gobind Singh Convent School",
+  "city": "Tarn Taran",
+  "state": "PB",
+  "website": "https://ggsschoolsarhali.com",
+  "reason": "no answer (curl: (6) Could not resolve host: ggsschoolsarhali.com\r\n)"
+ },
+ {
+  "code": "PU127",
+  "name": "Captain's School Of Excellence",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://www.pu127cisce.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.pu127cisce.org\r\n)"
+ },
+ {
+  "code": "PU117",
+  "name": "Mai Bhago International Public School",
+  "city": "Tarn Taran",
+  "state": "PB",
+  "website": "https://www.mbips.in",
+  "reason": "page does not name the school (missing: mai, bhago)",
+  "pageTitle": "MBIPS"
+ },
+ {
+  "code": "PU137",
+  "name": "St. Paul's Convent School",
+  "city": "Patiala",
+  "state": "PB",
+  "website": "https://www.stpaulsajrawar.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "PU147",
+  "name": "ST. JOSEPH'S CONVENT SCHOOL",
+  "city": "Jalandhar",
+  "state": "PB",
+  "website": "https://www.stjosephdhina.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "PU150",
+  "name": "Dashmesh Heritage Public School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://dashmeshheritagepublicschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: dashmeshheritagepublicschool.com\r\n)"
+ },
+ {
+  "code": "PU120",
+  "name": "Sant Baba Hari Singh Model School",
+  "city": "Hoshiarpur",
+  "state": "PB",
+  "website": "https://https://sbhsmodelschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU152",
+  "name": "New Paradise Public Senior Secondary School",
+  "city": "Firozpur",
+  "state": "PB",
+  "website": "https://www.newparadiseschoolzira.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.newparadiseschoolzira.com\r\n)"
+ },
+ {
+  "code": "MP010",
+  "name": "Rani Laxmibai Public School",
+  "city": "Datia",
+  "state": "MP",
+  "website": "https://rlps.org",
+  "reason": "no answer (curl: (28) Failed to connect to rlps.org:443 after 21275 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "PU157",
+  "name": "St. Xavier's International School",
+  "city": "Sahibzada Ajit Singh Nagar",
+  "state": "PB",
+  "website": "https://WWW.STXAVIERS.COM",
+  "reason": "page does not name the town, district or PIN (Sahibzada Ajit Singh Nagar, Sas Nagar, 140603)",
+  "pageTitle": "St. Xavier's School - Best school in tricity"
+ },
+ {
+  "code": "PU164",
+  "name": "Fateh Global School",
+  "city": "Muktsar",
+  "state": "PB",
+  "website": "https://www.fatehglobal.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "PU171",
+  "name": "Guru Nanak Public School",
+  "city": "Barnala",
+  "state": "PB",
+  "website": "https://www.gninternationalschool.com",
+  "reason": "page does not name the school (missing: guru, nanak)",
+  "pageTitle": "Home || G.N. International Academy"
+ },
+ {
+  "code": "PU178",
+  "name": "St. Andrews Convent School",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://st.andrewsconventschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: st.andrewsconventschool.org\r\n)"
+ },
+ {
+  "code": "PU183",
+  "name": "Kalgidhar Public School",
+  "city": "Tarn Taran",
+  "state": "PB",
+  "website": "https://WWW.kalgidharschools.com",
+  "reason": "no answer (curl: (6) Could not resolve host: WWW.kalgidharschools.com\r\n)"
+ },
+ {
+  "code": "PU110",
+  "name": "St. Joseph's Convent School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://www.stjosephkhasa.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "PU184",
+  "name": "St. Peter Convent School",
+  "city": "Patiala",
+  "state": "PB",
+  "website": "https://www.stpeterrakhra.com",
+  "reason": "page does not name the school (missing: peter)",
+  "pageTitle": "The St:Peter’s Convent school"
+ },
+ {
+  "code": "PU186",
+  "name": "St. Xavier's School",
+  "city": "Rupnagar",
+  "state": "PB",
+  "website": "https://www.stxaviersropar.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "PU173",
+  "name": "Sacred Heart Convent School",
+  "city": "Jalandhar",
+  "state": "PB",
+  "website": "https://https://sacredheartkishangarh.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU191",
+  "name": "St. Joseph's Convent School",
+  "city": "Patiala",
+  "state": "PB",
+  "website": "https://https://www.stjosephschoolkauli.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU193",
+  "name": "Holy Family Convent School",
+  "city": "Jalandhar",
+  "state": "PB",
+  "website": "https://https://www.hfcskaboolpur.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU194",
+  "name": "Sri Guru Harkrishan C K D School of Excellence",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://https://ckdshubham.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU170",
+  "name": "Baba Farid Public School",
+  "city": "Muktsar",
+  "state": "PB",
+  "website": "https://www.babafaridgroups.com",
+  "reason": "no answer (curl: (7) Failed to connect to www.babafaridgroups.com:443 after 2683 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "PU208",
+  "name": "Bodhi International School",
+  "city": "Sangrur",
+  "state": "PB",
+  "website": "https://bodhiinstitutions.com",
+  "reason": "no answer (curl: (6) Could not resolve host: bodhiinstitutions.com\r\n)"
+ },
+ {
+  "code": "PU197",
+  "name": "Noble Vision International Convent School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://http://www.nvics.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "PU202",
+  "name": "Winford World School",
+  "city": "Batala",
+  "state": "PB",
+  "website": "https://https://winfordworldschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU221",
+  "name": "Dr. Balbir Singh School Of Excellence",
+  "city": "Bathinda",
+  "state": "PB",
+  "website": "https://www.drbalbirsinghschool.com",
+  "reason": "robots.txt disallows the page"
+ },
+ {
+  "code": "PU218",
+  "name": "Cambridge International School",
+  "city": "Ludhiana",
+  "state": "PB",
+  "website": "https://www.cambridgeinternationalschoolpayal.com",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "PU225",
+  "name": "Shining Stars School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://http://shiningstars.school/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "PU238",
+  "name": "The Lords Convent School",
+  "city": "Hoshiarpur",
+  "state": "PB",
+  "website": "https://www.pu195cisce.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.pu195cisce.com\r\n)"
+ },
+ {
+  "code": "PU227",
+  "name": "Tall Birch International School",
+  "city": "Hoshiarpur",
+  "state": "PB",
+  "website": "https://https://tallbirchschool.bhisey.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU234",
+  "name": "Innovative International Public School",
+  "city": "Firozpur",
+  "state": "PB",
+  "website": "https://www.innovativeinternationalpublicschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.innovativeinternationalpublicschool.in\r\n)"
+ },
+ {
+  "code": "PU231",
+  "name": "St. Theresa's Convent School",
+  "city": "Patiala",
+  "state": "PB",
+  "website": "https://https://stcssamana.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "RA002",
+  "name": "Sophia High School",
+  "city": "Sirohi",
+  "state": "RJ",
+  "website": "https://www.sophiaschoolmountabu.edu. in",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "PU248",
+  "name": "Disha Public Senior Secondary School",
+  "city": "Firozpur",
+  "state": "PB",
+  "website": "https://www.dishapublicschool.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "PU247",
+  "name": "St Thomas Convent School",
+  "city": "Bathinda",
+  "state": "PB",
+  "website": "https://https://stthomasbathinda.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU249",
+  "name": "INDIAN HEIGHTS INTERNATIONAL SCHOOL",
+  "city": "Tarn Taran",
+  "state": "PB",
+  "website": "https://https://indianheightsschool.co.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU242",
+  "name": "ST. SOLDIER ELITE SCHOOL",
+  "city": "Jalandhar",
+  "state": "PB",
+  "website": "https://www.stsoldiergroup.com",
+  "reason": "page does not name the school (missing: elite)",
+  "pageTitle": "St Soldier Group"
+ },
+ {
+  "code": "RA019",
+  "name": "Floreto World School",
+  "city": "Sikar",
+  "state": "RJ",
+  "website": "https://http://floretoworldschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "RA026",
+  "name": "Sia Step By Step",
+  "city": "Jaipur",
+  "state": "RJ",
+  "website": "https://siastepbystepsewad.com",
+  "reason": "page does not name the school (missing: sia)",
+  "pageTitle": "Home  | STEP BY STEP"
+ },
+ {
+  "code": "SI008",
+  "name": "St. Joseph's School",
+  "city": "Singtam",
+  "state": "SK",
+  "website": "https://www.stjosephrhenocksikkim,com",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "RA024",
+  "name": "Stairs School Of Excellence",
+  "city": "Kota",
+  "state": "RJ",
+  "website": "https://https://stairsschoolkota.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN007",
+  "name": "The Laidlaw Memorial School & Jr. College",
+  "city": "Ketti",
+  "state": "TN",
+  "website": "https://www.laidlawschool.org",
+  "reason": "page does not name the school (missing: jr)",
+  "pageTitle": "Best Boarding School in Ooty | ICSE & ISC Residential School | The Laidlaw Memorial School and Junior College"
+ },
+ {
+  "code": "TN040",
+  "name": "Good Earth School",
+  "city": "Kanchipuram",
+  "state": "TN",
+  "website": "https://goodearthschool.org",
+  "reason": "page does not name the town, district or PIN (Kanchipuram, Kanchipuram, 600069)",
+  "pageTitle": "Good Earth School &#8211; Affiliated to the Council for the Indian School Certificate Examinations"
+ },
+ {
+  "code": "TN053",
+  "name": "Sruthi Vidhyodhaya",
+  "city": "Virudhunagar",
+  "state": "TN",
+  "website": "https://sruthischool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: sruthischool.com\r\n)"
+ },
+ {
+  "code": "PU055",
+  "name": "Cedar Spring High School",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://cedarspringschool.com",
+  "reason": "no answer (curl: (28) Failed to connect to cedarspringschool.com:443 after 21100 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "TN069",
+  "name": "Lotus An. Venkatachalam Chettiar School",
+  "city": "Devakottai",
+  "state": "TN",
+  "website": "https://www.nsmvpsangam.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.nsmvpsangam.org\r\n)"
+ },
+ {
+  "code": "TN051",
+  "name": "St. Patrick's High School",
+  "city": "Chennai",
+  "state": "TN",
+  "website": "https://www.stpatricksicse.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "TN057",
+  "name": "Excel Central School",
+  "city": "Kanyakumari",
+  "state": "TN",
+  "website": "https://www.excelschools.edu.in",
+  "reason": "page does not name the town, district or PIN (Kanyakumari, Kanyakumari, 629177)",
+  "pageTitle": "Excel Group of Schools | Wisdom Enriches"
+ },
+ {
+  "code": "TN086",
+  "name": "A V S Central School",
+  "city": "Coimbatore",
+  "state": "TN",
+  "website": "https://www.avscentralschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.avscentralschool.com\r\n)"
+ },
+ {
+  "code": "TN082",
+  "name": "R J Mantra English School",
+  "city": "Virudhunagar",
+  "state": "TN",
+  "website": "https://www.rjmantra.com",
+  "reason": "page does not name the school (missing: r, j)",
+  "pageTitle": "RJ Mantra English School"
+ },
+ {
+  "code": "TN091",
+  "name": "Seventh Day Adventist International Academy",
+  "city": "Krishnagiri",
+  "state": "TN",
+  "website": "https://www.sdaintlacademy.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sdaintlacademy.com\r\n)"
+ },
+ {
+  "code": "TN072",
+  "name": "Disha - A Life School",
+  "city": "Pollachi",
+  "state": "TN",
+  "website": "https://www.dishaschool.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "TN076",
+  "name": "Sacred Heart International School",
+  "city": "Kanyakumari",
+  "state": "TN",
+  "website": "https://www.shis.in",
+  "reason": "HTTP 307"
+ },
+ {
+  "code": "TN092",
+  "name": "Aachi International School",
+  "city": "Madurai",
+  "state": "TN",
+  "website": "https://www.aachiinternationalschool.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "TN096",
+  "name": "Sri Vishwas Vidhyalaya",
+  "city": "Virudhunagar",
+  "state": "TN",
+  "website": "https://www.vishwasschool.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "TN101",
+  "name": "Wisdom Wealth International School",
+  "city": "Virudhunagar",
+  "state": "TN",
+  "website": "https://www.wisdomwealthschool.in",
+  "reason": "HTTP 530"
+ },
+ {
+  "code": "TN097",
+  "name": "The Bridgewoods Public School",
+  "city": "Coimbatore",
+  "state": "TN",
+  "website": "https://www.thebridgewoodspublicschool.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "TN094",
+  "name": "Carmel Public School",
+  "city": "Tiruvallur",
+  "state": "TN",
+  "website": "https://www.carmelpublicschool.in",
+  "reason": "page does not name the town, district or PIN (Tiruvallur, Thiruvallur, 602024)",
+  "pageTitle": "Carmel Public School - Love & Service"
+ },
+ {
+  "code": "TN116",
+  "name": "Shaswi International School Of Excellence",
+  "city": "Tiruppur",
+  "state": "TN",
+  "website": "https://https://www.shaswischool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN132",
+  "name": "Siragu Montessori School",
+  "city": "Chennai",
+  "state": "TN",
+  "website": "https:// www.tn132ciscse.org",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "TN118",
+  "name": "Bethlahem Hillside International School",
+  "city": "Kanyakumari",
+  "state": "TN",
+  "website": "https://http://bethlahemhillside.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "TN125",
+  "name": "Yashas English School",
+  "city": "Virudhunagar",
+  "state": "TN",
+  "website": "https://http://www.yashasschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "TN127",
+  "name": "Vista Billabong High International School",
+  "city": "Chennai",
+  "state": "TN",
+  "website": "https://https://www.vistabillabongschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN131",
+  "name": "St. Ann's School",
+  "city": "Thoothukudi",
+  "state": "TN",
+  "website": "https://https://www.stannsschoolthooththukkudi.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN129",
+  "name": "The Oakrich International School",
+  "city": "Hosur",
+  "state": "TN",
+  "website": "https://www.toishosur.com",
+  "reason": "page does not name the school (missing: oakrich)",
+  "pageTitle": "Mahjong Ways 2: Game Mahjong Modern dengan Fitur Menarik dan Visual Klasik"
+ },
+ {
+  "code": "TN144",
+  "name": "St. Ann's School",
+  "city": "Tirunelveli",
+  "state": "TN",
+  "website": "https://https://www.stannsicsepanagudi.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU190",
+  "name": "A S R International School",
+  "city": "Gurdaspur",
+  "state": "PB",
+  "website": "https://pu190cisce.org",
+  "reason": "no answer (curl: (28) Failed to connect to pu190cisce.org:443 after 21074 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "TN148",
+  "name": "St.Thomas The Apostle School",
+  "city": "Thoothukudi",
+  "state": "TN",
+  "website": "https://https://stthomastheapostle.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP003",
+  "name": "St. Patrick's Junior College",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://stpatricksjuniorcollege.org",
+  "reason": "no answer (curl: (6) Could not resolve host: stpatricksjuniorcollege.org\r\n)"
+ },
+ {
+  "code": "TS004",
+  "name": "Johnson Grammar School",
+  "city": "Hyderabad",
+  "state": "TS",
+  "website": "https://https://jgslbngr.net/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TS005",
+  "name": "Gitanjali Vedika School",
+  "city": "Ranga Reddy",
+  "state": "TS",
+  "website": "https://http://www.gitanjalischools.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP006",
+  "name": "St. Anthony's Junior College",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://https://www.stanthonysjrcollege.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP027",
+  "name": "Campus School",
+  "city": "Ghaziabad",
+  "state": "UP",
+  "website": "https://www.campusschool.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.campusschool.co.in\r\n)"
+ },
+ {
+  "code": "UP015",
+  "name": "Jyoti Niketan",
+  "city": "Azamgarh",
+  "state": "UP",
+  "website": "https://www.jyotiniketan.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UP008",
+  "name": "Holman Institute",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://http://holmaninstitute.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP029",
+  "name": "Little Flower School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://littleflowerschoolgkp.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP036",
+  "name": "Seth Anandram Jaipuria School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.aipuria.edu.in/kanpurschool/",
+  "reason": "no answer (curl: (6) Could not resolve host: www.aipuria.edu.in\r\n)"
+ },
+ {
+  "code": "UP035",
+  "name": "Rani Laxmi Bai Public School",
+  "city": "Jhansi",
+  "state": "UP",
+  "website": "https://www.rlps.in",
+  "reason": "page does not name the school (missing: laxmi, bai)",
+  "pageTitle": "Rani Laxmibai Group of Public School , Jhansi – Datia - Lalitpur"
+ },
+ {
+  "code": "UP026",
+  "name": "St. Teresa's Academy",
+  "city": "Greater Noida",
+  "state": "UP",
+  "website": "https://stamodinagar.com",
+  "reason": "no answer (curl: (6) Could not resolve host: stamodinagar.com\r\n)"
+ },
+ {
+  "code": "UP032",
+  "name": "St. Mark's College",
+  "city": "Jhansi",
+  "state": "UP",
+  "website": "https://www.stmarkscollegejhansi.org",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "UP031",
+  "name": "Christ The King College",
+  "city": "Jhansi",
+  "state": "UP",
+  "website": "https://http://www.christthekingjhansi.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP054",
+  "name": "Colvin Taluqdars College ( I. S. C. Wing )",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://colvinisc.com",
+  "reason": "page does not name the school (missing: i, c)",
+  "pageTitle": "Colvin Taluqdars&#x27; College | Premier ICSE/ISC School Since 1889"
+ },
+ {
+  "code": "UP056",
+  "name": "Seventh Day Adventist Senior Secondary School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://http://www.sdalucknow.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP052",
+  "name": "St. Mary's Convent Inter College",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.cjsmciclko@yahoo.co.in",
+  "reason": "page does not name the school (missing: st, marys, inter, college)",
+  "pageTitle": "Yahoo Search - Web Search"
+ },
+ {
+  "code": "UP077",
+  "name": "St. Jude's College",
+  "city": "Unnao",
+  "state": "UP",
+  "website": "https://www.stjudecollege.org",
+  "reason": "page does not name the town, district or PIN (Unnao, Unnao, 209801)",
+  "pageTitle": "ST. JUDE&#x27;S COLLEGE | School Website"
+ },
+ {
+  "code": "RA021",
+  "name": "Kidzway Montessory School",
+  "city": "Sri Ganganagar",
+  "state": "RJ",
+  "website": "https://www.kidzwayschool.com",
+  "reason": "no answer (curl: (28) Failed to connect to www.kidzwayschool.com:443 after 21070 ms: Could not connect to server\r\n)"
+ },
+ {
+  "code": "UP078",
+  "name": "St. John's School",
+  "city": "Varanasi",
+  "state": "UP",
+  "website": "https://https://stjohnsblw.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP079",
+  "name": "William Henry Smith Memorial School",
+  "city": "Varanasi",
+  "state": "UP",
+  "website": "https://www.whsmithschool.com",
+  "reason": "page does not name the school (missing: henry)",
+  "pageTitle": "Best School in Varanasi | W. H. Smith Memorial School"
+ },
+ {
+  "code": "UP112",
+  "name": "Don Bosco High School",
+  "city": "Sitapur",
+  "state": "UP",
+  "website": "https://dbhsmmb.org",
+  "reason": "no answer (curl: (6) Could not resolve host: dbhsmmb.org\r\n)"
+ },
+ {
+  "code": "UP119",
+  "name": "Playway English School",
+  "city": "Fatehpur",
+  "state": "UP",
+  "website": "https://www.playwayenglishschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.playwayenglishschool.org\r\n)"
+ },
+ {
+  "code": "UP108",
+  "name": "St. Peter's School",
+  "city": "Rae Bareli",
+  "state": "UP",
+  "website": "https://www.stpeterschools.org",
+  "reason": "page does not name the town, district or PIN (Rae Bareli, Raebareli, 229010)",
+  "pageTitle": "Saint Peter Public Schools - District Homepage"
+ },
+ {
+  "code": "UP121",
+  "name": "Christu Jyoti Convent School",
+  "city": "Baghpat",
+  "state": "UP",
+  "website": "https://www.cjcsbaghpat.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.cjcsbaghpat.com\r\n)"
+ },
+ {
+  "code": "UP122",
+  "name": "St. Joseph's Academy",
+  "city": "Ghaziabad",
+  "state": "UP",
+  "website": "https://www.stjosephacademy.co",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stjosephacademy.co\r\n)"
+ },
+ {
+  "code": "UP037",
+  "name": "Methodist High School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.mhskanpur.org",
+  "reason": "page does not name the town, district or PIN (Kanpur, Kanpur Nagar, 208004)",
+  "pageTitle": "Home - Methodist High School"
+ },
+ {
+  "code": "UP130",
+  "name": "St. Thomas School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.stthomas.co.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UP111",
+  "name": "St. Basil's High School",
+  "city": "Basti",
+  "state": "UP",
+  "website": "https://https://www.stbasilbasti.online/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP145",
+  "name": "Riverside Academy Inter College",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.riversideacademy.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.riversideacademy.in\r\n)"
+ },
+ {
+  "code": "UP141",
+  "name": "Bishop George School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://www.bishopgeorgeschool.com",
+  "reason": "page does not name the school (missing: bishop, george)",
+  "pageTitle": "开云官方网页版官网-开云(中国)"
+ },
+ {
+  "code": "UP153",
+  "name": "St. Mary's School",
+  "city": "Mirzapur",
+  "state": "UP",
+  "website": "https://stmarymirzapur.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP125",
+  "name": "Springer Public School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://https://springerpublicschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP160",
+  "name": "Edmonton Public School",
+  "city": "Lakhimpur",
+  "state": "UP",
+  "website": "https://www.edmontonpublicschool.net",
+  "reason": "no answer (curl: (6) Could not resolve host: www.edmontonpublicschool.net\r\n)"
+ },
+ {
+  "code": "UP144",
+  "name": "Vikas Bharti School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://www.vikasbharti.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UP167",
+  "name": "Holy Trinity Church School",
+  "city": "Ghaziabad",
+  "state": "UP",
+  "website": "https://www.htcsgzb.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.htcsgzb.edu.in\r\n)"
+ },
+ {
+  "code": "UP169",
+  "name": "Stella Maris Inter College",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://wwwstellamarislucknow.in",
+  "reason": "no answer (curl: (6) Could not resolve host: wwwstellamarislucknow.in\r\n)"
+ },
+ {
+  "code": "UP158",
+  "name": "City Montessori School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://https://cmseducation.org/anand-nagar-campus/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP127",
+  "name": "Gagan Public School",
+  "city": "Aligarh",
+  "state": "UP",
+  "website": "https://www.gagan.ac.in",
+  "reason": "page does not name the town, district or PIN (Aligarh, Aligarh, 202001)",
+  "pageTitle": "Gagan Group of Institutions"
+ },
+ {
+  "code": "UP193",
+  "name": "Gurukul Academy",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.gurukulacademy.education",
+  "reason": "no answer (curl: (6) Could not resolve host: www.gurukulacademy.education\r\n)"
+ },
+ {
+  "code": "UP202",
+  "name": "Virendra Nath Ganguly Memorial School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://www.vngms.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.vngms.co.in\r\n)"
+ },
+ {
+  "code": "UP182",
+  "name": "Smt. Jaidevi Memorial Public School",
+  "city": "Aligarh",
+  "state": "UP",
+  "website": "https://www.sjdschool.org",
+  "reason": "page does not name the school (missing: jaidevi)",
+  "pageTitle": "SJD Memorial Public School &#8211; Affiliated to C.I.S.C.E. (popularly known I.C.S.E.)"
+ },
+ {
+  "code": "UP196",
+  "name": "Blue Bells Public School",
+  "city": "Jhansi",
+  "state": "UP",
+  "website": "https://www.bbps.in",
+  "reason": "HTTP 525"
+ },
+ {
+  "code": "UP231",
+  "name": "St. Theresa's School",
+  "city": "Hardoi",
+  "state": "UP",
+  "website": "https://sttheresasandila.in",
+  "reason": "page does not name the town, district or PIN (Hardoi, Hardoi, 241204)",
+  "pageTitle": "ST. THERESA&#x27;S SCHOOL SANDILA | School Website"
+ },
+ {
+  "code": "UP187",
+  "name": "Prabhat Academy",
+  "city": "Pratapgarh",
+  "state": "UP",
+  "website": "https://https://prabhatacademy.net/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP241",
+  "name": "Ragendra Swarup Public School",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://www.swarupgroup.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.swarupgroup.org\r\n)"
+ },
+ {
+  "code": "UP214",
+  "name": "M. U. College",
+  "city": "Aligarh",
+  "state": "UP",
+  "website": "https://mucollege.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "UP249",
+  "name": "Christu Jyothi Convent School",
+  "city": "Baghpat",
+  "state": "UP",
+  "website": "https://W.W.W.cjcsbaraut.com",
+  "reason": "no answer (curl: (6) Could not resolve host: W.W.W.cjcsbaraut.com\r\n)"
+ },
+ {
+  "code": "UP220",
+  "name": "Mother Teresa Mission Higher Secondary School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.mtmhss.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mtmhss.edu.in\r\n)"
+ },
+ {
+  "code": "UP209",
+  "name": "Bhaktivedanta Gurukula And International School",
+  "city": "Vrindavan",
+  "state": "UP",
+  "website": "https://www.bgis.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP256",
+  "name": "Mount Carmel School",
+  "city": "Ghaziabad",
+  "state": "UP",
+  "website": "https://www.mountcarmelmuradnagar.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.mountcarmelmuradnagar.com\r\n)"
+ },
+ {
+  "code": "UP267",
+  "name": "Don Bosco School",
+  "city": "Jhansi",
+  "state": "UP",
+  "website": "https://www.donboscoschooljhansi.org.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.donboscoschooljhansi.org.in\r\n)"
+ },
+ {
+  "code": "UP253",
+  "name": "Lucknow Public School",
+  "city": "Lakhimpur",
+  "state": "UP",
+  "website": "https://http://lmp.lucknowpublicschoolsandcolleges.com/Home.aspx",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP254",
+  "name": "Carmel School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://https://www.carmelschoolgorakhpur.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP274",
+  "name": "H.c.j. Academy",
+  "city": "Ayodhya",
+  "state": "UP",
+  "website": "https://www.hcjacdemy.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.hcjacdemy.in\r\n)"
+ },
+ {
+  "code": "UP259",
+  "name": "De Paul School",
+  "city": "Dataganj Road",
+  "state": "UP",
+  "website": "https://www.depaulbadaun.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP297",
+  "name": "King George Inter College",
+  "city": "Barabanki",
+  "state": "UP",
+  "website": "https://www.kgic.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.kgic.co.in\r\n)"
+ },
+ {
+  "code": "UP262",
+  "name": "John Nave Senior Secondary School",
+  "city": "Shahjahanpur",
+  "state": "UP",
+  "website": "https://https://www.facebook.com/johnnaveschool",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP288",
+  "name": "St. John's School",
+  "city": "Varanasi",
+  "state": "UP",
+  "website": "https://www.stjohnsledhupur.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UP311",
+  "name": "Senior's Radiant Academy",
+  "city": "Sitapur",
+  "state": "UP",
+  "website": "https://www.seniorsradiantacademy.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.seniorsradiantacademy.org\r\n)"
+ },
+ {
+  "code": "UP269",
+  "name": "Christu Jyoti Convent School",
+  "city": "Hapur",
+  "state": "UP",
+  "website": "https://https://cjcsgarh.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP330",
+  "name": "Starwards Public School",
+  "city": "Tulsipur",
+  "state": "UP",
+  "website": "https://www.starwardsschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.starwardsschool.com\r\n)"
+ },
+ {
+  "code": "UP287",
+  "name": "I. P. E. M. International School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://http://school.ipem.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP328",
+  "name": "Sacred Heart School",
+  "city": "Ballia",
+  "state": "UP",
+  "website": "https://www.sacredheartschoolballia.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP298",
+  "name": "Vaibhav Academy",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://http://vaibhavacademylko.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP331",
+  "name": "Jumna Christian Junior High School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://www.jcsald.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP344",
+  "name": "Holy Suffah Public School",
+  "city": "Sambhal",
+  "state": "UP",
+  "website": "https://www,holysuffahpublicschool.in",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "UP318",
+  "name": "St. Xavier's Convent School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.stxaviersconvent.org",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "UP345",
+  "name": "St. Mary's Convent School",
+  "city": "Chandauli",
+  "state": "UP",
+  "website": "https://www.stmarysmughalsarai.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UP334",
+  "name": "St. Peter's School",
+  "city": "Bijnor",
+  "state": "UP",
+  "website": "https://https://www.stpeterskiratpur.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP320",
+  "name": "The Shriram Millennium School",
+  "city": "Ghaziabad",
+  "state": "UP",
+  "website": "https://www.tsms.org.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP346",
+  "name": "R.K.P. Yash Public School",
+  "city": "Varanasi",
+  "state": "UP",
+  "website": "https://www.yps.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "UP368",
+  "name": "St. John's Convent School",
+  "city": "Sultanpur",
+  "state": "UP",
+  "website": "https://www.stjohnsultanpur.com",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "UP357",
+  "name": "CREATHICS PUBLIC SCHOOL",
+  "city": "Bareilly",
+  "state": "UP",
+  "website": "https://http://crpsbly.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP382",
+  "name": "Pioneer Montessori School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.pioneermontessorischool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.pioneermontessorischool.com\r\n)"
+ },
+ {
+  "code": "UP365",
+  "name": "Sun Shine Public School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.sunshine.co.in",
+  "reason": "HTTP 429"
+ },
+ {
+  "code": "UP399",
+  "name": "St. John's School",
+  "city": "Firozabad",
+  "state": "UP",
+  "website": "https://stjohnsupsidc.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: stjohnsupsidc.com\r\n)"
+ },
+ {
+  "code": "UP402",
+  "name": "Kamad Shining Stars Academy Inter College",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://kamadshining.com",
+  "reason": "no answer (curl: (6) Could not resolve host: kamadshining.com\r\n)"
+ },
+ {
+  "code": "UP408",
+  "name": "St. Francis School",
+  "city": "Baghpat",
+  "state": "UP",
+  "website": "https://www.sfsbaraut.com",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "UP370",
+  "name": "K. K. Public School",
+  "city": "Moradabad",
+  "state": "UP",
+  "website": "https://http://www.kkpublicschool.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP313",
+  "name": "Gurukul Academy",
+  "city": "Lakhimpur",
+  "state": "UP",
+  "website": "https://www.gurukulacademy.co.in",
+  "reason": "page does not name the school (missing: gurukul)",
+  "pageTitle": "TG88 upte - Link Trang Chủ TG88.Com Không Chặn Mới Nhất"
+ },
+ {
+  "code": "UP376",
+  "name": "Pragyan Public School",
+  "city": "Gorakhpur",
+  "state": "UP",
+  "website": "https://www.ppsgorakhpur.com",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "UP371",
+  "name": "Carver Public School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://https://www.carverpublicschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP417",
+  "name": "The Hamilton Academy",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.thehamiltonacademy.com",
+  "reason": "no answer (curl: (47) Maximum (5) redirects followed\r\n)"
+ },
+ {
+  "code": "UP394",
+  "name": "T M P S International School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://https://tmpsinternational.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP401",
+  "name": "Infant Public School",
+  "city": "KANPUR DEHAT",
+  "state": "UP",
+  "website": "https://http://www.infantps.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP428",
+  "name": "Calvary Ideal School",
+  "city": "Basti",
+  "state": "UP",
+  "website": "https://www.cicbasti.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.cicbasti.com\r\n)"
+ },
+ {
+  "code": "UP407",
+  "name": "Islamic Mission School",
+  "city": "Aligarh",
+  "state": "UP",
+  "website": "https://http://www.islamicmissionschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP410",
+  "name": "Shivaji Global Academy",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.up410cisce.org",
+  "reason": "page does not name the town, district or PIN (Kanpur, Kanpur Nagar, 209206)",
+  "pageTitle": "Home &#045; SHIVAJI GLOBAL ACADEMY"
+ },
+ {
+  "code": "UP429",
+  "name": "C. V. Raman International School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://www.cvramangroupofschools.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.cvramangroupofschools.com\r\n)"
+ },
+ {
+  "code": "UP413",
+  "name": "D B S Montessori School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://dbsmontessori.org",
+  "reason": "page does not name the school (missing: d, b, s)",
+  "pageTitle": "DBS Montessori School"
+ },
+ {
+  "code": "UP444",
+  "name": "Parma Academy",
+  "city": "Ayodhya",
+  "state": "UP",
+  "website": "https://www.parmaacdemy.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.parmaacdemy.com\r\n)"
+ },
+ {
+  "code": "UP443",
+  "name": "Green Field Vidyalaya",
+  "city": "Sitapur",
+  "state": "UP",
+  "website": "https://GREENFIELDGROUP.ORG",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "UP452",
+  "name": "St. Peter's School",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://www.stpetersschoolkiraoli.edu.in",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "UP431",
+  "name": "R K International School",
+  "city": "Meerut",
+  "state": "UP",
+  "website": "https://http://www.rkinternational.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP441",
+  "name": "Bishop Hartmann Academy",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://http://www.bhaprayagraj.org",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP471",
+  "name": "Kingson English Medium Junior High School",
+  "city": "Chitrakoot",
+  "state": "UP",
+  "website": "https://www.kingsonenglishschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.kingsonenglishschool.com\r\n)"
+ },
+ {
+  "code": "UP453",
+  "name": "Indra International School",
+  "city": "Gonda",
+  "state": "UP",
+  "website": "https://www.indrainternationalschool.com",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "UP475",
+  "name": "Little Flower School",
+  "city": "Faizabad",
+  "state": "UP",
+  "website": "https://www.lfsfaizabad.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.lfsfaizabad.com\r\n)"
+ },
+ {
+  "code": "UP486",
+  "name": "St. Mary's Day Inter College",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.smcvrindavan.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "UP472",
+  "name": "St. John Paul's School",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://https://sjpsfatehabad.online/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP477",
+  "name": "Delhi Public School",
+  "city": "Bhadohi",
+  "state": "UP",
+  "website": "https://https://www.dpss.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP481",
+  "name": "Durgawati International School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://https://durgawatischool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP487",
+  "name": "St. Monica's School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://http://www.stmonicaschool.co.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP489",
+  "name": "City Montessori School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://http://www.cmseducation.org/golfcity/index.aspx",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP490",
+  "name": "Vimla International School",
+  "city": "Siddharthnagar",
+  "state": "UP",
+  "website": "https://https://viseducation.org.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP492",
+  "name": "Little Flower School",
+  "city": "IKAUNA",
+  "state": "UP",
+  "website": "https://http://lfsshravasti.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP529",
+  "name": "World Of Women Education",
+  "city": "Pratapgarh",
+  "state": "UP",
+  "website": "https://www.wowedu.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.wowedu.org\r\n)"
+ },
+ {
+  "code": "UP495",
+  "name": "The Vishramum School",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://https://www.thevishramumschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP538",
+  "name": "Vardan Academy",
+  "city": "Lucknow",
+  "state": "UP",
+  "website": "https://www.vardanacademy.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.vardanacademy.com\r\n)"
+ },
+ {
+  "code": "UP507",
+  "name": "Global School Of Science",
+  "city": "Agra",
+  "state": "UP",
+  "website": "https://www.osir.org.in/gss",
+  "reason": "page does not name the town, district or PIN (Agra, Agra, 283104)",
+  "pageTitle": "GSS"
+ },
+ {
+  "code": "UP496",
+  "name": "Green Crescent Public School",
+  "city": "Aligarh",
+  "state": "UP",
+  "website": "https://https://gcpsaligarh.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP522",
+  "name": "Paritosh International School",
+  "city": "Kanpur",
+  "state": "UP",
+  "website": "https://https://paritoshgroup.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP524",
+  "name": "Loyal Wonder School",
+  "city": "Jaunpur",
+  "state": "UP",
+  "website": "https://https://loyalwonderschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP532",
+  "name": "Don Bosco School",
+  "city": "LAKHIMPUR-KHERI",
+  "state": "UP",
+  "website": "https://https://donboscoschoolmailani.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP539",
+  "name": "Holy Path Convent School",
+  "city": "Ballia",
+  "state": "UP",
+  "website": "https://http://www.holypath.iteducation.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UP541",
+  "name": "Virendra Swaroop Bhatnagar Modern Academy",
+  "city": "Bulandshahr",
+  "state": "UP",
+  "website": "https://https://vsbma.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UT001",
+  "name": "Col. Brown Cambridge School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://https://www.colbrownschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UT020",
+  "name": "Carman Res. & Day School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www,carmanschool.net",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "UT033",
+  "name": "S. D. A. Inter College",
+  "city": "Haridwar",
+  "state": "UK",
+  "website": "https://www.rac.edu.in",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "UT038",
+  "name": "Pine Hall School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www.indiamart.com/pinehallschool",
+  "reason": "not an official school website (indiamart.com)"
+ },
+ {
+  "code": "UT035",
+  "name": "Masseeh Dilasa School",
+  "city": "Uttarkashi",
+  "state": "UK",
+  "website": "https://www.masseehdilasauki.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.masseehdilasauki.com\r\n)"
+ },
+ {
+  "code": "UT016",
+  "name": "Carman Res. & Day School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www.carmanschool.com",
+  "reason": "page does not name the school (missing: res)",
+  "pageTitle": "Carman School - Perseverance Is Success"
+ },
+ {
+  "code": "UT066",
+  "name": "Doon Blossoms School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://dbeducationalsociety.com",
+  "reason": "no answer (curl: (6) Could not resolve host: dbeducationalsociety.com\r\n)"
+ },
+ {
+  "code": "UT045",
+  "name": "Summer Valley School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://000.org",
+  "reason": "page does not name the school (missing: summer, valley)",
+  "pageTitle": "AI Alignment Safety - alignment > intelligence | Educational Guide"
+ },
+ {
+  "code": "UT081",
+  "name": "Agape Mission School",
+  "city": "Rishikesh",
+  "state": "UK",
+  "website": "https://amsrishikesh@gmail.com",
+  "reason": "redirects to accounts.google.com, not the school's own site"
+ },
+ {
+  "code": "UT086",
+  "name": "Carmel School",
+  "city": "Tehri",
+  "state": "UK",
+  "website": "https://www.carmelchamba.org",
+  "reason": "page does not name the town, district or PIN (Tehri, Tehri-Garhwal, 249145)",
+  "pageTitle": "Carmel School Chamba"
+ },
+ {
+  "code": "UT109",
+  "name": "Doon Hempton School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://N.A",
+  "reason": "no answer (curl: (6) Could not resolve host: N.A\r\n)"
+ },
+ {
+  "code": "UT105",
+  "name": "Dehradun World School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www.dehradunworldschool.com",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "UT119",
+  "name": "Shanti Vallabh Memorial Inter College",
+  "city": "Kotdwar",
+  "state": "UK",
+  "website": "https://svmschoolinfo.com",
+  "reason": "no answer (curl: (6) Could not resolve host: svmschoolinfo.com\r\n)"
+ },
+ {
+  "code": "UT080",
+  "name": "Sunrise Academy",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://http://sunriseacademyuk.com",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UT121",
+  "name": "The Green Valley Public School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www.gvpsddn.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.gvpsddn.com\r\n)"
+ },
+ {
+  "code": "UT018",
+  "name": "St. George's College",
+  "city": "Tehri",
+  "state": "UK",
+  "website": "https://www.sgconline.ac.in",
+  "reason": "no answer (curl: (6) Could not resolve host: error201\r\n)"
+ },
+ {
+  "code": "UT130",
+  "name": "Advent Academy",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "UT104",
+  "name": "St. Tara Academy",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://http://st-tara-academy.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UT047",
+  "name": "Jyoti Vidyalaya",
+  "city": "Chamoli",
+  "state": "UK",
+  "website": "https://Nil",
+  "reason": "no answer (curl: (6) Could not resolve host: Nil\r\n)"
+ },
+ {
+  "code": "WB002",
+  "name": "St. Vincent's High &technical School",
+  "city": "Bardhaman",
+  "state": "WB",
+  "website": "https://www.svsasansol.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.svsasansol.com\r\n)"
+ },
+ {
+  "code": "WB003",
+  "name": "St. Patrick's Higher Secondary School",
+  "city": "Bardhaman",
+  "state": "WB",
+  "website": "https://www.spsasansol.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.spsasansol.com\r\n)"
+ },
+ {
+  "code": "UT123",
+  "name": "Prakriti Valley School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://www.prakritivalleyschool.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "WB010",
+  "name": "Calcutta Boys' School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.calcuttaboysschool.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.calcuttaboysschool.edu.in\r\n)"
+ },
+ {
+  "code": "UT133",
+  "name": "St. Paul's School",
+  "city": "Dehradun",
+  "state": "UK",
+  "website": "https://stpaulsvikasnagar.edu.in",
+  "reason": "page does not name the town, district or PIN (Dehradun, Dehradun, 248198)",
+  "pageTitle": "School Demo"
+ },
+ {
+  "code": "WB015",
+  "name": "The Frank Anthony Public School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.faps.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.faps.edu.in\r\n)"
+ },
+ {
+  "code": "WB019",
+  "name": "Loreto Convent",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.loretoconvententally.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.loretoconvententally.org\r\n)"
+ },
+ {
+  "code": "UT135",
+  "name": "The H. D. Foundation School",
+  "city": "Haldwani",
+  "state": "UK",
+  "website": "https://https://www.hdfoundationschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB023",
+  "name": "St. James' School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://http://my.123india.com/sj",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "UT124",
+  "name": "The Indian Academy",
+  "city": "Chamoli",
+  "state": "UK",
+  "website": "https://www.theindianacademy.com",
+  "reason": "page does not name the town, district or PIN (Chamoli, Chamoli, 246444)",
+  "pageTitle": "The Indian Academy"
+ },
+ {
+  "code": "WB026",
+  "name": "St. Mary's School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://https://stmaryssch.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB044",
+  "name": "Saifee Golden Jubliee English Public School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.saifeeschool.in",
+  "reason": "page does not name the school (missing: jubliee)",
+  "pageTitle": "Saifee Golden Jubilee English Public School"
+ },
+ {
+  "code": "WB034",
+  "name": "St. Paul's Boarding & Day School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://http://stpaulsboaring-dayschool.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "WB049",
+  "name": "Salt Lake School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.saltlakeschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.saltlakeschool.org\r\n)"
+ },
+ {
+  "code": "WB053",
+  "name": "Harrow Hall",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.harrowhallcalcutta.net.net",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_ILLEGAL_MESSAGE (0x80090326) - This error usually occu)"
+ },
+ {
+  "code": "WB054",
+  "name": "Mansur Habibullah Memorial School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://mhmscal.org",
+  "reason": "HTTP 403"
+ },
+ {
+  "code": "WB055",
+  "name": "G. D. Birla Centre For Education",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.ashokhall.net",
+  "reason": "page does not name the school (missing: g, d, birla)",
+  "pageTitle": "Ashok Hall | School, Academic Excellence & Student Development"
+ },
+ {
+  "code": "WB069",
+  "name": "Mount Hermon School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://mhsdarj1895.com",
+  "reason": "no answer (curl: (6) Could not resolve host: mhsdarj1895.com\r\n)"
+ },
+ {
+  "code": "WB063",
+  "name": "Carmel Convent High School",
+  "city": "Durgapur",
+  "state": "WB",
+  "website": "https://carmelconventhighschool.org",
+  "reason": "page does not name the town, district or PIN (Durgapur, Purba Bardhaman, 713210)",
+  "pageTitle": "Carmel Convent High School |"
+ },
+ {
+  "code": "WB062",
+  "name": "St. Xavier's School",
+  "city": "Durgapur",
+  "state": "WB",
+  "website": "https://www.stxaviersdgp.com",
+  "reason": "page does not name the school (missing: st, xaviers)",
+  "pageTitle": "Data Sydney Pools || Keluaran SDY Lotto || Pengeluaran SDY Hari Ini || Result Togel SDY"
+ },
+ {
+  "code": "WB004",
+  "name": "Assembly Of God Church School",
+  "city": "Asansol",
+  "state": "WB",
+  "website": "https://www.agasansol.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB088",
+  "name": "St. James' High School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://https://www.sjsbgi.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB097",
+  "name": "Himali Boarding School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://www.himali.school.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.himali.school.org\r\n)"
+ },
+ {
+  "code": "WB111",
+  "name": "Lincolns High School",
+  "city": "Siliguri",
+  "state": "WB",
+  "website": "https://www.lincolns-school.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.lincolns-school.com\r\n)"
+ },
+ {
+  "code": "WB142",
+  "name": "St. Mary's High School",
+  "city": "Cooch Behar",
+  "state": "WB",
+  "website": "https://stmarysschoolcoochbehar.com",
+  "reason": "no answer (curl: (6) Could not resolve host: stmarysschoolcoochbehar.com\r\n)"
+ },
+ {
+  "code": "WB131",
+  "name": "Assembly Of God Church School",
+  "city": "Ukhra",
+  "state": "WB",
+  "website": "https://www.agukhra.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB147",
+  "name": "St. Anthony's School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://https://anthonyskurseong.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB150",
+  "name": "Ratnakar North Point School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://www.ratnakarschools.org",
+  "reason": "page does not name the school (missing: ratnakar, north, point)",
+  "pageTitle": "UMI55 - Jelajahi Dunia Game Online Terlengkap & Paling Laris"
+ },
+ {
+  "code": "WB153",
+  "name": "Rose Bud School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://https://rosebudschoolliluah.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB031",
+  "name": "St. Thomas' Day School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.stthomasdayschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stthomasdayschool.com\r\n)"
+ },
+ {
+  "code": "WB163",
+  "name": "Ruhiyyih School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://http://www.ruhiyyih.in",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "WB168",
+  "name": "Splendour High School",
+  "city": "Midnapore",
+  "state": "WB",
+  "website": "https://www.splendourschool.com",
+  "reason": "HTTP 526"
+ },
+ {
+  "code": "WB196",
+  "name": "Good Shepherd School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://www.goodshepherdschoolbagdogra.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.goodshepherdschoolbagdogra.com\r\n)"
+ },
+ {
+  "code": "WB197",
+  "name": "Gyanoday Niketan",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://www.gyanodayniketan.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.gyanodayniketan.com\r\n)"
+ },
+ {
+  "code": "WB166",
+  "name": "St. Joan's School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.stjoans.edu.in",
+  "reason": "page does not name the town, district or PIN (Kolkata, Kolkata, 700091)",
+  "pageTitle": "Landing Page - St. Joan&#039;s School - Salt Lake"
+ },
+ {
+  "code": "WB158",
+  "name": "The Assembly Of God Church School",
+  "city": "Sunderchak",
+  "state": "WB",
+  "website": "https://www.agsodepur.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB229",
+  "name": "The Calcutta Emmanuel School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.calemmschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.calemmschool.org\r\n)"
+ },
+ {
+  "code": "WB201",
+  "name": "Holy Child English Academy",
+  "city": "Malda",
+  "state": "WB",
+  "website": "https://www.holychildenglishacademy.com",
+  "reason": "parked, suspended or default page"
+ },
+ {
+  "code": "WB223",
+  "name": "Purwanchal Vidyamandir",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.purwanchalvidyamandir.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "WB250",
+  "name": "Akshar",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.aksharschool.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB227",
+  "name": "Gitaram Academy",
+  "city": "Berhampore",
+  "state": "WB",
+  "website": "https://https://gitaramgroup.org/academy/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB255",
+  "name": "North Point English Academy",
+  "city": "Malda",
+  "state": "WB",
+  "website": "https://northpointenglishacademy.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB256",
+  "name": "Vrindavan School",
+  "city": "Kalimpong",
+  "state": "WB",
+  "website": "https://www.vrindavanschool.org",
+  "reason": "HTTP 401"
+ },
+ {
+  "code": "WB233",
+  "name": "Vivekananda Mission School",
+  "city": "Midnapore",
+  "state": "WB",
+  "website": "https://www.vms.edu.in",
+  "reason": "page does not name the town, district or PIN (Midnapore, Purba Medinipur, 721605)",
+  "pageTitle": "Home - VMS"
+ },
+ {
+  "code": "WB277",
+  "name": "Adamas International School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.adamas.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.adamas.co.in\r\n)"
+ },
+ {
+  "code": "WB273",
+  "name": "Holy Family School",
+  "city": "MURSHIDABAD",
+  "state": "WB",
+  "website": "https://holyfamilyschoolfarakka.in",
+  "reason": "page does not name the town, district or PIN (MURSHIDABAD, Murshidabad, 742212)",
+  "pageTitle": "Holy Family School Farakka"
+ },
+ {
+  "code": "WB265",
+  "name": "St. Joseph Day School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://http://www.stjosephdayschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "WB231",
+  "name": "Convent Of Jesus And Mary",
+  "city": "Ranaghat",
+  "state": "WB",
+  "website": "https://www.cjmranaghat.org",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "WB287",
+  "name": "St. Mary's English School",
+  "city": "Ranaghat",
+  "state": "WB",
+  "website": "https://www.stmarysenglishschool.org",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "WB309",
+  "name": "Saint Paul's School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://saintpaulsschooljalpaiguri.org",
+  "reason": "no answer (curl: (6) Could not resolve host: saintpaulsschooljalpaiguri.org\r\n)"
+ },
+ {
+  "code": "WB307",
+  "name": "El-Bethel School",
+  "city": "Kolkata",
+  "state": "WB",
+  "website": "https://www.el-bethel.org.in",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB291",
+  "name": "Sarwan Memorial School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://https://sarwanmemorial.netlify.app/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB305",
+  "name": "St. Claret School",
+  "city": "Barrackpore",
+  "state": "WB",
+  "website": "https://www.stclaretkolkata.com",
+  "reason": "page does not name the town, district or PIN (Barrackpore, North 24-Pargana, 700121)",
+  "pageTitle": "Claret School , Kolkata"
+ },
+ {
+  "code": "WB325",
+  "name": "Apex Academy",
+  "city": "Midnapore",
+  "state": "WB",
+  "website": "https://apex-academy.in",
+  "reason": "no answer (curl: (6) Could not resolve host: apex-academy.in\r\n)"
+ },
+ {
+  "code": "WB303",
+  "name": "Abbot Shishu Hall",
+  "city": "HOOGHLY",
+  "state": "WB",
+  "website": "https://abbotshishuhall",
+  "reason": "no answer (curl: (6) Could not resolve host: abbotshishuhall\r\n)"
+ },
+ {
+  "code": "WB330",
+  "name": "Boon English School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://www.boonenglishschool.com",
+  "reason": "no answer (curl: (60) schannel: SNI or certificate check failed: SEC_E_WRONG_PRINCIPAL (0x80090322) - The target principal name is )"
+ },
+ {
+  "code": "WB279",
+  "name": "Disari Public School",
+  "city": "Haldia",
+  "state": "WB",
+  "website": "https://www.disaripschool.com",
+  "reason": "page does not name the school (missing: disari)",
+  "pageTitle": "WADIDAW! Supertogel Bandar Togel Online Hari Ini Resmi Terpopuler"
+ },
+ {
+  "code": "WB341",
+  "name": "Divine Mercy School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://www.divinemercyschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.divinemercyschool.org\r\n)"
+ },
+ {
+  "code": "WB343",
+  "name": "M.N.M. Memorial High School",
+  "city": "Sabang",
+  "state": "WB",
+  "website": "https://mnmmhschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: mnmmhschool.org\r\n)"
+ },
+ {
+  "code": "WB333",
+  "name": "Tamralipta Public School",
+  "city": "Midnapore",
+  "state": "WB",
+  "website": "https://https://www.tps.org.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB361",
+  "name": "Paramount School",
+  "city": "Kalimpong",
+  "state": "WB",
+  "website": "https://www.paramountschoolkpg.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.paramountschoolkpg.org\r\n)"
+ },
+ {
+  "code": "WB363",
+  "name": "SRI AUROBINDO VIDYABHAWAN",
+  "city": "BALICHAK",
+  "state": "WB",
+  "website": "https://www.sriaurobindovidyabhawan.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sriaurobindovidyabhawan.com\r\n)"
+ },
+ {
+  "code": "WB357",
+  "name": "Holy Family Convent School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://www.holyfamilyliluah.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB350",
+  "name": "St. Stephen's Academy",
+  "city": "Kalimpong",
+  "state": "WB",
+  "website": "https://https://www.stephensacademy.net/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB381",
+  "name": "Seraphim's Assembly School",
+  "city": "Barasat",
+  "state": "WB",
+  "website": "https://`",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "WB089",
+  "name": "Holy Child School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://www.holychildjalpaiguri.in",
+  "reason": "HTTP 522"
+ },
+ {
+  "code": "WB391",
+  "name": "Don Bosco School",
+  "city": "Berhampore",
+  "state": "WB",
+  "website": "https://www.donboscoberhampore.in",
+  "reason": "no answer (curl: (35) Recv failure: Connection was reset\r\n)"
+ },
+ {
+  "code": "WB366",
+  "name": "Don Bosco School",
+  "city": "Jalpaiguri",
+  "state": "WB",
+  "website": "https://www.donboscooodlabari.com",
+  "reason": "page does not name the town, district or PIN (Jalpaiguri, Jalpaiguri, 735222)",
+  "pageTitle": "Don Bosco School Oodlabari |"
+ },
+ {
+  "code": "WB377",
+  "name": "Agrasain Boys' School",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://https://agrasainboysschool.edu.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB400",
+  "name": "Roger's Academy",
+  "city": "Siliguri",
+  "state": "WB",
+  "website": "https://www.rogersacademy.org",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "WB430",
+  "name": "Nivedita Academy",
+  "city": "Kaliyaganj",
+  "state": "WB",
+  "website": "https://https;//www.niveditaacademy.ac.in",
+  "reason": "no answer (curl: (3) URL rejected: Bad hostname\r\n)"
+ },
+ {
+  "code": "WB398",
+  "name": "St. Xavier's School",
+  "city": "Alipurduar",
+  "state": "WB",
+  "website": "https://https://www.stxaviersalipurduar.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB438",
+  "name": "Holy Family School",
+  "city": "Purba Bardhaman",
+  "state": "WB",
+  "website": "https://www.holyfamilynuta.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.holyfamilynuta.org\r\n)"
+ },
+ {
+  "code": "WB406",
+  "name": "Vivekananda Institution",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://www.vivekanandainstitution.org",
+  "reason": "no readable content (site needs JavaScript or is empty)"
+ },
+ {
+  "code": "WB435",
+  "name": "Swami Vivekananda Academy",
+  "city": "BELMURI",
+  "state": "WB",
+  "website": "https://www.svabelmuri.org",
+  "reason": "no answer (curl: (60) schannel: SEC_E_UNTRUSTED_ROOT (0x80090325) - The certificate chain was issued by an authority that is not tr)"
+ },
+ {
+  "code": "WB454",
+  "name": "Sister Nivedita Convent School",
+  "city": "Cooch Behar",
+  "state": "WB",
+  "website": "https://www.sncschooltufanganj.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.sncschooltufanganj.in\r\n)"
+ },
+ {
+  "code": "WB473",
+  "name": "Nirmal Hriday School",
+  "city": "AHMADPUR",
+  "state": "WB",
+  "website": "https://Nirmalhridayschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: Nirmalhridayschool.com\r\n)"
+ },
+ {
+  "code": "WB480",
+  "name": "Calcutta Boys' School (Asansol Campus)",
+  "city": "Asansol",
+  "state": "WB",
+  "website": "https://www.calcuttaboysschool.edu.in",
+  "reason": "no answer (curl: (6) Could not resolve host: www.calcuttaboysschool.edu.in\r\n)"
+ },
+ {
+  "code": "WB486",
+  "name": "Gani World Academy",
+  "city": "Kalna",
+  "state": "WB",
+  "website": "https://www.ganiworldacademy.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.ganiworldacademy.org\r\n)"
+ },
+ {
+  "code": "WB467",
+  "name": "St. Anthony's School",
+  "city": "Darjeeling",
+  "state": "WB",
+  "website": "https://https://stanthonysschooladhikari.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB502",
+  "name": "St. Teresa's School",
+  "city": "Berhampore",
+  "state": "WB",
+  "website": "https://www.stteresaberhampore.org",
+  "reason": "no answer (curl: (6) Could not resolve host: www.stteresaberhampore.org\r\n)"
+ },
+ {
+  "code": "WB479",
+  "name": "Calcutta Girls High School Asansol",
+  "city": "Bardhaman",
+  "state": "WB",
+  "website": "https://https://cghsasansol.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB373",
+  "name": "P. P. Memorial Academy",
+  "city": "Howrah",
+  "state": "WB",
+  "website": "https://ppmemorialacademy.com",
+  "reason": "HTTP 500"
+ },
+ {
+  "code": "TN162",
+  "name": "The Oxford Continental School",
+  "city": "Ooty",
+  "state": "TN",
+  "website": "https://www.oxfordcontinentalschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: www.oxfordcontinentalschool.com\r\n)"
+ },
+ {
+  "code": "WB506",
+  "name": "Alpha Mission School",
+  "city": "Siliguri",
+  "state": "WB",
+  "website": "https://https://alphamissionschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "HP040",
+  "name": "La Montessori School",
+  "city": "Kullu",
+  "state": "HP",
+  "website": "https://https://lms.org.in/dhalpur",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "HP041",
+  "name": "St. Xavier Cambridge School",
+  "city": "Kangra",
+  "state": "HP",
+  "website": "https://https://xavierschool.co.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH168",
+  "name": "Adam's Home English Mission School",
+  "city": "Jamshedpur",
+  "state": "JH",
+  "website": "https://https://adamshomeschool.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN165",
+  "name": "Avila International School",
+  "city": "Coimbatore",
+  "state": "TN",
+  "website": "https://avilainternationalschool.org",
+  "reason": "no answer (curl: (6) Could not resolve host: avilainternationalschool.org\r\n)"
+ },
+ {
+  "code": "KA536",
+  "name": "Priyadarshini School",
+  "city": "Mysuru",
+  "state": "KA",
+  "website": "https://https://acepriyadarshinischool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA538",
+  "name": "BKR ACADEMY",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://bkracademy.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "TN167",
+  "name": "Braeside International School",
+  "city": "OOTY",
+  "state": "TN",
+  "website": "https://www.braesideschoolooty.in",
+  "reason": "no answer (curl: (35) schannel: next InitializeSecurityContext failed: SEC_E_CERT_EXPIRED (0x80090328) - The received certificate h)"
+ },
+ {
+  "code": "RA028",
+  "name": "MSB EDUCATIONAL INSTITUTE",
+  "city": "Kota",
+  "state": "RJ",
+  "website": "https://http://msbinstitutekota.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: http\r\n)"
+ },
+ {
+  "code": "TN166",
+  "name": "S E ACADEMY",
+  "city": "Salem",
+  "state": "TN",
+  "website": "https://https://www.seacademyschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP547",
+  "name": "Boys and Girls School and College",
+  "city": "Pratapgarh",
+  "state": "UP",
+  "website": "https://https://bgscpratapgarh.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP549",
+  "name": "HARSH MEMORIAL KIDS GARDEN SCHOOL",
+  "city": "Bidhuna",
+  "state": "UP",
+  "website": "https://www.kidsgardenbidhuna.com",
+  "reason": "page does not name the school (missing: harsh, kids, garden)",
+  "pageTitle": "kidsgardenbidhuna.com"
+ },
+ {
+  "code": "KA539",
+  "name": "SRI VIDYANIKETAN INTERNATIONAL SCHOOL",
+  "city": "Koppal",
+  "state": "KA",
+  "website": "https://https://svni.srividyaniketangroup.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA542",
+  "name": "MMK PUBLIC SCHOOL",
+  "city": "Mysore",
+  "state": "KA",
+  "website": "https://www.MMK institution.com",
+  "reason": "not an official school website (null)"
+ },
+ {
+  "code": "BI065",
+  "name": "Scottish Formative School",
+  "city": "Patna",
+  "state": "BR",
+  "website": "https://https://scottishformativeschool.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "JH169",
+  "name": "NIRMALA CONVENT HIGH SCHOOL",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://https://nchsrnc.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "MP087",
+  "name": "VAISHNAVI PUBLIC SCHOOL",
+  "city": "Bhopal",
+  "state": "MP",
+  "website": "https://https://vpsbhopal.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA545",
+  "name": "Dignity Public High School",
+  "city": "Bengaluru",
+  "state": "KA",
+  "website": "https://https://dignitypublicschool.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "KA546",
+  "name": "Bgs World School",
+  "city": "Kolar",
+  "state": "KA",
+  "website": "https://https://bgswsklr.my.canva.site/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU259",
+  "name": "Bethania Convent School",
+  "city": "Moga",
+  "state": "PB",
+  "website": "https://https://bcskik.com/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU260",
+  "name": "Mamta Niketan Sprouts",
+  "city": "Amritsar",
+  "state": "PB",
+  "website": "https://WWW.mamtaniketansprouts.com",
+  "reason": "page does not name the town, district or PIN (Amritsar, Amritsar, 143001)",
+  "pageTitle": "Home | MamtaNiketanSprouts"
+ },
+ {
+  "code": "JH170",
+  "name": "U. K. PUBLIC SCHOOL",
+  "city": "Ranchi",
+  "state": "JH",
+  "website": "https://https://ukpublicschool.co.in",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "OR110",
+  "name": "St. Thomas English Medium School",
+  "city": "Sambalpur",
+  "state": "OD",
+  "website": "https://https://g.co/kgs/SBKky7",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "PU262",
+  "name": "MOTHER 'S DREAM PUBLIC SCHOOL",
+  "city": "Bareta",
+  "state": "PB",
+  "website": "https://https://mdpsdharampura.in/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "RA029",
+  "name": "St Josephs Public School",
+  "city": "Kota",
+  "state": "RJ",
+  "website": "https://https://stjosephkota.com",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "UP555",
+  "name": "Bal Mitra School",
+  "city": "Prayagraj",
+  "state": "UP",
+  "website": "https://https://balmitraschool.org/",
+  "reason": "no answer (curl: (6) Could not resolve host: https\r\n)"
+ },
+ {
+  "code": "WB360",
+  "name": "Belda English Medium School",
+  "city": "Belda",
+  "state": "WB",
+  "website": "https://www.beldaenglishmediumschool.in",
+  "reason": "HTTP 522"
+ }
+]

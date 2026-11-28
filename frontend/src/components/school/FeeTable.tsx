@@ -1,6 +1,6 @@
 import type { Fee } from '../../types/api';
 import { feeComponentLabel, formatMoney } from '../../utils/format';
-import { SourceLink, VerificationBadge } from '../common/Badges';
+import { SourceLink, TrustBadge } from '../common/Badges';
 
 /** optional rows are hidden when the school lists no such charge */
 const ROWS: { key: keyof Fee; label: string; note?: (f: Fee) => string; optional?: boolean }[] = [
@@ -26,7 +26,7 @@ export function FeeTable({ fee }: { fee: Fee }) {
           <h3 className="font-semibold">{fee.className} · {fee.academicYear}</h3>
           <SourceLink url={fee.sourceUrl} label="Fee source" />
         </div>
-        <VerificationBadge status={fee.verificationStatus} date={fee.lastVerifiedDate} />
+        <TrustBadge status={fee.verificationStatus} verifiedOn={fee.lastVerifiedDate} hasSource={!!fee.sourceUrl} kind="schedule" />
       </div>
       <table className="w-full text-sm">
         <tbody>

@@ -12,12 +12,11 @@ import com.indiaschoolfinder.dto.fee.FeeDto;
 import com.indiaschoolfinder.dto.fee.FeeRequest;
 import com.indiaschoolfinder.dto.ranking.CriterionScoreDto;
 import com.indiaschoolfinder.dto.ranking.CriterionScoreRequest;
-import com.indiaschoolfinder.dto.ranking.ExternalRankingDto;
-import com.indiaschoolfinder.dto.ranking.ExternalRankingRequest;
 import com.indiaschoolfinder.dto.school.BoardingProfileDto;
 import com.indiaschoolfinder.dto.school.BoardingProfileRequest;
 import com.indiaschoolfinder.dto.school.FacilityDto;
 import com.indiaschoolfinder.dto.school.FacilityRequest;
+import com.indiaschoolfinder.dto.school.ImageAdminDtos;
 import com.indiaschoolfinder.dto.school.ImageDto;
 import com.indiaschoolfinder.dto.school.ImageRequest;
 import com.indiaschoolfinder.dto.school.SchoolDetailDto;
@@ -184,6 +183,48 @@ public class AdminSchoolController {
         return imageService.upload(id, file, withPlaceholder);
     }
 
+    @Operation(summary = "Possible photographs from Wikimedia Commons and Wikipedia with their stated licences. "
+            + "Nothing is stored: add a candidate with POST /images as PENDING, then approve it after checking it.")
+    @GetMapping("/{id}/images/candidates")
+    public List<ImageAdminDtos.ImageCandidate> imageCandidates(@PathVariable Long id,
+                                                                @RequestParam(required = false) @jakarta.validation.constraints.Size(max = 200) String q,
+                                                                @RequestParam(defaultValue = "20") @Min(1) @Max(50) int limit) {
+        return imageService.candidates(id, q, limit);
+    }
+
+    @Operation(summary = "Edit an image's details; a changed licence or permission sends a published image back to PENDING")
+    @PutMapping("/{id}/images/{imageId}")
+    public ImageDto updateImage(@PathVariable Long id, @PathVariable Long imageId,
+                                @Valid @RequestBody ImageAdminDtos.UpdateRequest request) {
+        return imageService.update(id, imageId, request);
+    }
+
+    @Operation(summary = "Publish an image after checking it shows this school and that the permission is right")
+    @PostMapping("/{id}/images/{imageId}/approve")
+    public ImageDto approveImage(@PathVariable Long id, @PathVariable Long imageId,
+                                 @Valid @RequestBody ImageAdminDtos.ApproveRequest request) {
+        return imageService.approve(id, imageId, request);
+    }
+
+    @Operation(summary = "Take an image down (wrong school or branch, unclear licence, out of date)")
+    @PostMapping("/{id}/images/{imageId}/reject")
+    public ImageDto rejectImage(@PathVariable Long id, @PathVariable Long imageId,
+                                @Valid @RequestBody ImageAdminDtos.RejectRequest request) {
+        return imageService.reject(id, imageId, request);
+    }
+
+    @Operation(summary = "Show this image first (card and gallery cover); returns the new order")
+    @PostMapping("/{id}/images/{imageId}/primary")
+    public List<ImageDto> makePrimaryImage(@PathVariable Long id, @PathVariable Long imageId) {
+        return imageService.makePrimary(id, imageId);
+    }
+
+    @Operation(summary = "Re-read a Wikimedia Commons image's size, thumbnail, author and licence from Commons")
+    @PostMapping("/{id}/images/{imageId}/refresh")
+    public ImageDto refreshImage(@PathVariable Long id, @PathVariable Long imageId) {
+        return imageService.refreshFromSource(id, imageId);
+    }
+
     @DeleteMapping("/{id}/images/{imageId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteImage(@PathVariable Long id, @PathVariable Long imageId) {
@@ -232,13 +273,6 @@ public class AdminSchoolController {
     public List<CriterionScoreDto> criterionScores(@PathVariable Long id,
                                                    @RequestParam(required = false) @AcademicYear String academicYear) {
         return rankingService.criterionScores(id, academicYear);
-    }
-
-    @Operation(summary = "Record an independently published ranking (shown separately from this site's score)")
-    @PostMapping("/{id}/external-rankings")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ExternalRankingDto addExternalRanking(@PathVariable Long id, @Valid @RequestBody ExternalRankingRequest request) {
-        return rankingService.addExternalRanking(id, request);
     }
 
     /** Accepts 3, "3" or W/"3". */

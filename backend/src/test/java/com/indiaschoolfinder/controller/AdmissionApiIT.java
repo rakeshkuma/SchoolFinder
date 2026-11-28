@@ -50,6 +50,24 @@ class AdmissionApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void theAdmissionsCalendarAnswersFirstInItsServerRenderedPage() throws Exception {
+        post(cycle("GENERAL", TODAY.minusDays(2), TODAY.plusDays(10))).andExpect(status().isCreated());
+        post(cycle("EWS_DG", TODAY.plusDays(20), TODAY.plusDays(40))).andExpect(status().isCreated());
+        post(cycle("CWSN", null, null)).andExpect(status().isCreated()); // not announced: not on the calendar
+        String body = mockMvc.perform(get("/api/v1/seo/body/admissions")).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        org.assertj.core.api.Assertions.assertThat(body)
+                .contains("<h1>Admission process and deadlines</h1>")
+                .contains("2 upcoming or open admission cycles are recorded. The soonest last date to apply is <time datetime=\""
+                        + TODAY.plusDays(10) + "\">")
+                .contains("href=\"/schools/admissions-test-school\"").contains(">Official notice</a>")
+                .contains("href=\"/admissions/guide\"");
+        String head = mockMvc.perform(get("/api/v1/seo/head/admissions")).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        org.assertj.core.api.Assertions.assertThat(head).contains("content=\"2 upcoming and open admission cycles. ");
+    }
+
+    @Test
     void statusIsDerivedFromDatesAndCategoriesAreKeptSeparate() throws Exception {
         post(cycle("GENERAL", TODAY.minusDays(2), TODAY.plusDays(10)))
                 .andExpect(status().isCreated())
@@ -78,7 +96,7 @@ class AdmissionApiIT extends AbstractIntegrationTest {
     void aNetworksIdenticalNationalCyclesCanBeLeftOutOfTheList() throws Exception {
         post(cycle("GENERAL", TODAY.minusDays(2), TODAY.plusDays(10))).andExpect(status().isCreated());
         long jnv = createSchool(school("Fixture Navodaya Vidyalaya", Map.of("network", "JAWAHAR_NAVODAYA_VIDYALAYA",
-                "management", "CENTRAL_GOVERNMENT", "schoolType", "GOVERNMENT")));
+                "management", "CENTRAL_GOVERNMENT", "schoolType", "GOVERNMENT", "stateCode", "UP")));
         mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
                         .post("/api/v1/admin/schools/{id}/admissions", jnv).header("Authorization", editorToken())
                         .contentType(MediaType.APPLICATION_JSON).content(json(cycle("GENERAL", null, TODAY.minusDays(5)))))
@@ -89,6 +107,17 @@ class AdmissionApiIT extends AbstractIntegrationTest {
         mockMvc.perform(get("/api/v1/admissions").param("excludeNetwork", "JAWAHAR_NAVODAYA_VIDYALAYA"))
                 .andExpect(jsonPath("$.totalElements").value(1))
                 .andExpect(jsonPath("$.content[0].schoolId").value(schoolId));
+
+        // State filter: by code or slug; an unknown state is a validation error, not an empty list.
+        mockMvc.perform(get("/api/v1/admissions").param("state", "UP"))
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.content[0].schoolId").value(jnv));
+        mockMvc.perform(get("/api/v1/admissions").param("state", "delhi"))
+                .andExpect(jsonPath("$.totalElements").value(1))
+                .andExpect(jsonPath("$.content[0].schoolId").value(schoolId));
+        mockMvc.perform(get("/api/v1/admissions").param("state", "atlantis")).andExpect(status().isBadRequest());
+        // Board filter: neither fixture school is affiliated to IB.
+        mockMvc.perform(get("/api/v1/admissions").param("board", "IB")).andExpect(jsonPath("$.totalElements").value(0));
     }
 
     @Test

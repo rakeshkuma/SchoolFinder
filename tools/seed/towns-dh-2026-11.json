@@ -1,0 +1,304 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-sayli-silvassa",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3000001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA SAYLI SILVASSA, OPPOSITE NAMO MEDICAL COLLEGE, SAYLI\", PIN 396240."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-govt-high-school-campus-fudam-u-t-daman",
+   "facts": {
+    "city": {
+     "name": "Diu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3100001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIU GOVT HIGH SCHOOL CAMPUS FUDAM-DIU (U.T) DAMAN & DIU\", PIN 362520."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-dunetha-u-t-and-diu",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3140002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DUNETHA DAMAN (U.T.) 396210 DAMAN & DIU\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-e-m-nani-daman",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RINGANWADA, NANI DAMAN, DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-zari",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASHRAMSHALA , ZARI, MOTI DAMAN\", PIN 396220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-high-school-dalwada-h-m",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SCHOOL FALIYA,DALWADA, DAMAN, PATALIYA, MAIN ROAD, NANI DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-dabhel",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VAPI MAIN ROAD, AMALIYA, NANI DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-bhimpore-english-medium",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHIMPORE, OPPO. DAMAN & DIU CO-OPERATIVE BANK LTD., MAIN ROAD, BHIMPORE\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-high-school-kachigam-nani-daman",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DESAI FALIYA , KACHIGAM , NANI DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-e-m-damanwada",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAVA JAMPORE, MANGELWAD, MOTI DAMAN\", PIN 396220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jethi-bai-govt-higher-secondary-school-english-medium-panjarapor-ghoghla-diu",
+   "facts": {
+    "city": {
+     "name": "Diu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN ROAD, PANJARAPOR , GHOGHLA - DIU\", PIN 362540."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarvajanik-vidyalaya-daman",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3120061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.BOX NO. 24, OPP. RAJIV GANDHI SETU , BEHIND CNG PUMP, KHARIWAD, NANI DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "coast-guard-public-school",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIRPORT ROAD, DISTT DAMAN, DAMAN & DIU (U.T)-396210\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "galaxy-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Diu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FUDAM DIU, VANAKBARA DIU MAIN ROAD\", PIN 362520."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fr-agnelo-school",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARWAD FALIA, MAGARWADA, MOTI DAMAN\", PIN 396220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shemford-futuristic-school",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO -81/1-B(1), BHAMTI ,MOTI DAMAN, DAMAN , DAMAN & DIU ,396220\", PIN 396220."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aman-vidyaniketan",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT INTER CONNECTING ROAD, BETWEEN DEVKA, NEAR HOTEL SILVER , VILLAGE MARWAD, NANI DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sunrise-champs-school",
+   "facts": {
+    "city": {
+     "name": "Daman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3130102",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DALWADA, NANI DAMAN, DAMAN\", PIN 396210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "government-higher-secondary-school-hindi-medium",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3020054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TOKARKHADA, NEAR BSNL TELEPHONE EXCHANGE, SILVASSA\", PIN 396230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "govt-higher-secondary-school-english-medium",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3020057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TOKARKHADA SCHOOL CAMPUS, BEHIND TELEPHONE EXCHANGE, SILVASSA\", PIN 396230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lions-english-school",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3030001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAYLI ROAD SILVASSA DADAR & NAGAR HAVELI\", PIN 396230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shivprakash-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3030005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SURVEY NO. 263, UMARKUI ROAD, ATHOLA, SILVASSA, DISTT & STATE DADAR AND NAGAR HAVELI-396230\", PIN 396230."
+     }
+    }
+   }
+  },
+  {
+   "slug": "advaita-gurukul",
+   "facts": {
+    "city": {
+     "name": "Silvassa",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/3030009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR RAMCO INDUSTRIES; SILI PHATAK; PO: SILI; SILVASSA; UNION TERRITORY OF DADRA AND NAGAR HAVELI\", PIN 396230."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -74,6 +74,14 @@ public abstract class AbstractIntegrationTest {
         return "Bearer " + jwtService.issue(ADMIN, AdminRole.ADMIN).value();
     }
 
+    /** A signed-in member's session cookie (see {@link TestMemberSignIn}); the account is created on first use. */
+    protected jakarta.servlet.http.Cookie memberSession(String email) throws Exception {
+        MvcResult r = mockMvc.perform(post("/api/v1/dev/test-member").param("email", email)
+                        .with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf()))
+                .andExpect(status().isNoContent()).andReturn();
+        return r.getResponse().getCookie("ISF_SESSION");
+    }
+
     protected String editorToken() {
         return "Bearer " + jwtService.issue(EDITOR, AdminRole.EDITOR).value();
     }

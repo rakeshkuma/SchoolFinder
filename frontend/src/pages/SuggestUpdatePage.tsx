@@ -36,7 +36,7 @@ export function SuggestUpdatePage() {
     <>
       <PageHeader eyebrow="Help keep profiles accurate" title="Suggest an update"
         subtitle="Schools and parents can tell us about new fees, admission dates, classes, contact details or mistakes. An editor checks every suggestion against the official page you link before anything changes." />
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+      <div className="container-page grid grid-cols-1 gap-8 py-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="min-w-0">
           {!slug ? (
             <div className="card space-y-3 p-5">

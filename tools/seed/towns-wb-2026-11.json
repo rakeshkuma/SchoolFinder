@@ -1,0 +1,3073 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-fort-william",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FORT WILLIAM KOLKATA, WEST BENGAL\", PIN 700021."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-binnaguri-cantt",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BINNAGURI CANTT JALPAIGURI DISTT WEST BENGAL\", PIN 735232."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-kalaikunda-a-f-s-midnapore",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALAIKUNDA A F S MIDNAPORE DISTT WEST BENGAL\", PIN 721303."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-i-i-t-kharagpur-midnapur",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"I I T KHARAGPUR DISTT MIDNAPUR WEST BENGAL\", PIN 721302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-panagarh-panagarh-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANAGARH P O PANAGARH BURDWAN DISTT WEST BENGAL\", PIN 713420."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-c-m-e-r-i-colony-durgapur-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C M E R I COLONY P O DURGAPUR BURDWAN DISTT WEST BENGAL\", PIN 713209."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-1-bengdubi",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BENGDUBI DARJEELING DISTT WEST BENGAL\", PIN 734424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-a-f-s-barrackpore-bengal-enamel-palta-24",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S BARRACKPORE P O BENGAL ENAMEL PALTA DISTT 24 PARAGANS 743122 WEST BENGAL\", PIN 743122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-sukna-sukna",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUKNA PO SUKNA DARJEELING DISTT WEST BENGAL\", PIN 734009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-adra-adra",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ADRA P O ADRA PURULIA DISTT WEST BENGAL\", PIN 723121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-c-r-p-f-campus-durgapur-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C R P F CAMPUS DURGAPUR DISTT. BURDWAN WEST BENGAL\", PIN 713214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-maliha",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALDA P O MALIHA MALDA DISTT WEST BENGAL\", PIN 732102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-ballygunge-maidan-camp-circular-road",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALLYGUNGE MAIDAN CAMP CIRCULAR ROAD KOLKATA WEST BENGAL\", PIN 700019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-cossipore-seven-tank-estate-4-dum-dum-road",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"COSSIPORE SEVEN TANK ESTATE 4 DUM DUM ROAD KOLKATA WEST BENGAL\", PIN 700002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ntpc-farakka",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N T P C FARAKKA P O PUBARAN MALDA DISTT WEST BENGAL\", PIN 732215."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-salagura-sevek-road",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P O SALAGURA SEVEK ROAD JALPAIGURI WEST BENGAL\", PIN 734008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-a-f-s-bagdogra-bagdogra-airport",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S BAGDOGRA P O BAGDOGRA AIRPORT DISTT DARJEELING WEST BENGAL\", PIN 734421."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-command-hospital-alipore",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"COMMAND HOSPITAL ALIPORE KOLKATA, WEST BENGAL\", PIN 700027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-cooch-behar",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"COOCH BEHAR WEST BENGAL\", PIN 736101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-binnaguri-cantt",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BINNAGURI CANTT DISTT JALPAIGURI WEST BENGAL\", PIN 735232."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-kalimpong",
+   "facts": {
+    "city": {
+     "name": "Kalimpong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KENDRIYA VIDYALAYA KALIMPONG, EAST MAIN ROAD, KAIMPONG, NEAR 179 MILITARY HOSPITAL\", PIN 734301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-garden-reach-s-e-rly-colony-south-kapoor-park",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GARDEN REACH S E RLY COLONY SOUTH KAPOOR PARK KOLKATA WEST BENGAL\", PIN 700043."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-haldia-haldia-township-midnapore",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HALDIA HALDIA TOWNSHIP MIDNAPORE WEST BENGAL\", PIN 721607."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-asansol-domohani-rly-colony-kalla-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASANSOL DOMOHANI RLY COLONY P.O. KALLA DISTT. BURDWAN WEST BENGAL\", PIN 713340."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-railway-settlement-kharagpur",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAILWAY SETTLEMENT P.O. KHARAGPUR, DISTT MIDNAPUR WEST BENGAL\", PIN 721301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-andal-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ANDAL DISTT BURDWAN WEST BENGAL\", PIN 713321."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-afs-salua-midnapur",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AFS SALUA MIDNAPUR WEST BENGAL\", PIN 721145."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kamal-sayer-keshabgang-chatti-burdwan-rajbati",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAMAL SAYER KESHABGANG CHATTI PO BURDWAN RAJBATI BURDWAN WEST BENGAL\", PIN 713104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-santragachi-gip-colony",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SANTRAGACHI P O GIP COLONY HOWRAH WEST BENGAL\", PIN 711321."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-raiganj-bn-bsf-govindpur-mirual",
+   "facts": {
+    "city": {
+     "name": "Raiganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIGANJ BN BSF GOVINDPUR PO MIRUAL UTTAR DINAJPUR WEST BENGAL\", PIN 733130."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-rbnm-salboni-rbnml-midnapur-w",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RBNM SALBONI PO RBNML DISTT MIDNAPUR (W) WEST BENGAL\", PIN 721132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-balurghat",
+   "facts": {
+    "city": {
+     "name": "Balurghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALURGHAT, P.O. AMRITAKHANDA HAT, DISTT. DAKSHIN DINAJPUR, WEST BENGAL\", PIN 733103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-ranaghat",
+   "facts": {
+    "city": {
+     "name": "Ranaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANAGHAT, VILL. SATIGACHA, P.O. ANULIA, DISTT. NADIA, WEST BENGAL\", PIN 741201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bsf-2",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF, RANINAGAR, POST- PATAKAT, DISTT. JALPAIGURI, WEST BENGAL 735133\", PIN 735133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-bsf-gandhinagar",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF GANDHINAGAR, PO- K.K. BARI, GOPALPUR, DISTT. COOCH BEHAR, WEST BENGAL\", PIN 736179."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-bsf-aradhpur",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BSF ARADHPUR, PO NARAYANPUR, DIST MALDA, WEST BENGAL\", PIN 732141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-railway-colony-kharagpur",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2400150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHARAGPUR, POST OFFICE- KHARAGPUR\", PIN 721301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-chhebbisay",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHHEBBISAY DARJEELING WEST BENGAL\", PIN 734214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-at-kapaseria-purba-midnapur",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT PO KAPASERIA DISTT PURBA MIDNAPUR WEST BENGAL\", PIN 721628."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-poabagan",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANKURA, VILLAGE-POABAGAN, P.O. BHAGABANDH, DISTT. BANKURA, WEST BENGAL\", PIN 722146."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-medinipur",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEDINIPUR, AT. TANTIGERIA (T.C.P.C.), P.O. VIDYASAGAR UNIVERSITY, DISTT. PASCHIM MEDINIPUR, WEST BENGAL\", PIN 721102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-tufangunj",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TUFANGUNJ, NEW TOWN, DISTT. COOCHBEHAR, WEST BENGAL\", PIN 736160."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-at-gangadharpur",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT/POST- GANGADHARPUR, PS PANCHLA, DISTT. HOWRAH, WEST BENGAL\", PIN 711302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidayalaya-5",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P T T I CAMPUS P O VIVEKANAND NAGAR DISTT PURULIA WEST BENGAL\", PIN 723147."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-balurghat",
+   "facts": {
+    "city": {
+     "name": "Balurghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2440017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALURGHAT,DISTT. DAKSHIN DINJPUR, WEST BENGAL\", PIN 733103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-contai",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430493",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UTTAR DARUA, SHERPUR, NEAR SAMSAN KALI MANDIR, CONTAI, PURBA MEDINIPUR\", PIN 721401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cossipore-gun-and-shell-factory-high-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2420052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"82-B COSSIPORE ROAD, CIT, COSSIPORE, KOLKATA\", PIN 700002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birla-high-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"1 MOIRA STREET CALCUTTA WEST BENGAL\", PIN 700017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ashok-hall-girls-higher-sec-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"5 A SARAT BOSE ROAD CALCUTTA WEST BENGAL-700020\", PIN 700020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahadevi-birla-world-academy",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"17 A DARGA ROAD CALCUTTA WEST BENGAL\", PIN 700017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bholananda-national-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"55-56 BARRACK ROAD BARRACKPORE 24 PARGANAS (NORTH) WEST BENGAL\", PIN 743101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "caesar-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAL P O MAL JALPAIGURI DISTT WEST BENGAL\", PIN 735221."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-model-school-j-n-sengupta-road-durgapur-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"J N SENGUPTA ROAD DURGAPUR DISTT BURDWAN WEST BENGAL\", PIN 713205."
+     }
+    }
+   }
+  },
+  {
+   "slug": "burnpur-riverside-school-burnpur-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BURNPUR BURDWAN DISTT WEST BENGAL\", PIN 713325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apeejay-school-115-park-street-calcutta",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"115 PARK STREET CALCUTTA WEST BENGAL\", PIN 700016."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-f-residential-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KADAMTALA DARJEELING WEST BENGAL\", PIN 734433."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-hindustan-cables-ltd-rupnarainpur-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HINDUSTAN CABLES LTD. RUPNARAINPUR DISTT. BURDWAN WEST BENGAL\", PIN 713335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-bharti-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. RANIGANJ DISTT. BURDWAN WEST BENGAL\", PIN 713347."
+     }
+    }
+   }
+  },
+  {
+   "slug": "priyadarshini-public-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KULTI P.O. KULTI DISTT. BURDWAN WEST BENGAL\", PIN 713343."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-assembly-of-god-church-school",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANCHI ROAD P.O. & DISTT PURULIA WEST BENGAL\", PIN 723101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "auxilium-convent-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW CHUMTA P.O. VIA SUKNA SILIGURI DISTT. DARJEELING WEST BENGAL\", PIN 734701."
+     }
+    }
+   }
+  },
+  {
+   "slug": "abhinav-bharati-high-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"11 PRETORIA STREET CALCUTTA\", PIN 700071."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindi-balika-school",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S.P.MUKHERJEE ROAD DISTT SILIGURI, WEST BENGAL\", PIN 734405."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-61-diamond-harbour-road-calcutta",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"61 DIAMOND HARBOUR ROAD CALCUTTA WEST BENGAL\", PIN 700038."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gobind-ram-kataruka-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. NADIARA DISTT PURULIA WEST BENGAL\", PIN 723101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "notre-dame-academy-2",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WEST POINT DISTT DARJEELING WEST BENGAL\", PIN 734101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurbachan-singh-sondhi-girls-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"65 PRATAPADITYA ROAD CALCUTTA\", PIN 700026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kamal-jyoti-vidyapeeth",
+   "facts": {
+    "city": {
+     "name": "Kalimpong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST MAIN ROAD KALIMPONG DIST.DARJEELING WEST BENGAL\", PIN 734301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "north-point-sec-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GORAKSHABASI MANDIR COMPLEX ARJUNPUR CALCUTTA WEST BENGAL\", PIN 700059."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bethany-mission-school",
+   "facts": {
+    "city": {
+     "name": "Raiganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O RUPAHAR RAIGANJ DISTT UTTAR DINAJPUR WEST BENGAL\", PIN 733123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lakshmipat-singhania-academy",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"12-B ALIPUR ROAD CALCUTTA WEST BENGAL\", PIN 700027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modella-caretaker-center-and-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE JATIAKALI PS BHAKTINAGAR PO FULBARI GP II RAJGANG BLOCK DISTT JALPAIGURI WEST BENGAL\", PIN 734015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jermel-s-academy",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAJHABARI EAST MANZA DABGRAM-2 JUNGLE MAHAL ROAD MUJHABARI, DISTT JALPAIGURI WEST BENGAL\", PIN 734406."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-model-school-i-i-t-campus-kharagpur",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"I I T CAMPUS KHARAGPUR WEST BENGAL\", PIN 721302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "satya-narayan-academy",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430061",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMKRISHNA NAGAR P O NARRAH DISTT BANKURA WEST BENGAL\", PIN 722101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hem-sheela-model-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAWARLAL NEHRU AVENUE DURGAPUR DISTT BURDWAN\", PIN 713214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-megia-thermal-power-station-dvc-mtps",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430065",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEGIA THERMAL POWER STATION DVC PO MTPS DISTT BANKURA WEST BENGAL\", PIN 722183."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-good-shepherd-mission-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2-A KENARAM GANGULY ROAD BARISHA KOLKATA WEST BENGAL\", PIN 700008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanand-mission-high-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL MECHAGRAM PO UTTAR MECHAGRAM MIDNAPUR WEST BENGAL\", PIN 721139."
+     }
+    }
+   }
+  },
+  {
+   "slug": "godwin-modern-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MONTEVIOTE ROAD PO KURSEONG DISTT DARJEELING WEST BENGAL\", PIN 734203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kalyani-public-school",
+   "facts": {
+    "city": {
+     "name": "Barasat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430073",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOINAGADI, NOAPARA BARASAT KOLKATTA WEST BENGAL\", PIN 700125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-daak-bunglow-road-midnapore",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAAK BUNGLOW ROAD MIDNAPORE WEST BENGAL\", PIN 721101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarada-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Raiganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUDARSHANPUR RAIGANJ UTTAR DINAJPUR WEST BENGAL\", PIN 733134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "raniganj-lions-jdm-chanani-dav-pub",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SCHOOL LIONS EYE HOSPITAL ROAD RANIGANJ BURDWAN WEST BENGAL\", PIN 713345."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ecl-pandaveshwar-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430077",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ECL PANDAVESHWAR DISTT BURDWAN WEST BENGAL\", PIN 713346."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-flowers-eng-school",
+   "facts": {
+    "city": {
+     "name": "Alipurduar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430078",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PARARPAR ALIPURDUAR DISTT JALPAIGURI WEST BENGAL\", PIN 736121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aditya-academy-secondary",
+   "facts": {
+    "city": {
+     "name": "Barasat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KADAMBAGACHI PS BARASAT DISTT NORTH 24 PARGANAS WEST BENGAL\", PIN 700124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-mimcha-r-colliery-egara-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MIMCHA (R) COLLIERY PO EGARA BURDWAN WEST BENGAL\", PIN 713323."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhavan-s-netaji-subhash-chander-bose",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIDYA NIKETAN AZAD HIND NAGAR HATIBERIA PO HALDIA TOWNSHIP PURBA MEDINIPUR, DISTT MIDNAPUR, WEST BENGAL\", PIN 721607."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-pradhan-nagar-siliguri",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO PRADHAN NAGAR SILIGURI WEST BENGAL\", PIN 734003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "s-k-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANGALPUR RANIGANJ, DIST:PASCHIM BARDHAMAN, WEST BENGAL-713347\", PIN 713347."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nand-lal-jalan-shiksha-sadan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"B P KHAITAN ROAD RANIGANJ DISTT BURDWAN WEST BENGAL\", PIN 713347."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-public-school-kanyapur-asansol-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430088",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANYAPUR ASANSOL BURDWAN WEST BENGAL\", PIN 713304."
+     }
+    }
+   }
+  },
+  {
+   "slug": "d-a-v-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JOGIVITTA MAHANANDER BARRAGE FULBARI JALPAIGURI WEST BENGAL\", PIN 734015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shamayita-convent-school",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430090",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO AMARKANAN BANKURA GANGAJAL GHATI, DISTT BANKURA WEST BENGAL\", PIN 722133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-ruby-park",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RUBY PARK, 254, SHANTIPALLI, RASHBEHARI BY PASS CONNECTOR(BEHIND SEIMENS), KOLKATA\", PIN 700107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "netaji-centenary-school",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430094",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAHEBGANJ ROAD W/NO.-12, P.O. BHANGNI PART I DINHATA; COOCHBEHAR\", PIN 736135."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prabharani-public-school",
+   "facts": {
+    "city": {
+     "name": "Berhampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430095",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2 NO. BANJETIA, P.O.-BANJETIA, PS BERHAMPORE, DISTT MURSHIDABAD, WEST BENGAL\", PIN 742102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sushila-birla-girls-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430096",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"7&8 MOIRA STREET, KOLKATA, WEST BENGAL\", PIN 700017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manohari-devi-bajia-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N.H. 60, BIKNA P.O. KESIAKOLE, DISTT BANKURA, WEST BENGAL\", PIN 722155."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guru-nanak-public-school-3",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. NEW KOLORAH, ANDUL ROAD, ALAMPUR, HOWRAH, WEST BENGAL\", PIN 711302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "amrita-vidyalayam-2",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIDHAN NAGAR, DURGAPUR (WEST BENGAL)\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birla-bharati",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TARATALLA, SANTOSHPUR NEW ROAD, PO BIDHANGARH, SOUTH 24-PARGANA, KOLKATA, WEST BENGAL.\", PIN 700066."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manisha-international-school",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G.T.ROAD, RAJBANDH, DURGAPUR, URDWAN, WEST BENGAL-713212\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "west-point-school",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430107",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATJURIDANGA-KESRA ROAD, P.O. KENDUADIHI, DIST. BANKURA\", PIN 722102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "indus-valley-world-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430108",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"488, AJOY NAGAR, EASTERN METROPOLITAN BY-PASS, KOLKATA- 700094\", PIN 700094."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-garden-model-school",
+   "facts": {
+    "city": {
+     "name": "Berhampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2, BANJETIA, P.O.-BANJETIA BERHAMPORE, MURSHIDABAD\", PIN 742102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "burdwan-model-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEWANDIGHI, KATWA ROAD, PO-MIRJAPUR, DIST- BURDWAN-713101\", PIN 713101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eastern-railway-high-school-g-t-road-and-xd",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430117",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"359, G.T.ROAD ASANSOL BURDWAN,\", PIN 713301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-d-goenka-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DHUKURI,P.O NEW CHAMPTA, DISTT SILIGURI, WEST BENGAL\", PIN 734003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "durgapur-public-school-sahid-sukumar-sarani",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAHID SUKUMAR SARANI, BIDHANNAGAR, DURGAPUR\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bhor-academy",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430128",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHOWALPARA, PO: BAIRATIGURI, DHUPGURI, DISTT JALPAIGURI, WEST BENGAL-735210\", PIN 735210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-belgram-and-xd",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE-BELGRAM P.S-GALSI DIST:BURDWAN. PIN-713141 W.BENGAL\", PIN 713141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAMODARPUR NEAR (BANKURA ENGINEERING COLLEGE), PO - BHAGABANDH, DISTT BANKURA, WEST BENGAL , PIN 722 146\", PIN 722146."
+     }
+    }
+   }
+  },
+  {
+   "slug": "devi-sushila-khedia-dav-public-school",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO-SIMULIA, DIST-PURULIA, PIN-723101\", PIN 723101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "birla-divya-jyoti",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZONE F, UTTORAYON TOWNSHIP, MATIGARA, SILIGURI\", PIN 734010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "agpn-convent-and-eklabya-residential-school",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430143",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHAKDA,P.S. MAFASSAL PO.& DIST. PURULIA (W.B)\", PIN 723102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-haldia",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430144",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HALDIA, P.O HALDIA TOWNSHIP, DIST- PURBA MEDINIPUR, PIN-721607\", PIN 721607."
+     }
+    }
+   }
+  },
+  {
+   "slug": "memari-crystal-model-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOTKHANDA, KALSHI, MEMARI, BURDWAN,713146\", PIN 713146."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-s-central-public-school",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430147",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WILL COX RD, BELGUMA, CHAKDAH, PURULIA, WEST BENGAL 723101\", PIN 723102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "immanuel-international-academy",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430149",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHARAT SINGH JOTE, RANIDANGA, SILIGURI, DARJEELING,\", PIN 734012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shri-shikshayatan-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430151",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"11,LORD SINHA ROAD,KOLKATA-71\", PIN 700071."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zilla-public-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL.- SANKARARA, P.O. - TAMLUK, P.S. - TAMLUK, DIST. - PURBA MEDINIPUR.\", PIN 721636."
+     }
+    }
+   }
+  },
+  {
+   "slug": "zoom-international-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430154",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LALA LAJPAT RAI ROAD, DISTT BURDWAN, WEST BENGAL\", PIN 713204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "darjeeling-public-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O.- SATELLITE TOWNSHIP, FULBARI (DEBGRAM ), DISTT.- JALPAIGURI, PIN - 734435\", PIN 734435."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adamas-world-school",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430157",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARASAT - BARRACKPORE ROAD,POST OFFICE-JAGANNATHPUR, DISTRICT:NORTH 24 PARGANAS, WEST BENGAL, PIN-700126\", PIN 700126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-coochbehar",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. MATIKATA, MADHUPUR MORE, MADHUPUR PO, COOCHBEHAR,\", PIN 736165."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-golok-munshi-hospital-campus",
+   "facts": {
+    "city": {
+     "name": "Serampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430160",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOLOK MUNSHI HOSPITAL CAMPUS,P.O- NABAGRAM,POLICE STATION- UTTARPARA,SUB DIVISION- SRIRAMPUR,DIST- HOOGHLY, PIN- 712246\", PIN 712246."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-jail",
+   "facts": {
+    "city": {
+     "name": "Balurghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430162",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR DISTRICT JAIL, MONGALPUR, P.O: BELTALA PARK, BALURGHAT, SOUTH DINAJPUR, WEST BENGAL PIN-733103\", PIN 733103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gokhale-memorial-girls-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430163",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"1/1. HARISH MUKHERJEE ROAD, KOLKATA-700020.\", PIN 700020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bina-mohit-memorial-school",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & PO : MAHISH BATHAN COOCH BEHAR WEST BENGAL\", PIN 736179."
+     }
+    }
+   }
+  },
+  {
+   "slug": "olivia-enlightened-english-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHIMBHAR, PO-MADATI PS-PHANSIDEWA DISTT-DARJEELING PIN-734425\", PIN 734425."
+     }
+    }
+   }
+  },
+  {
+   "slug": "asian-international-school",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430166",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW KOLORAH, NH-6, ALAMPUR, DOMJUR, HOWRAH, WEST BENGAL.\", PIN 711302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "himalayan-international-residential-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. RAJGANJ JALPAIGURI\", PIN 735134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "serampore-vivekananda-academy",
+   "facts": {
+    "city": {
+     "name": "Serampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430174",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJYADHARPUR, BHATTACHARJEE GARDEN, SERAMPORE, DIST-HOOGHLY, WEST-BENGAL-712203\", PIN 712203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "usha-martin-school",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430175",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH 34 , SHIMULDHAB ( NEAR MALDA WATER PARK), P.O. DHUMADIGHI, DISTT MALDA\", PIN 732128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidya-jyoti-academy",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FIRE BRIGADE LINE, P.O. BIJANBARI, PUULBAZAR, DARJEELING WEST BENGAL 734201\", PIN 734201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aaloke-bharti-model-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANA PARK AATGHARA, DALUA, SONARPUR, KOLKATA\", PIN 700152."
+     }
+    }
+   }
+  },
+  {
+   "slug": "snowdrops-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430179",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRISHNA NAGAR P.O.- MIRIK DISTT - DARJEELING WEST BENGAL PIN- 734214\", PIN 734214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saini-international-school-howrah",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430180",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-6, SURIKHALI, BETWEEN PANCHLA AND KALITALA CROSSING, ULUBERIA, HOWRAH 711322\", PIN 711322."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-plot-no-2d-10",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430181",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PLOT NO. 2D/10, SECTOR 2D, BIDHANNAGAR, DURGAPUR\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "naxalbari-heritage-academy",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430182",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"STATION ROAD NAXALBARI DARJEELING\", PIN 734429."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-srirampur",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430183",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SRIRAMPUR, CONTAI, PURBO, EAST MIDNAPUR-721401\", PIN 721401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "victoria-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430185",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TARI JOTE(DEONIAMORE) VIA N.B.U, POST OFFICE NEW RANGIA, P.S. MATIGARA, DIST DARJEELING\", PIN 734013."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bodhisukha-school",
+   "facts": {
+    "city": {
+     "name": "Barasat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430189",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATHOR, BADU, BARASAT\", PIN 700128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "national-high-school",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430197",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"42/1,HAZRA ROAD,KOLKATA\", PIN 700019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cornerstone-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430199",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. & P.O. PURBA SATALI, DIST. JALPAIGURI, WEST BENGAL, PIN. 735214\", PIN 735214."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bethany-school-sulantu",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430200",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE: SULANTU, P.O: PARULIA, DISTRICT: BURDWAN\", PIN 713513."
+     }
+    }
+   }
+  },
+  {
+   "slug": "purv-international-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430203",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BURDWAN, WEST BENGAL-713204\", PIN 713204."
+     }
+    }
+   }
+  },
+  {
+   "slug": "himalayan-buddhist-cultural-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430208",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. SALUGARA, BUDDHA KENDRA, KAL CHACKRA MANDIR, SALUGARA EAST,DISTT JALPAIGURI, WEST BENGAL, PIN 734008\", PIN 734008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-holy-angels-english-academy",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430209",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL + PO.- KANDARAN, PS.- CHANCHAL, DIST.- MALDA, WEST BENGAL\", PIN 732139."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-asansol",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430211",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO. ETHORA, PS. SALANPUR, DIST. PASCHIM BURDWAN - 713359 (WEST BENGAL)\", PIN 713359."
+     }
+    }
+   }
+  },
+  {
+   "slug": "durgapur-public-institute",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430213",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IMAN KALYAN SARANI SEC-2C BIDHANNAGAR,DURGAPUR\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sister-nivedita-public-school",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430217",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEK NAGAR (BEHIND RAILWAY DIESEL LOCO SHED), PO-JHALJHALIA, PS- ENGLISH BAZAR,MALDA,WB,INDIA.\", PIN 732102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "srihari-global-school",
+   "facts": {
+    "city": {
+     "name": "Asansol",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430228",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHRISTINAGAR, ASANSOL - 713305\", PIN 713305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kharagpur-vision-academy",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430236",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SADATPUR, P.O.- RAKHAJUNGLE, P.S.- KHARAGPUR LOCAL, PIN CODE-721301,DIST.- PASCHIM MEDINIPUR WEST BENGAL\", PIN 721301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "beachwood-school",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430237",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SATYAJIT RAY SARANI, CITY CENTRE, DURGAPUR, WEST BENGAL\", PIN 713216."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-paharpur",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430238",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAHARPUR JALPAIGURI\", PIN 735121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-burdwan",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430239",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RENAISSANCE TOWNSHIP, NEAR NABABHAT BUS STOP,BURDWAN, WB.\", PIN 713102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-raiganj",
+   "facts": {
+    "city": {
+     "name": "Raiganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430242",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOBINDAPUR, KHOLSHI,RAIGANJ\", PIN 733134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "chanda-south-end-model-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430245",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH2 CHANDA,P.O. KALIPAHARI,P.S.-JAMURIA, DIST-BURDWAN(W.B)PIN-713339\", PIN 713339."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-school-3",
+   "facts": {
+    "city": {
+     "name": "Kalimpong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430247",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"17TH MILE PAIYONG P.O.ALGARAH KALIMPONG\", PIN 734314."
+     }
+    }
+   }
+  },
+  {
+   "slug": "grace-english-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430249",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GRACE ENGLISH SCHOOL SUKHANI BUSTY, P.O& P.S.NAGRAKATA DIST. JALPAIGURI\", PIN 735225."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-bellilious-road",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430254",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"129, BELLILIOUS ROAD, HOWRAH-711101\", PIN 711101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-kalyanpur-satellite-township",
+   "facts": {
+    "city": {
+     "name": "Asansol",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430258",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KALYANPUR SATELLITE TOWNSHIP, ASANSOL, PACHIM, BURDHAMAN-713305\", PIN 713305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-durgapur",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SECTOR 2B, BIDHAN NAGAR, DURGAPUR-713212\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-kharagpur",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430263",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH6, PLOT NO 323,324 AND 326. MAUJA DAULATPUR, KHARAGPUR,721301\", PIN 721301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-maheshtala",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430264",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEW SHIBRAMPUR MAIN ROAD, PARUI MAUZA, KOLKATA, WEST BENGAL 700141\", PIN 700141."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-royal-international-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430265",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-SANTIPUR,POST-MECHEDA,DIST-PURBA MEDINIPUR\", PIN 721137."
+     }
+    }
+   }
+  },
+  {
+   "slug": "northpoint-day-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430271",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAIDYAHARANIYA,SABAJPUT,CONTAI,PIN-721401,PURBA MEDINIPUR\", PIN 721401."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-barasat",
+   "facts": {
+    "city": {
+     "name": "Barasat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430274",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO. 43/1, NADHIBHAG MOLLA PARA, BARASAT, KOLKATA - 700124 LANDMARK: NEAR BISHNUPRIYA COLLEGE OF EDUCATION\", PIN 700124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-point-institute",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430279",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UDAYNARAYANPUR, JANGAL PARA, P.O. SINGTI SHIBPUR, ULUBERIA DIST- HOWRAH PIN - 711226\", PIN 711226."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bishnupur-heritage-school",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430282",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT-CHOUGAN, P.O.+P.S. -BISHNUPUR, DIST-BANKURA\", PIN 722122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-renaissance-township",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430284",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RENAISSANCE TOWNSHIP,NAWABHAT, BURDWAN-713104\", PIN 713104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-nanda-mullick-lane",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430287",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2A, NANDA MULLICK LANE, BURRA BAZAR, KOLKATA, 700006\", PIN 700006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pandit-iswar-chandra-vidyasagar-mission",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430290",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-MARICHYA,P.O-DANDIPUR,P.S-GHATAL,DIST-PASCHIM MEDINIPUR,PIN-721222\", PIN 721222."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-model-school-kstp-asansol",
+   "facts": {
+    "city": {
+     "name": "Asansol",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430292",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DR. B.C. ROY ROAD, KSTP, ASANSOL\", PIN 713305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-arcadian-school",
+   "facts": {
+    "city": {
+     "name": "Ranaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430293",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANAGHAT, AISHTALA, NADIA\", PIN 741201."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-renaissance-international-school",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430296",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AT+PO:MATKATPUR (NEAR MOHONPUR BUS STOP) PS: KHARAGPUR LOCAL PASCHIM MEDINIPUR\", PIN 721305."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-high-school",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430298",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ST. XAVIERS HIGH SCHOOL, MASHILA PASCHIMPARA, NEW KOLORAH, ALAMPUR, HOWRAH, PIN – 711302\", PIN 711302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-alipurduar",
+   "facts": {
+    "city": {
+     "name": "Alipurduar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430299",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TAPSHIKHATA, NEAR PARARPAR GRAM PANCHAYET, ALIPURDUAR\", PIN 736121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "anand-marga-school",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430359",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DURLOVPUR, BANKURA\", PIN 722133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "morning-star-model-school",
+   "facts": {
+    "city": {
+     "name": "Alipurduar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430362",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIST. ALIPURDUAR, STATE. WEST BENGAL, PIN- 735216\", PIN 735216."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-public-school-ecl",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430363",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O--JHANJRA, DISTT-PASCHIM BARDHAMAN\", PIN 713385."
+     }
+    }
+   }
+  },
+  {
+   "slug": "camellia-public-school",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430372",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.S. - BUDBUD, BURDWAN, WEST BENGAL\", PIN 713403."
+     }
+    }
+   }
+  },
+  {
+   "slug": "new-calcutta-public-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430374",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARGHAT,, PURBA MEDINIPUR,\", PIN 721632."
+     }
+    }
+   }
+  },
+  {
+   "slug": "aims-model-school",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430385",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ZONAL CENTRE, SAGARBHANGA, DURGAPUR\", PIN 713211."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hardy-ramanujan-public-school",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430387",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SALBARI, SILIGURI, P.O. NEW CHUMPTA, DIST DARJEELING\", PIN 734009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-barasat",
+   "facts": {
+    "city": {
+     "name": "Barasat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430391",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO BADU, PS DUTTAPUKUR, BARASAT\", PIN 700128."
+     }
+    }
+   }
+  },
+  {
+   "slug": "darwin-international-school",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430392",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PS. NISCHINDA (BALLY),, HOWRAH - 711227\", PIN 711227."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jalpaiguri-public-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430397",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO-DHAPGANJ, JALPAIGURI\", PIN 735132."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dav-model-school-sankarpur",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430405",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PS NEW TOWNSHIP, DURGAPUR 713212\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "durgapur-public-school-blooming-buds",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430408",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIDHAN NAGAR, DURGAPUR-713212, PASCHIM BARDHAMAN\", PIN 713212."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sunshine-international-school",
+   "facts": {
+    "city": {
+     "name": "Berhampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430411",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BERHAMPORE,MURSHIDABAD, PIN-742102\", PIN 742102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-mahesh",
+   "facts": {
+    "city": {
+     "name": "Serampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430412",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAHESH, SERAMPORE\", PIN 712202."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pearl-rosary-school-new",
+   "facts": {
+    "city": {
+     "name": "Serampore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430413",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAKSHIN RAJYADHARPUR, P.O MALLICKPARA, P.S SERAMPORE\", PIN 712203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bcm-international-school",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430414",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O-KRISHNAPRIYA,, DIST-PASCHIM MEDINIPUR, W.B.\", PIN 721140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "odm-international-school",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430417",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO 32 SOUTH GRAND TRUNK RD, PALASDIHA , DURGAPUR\", PIN 713208."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dr-ambedkar-academy",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430418",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEPANIA BUSTY (MIRJANGLA), P.O BELGACHI, P.S. NAXALBARI , DIST DARJEELING, WEST BENGAL\", PIN 734423."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mount-litera-zee-school-north-kolkata",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430421",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NORTH KOLKATA,BARRACKPORE,MATHARANGI, NILGUNJ ROAD,NAVARANDA,SURYAPUR,KOL-121, WEST BENGAL\", PIN 700121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "himalayan-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430422",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO 13 MUNICIPALITY OFFICE PARA, POST OFFICE DHUPGURI DISTRICT JALPAIGURI, WEST BENGAL PIN 735210\", PIN 735210."
+     }
+    }
+   }
+  },
+  {
+   "slug": "epic-public-school",
+   "facts": {
+    "city": {
+     "name": "Cooch Behar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430424",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE SONARI PO KHARIJA KAKRI , DISTIRCT COOCHBEHAR, WEST BENGAL PIN 736179\", PIN 736179."
+     }
+    }
+   }
+  },
+  {
+   "slug": "podar-international-school-howrah",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430427",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH6, SALAP MORE, NEAR KWIC, PO- BANKRA., DISTRICT- HOWRAH\", PIN 711403."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-world-public-school-ambari-belakoba-road",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430428",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AMBARI BELAKOBA ROAD, P.O. KAMARVITA,, P.S. RAIGANJ, DIST- JALPAIGURI, 735135.\", PIN 735135."
+     }
+    }
+   }
+  },
+  {
+   "slug": "apeejay-school-haldia",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430437",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOUZA-BARGHASIPUR, RAGHUNATHPUR, , JL NO- 156, HALDIA, WEST BENGAL - 721657, PURBA MEDINIPUR\", PIN 721657."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-3",
+   "facts": {
+    "city": {
+     "name": "Malda",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430438",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OLD MALDA BLOCK, SAHAPUR, SURJAPUR, MALDA\", PIN 732142."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-world-school",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430441",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MATIGARA,, SILIGURI , WEST BENGAL\", PIN 734010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "narayana-school-kalimpong",
+   "facts": {
+    "city": {
+     "name": "Kalimpong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430444",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DR. B.L. DIXIT ROAD, KALIMPONG, P.O. KALIMPONG, P.S. KALIMPONG, SILIGURI\", PIN 734301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vels-global-school",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430448",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"15/1, DR. H. K. CHATTERJEE LANE, BELUR, GHUSURI, HOWRAH\", PIN 711107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "xavier-international-public-school",
+   "facts": {
+    "city": {
+     "name": "Kharagpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430450",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAIN ROAD, KHARIDA, POST - KHARAGPUR, KHARAGPUR\", PIN 721301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-augustines-day-school-for-girls",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430452",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO. SEWLI KALYANI EXPRESSWAY, BARRACKPORE, NORTH 24 PGS\", PIN 700121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-chaitanya-techno-school-15-1-dr-hk-chattrjee-street-ward-21",
+   "facts": {
+    "city": {
+     "name": "Howrah",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430457",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"15/1 DR HK CHATTRJEE STREET WARD 21 , GHUSURI, HOWRAH\", PIN 711107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "burnpur-riverside-school-asansol",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430458",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ASANSOL, KALYANPUR SATELLITE TOWNSHIP PROJECT, PASCHIM BARDHAMAN\", PIN 713302."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hem-sheela-model-school-dhandabag",
+   "facts": {
+    "city": {
+     "name": "Durgapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430461",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RABINDRA PALLY, DHANDABAG, DURGAPUR, WEST BENGAL\", PIN 713203."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-high-school-sonamukhi",
+   "facts": {
+    "city": {
+     "name": "Bankura",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430468",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHURAMONIPUR SONAMUKHI BANKURA, BEHIND KRISH VIGYAN KENDRA, BANKURA\", PIN 722207."
+     }
+    }
+   }
+  },
+  {
+   "slug": "ramakrishna-gyan-mandir",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430469",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOUZA-NAYAGAON,J.L. NO.-395, LR NO. 1358, KH NO.459/1, P.S.-MOHANPUR, PO-PAROI,, DIST-PASCHIM MEDINIPUR, PIN-721436, WB\", PIN 721436."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mayoor-school-2",
+   "facts": {
+    "city": {
+     "name": "Siliguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430471",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILIGURI, DHUKURIA, PATHARGHATA SILIGURI\", PIN 734010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-kolaghat",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430475",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAHAPUR, KOLAGHAT, PURBA MEDINIPUR\", PIN 721134."
+     }
+    }
+   }
+  },
+  {
+   "slug": "techno-india-group-public-school-midnapore",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430478",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANGAMATI INDIRAPALLY PASCHIM MEDINIPUR, WEST BENGAL PIN-721102, BESIDE MIDNAPORE LAW COLLEGE\", PIN 721102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swami-vivekananda-international-school-gopalchack",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430485",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOPALCHACK, MOYNA, , PURBA MEDINIPUR, MOYNA,\", PIN 721629."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sudhir-institute",
+   "facts": {
+    "city": {
+     "name": "Midnapore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2430486",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BRAJANATH CHAK, HALDIA PORT, HALDIA DIST PURBA MEDINIPUR\", PIN 721605."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-5",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PURULIA P O MANGURIA PURULIA DISTT WEST BENGAL\", PIN 723149."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-bengdubi",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BENGDUBI DISTT DARJEELING WEST BENGAL\", PIN 734424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-sukna",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SUKNA DISTT. DARJEELING WEST BENGAL\", PIN 734424."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-bagdogra",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGDOGRA DISTT. DARJEELING WEST BENGAL\", PIN 734421."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-ballygung-maindan-camp-calcutta",
+   "facts": {
+    "city": {
+     "name": "Kolkata",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BALLYGUNG MAINDAN CAMP CALCUTTA WEST BENGAL\", PIN 700019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-kata-pahar-ghoom",
+   "facts": {
+    "city": {
+     "name": "Darjeeling",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATA PAHAR P.O. GHOOM DISTT. DARJEELING WEST BENGAL\", PIN 734102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-barrackpore",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"A F S BARRACKPORE BENGAL ENAMEL PALTO 24 P & S (N)\", PIN 743122."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-binaguri-binaguri",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BINAGURI P O BINAGURI DISTT JALPAIGURI WEST BENGAL\", PIN 735232."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-bagrakot-bagrakot",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGRAKOT P.O BAGRAKOT DISTT JALPAIGURI WEST BENGAL\", PIN 734501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-barrackpore-north-gate-barrackpore-cantt-24",
+   "facts": {
+    "city": {
+     "name": "Barrackpore",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BARRACKPORE NORTH GATE BARRACKPORE CANTT DISTT 24 PARAGNA WEST BENGAL\", PIN 743101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-panagarh",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANAGARH, PO ARJUN PUR DISTT- BURDWAN, C/O 99 APO, WEST BENGAL\", PIN 713402."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-eastern-railway-mixed-higher-secondary-school-adra",
+   "facts": {
+    "city": {
+     "name": "Purulia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ADRA, NTH SETTLEMENT, NEAR SERSA STADIUM, PO ADRA, DISTT. PURULIA, WEST BENGAL\", PIN 723121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "deshbandu-vidyalaya-boys",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHITRANJAN DISTT BURDWAN WEST BENGAL\", PIN 713331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "deshbandhu-vidyalaya-girls",
+   "facts": {
+    "city": {
+     "name": "Bardhaman",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C.L.W CHITTARANJAN DISTT BURDWAN WEST BENGAL\", PIN 713331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "njp-railway-girls-high-school",
+   "facts": {
+    "city": {
+     "name": "Jalpaiguri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/2480100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BHAKTINAGAR, JALPAIGURI\", PIN 734007."
+     }
+    }
+   }
+  }
+ ]
+}

@@ -54,10 +54,12 @@ public class SchoolController {
     private final ReviewService reviewService;
     private final SchoolFactService factService;
     private final UpdateSubmissionService submissionService;
+    private final com.indiaschoolfinder.service.SchoolFaqService faqService;
 
     public SchoolController(SchoolService schoolService, FeeService feeService, AdmissionService admissionService,
                             RankingService rankingService, ReviewService reviewService, SchoolFactService factService,
-                            UpdateSubmissionService submissionService) {
+                            UpdateSubmissionService submissionService, com.indiaschoolfinder.service.SchoolFaqService faqService) {
+        this.faqService = faqService;
         this.factService = factService;
         this.submissionService = submissionService;
         this.schoolService = schoolService;
@@ -70,7 +72,8 @@ public class SchoolController {
     @Operation(summary = "Paginated school directory with filters",
             description = "Filters: name, locality, state (ISO code or slug), district (slug), city, pinCode, board, "
                     + "schoolType, management, network, className, stage, minAnnualFee, maxAnnualFee "
-                    + "(official recurring annual fee for feeAcademicYear, default current), admissionStatus, minRating, "
+                    + "(official recurring annual fee for feeAcademicYear, default current), hasFee (true = a published "
+                    + "annual fee for any year), admissionStatus, minRating, "
                     + "hasHostel (true = boarding, false = day), hasTransport, medium, genderType, "
                     + "facility (categories, all required), latitude+longitude+radiusKm. "
                     + "sortBy: name, fee (lowest published annual fee; schools without fees last), locality, city, "
@@ -124,6 +127,25 @@ public class SchoolController {
         return schoolService.getActiveBySlug(slug);
     }
 
+    /** What a profile shows when it opens; each part is exactly what its own endpoint returns. */
+    public record SchoolPageDto(SchoolDetailDto school, List<ImageDto> images, List<FeeDto> fees, List<AdmissionDto> admissions,
+                                List<com.indiaschoolfinder.service.SchoolFaqService.Faq> faqs, SchoolRankingDetailDto ranking) {
+    }
+
+    /**
+     * A school profile's first view in one response instead of six (the school, photos, fees, admissions, questions and
+     * ranking). Every request a page makes while it renders counts against what Google crawls of the site: on 28 Nov 2026
+     * Search Console's crawl stats put JSON at 66% of Googlebot's requests and page resources at 74%, most of them these
+     * six calls per profile. One call also makes the profile faster for visitors.
+     */
+    @Operation(summary = "School profile by URL slug with its photos, fees, admissions, questions and ranking")
+    @GetMapping("/slug/{slug}/page")
+    public SchoolPageDto page(@PathVariable String slug) {
+        SchoolDetailDto s = schoolService.getActiveBySlug(slug);
+        return new SchoolPageDto(s, schoolService.images(s.id()), feeService.feeHistory(s.id()), admissionService.bySchool(s.id()),
+                faqService.faqs(s), rankingService.forSchool(s.id()));
+    }
+
     @Operation(summary = "Fee history by academic year and class")
     @GetMapping("/{id}/fees")
     public List<FeeDto> fees(@PathVariable Long id) {
@@ -134,6 +156,12 @@ public class SchoolController {
     @GetMapping("/{id}/admissions")
     public List<AdmissionDto> admissions(@PathVariable Long id) {
         return admissionService.bySchool(id);
+    }
+
+    @Operation(summary = "Common questions about the school, answered only from its recorded facts (also sent as FAQPage data)")
+    @GetMapping("/{id}/faqs")
+    public List<com.indiaschoolfinder.service.SchoolFaqService.Faq> faqs(@PathVariable Long id) {
+        return faqService.faqs(schoolService.getActiveById(id));
     }
 
     @GetMapping("/{id}/facilities")

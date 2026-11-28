@@ -4,7 +4,8 @@ import { formatMoneyCompact, schoolTypeLabel } from '../../utils/format';
 import { ProvisionalBadge } from '../common/Badges';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { SchoolCover } from './SchoolCard';
+import { SchoolImage } from './SchoolImage';
+import { profileLink } from '../../utils/profileLink';
 
 /**
  * One school in a ranking. Fees, classes, photo and admission status are shown for context only; they are never part of
@@ -24,15 +25,8 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
 
   return (
     <article className="card card-hover group flex flex-col overflow-hidden sm:flex-row">
-      <Link to={`/schools/${r.slug}?tab=ranking`} className="relative block h-36 shrink-0 bg-slate-100 sm:h-auto sm:w-48" tabIndex={-1} aria-hidden>
-        {card?.coverImageUrl ? (
-          <img src={card.coverImageUrl} alt="" loading="lazy" className="h-full w-full object-cover" />
-        ) : (
-          <SchoolCover name={r.schoolName} />
-        )}
-        {card?.coverImageCredit && (
-          <span className="absolute bottom-1 right-1 rounded bg-black/50 px-1.5 text-[10px] text-white">© {card.coverImageCredit}</span>
-        )}
+      <Link {...profileLink(r.slug, 'ranking')} className="block shrink-0 sm:w-64 sm:p-3" tabIndex={-1} aria-hidden>
+        <SchoolImage src={card?.coverImageUrl} name={r.schoolName} credit={card?.coverImageCredit} illustrative={card?.coverImageIllustrative} className="sm:rounded-xl">
         <span className="absolute left-3 top-3">
           {r.scopePosition ? (
             <span className="rounded-xl bg-white/95 px-2.5 py-1 font-display text-lg font-extrabold text-ink shadow-sm">#{r.scopePosition}</span>
@@ -40,6 +34,7 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
             <ProvisionalBadge />
           )}
         </span>
+        </SchoolImage>
       </Link>
       <div className="flex min-w-0 flex-1 flex-col p-4">
         <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
@@ -47,7 +42,7 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
             <h3 className="font-display text-[17px] font-bold leading-snug">
               {/* The visual badge sits on the (aria-hidden) photo link, so the status is repeated for screen readers. */}
               <span className="sr-only">{r.scopePosition ? `Rank ${r.scopePosition}: ` : 'Provisional, no rank: '}</span>
-              <Link to={`/schools/${r.slug}?tab=ranking`} className="hover:text-brand-700">{r.schoolName}</Link>
+              <Link {...profileLink(r.slug, 'ranking')} className="hover:text-brand-700">{r.schoolName}</Link>
             </h3>
             <p className="mt-0.5 flex items-start gap-1 text-sm text-slate-500">
               <Icon name="pin" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
@@ -107,8 +102,8 @@ export function RankingCard({ r, showIndiaRank }: { r: SchoolRanking; showIndiaR
         </dl>
 
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
-          <Link to={`/schools/${r.slug}?tab=ranking`} className="btn-ghost rounded-full px-3 py-1.5 text-xs">Score breakdown</Link>
-          <Link to={`/schools/${r.slug}?tab=fees`} className="btn-ghost rounded-full px-3 py-1.5 text-xs">Fees</Link>
+          <Link {...profileLink(r.slug, 'ranking')} className="btn-ghost rounded-full px-3 py-1.5 text-xs">Score breakdown</Link>
+          <Link {...profileLink(r.slug, 'fees')} className="btn-ghost rounded-full px-3 py-1.5 text-xs">Fees</Link>
           <span className="ml-auto"><CompareButton id={r.schoolId} name={r.schoolName} slug={r.slug} /></span>
         </div>
       </div>

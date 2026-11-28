@@ -1,0 +1,10 @@
+CISCE total | 598
+new rows: CISCE with website and district | 562
+duplicate CISCE codes | 0
+districts created in the last 2 hours | 0
+new rows (id > 33137) | 562
+new rows created in the last 2 hours | 562
+all rows | 33634
+pre-existing rows (id <= 33137) | 33072
+active | 33609
+pre-existing rows changed in the last 2 hours | 62

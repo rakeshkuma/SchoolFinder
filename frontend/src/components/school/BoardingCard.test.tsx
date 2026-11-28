@@ -12,7 +12,7 @@ const school = (o: Partial<SchoolSummary> = {}): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: 'CO_ED', websiteUrl: null, boardingType: null,
   residentialSystem: 'PRIVATE_BOARDING', entranceExam: 'SCHOOL_TEST', entryClasses: null,
   boardingSummary: 'Fixture summary.', boardingVerificationStatus: 'UNVERIFIED', classesFrom: null, classesTo: null,
-  facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null, coverImageIllustrative: false, ...o,
+  facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null, coverImageIllustrative: false, affiliatedUpTo: null, ...o,
 });
 
 describe('BoardingCard', () => {
@@ -50,5 +50,14 @@ describe('BoardingCard', () => {
     const site = view.container.querySelector('a[href="https://school.example.org"]');
     expect(site?.getAttribute('rel')).toContain('noopener');
     expect(view.container.querySelector('img')?.getAttribute('loading')).toBe('lazy');
+    expect(text).not.toContain('Example / CC BY-SA 4.0'); // no credit over the photo
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example / CC BY-SA 4.0');
+  });
+
+  it('links to the plain profile address, never a ?tab= copy of it', () => {
+    view = render(<BoardingCard school={school()} />);
+    const profile = [...view.container.querySelectorAll('a')].map((a) => a.getAttribute('href')).filter((h) => h?.startsWith('/schools/'));
+    expect(profile.length).toBe(3); // photo, name and "View details"
+    expect(new Set(profile)).toEqual(new Set(['/schools/fixture-hill-school']));
   });
 });

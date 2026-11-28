@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { PageHeader } from '../components/common/PageHeader';
 import { AsyncContent } from '../components/common/States';
 import { useApi } from '../hooks/useApi';
+import { RankingSources } from '../components/school/RankingSources';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { rankingService, referenceService } from '../services/publicApi';
 import type { RankingMethodology, RankingStatus } from '../types/api';
@@ -129,23 +131,29 @@ function WorkedExample({ m }: { m: RankingMethodology }) {
 }
 
 export function MethodologyPage() {
-  useDocumentTitle('Ranking methodology');
+  useDocumentTitle('Ranking methodology', 'Who publishes the rankings shown on SchoolDhundo, their years, and how entries are verified and presented.');
   const state = useApi(() => rankingService.methodology(), []);
   const stats = useApi(() => referenceService.stats(), []);
   return (
     <>
-      <PageHeader title="Ranking methodology" subtitle="How the India School Finder score is calculated, and what it does not claim." />
+      <PageHeader title="Ranking methodology" subtitle="Where the rankings on this site come from, and how we present them."
+        top={<Breadcrumbs items={[{ to: '/', label: 'Home' }, { to: '/rankings', label: 'Rankings' }, { to: '/rankings/methodology', label: 'Methodology' }]} />} />
       <div className="container-page py-8">
-        <AsyncContent state={state}>
-          {(m) => {
-            const notYet = stats.data ? Math.max(0, stats.data.activeSchools - m.rankedSchools - m.provisionalSchools) : null;
-            const counts: Record<RankingStatus, number | null> = {
-              RANKED: m.rankedSchools, PROVISIONAL: m.provisionalSchools, NOT_YET_RANKED: notYet,
-            };
-            return (
-              <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-                <div className="card prose-page p-6">
-                  <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{m.disclaimer}</p>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_260px]">
+          <div className="card prose-page min-w-0 p-6">
+            <RankingSources />
+            <details id="own-score" className="mt-8 border-t border-slate-200 pt-4">
+              <summary className="cursor-pointer font-display text-lg font-bold text-ink">SchoolDhundo’s own evidence score</summary>
+              <AsyncContent state={state}>
+                {(m) => {
+                  const notYet = stats.data ? Math.max(0, stats.data.activeSchools - m.rankedSchools - m.provisionalSchools) : null;
+                  const counts: Record<RankingStatus, number | null> = {
+                    RANKED: m.rankedSchools, PROVISIONAL: m.provisionalSchools, NOT_YET_RANKED: notYet,
+                  };
+                  return (
+                    <>
+                  <p className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{m.disclaimer}</p>
+                  <p>This score is our own and is separate from every published ranking. <Link to="/rankings/score" className="link">See the scores</Link></p>
 
                   <h2 id="statuses">Ranked, provisional and not yet ranked</h2>
                   <div className="not-prose grid gap-3 sm:grid-cols-3">
@@ -223,37 +231,35 @@ export function MethodologyPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                <aside className="space-y-4">
-                  <nav className="card p-4 text-sm" aria-label="On this page">
-                    <h2 className="mb-2 font-semibold">On this page</h2>
-                    <ul className="space-y-1">
-                      {[['statuses', 'Statuses'], ['criteria', 'Criteria'], ['formula', 'Calculation and example'], ['rules', 'Evidence rules'],
-                        ['limits', 'What it does not measure'], ['corrections', 'Corrections'], ['versions', 'Version history']].map(([id, label]) => (
-                        <li key={id}><a href={`#${id}`} className="link">{label}</a></li>
-                      ))}
-                    </ul>
-                  </nav>
-                  <div className="card p-4">
-                    <h2 className="mb-2 font-semibold">Weights</h2>
-                    <div className="h-64">
-                      <ResponsiveContainer>
-                        <BarChart data={m.criteria.filter((c) => c.active)} layout="vertical" margin={{ left: 8 }}>
-                          <XAxis type="number" domain={[0, 30]} />
-                          <YAxis type="category" dataKey="name" width={140} tick={{ fontSize: 11 }} />
-                          <Tooltip formatter={(v: number) => `${v}%`} />
-                          <Bar dataKey="weight" fill="#3b66f5" radius={[0, 6, 6, 0]} isAnimationActive={false} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
+                  <h2 id="weights">Weights</h2>
+                  <div className="not-prose h-64 overflow-hidden">{/* the hidden tooltip is parked past the right edge; keep it from widening the page */}
+                    <ResponsiveContainer>
+                      <BarChart data={m.criteria.filter((c) => c.active)} layout="vertical" margin={{ left: 8 }}>
+                        <XAxis type="number" domain={[0, 30]} />
+                        <YAxis type="category" dataKey="name" width={140} tick={{ fontSize: 11 }} />
+                        <Tooltip formatter={(v: number) => `${v}%`} />
+                        <Bar dataKey="weight" fill="#3b66f5" radius={[0, 6, 6, 0]} isAnimationActive={false} />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
-                  <Link to="/rankings" className="btn-primary w-full rounded-full">See the rankings</Link>
-                </aside>
-              </div>
-            );
-          }}
-        </AsyncContent>
+                    </>
+                  );
+                }}
+              </AsyncContent>
+            </details>
+          </div>
+          <aside>
+            <nav className="card p-4 text-sm lg:sticky lg:top-24" aria-label="On this page">
+              <h2 className="mb-2 font-semibold">On this page</h2>
+              <ul className="space-y-1">
+                {[['presentation', 'How we present rankings'], ['school-lists', 'School lists'], ['sources', 'Ranking publishers'], ['updates', 'Ranking years'], ['evidence', 'Source data and verification'], ['own-score', 'Our own evidence score']].map(([id, label]) => (
+                  <li key={id}><a href={`#${id}`} className="link">{label}</a></li>
+                ))}
+              </ul>
+              <Link to="/rankings" className="btn-primary mt-4 w-full rounded-full">See the rankings</Link>
+            </nav>
+          </aside>
+        </div>
       </div>
     </>
   );

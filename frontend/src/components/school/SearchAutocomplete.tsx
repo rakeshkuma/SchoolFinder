@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
 import {
@@ -22,7 +22,7 @@ interface Option {
   query?: string;
 }
 
-export function placeHref(p: PlaceSuggestion): string {
+function placeHref(p: PlaceSuggestion): string {
   if (p.type === 'STATE') return `/states/${p.stateSlug}`;
   if (p.type === 'DISTRICT') return `/states/${p.stateSlug}/${p.district}`;
   return `/schools?state=${p.stateCode}&city=${encodeURIComponent(p.city ?? '')}`;
@@ -31,13 +31,18 @@ export function placeHref(p: PlaceSuggestion): string {
 const searchHref = (q: string) => `/schools?q=${encodeURIComponent(q)}`;
 
 /**
- * School and place search with suggestions (WAI-ARIA combobox pattern). With an empty box it offers the
- * visitor's recent searches, which are stored only in this browser and can be cleared or paused.
+ * The name box of a school search, with suggestions (WAI-ARIA combobox pattern): matching places and schools open
+ * directly, and with an empty box it offers the visitor's recent searches, stored only in this browser and able to be
+ * cleared or paused. Enter with no suggestion highlighted submits the surrounding form, so its other fields apply.
  */
-export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?: 'hero' | 'compact'; placeholder?: string }) {
+export function SchoolSuggestInput({ id, value, onChange, placeholder = 'School name, city, PIN or UDISE code' }: {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}) {
   const navigate = useNavigate();
-  const listId = useId();
-  const [q, setQ] = useState('');
+  const listId = `${id}-list`;
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const [result, setResult] = useState<{ term: string; data: Suggestions } | null>(null);
@@ -45,10 +50,10 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
   const wrapper = useRef<HTMLDivElement>(null);
   const recent = useLocalList(recentSearches);
   const paused = useLocalFlag(searchHistoryPaused);
-  const term = useDebounce(q.trim(), 200);
+  const term = useDebounce(value.trim(), 200);
 
   useEffect(() => {
-    if (term.length < 2) return;
+    if (term.length < 2) return undefined;
     let current = true;
     setFailed(false);
     schoolService.suggest(term)
@@ -67,7 +72,7 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
     return () => document.removeEventListener('mousedown', onClick);
   }, []);
 
-  const typed = q.trim();
+  const typed = value.trim();
   const fresh = result && result.term === typed ? result.data : null;
   const options: Option[] = [];
   if (typed.length >= 2) {
@@ -79,7 +84,6 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
       id: `s${s.id}`, label: s.name, icon: 'building', href: `/schools/${s.slug}`,
       detail: placeLine(s.locality, s.city),
     }));
-    options.push({ id: 'all', label: `Search all schools for “${typed}”`, icon: 'search', href: searchHref(typed), query: typed });
   } else {
     recent.forEach((r, i) => options.push({ id: `r${i}`, label: r, icon: 'clock', href: searchHref(r), query: r }));
   }
@@ -89,14 +93,6 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
     setOpen(false);
     setActive(-1);
     navigate(option.href);
-  };
-
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
-    if (active >= 0 && options[active]) return go(options[active]);
-    rememberSearch(typed);
-    setOpen(false);
-    navigate(typed ? searchHref(typed) : '/schools');
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -110,42 +106,37 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
     } else if (e.key === 'Escape') {
       setOpen(false);
       setActive(-1);
+    } else if (e.key === 'Enter' && open && active >= 0 && options[active]) {
+      e.preventDefault(); // open the highlighted suggestion instead of submitting the form
+      go(options[active]);
+    } else if (e.key === 'Enter') {
+      setOpen(false);
     }
   };
 
-  const showList = open && (options.length > 0 || (typed.length < 2 && paused));
-  const hero = variant === 'hero';
+  const showList = open && (options.length > 0 || (typed.length < 2 && paused) || (failed && typed.length >= 2));
 
   return (
-    <div ref={wrapper} className={`relative ${hero ? 'max-w-xl' : 'w-full'}`}>
-      <form onSubmit={submit} role="search"
-        className={hero
-          ? 'flex items-center gap-2 rounded-2xl bg-white p-2 shadow-lift ring-1 ring-white/20'
-          : 'flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-2 shadow-sm focus-within:border-brand-500 focus-within:ring-4 focus-within:ring-brand-500/15'}>
-        <label htmlFor={`${listId}-input`} className="sr-only">Search schools, cities and districts</label>
-        <Icon name="search" className="ml-2 h-5 w-5 shrink-0 text-slate-400" />
-        <input
-          id={`${listId}-input`}
-          role="combobox"
-          aria-expanded={showList}
-          aria-controls={`${listId}-list`}
-          aria-autocomplete="list"
-          aria-activedescendant={active >= 0 && options[active] ? `${listId}-${options[active].id}` : undefined}
-          autoComplete="off"
-          value={q}
-          onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(-1); }}
-          onFocus={() => setOpen(true)}
-          onKeyDown={onKeyDown}
-          placeholder={placeholder ?? 'School, city, district, PIN or UDISE code…'}
-          className={`min-w-0 flex-1 border-0 bg-transparent px-1 text-ink placeholder:text-slate-400 focus:outline-none ${hero ? 'h-12 text-base' : 'h-10 text-sm'}`}
-        />
-        <button type="submit" className={hero ? 'btn-accent h-12 rounded-xl px-6 text-base' : 'btn-primary h-8 rounded-lg px-3 text-xs'}>
-          Search
-        </button>
-      </form>
-
+    <div ref={wrapper} className="relative">
+      <label htmlFor={id} className="sr-only">Search schools, cities and districts</label>
+      <Icon name="search" className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+      <input
+        id={id}
+        role="combobox"
+        aria-expanded={showList}
+        aria-controls={listId}
+        aria-autocomplete="list"
+        aria-activedescendant={active >= 0 && options[active] ? `${listId}-${options[active].id}` : undefined}
+        autoComplete="off"
+        value={value}
+        onChange={(e) => { onChange(e.target.value); setOpen(true); setActive(-1); }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={onKeyDown}
+        placeholder={placeholder}
+        className="input h-12 pl-11"
+      />
       {showList && (
-        <div className="absolute left-0 right-0 top-full z-[600] mt-2 overflow-hidden rounded-2xl bg-white text-left shadow-lift ring-1 ring-slate-200">
+        <div className="absolute left-0 right-0 top-full z-[600] mt-1 overflow-hidden rounded-2xl bg-white text-left shadow-lift ring-1 ring-slate-200">
           {typed.length < 2 && (
             <div className="flex items-center justify-between border-b border-slate-100 px-4 py-2 text-xs text-slate-500">
               <span>{paused ? 'Search history is paused' : 'Recent searches (this device only)'}</span>
@@ -159,14 +150,14 @@ export function SearchAutocomplete({ variant = 'hero', placeholder }: { variant?
               </span>
             </div>
           )}
-          <ul id={`${listId}-list`} role="listbox" aria-label="Suggestions" className="max-h-80 overflow-y-auto py-1">
+          <ul id={listId} role="listbox" aria-label="Suggestions" className="max-h-80 overflow-y-auto py-1">
             {options.map((o, i) => (
               <li key={o.id} id={`${listId}-${o.id}`} role="option" aria-selected={i === active}
                 onMouseDown={(e) => e.preventDefault()} onClick={() => go(o)} onMouseEnter={() => setActive(i)}
                 className={`flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm ${i === active ? 'bg-brand-50' : ''}`}>
                 <Icon name={o.icon} className="h-4 w-4 shrink-0 text-slate-400" />
                 <span className="min-w-0 flex-1">
-                  <span className={`block truncate ${o.id === 'all' ? 'font-semibold text-brand-700' : 'font-medium text-ink'}`}>{o.label}</span>
+                  <span className="block truncate font-medium text-ink">{o.label}</span>
                   {o.detail && <span className="block truncate text-xs text-slate-500">{o.detail}</span>}
                 </span>
               </li>

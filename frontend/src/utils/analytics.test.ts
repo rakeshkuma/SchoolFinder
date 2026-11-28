@@ -1,0 +1,85 @@
+import { afterEach, describe, expect, it } from 'vitest';
+import { analyticsConfigured, cleanParams, consentNeeded, resetConsent, setConsent, track } from './analytics';
+
+describe('analytics', () => {
+  it('drops parameters that could identify a person', () => {
+    expect(cleanParams({ school_slug: 'abc', email: 'a@b.c', display_name: 'X', mobile: '9', auth_token: 't', count: 3, skipped: undefined }))
+      .toEqual({ school_slug: 'abc', count: 3 });
+  });
+
+  it('shortens long values', () => {
+    expect(String(cleanParams({ filters: 'x'.repeat(300) }).filters)).toHaveLength(100);
+  });
+
+  it('does nothing without a measurement ID or consent', () => {
+    expect(analyticsConfigured()).toBe(false);
+    expect(() => track('school_search', { state: 'BR' })).not.toThrow();
+    expect(window.gtag).toBeUndefined();
+  });
+
+  describe('with Google Tag Manager on the page', () => {
+    const addTagManager = () => {
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS';
+      document.head.appendChild(script);
+      window.dataLayer = [];
+      window.gtag = function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer?.push(arguments);
+      };
+    };
+    afterEach(() => {
+      document.head.querySelectorAll('script[src*="gtm.js"]').forEach((s) => s.remove());
+      localStorage.clear();
+      delete window.gtag;
+      delete window.dataLayer;
+    });
+
+    it('asks for consent, and never installs gtag.js as well', () => {
+      addTagManager();
+      expect(consentNeeded()).toBe(true);
+      expect(analyticsConfigured()).toBe(false);
+      expect(document.querySelector('script[src*="gtag/js"]')).toBeNull();
+    });
+
+    it('knows Tag Manager is coming before the page has loaded (index.html adds it on load)', () => {
+      const loader = document.createElement('script');
+      loader.text = "window.addEventListener('load', function () { var s = document.createElement('script'); s.async = true; "
+        + "s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PZ7WSXBS'; document.head.appendChild(s); });";
+      document.head.appendChild(loader);
+      try {
+        expect(document.querySelector('script[src*="gtm.js"]')).toBeNull();
+        expect(consentNeeded()).toBe(true);
+        expect(analyticsConfigured()).toBe(false);
+        // An event before load is queued for Tag Manager (after Accept), not dropped.
+        window.dataLayer = [];
+        window.gtag = function gtag() {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer?.push(arguments);
+        };
+        setConsent('granted');
+        track('school_profile_view', { school_slug: 'erudite-academy' });
+        expect(Array.from(window.dataLayer?.[1] as IArguments)).toEqual(['event', 'school_profile_view', { school_slug: 'erudite-academy' }]);
+      } finally {
+        loader.remove();
+      }
+    });
+
+    it('passes events only after Accept, with the consent update first', () => {
+      addTagManager();
+      track('school_search', { state: 'BR', email: 'a@b.c' });
+      expect(window.dataLayer).toEqual([]);
+      setConsent('granted');
+      expect(Array.from(window.dataLayer?.[0] as IArguments)).toEqual(['consent', 'update', { analytics_storage: 'granted' }]);
+      // A gtag command, not a plain { event } object: the container has no Custom Event trigger, so only gtag
+      // commands reach GA4 (checked on the live container, 24 Nov 2026).
+      track('school_search', { state: 'BR', email: 'a@b.c' });
+      expect(Array.from(window.dataLayer?.[1] as IArguments)).toEqual(['event', 'school_search', { state: 'BR' }]);
+      expect(window.dataLayer?.some((d) => !!d && typeof d === 'object' && 'event' in d)).toBe(false);
+      resetConsent();
+      expect(Array.from(window.dataLayer?.[2] as IArguments)).toEqual(['consent', 'update', { analytics_storage: 'denied' }]);
+      track('quiz_start', { mode: 'SET' });
+      expect(window.dataLayer).toHaveLength(3);
+    });
+  });
+});

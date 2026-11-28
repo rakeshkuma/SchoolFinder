@@ -48,7 +48,7 @@ export function AdminSchoolsPage() {
                       <td className="px-4 py-2"><Link to={`/admin/schools/${s.id}`} className="font-medium hover:text-brand-700">{s.name}</Link></td>
                       <td className="px-4 py-2">{schoolTypeLabel[s.schoolType]}</td>
                       <td className="px-4 py-2">{s.locality ?? '—'}</td>
-                      <td className="px-4 py-2"><VerificationBadge status={s.verificationStatus} date={s.lastVerifiedDate} /></td>
+                      <td className="px-4 py-2"><VerificationBadge status={s.verificationStatus} date={s.lastVerifiedDate} admin /></td>
                     </tr>
                   ))}
                 </tbody>

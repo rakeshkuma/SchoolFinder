@@ -1,0 +1,135 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-happy-valley-shillong",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1300002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HAPPY VALLEY SHILLONG MEGHALAYA\", PIN 793007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-eastern-air-command-nonglyer-upper-shillong",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1300003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EASTERN AIR COMMAND NONGLYER UPPER SHILLONG SHILLONG MEGHALAYA\", PIN 793009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-n-e-h-u-permanent-campus-umshing-shillong",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1300004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N E H U PERMANENT CAMPUS UMSHING SHILLONG MEGHALAYA\", PIN 793022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-afs-laitkor-peak-shillong",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1300005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAITKOR PEAK SHILLONG MEGHALAYA\", PIN 793010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-s-f-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1330001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UMPLING SHILLONG MEGHALAYA\", PIN 793006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-k-bajoria-school",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1330003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOYCE ROAD SHILLONG MEGHALAYA\", PIN 793001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bdw-international-school",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1330100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NONGMENSONG, SHILLONG\", PIN 793019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1380001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHILLONG CANTONMENT HEAD QRS 101 AREA C/O 99 APO, DISTT EAST KHASI HILLS, MEGHALAYA\", PIN 793001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-happy-valley",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1380003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARMY SCHOOL HAPPY VALLEY 58 GORKHA TRAINING CENTRE HAPPY VALLEY SHILLONG, MEGHALAYA-793007\", PIN 793007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school",
+   "facts": {
+    "city": {
+     "name": "Shillong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1380004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAITKOR SHILLONG EAST KHASI HILLS 793010\", PIN 793010."
+     }
+    }
+   }
+  }
+ ]
+}

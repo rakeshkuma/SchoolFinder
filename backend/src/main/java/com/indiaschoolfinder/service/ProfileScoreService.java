@@ -27,7 +27,7 @@ public class ProfileScoreService {
     }
 
     public static final List<Rule> RULES = List.of(
-            new Rule(40, "Definitive India School Finder rank from verified evidence"),
+            new Rule(40, "Definitive SchoolDhundo rank from verified evidence"),
             new Rule(15, "School profile verified by an editor against its official source"),
             new Rule(15, "Campus photograph cleared for publication (licence or permission recorded)"),
             new Rule(10, "Official annual fee schedule for this or last academic year"),

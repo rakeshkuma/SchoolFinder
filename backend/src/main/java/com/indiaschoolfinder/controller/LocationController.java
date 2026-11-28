@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 @Tag(name = "Locations", description = "States, union territories, districts and cities with school counts")
@@ -21,15 +23,25 @@ import java.util.List;
 public class LocationController {
 
     private final LocationService locationService;
+    private final com.indiaschoolfinder.service.PlaceSummaryService placeSummary;
 
-    public LocationController(LocationService locationService) {
+    public LocationController(LocationService locationService, com.indiaschoolfinder.service.PlaceSummaryService placeSummary) {
         this.locationService = locationService;
+        this.placeSummary = placeSummary;
+    }
+
+    @Operation(summary = "What the schools listed for a state, district or town add up to, with an introduction and answers")
+    @GetMapping("/locations/summary")
+    public com.indiaschoolfinder.dto.location.PlaceSummaryDto summary(@RequestParam @Size(max = 80) String state,
+                                                                      @RequestParam(required = false) @Size(max = 80) String district,
+                                                                      @RequestParam(required = false) @Size(max = 80) String city) {
+        return placeSummary.summary(state, district, city);
     }
 
     @Operation(summary = "All 28 states and 8 union territories with active school counts")
     @GetMapping({"/locations/states", "/states"})
-    public List<StateDto> states() {
-        return locationService.states();
+    public ResponseEntity<List<StateDto>> states() {
+        return ResponseEntity.ok().cacheControl(ReferenceController.REFERENCE_CACHE).body(locationService.states());
     }
 
     @Operation(summary = "One state/UT by ISO 3166-2:IN code (UP) or slug (uttar-pradesh)")
@@ -45,6 +57,11 @@ public class LocationController {
     }
 
     @Operation(summary = "Cities of a state that have active schools, with counts")
+    @GetMapping("/locations/cities/all")
+    public ResponseEntity<List<com.indiaschoolfinder.dto.location.IndiaCityDto>> citiesAcrossIndia() {
+        return ResponseEntity.ok().cacheControl(ReferenceController.REFERENCE_CACHE).body(locationService.citiesAcrossIndia());
+    }
+
     @GetMapping({"/locations/cities", "/cities"})
     public List<CityDto> cities(@RequestParam @Size(max = 80) String state) {
         return locationService.cities(state);

@@ -4,6 +4,7 @@ import type {
   AdmissionCategory,
   AdmissionStatus,
   City,
+  IndiaCity,
   DataSource,
   District,
   EducationBoard,
@@ -12,6 +13,7 @@ import type {
   ExamKind,
   ExamMode,
   ExamNotice,
+  ExamResource,
   ExamSchoolType,
   ExamSummary,
   IndianState,
@@ -23,9 +25,20 @@ import type {
   FeeEstimate,
   PageResponse,
   PracticeScore,
+  PracticeReportReason,
+  PracticeBank,
+  PracticeMode,
+  PracticeSession,
   PracticeSet,
   PracticeSetSummary,
+  BoardingStats,
+  ExternalRankingFacets,
+  ExternalRankingListItem,
   RankingMethodology,
+  PlaceSummary,
+  RankingPublisher,
+  RankingPublisherKind,
+  RankingScope,
   ResidentialSystem,
   Review,
   ReviewRequest,
@@ -33,6 +46,7 @@ import type {
   SchoolDetail,
   SchoolImage,
   SchoolNetwork,
+  SchoolPage,
   SchoolRanking,
   SchoolRankingDetail,
   SchoolSearchParams,
@@ -58,6 +72,18 @@ function cached<T>(key: string, load: () => Promise<T>): Promise<T> {
   return referenceCache.get(key) as Promise<T>;
 }
 
+/**
+ * A profile's first view comes in one request (schoolService.page) instead of six: every request a page makes while it
+ * renders counts against what Google crawls of the site, and these six were most of Googlebot's requests in November
+ * 2026. The parts wait here for a minute, so the profile's sections, which ask for them one by one, are answered at once.
+ */
+const PROFILE_PART_MS = 60_000;
+const profileParts = new Map<string, { at: number; data: unknown }>();
+function profilePart<T>(key: string, load: () => Promise<T>): Promise<T> {
+  const hit = profileParts.get(key);
+  return hit && Date.now() - hit.at < PROFILE_PART_MS ? Promise.resolve(hit.data as T) : load();
+}
+
 export const schoolService = {
   search: (params: SchoolSearchParams) =>
     http.get<PageResponse<SchoolSummary>>('/schools/search', { params: cleanParams(params) }).then((r) => r.data),
@@ -67,19 +93,33 @@ export const schoolService = {
   suggest: (q: string, limit = 6) =>
     http.get<Suggestions>('/schools/suggest', { params: { q, limit } }).then((r) => r.data),
   bySlug: (slug: string) => http.get<SchoolDetail>(`/schools/slug/${encodeURIComponent(slug)}`).then((r) => r.data),
+  /** The profile with its photos, fees, admissions, questions and ranking, which the calls below then return at once. */
+  page: (slug: string) => http.get<SchoolPage>(`/schools/slug/${encodeURIComponent(slug)}/page`).then((r) => {
+    const { school, ...parts } = r.data;
+    const at = Date.now();
+    for (const [name, data] of Object.entries(parts)) profileParts.set(`${school.id}/${name}`, { at, data });
+    return school;
+  }),
   byId: (id: number) => http.get<SchoolDetail>(`/schools/${id}`).then((r) => r.data),
   nearby: (latitude: number, longitude: number, radiusKm: number, limit = 20, excludeSchoolId?: number) =>
     http
       .get<SchoolSummary[]>('/schools/nearby', { params: cleanParams({ latitude, longitude, radiusKm, limit, excludeSchoolId }) })
       .then((r) => r.data),
-  fees: (id: number) => http.get<Fee[]>(`/schools/${id}/fees`).then((r) => r.data),
-  admissions: (id: number) => http.get<Admission[]>(`/schools/${id}/admissions`).then((r) => r.data),
+  fees: (id: number) => profilePart(`${id}/fees`, () => http.get<Fee[]>(`/schools/${id}/fees`).then((r) => r.data)),
+  admissions: (id: number) => profilePart(`${id}/admissions`, () => http.get<Admission[]>(`/schools/${id}/admissions`).then((r) => r.data)),
   facilities: (id: number) => http.get<Facility[]>(`/schools/${id}/facilities`).then((r) => r.data),
-  images: (id: number) => http.get<SchoolImage[]>(`/schools/${id}/images`).then((r) => r.data),
+  /** Common questions answered from the school's record; the same list is sent to search engines as FAQPage data. */
+  faqs: (id: number) => profilePart(`${id}/faqs`,
+    () => http.get<{ question: string; answer: string }[]>(`/schools/${id}/faqs`).then((r) => r.data)),
+  /** A parent's admission enquiry (consent required); staff pass it to the school. */
+  enquire: (id: number, body: { parentName: string; phone: string; email: string | null; classCode: string; academicYear: string; message: string; consent: boolean; website: string }) =>
+    http.post(`/schools/${id}/enquiries`, body).then(() => undefined),
+  images: (id: number) => profilePart(`${id}/images`, () => http.get<SchoolImage[]>(`/schools/${id}/images`).then((r) => r.data)),
   factSources: (id: number) => http.get<FactSource[]>(`/schools/${id}/fact-sources`).then((r) => r.data),
   suggestUpdate: (id: number, body: UpdateSubmissionRequest) =>
     http.post<{ status: string }>(`/schools/${id}/update-submissions`, body).then((r) => r.data),
-  ranking: (id: number) => http.get<SchoolRankingDetail>(`/schools/${id}/ranking`).then((r) => r.data),
+  ranking: (id: number) => profilePart(`${id}/ranking`,
+    () => http.get<SchoolRankingDetail>(`/schools/${id}/ranking`).then((r) => r.data)),
   reviews: (id: number, page = 0, size = 10) =>
     http.get<PageResponse<Review>>(`/schools/${id}/reviews`, { params: { page, size } }).then((r) => r.data),
   submitReview: (id: number, review: ReviewRequest) =>
@@ -102,6 +142,10 @@ export interface AdmissionListParams {
   classCode?: string;
   /** Leave out one network's schools, e.g. the identical national JNV cycles. */
   excludeNetwork?: SchoolNetwork;
+  /** ISO code or slug: only schools in this state or UT */
+  state?: string;
+  /** board code, e.g. CBSE */
+  board?: string;
   sortBy?: 'updated' | 'deadline' | 'start';
   page?: number;
   size?: number;
@@ -134,12 +178,244 @@ export interface RankingParams {
   size?: number;
 }
 
+export interface ExternalRankingParams {
+  publisher?: string;
+  kind?: RankingPublisherKind;
+  year?: string;
+  category?: string;
+  scope?: RankingScope;
+  region?: string;
+  page?: number;
+  size?: number;
+}
+
 export const rankingService = {
   list: (params: RankingParams) =>
     http.get<PageResponse<SchoolRanking>>('/rankings', { params: cleanParams(params) }).then((r) => r.data),
   top: (limit = 10) => http.get<SchoolRanking[]>('/rankings/top-schools', { params: { limit } }).then((r) => r.data),
   methodology: () => http.get<RankingMethodology>('/rankings/methodology').then((r) => r.data),
+  publishers: () => http.get<RankingPublisher[]>('/rankings/publishers').then((r) => r.data),
+  /** Verified, non-sponsored entries of rankings published by others, grouped by list in rank order. */
+  external: (params: ExternalRankingParams) =>
+    http.get<PageResponse<ExternalRankingListItem>>('/rankings/external', { params: cleanParams(params) }).then((r) => r.data),
+  externalFacets: () => http.get<ExternalRankingFacets>('/rankings/external/facets').then((r) => r.data),
+  /** Published lists with entries to show, with their sources and evaluation parameters. */
+  editions: () => http.get<RankingEdition[]>('/rankings/editions').then((r) => r.data),
+  /** One published list, filtered without renumbering. */
+  table: (params: RankingTableParams) => http.get<PageResponse<RankingRow>>('/rankings/table', { params: cleanParams(params) }).then((r) => r.data),
+  /** Which ranking pages have verified data. Asked once per visit: the menu and the ranking pages share the answer. */
+  sections: () => {
+    sectionsRequest ??= http.get<RankingSections>('/rankings/sections').then((r) => r.data).catch((e) => { sectionsRequest = null; throw e; });
+    return sectionsRequest;
+  },
+  /** States, cities, districts, boards and school groups that have entries in a list. */
+  places: (edition: number) => http.get<RankingPlaces>('/rankings/places', { params: { edition } }).then((r) => r.data),
+  bestPlaces: () => http.get<BestPlaceSummary[]>('/rankings/best').then((r) => r.data),
+  bestPlace: (slug: string) => http.get<BestPlace>(`/rankings/best/${encodeURIComponent(slug)}`).then((r) => r.data),
 };
+
+/** SchoolDhundo's premier and boarding school directory: listed A to Z, never ranked by us. */
+export const directoryService = {
+  summary: () => http.get<DirectorySummary>('/rankings/directory/summary').then((r) => r.data),
+  list: (params: DirectoryParams) =>
+    http.get<PageResponse<DirectorySchool>>('/rankings/directory', { params: cleanParams(params) }).then((r) => r.data),
+  facets: (category?: string) => http.get<DirectoryFacets>('/rankings/directory/facets', { params: cleanParams({ category }) }).then((r) => r.data),
+  /** The view's explainer (IB, Cambridge); 404 for a view without one. */
+  guide: (category: string) => http.get<DirectoryGuide>(`/rankings/directory/guide/${category}`).then((r) => r.data),
+};
+
+/** SchoolDhundo's explainer for a directory view, each fact from the official sources it lists (backend DirectoryGuides). */
+export interface DirectoryGuide {
+  heading: string;
+  intro: string;
+  sections: { heading: string; paragraphs: string[]; points: string[] }[];
+  faqs: { question: string; answer: string }[];
+  sources: { title: string; url: string }[];
+  checkedOn: string;
+}
+
+export interface DirectoryParams {
+  category?: string; q?: string; state?: string; city?: string; board?: string; residence?: string; gender?: string; section?: string;
+  class?: number; sort?: string; page?: number; size?: number;
+}
+
+export interface DirectoryCategory { slug: string; title: string; description: string; schools: number }
+
+export interface DirectorySummary {
+  schools: number; states: number; cities: number; boarding: number; boards: number; checkedOn: string | null; categories: DirectoryCategory[];
+}
+
+export interface DirectoryFacet { code: string; name: string; stateCode: string | null; schools: number }
+
+export interface DirectoryFacets {
+  states: DirectoryFacet[]; cities: DirectoryFacet[]; boards: DirectoryFacet[]; residences: DirectoryFacet[]; genders: DirectoryFacet[];
+  sections: DirectoryFacet[]; classes: number[];
+}
+
+/** A publisher's own published rank, exactly as printed. */
+export interface DirectoryRank { publisher: string; publisherName: string; year: string; list: string; rank: number; sourceUrl: string | null }
+
+export interface DirectorySchool {
+  id: number; key: string; name: string; city: string | null; stateCode: string; stateName: string; section: string;
+  boards: { code: string; confirmed: boolean }[]; curriculumNote: string | null;
+  gender: 'BOYS' | 'GIRLS' | 'CO_ED' | null; genderConfirmed: boolean;
+  residence: 'BOARDING' | 'DAY_CUM_BOARDING' | 'DAY' | null; residenceConfirmed: boolean;
+  classesLabel: string | null; classesConfirmed: boolean;
+  feeMinInr: number | null; feeMaxInr: number | null; feeText: string | null;
+  websiteUrl: string | null; websiteChecked: boolean; schoolId: number | null; slug: string | null; campusSearch: string | null;
+  imageUrl: string | null; imageCredit: string | null; featured: boolean; sponsored: boolean; note: string | null; checkedOn: string | null;
+  rank: DirectoryRank | null;
+}
+
+/** Lists of schools compiled by the site. They hold no ranks. */
+export const schoolListService = {
+  lists: () => http.get<SchoolListSummary[]>('/school-lists').then((r) => r.data),
+  items: (key: string, params: { q?: string; page?: number; size?: number }) =>
+    http.get<PageResponse<SchoolListItem>>(`/school-lists/${key}`, { params: cleanParams(params) }).then((r) => r.data),
+};
+
+export interface SchoolListSummary {
+  key: string;
+  kind: 'TOP' | 'STATE' | 'CITY' | 'BOARD' | 'GOVERNMENT' | 'BOARDING';
+  code: string | null;
+  title: string;
+  entries: number;
+  profiles: number;
+}
+
+export interface SchoolListItem {
+  id: number;
+  name: string;
+  place: string;
+  board: string | null;
+  type: string;
+  websiteUrl: string | null;
+  schoolId: number | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageCredit: string | null;
+}
+
+/** One published list: a publisher's list for one year, category and place. */
+export interface RankingEdition {
+  id: number;
+  publisherCode: string;
+  publisher: string;
+  kind: RankingPublisherKind;
+  name: string;
+  year: string;
+  categoryCode: string | null;
+  category: string | null;
+  family: string | null;
+  boardCode: string | null;
+  scope: 'NATIONAL' | 'STATE' | 'CITY';
+  region: string | null;
+  ratingBased: boolean;
+  hasScores: boolean;
+  maxScore: number | null;
+  methodology: string | null;
+  sourceUrl: string;
+  publishedOn: string | null;
+  collectedOn: string;
+  lastVerified: string | null;
+  entries: number;
+  parameters: { name: string; weight: number | null; description: string | null }[];
+}
+
+export interface RankingTableParams {
+  edition: number;
+  state?: string;
+  district?: string;
+  city?: string;
+  board?: string;
+  schoolType?: string;
+  gender?: string;
+  residence?: string;
+  rating?: string;
+  q?: string;
+  /** National ranks up to this number: a Top 10 is the publisher's top ten places, not ten rows. */
+  maxRank?: number;
+  government?: string;
+  boarding?: string;
+  /** Display order only (RANK, NAME, STATE, CITY); ranks are never changed. */
+  sort?: string;
+  page?: number;
+  size?: number;
+}
+
+/** One school in a list. A rank the publisher did not print is null; national, state and city ranks are separate. */
+export interface RankingRow {
+  entryId: number;
+  nationalRank: number | null;
+  stateRank: number | null;
+  cityRank: number | null;
+  score: number | null;
+  maxScore: number | null;
+  scoreText: string | null;
+  rating: string | null;
+  schoolId: number;
+  schoolName: string;
+  slug: string;
+  city: string | null;
+  district: string | null;
+  stateCode: string;
+  stateName: string;
+  board: string | null;
+  schoolType: string;
+  genderType: string | null;
+  boardingType: string | null;
+  imageUrl: string | null;
+  imageCredit: string | null;
+  lastVerified: string | null;
+}
+
+export interface RankingPlaces {
+  states: { code: string; name: string; slug: string; entries: number }[];
+  cities: { name: string; stateCode: string; entries: number }[];
+  districts: { slug: string; name: string; stateCode: string; entries: number }[];
+  boards: { code: string; entries: number }[];
+  government: { code: string; entries: number }[];
+  boarding: { code: string; entries: number }[];
+}
+
+/** A state or city with schools ranked in published rankings and/or named in the compiled A-to-Z lists. */
+export interface BestPlaceSummary {
+  slug: string;
+  name: string;
+  kind: 'STATE' | 'CITY';
+  ranked: number;
+  listed: number;
+}
+
+export interface BestPlace {
+  kind: 'STATE' | 'CITY';
+  slug: string;
+  name: string;
+  stateCode: string;
+  stateName: string;
+  stateSlug: string;
+  city: string | null;
+  ranked: number;
+  listed: number;
+  /** Schools in the directory there, ranked or not. */
+  schools: number;
+  /** "IIRF 2026" when a published ranking covers the place. */
+  rankingSource: string | null;
+  checkedOn: string | null;
+  /** Enough ranked or listed schools to be offered to search engines. */
+  indexable: boolean;
+  related: BestPlaceSummary[];
+}
+
+export interface RankingSections {
+  rankings: boolean;
+  boards: boolean;
+  government: boolean;
+  boarding: boolean;
+  green: boolean;
+}
+
+let sectionsRequest: Promise<RankingSections> | null = null;
 
 export interface ExamListParams {
   q?: string;
@@ -167,6 +443,8 @@ export const examService = {
     http.get<PageResponse<ExamSummary>>('/exams', { params: cleanParams(params) }).then((r) => r.data),
   get: (slug: string) => http.get<ExamDetail>(`/exams/${encodeURIComponent(slug)}`).then((r) => r.data),
   notices: (limit = 10) => http.get<ExamNotice[]>('/exams/notices', { params: { limit } }).then((r) => r.data),
+  /** Official papers and links, and this site's syllabus, pattern, preparation, checklist and FAQ pages. */
+  resources: () => cached('exam-resources', () => http.get<ExamResource[]>('/exams/resources').then((r) => r.data)),
   /** Every published exam (the catalogue is small); cached for the session. */
   all: () => cached('exams', () => examService.list({ size: 100 }).then((p) => p.content)),
 };
@@ -178,11 +456,45 @@ export const practiceService = {
   /** Answers are checked on the server; nothing about the attempt is stored. */
   score: (slug: string, answers: Record<string, number>) =>
     http.post<PracticeScore>(`/practice-sets/${encodeURIComponent(slug)}/score`, { answers }).then((r) => r.data),
+  /** What the question bank holds, for building filters (no question text or answers). */
+  bank: () => cached('practice-bank', () => http.get<PracticeBank>('/practice-bank').then((r) => r.data)),
+  /** Questions for one sitting, drawn from the bank (or exactly `ids`, in order), without answers. */
+  session: (params: PracticeSessionParams) =>
+    http.get<PracticeSession>('/practice-sessions', {
+      params: cleanParams({ ...params, ids: params.ids?.join(',') }),
+    }).then((r) => r.data),
+  /** Reports a problem in a question (bank id "set/question"); reviewed by editors. */
+  report: (id: string, reason: PracticeReportReason, message?: string, website?: string) => {
+    const [set, question] = id.split('/');
+    return http.post<void>(`/practice-questions/${encodeURIComponent(set)}/${encodeURIComponent(question ?? '')}/reports`,
+      { reason, message: message || undefined, website: website || undefined }).then(() => undefined);
+  },
+  /** Scores a bank session on the server; nothing is stored. */
+  scoreSession: (questionIds: string[], answers: Record<string, number>) =>
+    http.post<PracticeScore>('/practice-sessions/score', { questionIds, answers }).then((r) => r.data),
 };
+
+export interface PracticeSessionParams {
+  mode: PracticeMode;
+  exam?: string;
+  level?: string;
+  section?: string;
+  topic?: string;
+  difficulty?: string;
+  category?: string;
+  chapter?: string;
+  /** only questions with a Hindi version */
+  hindi?: boolean;
+  count?: number;
+  ids?: string[];
+  seed?: number;
+}
 
 export const boardingService = {
   /** Active boarding schools per residential system; systems without schools are absent. */
   systems: () => http.get<Partial<Record<ResidentialSystem, number>>>('/boarding/systems').then((r) => r.data),
+  /** Active boarding schools by state, gender (as sources state it) and system, for the landing pages. */
+  stats: () => http.get<BoardingStats>('/boarding/stats').then((r) => r.data),
 };
 
 export const locationService = {
@@ -191,9 +503,15 @@ export const locationService = {
     http.get<IndianState>(`/locations/states/${encodeURIComponent(codeOrSlug)}`).then((r) => r.data),
   districts: (state: string) =>
     cached(`districts:${state}`, () => http.get<District[]>('/locations/districts', { params: { state } }).then((r) => r.data)),
-  cities: (state: string) => http.get<City[]>('/locations/cities', { params: { state } }).then((r) => r.data),
+  cities: (state: string) =>
+    cached(`cities:${state}`, () => http.get<City[]>('/locations/cities', { params: { state } }).then((r) => r.data)),
+  /** Every city in India with listed schools, largest first. */
+  citiesAcrossIndia: () => http.get<IndiaCity[]>('/locations/cities/all').then((r) => r.data),
   localities: (state?: string) =>
     http.get<string[]>('/locations/localities', { params: cleanParams({ state }) }).then((r) => r.data),
+  /** A state's, district's or town's numbers at a glance, with an introduction and answers (slugs, as in the page address). */
+  summary: (state: string, district?: string, city?: string) =>
+    http.get<PlaceSummary>('/locations/summary', { params: cleanParams({ state, district, city }) }).then((r) => r.data),
 };
 
 export const referenceService = {
@@ -204,4 +522,115 @@ export const referenceService = {
   stats: () => http.get<SiteStats>('/stats').then((r) => r.data),
   /** Points behind the directory's "recommended" order (documentation completeness, not quality). */
   orderRules: () => cached('orderRules', () => http.get<{ points: number; fact: string }[]>('/directory/order-rules').then((r) => r.data)),
+};
+
+export type UpdateCategory = 'ADMISSION' | 'EXAM' | 'PREP' | 'JOB';
+/** Worked out by the server from the item's dates on every request (closing within 14 days, published within 7, ...). */
+export type UpdateBadge = 'CLOSING_SOON' | 'NEW' | 'OPEN' | 'UPDATED' | 'UPCOMING' | 'EXPIRED';
+/** OFFICIAL_SOURCE: found by the daily check of an official website and published from it as the site gives it. */
+export type UpdateOrigin = 'EXAM_NOTICE' | 'ADMISSIONS' | 'PRACTICE' | 'EDITORIAL' | 'OFFICIAL_SOURCE';
+
+/**
+ * One item of the school and exam updates feed: exam notices and dates, open admissions and new practice sets as they
+ * are recorded, notices an editor has published with their official source, and notices the daily check found on
+ * approved official websites (title, date and link as the site gives them). Nothing is invented.
+ */
+export interface UpdateItem {
+  id: string;
+  category: UpdateCategory;
+  title: string;
+  summary: string;
+  imageUrl: string | null;
+  publishedOn: string;
+  updatedAt: string | null;
+  /** The date that matters: the last date to apply, or the exam date (see eventLabel). */
+  eventDate: string | null;
+  eventLabel: string | null;
+  deadline: boolean;
+  badge: UpdateBadge | null;
+  /** The official notice; null only for SchoolDhundo's own practice sets. */
+  sourceUrl: string | null;
+  sourceName: string | null;
+  /** The page on this site to open; null for an editorial update that opens its source instead. */
+  linkPath: string | null;
+  actionLabel: string | null;
+  verified: boolean;
+  origin: UpdateOrigin;
+  /** An exam slug, "admissions", or null: used to pick a picture. */
+  topic: string | null;
+  /** Admissions and jobs only: where applications stand today, from the official dates (null for other items). */
+  applicationStatus?: ApplicationStatus | null;
+  /** Admissions and jobs only: an opening, or a later step such as a result or admit cards. */
+  noticeType?: NoticeType | null;
+}
+
+/** Worked out from the official dates; a notice without a last date is DATE_NOT_ANNOUNCED, never assumed open. */
+export type ApplicationStatus = 'OPEN' | 'OPENING_SOON' | 'CLOSING_SOON' | 'CLOSED' | 'DATE_NOT_ANNOUNCED';
+export type NoticeType = 'OPENING' | 'EXTENSION' | 'CORRIGENDUM' | 'SCHEDULE' | 'ADMIT_CARD' | 'RESULT' | 'OTHER';
+
+export interface NoticeFacet { value: string; label: string; count: number }
+
+export interface NoticeFacets {
+  states: NoticeFacet[]; sectors: NoticeFacet[]; staff: NoticeFacet[]; posts: NoticeFacet[]; subjects: NoticeFacet[];
+  statuses: NoticeFacet[]; classes: NoticeFacet[]; sessions: NoticeFacet[];
+}
+
+export interface NoticeList {
+  category: 'ADMISSION' | 'JOB';
+  page: PageResponse<UpdateItem>;
+  facets: NoticeFacets;
+  /** Current notices of the category before filtering. */
+  current: number;
+}
+
+export interface NoticeFilters {
+  state?: string; sector?: string; staff?: string; post?: string; subject?: string; status?: string; classes?: string;
+  session?: string; q?: string; past?: boolean; page?: number; size?: number;
+}
+
+export interface NoticeAnswer { question: string; answer: string; linkUrl: string | null; linkLabel: string | null }
+
+export interface NoticePosition {
+  id: number; postName: string; postType: string | null; postTypeLabel: string | null; subject: string | null; postCode: string | null;
+  vacancies: number | null; payScale: string | null; qualification: string | null; origin: 'TITLE' | 'EDITOR';
+}
+
+/** An admission or job notice's page: every fact only as the official source states it (null means "not given"). */
+export interface NoticeDetail {
+  id: number; slug: string; category: 'ADMISSION' | 'JOB'; path: string; title: string; officialTitle: string | null; summary: string;
+  institutionName: string | null; campus: string | null; school: { slug: string; name: string; city: string | null; stateCode: string | null } | null;
+  sector: 'GOVERNMENT' | 'PRIVATE' | null; boarding: boolean | null; stateCode: string | null; stateName: string | null;
+  stateSlug: string | null; city: string | null; noticeType: NoticeType | null; noticeTypeLabel: string;
+  applicationStatus: ApplicationStatus | null; applicationStatusLabel: string | null; publishedOn: string; dateConfirmed: boolean;
+  opensOn: string | null; closesOn: string | null; examOn: string | null; examLabel: string; academicSession: string | null;
+  classes: string | null; postTypes: NoticeFacet[]; subjects: string[]; staffKind: 'TEACHING' | 'NON_TEACHING' | 'MIXED' | null;
+  employmentType: 'REGULAR' | 'FULL_TIME' | 'CONTRACT' | 'PART_TIME' | 'TEMPORARY' | null; vacancies: number | null; eligibility: string | null;
+  experience: string | null; tetRequirement: string | null; ageLimit: string | null; salaryText: string | null;
+  applicationFee: string | null; selectionProcess: string | null; applyUrl: string | null; sourceUrl: string | null;
+  sourceName: string | null; sourceDomain: string | null; reliability: string;
+  verification: 'EDITOR_VERIFIED' | 'OFFICIAL_SOURCE' | 'EDITORIAL'; lastVerifiedAt: string | null; lastChangedAt: string | null;
+  current: boolean; indexable: boolean; positions: NoticePosition[]; answers: NoticeAnswer[]; related: UpdateItem[];
+}
+
+export const noticeService = {
+  list: (category: 'ADMISSION' | 'JOB', filters: NoticeFilters = {}) =>
+    http.get<NoticeList>('/notices', { params: cleanParams({ category, ...filters }) }).then((r) => r.data),
+  detail: (slug: string) => http.get<NoticeDetail>(`/notices/${encodeURIComponent(slug)}`).then((r) => r.data),
+};
+
+/** When the official sources were last checked (once a day) and when they are checked next. */
+export interface UpdateSyncStatus {
+  lastCheckedAt: string | null;
+  nextCheckAt: string | null;
+  schedule: string;
+  sources: number;
+}
+
+export const updateService = {
+  list: (params: { category?: UpdateCategory; page?: number; size?: number }) =>
+    http.get<PageResponse<UpdateItem>>('/updates', { params: cleanParams(params) }).then((r) => r.data),
+  /** Updates that expired in the last 90 days. */
+  past: (params: { category?: UpdateCategory; page?: number; size?: number }) =>
+    http.get<PageResponse<UpdateItem>>('/updates/past', { params: cleanParams(params) }).then((r) => r.data),
+  syncStatus: () => http.get<UpdateSyncStatus>('/updates/sync-status').then((r) => r.data),
 };

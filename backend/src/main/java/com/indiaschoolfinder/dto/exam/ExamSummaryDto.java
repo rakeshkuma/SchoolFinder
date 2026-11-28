@@ -39,5 +39,7 @@ public record ExamSummaryDto(
         List<ExamDateDto> currentDates,
         int officialPaperCount,
         LocalDate lastVerifiedOn,
-        ExamVerificationStatus verificationStatus) {
+        ExamVerificationStatus verificationStatus,
+        /** The conducting body's main page for the exam (first official link of the guide). */
+        String officialUrl) {
 }

@@ -91,6 +91,32 @@ class BoardingDirectoryIT extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.MILITARY_SCHOOL").value(1))
                 .andExpect(jsonPath("$.PRIVATE_BOARDING").value(1))
                 .andExpect(jsonPath("$.NAVODAYA").doesNotExist());
+
+        // Landing-page counts: day schools are not counted, and an unstated gender is not guessed.
+        mockMvc.perform(get("/api/v1/boarding/stats"))
+                .andExpect(jsonPath("$.total").value(3))
+                .andExpect(jsonPath("$.byState.HR").value(1))
+                .andExpect(jsonPath("$.byState.DL").doesNotExist())
+                .andExpect(jsonPath("$.byGender.CO_ED").value(1))
+                .andExpect(jsonPath("$.genderNotStated").value(2))
+                .andExpect(jsonPath("$.bySystem.SAINIK").value(1));
+
+        // The landing pages' server-rendered content lists the same schools as their searches, with the page's rule.
+        org.assertj.core.api.Assertions.assertThat(seoBody("/boarding")).contains(">Fixture Sainik School</a>")
+                .contains(">Fixture Hill Boarding School</a>").doesNotContain("Fixture Day School").contains("href=\"/boarding/government\"");
+        org.assertj.core.api.Assertions.assertThat(seoBody("/boarding/government")).contains(">Fixture Sainik School</a>")
+                .contains(">Fixture Military School</a>").doesNotContain("Fixture Hill Boarding School")
+                .contains("Run by a central or state government").doesNotContain("href=\"/boarding/government\"");
+        org.assertj.core.api.Assertions.assertThat(seoBody("/boarding/private")).contains(">Fixture Hill Boarding School</a>")
+                .doesNotContain("Fixture Sainik School");
+        org.assertj.core.api.Assertions.assertThat(seoBody("/boarding/co-ed")).contains(">Fixture Sainik School</a>")
+                .doesNotContain("Fixture Military School");
+        org.assertj.core.api.Assertions.assertThat(seoBody("/boarding/affordable")).doesNotContain("Fixture Sainik School");
+    }
+
+    private String seoBody(String path) throws Exception {
+        return mockMvc.perform(get("/api/v1/seo/body" + path)).andExpect(status().isOk()).andReturn().getResponse()
+                .getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
     }
 
     /** Verified evidence for four criteria (75%): enough for a definitive rank. */

@@ -1,6 +1,5 @@
 package com.indiaschoolfinder.dto.account;
 
-/** What the sign-in pages may offer on this server. */
-public record AccountConfigDto(boolean emailDeliveryConfigured, String emailDeliveryMode, boolean googleSignInEnabled,
-                               String passwordPolicy, String termsVersion) {
+/** What the sign-in page may offer on this server: Google sign-in when a Google client is configured. */
+public record AccountConfigDto(boolean googleSignInEnabled, String termsVersion) {
 }

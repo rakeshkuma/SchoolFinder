@@ -1,0 +1,343 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "kendriya-vidyalaya-crpf-camp-lerie-hill",
+   "facts": {
+    "city": {
+     "name": "Kohima",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1400006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CRPF CAMP LERIE HILL KOHIMA NAGALAND\", PIN 797001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-nihokhu",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1410008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NIHOKHU, DIMAPUR, NAGALAND\", PIN 797103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-yakukie-p-b-no-172",
+   "facts": {
+    "city": {
+     "name": "Kohima",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"YAKUKIE P B NO 172 KOHIMA NAGALAND\", PIN 797001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-chukitong-dt",
+   "facts": {
+    "city": {
+     "name": "Wokha",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- CHUKITONG DT- WOKHA NAGALAND\", PIN 798631."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-zuketsa-vil-futsero-dt",
+   "facts": {
+    "city": {
+     "name": "Phek",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PHEK ZUKETSA VIL- FUTSERO DT - PHEK NAGALAND\", PIN 797107."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-wakching",
+   "facts": {
+    "city": {
+     "name": "Mon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WAKCHING P.O, DISTT MON NAGALAND\", PIN 798621."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-jalukie-b",
+   "facts": {
+    "city": {
+     "name": "Peren",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JALUKIE-B, PEREN, NAGALAND\", PIN 797110."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-kiphire",
+   "facts": {
+    "city": {
+     "name": "Kiphire",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KIPHIRE, NAGALAND\", PIN 798611."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-tangha",
+   "facts": {
+    "city": {
+     "name": "Longleng",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1440011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TANGHA VILLAGE, DISTT & P.O. LONGLENG, NAGALAND\", PIN 798625."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kv-lumami-nu",
+   "facts": {
+    "city": {
+     "name": "Zunheboto",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1400007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KV LUMAMI NU, LUMAMI DIST ZUNHEBOTO PIN 798627\", PIN 798627."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-tuensang",
+   "facts": {
+    "city": {
+     "name": "Tuensang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1420052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAKSI, 3RD NAP, TUENSANG, NAGALAND\", PIN 798612."
+     }
+    }
+   }
+  },
+  {
+   "slug": "eklavya-model-residential-school-tizit",
+   "facts": {
+    "city": {
+     "name": "Mon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1420053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ASSAM RIFLES CHECK GATE, TIZIT, NGANGTING VILLAGE, TIZIT, NGANGTING VILLAGE, TIZIT 798602, MON\", PIN 798602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-school",
+   "facts": {
+    "city": {
+     "name": "Kohima",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"C/O 99 APO KOHIMA NAGALAND\", PIN 797001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-school-2",
+   "facts": {
+    "city": {
+     "name": "Tuensang",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TUENSANG 4 ASSAM RIFLES C/O 99 APO\", PIN 798612."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"2 1/2 MILE DAROGAPATHAR DIMAPUR NAGALAND\", PIN 797115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maple-tree-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"208, KASHIRAM RANGAPAHAR CANTONMENT ROAD DIMAPUR NAGALAND\", PIN 797112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "g-rio-school",
+   "facts": {
+    "city": {
+     "name": "Kohima",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POB 702, HIGH SCHOOL AREA, KOHIMA\", PIN 797001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hope-academy",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEITHEKE BASA VILLAGE, DIMAPUR\", PIN 797115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-higher-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LATIKLA COMPLEX, NYAMO LOTHA ROAD, DIMAPUR\", PIN 797112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shalom-public-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SHALOM PUBLIC SCHOOL, NAGA CEMETERY ROAD, KIKHRURUZHA COLONY CHUMUKEDIMA DIMAPUR NAGALAND 797103\", PIN 797103."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rajeshwari-karuna-school",
+   "facts": {
+    "city": {
+     "name": "Mokokchung",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJESHWARI KARUNA SCHOOL, TULI WATIYONGPANG AREA, WAMEKEN VALLEY, TULI SUBDIVISION, P.O. BOX 01 MOKOKCHUNG, NAGALAND- 798618\", PIN 798618."
+     }
+    }
+   }
+  },
+  {
+   "slug": "spring-blossoms-academy",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BLOCK-7 THAHEKHU VILLAGE, DIMAPUR, NAGALAND- 797112\", PIN 797112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-sylvan-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOLLOHON COLONY , P.O. ERALIBILL, DIMAPUR\", PIN 797115."
+     }
+    }
+   }
+  },
+  {
+   "slug": "beanstalk-school",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1430077",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"H/NO. 200, SECTOR 4 - LANE 1 (A), LENGRIJAN, DIMAPUR\", PIN 797113."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-high",
+   "facts": {
+    "city": {
+     "name": "Dimapur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1480004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MEDZIPHEMA, 9 ASSAM RIFLES, C/O 99 APO DISTT. DIMAPUR, NAGALAND-797106\", PIN 797106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-school-zunheboto",
+   "facts": {
+    "city": {
+     "name": "Zunheboto",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/1480006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"32 ASSAM RIFLES, C/O, 99 APO- 932032, ZUNHEBOTO, NAGALAND\", PIN 798620."
+     }
+    }
+   }
+  }
+ ]
+}

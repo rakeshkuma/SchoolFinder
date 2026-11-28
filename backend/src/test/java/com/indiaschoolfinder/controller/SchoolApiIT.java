@@ -49,6 +49,29 @@ class SchoolApiIT extends AbstractIntegrationTest {
     }
 
     @Test
+    void profilePageIsTheSixFirstViewCallsInOneResponse() throws Exception {
+        long id = createSchool(mayurViharCbse());
+        com.fasterxml.jackson.databind.ObjectMapper json = new com.fasterxml.jackson.databind.ObjectMapper();
+        com.fasterxml.jackson.databind.JsonNode page = json.readTree(mockMvc.perform(get("/api/v1/schools/slug/test-public-school/page"))
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+        // Each part is byte-for-byte what its own endpoint answers, so the app can use either.
+        Map<String, String> own = Map.of(
+                "school", "/api/v1/schools/slug/test-public-school",
+                "images", "/api/v1/schools/" + id + "/images",
+                "fees", "/api/v1/schools/" + id + "/fees",
+                "admissions", "/api/v1/schools/" + id + "/admissions",
+                "faqs", "/api/v1/schools/" + id + "/faqs",
+                "ranking", "/api/v1/schools/" + id + "/ranking");
+        org.assertj.core.api.Assertions.assertThat(page.size()).isEqualTo(own.size());
+        for (Map.Entry<String, String> part : own.entrySet()) {
+            com.fasterxml.jackson.databind.JsonNode alone = json.readTree(mockMvc.perform(get(part.getValue()))
+                    .andExpect(status().isOk()).andReturn().getResponse().getContentAsString());
+            org.assertj.core.api.Assertions.assertThat(page.get(part.getKey())).as(part.getKey()).isEqualTo(alone);
+        }
+        mockMvc.perform(get("/api/v1/schools/slug/no-such-school/page")).andExpect(status().isNotFound());
+    }
+
+    @Test
     void directoryFiltersByLocalityBoardTypeAndClass() throws Exception {
         createSchool(mayurViharCbse());
         createSchool(school("Other Board School", Map.of("boardCode", "CISCE", "locality", "Mayur Vihar Phase II", "pinCode", "110091")));

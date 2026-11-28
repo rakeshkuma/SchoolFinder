@@ -5,7 +5,9 @@ import {
 } from '../../utils/format';
 import { Icon } from '../common/Icon';
 import { CompareButton } from './CompareBar';
-import { schoolPlace, SchoolCover } from './SchoolCard';
+import { schoolPlace } from './SchoolCard';
+import { SchoolImage } from './SchoolImage';
+import { profileLink } from '../../utils/profileLink';
 
 const boardLabel = (code: string | null) =>
   code === 'CISCE' ? 'ICSE/ISC' : code === 'STATE' ? 'State board' : code === 'IB' ? 'IB' : code;
@@ -20,18 +22,8 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
   const exam = school.entranceExam ? entranceExamInfo[school.entranceExam] : null;
   return (
     <article className="card card-hover group flex flex-col overflow-hidden">
-      <Link to={`/schools/${school.slug}?tab=boarding`} className="relative block aspect-[16/9] bg-slate-100" tabIndex={-1} aria-hidden>
-        {school.coverImageUrl ? (
-          <img src={school.coverImageUrl} alt="" loading="lazy" decoding="async"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        ) : (
-          <SchoolCover name={school.name} />
-        )}
-        {school.coverImageCredit && (
-          <span className="absolute bottom-1 right-1 max-w-[70%] truncate rounded bg-black/55 px-1.5 text-[10px] text-white">
-            © {school.coverImageCredit}
-          </span>
-        )}
+      <Link {...profileLink(school.slug, 'boarding')} className="block" tabIndex={-1} aria-hidden>
+        <SchoolImage src={school.coverImageUrl} name={school.name} credit={school.coverImageCredit} illustrative={school.coverImageIllustrative}>
         {school.residentialSystem && (
           <span className="absolute left-3 top-3 chip bg-white/95 font-semibold text-ink shadow-sm">
             {residentialSystemLabel[school.residentialSystem]}
@@ -43,10 +35,11 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
         {school.admissionStatus === 'UPCOMING' && (
           <span className="absolute right-3 top-3 chip bg-accent-400 font-semibold text-ink shadow-sm">Admissions soon</span>
         )}
+        </SchoolImage>
       </Link>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-[17px] font-bold leading-snug">
-          <Link to={`/schools/${school.slug}?tab=boarding`} className="hover:text-brand-700">{school.name}</Link>
+          <Link {...profileLink(school.slug, 'boarding')} className="hover:text-brand-700">{school.name}</Link>
         </h3>
         <p className="mt-1 flex items-start gap-1 text-sm text-slate-500">
           <Icon name="pin" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
@@ -87,7 +80,7 @@ export function BoardingCard({ school }: { school: SchoolSummary }) {
           )}
         </dl>
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
-          <Link to={`/schools/${school.slug}?tab=boarding`} className="btn-primary rounded-full px-3 py-1.5 text-xs">View details</Link>
+          <Link {...profileLink(school.slug, 'boarding')} className="btn-primary rounded-full px-3 py-1.5 text-xs">View details</Link>
           {school.websiteUrl && (
             <a href={school.websiteUrl} target="_blank" rel="noopener noreferrer nofollow" className="btn-ghost rounded-full px-3 py-1.5 text-xs">
               Official website <span aria-hidden>↗</span>

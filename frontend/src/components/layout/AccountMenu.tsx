@@ -2,13 +2,11 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useMember } from '../../hooks/useMember';
 import { Avatar } from '../common/Avatar';
+import { GoogleButton } from '../common/GoogleButton';
 
 const ITEMS = [
-  { to: '/account', label: 'My profile' },
-  { to: '/saved', label: 'Saved schools' },
-  { to: '/compare', label: 'School comparison' },
-  { to: '/exams/calendar?saved=1', label: 'Exam favourites' },
-  { to: '/account#pw-h', label: 'Account settings' },
+  { to: '/account', label: 'My Account' },
+  { to: '/saved', label: 'Saved Schools' },
 ];
 
 /**
@@ -16,7 +14,7 @@ const ITEMS = [
  * appear before the server confirms the session. The menu follows the WAI-ARIA menu button pattern.
  */
 export function AccountMenu() {
-  const { status, account, signOut, setNotice } = useMember();
+  const { status, account, config, signOut, setNotice } = useMember();
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -39,14 +37,11 @@ export function AccountMenu() {
   if (status === 'loading') return <span className="inline-block h-9 w-9" aria-hidden />;
 
   if (status === 'signedOut' || !account) {
-    const next = `${location.pathname}${location.search}`;
-    const withNext = next.startsWith('/signin') || next.startsWith('/register') ? '' : `?next=${encodeURIComponent(next)}`;
-    return (
-      <span className="flex items-center gap-1">
-        <Link to={`/signin${withNext}`} className="btn-ghost whitespace-nowrap rounded-full px-3 text-sm font-semibold">Sign in</Link>
-        <Link to={`/register${withNext}`} className="btn-secondary hidden whitespace-nowrap rounded-full px-3 text-sm 2xl:inline-flex">Create account</Link>
-      </span>
-    );
+    const here = `${location.pathname}${location.search}`;
+    const next = here.startsWith('/signin') ? '/' : here;
+    // Sign in with Google is the only way in; the button shows once the server confirms Google is configured.
+    if (!config?.googleSignInEnabled) return <span className="inline-block h-9 w-9" aria-hidden />;
+    return <GoogleButton next={next} compact />;
   }
 
   const items = () => Array.from(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? []);
@@ -78,7 +73,7 @@ export function AccountMenu() {
         onClick={() => setOpen((v) => !v)}
         onKeyDown={(e) => { if (e.key === 'ArrowDown') { e.preventDefault(); setOpen(true); } }}
         className="flex items-center gap-2 rounded-full p-0.5 pr-2 hover:bg-slate-100">
-        <Avatar name={account.displayName} />
+        <Avatar name={account.displayName} pictureUrl={account.pictureUrl} />
         <span className="hidden max-w-[9rem] truncate text-sm font-semibold text-ink 2xl:inline">{account.displayName}</span>
         <span className="sr-only">Account menu for {account.displayName}</span>
       </button>
@@ -97,7 +92,7 @@ export function AccountMenu() {
           ))}
           <button type="button" role="menuitem" tabIndex={-1} onClick={() => void doSignOut()}
             className="mt-1 block w-full rounded-lg border-t border-slate-100 px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none">
-            Sign out
+            Logout
           </button>
         </div>
       )}
@@ -109,11 +104,12 @@ export function AccountMenu() {
 export function MobileAccountLinks() {
   const { status, account, signOut, setNotice } = useMember();
   const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const here = `${pathname}${search}`;
   if (status !== 'signedIn' || !account) {
     return status === 'loading' ? null : (
-      <div className="col-span-2 mt-2 flex gap-2 border-t border-slate-100 pt-3">
-        <Link to="/signin" className="btn-secondary flex-1 justify-center">Sign in</Link>
-        <Link to="/register" className="btn-primary flex-1 justify-center">Create account</Link>
+      <div className="col-span-2 mt-2 border-t border-slate-100 pt-3">
+        <GoogleButton next={here.startsWith('/signin') ? '/' : here} />
       </div>
     );
   }
@@ -121,12 +117,12 @@ export function MobileAccountLinks() {
     <div className="col-span-2 mt-2 border-t border-slate-100 pt-3">
       <p className="px-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Signed in as {account.displayName}</p>
       <div className="mt-1 grid grid-cols-2 gap-1">
-        {ITEMS.slice(0, 4).map((item) => (
+        {ITEMS.map((item) => (
           <Link key={item.to} to={item.to} className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50">{item.label}</Link>
         ))}
         <button type="button" className="rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50"
           onClick={async () => { await signOut().catch(() => undefined); setNotice('You have signed out.'); navigate('/', { replace: true }); }}>
-          Sign out
+          Logout
         </button>
       </div>
     </div>

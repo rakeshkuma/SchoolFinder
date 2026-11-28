@@ -124,6 +124,33 @@ export function formatExamDate(d: Pick<ExamDate, 'startsOn' | 'endsOn' | 'precis
   return d.endsOn && d.endsOn !== d.startsOn ? `${fmt(d.startsOn, { day: 'numeric', month: 'short' })} – ${fmt(d.endsOn, full)}` : fmt(d.startsOn, full);
 }
 
+/** The last day a date can still be met: a month-precise date ("by the end of March 2027") lasts the whole month. */
+const periodEnd = (d: ExamDate) => (d.precision === 'MONTH' ? `${d.startsOn.slice(0, 7)}-31` : lastDay(d));
+
+export interface PrepMilestones {
+  /** The last date to apply (or the late-fee window) while it is still ahead; confirmed dates only. */
+  apply?: ExamDate;
+  /** The exam date while it is ahead. */
+  exam?: ExamDate;
+  /** Once the exam is over: when it was held, and the result date while that is still ahead. */
+  held?: ExamDate;
+  result?: ExamDate;
+}
+
+/**
+ * What a preparation page's hero shows at this point of the cycle (25 Nov 2026: the AISSEE page showed only the exam
+ * date while applications closed in 7 days, and the JNVST page would have kept showing its test date after the test).
+ */
+export function prepMilestones(dates: ExamDate[], today: string): PrepMilestones {
+  const sorted = [...dates].sort((a, b) => (a.startsOn < b.startsOn ? -1 : a.startsOn > b.startsOn ? 1 : 0));
+  const apply = sorted.find((d) => (d.kind === 'APPLICATION_END' || d.kind === 'LATE_APPLICATION_END') && d.confirmed && lastDay(d) >= today);
+  const exam = sorted.find((d) => d.kind === 'EXAM' && lastDay(d) >= today);
+  if (exam) return { apply, exam };
+  const held = sorted.filter((d) => d.kind === 'EXAM' && lastDay(d) < today).pop();
+  const result = held ? sorted.find((d) => d.kind === 'RESULT' && d.startsOn > lastDay(held) && periodEnd(d) >= today) : undefined;
+  return { apply, held, result };
+}
+
 /** Phrase for a countdown, e.g. "today", "tomorrow", "in 12 days". */
 export function countdown(days: number): string {
   if (days === 0) return 'today';

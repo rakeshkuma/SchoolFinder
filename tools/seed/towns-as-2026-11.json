@@ -1,0 +1,2748 @@
+{
+ "_comment": "Towns of CBSE schools, from the SARAS postal address and PIN code (both must agree). Built by build-town-facts.js.",
+ "schools": [
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-borjhar-azara-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORJHAR AZARA GUWAHATI ASSAM\", PIN 781017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-narangi-satgaon-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARANGI SATGAON GUWAHATI ASSAM\", PIN 781027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-khanapara-guwahati-dt",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHANAPARA GUWAHATI DT- KAMRUP ASSAM\", PIN 781022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-air-force-station-dt",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JORHAT AIR FORCE STATION PO- JORHAT DT- ASSAM\", PIN 785005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC SIVASAGAR ASSAM\", PIN 785640."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-no-2-air-force-station-tezpur-salonibari-dt",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AIR FORCE STATION TEZPUR SALONIBARI DT- SONITPUR ASSAM\", PIN 784104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-dinjan-via-panitola-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DINJAN VIA- PANITOLA DT - DIBRUGARH ASSAM\", PIN 786189."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-oil-limited-duliajan-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OIL INDIA LIMITED DULIAJAN DT- DIBRUGARH ASSAM\", PIN 786602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-itachali",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAGAON DT- NAGAON,PO ITACHALI, ASSAM\", PIN 782003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-maligaon-guwahati-dt",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALIGAON GUWAHATI DT-KAMRUP ASSAM\", PIN 781011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-crpf-amreigog-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200017",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CRPF AMREIGOG GUWAHATI ASSAM\", PIN 781023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-chabua-air-field-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHABUA AIR FIELD DT- DIBRUGARH ASSAM\", PIN 786102."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-diphu",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIPHU DT- KARBI ANGLONG ASSAM\", PIN 782462."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-nazira-dt-sibsagar",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC NAZIRA DT- SIBSAGAR ASSAM\", PIN 785685."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-namrup-parbatpur-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200022",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAMRUP PO- PARBATPUR DT- DIBRUGARH ASSAM\", PIN 786623."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-silchar-tarapur-silchar-dt",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILCHAR TARAPUR SILCHAR DT- CACHAR ASSAM\", PIN 788003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ioc-noonmati-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IOC NOONMATI GUWAHATI ASSAM\", PIN 781020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-jagiroad-hpc-dt-morigaon",
+   "facts": {
+    "city": {
+     "name": "Morigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JAGIROAD HPC DT- MORIGAON ASSAM\", PIN 782413."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-kokrajhar",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200028",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HATHIMATHA WARD NO 8 KOKRAJHAR ASSAM\", PIN 783370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-n-f-railway-lumding-dt",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N F RAILWAY LUMDING DT- NAGAON ASSAM\", PIN 782447."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-arc-doomdoma-dt",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ARC DOOMDOMA DT- TINSUKIA ASSAM\", PIN 786159."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-s-s-b-haflong",
+   "facts": {
+    "city": {
+     "name": "Haflong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"S S B HAFLONG, N C HILLS ASSAM\", PIN 788819."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-raja-ali-road-naw-pukhuri",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJA ALI ROAD NAW-PUKHURI, TINSUKIA ASSAM\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-n-f-railway-new-dt",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200038",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N F RAILWAY NEW BONGAIGAON DT- BONGAIGAON ASSAM\", PIN 783381."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-lekhapani-dt",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200039",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LEKHAPANI DT- TINSUKIA ASSAM\", PIN 786180."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-srikona-silchar-dt",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200041",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC SRIKONA SILCHAR DT- CACHAR ASSAM\", PIN 788026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-ongc-cinnamara",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200042",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ONGC CINNAMARA, PO- JORHAT ASSAM\", PIN 785008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-mohanbari-mohanbari-air-field-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOHANBARI PO- MOHANBARI AIR FIELD DT- DIBRUGARH ASSAM\", PIN 786012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-nilmani-road-dt",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NILMANI ROAD KARIMGANJ DT- KARIMGANJ ASSAM\", PIN 788712."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-panbari",
+   "facts": {
+    "city": {
+     "name": "Dhubri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANBARI PO ALOMGANJ BSF CAMPUS DISTT DHUBRI ASSAM\", PIN 783339."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-missa-cantt",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MISSA CANTT NAGAON ASSAM\", PIN 782138."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-r-r-l-rrl",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"R R L JORHAT PO RRL JORHAT ASSAM\", PIN 785006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-iit-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200050",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IIT KAMRUP GUWAHATI ASSAM\", PIN 781039."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-nhpc-subansiri-lower-h-e-project-geru-ka-mukh",
+   "facts": {
+    "city": {
+     "name": "Dhemaji",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200052",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NHPC SUBANSIRI LOWER H E PROJECT GERU KA MUKH DISTT DHEMAJI ASSAM\", PIN 787035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kendriya-vidyalaya-d-c-s-office",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR D. C.'S OFFICE, P.O C R BUILDING, DIBRUGARH, ASSAM\", PIN 786003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-barpeta",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRISHNA NAGAR P O BARPETA DISTT BARPETA ASSAM\", PIN 781301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-golaghat",
+   "facts": {
+    "city": {
+     "name": "Golaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOLAGHAT, DISTT GOLAGHAT, ASSAM-782561\", PIN 782561."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-goalpara",
+   "facts": {
+    "city": {
+     "name": "Goalpara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOALPARA, JTS BUILDING, BELTOLA, BALADMARI, GOALPARA, ASSAM-783121\", PIN 783121."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-central-university",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CENTRAL UNIVERSITY, TEZPUR, P.O. NAPAAM, DISTT. SONITPUR, ASSAM\", PIN 784028."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-vidyalaya-n-f-railway",
+   "facts": {
+    "city": {
+     "name": "Rangia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N F RAILWAY, RANGIA, DISTT. KAMRUP, ASSAM\", PIN 781365."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindustani-kendriya-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DINESH OJHA PATH BHANGAGARH GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindustani-kendriya-vidyalaya-2",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230106",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N.H.-37, LAIPULI, HIJUGURI, TINSUKIA(ASSAM)\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hindustani-kendriya-vidyalaya-3",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230173",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEZPUR UNIVERSITY ROAD BHITAR PARUAH , PO-NIKAMUL SATRA\", PIN 784154."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-hari-nagar",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HARI NAGAR, KARIMGANJ ASSAM\", PIN 788734."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-rangia",
+   "facts": {
+    "city": {
+     "name": "Rangia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANGIA,PO JAMTOLA, DT- KAMRUP ASSAM\", PIN 781365."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-tom-tom-tola-chakimukh-dt-sibsagar",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TOM-TOM TOLA PO- CHAKIMUKH DT- SIBSAGAR ASSAM\", PIN 785665."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-banekuchi",
+   "facts": {
+    "city": {
+     "name": "Nalbari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BANEKUCHI P.O., NALBARI DISTT. ASSAM\", PIN 781340."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-sensowa-no-2-chinatolly-dt",
+   "facts": {
+    "city": {
+     "name": "Golaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SENSOWA NO 2 PO- CHINATOLLY DT- GOLAGHAT ASSAM\", PIN 785621."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-purana-titabar-dt",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PURANA TITABAR DT- JORHAT ASSAM\", PIN 785630."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-diphu-dt",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240008",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- DIPHU DT- KARBI ANGLONG ASSAM\", PIN 782460."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-ranchidham-via-basugaon-dt",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANCHIDHAM VIA- BASUGAON DT- KOKRAJHAR ASSAM\", PIN 783372."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-morigaon",
+   "facts": {
+    "city": {
+     "name": "Morigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240012",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MORIGAON ASSAM\", PIN 782105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-womens-iti-campus-borguri-dt",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240013",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WOMENS ITI CAMPUS PO- BORGURI DT- TINSUKIA ASSAM\", PIN 786126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-doomardallong-bamunbari-dt",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240014",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DOOMARDALLONG PO- BAMUNBARI DT- DIBRUGARH ASSAM\", PIN 786613."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-monacherra",
+   "facts": {
+    "city": {
+     "name": "Hailakandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240018",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MONACHERRA, DISTT. HAILAKANDI ASSAM\", PIN 788152."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-khamarguri-bijni",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240019",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHAMARGURI BIJNI DISTT BONGAIGAON ASSAM\", PIN 783390."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-mulagaon",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISTT. BONGAIGAON, P.O. MULAGAON, ASSAM\", PIN 783380."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-school-jawahar-navodaya-vidyalaya-sontila",
+   "facts": {
+    "city": {
+     "name": "Haflong",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SONTILA, N.C. HILLS (ITI COMPLEX HAFLONG), DISTT N C HILLS, ASSAM SONTILA (HAFLONG),DIMA HASAO(N.C.HILLS),ASSAM\", PIN 788819."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-paper-mill-campus",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAPER MILL CAMPUS,P.O. DHING, DISTT. NAGAON, ASSAM\", PIN 782123."
+     }
+    }
+   }
+  },
+  {
+   "slug": "jawahar-navodaya-vidyalaya-and-alomganj-partix-78339",
+   "facts": {
+    "city": {
+     "name": "Dhubri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/240026",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE & PO- ALOMGANJ PARTIX DHUBRI ASSAM 78339\", PIN 783331."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pakshalika-high",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230355",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NO. 1 CHAULKORA, NH-37, SIVASAGAR, NO. 1 CHAULKORA, NH-37, SIVASAGAR, NO. 1 CHAULKORA, NH-37, SIVASAGAR\", PIN 785667."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pm-shri-kendriya-no-one-tezpur",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/200006",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEZPUR DEKARGAON DT- SONITPUR ASSAM\", PIN 784501."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-juria",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JURIA, NAGAON\", PIN 782124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-gomafulbari",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.S BARPETA, PIN 781309\", PIN 781309."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-ms-titaguri",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220163",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O- CHARAIKHOLA, P.S- KOKRAJHAR\", PIN 783376."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-laokhowa",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KASOKHAITY, LAOWKHOWA BLOCK, NAGAON\", PIN 782140."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-jalukbari",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220173",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RANGMAHAL, NORTH GUWAHATI, MOUZA SILA XENDURIGHOPA\", PIN 781030."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-itakhuli",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220174",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOZALONI VILL. LANGKASHI , MAKUM, DIST TINSUKIA ASSAM\", PIN 786170."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-demow",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAICHAI, DEMOW, SIVASAGAR\", PIN 785662."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pub-guwahati-sri-aurobindo-adarsha-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAMKRISHNA MISSION ROAD, , ULUBARI,, GUWAHATI\", PIN 781007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-gobardhana",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220181",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. GAMARIGURI, P.O. GOBARDHANA, P.S. BARPETA ROAD\", PIN 781315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "adarsha-vidyalaya-lumbajong",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/220188",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-LONGKAM BEY GAON (CHUTIANALA), 5TH MILE, DIPHU-MANJA ROAD, PO-KHERONI GAON, PS-DIPHU\", PIN 782461."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sainik-school-4",
+   "facts": {
+    "city": {
+     "name": "Goalpara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230001",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOALPARA PO- RAJAPARA DT- GOALPARA ASSAM\", PIN 783133."
+     }
+    }
+   }
+  },
+  {
+   "slug": "guwahati-public-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230005",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANJABARI GUWAHATI DT- KAMRUP ASSAM\", PIN 781022."
+     }
+    }
+   }
+  },
+  {
+   "slug": "faculty-hr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G.N.B. ROAD, AMBARI, NORTH GUWAHATI ASSAM\", PIN 781039."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-laipuli-via-panitola",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230009",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- LAIPULI VIA PANITOLA TINSUKIA ASSAM\", PIN 786183."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tinsukia-english-academy",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230011",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MANAV KALYAN NAMGHAR ROAD CHEERPATTY TINSUKIA ASSAM\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-east-chowkidingee",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230015",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"EAST CHOWKIDINGEE DIBRUGARH ASSAM\", PIN 786001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "budding-buds-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230016",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"D M LOHIA ROAD TINSUKIA ASSAM\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-silpukhuri-guwahati-dt",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230020",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SILPUKHURI GUWAHATI DT- KAMRUP ASSAM\", PIN 781003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-iocl-township-digboi-dt",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230021",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"IOCL TOWNSHIP PO- DIGBOI DT- TINSUKIA ASSAM\", PIN 786171."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shrimanta-shankar-academy",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230023",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DISPUR GUWAHATI DT- KAMRUP ASSAM\", PIN 781006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-dhaligaon-dt",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230024",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO- DHALIGAON DT- BONGAIGAON ASSAM\", PIN 783385."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-school-5",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230025",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIPHU PO KARBI ANGLONG DISTT ASSAM\", PIN 782460."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-kokrajhar",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230027",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOKRAJHAR DT- KOKRAJHAR ASSAM\", PIN 783370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-numaligarh",
+   "facts": {
+    "city": {
+     "name": "Golaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230029",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NUMALIGARH DISTT GOLAGHAT ASSAM\", PIN 785699."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-grammar-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230030",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUB-GITA NAGAR ZOO NARENGI ROAD. GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "happy-convent-school",
+   "facts": {
+    "city": {
+     "name": "Dhubri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230031",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"G T B ROAD DHUBRI ASSAM\", PIN 783301."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-miles-bronson-residential-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230032",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAHIKUCHI BORJHAR GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-o-n-g-c-nazira",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230033",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"O N G C NAZIRA, DISTT SIBSAGAR, ASSAM\", PIN 785685."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oil-valley-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230034",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOGAPANI COLONY P O BOGAPANI P S DIGBOI, DISTT TINSUKIA ASSAM\", PIN 786171."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sboa-public-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230036",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH 37 GORCHUK GUWAHATI DISTT KAMRUP ASSAM\", PIN 781039."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maria-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230037",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BIRKUCHI NARANGI GUWAHATI DISTT KAMRUP ASSAM\", PIN 781026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-oil-ltd-duliajam",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230040",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OIL INDIA LTD PO DULIAJAM DIBRUGARH ASSAM\", PIN 786002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230043",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARSAJAI LALMATI GUWAHATI DISTT KAMRUP ASSAM\", PIN 781029."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-point-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230044",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"21, BARSAPARA ROAD CITY GUWAHATI, ASSAM\", PIN 781018."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-kathal-road",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230045",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KATHAL ROAD, PO BAKHATPUR, DIST CACHAR, SILCHAR ASSAM\", PIN 788005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xaviers-public-school",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230046",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO CHALANTAPARA BONGAIGAON ASSAM\", PIN 783388."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sangam-academy",
+   "facts": {
+    "city": {
+     "name": "North Lakhimpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230047",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL. BORBOCHA, P.O. MOIDOMIA, DIST.LAKHIMPUR, NORTH LAKHIMPUR ASSAM\", PIN 787032."
+     }
+    }
+   }
+  },
+  {
+   "slug": "kaziranga-eng-academy",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230048",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GAROO-GHULI ; P.O.- GARCHUK, GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-ahomgaon-road-trupati-balaji-temple",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230049",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AHOMGAON ROAD TRUPATI BALAJI TEMPLE, GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sai-rns-academy",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SAI COMPLEX, BEHIND DPI OFFCIE ADARSHPUR PATH, I/B, P.O. KAHILIPARA GUWAHATI, DISTT KAMRUP\", PIN 781019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-flower-school-box-39",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230053",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST BOX 39 BONGAIGAON DISTT ASSAM\", PIN 783380."
+     }
+    }
+   }
+  },
+  {
+   "slug": "cambridge-public-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230054",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARIPARA MALIGAON GUWAHATI ASSAM\", PIN 781012."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nps-international-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230055",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NH-37, NEAR LAKHRA CHARIALI,P.O. SAUKUCHI, GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781034."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-claret-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230056",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N H 37 BORJHAR PO GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-pan-bazar-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230057",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAN BAZAR GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-english-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230058",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KAHILIPARA KAMRUP GUWAHATI ASSAM\", PIN 781019."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-d-assisi-high-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230059",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PUB BORAGAON PO GURCHUK GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781035."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tejpur-gurukul-chatai-chapori",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230060",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"4TH MILE TEZPUR DISTT SONITPUR ASSAM\", PIN 784001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyan-educational-institution-lokhra-road-jyoti-kuchi-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230062",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LOKHRA ROAD JYOTI KUCHI GUWAHATI, DISTT KAMRUP ASSAM\", PIN 781034."
+     }
+    }
+   }
+  },
+  {
+   "slug": "lotus-academy-2",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230063",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DOOMDOONA DISTT TINSUKIA ASSAM\", PIN 786151."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekanand-kendra-vidyalaya-2",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230067",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAJULI KAMALA BASI MAJULU DISTT JORHAT ASSAM\", PIN 785106."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-clares-convent-high-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230068",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BORJHAR DISTT KAMRUP GUWAHATI ASSAM\", PIN 781015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarala-birla-gyan-jyoti",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230069",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"N H 37, AMINGOAN GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montfort-school-10th-mile-g-s-road-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230070",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"10TH MILE G S ROAD GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781023."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-na-ali",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230071",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NA- ALI, M.G. ROAD, JORHAT-785001, ASSAM\", PIN 785001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-xavier-s-school-gandhi-nagar",
+   "facts": {
+    "city": {
+     "name": "Goalpara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230072",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GANDHI NAGAR, P.O. KRISHNAI, TEH-MATTIA, DISTT GOALPARA, ASSAM\", PIN 783126."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-hatigarh",
+   "facts": {
+    "city": {
+     "name": "Dhemaji",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230074",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HATIGARH, DIST. DHEMAJI, ASSAM\", PIN 787057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-tingrai",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230075",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. : DULIAJAN, DIST. : DIBRUGARH, ASSAM,\", PIN 786602."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-francis-de-sales-school-2",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230076",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SATGAON-NARANGI, UDYAN VIHAR, GUWAHATI, DISTT KAMRUP, ASSAM\", PIN 781171."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-sandheli-and-xd",
+   "facts": {
+    "city": {
+     "name": "Nalbari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230079",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. SANDHELI VIA : GOPAL BAZAR DIST. NALBARI (ASSAM) PIN-781353\", PIN 781353."
+     }
+    }
+   }
+  },
+  {
+   "slug": "saint-capitanio-school",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230080",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KUARPAR PO REGIONAL ENGINEERING COLLEGE, DISTT. COCHAR, SILCHAR\", PIN 788010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pinewood-residential-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230081",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SWAHID MONIRAM DEWAN NAGAR, PINEWOOD ROAD, TINSUKIA, ASSAM.\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "goalpara-english-school",
+   "facts": {
+    "city": {
+     "name": "Goalpara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230082",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO BHALUKDUBI, TEHSIL-BALIJANA, DISTT. GOALPARA\", PIN 783101."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pragjyotish-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230083",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. GOTANAGAR, WEST BAGAON GUWAHATI-781033\", PIN 781033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "hemlata-handiqui-memorial-institute",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230084",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGHCHONG, JORHAT, ASSAM\", PIN 785008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "little-flower-school-hatigaon",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230085",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HATIGAON, DISPUR, GUWAHATI - 781038, ASSAM\", PIN 781038."
+     }
+    }
+   }
+  },
+  {
+   "slug": "godwins-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230086",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR RADIANT MOTORS, GOROLIA, SARUSAJAI, BELTOLA, NH-37, GUWAHATI. ASSAM, PIN-781034\", PIN 781034."
+     }
+    }
+   }
+  },
+  {
+   "slug": "central-public-school",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230087",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GYAN VILLAGE, HAITHARKHA, PATHARKANDI PT-IV, DISTT KARIMGANJ, ASSAM\", PIN 788724."
+     }
+    }
+   }
+  },
+  {
+   "slug": "polestar-academy",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230089",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"COURT ROAD RAJADHAP SONAR, SIBSAGAR\", PIN 785690."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-satya-sai-vidiya-vihar",
+   "facts": {
+    "city": {
+     "name": "Golaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230091",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"THANA BACK ROAD, GOLAGHAT\", PIN 785628."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prabhat-tara-children-english-academy",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230092",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HIJUGURI, NEW COURT ROAD, TINSUKHIA, P.O.,P.S. & DIST. TINSUKIA\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "modern-high-school-2",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230093",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOTHER TERESSA ROAD GUWAHATI\", PIN 781020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "tagore-school-of-studies",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230098",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O:BADARPURGHAT, KARIMGANJ PIN- 788803.\", PIN 788803."
+     }
+    }
+   }
+  },
+  {
+   "slug": "asian-public-school",
+   "facts": {
+    "city": {
+     "name": "North Lakhimpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230099",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO.14, P.O: NORTH LAKHIMPUR, ASSAM, 787001\", PIN 787001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "christ-jyoti-school-premnagar",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230100",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PREMNAGAR, DHING ROAD, NAGAON, ASSAM.\", PIN 782002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "noonmati-public-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230101",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHOONSHALI,NOONMATI, GUWAHATI-781020\", PIN 781020."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-tarapur",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230103",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TARAPUR, KHELMA, SILCHAR, CACHAR, ASSAM\", PIN 788003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-laxmi-bazar-road-and-xd",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230104",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LAXMI BAZAR ROAD. P.O. & DISTT. KARIMGANJ. ASSAM. PIN-788710\", PIN 788710."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-mary-s-english-high-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230105",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MALIGAON, GUWAHATI 781011, ASSAM\", PIN 781011."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sandipani-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230109",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"L.B ROAD,SENCHOWA, NAGAON, ASSAM\", PIN 782002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "central-public-school-badarpur",
+   "facts": {
+    "city": {
+     "name": "Karimganj",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230111",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"UMARPUR, BADARPUR, KARIMGANJ, ASSAM\", PIN 788806."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-marys-school-2",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230112",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TEENMILE, KHALIA BHOMA P.O SONITPUR DIST. TEZPUR 784004\", PIN 784004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "de-paul-s-public-school",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230113",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O DOTMA, DIST - KOKRAJHAR B.T. A. D ASSAM 783347\", PIN 783347."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-peter-s-national-academy",
+   "facts": {
+    "city": {
+     "name": "Goalpara",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230114",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DUDHNOI(P.O) DUDHNOI(P.S) GOALPARA (DIST) ASSAM\", PIN 783124."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-public-school-panikhaiti",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230115",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PANIKHAITI, GUWAHATI-26 PIN-781026\", PIN 781026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "national-academy",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230116",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAIDONGIA, AIBHETI, NAGAON\", PIN 782002."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sampoorna-kendra-vidyalaya",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230119",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"K.C.GOGOI PATH,DIBRUGARH\", PIN 786001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-child-h-s-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230120",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KRISHNANAGAR, CHANDMARI, GUWAHATI.\", PIN 781003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-flower-high-school",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230123",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOSPITAL ROAD, TEOK, JORHAT, ASSAM\", PIN 785112."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sreeram-academy",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230125",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHANDRA NAGAR, WORD NO: 3, HOWLY ROAD, PO: PATHSALA, DIST.: BARPETA, ASSAM\", PIN 781325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "marrys-public-school",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230126",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KABAITARI, P.O.JOGIGHOPA,DIST-BONGAIGAON, ASSAM\", PIN 783382."
+     }
+    }
+   }
+  },
+  {
+   "slug": "springdale-high-school",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230127",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CINNAMARA, JORHAT, ASSAM\", PIN 785008."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nalanda-public-school-2",
+   "facts": {
+    "city": {
+     "name": "Nalbari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230129",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KOMAR SUBURI PATH JAPARKUCHI, NALBARI DISTT.\", PIN 781335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "purna-vikash-central-school",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230130",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DEMOW PATHAR, JOYSAGAR SIVASAGAR,\", PIN 785640."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sers-public-school-rangia",
+   "facts": {
+    "city": {
+     "name": "Rangia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230132",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NAKUL, RANGIA\", PIN 781354."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-reality-public-school",
+   "facts": {
+    "city": {
+     "name": "Kokrajhar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230133",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-CHANDAMARI, PO-CHANDRAPARA, PS-KOKRAJHAR BTC,\", PIN 783370."
+     }
+    }
+   }
+  },
+  {
+   "slug": "montfort-school-batabari-abhayapuri",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230135",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL BATABARI P.O ABHAYAPURI, DIST BONGAIGAON, PIN 783384\", PIN 783384."
+     }
+    }
+   }
+  },
+  {
+   "slug": "fatima-convent-school-2",
+   "facts": {
+    "city": {
+     "name": "Rangia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230138",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"FATIMA NAGAR, BONGAON, RANGIA-781354, KAMRUP DIST, ASSAM\", PIN 781354."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gyanjyoti-academy",
+   "facts": {
+    "city": {
+     "name": "Dhemaji",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230141",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"D.K. ROAD, GOGAMUKH, P.O. GOGAMUKH, DIST.- DHEMAJI, ASSAM.\", PIN 787034."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-brook-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230143",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PAKHARIJIAN GAON NEAR ST LUKES HOSPITAL, TINSUKIA ASSAM\", PIN 786146."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-josephs-school-2",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230146",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"AZARA, BORBORI, RAM CHAYANI KAMRUP GUWAHATI\", PIN 781017."
+     }
+    }
+   }
+  },
+  {
+   "slug": "faculty-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230150",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MOTHER TERESA ROAD GUWAHATI, KAMRUP, ASSAM - 781024\", PIN 781024."
+     }
+    }
+   }
+  },
+  {
+   "slug": "global-public-central-school",
+   "facts": {
+    "city": {
+     "name": "Hailakandi",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230152",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"W/NO.- 16, PO- LAKSHMISAHAR, HAILAKANDI\", PIN 788152."
+     }
+    }
+   }
+  },
+  {
+   "slug": "valley-view-school",
+   "facts": {
+    "city": {
+     "name": "North Lakhimpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230156",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO-8, NORTH LAKHIMPUR\", PIN 787001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-anthonys-school-2",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230157",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"ABHOYPUR VILLAGE, COLLEGE NAGAR, NORTH GUWAHATI, ASSAM, INDIA.\", PIN 781031."
+     }
+    }
+   }
+  },
+  {
+   "slug": "south-point-english-school",
+   "facts": {
+    "city": {
+     "name": "Dhubri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230158",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"W/NO-IV, SAPATGRAM, PO- SAPATGRAM, DIST- DHUBRI, ASSAM\", PIN 783337."
+     }
+    }
+   }
+  },
+  {
+   "slug": "b-b-memorial-public-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230160",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOBINDOPUR, TINSUKIA\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "radhakrishnan-central-academy",
+   "facts": {
+    "city": {
+     "name": "Morigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230164",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"WARD NO. 8, PHULBARI, P.O. MORIGAON\", PIN 782105."
+     }
+    }
+   }
+  },
+  {
+   "slug": "erudite-academy",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230165",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DIPHU TOWN, P.O & P.S - DIPHU, KARBI ANGLONG, ASSAM\", PIN 782460."
+     }
+    }
+   }
+  },
+  {
+   "slug": "temple-town-euro-school",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230169",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JUNAKI NAGAR, P.O. DHULIAPAR, DIST. SIVASAGAR\", PIN 785640."
+     }
+    }
+   }
+  },
+  {
+   "slug": "brahmaputra-valley-school-sivasagar",
+   "facts": {
+    "city": {
+     "name": "Sivasagar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230171",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BETBARI ALIMUR SIVASAGAR ASSAM\", PIN 785640."
+     }
+    }
+   }
+  },
+  {
+   "slug": "oil-valley-girls-and-boys-school",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230175",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"PO BANIPUR DIST DIBRUGARH\", PIN 786001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "shiksha-valley-school",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230176",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KHANIKAR,P.O.SESSA ,DIST DIBRUGARH. 786003\", PIN 786003."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prettify-knowledge-model-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230178",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL & P.O:DHALIGAON, P.S: DHALIGAON,DIST: BONGAIGAON, ASSAM-783385.\", PIN 783385."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mahashay-dharampal-mdh-dayanand-arya-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230182",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE DISAGISM P.O.DHANSIRI PAR P.S.DIPHU\", PIN 782470."
+     }
+    }
+   }
+  },
+  {
+   "slug": "pathsala-public-school",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230184",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SEUJ NAGAR PATHSALA - 781325 DIST:BARPETA ASSAM\", PIN 781325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "nurture-international-school",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230187",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"K.C. GOGOI PATH, KODOMONI, DIBRUGARH\", PIN 786001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "mothers-pride-school-dhemaji",
+   "facts": {
+    "city": {
+     "name": "Dhemaji",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230189",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILLAGE - NO.1 NARENG SURVEY VILLAGE P.O. - ARADHAL DISTRICT - DHEMAJI STATE - ASSAM\", PIN 787057."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vivekananda-kendra-vidyalaya-sadiya",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230190",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VIVEKANANDA KENDRA VIDYALAYA,SADIYA SHANTIPUR NO - 1 CHAPAKHOWA 786157,TINSUKIA\", PIN 786157."
+     }
+    }
+   }
+  },
+  {
+   "slug": "bimala-academy",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230191",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BAGHJAN, JAKHALABANDHA,NAGAON, ASSAM\", PIN 782136."
+     }
+    }
+   }
+  },
+  {
+   "slug": "north-east-global-school",
+   "facts": {
+    "city": {
+     "name": "Dhubri",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230251",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JHAGRARPAR PT:III, MAGURMARI,BEHIND DHUBRI CIVIL HOSPITAL, P.O:JHAGRARPAR, DIST:DHUBRI, ASSAM, PIN:783325\", PIN 783325."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sri-sri-ravishankar-vidya-mandir",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230260",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"VILL-AMTOLA, PO-NORTH SALMARA, DIST-BONGAIGAON,ASSAM,PIN-783383\", PIN 783383."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vidyanchal-the-school",
+   "facts": {
+    "city": {
+     "name": "Nalbari",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230262",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"OPPOSITE BARKURA RAIL GATE; VILL- HARIPUR, N.H-27(OLD N.H 31) NALBARI\", PIN 781335."
+     }
+    }
+   }
+  },
+  {
+   "slug": "holy-crown-school",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230263",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HOLY CROWN SCHOOL MASIMPUR, ARUNACHAL, SILCHAR, ASSAM. PIN: 788025\", PIN 788025."
+     }
+    }
+   }
+  },
+  {
+   "slug": "prerana-vidyamandir",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230264",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"CHINCOORI ROAD, KALINJAR,P.O-SINGARI SILCHAR-7\", PIN 788007."
+     }
+    }
+   }
+  },
+  {
+   "slug": "st-dominic-savio-cbse-school",
+   "facts": {
+    "city": {
+     "name": "Diphu",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230265",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LUMDING ROAD DIPHU KARBI ANGLONG\", PIN 782462."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sarala-birla-gyan-jyoti-sr-sec-school",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230267",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MMG ROAD, SUN CITY, MEHERPUR, SILCHAR, CACHAR - 788015\", PIN 788015."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-green-school-international",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230317",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEAR ITI, NALAPARA, SARUSAJAI, GUWAHATI 781040\", PIN 781040."
+     }
+    }
+   }
+  },
+  {
+   "slug": "gurukul-global-academy",
+   "facts": {
+    "city": {
+     "name": "Golaghat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230321",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"DAGAON, GOLAGHAT\", PIN 785702."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-lalmati-bikash-nagar",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230322",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"LALMATI BIKASH NAGAR, GUWAHATI\", PIN 781028."
+     }
+    }
+   }
+  },
+  {
+   "slug": "don-bosco-school-road",
+   "facts": {
+    "city": {
+     "name": "Barpeta",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230324",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"P.O. BARPETA ROAD , P.S. BARPETA ROAD\", PIN 781315."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-heights-public-school",
+   "facts": {
+    "city": {
+     "name": "Tinsukia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230325",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"MAKUM ROAD, TINSUKIA\", PIN 786125."
+     }
+    }
+   }
+  },
+  {
+   "slug": "vandya-international-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230329",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GUWAHATI, ASSAM\", PIN 781039."
+     }
+    }
+   }
+  },
+  {
+   "slug": "the-down-town-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230339",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"HATHISILA, CHANDRAPUR ROAD, KHANKAR, OPPOSITE SARIAGHAT PRESS,, GUWAHATI KAMRUP (M)\", PIN 781026."
+     }
+    }
+   }
+  },
+  {
+   "slug": "delhi-public-school-niz-sadar",
+   "facts": {
+    "city": {
+     "name": "Nagaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230340",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NIZ SADAR, DEODHAR, NAGAON\", PIN 782001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "maharishi-vidya-mandir-v",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230342",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOTANAGAR, JALUKBARI, GUWAHATI\", PIN 781033."
+     }
+    }
+   }
+  },
+  {
+   "slug": "manthan-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Dibrugarh",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230345",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BOKUL MAJGAON, LAHOWAL, DIBRUGARH\", PIN 786010."
+     }
+    }
+   }
+  },
+  {
+   "slug": "swadeshi-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230346",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"BARBARI VIP ROAD KARBI PATH, PO HENGRABARI, GUWAHATI\", PIN 781036."
+     }
+    }
+   }
+  },
+  {
+   "slug": "marry-s-convent-public-school",
+   "facts": {
+    "city": {
+     "name": "Bongaigaon",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230347",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"GOURAB NAGAR, T.R. PHUKAN ROAD, WARD NO-24, DIST- BONGAIGAON\", PIN 783380."
+     }
+    }
+   }
+  },
+  {
+   "slug": "sai-vikash-vidya-niketan",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230348",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"KANAKPUR PART-I, SONAI ROAD, SILCHAR\", PIN 788006."
+     }
+    }
+   }
+  },
+  {
+   "slug": "rashtra-bhasha-vidyalaya-senior-secondary-school",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230352",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RAJAMAIDAM ROAD, JORHAT, JORHAT\", PIN 785001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "dematha-english-medium-school",
+   "facts": {
+    "city": {
+     "name": "Rangia",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230353",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"TULSIBARI P.O, TARANI, RANGIA, ASSAM 781, TULSIBARI P.O, TARANI, RANGIA, ASSAM 781, TULSIBARI P.O, TARANI, RANGIA, ASSAM 781\", PIN 781354."
+     }
+    }
+   }
+  },
+  {
+   "slug": "red-rose-academy",
+   "facts": {
+    "city": {
+     "name": "Silchar",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/230354",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"RONGPUR PART III, P.O RONGPUR , PS SILCHAR\", PIN 788009."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-tezpur-salonibari",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/270051",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"POST- SALONIBARI, TEZPUR\", PIN 784104."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-school-narangi-satgaon-guwahati",
+   "facts": {
+    "city": {
+     "name": "Guwahati",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/280002",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NARANGI PO- SATGAON GUWAHATI, ASSAM\", PIN 781027."
+     }
+    }
+   }
+  },
+  {
+   "slug": "air-force-school-4",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/280003",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JORHAT DT- JORHAT ASSAM\", PIN 785005."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-school-solmara-tezpur-dt",
+   "facts": {
+    "city": {
+     "name": "Tezpur",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/280004",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"SOLMARA TEZPUR DT- SONITPUR ASSAM\", PIN 784001."
+     }
+    }
+   }
+  },
+  {
+   "slug": "army-public-school-rowriah-mes-gate-chaliha",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/280007",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"JORHAT NEAR ROWRIAH MES GATE PO CHALIHA JORHAT ASSAM\", PIN 785004."
+     }
+    }
+   }
+  },
+  {
+   "slug": "assam-rifles-public-school-4",
+   "facts": {
+    "city": {
+     "name": "Jorhat",
+     "source": {
+      "url": "https://saras.cbse.gov.in/SARAS/AffiliatedList/AfflicationDetails/280010",
+      "retrievedDate": "2026-11-13",
+      "note": "CBSE postal address \"NEFABARI NEAR CIVIL AIRPORT, ROWRIAH, JORHAT-5, ASSAM\", PIN 785005."
+     }
+    }
+   }
+  }
+ ]
+}

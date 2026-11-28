@@ -30,7 +30,7 @@ const card = (overrides: Partial<SchoolSummary>): SchoolSummary => ({
   annualFeeFrom: null, annualFeeYear: null, admissionStatus: null, genderType: null, websiteUrl: null, boardingType: null,
   residentialSystem: null, entranceExam: null, entryClasses: null, boardingSummary: null, boardingVerificationStatus: null,
   classesFrom: null, classesTo: null, facilityCategories: [], admissionPortalUrl: null, sourceRetrievedDate: null,
-  coverImageIllustrative: false, ...overrides,
+  coverImageIllustrative: false, affiliatedUpTo: null, ...overrides,
 });
 
 describe('RankingCard', () => {
@@ -77,15 +77,20 @@ describe('RankingCard', () => {
     expect(text).not.toContain('Not published');
     expect(text).toContain('Admissions open');
     expect(view.container.querySelector('img')?.getAttribute('src')).toBe('https://example.org/photo.jpg');
-    expect(text).toContain('© Example credit');
+    expect(text).not.toContain('Example credit'); // no credit over the photo
+    expect(view.container.querySelector('img')?.getAttribute('title')).toBe('Photo: Example credit');
     expect(view.container.querySelector('[aria-label="documented, not verified"]')).toBeNull();
   });
 
   it('hides the India position outside a state view and links to the score breakdown', () => {
     view = render(<RankingCard showIndiaRank={false} r={ranking({ status: 'RANKED', provisional: false, scopePosition: 2, rankPosition: 2 })} />);
     expect(view.container.textContent).not.toContain('in India');
-    const link = view.container.querySelector('a[href="/schools/fixture-public-school?tab=ranking"]');
-    expect(link).not.toBeNull();
+    // The score breakdown is opened through the navigation state: every link is the plain profile address, the page
+    // search engines index (see utils/profileLink).
+    const links = [...view.container.querySelectorAll('a')].map((a) => a.getAttribute('href'));
+    expect(links).toContain('/schools/fixture-public-school');
+    expect(links.some((h) => h?.includes('?tab='))).toBe(false);
+    expect(view.container.textContent).toContain('Score breakdown');
   });
 
   it('adds the school to the comparison and remembers it', () => {
