@@ -1,5 +1,10 @@
 # Profile description drafts for approval (28 Nov 2026)
 
+**Status: APPLIED on 28 Nov 2026** (the owner delegated the decision) by migration V52 (3fca82e), with every facility
+marked VERIFIED on 28 Nov 2026 and its source address. Checked live the same day: all seven profiles indexable, in
+`sitemaps/schools-1.xml` dated 2026-11-28; Google indexing requested for K K Cambridge, Swami Vivekananda Vidya Peedam and
+Moga Devi Minda.
+
 For the site owner. These are the most-shown school profiles that are now noindex as bare CBSE listings (Search
 Console, last 28 days; see `SEO_CONSOLE_AUDIT_2026-11-28.md` §5). A description of 300 characters or more, or any listed
 facility, makes a profile indexable again under the existing rule (`SchoolRepository.INDEXABLE`).

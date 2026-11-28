@@ -69,9 +69,13 @@ the site on your initiative.
 **Lists of free resources** found by search (Careers360, SelfStudys, AglaSem, EaseToLearn, EduRev, Toppersexam,
 myCBSEguide) belong to competitors and will not link to a rival.
 
-## 4. Outreach prepared (IMPLEMENTED: Gmail drafts, not sent)
+## 4. Outreach (SENT 28 Nov 2026 from the owner's Gmail account)
 
-Five drafts in redacted@example.invalid, signed "Rakesh Kumar, SchoolDhundo". Each recipient address is published on
+Sent after the seven profile descriptions went live (V52), so each school e-mail also says the page now describes the
+school from its own website; "because we could not find them published" was dropped, since Moga Devi Minda's website
+does list a fee page.
+
+Five e-mails from the owner's Gmail account, signed "Rakesh Kumar, SchoolDhundo". Each recipient address is published on
 that school's own website; each number is from Search Console (last four weeks). The ask is the same honest exchange:
 check the page, send the official fee and admission pages so they can be added with their source, and link to the page
 only if useful ("entirely optional and never changes how your school is shown").

@@ -97,6 +97,11 @@ Vivekananda Vidya Peedam (51), K K Cambridge International School (51), Moga Dev
 Bahadur Public School (47), Edify School Amravati (46), Little Flower EMS Chelavoor (46), Kamalavati HSS (38) and Sambhota
 Tibetan School Mundgod (36). They will drop out of Google as it recrawls them.
 
+**DONE 28 Nov (DEPLOYED as 3fca82e):** descriptions and facilities for seven of the ten, from each school's own website
+(migration V52; `tools/seo/data/profile-description-drafts-2026-11-28.md`). Live: all seven indexable and in the sitemap;
+indexing requested for K K Cambridge, Swami Vivekananda Vidya Peedam and Moga Devi Minda. Not possible for Velammal,
+Hidaya and Baba Banda Bahadur (no working official website).
+
 A profile becomes indexable again under the same rule with any of: a description of 300+ characters, fees, admission
 dates, facilities, a cleared photo, a ranking, a list entry, boarding details or an approved review. The five outreach
 drafts in Gmail ask four of these schools for exactly that. I can also draft descriptions and facility lists for the top
@@ -117,20 +122,19 @@ Nothing on Bing's side is broken; it indexes a new, unlinked site slowly. The fi
 ## 7. GA4 (VERIFIED, Windsor and the GA4 home page)
 
 - No warnings on the property. Last 7 days: 72 active users (+177%), 65 new (+206%), page views down 39%.
-- Google search into the homepage: 54 sessions from 5 users in 30 days, which is mostly you. Switch the internal-traffic
-  filter (Admin → Data filters → Internal Traffic) from Testing to Active once your visits show under "Test data filter
-  name".
+- Google search into the homepage: 54 sessions from 5 users in 30 days, which is mostly you. **The internal-traffic filter
+  was switched from Testing to Active on 28 Nov** (rule: the owner's current IPv4 address and home IPv6 network, kept in GA4 only). The test dimension
+  showed no tagged session in Windsor's cached data for 26–28 Nov, so the match could not be confirmed first; the rule
+  covers only your own connection, so it cannot exclude other visitors.
 - About 18 sessions have no landing page ("(not set)" or empty): normal for sessions without a page view under consent mode.
 - GA4 suggests counting views of /contact as "generate_lead". Not done: viewing the contact page is not a lead; the site
   already sends generate_lead when an enquiry is submitted.
 
 ## 8. What needs you
 
-1. Approve the seven profile descriptions in `tools/seo/data/profile-description-drafts-2026-11-28.md` (or say what to
-   change). Then enter them in the admin, or have them added as a database update marked staff-edited with their sources.
-   Three schools could not be drafted (no working official website).
-2. Send the five outreach drafts in Gmail.
-3. Switch the GA4 internal-traffic filter to Active when ready.
+Done on 28 Nov at the owner's instruction ("you take decision and do it now"): the seven descriptions (§5), the five
+outreach e-mails (sent), the GA4 internal-traffic filter (Active). Left: the four superseded Gmail drafts of the school
+e-mails (delete them; the sent versions are in Sent), and replies from the schools.
 
 ## 9. Checks
 
