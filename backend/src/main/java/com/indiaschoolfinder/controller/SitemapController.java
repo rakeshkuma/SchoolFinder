@@ -104,6 +104,11 @@ public class SitemapController {
      * (app.ai-training-crawlers=false) they get a group of their own, and since a crawler obeys only its own group, the
      * general rules are unaffected. Google-Extended is not in that list on purpose: besides training, it governs whether
      * Gemini apps may ground their answers in these pages, which shows and links them.
+     * <p>
+     * Two families of query-string copies are kept out because they only cost crawling (Search Console, 28 Nov 2026): the
+     * claim form's per-school addresses (/claim-school?school=…, about 700 of the 2,000 "alternate page" URLs; the plain
+     * /claim-school page stays open) and old profile-section addresses (/schools/x?tab=…, no longer linked since November
+     * 2026 but still re-crawled: about 80% of the 5,600 noindex URLs). Every page they copy has its own plain address.
      */
     static String robotsTxt(String base, boolean allowTraining) {
         String general = """
@@ -117,6 +122,8 @@ public class SitemapController {
                 Disallow: /api/v1/dev/
                 Disallow: /saved
                 Disallow: /suggest
+                Disallow: /claim-school?
+                Disallow: /schools/*?tab=
                 Disallow: /account
                 Disallow: /signin
                 Disallow: /register

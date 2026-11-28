@@ -17,6 +17,16 @@ class RobotsTxtTest {
     }
 
     @Test
+    void queryStringCopiesThatOnlyCostCrawlingAreKeptOut() {
+        String robots = SitemapController.robotsTxt("https://schooldhundo.in", true);
+        // The claim form's per-school copies and old profile-section addresses are not crawled ...
+        assertThat(robots).contains("Disallow: /claim-school?\n").contains("Disallow: /schools/*?tab=\n");
+        // ... while the plain pages they copy stay open: the claim page, every profile and the contact page.
+        assertThat(robots).doesNotContain("Disallow: /claim-school\n").doesNotContain("Disallow: /schools\n")
+                .doesNotContain("Disallow: /schools/\n").doesNotContain("Disallow: /contact");
+    }
+
+    @Test
     void trainingCrawlersCanBeShutOutWithoutTouchingSearchAndAnswerEngines() {
         String robots = SitemapController.robotsTxt("https://schooldhundo.in", false);
         // The general group, which Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User and PerplexityBot follow, is unchanged.

@@ -630,6 +630,16 @@ export interface SchoolRankingDetail {
   disclaimer: string;
 }
 
+/** A profile's first view in one response (/schools/slug/{slug}/page); each part is what its own endpoint returns. */
+export interface SchoolPage {
+  school: SchoolDetail;
+  images: SchoolImage[];
+  fees: Fee[];
+  admissions: Admission[];
+  faqs: { question: string; answer: string }[];
+  ranking: SchoolRankingDetail;
+}
+
 export interface RankingCriterion {
   id: number;
   code: string;

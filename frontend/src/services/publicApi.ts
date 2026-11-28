@@ -46,6 +46,7 @@ import type {
   SchoolDetail,
   SchoolImage,
   SchoolNetwork,
+  SchoolPage,
   SchoolRanking,
   SchoolRankingDetail,
   SchoolSearchParams,
@@ -71,6 +72,18 @@ function cached<T>(key: string, load: () => Promise<T>): Promise<T> {
   return referenceCache.get(key) as Promise<T>;
 }
 
+/**
+ * A profile's first view comes in one request (schoolService.page) instead of six: every request a page makes while it
+ * renders counts against what Google crawls of the site, and these six were most of Googlebot's requests in November
+ * 2026. The parts wait here for a minute, so the profile's sections, which ask for them one by one, are answered at once.
+ */
+const PROFILE_PART_MS = 60_000;
+const profileParts = new Map<string, { at: number; data: unknown }>();
+function profilePart<T>(key: string, load: () => Promise<T>): Promise<T> {
+  const hit = profileParts.get(key);
+  return hit && Date.now() - hit.at < PROFILE_PART_MS ? Promise.resolve(hit.data as T) : load();
+}
+
 export const schoolService = {
   search: (params: SchoolSearchParams) =>
     http.get<PageResponse<SchoolSummary>>('/schools/search', { params: cleanParams(params) }).then((r) => r.data),
@@ -80,24 +93,33 @@ export const schoolService = {
   suggest: (q: string, limit = 6) =>
     http.get<Suggestions>('/schools/suggest', { params: { q, limit } }).then((r) => r.data),
   bySlug: (slug: string) => http.get<SchoolDetail>(`/schools/slug/${encodeURIComponent(slug)}`).then((r) => r.data),
+  /** The profile with its photos, fees, admissions, questions and ranking, which the calls below then return at once. */
+  page: (slug: string) => http.get<SchoolPage>(`/schools/slug/${encodeURIComponent(slug)}/page`).then((r) => {
+    const { school, ...parts } = r.data;
+    const at = Date.now();
+    for (const [name, data] of Object.entries(parts)) profileParts.set(`${school.id}/${name}`, { at, data });
+    return school;
+  }),
   byId: (id: number) => http.get<SchoolDetail>(`/schools/${id}`).then((r) => r.data),
   nearby: (latitude: number, longitude: number, radiusKm: number, limit = 20, excludeSchoolId?: number) =>
     http
       .get<SchoolSummary[]>('/schools/nearby', { params: cleanParams({ latitude, longitude, radiusKm, limit, excludeSchoolId }) })
       .then((r) => r.data),
-  fees: (id: number) => http.get<Fee[]>(`/schools/${id}/fees`).then((r) => r.data),
-  admissions: (id: number) => http.get<Admission[]>(`/schools/${id}/admissions`).then((r) => r.data),
+  fees: (id: number) => profilePart(`${id}/fees`, () => http.get<Fee[]>(`/schools/${id}/fees`).then((r) => r.data)),
+  admissions: (id: number) => profilePart(`${id}/admissions`, () => http.get<Admission[]>(`/schools/${id}/admissions`).then((r) => r.data)),
   facilities: (id: number) => http.get<Facility[]>(`/schools/${id}/facilities`).then((r) => r.data),
   /** Common questions answered from the school's record; the same list is sent to search engines as FAQPage data. */
-  faqs: (id: number) => http.get<{ question: string; answer: string }[]>(`/schools/${id}/faqs`).then((r) => r.data),
+  faqs: (id: number) => profilePart(`${id}/faqs`,
+    () => http.get<{ question: string; answer: string }[]>(`/schools/${id}/faqs`).then((r) => r.data)),
   /** A parent's admission enquiry (consent required); staff pass it to the school. */
   enquire: (id: number, body: { parentName: string; phone: string; email: string | null; classCode: string; academicYear: string; message: string; consent: boolean; website: string }) =>
     http.post(`/schools/${id}/enquiries`, body).then(() => undefined),
-  images: (id: number) => http.get<SchoolImage[]>(`/schools/${id}/images`).then((r) => r.data),
+  images: (id: number) => profilePart(`${id}/images`, () => http.get<SchoolImage[]>(`/schools/${id}/images`).then((r) => r.data)),
   factSources: (id: number) => http.get<FactSource[]>(`/schools/${id}/fact-sources`).then((r) => r.data),
   suggestUpdate: (id: number, body: UpdateSubmissionRequest) =>
     http.post<{ status: string }>(`/schools/${id}/update-submissions`, body).then((r) => r.data),
-  ranking: (id: number) => http.get<SchoolRankingDetail>(`/schools/${id}/ranking`).then((r) => r.data),
+  ranking: (id: number) => profilePart(`${id}/ranking`,
+    () => http.get<SchoolRankingDetail>(`/schools/${id}/ranking`).then((r) => r.data)),
   reviews: (id: number, page = 0, size = 10) =>
     http.get<PageResponse<Review>>(`/schools/${id}/reviews`, { params: { page, size } }).then((r) => r.data),
   submitReview: (id: number, review: ReviewRequest) =>

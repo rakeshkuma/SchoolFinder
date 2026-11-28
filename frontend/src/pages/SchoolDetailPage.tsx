@@ -85,7 +85,8 @@ export function SchoolDetailPage() {
   useEffect(() => {
     if (linkedTab && !searchParams.has('tab')) setSearchParams({ tab: linkedTab }, { replace: true });
   }, [linkedTab, searchParams, setSearchParams]);
-  const school = useApi(() => schoolService.bySlug(slug), [slug]);
+  // One request brings the profile and what its first view shows (photos, fees, admissions, questions, ranking).
+  const school = useApi(() => schoolService.page(slug), [slug]);
   useDocumentTitle(school.data?.name);
   useSchoolSeo(school.data);
   const loaded = school.data;
@@ -156,7 +157,8 @@ export function SchoolDetailPage() {
         <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-600">
           <Icon name="building" className="h-4 w-4 text-slate-500" />
           Work at {s.name}? Keep its fees, admission notices and photos up to date.
-          <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} className="link font-semibold">Claim this profile</Link>
+          {/* Form links are nofollow: their per-school addresses are not pages for search engines (robots.txt). */}
+          <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} rel="nofollow" className="link font-semibold">Claim this profile</Link>
         </p>
       </div>
     </>
@@ -330,7 +332,7 @@ function HeroPhoto({ school: s, photo, count, loading, onFail, onGallery }: {
         {reserve && <p className="mt-2 text-[11px] leading-snug">&nbsp;</p>}
         {!loading && (
           <p className="mt-2 text-xs text-slate-500">
-            No verified photo of this school yet. <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} className="link">School staff can add one</Link>
+            No verified photo of this school yet. <Link to={`/claim-school?school=${encodeURIComponent(s.name)}`} rel="nofollow" className="link">School staff can add one</Link>
           </p>
         )}
       </div>
@@ -498,7 +500,7 @@ function Overview({ school: s, onTab }: { school: SchoolDetail; onTab: (id: stri
           {unknown.length > 0 && (
             <p className="mt-4 text-sm text-slate-600">
               <span className="font-medium text-slate-700">Not yet published by a source:</span> {unknown.join(' · ')}.{' '}
-              <Link to={`/suggest?school=${encodeURIComponent(s.slug)}`} className="link">Know where the school publishes these? Tell us</Link>
+              <Link to={`/suggest?school=${encodeURIComponent(s.slug)}`} rel="nofollow" className="link">Know where the school publishes these? Tell us</Link>
             </p>
           )}
         </section>
@@ -563,7 +565,7 @@ function SourcesCard({ school: s, onTab }: { school: SchoolDetail; onTab: (id: s
       <p className="mt-3 text-xs text-slate-500">Missing details are left blank, never estimated. SchoolDhundo is independent; listing a school does not mean the school endorses this site.</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" onClick={() => onTab('sources')} className="btn-secondary rounded-full px-3 py-1.5 text-xs">All sources</button>
-        <Link to={`/suggest?school=${encodeURIComponent(s.slug)}&topic=CORRECTION`} className="btn-secondary rounded-full px-3 py-1.5 text-xs">
+        <Link to={`/suggest?school=${encodeURIComponent(s.slug)}&topic=CORRECTION`} rel="nofollow" className="btn-secondary rounded-full px-3 py-1.5 text-xs">
           <Icon name="info" className="h-3.5 w-3.5" /> Report incorrect information
         </Link>
       </div>

@@ -127,6 +127,25 @@ public class SchoolController {
         return schoolService.getActiveBySlug(slug);
     }
 
+    /** What a profile shows when it opens; each part is exactly what its own endpoint returns. */
+    public record SchoolPageDto(SchoolDetailDto school, List<ImageDto> images, List<FeeDto> fees, List<AdmissionDto> admissions,
+                                List<com.indiaschoolfinder.service.SchoolFaqService.Faq> faqs, SchoolRankingDetailDto ranking) {
+    }
+
+    /**
+     * A school profile's first view in one response instead of six (the school, photos, fees, admissions, questions and
+     * ranking). Every request a page makes while it renders counts against what Google crawls of the site: on 28 Nov 2026
+     * Search Console's crawl stats put JSON at 66% of Googlebot's requests and page resources at 74%, most of them these
+     * six calls per profile. One call also makes the profile faster for visitors.
+     */
+    @Operation(summary = "School profile by URL slug with its photos, fees, admissions, questions and ranking")
+    @GetMapping("/slug/{slug}/page")
+    public SchoolPageDto page(@PathVariable String slug) {
+        SchoolDetailDto s = schoolService.getActiveBySlug(slug);
+        return new SchoolPageDto(s, schoolService.images(s.id()), feeService.feeHistory(s.id()), admissionService.bySchool(s.id()),
+                faqService.faqs(s), rankingService.forSchool(s.id()));
+    }
+
     @Operation(summary = "Fee history by academic year and class")
     @GetMapping("/{id}/fees")
     public List<FeeDto> fees(@PathVariable Long id) {
